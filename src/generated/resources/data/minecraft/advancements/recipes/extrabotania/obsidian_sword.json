@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:obsidian_sword"
+    ]
+  },
+  "criteria": {
+    "obsidian_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:obsidian"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:obsidian_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obsidian_sword",
+      "has_the_recipe"
+    ]
+  ]
+}

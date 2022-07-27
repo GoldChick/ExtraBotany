@@ -47,9 +47,9 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-property "mixin.env.remapRefMap", "true"
-property "mixin.env.disableRefMap", "true"
-property 'mixin.env.refMapRemappingFile', "C:/Users/11847/Desktop/ExtraBotania/createSrgToMcp/output.srg"
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.disableRefMap", "true"
+            property 'mixin.env.refMapRemappingFile', "C:/Users/11847/Desktop/ExtraBotania/createSrgToMcp/output.srg"
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.
@@ -77,9 +77,9 @@ property 'mixin.env.refMapRemappingFile', "C:/Users/11847/Desktop/ExtraBotania/c
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-property "mixin.env.remapRefMap", "true"
-property "mixin.env.disableRefMap", "true"
-property 'mixin.env.refMapRemappingFile', "C:/Users/11847/Desktop/ExtraBotania/createSrgToMcp/output.srg"
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.disableRefMap", "true"
+            property 'mixin.env.refMapRemappingFile', "C:/Users/11847/Desktop/ExtraBotania/createSrgToMcp/output.srg"
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'examplemod'
 
@@ -145,8 +145,8 @@ repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
     maven { url = "https://maven.theillusivec4.top/" }//curios
-    maven { url ="https://maven.blamejared.com/" }//patchouli
-				          //botania
+    maven { url = "https://maven.blamejared.com/" }//patchouli
+    //botania
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
@@ -160,10 +160,13 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.51'
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.18.2-5.0.7.1")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.18.2-5.0.7.1:api")
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
-    compileOnly fg.deobf("vazkii.botania:Botania:1.18.2-432:api")
+//Only fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")   runtimeOnly 
+    compileOnly fg.deobf("vazkii.botania:Botania:1.18.2-432")
     runtimeOnly fg.deobf("vazkii.botania:Botania:1.18.2-432")
+//Only fg.deobf("vazkii.botania:Botania:1.18.2-432:api") runtimeOnly 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency

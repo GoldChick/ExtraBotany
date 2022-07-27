@@ -7,7 +7,9 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
 import static chick.extrabotania.ExtraBotania.MODID;
+
 public class TutItemTags extends ItemTagsProvider
 {
     public TutItemTags(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper helper)

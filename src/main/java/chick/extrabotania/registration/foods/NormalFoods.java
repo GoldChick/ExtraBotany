@@ -11,5 +11,7 @@ public class NormalFoods
             .effect(() -> new MobEffectInstance(MobEffects.HEAL, 1 * 20, 4), 1f)
             .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20, 1), 1f)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60 * 20, 0), 1f)
-            .alwaysEat().build();
+            .alwaysEat()
+            .build();
+    public static final FoodProperties SB_FOOD=(new FoodProperties.Builder()).nutrition(10).saturationMod(0.1f).build();
 }

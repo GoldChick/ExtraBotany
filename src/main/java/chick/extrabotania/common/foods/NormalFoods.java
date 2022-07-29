@@ -1,4 +1,4 @@
-package chick.extrabotania.registration.foods;
+package chick.extrabotania.common.foods;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

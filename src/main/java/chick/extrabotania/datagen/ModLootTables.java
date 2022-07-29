@@ -1,13 +1,13 @@
 package chick.extrabotania.datagen;
 
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.Registration;
 import net.minecraft.data.DataGenerator;
 
-public class TutLootTables extends BaseLootTableProvider
+public class ModLootTables extends BaseLootTableProvider
 {
 
-    public TutLootTables(DataGenerator dataGeneratorIn)
+    public ModLootTables(DataGenerator dataGeneratorIn)
     {
         super(dataGeneratorIn);
     }

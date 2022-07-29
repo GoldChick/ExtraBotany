@@ -1,7 +1,7 @@
 package chick.extrabotania.datagen;
 
 import chick.extrabotania.ExtraBotania;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;

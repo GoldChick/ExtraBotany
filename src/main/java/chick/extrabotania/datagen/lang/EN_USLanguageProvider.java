@@ -1,11 +1,10 @@
-package chick.extrabotania.datagen;
+package chick.extrabotania.datagen.lang;
 
 import chick.extrabotania.ExtraBotania;
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.fml.common.Mod;
 
 public class EN_USLanguageProvider extends LanguageProvider
 {
@@ -26,5 +25,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.OBSIDIAN_CHESTPLATE.get(),"Obsidian Chestplate");
         add(ModItems.OBSIDIAN_LEGGINGS.get(),"Obsidian Leggings");
         add(ModItems.OBSIDIAN_BOOTS.get(),"Obsidian Boots");
+        add("extrabotania.category.extrabotania","Extra Botania");
+        add("extrabotania.entry.advancedmaterial","Advanced Form");
     }
 }

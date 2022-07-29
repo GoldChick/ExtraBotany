@@ -1,15 +1,13 @@
-package chick.extrabotania.registration;
+package chick.extrabotania.common;
 
 import chick.extrabotania.ExtraBotania;
-import chick.extrabotania.registration.foods.NormalFoods;
-import chick.extrabotania.registration.tools.ModArmorsTier;
-import chick.extrabotania.registration.tools.ModToolsTier;
-import chick.extrabotania.registration.tools.armors.ObsidianArmor;
-import chick.extrabotania.registration.tools.weapons.ObsidianSword;
+import chick.extrabotania.common.foods.NormalFoods;
+import chick.extrabotania.common.tools.ModArmorsTier;
+import chick.extrabotania.common.tools.armors.ObsidianArmor;
+import chick.extrabotania.common.tools.weapons.ObsidianSword;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,7 +18,6 @@ public class ModItems
 {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ExtraBotania.ITEM_GROUP);
-
     public static final RegistryObject<Item> RAW_YLG_CHUNK = ITEMS.register("raw_yeluogui_chunk", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> YLG_INGOT = ITEMS.register("yeluogui_ingot", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> OBSIDIAN_SWORD = ITEMS.register("obsidian_sword", ObsidianSword::new);

@@ -1,4 +1,4 @@
-package chick.extrabotania.registration.tools;
+package chick.extrabotania.common.tools;
 
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;

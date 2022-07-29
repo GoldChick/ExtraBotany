@@ -1,7 +1,7 @@
-package chick.extrabotania.datagen;
+package chick.extrabotania.datagen.recipes;
 
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.Registration;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -16,11 +16,17 @@ import java.util.function.Consumer;
 
 import static chick.extrabotania.ExtraBotania.MODID;
 
-public class TutRecipes extends RecipeProvider
+public class ModCraftingTableRecipes extends RecipeProvider
 {
-    public TutRecipes(DataGenerator generatorIn)
+    public ModCraftingTableRecipes(DataGenerator generatorIn)
     {
         super(generatorIn);
+    }
+
+    @Override
+    public String getName()
+    {
+        return "ExtraBotania craftingTable recipes";
     }
 
     @Override

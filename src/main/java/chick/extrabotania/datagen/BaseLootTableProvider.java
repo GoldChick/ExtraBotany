@@ -36,7 +36,6 @@ import java.util.Map;
 
 public abstract class BaseLootTableProvider extends LootTableProvider
 {
-
     private static final Logger LOGGER = LogManager.getLogger();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 

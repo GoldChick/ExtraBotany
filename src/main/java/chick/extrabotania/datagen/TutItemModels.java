@@ -1,8 +1,8 @@
 package chick.extrabotania.datagen;
 
 import chick.extrabotania.ExtraBotania;
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

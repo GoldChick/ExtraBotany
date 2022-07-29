@@ -1,7 +1,7 @@
 package chick.extrabotania;
 
 import chick.extrabotania.setup.ClientSetup;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.Registration;
 import chick.extrabotania.setup.ModSetup;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTab;

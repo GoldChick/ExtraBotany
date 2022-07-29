@@ -1,4 +1,4 @@
-package chick.extrabotania.registration.tools;
+package chick.extrabotania.common.tools;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;

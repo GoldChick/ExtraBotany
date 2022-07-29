@@ -1,4 +1,4 @@
-package chick.extrabotania.registration;
+package chick.extrabotania.common;
 
 import chick.extrabotania.ExtraBotania;
 import net.minecraft.core.Registry;
@@ -16,7 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static chick.extrabotania.ExtraBotania.MODID;
-import static chick.extrabotania.registration.ModItems.GetItems;
+import static chick.extrabotania.common.ModItems.GetItems;
 
 public class Registration
 {

@@ -1,7 +1,7 @@
 package chick.extrabotania.datagen;
 
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.Registration;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -10,9 +10,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static chick.extrabotania.ExtraBotania.MODID;
 
-public class TutItemTags extends ItemTagsProvider
+public class ModItemTags extends ItemTagsProvider
 {
-    public TutItemTags(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper helper)
+    public ModItemTags(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper helper)
     {
         super(generator, blockTags, MODID, helper);
     }
@@ -31,6 +31,6 @@ public class TutItemTags extends ItemTagsProvider
     @Override
     public String getName()
     {
-        return "Tutorial Tags";
+        return "ExtraBotania Item Tags";
     }
 }

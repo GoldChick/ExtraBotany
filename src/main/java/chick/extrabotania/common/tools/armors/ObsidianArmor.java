@@ -1,10 +1,13 @@
-package chick.extrabotania.registration.tools.armors;
+package chick.extrabotania.common.tools.armors;
 
 import chick.extrabotania.ExtraBotania;
-import chick.extrabotania.registration.ModItems;
-import chick.extrabotania.registration.tools.ModArmorsTier;
+import chick.extrabotania.common.ModItems;
+import chick.extrabotania.common.tools.ModArmorsTier;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -15,12 +18,16 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.item.IPhantomInkable;
+import vazkii.botania.client.gui.TooltipHandler;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.helper.ItemNBTHelper;
+import vazkii.botania.common.proxy.IProxy;
 
+import java.util.List;
 import java.util.UUID;
 
 public class ObsidianArmor extends ArmorItem implements IPhantomInkable
@@ -64,6 +71,26 @@ public class ObsidianArmor extends ArmorItem implements IPhantomInkable
         // it seems that botania uses a different way to make armor texture?
     }
 
+    @Override
+    public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flags)
+    {
+        TooltipHandler.addOnShift(list, () -> addInformationAfterShift(stack, world, list, flags));
+    }
+
+    public void addInformationAfterShift(ItemStack stack, Level world, List<Component> list, TooltipFlag flags)
+    {
+        Player player = IProxy.INSTANCE.getClientPlayer();
+        addArmorSetDescription(stack, list);
+        if (hasPhantomInk(stack))
+        {
+            list.add(new TranslatableComponent("botaniamisc.hasPhantomInk").withStyle(ChatFormatting.GRAY));
+        }
+    }
+
+    public void addArmorSetDescription(ItemStack stack, List<Component> list)
+    {
+        list.add(new TranslatableComponent("botania.armorset.manasteel.desc").withStyle(ChatFormatting.GRAY));
+    }
 
     @Override
     public boolean hasPhantomInk(ItemStack stack)

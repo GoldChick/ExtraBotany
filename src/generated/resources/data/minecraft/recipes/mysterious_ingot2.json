@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "extrabotania:raw_yeluogui_chunk"
+    "item": "extrabotany:raw_yeluogui_chunk"
   },
-  "result": "extrabotania:yeluogui_ingot",
+  "result": "extrabotany:yeluogui_ingot",
   "experience": 0.0,
   "cookingtime": 100
 }

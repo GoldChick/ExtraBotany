@@ -1,0 +1,11 @@
+{
+  "extend": "botania:lexicon",
+  "name": "Extra Botania Book",
+  "landing_text": "Just a book",
+  "version": 114,
+  "creative_tab": "extrabotany",
+  "macros": {
+    "$(item)": "$(1)",
+    "$(thing)": "$(4)"
+  }
+}

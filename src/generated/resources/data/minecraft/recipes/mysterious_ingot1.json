@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "ingredient": [],
-  "result": "extrabotania:yeluogui_ingot",
+  "ingredient": {
+    "item": "extrabotany:yeluogui_ore"
+  },
+  "result": "extrabotany:yeluogui_ingot",
   "experience": 1.0,
   "cookingtime": 100
 }

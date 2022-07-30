@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "extrabotania:yeluogui_ingot"
+    "extrabotany:yeluogui_ingot",
+    "extrabotany:photonium",
+    "extrabotany:shadowium"
   ]
 }

@@ -1,0 +1,24 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:shadowium"
+  },
+  "mana": 1000,
+  "ingredients": [
+    {
+      "item": "extrabotany:gildedmashedpotato"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "extrabotany:nightmarefuel_prop"
+    },
+    {
+      "item": "extrabotany:nightmarefuel_prop"
+    },
+    {
+      "item": "extrabotany:nightmarefuel_prop"
+    }
+  ]
+}

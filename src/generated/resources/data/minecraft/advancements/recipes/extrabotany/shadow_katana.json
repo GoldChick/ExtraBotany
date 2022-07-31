@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:shadow_katana"
+    ]
+  },
+  "criteria": {
+    "shadowium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:shadow_katana"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shadowium",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,8 +1,13 @@
 package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
+<<<<<<< HEAD
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+=======
+import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.Registration;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -18,6 +23,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "额外植物学");
+<<<<<<< HEAD
         add(ModBlocks.YLG_ORE.get(), "叶落归矿石");
         add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
         add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
@@ -37,6 +43,18 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_CHEST.get(), "哥布林杀手胸甲");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "哥布林杀手护腿");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
+=======
+        add(Registration.YLG_ORE.get(), "叶落归矿石");
+        add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
+        add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
+        add(ModItems.OBSIDIAN_APPLE.get(), "黑曜石苹果");
+        add(ModItems.OBSIDIAN_SWORD.get(), "黑曜石剑");
+        add(ModItems.OBSIDIAN_HELMET.get(), "Obsidian Helmet");
+        add(ModItems.SHADOW_INGOT.get(),"暗影锭");
+        add(ModItems.PHOTON_INGOT.get(),"光子锭");
+        add(ModItems.GILDED_POTATO.get(),"镀金服务器");
+        add(ModItems.GILDED_MASHED_POTATO.get(),"镀金土豆泥");
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 
         Pantchouli();
     }
@@ -58,6 +76,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.spiritfuel1", "精神燃料");
         add("extrabotany.page.spiritfuel2", "精神碎片");
 
+<<<<<<< HEAD
         add("extrabotany.entry.shadowium", "暗影锭");
         add("extrabotany.page.shadowium0", "以镀金土豆泥作为媒介，将梦魇燃料和源质钢锭结合得到的全新材料$(item)暗影锭$(0)。相比源质钢锭，暗影锭拥有着更大的潜能。");
         add("extrabotany.page.shadowium1", "无人生还。");
@@ -110,6 +129,33 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.elementstone2","地之符石");
         add("extrabotany.page.elementstone3","水之符石");
         add("extrabotany.page.elementstone4","火之符石");
+=======
+        add("extrabotany.entry.shadowium","暗影锭");
+        add("extrabotany.page.shadowium0","以镀金土豆泥作为媒介，将梦魇燃料和源质钢锭结合得到的全新材料$(item)暗影锭$(0)。相比源质钢锭，暗影锭拥有着更大的潜能。");
+        add("extrabotany.page.shadowium1","无人生还。");
+        add("extrabotany.page.shadowium2","");
+        add("extrabotany.page.shadowium3","可以用它制作$(item)暗影武士套$(0)，这套套装能在夜晚为装备者提供极高的加成。");
+        add("extrabotany.page.shadowium4","暗影武士头盔");
+        add("extrabotany.page.shadowium5","暗影武士护甲");
+        add("extrabotany.page.shadowium6","暗影武士护腿");
+        add("extrabotany.page.shadowium7","暗影武士靴子");
+
+        add("extrabotany.entry.photonium","光子锭");
+        add("extrabotany.page.photonium0","精神燃料与源质钢锭的完美结合。$(item)光子锭$(0)是一种优秀的材料，它是暗影锭的对立面。");
+        add("extrabotany.page.photonium1","三块一个，十块三个。");
+        add("extrabotany.page.photonium2","");
+        add("extrabotany.page.photonium3","它可以用于制作$(item)哥布林杀手套$(0)，这套装备可以在白天提供极强的再生和生命提升能力。");
+        add("extrabotany.page.photonium4","哥布林杀手头盔");
+        add("extrabotany.page.photonium5","哥布林杀手胸甲");
+        add("extrabotany.page.photonium6","哥布林杀手护腿");
+        add("extrabotany.page.photonium7","哥布林杀手靴子");
+
+        add("extrabotany.entry.gildedpotato","镀金土豆");
+        add("extrabotany.page.gildedpotato0","镀金了的土豆，可能在未来会有大用处。");
+        add("extrabotany.page.gildedpotato1","奇迹和魔法都是存在的");
+        add("extrabotany.page.gildedpotato2","镀金土豆做成的土豆泥，食用后会获得意想不到的效果。");
+        add("extrabotany.page.gildedpotato3","金色传说");
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 
         add("extrabotany.entry.advancedmaterial", "高等形式");
     }

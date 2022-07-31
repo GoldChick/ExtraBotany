@@ -1,7 +1,11 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+<<<<<<< HEAD
 import chick.extrabotany.common.ModBlocks;
+=======
+import chick.extrabotany.common.Registration;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

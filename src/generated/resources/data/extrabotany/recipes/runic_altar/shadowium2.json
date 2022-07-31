@@ -1,6 +1,12 @@
 {
   "type": "botania:runic_altar",
   "output": {
+<<<<<<< HEAD
+=======
+    "nbt": {
+      "Damage": 0
+    },
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
     "item": "extrabotany:shadowium",
     "count": 3
   },

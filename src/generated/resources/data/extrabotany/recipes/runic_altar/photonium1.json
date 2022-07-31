@@ -1,6 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
+<<<<<<< HEAD
     "item": "extrabotany:photonium"
   },
   "mana": 1000,
@@ -19,6 +20,20 @@
     },
     {
       "item": "extrabotany:spiritfuel_prop"
+=======
+    "nbt": {
+      "Damage": 0
+    },
+    "item": "extrabotany:gildedpotato"
+  },
+  "mana": 800,
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
     }
   ]
 }

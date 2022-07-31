@@ -1,7 +1,11 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+<<<<<<< HEAD
 import chick.extrabotany.common.ModBlocks;
+=======
+import chick.extrabotany.common.Registration;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -20,6 +24,7 @@ public class ModBlockTags extends BlockTagsProvider
     protected void addTags()
     {
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
+<<<<<<< HEAD
                 .add(ModBlocks.YLG_ORE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.YLG_ORE.get());
@@ -27,6 +32,15 @@ public class ModBlockTags extends BlockTagsProvider
                 .add(ModBlocks.YLG_ORE.get());
         tag(ModBlocks._YLG_ORE)
                 .add(ModBlocks.YLG_ORE.get());
+=======
+                .add(Registration.YLG_ORE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(Registration.YLG_ORE.get());
+        tag(Tags.Blocks.ORES)
+                .add(Registration.YLG_ORE.get());
+        tag(Registration._YLG_ORE)
+                .add(Registration.YLG_ORE.get());
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
     }
 
     @Override

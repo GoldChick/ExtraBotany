@@ -20,7 +20,11 @@
     {
       "type": "crafting",
       "text": "extrabotany.page.gildedpotato3",
+<<<<<<< HEAD
       "recipe": "minecraft:gildedmashedpotato"
+=======
+      "recipe": "extrabotany:gildedmashedpotato"
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
     }
   ]
 }

@@ -1,7 +1,12 @@
 package chick.extrabotany.datagen;
 
+<<<<<<< HEAD
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+=======
+import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.Registration;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 import net.minecraft.data.DataGenerator;
 
 public class ModLootTables extends BaseLootTableProvider

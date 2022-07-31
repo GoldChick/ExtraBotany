@@ -2,6 +2,10 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModItems;
+<<<<<<< HEAD
+=======
+import chick.extrabotany.common.Registration;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 import com.google.gson.JsonObject;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;

@@ -1,11 +1,18 @@
 package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
+<<<<<<< HEAD
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.common.Mod;
+=======
+import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.Registration;
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.LanguageProvider;
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 
 public class EN_USLanguageProvider extends LanguageProvider
 {
@@ -19,6 +26,7 @@ public class EN_USLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "extrabotany");
+<<<<<<< HEAD
         add(ModBlocks.YLG_ORE.get(), "YeLuoGui ore");
         add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
         add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
@@ -47,6 +55,25 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_CHEST.get(), "Goblin Slayer Chestplate");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
+=======
+        add(Registration.YLG_ORE.get(), "YeLuoGui ore");
+        add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
+        add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
+        add(ModItems.OBSIDIAN_APPLE.get(), "Obsidian Apple");
+        add(ModItems.OBSIDIAN_SWORD.get(), "Obsidian Sword");
+        add(ModItems.OBSIDIAN_HELMET.get(), "Obsidian Helmet");
+        add(ModItems.OBSIDIAN_CHESTPLATE.get(), "Obsidian Chestplate");
+        add(ModItems.OBSIDIAN_LEGGINGS.get(), "Obsidian Leggings");
+        add(ModItems.OBSIDIAN_BOOTS.get(), "Obsidian Boots");
+        add(ModItems.NIGHTMAREFUEL_PROP.get(),"Nightmare Fuel");
+        add(ModItems.SPIRITFUEL_PROP.get(),"Spirit Fuel");
+        add(ModItems.SPIRIT_PROP.get(),"Spirit Fragment");
+        add(ModItems.SHADOW_INGOT.get(),"Shadowium");
+        add(ModItems.PHOTON_INGOT.get(),"Photonium");
+        add(ModItems.GILDED_POTATO.get(),"Gilded Potato");
+        add(ModItems.GILDED_MASHED_POTATO.get(),"Gilded Mashed Potato");
+
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
         Pantchouli();
     }
 
@@ -67,6 +94,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.spiritfuel1", "Spirit Fuel");
         add("extrabotany.page.spiritfuel2", "Spirit Fragment");
 
+<<<<<<< HEAD
         add("extrabotany.entry.photonium", "Photonium");
         add("extrabotany.page.photonium0", "Photonium is the opposite side of Shadowium. It combines the power of Spirit Fuel and Elementium.");
         add("extrabotany.page.photonium1", "Three for one, Ten for three.");
@@ -119,6 +147,33 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.elementstone2","Earth Stone");
         add("extrabotany.page.elementstone3","Aqua Stone");
         add("extrabotany.page.elementstone4","Ignis Stone");
+=======
+        add("extrabotany.entry.photonium","Photonium");
+        add("extrabotany.page.photonium0","Photonium is the opposite side of Shadowium. It combines the power of Spirit Fuel and Elementium.");
+        add("extrabotany.page.photonium1","Three for one, Ten for three.");
+        add("extrabotany.page.photonium2","");
+        add("extrabotany.page.photonium3","It can be used to make $(item)Goblin Slayer Armor$(0), which powers player during day time, enabling him to regenerate more quickly.");
+        add("extrabotany.page.photonium4","Goblin Slayer Helmet");
+        add("extrabotany.page.photonium5","Goblin Slayer Chestplate");
+        add("extrabotany.page.photonium6","Goblin Slayer Leggings");
+        add("extrabotany.page.photonium7","Goblin Slayer Boots");
+
+        add("extrabotany.entry.shadowium","Shadowium");
+        add("extrabotany.page.shadowium0","With the magic of Gilded Mashed Potato, we can use Nightmare Fuel and a Elementium Ingot to make Shadowium. It's a very special kind of material and it performs better than Elementium.");
+        add("extrabotany.page.shadowium1","And Then There Were None.");
+        add("extrabotany.page.shadowium2","");
+        add("extrabotany.page.shadowium3","With the power of Shadowium, $(item);Shadow Warrior Armor$(0); will give wearer speed, strength, and night vision when the night comes. A sword made of it also seems to call upon Shadow pixies.");
+        add("extrabotany.page.shadowium4","Shadow Warrior Helmet");
+        add("extrabotany.page.shadowium5","Shadow Warrior Chestplate");
+        add("extrabotany.page.shadowium6","Shadow Warrior Leggings");
+        add("extrabotany.page.shadowium7","Shadow Warrior Boots");
+
+        add("extrabotany.entry.gildedpotato","Gilded Potato");
+        add("extrabotany.page.gildedpotato0","The Gilded Potato may have other uses. It might be useful in the future.");
+        add("extrabotany.page.gildedpotato1","There is a miracle, something magical.");
+        add("extrabotany.page.gildedpotato2","A mashed potato made from gilded potato. It could be delicious.");
+        add("extrabotany.page.gildedpotato3","Golden Legendary");
+>>>>>>> 147563fc72a2ad578270984ec90bd0232bd5eb33
 
         add("extrabotany.entry.advancedmaterial", "Advanced Form");
     }

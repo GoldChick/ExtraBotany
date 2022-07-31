@@ -1,0 +1,24 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:aerostone"
+  },
+  "mana": 2000,
+  "ingredients": [
+    {
+      "item": "botania:rune_air"
+    },
+    {
+      "item": "botania:rune_air"
+    },
+    {
+      "item": "botania:mana_diamond"
+    },
+    {
+      "item": "minecraft:quartz"
+    },
+    {
+      "item": "minecraft:lapis_lazuli"
+    }
+  ]
+}

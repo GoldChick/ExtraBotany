@@ -62,11 +62,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.shadowium0", "以镀金土豆泥作为媒介，将梦魇燃料和源质钢锭结合得到的全新材料$(item)暗影锭$(0)。相比源质钢锭，暗影锭拥有着更大的潜能。");
         add("extrabotany.page.shadowium1", "无人生还。");
         add("extrabotany.page.shadowium2", "");
-        add("extrabotany.page.shadowium3", "可以用它制作$(item)暗影武士套$(0)，这套套装能在夜晚为装备者提供极高的加成。");
-        add("extrabotany.page.shadowium4", "暗影武士头盔");
-        add("extrabotany.page.shadowium5", "暗影武士护甲");
-        add("extrabotany.page.shadowium6", "暗影武士护腿");
-        add("extrabotany.page.shadowium7", "暗影武士靴子");
+        add("extrabotany.page.shadowium3", "可以用它制作$(item)暗影武士套$(0)，这套套装能在夜晚为装备者提供极高的加成。也可以用它来制作$(item)影刃$(0)，可以传送到敌人的背后。");
+        add("extrabotany.page.shadowium4", "Silent Death。");
+        add("extrabotany.page.shadowium5", "暗影武士头盔");
+        add("extrabotany.page.shadowium6", "暗影武士护甲");
+        add("extrabotany.page.shadowium7", "暗影武士护腿");
+        add("extrabotany.page.shadowium8", "暗影武士靴子");
 
         add("extrabotany.entry.photonium", "光子锭");
         add("extrabotany.page.photonium0", "精神燃料与源质钢锭的完美结合。$(item)光子锭$(0)是一种优秀的材料，它是暗影锭的对立面。");
@@ -101,6 +102,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.miku.name", "星空歌姬");
         add("extrabotany.armorset.maid.name", "昴星团战斗女仆");
         add("extrabotany.armorset.shootingguardian.name", "银翼射手");
+
+
+        add("extrabotany.entry.elementstone","元素符石");
+        add("extrabotany.page.elementstone0","将元素符文炼制成对应的符石。$(item)风之符石$(0)可以增加佩戴者的移速，$(item)地之符石$(0)可以提高佩戴者的护甲，$(item)水之符石$(0)可以减少佩戴者的魔力消耗，$(item)火之符石$(0)可以提升佩戴者的攻击力。");
+        add("extrabotany.page.elementstone1","风之符石");
+        add("extrabotany.page.elementstone2","地之符石");
+        add("extrabotany.page.elementstone3","水之符石");
+        add("extrabotany.page.elementstone4","火之符石");
 
         add("extrabotany.entry.advancedmaterial", "高等形式");
     }

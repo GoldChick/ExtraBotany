@@ -31,6 +31,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "Gilded Potato");
         add(ModItems.GILDED_MASHED_POTATO.get(), "Gilded Mashed Potato");
 
+        add(ModItems.AERO_STONE.get(), "Aero Stone");
+        add(ModItems.AQUA_STONE.get(), "Aqua Stone");
+        add(ModItems.EARTH_STONE.get(), "Earth Stone");
+        add(ModItems.IGNIS_STONE.get(), "Ignis Stone");
+        add(ModItems.SUPREME_AERO_STONE.get(), "Supreme Aero Stone");
+
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");
@@ -75,11 +81,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.shadowium0", "With the magic of Gilded Mashed Potato, we can use Nightmare Fuel and a Elementium Ingot to make Shadowium. It's a very special kind of material and it performs better than Elementium.");
         add("extrabotany.page.shadowium1", "And Then There Were None.");
         add("extrabotany.page.shadowium2", "");
-        add("extrabotany.page.shadowium3", "With the power of Shadowium, $(item);Shadow Warrior Armor$(0); will give wearer speed, strength, and night vision when the night comes. A sword made of it also seems to call upon Shadow pixies.");
-        add("extrabotany.page.shadowium4", "Shadow Warrior Helmet");
-        add("extrabotany.page.shadowium5", "Shadow Warrior Chestplate");
-        add("extrabotany.page.shadowium6", "Shadow Warrior Leggings");
-        add("extrabotany.page.shadowium7", "Shadow Warrior Boots");
+        add("extrabotany.page.shadowium3", "With the power of Shadowium, $(item)Shadow Warrior Armor$(0) will give wearer speed, strength, and night vision when the night comes. A sword made of it, $(item)Shadow Katana$(0), can allow you to teleport behind mobs.");
+        add("extrabotany.page.shadowium4", "Silent Death.");
+        add("extrabotany.page.shadowium5", "Shadow Warrior Helmet");
+        add("extrabotany.page.shadowium6", "Shadow Warrior Chestplate");
+        add("extrabotany.page.shadowium7", "Shadow Warrior Leggings");
+        add("extrabotany.page.shadowium8", "Shadow Warrior Boots");
 
         add("extrabotany.entry.gildedpotato", "Gilded Potato");
         add("extrabotany.page.gildedpotato0", "The Gilded Potato may have other uses. It might be useful in the future.");
@@ -105,6 +112,13 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.miku.name", "Starry Idol");
         add("extrabotany.armorset.maid.name", "Pleiades Combat Maid");
         add("extrabotany.armorset.shootingguardian.name", "Shooting Guardian");
+
+        add("extrabotany.entry.elementstone","Stone of Four Element");
+        add("extrabotany.page.elementstone0","Element Stone made by corresponding element rune, it provides different amplifications. $(item);Aero Stone$(0); amplify movement, $(item);Earth Stone$(0); provides armor protection, $(item);Aqua Stone$(0); provides mana discount and $(item);Ignis Stone$(0); amplify damage.");
+        add("extrabotany.page.elementstone1","Aero Stone");
+        add("extrabotany.page.elementstone2","Earth Stone");
+        add("extrabotany.page.elementstone3","Aqua Stone");
+        add("extrabotany.page.elementstone4","Ignis Stone");
 
         add("extrabotany.entry.advancedmaterial", "Advanced Form");
     }

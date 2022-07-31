@@ -1,6 +1,7 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.tools.ModArmorsTier;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
@@ -32,22 +33,31 @@ public class ModItems
     public static final RegistryObject<Item> PHOTON_INGOT = ITEMS.register("photonium", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_POTATO = ITEMS.register("gildedpotato", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_MASHED_POTATO = ITEMS.register("gildedmashedpotato", () -> new Item(new Item.Properties().stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
-
     /*
-    * these are armors and weapons.(items with damage)
-    * for some reason, if they are assigned before,
-    * items behind will be with nbt "damage" ,and can not stack.
-    */
-    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", ()->new ShadowWarriorArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", ()->new ShadowWarriorArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", ()->new ShadowWarriorArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", ()->new ShadowWarriorArmor(EquipmentSlot.FEET));
-    public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", ()->new ShadowKatana(ITEM_PROPERTIES));
+     *
+     * these are baubles for curios mod
+     *
+     */
+    public static final RegistryObject<Item> AERO_STONE = ITEMS.register("aerostone", () -> new AeroStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> AQUA_STONE = ITEMS.register("aquastone", () -> new AquaStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> EARTH_STONE = ITEMS.register("earthstone", () -> new EarthStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> IGNIS_STONE = ITEMS.register("ignisstone", () -> new IgnisStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SUPREME_AERO_STONE = ITEMS.register("supreme_aerostone", () -> new SupremeAereStone(ITEM_PROPERTIES.stacksTo(1)));
+    /*
+     * these are armors and weapons.(items with damage)
+     * for some reason, if they are assigned before,
+     * items behind will be with nbt "damage" ,and can not stack.
+     */
+    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ShadowWarriorArmor(EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ShadowWarriorArmor(EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ShadowWarriorArmor(EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ShadowWarriorArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", () -> new ShadowKatana(ITEM_PROPERTIES));
 
-    public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", ()->new GoblinSlayerArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", ()->new GoblinSlayerArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", ()->new GoblinSlayerArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", ()->new GoblinSlayerArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", () -> new GoblinSlayerArmor(EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", () -> new GoblinSlayerArmor(EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", () -> new GoblinSlayerArmor(EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", () -> new GoblinSlayerArmor(EquipmentSlot.FEET));
 
 
     public static DeferredRegister<Item> GetItems()

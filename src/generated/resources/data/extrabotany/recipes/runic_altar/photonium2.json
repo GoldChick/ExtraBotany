@@ -1,15 +1,37 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:gildedpotato"
+    "item": "extrabotany:photonium",
+    "count": 3
   },
-  "mana": 800,
+  "mana": 5000,
   "ingredients": [
     {
-      "item": "minecraft:potato"
+      "item": "extrabotany:gildedmashedpotato"
     },
     {
-      "item": "minecraft:gold_nugget"
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
     }
   ]
 }

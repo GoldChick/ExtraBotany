@@ -2,6 +2,7 @@ package chick.extrabotany.common;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -14,6 +15,8 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+
+import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 
 
 public class Registration

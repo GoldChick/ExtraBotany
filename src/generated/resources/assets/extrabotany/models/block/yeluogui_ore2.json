@@ -1,6 +1,7 @@
 {
   "parent": "extrabotany:block/shapes/cross",
   "textures": {
-    "cross": "extrabotany:block/yeluogui_ore2"
+    "cross": "extrabotany:block/yeluogui_ore2",
+    "all": "extrabotany:block/yeluogui_ore2"
   }
 }

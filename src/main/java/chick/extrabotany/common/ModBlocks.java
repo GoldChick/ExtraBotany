@@ -3,6 +3,7 @@ package chick.extrabotany.common;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.SubTileSunshineLily;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -12,12 +13,17 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ForgeRenderTypes;
+import net.minecraftforge.client.RenderProperties;
 import net.minecraftforge.client.model.obj.MaterialLibrary;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static chick.extrabotany.ExtraBotany.MODID;
+import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
+import static net.minecraftforge.fml.loading.FMLEnvironment.dist;
 
 public class ModBlocks
 {

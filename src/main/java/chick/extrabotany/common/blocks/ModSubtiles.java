@@ -44,11 +44,6 @@ public class ModSubtiles
         r.accept(sunshinelilyFloating_item, getId(sunshinelilyFloating));
     }
 
-    public static void registerTEs(BiConsumer<BlockEntityType<?>, ResourceLocation> r)
-    {
-        r.accept(SUNSHINELILY, new ResourceLocation("extrabotany:block/sunshine_lily"));
-    }
-
     public static void registerWandHudCaps(ModTiles.BECapConsumer<IWandHUD> consumer)
     {
         consumer.accept(be -> new TileEntityGeneratingFlower.GeneratingWandHud<>((TileEntityGeneratingFlower) be),

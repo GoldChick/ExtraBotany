@@ -34,9 +34,7 @@ public class ModBlocks
     private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ExtraBotany.ITEM_GROUP);
 
     public static final RegistryObject<Block> YLG_ORE = BLOCKS.register("yeluogui_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
-    public static final RegistryObject<Block> YLG_ORE2 = BLOCKS.register("yeluogui_ore2", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS)));
     public static final RegistryObject<Item> YLG_ORE_ITEM = fromBlock(YLG_ORE);
-    public static final RegistryObject<Item> YLG_ORE_ITEM2 = fromBlock(YLG_ORE2);
     public static final TagKey<Block> _YLG_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
     public static final TagKey<Item> _YLG_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
 

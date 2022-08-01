@@ -2,6 +2,7 @@ package chick.extrabotany.common.blocks;
 
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
@@ -27,8 +28,17 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
     @Override
     public int getColor()
     {
-        return 0x785000;
+        return 0xFFA500;
     }
+
+    @Override
+    public void tickFlower()
+    {
+        super.tickFlower();
+        if (getLevel().isDay())
+            addMana(1);
+    }
+
 
     @Nullable
     @Override

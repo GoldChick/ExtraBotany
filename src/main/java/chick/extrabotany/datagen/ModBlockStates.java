@@ -22,17 +22,10 @@ public class ModBlockStates extends BlockStateProvider
     protected void registerStatesAndModels()
     {
         simpleBlock(ModBlocks.YLG_ORE.get());
+        //transparent rendertype in class ForgeClientInitializer
         simpleBlock(ModSubtiles.sunshinelily, new ConfiguredModel(models()
-                //              .cross(ModSubtiles.sunshinelily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/sunshine_lily")))
-                //      .withExistingParent(ModSubtiles.sunshinelily.getRegistryName().getPath(), modLoc("block/yeluogui_ore")))
-
                 .singleTexture(ModSubtiles.sunshinelily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily)))
         );
-        simpleBlock(ModBlocks.YLG_ORE2.get(), new ConfiguredModel(models()
-                //           .cross(ModSubtiles.sunshinelily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/sunshine_lily")))
-                //      .withExistingParent(ModSubtiles.sunshinelily.getRegistryName().getPath(), modLoc("block/yeluogui_ore")))
 
-                .singleTexture(ModBlocks.YLG_ORE2.get().getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModBlocks.YLG_ORE2.get())))
-        );
     }
 }

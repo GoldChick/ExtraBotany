@@ -39,7 +39,7 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
 
     public ShadowKatana(Properties prop)
     {
-        super(Tiers.WOOD, -1, 0, prop);
+        super(Tiers.GOLD, -1, 0, prop);
     }
 
     public static InteractionResult attackEntity(Player player, InteractionHand hand, ItemStack stack)
@@ -50,9 +50,7 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
         {
             EntityManaBurst burst = getBurst(player, player.getMainHandItem());
             player.level.addFreshEntity(burst);
-            player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.terraBlade, SoundSource.PLAYERS, 1F, 1F);
-            stack.setDamageValue(stack.getDamageValue() + 50);
-            //player.getMainHandItem().hurtAndBreak(100, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+            stack.setDamageValue(stack.getDamageValue() + 30);
         }
         return InteractionResult.PASS;
     }
@@ -151,13 +149,13 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
                 }
                 if (!entity.level.isClientSide)
                 {
-                    //thrower.level.playSound(null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
                     entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
-                    //entity.level.playSound(null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
+                    thrower.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
                 }
             }
         }
     }
+
     @Override
     public boolean doParticles(IManaBurst burst, ItemStack stack)
     {

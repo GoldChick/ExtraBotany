@@ -3,15 +3,11 @@ package chick.extrabotany.common;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
-import chick.extrabotany.common.tools.ModArmorsTier;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
-import chick.extrabotany.common.tools.armors.ObsidianArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.items.NightmareFuel;
-import chick.extrabotany.common.tools.weapons.ObsidianSword;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -38,11 +34,16 @@ public class ModItems
      * these are baubles for curios mod
      *
      */
+    public static final RegistryObject<Item> DEATH_RING = ITEMS.register("deathring", () -> new DeathRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> AERO_STONE = ITEMS.register("aerostone", () -> new AeroStone(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> AQUA_STONE = ITEMS.register("aquastone", () -> new AquaStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> AQUA_STONE = ITEMS.register("aquastone", () -> new AquaStone(new Item.Properties().stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> EARTH_STONE = ITEMS.register("earthstone", () -> new EarthStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> IGNIS_STONE = ITEMS.register("ignisstone", () -> new IgnisStone(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SUPREME_AERO_STONE = ITEMS.register("supreme_aerostone", () -> new SupremeAereStone(ITEM_PROPERTIES.stacksTo(1)));
+    public static final RegistryObject<Item> FOUR_IN_ONE_STONE = ITEMS.register("fourinonestone", () -> new FourInOneStone(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SUPREME_AERO_STONE = ITEMS.register("supreme_aerostone", () -> new SupremeAeroStone(ITEM_PROPERTIES.stacksTo(1)));
+    public static final RegistryObject<Item> SUPREME_AQUA_STONE = ITEMS.register("supreme_aquastone", () -> new SupremeAquaStone(ITEM_PROPERTIES.stacksTo(1)));
+    public static final RegistryObject<Item> SUPREME_EARTH_STONE = ITEMS.register("supreme_earthstone", () -> new SupremeEarthStone(ITEM_PROPERTIES.stacksTo(1)));
+    public static final RegistryObject<Item> SUPREME_IGNIS_STONE = ITEMS.register("supreme_ignisstone", () -> new SupremeIgnisStone(ITEM_PROPERTIES.stacksTo(1)));
     /*
      * these are armors and weapons.(items with damage)
      * for some reason, if they are assigned before,

@@ -34,9 +34,14 @@ public class FourInOneStone extends ItemBauble
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
-                //     && EquipmentHandler.findOrEmpty(ModItems.aerostone, entity).isEmpty()
-                ///      && EquipmentHandler.findOrEmpty(ModItems.aquastone, entity).isEmpty()
-                //       && EquipmentHandler.findOrEmpty(ModItems.ignisstone, entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.AERO_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AERO_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.AQUA_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AQUA_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.EARTH_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_EARTH_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.IGNIS_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_IGNIS_STONE.get(), entity).isEmpty()
                 ;
     }
 

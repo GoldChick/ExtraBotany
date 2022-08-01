@@ -31,7 +31,7 @@ public class AquaStone extends ItemBauble
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
                 && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AERO_STONE.get(), entity).isEmpty()
-                //        && EquipmentHandler.findOrEmpty(ModItems.fourinone_stone, entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
                 ;
     }
 

@@ -11,9 +11,9 @@ import net.minecraft.world.item.ItemStack;
 import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
-public class SupremeAereStone extends ItemBauble
+public class SupremeAeroStone extends ItemBauble
 {
-    public SupremeAereStone(Properties props)
+    public SupremeAeroStone(Properties props)
     {
         super(props);
     }
@@ -22,9 +22,9 @@ public class SupremeAereStone extends ItemBauble
     public Multimap<Attribute, AttributeModifier> getEquippedAttributeModifiers(ItemStack stack)
     {
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
-        attributes.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(getBaubleUUID(stack), "Supreme Aero Stone 1", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
-        attributes.put(Attributes.FLYING_SPEED, new AttributeModifier(getBaubleUUID(stack), "Supreme Aero Stone 2", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
-        attributes.put(Attributes.MAX_HEALTH, new AttributeModifier(getBaubleUUID(stack), "Supreme Aero Stone 3", -4F, AttributeModifier.Operation.ADDITION));
+        attributes.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 1", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        attributes.put(Attributes.FLYING_SPEED, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 2", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        attributes.put(Attributes.MAX_HEALTH, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 3", -4F, AttributeModifier.Operation.ADDITION));
         return attributes;
     }
 
@@ -32,8 +32,10 @@ public class SupremeAereStone extends ItemBauble
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
-                        && EquipmentHandler.findOrEmpty(ModItems.AERO_STONE.get(), entity).isEmpty()
-                //        && EquipmentHandler.findOrEmpty(ModItems.fourinone_stone, entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.AERO_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_EARTH_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.EARTH_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
                 ;
     }
 

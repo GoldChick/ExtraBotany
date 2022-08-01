@@ -4,7 +4,7 @@
     "item": "extrabotany:photonium",
     "count": 3
   },
-  "mana": 5000,
+  "mana": 10000,
   "ingredients": [
     {
       "item": "extrabotany:gildedmashedpotato"

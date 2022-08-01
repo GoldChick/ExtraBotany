@@ -23,6 +23,7 @@ public class DataGenerators
         if (event.includeServer())
         {
             RecipeData(event, generator);
+
             generator.addProvider(new ModLootTables(generator));
             ModBlockTags blockTags = new ModBlockTags(generator, event.getExistingFileHelper());
             generator.addProvider(blockTags);
@@ -31,6 +32,7 @@ public class DataGenerators
         if (event.includeClient())
         {
             generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
+           generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new ModItemModels(generator, event.getExistingFileHelper()));
             generator.addProvider(new EN_USLanguageProvider(generator, "en_us"));
             generator.addProvider(new ZH_CNLanguageProvider(generator, "zh_cn"));

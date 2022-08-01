@@ -1,14 +1,20 @@
 package chick.extrabotany.common;
 
+import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import static top.theillusivec4.curios.api.SlotTypeMessage.REGISTER_TYPE;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
 
 public class Registration
 {
@@ -21,8 +27,29 @@ public class Registration
 
         ModItems.GetItems().register(bus);
 
+        //for flowers now.
+        bind(ForgeRegistries.BLOCKS, ModSubtiles::registerBlocks);
+        bind(ForgeRegistries.ITEMS, ModSubtiles::registerItemBlocks);
+        //bind(ForgeRegistries.BLOCK_ENTITIES, ModSubtiles::registerTEs);
+
+
         initEvents();
     }
+
+    public static <T extends IForgeRegistryEntry<T>> void bind(IForgeRegistry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source)
+    {
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(registry.getRegistrySuperType(),
+                (RegistryEvent.Register<T> event) ->
+                {
+                    IForgeRegistry<T> forgeRegistry = event.getRegistry();
+                    source.accept((t, rl) ->
+                    {
+                        t.setRegistryName(rl);
+                        forgeRegistry.register(t);
+                    });
+                });
+    }
+
 
     private static void initEvents()
     {

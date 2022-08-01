@@ -111,6 +111,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.elementstone3","水之符石");
         add("extrabotany.page.elementstone4","火之符石");
 
+        add("extrabotany.entry.deathring","诅咒指环");
+        add("extrabotany.page.deathring0","$(item)诅咒指环$(0)能消耗少量的&4魔力$(0)使小范围内所视的生物获得凋零和不幸的效果。");
+        add("extrabotany.page.deathring1","力量本身并不可怕，可怕的是它的主人。");
         add("extrabotany.entry.advancedmaterial", "高等形式");
     }
 }

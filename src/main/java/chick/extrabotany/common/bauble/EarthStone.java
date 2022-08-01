@@ -1,5 +1,6 @@
 package chick.extrabotany.common.bauble;
 
+import chick.extrabotany.common.ModItems;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,8 +13,6 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 public class EarthStone extends ItemBauble
 {
-
-
     public EarthStone(Properties props)
     {
         super(props);
@@ -31,8 +30,8 @@ public class EarthStone extends ItemBauble
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
-                //  && EquipmentHandler.findOrEmpty(ModItems.thecommunity, entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AQUA_STONE.get(), entity).isEmpty()
                 ;
     }
-
 }

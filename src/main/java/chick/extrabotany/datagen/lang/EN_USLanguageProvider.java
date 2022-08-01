@@ -3,6 +3,7 @@ package chick.extrabotany.datagen.lang;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.common.Mod;
@@ -31,11 +32,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "Gilded Potato");
         add(ModItems.GILDED_MASHED_POTATO.get(), "Gilded Mashed Potato");
 
+        add(ModItems.DEATH_RING.get(), "Death Ring");
         add(ModItems.AERO_STONE.get(), "Aero Stone");
         add(ModItems.AQUA_STONE.get(), "Aqua Stone");
         add(ModItems.EARTH_STONE.get(), "Earth Stone");
         add(ModItems.IGNIS_STONE.get(), "Ignis Stone");
         add(ModItems.SUPREME_AERO_STONE.get(), "Supreme Aero Stone");
+        add(ModItems.SUPREME_AQUA_STONE.get(), "Supreme Aqua Stone");
+        add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
+        add(ModItems.SUPREME_IGNIS_STONE.get(), "Supreme Ignis Stone");
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
@@ -47,6 +52,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_CHEST.get(), "Goblin Slayer Chestplate");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
+
+        add(ModSubtiles.sunshinelily, "Sunshine Lily");
         Pantchouli();
     }
 
@@ -113,12 +120,23 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.maid.name", "Pleiades Combat Maid");
         add("extrabotany.armorset.shootingguardian.name", "Shooting Guardian");
 
-        add("extrabotany.entry.elementstone","Stone of Four Element");
-        add("extrabotany.page.elementstone0","Element Stone made by corresponding element rune, it provides different amplifications. $(item);Aero Stone$(0); amplify movement, $(item);Earth Stone$(0); provides armor protection, $(item);Aqua Stone$(0); provides mana discount and $(item);Ignis Stone$(0); amplify damage.");
+        add("extrabotany.entry.elementstone","Stones of Four Element");
+        add("extrabotany.page.elementstone0","Element Stone made by corresponding element rune, it provides different amplifications. $(item)Aero Stone$(0) amplify movement, $(item)Earth Stone$(0) provides armor protection, $(item)Aqua Stone$(0) provides mana discount and $(item)Ignis Stone$(0) amplify damage.");
         add("extrabotany.page.elementstone1","Aero Stone");
         add("extrabotany.page.elementstone2","Earth Stone");
         add("extrabotany.page.elementstone3","Aqua Stone");
         add("extrabotany.page.elementstone4","Ignis Stone");
+
+        add("extrabotany.entry.supreme_elementstone","Supreme Stones");
+        add("extrabotany.page.supreme_elementstone0","Element Stones are so powerful. But there is one way to get even stronger power from element. However, this results in some disadvantages. And this also exacerbates the conflict between the different elements. For example, $(item)Aero Stone$(0) and $(item)Earth Stone$(0) can not work together if one of them is $(item)Supreme$(0) version. So will $(item)Aqua Stone$(0) and $(item)Ignis Stone$(0) do.");
+        add("extrabotany.page.supreme_elementstone1","Aero Stone");
+        add("extrabotany.page.supreme_elementstone2","Earth Stone");
+        add("extrabotany.page.supreme_elementstone3","Aqua Stone");
+        add("extrabotany.page.supreme_elementstone4","Ignis Stone");
+
+        add("extrabotany.entry.deathring","Death Ring");
+        add("extrabotany.page.deathring0","The $(item)Death Ring$(0) applies the Wither and Unluck effect on creatures near the wearer at the cost of some $(thing)Mana$(0).");
+        add("extrabotany.page.deathring1","Do not fear power... fear those who wield it!");
 
         add("extrabotany.entry.advancedmaterial", "Advanced Form");
     }

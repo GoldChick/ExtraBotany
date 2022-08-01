@@ -40,6 +40,8 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
         super.tickFlower();
         if (getLevel().isDay() && !getLevel().isClientSide())
         {
+            addMana(1);
+            sync();
             if (++passiveDecayTicks > DECAY_TIME)
             {
                 getLevel().destroyBlock(getBlockPos(), false);
@@ -48,7 +50,7 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
                     getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
                 }
             }
-            addMana(1);
+
         }
     }
 

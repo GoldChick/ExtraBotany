@@ -3,6 +3,7 @@ package chick.extrabotany.datagen.lang;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -27,7 +28,17 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "镀金服务器");
         add(ModItems.GILDED_MASHED_POTATO.get(), "镀金土豆泥");
 
-        add(ModItems.SHADOW_KATANA.get(), "暗影太刀");
+        add(ModItems.DEATH_RING.get(), "诅咒指环");
+        add(ModItems.AERO_STONE.get(), "风之符石");
+        add(ModItems.AQUA_STONE.get(), "水之符石");
+        add(ModItems.EARTH_STONE.get(), "地之符石");
+        add(ModItems.IGNIS_STONE.get(), "火之符石");
+        add(ModItems.SUPREME_AERO_STONE.get(), "至高风之符石");
+        add(ModItems.SUPREME_AQUA_STONE.get(), "至高水之符石");
+        add(ModItems.SUPREME_EARTH_STONE.get(), "至高地之符石");
+        add(ModItems.SUPREME_IGNIS_STONE.get(), "至高火之符石");
+
+        add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "暗影武士头盔");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "暗影武士胸甲");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "暗影武士护腿");
@@ -38,10 +49,22 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_LEGS.get(), "哥布林杀手护腿");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
 
-        Pantchouli();
+        langFlower();
+        langPantchouli();
     }
 
-    private void Pantchouli()
+    private void langFlower()
+    {
+        add(ModSubtiles.sunshinelily, "日耀百合");
+        add(ModSubtiles.sunshinelilyFloating, "浮空日耀百合");
+        add("block.extrabotany.sunbless.reference", "愿光芒能治愈并指引你");
+
+        add(ModSubtiles.moonlightlily, "月光百合");
+        add(ModSubtiles.moonlightlilyFloating, "浮空月光百合");
+        add("block.extrabotany.moonbless.reference", "愿你能找到所有失去的东西");
+    }
+
+    private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "额外的知识");
 
@@ -104,16 +127,35 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.shootingguardian.name", "银翼射手");
 
 
-        add("extrabotany.entry.elementstone","元素符石");
-        add("extrabotany.page.elementstone0","将元素符文炼制成对应的符石。$(item)风之符石$(0)可以增加佩戴者的移速，$(item)地之符石$(0)可以提高佩戴者的护甲，$(item)水之符石$(0)可以减少佩戴者的魔力消耗，$(item)火之符石$(0)可以提升佩戴者的攻击力。");
-        add("extrabotany.page.elementstone1","风之符石");
-        add("extrabotany.page.elementstone2","地之符石");
-        add("extrabotany.page.elementstone3","水之符石");
-        add("extrabotany.page.elementstone4","火之符石");
+        add("extrabotany.entry.elementstone", "元素符石");
+        add("extrabotany.page.elementstone0", "将元素符文炼制成对应的符石。$(item)风之符石$(0)可以增加佩戴者的移速，$(item)地之符石$(0)可以提高佩戴者的护甲，$(item)水之符石$(0)可以减少佩戴者的魔力消耗，$(item)火之符石$(0)可以提升佩戴者的攻击力。");
+        add("extrabotany.page.elementstone1", "风之符石");
+        add("extrabotany.page.elementstone2", "地之符石");
+        add("extrabotany.page.elementstone3", "水之符石");
+        add("extrabotany.page.elementstone4", "火之符石");
 
-        add("extrabotany.entry.deathring","诅咒指环");
-        add("extrabotany.page.deathring0","$(item)诅咒指环$(0)能消耗少量的&4魔力$(0)使小范围内所视的生物获得凋零和不幸的效果。");
-        add("extrabotany.page.deathring1","力量本身并不可怕，可怕的是它的主人。");
+        add("extrabotany.entry.supreme_elementstone", "至高符石");
+        add("extrabotany.page.supreme_elementstone0", "元素符石已经十分强大了。但是还有一种方法能从元素中取得更强大的力量。不过，这也导致了一些缺点，同时也加剧了不同元素之间的冲突。比如说，如果其中一个是至高级别的符石，那么你将无法同时使用$(item)风之符石$(0)和$(item)地之符石$(0)，或者$(item)火之符石$(0)和$(item)水之符石$(0)。");
+        add("extrabotany.page.supreme_elementstone1", "Aero Stone");
+        add("extrabotany.page.supreme_elementstone2", "Earth Stone");
+        add("extrabotany.page.supreme_elementstone3", "Aqua Stone");
+        add("extrabotany.page.supreme_elementstone4", "Ignis Stone");
+
+        add("extrabotany.entry.deathring", "诅咒指环");
+        add("extrabotany.page.deathring0", "$(item)诅咒指环$(0)能消耗少量的&4魔力$(0)使小范围内所视的生物获得凋零和不幸的效果。");
+        add("extrabotany.page.deathring1", "力量本身并不可怕，可怕的是它的主人。");
         add("extrabotany.entry.advancedmaterial", "高等形式");
+        pantchouliFlower();
+    }
+
+    private void pantchouliFlower()
+    {
+        add("extrabotany.entry.sunshine_lily", "日耀百合");
+        add("extrabotany.page.sunshine_lily0", "拥有能将阳光转化为$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
+        add("extrabotany.page.sunshine_lily1", "光与热");
+
+        add("extrabotany.entry.moonlight_lily", "月光百合");
+        add("extrabotany.page.moonlight_lily0", "拥有能在夜晚产生$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
+        add("extrabotany.page.moonlight_lily1", "愚者的播种");
     }
 }

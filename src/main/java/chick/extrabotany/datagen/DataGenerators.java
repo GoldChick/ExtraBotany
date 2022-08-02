@@ -3,10 +3,7 @@ package chick.extrabotany.datagen;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.datagen.lang.EN_USLanguageProvider;
 import chick.extrabotany.datagen.lang.ZH_CNLanguageProvider;
-import chick.extrabotany.datagen.recipes.ModCraftingTableRecipes;
-import chick.extrabotany.datagen.recipes.ModElvenTradeRecipes;
-import chick.extrabotany.datagen.recipes.ModManaInfusionRecipes;
-import chick.extrabotany.datagen.recipes.ModRunicAltarRecipes;
+import chick.extrabotany.datagen.recipes.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,7 +29,7 @@ public class DataGenerators
         if (event.includeClient())
         {
             generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
-           generator.addProvider(new FloatingFlowerModelProvider(generator));
+            generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new ModItemModels(generator, event.getExistingFileHelper()));
             generator.addProvider(new EN_USLanguageProvider(generator, "en_us"));
             generator.addProvider(new ZH_CNLanguageProvider(generator, "zh_cn"));
@@ -47,6 +44,7 @@ public class DataGenerators
             generator.addProvider(new ModCraftingTableRecipes(generator));
             generator.addProvider(new ModManaInfusionRecipes(generator));
             generator.addProvider(new ModRunicAltarRecipes(generator));
+            generator.addProvider(new ModPetalProvider(generator));
         }
     }
 }

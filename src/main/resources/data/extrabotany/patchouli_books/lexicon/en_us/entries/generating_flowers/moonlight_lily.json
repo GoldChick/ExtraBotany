@@ -1,0 +1,21 @@
+{
+  "name": "extrabotany.entry.moonlight_lily",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:moonlight_lily",
+  "advancement": "botania:main/pure_daisy_pickup",
+  "turnin": "botania:main/generating_flower",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.moonlight_lily0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.moonlight_lily1",
+      "recipe": "extrabotany:petal_apothecary/moonlight_lily"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "extrabotany:floating_moonlight_lily": 1
+  }
+}

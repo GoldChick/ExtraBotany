@@ -6,7 +6,6 @@ import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.fml.common.Mod;
 
 public class EN_USLanguageProvider extends LanguageProvider
 {
@@ -19,7 +18,8 @@ public class EN_USLanguageProvider extends LanguageProvider
     @Override
     protected void addTranslations()
     {
-        add("itemGroup." + ExtraBotany.TAB_NAME, "extrabotany");
+        add("itemGroup." + ExtraBotany.TAB_NAME, "Extra Botany");
+
         add(ModBlocks.YLG_ORE.get(), "YeLuoGui ore");
         add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
         add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
@@ -32,7 +32,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "Gilded Potato");
         add(ModItems.GILDED_MASHED_POTATO.get(), "Gilded Mashed Potato");
 
-        add(ModItems.DEATH_RING.get(), "Death Ring");
+        add(ModItems.DEATH_RING.get(), "Curse Ring");
         add(ModItems.AERO_STONE.get(), "Aero Stone");
         add(ModItems.AQUA_STONE.get(), "Aqua Stone");
         add(ModItems.EARTH_STONE.get(), "Earth Stone");
@@ -53,11 +53,20 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
 
-        add(ModSubtiles.sunshinelily, "Sunshine Lily");
-        Pantchouli();
+        langFlower();
+        langPantchouli();
     }
+    private void langFlower()
+    {
+        add(ModSubtiles.sunshinelily,"Sunshine Lily");
+        add(ModSubtiles.sunshinelilyFloating,"Floating Sunshine Lily");
+        add("block.extrabotany.sunbless.reference","May the light heal and enlighten you");
 
-    private void Pantchouli()
+        add(ModSubtiles.moonlightlily,"Moonlight Lily");
+        add(ModSubtiles.moonlightlilyFloating,"Floating Moonlight Lily");
+        add("block.extrabotany.moonbless.reference","May you find all you have lost");
+    }
+    private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "Extra Botania");
 
@@ -139,5 +148,17 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.deathring1","Do not fear power... fear those who wield it!");
 
         add("extrabotany.entry.advancedmaterial", "Advanced Form");
+
+        pantchouliFlower();
+    }
+    private void pantchouliFlower()
+    {
+        add("extrabotany.entry.sunshine_lily","Sunshine Lily");
+        add("extrabotany.page.sunshine_lily0","Sunshine Lily produces $(thing)Mana$(0) from sunlight, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
+        add("extrabotany.page.sunshine_lily1","Heal and heat.");
+
+        add("extrabotany.entry.moonlight_lily","Moonlight Lily");
+        add("extrabotany.page.moonlight_lily0","Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft..");
+        add("extrabotany.page.moonlight_lily1","Sowing of the fool.");
     }
 }

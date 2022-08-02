@@ -1,6 +1,5 @@
 package chick.extrabotany.common.blocks;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -10,16 +9,16 @@ import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileSunshineLily extends TileEntityGeneratingFlower
+public class SubTileMoonlightLily extends TileEntityGeneratingFlower
 {
     private static final int RANGE = 2;
     private static final int DECAY_TIME = 72000;
     private int passiveDecayTicks;
     private boolean particle = false;
 
-    public SubTileSunshineLily(BlockPos pos, BlockState state)
+    public SubTileMoonlightLily(BlockPos pos, BlockState state)
     {
-        super(ModSubtiles.SUNSHINELILY, pos, state);
+        super(ModSubtiles.MOONLIGHTLILY, pos, state);
     }
 
     @Override
@@ -31,17 +30,17 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
     @Override
     public int getColor()
     {
-        return 0xFFA500;
+        return 0xFFFF00;
     }
-
 
     @Override
     public void tickFlower()
     {
         super.tickFlower();
+
         if (!getLevel().isClientSide)
         {
-            if (getLevel().isDay())
+            if (getLevel().isNight())
             {
                 if (++passiveDecayTicks > DECAY_TIME)
                 {
@@ -74,18 +73,19 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
     public void writeToPacketNBT(CompoundTag cmp)
     {
         super.writeToPacketNBT(cmp);
-        cmp.putBoolean("sunB", particle);
-        cmp.putInt("sunI", passiveDecayTicks);
+        cmp.putBoolean("moonB", particle);
+        cmp.putInt("moonI", passiveDecayTicks);
     }
 
     @Override
     public void readFromPacketNBT(CompoundTag cmp)
     {
         super.readFromPacketNBT(cmp);
-        particle = cmp.getBoolean("sunB");
-        passiveDecayTicks = cmp.getInt("sunI");
+        particle = cmp.getBoolean("moonB");
+        passiveDecayTicks = cmp.getInt("moonI");
     }
 
+    @Nullable
     @Override
     public RadiusDescriptor getRadius()
     {

@@ -33,6 +33,7 @@ public class Registration
         //for flowers now.
         bind(ForgeRegistries.BLOCKS, ModSubtiles::registerBlocks);
         bind(ForgeRegistries.ITEMS, ModSubtiles::registerItemBlocks);
+        bind(ForgeRegistries.BLOCK_ENTITIES,ModSubtiles::registerTEs);
 
         initEvents();
     }

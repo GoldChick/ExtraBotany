@@ -3,10 +3,13 @@ package chick.extrabotany.forge.client;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import com.google.common.base.Suppliers;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,37 +28,52 @@ import java.util.function.Supplier;
 import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
-@Mod.EventBusSubscriber(modid = ExtraBotany.MODID,bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = ExtraBotany.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeClientInitializer
 {
     @SubscribeEvent
     public static void clientInit(FMLClientSetupEvent evt)
     {
-        onRenderTypeSetup(evt);
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
     }
-    private static void onRenderTypeSetup(FMLClientSetupEvent event)
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt)
+    {
+        EntityRenderers.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
+    }
+
+    @SubscribeEvent
+    public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {
         event.enqueueWork(() ->
         {
             //to make them transparent
             setRenderLayer(ModSubtiles.sunshinelily, RenderType.cutout());
+            setRenderLayer(ModSubtiles.moonlightlily, RenderType.cutout());
         });
     }
-    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() -> {
+
+    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
+    {
         var ret = new IdentityHashMap<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>();
-        ModSubtiles.registerWandHudCaps((factory, types) -> {
-            for (var type : types) {
+        ModSubtiles.registerWandHudCaps((factory, types) ->
+        {
+            for (var type : types)
+            {
                 ret.put(type, factory);
             }
         });
         return Collections.unmodifiableMap(ret);
     });
-    private static void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e) {
+
+    private static void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
+    {
         var be = e.getObject();
 
         var makeWandHud = WAND_HUD.get().get(be.getType());
-        if (makeWandHud != null) {
+        if (makeWandHud != null)
+        {
             e.addCapability(prefix("wand_hud"),
                     CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, makeWandHud.apply(be)));
         }

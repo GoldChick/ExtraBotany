@@ -1,0 +1,24 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:photonium"
+  },
+  "mana": 4200,
+  "ingredients": [
+    {
+      "item": "extrabotany:gildedmashedpotato"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    },
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    }
+  ]
+}

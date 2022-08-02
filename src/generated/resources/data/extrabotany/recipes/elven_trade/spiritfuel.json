@@ -1,0 +1,13 @@
+{
+  "type": "botania:elven_trade",
+  "ingredients": [
+    {
+      "item": "extrabotany:nightmarefuel_prop"
+    }
+  ],
+  "output": [
+    {
+      "item": "extrabotany:spiritfuel_prop"
+    }
+  ]
+}

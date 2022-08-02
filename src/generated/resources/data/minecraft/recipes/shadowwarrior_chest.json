@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "x x",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "extrabotany:shadowium"
+    }
+  },
+  "result": {
+    "item": "extrabotany:shadowwarrior_chest"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "botania:petal_apothecary",
+  "output": {
+    "item": "extrabotany:moonlight_lily"
+  },
+  "ingredients": [
+    {
+      "tag": "botania:petals/red"
+    },
+    {
+      "tag": "botania:petals/red"
+    },
+    {
+      "tag": "botania:petals/red"
+    },
+    {
+      "tag": "botania:petals/white"
+    }
+  ]
+}

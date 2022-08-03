@@ -37,6 +37,8 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.THE_END.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theend"));
         singleTexture(ModItems.THE_ORIGIN.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theorigin"));
         singleTexture(ModItems.THE_UNIVERSE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theuniverse"));
+        singleTexture(ModItems.EMPTY_BOTTLE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/empty_bottle"));
+        singleTexture(ModItems.MANA_DRINK.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/mana_drink"));
 
         registerBaubleModels();
         registerFlowerModels();
@@ -63,6 +65,7 @@ public class ModItemModels extends ItemModelProvider
         //no floating flowers here
         singleTexture(ModSubtiles.sunshinelily_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/sunshine_lily"));
         singleTexture(ModSubtiles.moonlightlily_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/moonlight_lily"));
+        singleTexture(ModSubtiles.omniviolet_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/omni_violet"));
     }
 
     private void registerWeaponModels()

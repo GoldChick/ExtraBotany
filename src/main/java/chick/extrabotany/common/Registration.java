@@ -1,8 +1,8 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.brews.ModBrews;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -30,10 +30,12 @@ public class Registration
 
         ModItems.GetItems().register(bus);
 
-        //for flowers now.
+        //flowers
         bind(ForgeRegistries.BLOCKS, ModSubtiles::registerBlocks);
         bind(ForgeRegistries.ITEMS, ModSubtiles::registerItemBlocks);
         bind(ForgeRegistries.BLOCK_ENTITIES,ModSubtiles::registerTEs);
+        // Potions and Brews
+        ModBrews.registerBrews();
 
         initEvents();
     }

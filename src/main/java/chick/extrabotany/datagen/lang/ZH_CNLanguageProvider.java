@@ -54,7 +54,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_CHEST.get(), "哥布林杀手胸甲");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "哥布林杀手护腿");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
-
+        add(ModItems.EMPTY_BOTTLE.get(), "魔法玻璃空瓶");
+        add(ModItems.MANA_DRINK.get(), "魔力鸡尾酒");
+        add("extrabotany.brew.revolution","革命");
+        add("extrabotany.brew.allmighty","全能");
+        add("extrabotany.brew.shell","龟壳");
+        add("extrabotany.brew.deadpool","死灵");
+        add("extrabotany.brew.floating","漂浮");
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -65,10 +71,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.sunshinelily, "日耀百合");
         add(ModSubtiles.sunshinelilyFloating, "浮空日耀百合");
         add(ModSubtiles.sunshinelily.getDescriptionId() + ".reference", "愿光芒能治愈并指引你");
-
         add(ModSubtiles.moonlightlily, "月光百合");
         add(ModSubtiles.moonlightlilyFloating, "浮空月光百合");
         add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "愿你能找到所有失去的东西");
+        add(ModSubtiles.omniviolet,"全知瑾");
+        add(ModSubtiles.omnivioletFloating,"浮空全知瑾");
+        add(ModSubtiles.omniviolet.getDescriptionId()+".reference","我知万物");
+
     }
 
     private void langAdvancement()
@@ -127,7 +136,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.gildedpotato3", "金色传说");
 
         add("extrabotany.entry.manareader", "魔力读取器");
-        add("extrabotany.page.manareader0", "手持魔力读取器右键一个魔力池，可以查看其中含有多少mana。");
+        add("extrabotany.page.manareader0", "手持魔力读取器右键一个魔力池，可以查看其中含有多少mana。对于比较小的数字不是很准确。");
         add("extrabotany.page.manareader1", "让我看看！");
 
         add("extrabotany.armorset.miku.desc", "超强魔力亲和");
@@ -173,6 +182,16 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.advancedmaterial2","起源物质");
         add("extrabotany.page.advancedmaterial3","终末物质");
         add("extrabotany.page.advancedmaterial4","宇宙物质");
+        add("extrabotany.entry.brew","全新酿造类型");
+        add("extrabotany.page.brew0","拿着魔法玻璃空瓶对着魔力池右键可以获得魔力鸡尾酒，饮用魔力鸡尾酒可以获得多种正面buff。");
+        add("extrabotany.page.brew1","");
+        add("extrabotany.page.brew2","比起普通的酿造能够多饮用两次，并且药水的持续时间也要来得更长。只需要将装有所需酿造的烧瓶和魔力鸡尾酒合成即可得到对应的秘制鸡尾酒。 ");
+        add("extrabotany.page.brew3","将装有所需酿造的秘制鸡尾酒和爆裂紫颂果合成即可得到对应的圣水手雷。圣水手雷爆炸后会给予大范围生物较高的伤害，给予玩家其所含的正面效果而给予其他生物负面效果。 <br>可以说是几乎完美的酿造，但为什么是一颗手雷呢?");
+        add("extrabotany.page.brew4","能够大幅提升挖掘效率，但是需要透支运气。");
+        add("extrabotany.page.brew5","拥有超强的防御力，但行动却也变得像乌龟一样慢。");
+        add("extrabotany.page.brew6","获得超强的力量，但是代价是什么?");
+        add("extrabotany.page.brew7","几乎所有的正面效果!但只能维持一小会。");
+        add("extrabotany.page.brew8","能够让人漂浮起来的药水，或许对敌人使用会更好?");
         pantchouliFlower();
     }
 
@@ -180,10 +199,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     {
         add("extrabotany.entry.sunshine_lily", "日耀百合");
         add("extrabotany.page.sunshine_lily0", "拥有能将阳光转化为$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
-        add("extrabotany.page.sunshine_lily1", "光与热");
-
+        add("extrabotany.page.sunshine_lily1", "光与热。");
         add("extrabotany.entry.moonlight_lily", "月光百合");
         add("extrabotany.page.moonlight_lily0", "拥有能在夜晚产生$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
-        add("extrabotany.page.moonlight_lily1", "愚者的播种");
+        add("extrabotany.page.moonlight_lily1", "愚者的播种。");
+        add("extrabotany.entry.omniviolet","全知瑾");
+        add("extrabotany.page.omniviolet0","知识就是力量，$(item)全知瑾$(0)能够将书本或成书转化为$(thing)魔力$(0)。 如果你在其周围按附魔台方式摆放上书架的话能够起到催化剂的效果，增加其产魔效率。魔力产出最多达到原来的四倍。");
+        add("extrabotany.page.omniviolet1","阿克夏记录。");
     }
 }

@@ -26,8 +26,10 @@ public class ModBlockStates extends BlockStateProvider
         //transparent rendertype in class ForgeClientInitializer
         simpleBlock(ModSubtiles.sunshinelily, new ConfiguredModel(models().singleTexture(ModSubtiles.sunshinelily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.moonlightlily, new ConfiguredModel(models().singleTexture(ModSubtiles.moonlightlily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.moonlightlily))));
+        simpleBlock(ModSubtiles.omniviolet, new ConfiguredModel(models().singleTexture(ModSubtiles.omniviolet.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.omniviolet))));
         //just blockstates for floating flowers. The texture is not valid here!
         simpleBlock(ModSubtiles.sunshinelilyFloating,new ConfiguredModel(models().singleTexture(ModSubtiles.sunshinelilyFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.moonlightlilyFloating,new ConfiguredModel(models().singleTexture(ModSubtiles.moonlightlilyFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
+        simpleBlock(ModSubtiles.omnivioletFloating,new ConfiguredModel(models().singleTexture(ModSubtiles.omnivioletFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
     }
 }

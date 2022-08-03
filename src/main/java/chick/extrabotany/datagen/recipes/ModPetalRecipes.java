@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -32,9 +33,9 @@ import java.util.function.Consumer;
 
 import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
-public class ModPetalProvider extends RecipeProvider
+public class ModPetalRecipes extends RecipeProvider
 {
-    public ModPetalProvider(DataGenerator gen)
+    public ModPetalRecipes(DataGenerator gen)
     {
         super(gen);
     }
@@ -85,8 +86,9 @@ public class ModPetalProvider extends RecipeProvider
         Ingredient pixieDust = Ingredient.of(ModItems.pixieDust);
         Ingredient gaiaSpirit = Ingredient.of(ModItems.lifeEssence);
 
-        consumer.accept(make(ModSubtiles.sunshinelily,yellow,yellow,yellow,white));
-        consumer.accept(make(ModSubtiles.moonlightlily,red,red,red,white));
+        consumer.accept(make(ModSubtiles.sunshinelily, yellow, yellow, yellow, white));
+        consumer.accept(make(ModSubtiles.moonlightlily, red, red, red, white));
+        consumer.accept(make(ModSubtiles.omniviolet, blue, blue, purple, purple, runeMana, runeSpring, runeLust));
 
         //ItemStack stack = new ItemStack(Items.PLAYER_HEAD);
         //ItemNBTHelper.setString(stack, "SkullOwner", "Vazkii");
@@ -101,9 +103,9 @@ public class ModPetalProvider extends RecipeProvider
         return Ingredient.of(TagKey.create(Registry.ITEM_REGISTRY, prefix(tag)));
     }
 
-    protected static FinishedRecipe make(ItemLike item, Ingredient... ingredients)
+    protected static Petal make(ItemLike item, Ingredient... ingredients)
     {
-        return new FinishedRecipe(idFor(Registry.ITEM.getKey(item.asItem())), new ItemStack(item), ingredients);
+        return new Petal(idFor(Registry.ITEM.getKey(item.asItem())), new ItemStack(item), ingredients);
     }
 
     protected static ResourceLocation idFor(ResourceLocation name)
@@ -111,13 +113,13 @@ public class ModPetalProvider extends RecipeProvider
         return new ResourceLocation(name.getNamespace(), "petal_apothecary/" + name.getPath());
     }
 
-    protected static class FinishedRecipe implements net.minecraft.data.recipes.FinishedRecipe
+    protected static class Petal implements FinishedRecipe
     {
         private final ResourceLocation id;
         private final ItemStack output;
         private final Ingredient[] inputs;
 
-        private FinishedRecipe(ResourceLocation id, ItemStack output, Ingredient... inputs)
+        private Petal(ResourceLocation id, ItemStack output, Ingredient... inputs)
         {
             this.id = id;
             this.output = output;

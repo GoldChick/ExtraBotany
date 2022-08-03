@@ -1,4 +1,4 @@
-package chick.extrabotany.common.tools.items;
+package chick.extrabotany.common.items;
 
 import chick.extrabotany.common.ModItems;
 import net.minecraft.world.InteractionResult;

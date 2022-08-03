@@ -16,8 +16,10 @@ public final class EntityRenderers
 
     public static void registerBlockEntityRenderers(BERConsumer consumer)
     {
+        //floating?
         consumer.register(ModSubtiles.SUNSHINELILY, RenderTileSpecialFlower::new);
         consumer.register(ModSubtiles.MOONLIGHTLILY, RenderTileSpecialFlower::new);
+        consumer.register(ModSubtiles.OMNIVIOLET, RenderTileSpecialFlower::new);
     }
 
     private EntityRenderers()

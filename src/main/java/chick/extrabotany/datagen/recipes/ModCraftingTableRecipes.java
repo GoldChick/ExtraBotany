@@ -58,7 +58,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("azx")
                 .pattern("za ")
                 .define('o', vazkii.botania.common.item.ModItems.manaDiamond)
-                .define('x', vazkii.botania.common.item.ModItems.pixieDust)
+                .define('x', vazkii.botania.common.item.ModItems.manaPowder)
                 .define('z', vazkii.botania.common.item.ModItems.livingwoodTwig)
                 .define('a', ModItems.NIGHTMAREFUEL_PROP.get())
                 .group(MODID)
@@ -74,6 +74,14 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(),ModItems.PHOTON_INGOT.get()))
                 .save(consumer, "thechaos");
+        ShapedRecipeBuilder.shaped(ModItems.EMPTY_BOTTLE.get())
+                .pattern("x x")
+                .pattern("x x")
+                .pattern(" x ")
+                .define('x', vazkii.botania.common.block.ModBlocks.manaGlass)
+                .group(MODID)
+                .unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.manaGlass))
+                .save(consumer, "empty_bottle");
         weaponRecipes(consumer);
         armorRecipes(consumer);
     }

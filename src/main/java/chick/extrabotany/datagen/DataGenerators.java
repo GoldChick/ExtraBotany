@@ -41,11 +41,12 @@ public class DataGenerators
     {
         if (event.includeServer())
         {
+            generator.addProvider(new ModBrewRecipes(generator));
             generator.addProvider(new ModElvenTradeRecipes(generator));
             generator.addProvider(new ModCraftingTableRecipes(generator));
             generator.addProvider(new ModManaInfusionRecipes(generator));
             generator.addProvider(new ModRunicAltarRecipes(generator));
-            generator.addProvider(new ModPetalProvider(generator));
+            generator.addProvider(new ModPetalRecipes(generator));
         }
     }
 }

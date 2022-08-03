@@ -60,6 +60,14 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
 
+        add(ModItems.EMPTY_BOTTLE.get(), "Empty Mana Glass Bottle");
+        add(ModItems.MANA_DRINK.get(), "Mana Cocktail");
+        add("extrabotany.brew.revolution","Revolution");
+        add("extrabotany.brew.allmighty","All-mighty");
+        add("extrabotany.brew.shell","Shell");
+        add("extrabotany.brew.deadpool","Deadpool");
+        add("extrabotany.brew.floating","Floating");
+
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -70,17 +78,19 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.sunshinelily, "Sunshine Lily");
         add(ModSubtiles.sunshinelilyFloating, "Floating Sunshine Lily");
         add(ModSubtiles.sunshinelily.getDescriptionId() + ".reference", "May the light heal and enlighten you");
-
         add(ModSubtiles.moonlightlily, "Moonlight Lily");
         add(ModSubtiles.moonlightlilyFloating, "Floating Moonlight Lily");
         add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "May you find all you have lost");
+        add(ModSubtiles.omniviolet,"Omniviolet");
+        add(ModSubtiles.omnivioletFloating,"Floating Omniviolet");
+        add(ModSubtiles.omniviolet.getDescriptionId()+".reference","Need not to know");
     }
     private void langAdvancement()
     {
         add("advancement.extrabotany:root.title","Welcome to the World");
         add("advancement.extrabotany:root.desc","Don't have a good day, have a great day");
         add("advancement.extrabotany:nightmarefuel_eat.title","Deep Dark Fantasy");
-        add("advancement.extrabotany:nightmarefuel_eat.desc","Eat a Nightmare Fuel (Unbelievable);");
+        add("advancement.extrabotany:nightmarefuel_eat.desc","Eat a Nightmare Fuel (Unbelievable)");
         add("advancement.extrabotany:manareader_craft.title","Satisfaction");
         add("advancement.extrabotany:manareader_craft.desc","Obtain Mana Reader");
         add("advancement.extrabotany:thechaos_craft.title","Chaos With No Chaos");
@@ -132,7 +142,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.gildedpotato3", "Golden Legendary");
 
         add("extrabotany.entry.manareader", "Mana Reader");
-        add("extrabotany.page.manareader0", "By right clicking a Mana Pool with a Mana Reader in your main-hand, you can check out how much mana it has.");
+        add("extrabotany.page.manareader0", "By right clicking a Mana Pool with a Mana Reader in your main-hand, you can check out how much mana it has. Not very accurate for small figures.");
         add("extrabotany.page.manareader1", "Lemme check it!");
 
         add("extrabotany.armorset.miku.desc", "Super Mana Affinity.");
@@ -178,6 +188,18 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.advancedmaterial3","The End");
         add("extrabotany.page.advancedmaterial4","The Universe");
 
+        add("extrabotany.entry.brew","New types of brew");
+        add("extrabotany.page.brew0","Hold an Empty Mana Glass Bottle and right-click a Mana Pool with enough mana, and you will acquire a tasty drink.");
+        add("extrabotany.page.brew1","");
+        add("extrabotany.page.brew2","By crafting any flask potion with a Mana Cocktail , you can make a Special-made Cocktail that can be drinked two more times than the original flask and it has a longer effect.");
+        add("extrabotany.page.brew3","When a Special-made Cocktail is crafted with Popped Chorus Fruit. You make a Holy Grenade! The Holy Grenade will deal massive damage after exploding, giving bad effects to other creatures and giving the good effects to players. <br>A perfect item, but why is it a grenade?");
+        add("extrabotany.page.brew4","Greatly improve the efficiency of mining, but overdraft your luck.");
+        add("extrabotany.page.brew5","High level of resistance, but slow as turtle.");
+        add("extrabotany.page.brew6","Gain super strength, but what's the cost?");
+        add("extrabotany.page.brew7","Almost all positive effects! But wouldn't last long.");
+        add("extrabotany.page.brew8","One can make you floating, may be better if used on enemies?");
+
+
         pantchouliFlower();
     }
     private void pantchouliFlower()
@@ -185,9 +207,11 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.sunshine_lily", "Sunshine Lily");
         add("extrabotany.page.sunshine_lily0", "Sunshine Lily produces $(thing)Mana$(0) from sunlight, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
         add("extrabotany.page.sunshine_lily1", "Heal and heat.");
-
         add("extrabotany.entry.moonlight_lily", "Moonlight Lily");
-        add("extrabotany.page.moonlight_lily0", "Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft..");
+        add("extrabotany.page.moonlight_lily0", "Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
         add("extrabotany.page.moonlight_lily1", "Sowing of the fool.");
+        add("extrabotany.entry.omniviolet","Omniviolet");
+        add("extrabotany.page.omniviolet0","According to a saying, knowledge is power. The $(item)Omniviolet$(0) converts Books or Written Books into $(thing)Mana$(0). To increase the amount of mana generated, Bookshelves can be placed around the Omniviolet in a similar fashion to an Enchantment Table. Mana output can be increased 300% than before.");
+        add("extrabotany.page.omniviolet1","Akashic Records.");
     }
 }

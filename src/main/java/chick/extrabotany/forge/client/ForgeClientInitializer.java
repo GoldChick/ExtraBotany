@@ -51,6 +51,7 @@ public class ForgeClientInitializer
             //to make them transparent
             setRenderLayer(ModSubtiles.sunshinelily, RenderType.cutout());
             setRenderLayer(ModSubtiles.moonlightlily, RenderType.cutout());
+            setRenderLayer(ModSubtiles.omniviolet, RenderType.cutout());
         });
     }
 

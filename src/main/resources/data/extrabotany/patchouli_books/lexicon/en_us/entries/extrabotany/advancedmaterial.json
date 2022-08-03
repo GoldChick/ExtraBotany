@@ -2,7 +2,6 @@
   "name": "extrabotany.entry.advancedmaterial",
   "category": "extrabotany:extrabotany",
   "icon": "extrabotany:thechaos",
-  "priority": true,
   "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
   "turnin": "extrabotany:main/nightmarefuel_eat_lexicon",
   "pages": [

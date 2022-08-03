@@ -1,5 +1,6 @@
-package chick.extrabotany.common.blocks;
+package chick.extrabotany.common.blocks.generating;
 
+import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;

@@ -28,4 +28,11 @@ public class NormalFoods
             .effect(() -> new MobEffectInstance(MobEffects.UNLUCK, 25 * 20), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 25 * 20), 1.0F)
             .build();
+    public static final FoodProperties GILDED_MASHED_POTATO = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.2F)
+            .alwaysEat()
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 30 * 20, 3), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 3), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 30 * 20, 1), 1.0F)
+            .build();
+    public static final FoodProperties MANA_DRINK = (new FoodProperties.Builder()).nutrition(0).saturationMod(0).alwaysEat().build();
 }

@@ -45,6 +45,7 @@ public class ModBlockTags extends BlockTagsProvider
         tag(ModTags.Blocks.GENERATING_SPECIAL_FLOWERS)
                 .add(ModSubtiles.sunshinelily)
                 .add(ModSubtiles.moonlightlily)
+                .add(ModSubtiles.omniviolet)
         ;
         tag(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS)
         ;

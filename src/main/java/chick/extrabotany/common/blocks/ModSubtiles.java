@@ -1,17 +1,17 @@
 package chick.extrabotany.common.blocks;
 
 import chick.extrabotany.ExtraBotany;
-import net.minecraft.core.BlockPos;
+import chick.extrabotany.common.blocks.generating.SubTileMoonlightLily;
+import chick.extrabotany.common.blocks.generating.SubTileOmniViolet;
+import chick.extrabotany.common.blocks.generating.SubTileSunshineLily;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
@@ -22,7 +22,6 @@ import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.xplat.IXplatAbstractions;
 
 import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 
 public class ModSubtiles
 {
@@ -38,38 +37,51 @@ public class ModSubtiles
     public static final Block moonlightlilyFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.MOONLIGHTLILY);
     public static final BlockEntityType<SubTileMoonlightLily> MOONLIGHTLILY = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileMoonlightLily::new, moonlightlily, moonlightlilyFloating);
 
+    public static final Block omniviolet = new BlockSpecialFlower(MobEffects.DAMAGE_BOOST, 10, FLOWER_PROPS, () -> ModSubtiles.OMNIVIOLET);
+    public static final Block omnivioletFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.OMNIVIOLET);
+    public static final BlockEntityType<SubTileOmniViolet> OMNIVIOLET = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileOmniViolet::new, omniviolet, omnivioletFloating);
 
+    ///
     public static final Item sunshinelily_item = new ItemBlockSpecialFlower(sunshinelily, props);
     public static final Item sunshinelilyFloating_item = new ItemBlockSpecialFlower(sunshinelilyFloating, props);
     public static final Item moonlightlily_item = new ItemBlockSpecialFlower(moonlightlily, props);
     public static final Item moonlightlilyFloating_item = new ItemBlockSpecialFlower(moonlightlilyFloating, props);
+    public static final Item omniviolet_item = new ItemBlockSpecialFlower(omniviolet, props);
+    public static final Item omnivioletFloating_item = new ItemBlockSpecialFlower(omnivioletFloating, props);
 
     public static void registerBlocks(BiConsumer<Block, ResourceLocation> r)
     {
         r.accept(sunshinelily, idfor("sunshine_lily"));
         r.accept(moonlightlily, idfor("moonlight_lily"));
+        r.accept(omniviolet, idfor("omni_violet"));
         r.accept(sunshinelilyFloating, floating(idfor("sunshine_lily")));
         r.accept(moonlightlilyFloating, floating(idfor("moonlight_lily")));
+        r.accept(omnivioletFloating, floating(idfor("omni_violet")));
     }
 
     public static void registerItemBlocks(BiConsumer<Item, ResourceLocation> r)
     {
         r.accept(sunshinelily_item, getId(sunshinelily));
         r.accept(moonlightlily_item, getId(moonlightlily));
+        r.accept(omniviolet_item, getId(omniviolet));
         r.accept(sunshinelilyFloating_item, getId(sunshinelilyFloating));
         r.accept(moonlightlilyFloating_item, getId(moonlightlilyFloating));
+        r.accept(omnivioletFloating_item, getId(omnivioletFloating));
     }
 
     public static void registerWandHudCaps(ModTiles.BECapConsumer<IWandHUD> consumer)
     {
         consumer.accept(be -> new TileEntityGeneratingFlower.GeneratingWandHud<>((TileEntityGeneratingFlower) be),
-                SUNSHINELILY, MOONLIGHTLILY);
+                SUNSHINELILY, MOONLIGHTLILY, OMNIVIOLET);
     }
+
     public static void registerTEs(BiConsumer<BlockEntityType<?>, ResourceLocation> r)
     {
-        r.accept(SUNSHINELILY,getId(sunshinelily));
-        r.accept(MOONLIGHTLILY,getId(moonlightlily));
+        r.accept(SUNSHINELILY, getId(sunshinelily));
+        r.accept(MOONLIGHTLILY, getId(moonlightlily));
+        r.accept(OMNIVIOLET, getId(omniviolet));
     }
+
     private static ResourceLocation getId(Block b)
     {
         return new ResourceLocation(ExtraBotany.MODID, b.getRegistryName().getPath());

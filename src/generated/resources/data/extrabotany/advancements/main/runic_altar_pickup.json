@@ -1,0 +1,47 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "criteria": {
+    "altar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:runic_altar"
+            ]
+          }
+        ]
+      }
+    },
+    "rune": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "botania:runes"
+          }
+        ]
+      }
+    },
+    "elven_lexicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:lexicon"
+            ],
+            "nbt": "{\"botania:elven_unlock\":1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "altar",
+      "rune",
+      "elven_lexicon"
+    ]
+  ]
+}

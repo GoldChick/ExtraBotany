@@ -50,9 +50,30 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .requires(ModItems.GILDED_POTATO.get())
                 .requires(Items.BOWL)
                 .requires(Items.SUGAR)
+                .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
                 .save(consumer, "gildedmashedpotato");
-
+        ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
+                .pattern(" xo")
+                .pattern("azx")
+                .pattern("za ")
+                .define('o', vazkii.botania.common.item.ModItems.manaDiamond)
+                .define('x', vazkii.botania.common.item.ModItems.pixieDust)
+                .define('z', vazkii.botania.common.item.ModItems.livingwoodTwig)
+                .define('a', ModItems.NIGHTMAREFUEL_PROP.get())
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.NIGHTMAREFUEL_PROP.get()))
+                .save(consumer, "manareader");
+        ShapedRecipeBuilder.shaped(ModItems.THE_CHAOS.get())
+                .pattern(" x ")
+                .pattern("xzb")
+                .pattern(" b ")
+                .define('x', ModItems.SHADOW_INGOT.get())
+                .define('z', ModItems.SPIRIT_PROP.get())
+                .define('b', ModItems.PHOTON_INGOT.get())
+                .group(MODID)
+                .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(),ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "thechaos");
         weaponRecipes(consumer);
         armorRecipes(consumer);
     }

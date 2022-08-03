@@ -1,0 +1,36 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "criteria": {
+    "apothecary": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:apothecary_default"
+            ]
+          }
+        ]
+      }
+    },
+    "elven_lexicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:lexicon"
+            ],
+            "nbt": "{\"botania:elven_unlock\":1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "apothecary",
+      "elven_lexicon"
+    ]
+  ]
+}

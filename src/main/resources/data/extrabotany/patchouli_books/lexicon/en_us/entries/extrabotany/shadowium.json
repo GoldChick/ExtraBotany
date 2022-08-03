@@ -2,7 +2,8 @@
   "name": "extrabotany.entry.shadowium",
   "category": "extrabotany:extrabotany",
   "icon": "extrabotany:shadowium",
-  "advancement": "botania:main/runic_altar_pickup",
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
+  "turnin": "extrabotany:main/thechaos_craft_lexicon",
   "pages": [
     {
       "type": "text",

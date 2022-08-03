@@ -1,0 +1,36 @@
+{
+  "parent": "extrabotany:main/root",
+  "criteria": {
+    "nightmare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:nightmarefuel_prop"
+            ]
+          }
+        ]
+      }
+    },
+    "elven_lexicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:lexicon"
+            ],
+            "nbt": "{\"botania:elven_unlock\":1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nightmare",
+      "elven_lexicon"
+    ]
+  ]
+}

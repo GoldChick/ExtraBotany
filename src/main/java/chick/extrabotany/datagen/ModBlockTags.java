@@ -56,9 +56,10 @@ public class ModBlockTags extends BlockTagsProvider
 
     }
 
+
     @Override
     public String getName()
     {
-        return "Tutorial Tags";
+        return "extrabotany Item Tags";
     }
 }

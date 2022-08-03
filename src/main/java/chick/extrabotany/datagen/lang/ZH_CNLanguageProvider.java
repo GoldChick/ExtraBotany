@@ -28,6 +28,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "镀金服务器");
         add(ModItems.GILDED_MASHED_POTATO.get(), "镀金土豆泥");
 
+        add(ModItems.MANA_READER.get(), "魔力读取器");
+        add(ModItems.THE_CHAOS.get(), "混沌物质");
+        add(ModItems.THE_ORIGIN.get(), "起源物质");
+        add(ModItems.THE_END.get(), "终末物质");
+        add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
+
         add(ModItems.DEATH_RING.get(), "诅咒指环");
         add(ModItems.AERO_STONE.get(), "风之符石");
         add(ModItems.AQUA_STONE.get(), "水之符石");
@@ -50,6 +56,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
 
         langFlower();
+        langAdvancement();
         langPantchouli();
     }
 
@@ -57,13 +64,24 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     {
         add(ModSubtiles.sunshinelily, "日耀百合");
         add(ModSubtiles.sunshinelilyFloating, "浮空日耀百合");
-        add("block.extrabotany.sunbless.reference", "愿光芒能治愈并指引你");
+        add(ModSubtiles.sunshinelily.getDescriptionId() + ".reference", "愿光芒能治愈并指引你");
 
         add(ModSubtiles.moonlightlily, "月光百合");
         add(ModSubtiles.moonlightlilyFloating, "浮空月光百合");
-        add("block.extrabotany.moonbless.reference", "愿你能找到所有失去的东西");
+        add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "愿你能找到所有失去的东西");
     }
 
+    private void langAdvancement()
+    {
+        add("advancement.extrabotany:root.title","欢迎来到世界");
+        add("advancement.extrabotany:root.desc","不要错过今天，去过好每一天");
+        add("advancement.extrabotany:nightmarefuel_eat.title","Deep Dark Fantasy");
+        add("advancement.extrabotany:nightmarefuel_eat.desc","食用一个梦魇燃料(这真的能吃吗)");
+        add("advancement.extrabotany:manareader_craft.title","Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc","获得魔力读取器");
+        add("advancement.extrabotany:thechaos_craft.title","一点都不混沌的物质");
+        add("advancement.extrabotany:thechaos_craft.desc","合成混沌物质");
+    }
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "额外的知识");
@@ -108,6 +126,10 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.gildedpotato2", "镀金土豆做成的土豆泥，食用后会获得意想不到的效果。");
         add("extrabotany.page.gildedpotato3", "金色传说");
 
+        add("extrabotany.entry.manareader", "魔力读取器");
+        add("extrabotany.page.manareader0", "手持魔力读取器右键一个魔力池，可以查看其中含有多少mana。");
+        add("extrabotany.page.manareader1", "让我看看！");
+
         add("extrabotany.armorset.miku.desc", "超强魔力亲和");
         add("extrabotany.armorset.maid.desc0", "空手怪力");
         add("extrabotany.armorset.maid.desc1", "再生增强");
@@ -144,7 +166,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.deathring", "诅咒指环");
         add("extrabotany.page.deathring0", "$(item)诅咒指环$(0)能消耗少量的&4魔力$(0)使小范围内所视的生物获得凋零和不幸的效果。");
         add("extrabotany.page.deathring1", "力量本身并不可怕，可怕的是它的主人。");
-        add("extrabotany.entry.advancedmaterial", "高等形式");
+
+        add("extrabotany.entry.advancedmaterial","高等形式");
+        add("extrabotany.page.advancedmaterial0","借助$(item)精神碎片$(0)的力量将两种材料结合构成的高等形式，这类材料拥有着更强的属性与潜力。");
+        add("extrabotany.page.advancedmaterial1","混沌物质");
+        add("extrabotany.page.advancedmaterial2","起源物质");
+        add("extrabotany.page.advancedmaterial3","终末物质");
+        add("extrabotany.page.advancedmaterial4","宇宙物质");
         pantchouliFlower();
     }
 

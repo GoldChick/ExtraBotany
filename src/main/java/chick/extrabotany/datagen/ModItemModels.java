@@ -32,6 +32,20 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.GILDED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedpotato"));
         singleTexture(ModItems.GILDED_MASHED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedmashedpotato"));
 
+        singleTexture(ModItems.MANA_READER.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/manareader"));
+        singleTexture(ModItems.THE_CHAOS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/thechaos"));
+        singleTexture(ModItems.THE_END.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theend"));
+        singleTexture(ModItems.THE_ORIGIN.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theorigin"));
+        singleTexture(ModItems.THE_UNIVERSE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theuniverse"));
+
+        registerBaubleModels();
+        registerFlowerModels();
+        registerWeaponModels();
+        registereArmorModels();
+    }
+
+    private void registerBaubleModels()
+    {
         singleTexture(ModItems.DEATH_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/deathring"));
         singleTexture(ModItems.AERO_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aerostone"));
         singleTexture(ModItems.AQUA_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aquastone"));
@@ -42,10 +56,6 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.SUPREME_AQUA_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aquastone"));
         singleTexture(ModItems.SUPREME_EARTH_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/earthstone"));
         singleTexture(ModItems.SUPREME_IGNIS_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/ignisstone"));
-
-        registerFlowerModels();
-        registerWeaponModels();
-        registereArmorModels();
     }
 
     private void registerFlowerModels()

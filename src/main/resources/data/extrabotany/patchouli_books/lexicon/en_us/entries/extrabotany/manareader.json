@@ -1,0 +1,17 @@
+{
+  "name": "extrabotany.entry.manareader",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:manareader",
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.manareader0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.manareader1",
+      "recipe": "minecraft:manareader"
+    }
+  ]
+}

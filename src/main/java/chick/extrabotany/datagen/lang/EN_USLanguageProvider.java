@@ -32,6 +32,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_POTATO.get(), "Gilded Potato");
         add(ModItems.GILDED_MASHED_POTATO.get(), "Gilded Mashed Potato");
 
+        add(ModItems.MANA_READER.get(), "Mana Reader");
+        add(ModItems.THE_CHAOS.get(), "The Chaos");
+        add(ModItems.THE_ORIGIN.get(), "The Origin");
+        add(ModItems.THE_END.get(), "The End");
+        add(ModItems.THE_UNIVERSE.get(), "The Universe");
+
         add(ModItems.DEATH_RING.get(), "Curse Ring");
         add(ModItems.AERO_STONE.get(), "Aero Stone");
         add(ModItems.AQUA_STONE.get(), "Aqua Stone");
@@ -41,6 +47,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_AQUA_STONE.get(), "Supreme Aqua Stone");
         add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
         add(ModItems.SUPREME_IGNIS_STONE.get(), "Supreme Ignis Stone");
+
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
@@ -54,17 +61,31 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
 
         langFlower();
+        langAdvancement();
         langPantchouli();
     }
+
     private void langFlower()
     {
-        add(ModSubtiles.sunshinelily,"Sunshine Lily");
-        add(ModSubtiles.sunshinelilyFloating,"Floating Sunshine Lily");
-        add("block.extrabotany.sunbless.reference","May the light heal and enlighten you");
+        add(ModSubtiles.sunshinelily, "Sunshine Lily");
+        add(ModSubtiles.sunshinelilyFloating, "Floating Sunshine Lily");
+        add(ModSubtiles.sunshinelily.getDescriptionId() + ".reference", "May the light heal and enlighten you");
 
-        add(ModSubtiles.moonlightlily,"Moonlight Lily");
-        add(ModSubtiles.moonlightlilyFloating,"Floating Moonlight Lily");
-        add("block.extrabotany.moonbless.reference","May you find all you have lost");
+        add(ModSubtiles.moonlightlily, "Moonlight Lily");
+        add(ModSubtiles.moonlightlilyFloating, "Floating Moonlight Lily");
+        add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "May you find all you have lost");
+    }
+    private void langAdvancement()
+    {
+        add("advancement.extrabotany:root.title","Welcome to the World");
+        add("advancement.extrabotany:root.desc","Don't have a good day, have a great day");
+        add("advancement.extrabotany:nightmarefuel_eat.title","Deep Dark Fantasy");
+        add("advancement.extrabotany:nightmarefuel_eat.desc","Eat a Nightmare Fuel (Unbelievable);");
+        add("advancement.extrabotany:manareader_craft.title","Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc","Obtain Mana Reader");
+        add("advancement.extrabotany:thechaos_craft.title","Chaos With No Chaos");
+        add("advancement.extrabotany:thechaos_craft.desc","Craft The Chaos");
+
     }
     private void langPantchouli()
     {
@@ -110,6 +131,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.gildedpotato2", "A mashed potato made from gilded potato. It could be delicious.");
         add("extrabotany.page.gildedpotato3", "Golden Legendary");
 
+        add("extrabotany.entry.manareader", "Mana Reader");
+        add("extrabotany.page.manareader0", "By right clicking a Mana Pool with a Mana Reader in your main-hand, you can check out how much mana it has.");
+        add("extrabotany.page.manareader1", "Lemme check it!");
 
         add("extrabotany.armorset.miku.desc", "Super Mana Affinity.");
         add("extrabotany.armorset.maid.desc0", "Super Empty-handed Power.");
@@ -129,36 +153,41 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.maid.name", "Pleiades Combat Maid");
         add("extrabotany.armorset.shootingguardian.name", "Shooting Guardian");
 
-        add("extrabotany.entry.elementstone","Stones of Four Element");
-        add("extrabotany.page.elementstone0","Element Stone made by corresponding element rune, it provides different amplifications. $(item)Aero Stone$(0) amplify movement, $(item)Earth Stone$(0) provides armor protection, $(item)Aqua Stone$(0) provides mana discount and $(item)Ignis Stone$(0) amplify damage.");
-        add("extrabotany.page.elementstone1","Aero Stone");
-        add("extrabotany.page.elementstone2","Earth Stone");
-        add("extrabotany.page.elementstone3","Aqua Stone");
-        add("extrabotany.page.elementstone4","Ignis Stone");
+        add("extrabotany.entry.elementstone", "Stones of Four Element");
+        add("extrabotany.page.elementstone0", "Element Stone made by corresponding element rune, it provides different amplifications. $(item)Aero Stone$(0) amplify movement, $(item)Earth Stone$(0) provides armor protection, $(item)Aqua Stone$(0) provides mana discount and $(item)Ignis Stone$(0) amplify damage.");
+        add("extrabotany.page.elementstone1", "Aero Stone");
+        add("extrabotany.page.elementstone2", "Earth Stone");
+        add("extrabotany.page.elementstone3", "Aqua Stone");
+        add("extrabotany.page.elementstone4", "Ignis Stone");
 
-        add("extrabotany.entry.supreme_elementstone","Supreme Stones");
-        add("extrabotany.page.supreme_elementstone0","Element Stones are so powerful. But there is one way to get even stronger power from element. However, this results in some disadvantages. And this also exacerbates the conflict between the different elements. For example, $(item)Aero Stone$(0) and $(item)Earth Stone$(0) can not work together if one of them is $(item)Supreme$(0) version. So will $(item)Aqua Stone$(0) and $(item)Ignis Stone$(0) do.");
-        add("extrabotany.page.supreme_elementstone1","Aero Stone");
-        add("extrabotany.page.supreme_elementstone2","Earth Stone");
-        add("extrabotany.page.supreme_elementstone3","Aqua Stone");
-        add("extrabotany.page.supreme_elementstone4","Ignis Stone");
+        add("extrabotany.entry.supreme_elementstone", "Supreme Stones");
+        add("extrabotany.page.supreme_elementstone0", "Element Stones are so powerful. But there is one way to get even stronger power from element. However, this results in some disadvantages. And this also exacerbates the conflict between the different elements. For example, $(item)Aero Stone$(0) and $(item)Earth Stone$(0) can not work together if one of them is $(item)Supreme$(0) version. So will $(item)Aqua Stone$(0) and $(item)Ignis Stone$(0) do.");
+        add("extrabotany.page.supreme_elementstone1", "Aero Stone");
+        add("extrabotany.page.supreme_elementstone2", "Earth Stone");
+        add("extrabotany.page.supreme_elementstone3", "Aqua Stone");
+        add("extrabotany.page.supreme_elementstone4", "Ignis Stone");
 
-        add("extrabotany.entry.deathring","Death Ring");
-        add("extrabotany.page.deathring0","The $(item)Death Ring$(0) applies the Wither and Unluck effect on creatures near the wearer at the cost of some $(thing)Mana$(0).");
-        add("extrabotany.page.deathring1","Do not fear power... fear those who wield it!");
+        add("extrabotany.entry.deathring", "Death Ring");
+        add("extrabotany.page.deathring0", "The $(item)Death Ring$(0) applies the Wither and Unluck effect on creatures near the wearer at the cost of some $(thing)Mana$(0).");
+        add("extrabotany.page.deathring1", "Do not fear power... fear those who wield it!");
 
-        add("extrabotany.entry.advancedmaterial", "Advanced Form");
+        add("extrabotany.entry.advancedmaterial","Advanced Form");
+        add("extrabotany.page.advancedmaterial0","Combine two forms of material into one with the catalyst of $(item)Spirit Fragment$(0), those material has greater power and proficiency.");
+        add("extrabotany.page.advancedmaterial1","The Chaos");
+        add("extrabotany.page.advancedmaterial2","The Origin");
+        add("extrabotany.page.advancedmaterial3","The End");
+        add("extrabotany.page.advancedmaterial4","The Universe");
 
         pantchouliFlower();
     }
     private void pantchouliFlower()
     {
-        add("extrabotany.entry.sunshine_lily","Sunshine Lily");
-        add("extrabotany.page.sunshine_lily0","Sunshine Lily produces $(thing)Mana$(0) from sunlight, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
-        add("extrabotany.page.sunshine_lily1","Heal and heat.");
+        add("extrabotany.entry.sunshine_lily", "Sunshine Lily");
+        add("extrabotany.page.sunshine_lily0", "Sunshine Lily produces $(thing)Mana$(0) from sunlight, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
+        add("extrabotany.page.sunshine_lily1", "Heal and heat.");
 
-        add("extrabotany.entry.moonlight_lily","Moonlight Lily");
-        add("extrabotany.page.moonlight_lily0","Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft..");
-        add("extrabotany.page.moonlight_lily1","Sowing of the fool.");
+        add("extrabotany.entry.moonlight_lily", "Moonlight Lily");
+        add("extrabotany.page.moonlight_lily0", "Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft..");
+        add("extrabotany.page.moonlight_lily1", "Sowing of the fool.");
     }
 }

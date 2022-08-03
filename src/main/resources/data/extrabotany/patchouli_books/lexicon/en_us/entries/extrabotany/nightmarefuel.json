@@ -2,7 +2,8 @@
   "name": "extrabotany.entry.nightmarefuel",
   "category": "extrabotany:extrabotany",
   "icon": "extrabotany:nightmarefuel_prop",
-  "advancement": "botania:main/pure_daisy_pickup",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "turnin": "extrabotany:main/nightmarefuel_eat_lexicon",
   "pages": [
     {
       "type": "text",

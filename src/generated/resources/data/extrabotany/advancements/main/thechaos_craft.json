@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:thechaos"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:thechaos_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:thechaos_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pickup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:thechaos"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pickup"
+    ]
+  ]
+}

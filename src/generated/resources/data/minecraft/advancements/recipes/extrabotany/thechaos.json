@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:thechaos"
+    ]
+  },
+  "criteria": {
+    "ingots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowium"
+            ]
+          },
+          {
+            "items": [
+              "extrabotany:photonium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:thechaos"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ingots",
+      "has_the_recipe"
+    ]
+  ]
+}

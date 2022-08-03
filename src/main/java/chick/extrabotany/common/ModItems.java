@@ -5,6 +5,7 @@ import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
+import chick.extrabotany.common.tools.items.ManaReader;
 import chick.extrabotany.common.tools.items.NightmareFuel;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -29,6 +30,11 @@ public class ModItems
     public static final RegistryObject<Item> PHOTON_INGOT = ITEMS.register("photonium", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_POTATO = ITEMS.register("gildedpotato", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_MASHED_POTATO = ITEMS.register("gildedmashedpotato", () -> new Item(new Item.Properties().stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
+    public static final RegistryObject<Item> MANA_READER = ITEMS.register("manareader", () -> new ManaReader(new Item.Properties().stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
+    public static final RegistryObject<Item> THE_CHAOS = ITEMS.register("thechaos", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> THE_ORIGIN = ITEMS.register("theorigin", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> THE_END = ITEMS.register("theend", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> THE_UNIVERSE = ITEMS.register("theuniverse", () -> new Item(ITEM_PROPERTIES));
     /*
      *
      * these are baubles for curios mod

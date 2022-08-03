@@ -42,17 +42,23 @@ public class SubTileMoonlightLily extends TileEntityGeneratingFlower
         {
             if (getLevel().isNight())
             {
-                if (++passiveDecayTicks > DECAY_TIME)
+                if (getMaxMana() == getMana())
                 {
-                    getLevel().destroyBlock(getBlockPos(), false);
-                    if (Blocks.DEAD_BUSH.defaultBlockState().canSurvive(getLevel(), getBlockPos()))
-                    {
-                        getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
-                    }
+                    particle = false;
                 } else
                 {
-                    particle = true;
-                    addMana(1);
+                    if (++passiveDecayTicks > DECAY_TIME)
+                    {
+                        getLevel().destroyBlock(getBlockPos(), false);
+                        if (Blocks.DEAD_BUSH.defaultBlockState().canSurvive(getLevel(), getBlockPos()))
+                        {
+                            getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
+                        }
+                    } else
+                    {
+                        particle = true;
+                        addMana(1);
+                    }
                 }
                 sync();
             } else

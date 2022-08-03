@@ -1,0 +1,34 @@
+{
+  "name": "extrabotany.entry.advancedmaterial",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:thechaos",
+  "priority": true,
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
+  "turnin": "extrabotany:main/nightmarefuel_eat_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.advancedmaterial0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.advancedmaterial1",
+      "recipe": "minecraft:thechaos"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.advancedmaterial2",
+      "recipe": "minecraft:theorigin"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.advancedmaterial3",
+      "recipe": "minecraft:theend"
+    },
+    {
+      "type": "botania:terrasteel",
+      "text": "extrabotany.page.advancedmaterial4",
+      "recipe": "extrabotany:terra_plate/theuniverse"
+    }
+  ]
+}

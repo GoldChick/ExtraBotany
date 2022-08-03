@@ -2,7 +2,7 @@
   "name": "extrabotany.entry.spiritfuel",
   "category": "extrabotany:extrabotany",
   "icon": "extrabotany:spiritfuel_prop",
-  "advancement": "botania:main/runic_altar_pickup",
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
   "pages": [
     {
       "type": "text",

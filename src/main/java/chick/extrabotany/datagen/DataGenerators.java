@@ -28,6 +28,7 @@ public class DataGenerators
         }
         if (event.includeClient())
         {
+            generator.addProvider(new ModAdvancementProvider(generator, event.getExistingFileHelper()));
             generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
             generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new ModItemModels(generator, event.getExistingFileHelper()));

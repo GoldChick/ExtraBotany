@@ -1,0 +1,36 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "criteria": {
+    "terrasteel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:aerostone"
+            ]
+          }
+        ]
+      }
+    },
+    "elven_lexicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:lexicon"
+            ],
+            "nbt": "{\"botania:elven_unlock\":1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "terrasteel",
+      "elven_lexicon"
+    ]
+  ]
+}

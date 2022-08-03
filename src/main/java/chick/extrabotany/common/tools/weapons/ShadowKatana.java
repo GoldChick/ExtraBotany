@@ -147,10 +147,11 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
                     entity.discard();
                     break;
                 }
-                if (!entity.level.isClientSide)
+                if (entity.level.isClientSide)
                 {
                     entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
                     thrower.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
+                    entity.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
                 }
             }
         }

@@ -3,7 +3,7 @@
   "category": "extrabotany:extrabotany",
   "icon": "extrabotany:aerostone",
   "entry_color": "aa00",
-  "advancement": "botania:main/elf_lexicon_pickup",
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
   "pages": [
     {
       "type": "text",

@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/thechaos_craft",
+  "display": {
+    "icon": {
+      "item": "extrabotany:manareader"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:manareader_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:manareader_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "manareader": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:manareader"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "manareader"
+    ]
+  ]
+}

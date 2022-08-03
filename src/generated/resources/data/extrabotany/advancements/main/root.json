@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "botania:lexicon"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:root.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:root.desc"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "extrabotany:textures/block/yeluogui_ore.png"
+  },
+  "criteria": {
+    "nightmare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:nightmarefuel_prop"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nightmare"
+    ]
+  ]
+}

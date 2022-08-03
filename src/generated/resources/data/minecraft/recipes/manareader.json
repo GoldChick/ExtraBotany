@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " xo",
+    "azx",
+    "za "
+  ],
+  "key": {
+    "o": {
+      "item": "botania:mana_diamond"
+    },
+    "x": {
+      "item": "botania:pixie_dust"
+    },
+    "z": {
+      "item": "botania:livingwood_twig"
+    },
+    "a": {
+      "item": "extrabotany:nightmarefuel_prop"
+    }
+  },
+  "result": {
+    "item": "extrabotany:manareader"
+  }
+}

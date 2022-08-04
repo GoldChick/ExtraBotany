@@ -49,8 +49,4 @@ public class DeathRing extends ItemBauble implements ManaItemHandler
             }
         }
     }
-    public static int getManaPerDamage()
-    {
-        return MANA_PER_DAMAGE;
-    }
 }

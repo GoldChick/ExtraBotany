@@ -84,11 +84,14 @@ public class ModPetalRecipes extends RecipeProvider
 
         Ingredient redstoneRoot = Ingredient.of(ModItems.redstoneRoot);
         Ingredient pixieDust = Ingredient.of(ModItems.pixieDust);
+        Ingredient manaPowder = Ingredient.of(ModItems.manaPowder);
         Ingredient gaiaSpirit = Ingredient.of(ModItems.lifeEssence);
 
         consumer.accept(make(ModSubtiles.sunshinelily, yellow, yellow, yellow, white));
         consumer.accept(make(ModSubtiles.moonlightlily, red, red, red, white));
         consumer.accept(make(ModSubtiles.omniviolet, blue, blue, purple, purple, runeMana, runeSpring, runeLust));
+        consumer.accept(make(ModSubtiles.geminiorchid, yellow, yellow, yellow, orange, orange, orange, manaPowder, manaPowder));
+        consumer.accept(make(ModSubtiles.serenitian, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed));
 
         //ItemStack stack = new ItemStack(Items.PLAYER_HEAD);
         //ItemNBTHelper.setString(stack, "SkullOwner", "Vazkii");

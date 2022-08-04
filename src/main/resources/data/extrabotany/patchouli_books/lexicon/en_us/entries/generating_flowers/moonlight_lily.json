@@ -2,6 +2,7 @@
   "name": "extrabotany.entry.moonlight_lily",
   "category": "botania:generating_flowers",
   "icon": "extrabotany:moonlight_lily",
+  "entry_color": "4169E1",
   "advancement": "botania:main/pure_daisy_pickup",
   "turnin": "botania:main/generating_flower",
   "pages": [

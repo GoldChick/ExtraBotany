@@ -62,11 +62,11 @@ public class EN_USLanguageProvider extends LanguageProvider
 
         add(ModItems.EMPTY_BOTTLE.get(), "Empty Mana Glass Bottle");
         add(ModItems.MANA_DRINK.get(), "Mana Cocktail");
-        add("extrabotany.brew.revolution","Revolution");
-        add("extrabotany.brew.allmighty","All-mighty");
-        add("extrabotany.brew.shell","Shell");
-        add("extrabotany.brew.deadpool","Deadpool");
-        add("extrabotany.brew.floating","Floating");
+        add("extrabotany.brew.revolution", "Revolution");
+        add("extrabotany.brew.allmighty", "All-mighty");
+        add("extrabotany.brew.shell", "Shell");
+        add("extrabotany.brew.deadpool", "Deadpool");
+        add("extrabotany.brew.floating", "Floating");
 
         langFlower();
         langAdvancement();
@@ -81,22 +81,30 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.moonlightlily, "Moonlight Lily");
         add(ModSubtiles.moonlightlilyFloating, "Floating Moonlight Lily");
         add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "May you find all you have lost");
-        add(ModSubtiles.omniviolet,"Omniviolet");
-        add(ModSubtiles.omnivioletFloating,"Floating Omniviolet");
-        add(ModSubtiles.omniviolet.getDescriptionId()+".reference","Need not to know");
+        add(ModSubtiles.omniviolet, "Omniviolet");
+        add(ModSubtiles.omnivioletFloating, "Floating Omniviolet");
+        add(ModSubtiles.omniviolet.getDescriptionId() + ".reference", "Need not to know");
+        add(ModSubtiles.geminiorchid, "Gemini Orchid");
+        add(ModSubtiles.geminiorchidFloating, "Floating Gemini Orchid");
+        add(ModSubtiles.geminiorchid.getDescriptionId() + ".reference", "Why is a raven like a writing desk?");
+        add(ModSubtiles.serenitian, "Serenitian");
+        add(ModSubtiles.serenitianFloating, "Floating Serenitian");
+        add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "Torn to oblivion");
     }
+
     private void langAdvancement()
     {
-        add("advancement.extrabotany:root.title","Welcome to the World");
-        add("advancement.extrabotany:root.desc","Don't have a good day, have a great day");
-        add("advancement.extrabotany:nightmarefuel_eat.title","Deep Dark Fantasy");
-        add("advancement.extrabotany:nightmarefuel_eat.desc","Eat a Nightmare Fuel (Unbelievable)");
-        add("advancement.extrabotany:manareader_craft.title","Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc","Obtain Mana Reader");
-        add("advancement.extrabotany:thechaos_craft.title","Chaos With No Chaos");
-        add("advancement.extrabotany:thechaos_craft.desc","Craft The Chaos");
+        add("advancement.extrabotany:root.title", "Welcome to the World");
+        add("advancement.extrabotany:root.desc", "Don't have a good day, have a great day");
+        add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
+        add("advancement.extrabotany:nightmarefuel_eat.desc", "Eat a Nightmare Fuel (Unbelievable)");
+        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
+        add("advancement.extrabotany:thechaos_craft.title", "Chaos With No Chaos");
+        add("advancement.extrabotany:thechaos_craft.desc", "Craft The Chaos");
 
     }
+
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "Extra Botania");
@@ -181,27 +189,28 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.deathring0", "The $(item)Death Ring$(0) applies the Wither and Unluck effect on creatures near the wearer at the cost of some $(thing)Mana$(0).");
         add("extrabotany.page.deathring1", "Do not fear power... fear those who wield it!");
 
-        add("extrabotany.entry.advancedmaterial","Advanced Form");
-        add("extrabotany.page.advancedmaterial0","Combine two forms of material into one with the catalyst of $(item)Spirit Fragment$(0), those material has greater power and proficiency.");
-        add("extrabotany.page.advancedmaterial1","The Chaos");
-        add("extrabotany.page.advancedmaterial2","The Origin");
-        add("extrabotany.page.advancedmaterial3","The End");
-        add("extrabotany.page.advancedmaterial4","The Universe");
+        add("extrabotany.entry.advancedmaterial", "Advanced Form");
+        add("extrabotany.page.advancedmaterial0", "Combine two forms of material into one with the catalyst of $(item)Spirit Fragment$(0), those material has greater power and proficiency.");
+        add("extrabotany.page.advancedmaterial1", "The Chaos");
+        add("extrabotany.page.advancedmaterial2", "The Origin");
+        add("extrabotany.page.advancedmaterial3", "The End");
+        add("extrabotany.page.advancedmaterial4", "The Universe");
 
-        add("extrabotany.entry.brew","New types of brew");
-        add("extrabotany.page.brew0","Hold an Empty Mana Glass Bottle and right-click a Mana Pool with enough mana, and you will acquire a tasty drink.");
-        add("extrabotany.page.brew1","");
-        add("extrabotany.page.brew2","By crafting any flask potion with a Mana Cocktail , you can make a Special-made Cocktail that can be drinked two more times than the original flask and it has a longer effect.");
-        add("extrabotany.page.brew3","When a Special-made Cocktail is crafted with Popped Chorus Fruit. You make a Holy Grenade! The Holy Grenade will deal massive damage after exploding, giving bad effects to other creatures and giving the good effects to players. <br>A perfect item, but why is it a grenade?");
-        add("extrabotany.page.brew4","Greatly improve the efficiency of mining, but overdraft your luck.");
-        add("extrabotany.page.brew5","High level of resistance, but slow as turtle.");
-        add("extrabotany.page.brew6","Gain super strength, but what's the cost?");
-        add("extrabotany.page.brew7","Almost all positive effects! But wouldn't last long.");
-        add("extrabotany.page.brew8","One can make you floating, may be better if used on enemies?");
+        add("extrabotany.entry.brew", "New types of brew");
+        add("extrabotany.page.brew0", "Hold an Empty Mana Glass Bottle and right-click a Mana Pool with enough mana, and you will acquire a tasty drink.");
+        add("extrabotany.page.brew1", "");
+        add("extrabotany.page.brew2", "By crafting any flask potion with a Mana Cocktail , you can make a Special-made Cocktail that can be drinked two more times than the original flask and it has a longer effect.");
+        add("extrabotany.page.brew3", "When a Special-made Cocktail is crafted with Popped Chorus Fruit. You make a Holy Grenade! The Holy Grenade will deal massive damage after exploding, giving bad effects to other creatures and giving the good effects to players. <br>A perfect item, but why is it a grenade?");
+        add("extrabotany.page.brew4", "Greatly improve the efficiency of mining, but overdraft your luck.");
+        add("extrabotany.page.brew5", "High level of resistance, but slow as turtle.");
+        add("extrabotany.page.brew6", "Gain super strength, but what's the cost?");
+        add("extrabotany.page.brew7", "Almost all positive effects! But wouldn't last long.");
+        add("extrabotany.page.brew8", "One can make you floating, may be better if used on enemies?");
 
 
         pantchouliFlower();
     }
+
     private void pantchouliFlower()
     {
         add("extrabotany.entry.sunshine_lily", "Sunshine Lily");
@@ -210,8 +219,14 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.moonlight_lily", "Moonlight Lily");
         add("extrabotany.page.moonlight_lily0", "Moonlight Lily generates $(thing)Mana$(0) at night, but it is not very efficient. Please note that it will decay after working for 3 days in minecraft.");
         add("extrabotany.page.moonlight_lily1", "Sowing of the fool.");
-        add("extrabotany.entry.omniviolet","Omniviolet");
-        add("extrabotany.page.omniviolet0","According to a saying, knowledge is power. The $(item)Omniviolet$(0) converts Books or Written Books into $(thing)Mana$(0). To increase the amount of mana generated, Bookshelves can be placed around the Omniviolet in a similar fashion to an Enchantment Table. Mana output can be increased 300% than before.");
-        add("extrabotany.page.omniviolet1","Akashic Records.");
+        add("extrabotany.entry.omni_violet", "Omniviolet");
+        add("extrabotany.page.omni_violet0", "According to a saying, knowledge is power. The $(item)Omniviolet$(0) converts Books or Written Books into $(thing)Mana$(0). To increase the amount of mana generated, Bookshelves(or something else with enchanting power) can be placed around the Omniviolet in a similar fashion to an Enchantment Table. Too close or too far will make bookshelves useless. Mana output can be increased 300% than before.");
+        add("extrabotany.page.omni_violet1", "Akashic Records.");
+        add("extrabotany.entry.gemini_orchid", "Gemini Orchid");
+        add("extrabotany.page.gemini_orchid0", "A $(item)Gemini Orchid$(0) is like a thermoelectric generator. If you place a block of lava in one of eight blocks nearby, and then place a block of water in another position, it will begin to produce mana. The higher the gap between two blocks' temperatures, the quicker mana will be generated. Since it is a passive flower, it will decay after working for 3 days in minecraft..");
+        add("extrabotany.page.gemini_orchid1", "I am power incarnate!");
+        add("extrabotany.entry.serenitian", "Serenitian");
+        add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");
+        add("extrabotany.page.serenitian1", "All shall fade away");
     }
 }

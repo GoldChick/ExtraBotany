@@ -1,8 +1,10 @@
 {
   "replace": false,
   "values": [
+    "extrabotany:floating_gemini_orchid",
     "extrabotany:floating_moonlight_lily",
     "extrabotany:floating_omni_violet",
+    "extrabotany:floating_serenitian",
     "extrabotany:floating_sunshine_lily"
   ]
 }

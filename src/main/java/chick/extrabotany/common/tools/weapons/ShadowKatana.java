@@ -76,13 +76,6 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
         return MANA_PER_DAMAGE;
     }
 
-    public static void trySpawnBurst(Player player, float attackStrength)
-    {
-        EntityManaBurst burst = getBurst(player, player.getMainHandItem());
-        player.level.addFreshEntity(burst);
-        player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.terraBlade, SoundSource.PLAYERS, 1F, 1F);
-    }
-
     public static EntityManaBurst getBurst(Player player, ItemStack stack)
     {
         EntityManaBurst burst = new EntityManaBurst(player);
@@ -147,7 +140,7 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
                     entity.discard();
                     break;
                 }
-                if (entity.level.isClientSide)
+                if (!entity.level.isClientSide)
                 {
                     entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
                     thrower.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);

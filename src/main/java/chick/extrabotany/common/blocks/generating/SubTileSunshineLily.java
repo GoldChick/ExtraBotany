@@ -2,20 +2,18 @@ package chick.extrabotany.common.blocks.generating;
 
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileSunshineLily extends TileEntityGeneratingFlower
+public class SubTileSunshineLily extends SubTilePassive
 {
     private static final int RANGE = 2;
     private static final int DECAY_TIME = 72000;
-    private int passiveDecayTicks;
     private boolean particle = false;
 
     public SubTileSunshineLily(BlockPos pos, BlockState state)

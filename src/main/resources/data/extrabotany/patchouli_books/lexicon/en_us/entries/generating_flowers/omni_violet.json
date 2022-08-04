@@ -2,6 +2,7 @@
   "name": "extrabotany.entry.omni_violet",
   "category": "botania:generating_flowers",
   "icon": "extrabotany:omni_violet",
+  "entry_color": "4169E1",
   "advancement": "botania:main/pure_daisy_pickup",
   "turnin": "botania:main/generating_flower",
   "pages": [

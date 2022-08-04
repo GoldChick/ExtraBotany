@@ -1,0 +1,21 @@
+{
+  "name": "extrabotany.entry.gemini_orchid",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:gemini_orchid",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.gemini_orchid0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.gemini_orchid1",
+      "recipe": "extrabotany:petal_apothecary/gemini_orchid"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botania:floating_gemini_orchid": 1
+  }
+}

@@ -2,10 +2,13 @@ package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.datagen.ModBlockStates;
+import chick.extrabotany.datagen.ModBlockTags;
 import com.google.common.base.Suppliers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -40,7 +43,7 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt)
     {
-        EntityRenderers.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
+        ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
     }
 
     @SubscribeEvent
@@ -48,10 +51,8 @@ public class ForgeClientInitializer
     {
         event.enqueueWork(() ->
         {
+            ModBlockTags.setRenderType();
             //to make them transparent
-            setRenderLayer(ModSubtiles.sunshinelily, RenderType.cutout());
-            setRenderLayer(ModSubtiles.moonlightlily, RenderType.cutout());
-            setRenderLayer(ModSubtiles.omniviolet, RenderType.cutout());
         });
     }
 

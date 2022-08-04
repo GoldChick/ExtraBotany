@@ -77,6 +77,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.omniviolet,"全知瑾");
         add(ModSubtiles.omnivioletFloating,"浮空全知瑾");
         add(ModSubtiles.omniviolet.getDescriptionId()+".reference","我知万物");
+        add(ModSubtiles.geminiorchid,"双子兰");
+        add(ModSubtiles.geminiorchidFloating,"浮空双子兰");
+        add(ModSubtiles.geminiorchid.getDescriptionId()+".reference","为什么乌鸦像写字台？");
+        add(ModSubtiles.serenitian, "永寂龙胆");
+        add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
+        add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "无念，断绝");
 
     }
 
@@ -203,8 +209,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.moonlight_lily", "月光百合");
         add("extrabotany.page.moonlight_lily0", "拥有能在夜晚产生$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
         add("extrabotany.page.moonlight_lily1", "愚者的播种。");
-        add("extrabotany.entry.omniviolet","全知瑾");
-        add("extrabotany.page.omniviolet0","知识就是力量，$(item)全知瑾$(0)能够将书本或成书转化为$(thing)魔力$(0)。 如果你在其周围按附魔台方式摆放上书架的话能够起到催化剂的效果，增加其产魔效率。魔力产出最多达到原来的四倍。");
-        add("extrabotany.page.omniviolet1","阿克夏记录。");
+        add("extrabotany.entry.omni_violet","全知瑾");
+        add("extrabotany.page.omni_violet0","知识就是力量，$(item)全知瑾$(0)能够将书本或成书转化为$(thing)魔力$(0)。 如果你在其周围按附魔台方式摆放上书架或者能够替代书架的方块的话能够起到催化剂的效果，增加其产魔效率。书架离得太近或太远均不会产生效果。魔力产出最多达到原来的四倍。");
+        add("extrabotany.page.omni_violet1","阿克夏记录。");
+        add("extrabotany.entry.gemini_orchid","双子兰");
+        add("extrabotany.page.gemini_orchid0","$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
+        add("extrabotany.page.gemini_orchid1","我就是力量的化身!");
+        add("extrabotany.entry.serenitian","永寂龙胆");
+        add("extrabotany.page.serenitian0","$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
+        add("extrabotany.page.serenitian1","事事皆虚空");
     }
 }

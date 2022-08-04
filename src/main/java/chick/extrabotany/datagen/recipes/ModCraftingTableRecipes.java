@@ -2,12 +2,14 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
+import vazkii.botania.common.lib.ModTags;
 
 import java.util.function.Consumer;
 
@@ -46,13 +48,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .unlockedBy("obsidian_apple", InventoryChangeTrigger.TriggerInstance.hasItems(Items.OBSIDIAN))
                 .save(consumer, "obsidian_apple");
 
-        ShapelessRecipeBuilder.shapeless(ModItems.GILDED_MASHED_POTATO.get())
-                .requires(ModItems.GILDED_POTATO.get())
-                .requires(Items.BOWL)
-                .requires(Items.SUGAR)
-                .group(MODID)
-                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
-                .save(consumer, "gildedmashedpotato");
+
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
                 .pattern("azx")
@@ -72,7 +68,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('z', ModItems.SPIRIT_PROP.get())
                 .define('b', ModItems.PHOTON_INGOT.get())
                 .group(MODID)
-                .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(),ModItems.PHOTON_INGOT.get()))
+                .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(), ModItems.PHOTON_INGOT.get()))
                 .save(consumer, "thechaos");
         ShapedRecipeBuilder.shaped(ModItems.EMPTY_BOTTLE.get())
                 .pattern("x x")
@@ -82,8 +78,26 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.manaGlass))
                 .save(consumer, "empty_bottle");
+        shapelessRecipes(consumer);
         weaponRecipes(consumer);
         armorRecipes(consumer);
+    }
+
+    private void shapelessRecipes(Consumer<FinishedRecipe> consumer)
+    {
+        ShapelessRecipeBuilder.shapeless(ModItems.GILDED_MASHED_POTATO.get())
+                .requires(ModItems.GILDED_POTATO.get())
+                .requires(Items.BOWL)
+                .requires(Items.SUGAR)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
+                .save(consumer, "gildedmashedpotato");
+        ShapelessRecipeBuilder.shapeless(ModSubtiles.sunshinelilyFloating)
+                .requires(ModSubtiles.sunshinelily)
+                .requires(ModTags.Items.MUNDANE_FLOATING_FLOWERS)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModSubtiles.sunshinelily))
+                .save(consumer, "floating_sunshine_lily");
     }
 
     private void weaponRecipes(Consumer<FinishedRecipe> consumer)

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:sunshine_lily"
+    },
+    {
+      "tag": "botania:mundane_floating_flowers"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:floating_sunshine_lily"
+  }
+}

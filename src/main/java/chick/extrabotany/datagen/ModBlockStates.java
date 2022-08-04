@@ -11,7 +11,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import vazkii.botania.client.render.entity.RenderDoppleganger;
 import vazkii.botania.client.render.tile.RenderTileSpecialFlower;
+import vazkii.botania.common.entity.ModEntities;
 
 public class ModBlockStates extends BlockStateProvider
 {

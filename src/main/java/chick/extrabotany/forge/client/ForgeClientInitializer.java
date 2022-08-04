@@ -4,11 +4,8 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.datagen.ModBlockTags;
+import chick.extrabotany.forge.client.model.ModLayerDefinitions;
 import com.google.common.base.Suppliers;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,7 +25,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 @Mod.EventBusSubscriber(modid = ExtraBotany.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -41,9 +37,16 @@ public class ForgeClientInitializer
     }
 
     @SubscribeEvent
+    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions evt)
+    {
+        ModLayerDefinitions.init(evt::registerLayerDefinition);
+    }
+
+    @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt)
     {
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
+        EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
     }
 
     @SubscribeEvent
@@ -55,6 +58,7 @@ public class ForgeClientInitializer
             //to make them transparent
         });
     }
+
 
     private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
     {

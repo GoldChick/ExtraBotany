@@ -16,8 +16,6 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
-
 
 public class Registration
 {
@@ -33,9 +31,11 @@ public class Registration
         //flowers
         bind(ForgeRegistries.BLOCKS, ModSubtiles::registerBlocks);
         bind(ForgeRegistries.ITEMS, ModSubtiles::registerItemBlocks);
-        bind(ForgeRegistries.BLOCK_ENTITIES,ModSubtiles::registerTEs);
-        // Potions and Brews
+        bind(ForgeRegistries.BLOCK_ENTITIES, ModSubtiles::registerTEs);
+        //potions and brews
         ModBrews.registerBrews();
+        //entities
+        bind(ForgeRegistries.ENTITIES, ModEntities::registerEntities);
 
         initEvents();
     }

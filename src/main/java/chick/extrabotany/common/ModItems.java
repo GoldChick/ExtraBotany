@@ -4,6 +4,7 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
+import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.items.EmptyGlassBottle;
 import chick.extrabotany.common.items.ManaDrink;
@@ -59,10 +60,10 @@ public class ModItems
      * for some reason, if they are assigned before,
      * items behind will be with nbt "damage" ,and can not stack.
      */
-    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ShadowWarriorArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ShadowWarriorArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ShadowWarriorArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ShadowWarriorArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ItemShadowWarriorArmor(EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ItemShadowWarriorArmor(EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ItemShadowWarriorArmor(EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ItemShadowWarriorArmor(EquipmentSlot.FEET));
     public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", () -> new ShadowKatana(ITEM_PROPERTIES));
 
     public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", () -> new GoblinSlayerArmor(EquipmentSlot.HEAD));

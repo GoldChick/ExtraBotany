@@ -2,6 +2,7 @@ package chick.extrabotany.datagen;
 
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -9,8 +10,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import vazkii.botania.client.render.entity.RenderDoppleganger;
+import vazkii.botania.common.entity.ModEntities;
 import vazkii.botania.common.lib.ModTags;
 
 import static chick.extrabotany.ExtraBotany.MODID;

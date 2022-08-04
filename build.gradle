@@ -6,6 +6,8 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+//  MixinGradle
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -14,9 +16,12 @@ plugins {
     id 'maven-publish'
 }
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+// 应用 MixinGradle 插件
+apply plugin: 'org.spongepowered.mixin'
 
-
-version = '1.18.2-0.0.4'
+version = '1.18.2-0.0.5'
 group = 'extrabotany' //'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'extrabotany'
 
@@ -158,6 +163,8 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.51'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.18.2-5.0.7.1")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.18.2-5.0.7.1:api")
 
@@ -179,7 +186,14 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
+mixin {
+    // MixinGradle setting
+    add sourceSets.main, 'extrabotany,refmap.json'
+    config 'mixins.extrabotany.json'
 
+    debug.verbose = true
+    debug.export = true
+}
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
@@ -217,3 +231,4 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+

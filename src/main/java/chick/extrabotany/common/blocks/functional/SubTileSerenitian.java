@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityFunctionalFlower;
+import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
+
 public class SubTileSerenitian extends TileEntityFunctionalFlower
 {
     private static final int RANGE = 5;

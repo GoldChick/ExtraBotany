@@ -6,6 +6,7 @@ import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.datagen.ModBlockTags;
 import chick.extrabotany.forge.client.model.ModLayerDefinitions;
 import com.google.common.base.Suppliers;
+import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -48,7 +49,6 @@ public class ForgeClientInitializer
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
     }
-
     @SubscribeEvent
     public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {

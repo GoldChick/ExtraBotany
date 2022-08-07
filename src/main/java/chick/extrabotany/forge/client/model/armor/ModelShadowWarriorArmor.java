@@ -31,6 +31,7 @@ public class ModelShadowWarriorArmor
                 PartPose.offset(-1.9F, 12.0F, 0.0F));
         return mesh;
     }
+
     public static MeshDefinition createOutsideMesh()
     {
         var deformation = new CubeDeformation(0.01F);

@@ -30,24 +30,22 @@ import vazkii.botania.common.proxy.IProxy;
 import java.util.List;
 import java.util.UUID;
 
-public class GoblinSlayerArmor extends ArmorItem implements IPhantomInkable
+public class GoblinSlayerArmor extends ItemArmor
 {
-    private static final String TAG_PHANTOM_INK = "phantomInk";
 
-    public GoblinSlayerArmor(EquipmentSlot type)
+    public GoblinSlayerArmor(EquipmentSlot slot,Properties properties)
     {
-        super(ModArmorsTier.ARMOR_SHADOWIUM, type, new Item.Properties().tab(ExtraBotany.ITEM_GROUP));
+        super(ModArmorsTier.ARMOR_SHADOWIUM, slot, new Item.Properties().tab(ExtraBotany.ITEM_GROUP),ExtraBotany.MODID + ":textures/model/armor_goblinslayer.png");
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack)
     {
-        Multimap<Attribute, AttributeModifier> ret = super.getAttributeModifiers(slot, stack);
+        Multimap<Attribute, AttributeModifier> ret = HashMultimap.create();
         if (slot == getSlot())
         {
-            ret = HashMultimap.create(ret);
             UUID uuid = new UUID(this.hashCode() + slot.toString().hashCode(), 0);
-            ret.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, "Shadow Modifier", 2, AttributeModifier.Operation.ADDITION));
+            ret.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, "Goblin Modifier", 2, AttributeModifier.Operation.ADDITION));
         }
         return ret;
     }
@@ -61,14 +59,6 @@ public class GoblinSlayerArmor extends ArmorItem implements IPhantomInkable
         }
         super.onArmorTick(stack, level, player);
     }
-
-    @Nullable
-    @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type)
-    {
-        return hasPhantomInk(stack) ? LibResources.MODEL_INVISIBLE_ARMOR : ExtraBotany.MODID + ":textures/model/armor_goblinslayer.png";
-    }
-
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flags)
     {
@@ -88,17 +78,5 @@ public class GoblinSlayerArmor extends ArmorItem implements IPhantomInkable
     public void addArmorSetDescription(ItemStack stack, List<Component> list)
     {
         list.add(new TranslatableComponent("botania.armorset.manasteel.desc").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    public boolean hasPhantomInk(ItemStack stack)
-    {
-        return ItemNBTHelper.getBoolean(stack, TAG_PHANTOM_INK, false);
-    }
-
-    @Override
-    public void setPhantomInk(ItemStack stack, boolean ink)
-    {
-        ItemNBTHelper.setBoolean(stack, TAG_PHANTOM_INK, ink);
     }
 }

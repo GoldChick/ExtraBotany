@@ -4,6 +4,7 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
+import chick.extrabotany.common.tools.armors.ItemArmor;
 import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.items.EmptyGlassBottle;
@@ -66,10 +67,10 @@ public class ModItems
     public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ItemShadowWarriorArmor(EquipmentSlot.FEET));
     public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", () -> new ShadowKatana(ITEM_PROPERTIES));
 
-    public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", () -> new GoblinSlayerArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", () -> new GoblinSlayerArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", () -> new GoblinSlayerArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", () -> new GoblinSlayerArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", () -> new GoblinSlayerArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", () -> new GoblinSlayerArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", () -> new GoblinSlayerArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", () -> new GoblinSlayerArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
 
 
     public static DeferredRegister<Item> GetItems()

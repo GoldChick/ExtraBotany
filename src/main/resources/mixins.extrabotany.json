@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_17",
   "package": "chick.extrabotany.forge.mixin",
   "client": [
-    "client.ForgeMixinArmorModel"
+    "client.ForgeMixinArmorModel",
+    "client.ForgeMixinHydroangeas"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -11,5 +11,5 @@ public abstract class SubTilePassive extends TileEntityGeneratingFlower
     {
         super(type, pos, state);
     }
-    public int passiveDecayTicks;
+    protected int passiveDecayTicks;
 }

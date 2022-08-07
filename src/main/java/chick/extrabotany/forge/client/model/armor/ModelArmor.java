@@ -16,23 +16,27 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 
-public class ModelArmor extends HumanoidModel<LivingEntity> {
-	protected final EquipmentSlot slot;
+public class ModelArmor extends HumanoidModel<LivingEntity>
+{
+    protected final EquipmentSlot slot;
 
-	public ModelArmor(ModelPart root, EquipmentSlot slot) {
-		super(root);
-		this.slot = slot;
-	}
+    public ModelArmor(ModelPart root, EquipmentSlot slot)
+    {
+        super(root);
+        this.slot = slot;
+    }
 
-	// [VanillaCopy] ArmorStandArmorModel.setupAnim because armor stands are dumb
-	// This fixes the armor "breathing" and helmets always facing south on armor stands
-	@Override
-	public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		if (!(entity instanceof ArmorStand entityIn)) {
-			super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-			return;
-		}
-
+    // [VanillaCopy] ArmorStandArmorModel.setupAnim because armor stands are dumb
+    // This fixes the armor "breathing" and helmets always facing south on armor stands
+    @Override
+    public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+    {
+        if (!(entity instanceof ArmorStand entityIn))
+        {
+            super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+            return;
+        }
+/*
 		this.head.xRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getX();
 		this.head.yRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getY();
 		this.head.zRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getZ();
@@ -55,36 +59,45 @@ public class ModelArmor extends HumanoidModel<LivingEntity> {
 		this.rightLeg.zRot = ((float) Math.PI / 180F) * entityIn.getRightLegPose().getZ();
 		this.rightLeg.setPos(-1.9F, 11.0F, 0.0F);
 		this.hat.copyFrom(this.head);
-	}
+		*/
 
-	@Override
-	public void renderToBuffer(PoseStack ms, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
-		setPartVisibility(slot);
-		super.renderToBuffer(ms, buffer, light, overlay, r, g, b, a);
-	}
+    }
 
-	// [VanillaCopy] HumanoidArmorLayer
-	private void setPartVisibility(EquipmentSlot slot) {
-		setAllVisible(false);
-		switch (slot) {
-			case HEAD -> {
-				head.visible = true;
-				hat.visible = true;
-			}
-			case CHEST -> {
-				body.visible = true;
-				rightArm.visible = true;
-				leftArm.visible = true;
-			}
-			case LEGS -> {
-				body.visible = true;
-				rightLeg.visible = true;
-				leftLeg.visible = true;
-			}
-			case FEET -> {
-				rightLeg.visible = true;
-				leftLeg.visible = true;
-			}
-		}
-	}
+    @Override
+    public void renderToBuffer(PoseStack ms, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a)
+    {
+        setPartVisibility(slot);
+        super.renderToBuffer(ms, buffer, light, overlay, r, g, b, a);
+    }
+
+    // [VanillaCopy] HumanoidArmorLayer
+    private void setPartVisibility(EquipmentSlot slot)
+    {
+        setAllVisible(false);
+        switch (slot)
+        {
+            case HEAD ->
+            {
+                head.visible = true;
+                hat.visible = true;
+            }
+            case CHEST ->
+            {
+                body.visible = true;
+                rightArm.visible = true;
+                leftArm.visible = true;
+            }
+            case LEGS ->
+            {
+                body.visible = true;
+                rightLeg.visible = true;
+                leftLeg.visible = true;
+            }
+            case FEET ->
+            {
+                rightLeg.visible = true;
+                leftLeg.visible = true;
+            }
+        }
+    }
 }

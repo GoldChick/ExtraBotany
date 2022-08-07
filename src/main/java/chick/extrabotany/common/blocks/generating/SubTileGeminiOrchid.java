@@ -1,8 +1,10 @@
 package chick.extrabotany.common.blocks.generating;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.SubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,7 +13,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileGeminiOrchid extends SubTilePassive
+public class SubTileGeminiOrchid extends SubTilePassive implements SubTileDecay
 {
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
 
@@ -99,5 +101,17 @@ public class SubTileGeminiOrchid extends SubTilePassive
     public RadiusDescriptor getRadius()
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
+    }
+
+    @Override
+    public void setPassiveTicks(int x)
+    {
+        this.passiveDecayTicks = x;
+    }
+
+    @Override
+    public int getPassiveTicks()
+    {
+        return passiveDecayTicks;
     }
 }

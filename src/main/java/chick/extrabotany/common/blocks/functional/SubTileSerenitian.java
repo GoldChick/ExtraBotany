@@ -1,15 +1,20 @@
 package chick.extrabotany.common.blocks.functional;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.SubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityFunctionalFlower;
+import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
+import vazkii.botania.api.subtile.TileEntitySpecialFlower;
+import vazkii.botania.common.block.subtile.generating.SubTileFluidGenerator;
 import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
 public class SubTileSerenitian extends TileEntityFunctionalFlower
@@ -38,25 +43,16 @@ public class SubTileSerenitian extends TileEntityFunctionalFlower
             {
                 BlockPos pos = getEffectivePos().offset(dx, 0, dz);
                 var tile = level.getBlockEntity(pos);
-                if (tile instanceof SubTilePassive)
+                if (tile instanceof SubTileDecay)
                 {
-                    SubTilePassive passive = ((SubTilePassive) tile);
-                    if (passive.passiveDecayTicks >= 2400)
+                    SubTileDecay passive = (SubTileDecay) tile;
+                    if (passive.getPassiveTicks() >= 100)
                     {
-                        if (getLevel().isClientSide)
-                        {
-                            emitParticle(ParticleTypes.ANGRY_VILLAGER, dx + Math.random() * 0.2, 0.7, dz + Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
-                        }
-                        else
-                        {
-                            level.playSound(null, getEffectivePos().getX(), getEffectivePos().getY(), getEffectivePos().getZ(), SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1F, 1F);
-                            passive.passiveDecayTicks = 0;
-                        }
+                        passive.setPassiveTicks(0);
                     }
                 }
             }
     }
-
     @Override
     public boolean acceptsRedstone()
     {

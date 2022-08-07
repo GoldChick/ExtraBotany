@@ -17,6 +17,8 @@ public class ModModelLayers
     public static final ModelLayerLocation AVATAR = make("avatar");
     public static final ModelLayerLocation SHADOW_INNER_ARMOR = make("shadowwarrior_armor", "inner_armor");
     public static final ModelLayerLocation SHADOW_OUTER_ARMOR = make("shadowwarrior_armor", "outer_armor");
+    public static final ModelLayerLocation GOBLIN_SLAYER_INNER = make("goblinslayer_armor", "inner_armor");
+    public static final ModelLayerLocation GOBLIN_SLAYER_OUTER = make("goblinslayer_armor", "outer_armor");
 
     private static ModelLayerLocation make(String name)
     {

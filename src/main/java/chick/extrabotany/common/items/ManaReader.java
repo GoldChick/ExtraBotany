@@ -30,12 +30,10 @@ public class ManaReader extends Item
         int mana = -1;
         if (tile instanceof TilePool)
         {
-            TilePool pool = (TilePool) tile;
-            mana = pool.getCurrentMana();
+            mana = ((TilePool) tile).getCurrentMana();
         } else if (tile instanceof IManaPool)
         {
-            IManaPool t = (IManaPool) tile;
-            mana = t.getCurrentMana();
+            mana = ((IManaPool) tile).getCurrentMana();
         } else if (tile instanceof TileEntityGeneratingFlower)
         {
             mana = ((TileEntityGeneratingFlower) tile).getMana();
@@ -50,8 +48,6 @@ public class ManaReader extends Item
             else
                 player.sendMessage(new TextComponent(String.format("No Mana")), Util.NIL_UUID);
         }
-
         return InteractionResult.PASS;
     }
-
 }

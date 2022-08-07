@@ -1,6 +1,7 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.common.ModEntities;
+import chick.extrabotany.forge.client.model.ModModelLayers;
 import chick.extrabotany.forge.client.model.entity.RenderDoppleganger;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
@@ -17,5 +18,9 @@ public final class EntityRenderers
     public static void registerEntityRenderers(EntityRendererConsumer consumer)
     {
        consumer.accept(ModEntities.DOPPLEGANGER, RenderDoppleganger::new);
+    }
+    public static void init(EntityRendererProvider.Context ctx)
+    {
+
     }
 }

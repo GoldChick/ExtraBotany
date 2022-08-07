@@ -8,6 +8,7 @@
  */
 package chick.extrabotany.forge.client.model;
 
+import chick.extrabotany.forge.client.model.armor.ModelGoblinSlayerArmor;
 import chick.extrabotany.forge.client.model.armor.ModelShadowWarriorArmor;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -23,5 +24,7 @@ public class ModLayerDefinitions
 
         consumer.accept(ModModelLayers.SHADOW_INNER_ARMOR, () -> LayerDefinition.create(ModelShadowWarriorArmor.createInsideMesh(), 64, 128));
         consumer.accept(ModModelLayers.SHADOW_OUTER_ARMOR, () -> LayerDefinition.create(ModelShadowWarriorArmor.createOutsideMesh(), 64, 128));
+        consumer.accept(ModModelLayers.GOBLIN_SLAYER_INNER, () -> LayerDefinition.create(ModelGoblinSlayerArmor.createInsideMesh(), 128, 128));
+        consumer.accept(ModModelLayers.GOBLIN_SLAYER_OUTER, () -> LayerDefinition.create(ModelGoblinSlayerArmor.createOutsideMesh(), 128, 128));
     }
 }

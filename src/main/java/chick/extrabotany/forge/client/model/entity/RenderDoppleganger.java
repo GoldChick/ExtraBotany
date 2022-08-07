@@ -1,5 +1,6 @@
 package chick.extrabotany.forge.client.model.entity;
 
+import chick.extrabotany.forge.client.EntityRenderers;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -30,6 +31,7 @@ public class RenderDoppleganger extends HumanoidMobRenderer<EntityDoppleganger, 
         this.slimModel = new Model(ctx.bakeLayer(ModelLayers.PLAYER_SLIM));
         // Call this here bc no other place with access to Context
         ArmorModels.init(ctx);
+        EntityRenderers.init(ctx);
     }
     @Override
     public void render(@Nonnull EntityDoppleganger dopple, float yaw, float partialTicks, PoseStack ms, MultiBufferSource buffers, int light) {

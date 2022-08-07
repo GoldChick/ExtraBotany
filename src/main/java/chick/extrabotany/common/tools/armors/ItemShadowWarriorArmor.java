@@ -66,9 +66,9 @@ public class ItemShadowWarriorArmor extends ArmorItem implements ICustomDamageIt
         return ToolCommons.damageItemIfPossible(stack, amount, entity, MANA_PER_DAMAGE);
     }
     @Nonnull
-    public final String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type)
+    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type)
     {
-        return hasPhantomInk(stack) ? MODEL_INVISIBLE_ARMOR : "extrabotany:textures/model/armor_manasteel.png";
+        return hasPhantomInk(stack) ? MODEL_INVISIBLE_ARMOR : ExtraBotany.MODID+":textures/model/armor_manasteel.png";
     }
 
     @Override

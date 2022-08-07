@@ -1,16 +1,19 @@
 package chick.extrabotany.common.blocks.generating;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.SubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileMoonlightLily extends SubTilePassive
+public class SubTileMoonlightLily extends SubTilePassive implements SubTileDecay
 {
     private static final int RANGE = 2;
     private static final int DECAY_TIME = 72000;
@@ -96,5 +99,21 @@ public class SubTileMoonlightLily extends SubTilePassive
     public RadiusDescriptor getRadius()
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
+    }
+
+    @Override
+    public void setPassiveTicks(int x)
+    {
+        sync();
+        this.passiveDecayTicks = x;
+        if (x == 0)
+        {
+            emitParticle(ParticleTypes.ANGRY_VILLAGER, Math.random() * 0.2, 0.7, Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
+        }
+    }
+    @Override
+    public int getPassiveTicks()
+    {
+        return passiveDecayTicks;
     }
 }

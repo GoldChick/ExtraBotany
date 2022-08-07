@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.mixin.client;
 
-import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
+import chick.extrabotany.common.tools.armors.ItemArmor;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.function.Consumer;
 
-@Mixin(ItemShadowWarriorArmor.class)
+@Mixin(ItemArmor.class)
 public abstract class ForgeMixinArmorModel extends Item
 {
     private ForgeMixinArmorModel(Properties props)

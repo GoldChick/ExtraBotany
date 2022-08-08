@@ -32,16 +32,13 @@ public class ModBlockTags extends BlockTagsProvider
     protected void addTags()
     {
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.YLG_ORE.get())
+
         ;
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.YLG_ORE.get())
+
         ;
         tag(Tags.Blocks.ORES)
-                .add(ModBlocks.YLG_ORE.get())
-        ;
-        tag(ModBlocks._YLG_ORE)
-                .add(ModBlocks.YLG_ORE.get())
+
         ;
         tag(ModTags.Blocks.GENERATING_SPECIAL_FLOWERS)
                 .add(ModSubtiles.sunshinelily)

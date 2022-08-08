@@ -32,23 +32,6 @@ public class ModCraftingTableRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.YLG_ORE.get()), ModItems.YLG_INGOT.get(), 1.0f, 100)
-                .unlockedBy("has_ore", has(ModBlocks.YLG_ORE.get()))
-                .save(consumer, "mysterious_ingot1");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_YLG_CHUNK.get()), ModItems.YLG_INGOT.get(), 0.0f, 100)
-                .unlockedBy("has_chunk", has(ModItems.RAW_YLG_CHUNK.get()))
-                .save(consumer, "mysterious_ingot2");
-        ShapedRecipeBuilder.shaped(ModItems.OBSIDIAN_APPLE.get())
-                .pattern(" x ")
-                .pattern("x#x")
-                .pattern(" x ")
-                .define('x', Tags.Items.OBSIDIAN)
-                .define('#', Items.APPLE)
-                .group(MODID)
-                .unlockedBy("obsidian_apple", InventoryChangeTrigger.TriggerInstance.hasItems(Items.OBSIDIAN))
-                .save(consumer, "obsidian_apple");
-
-
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
                 .pattern("azx")

@@ -1,0 +1,51 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "extrabotany:item/empty_bottle",
+    "layer1": "extrabotany:item/cock_tail_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 1.0
+      },
+      "model": "extrabotany:item/cock_tail_1"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 2.0
+      },
+      "model": "extrabotany:item/cock_tail_2"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 3.0
+      },
+      "model": "extrabotany:item/cock_tail_3"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 4.0
+      },
+      "model": "extrabotany:item/cock_tail_4"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 5.0
+      },
+      "model": "extrabotany:item/cock_tail_5"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 6.0
+      },
+      "model": "extrabotany:item/cock_tail_6"
+    },
+    {
+      "predicate": {
+        "minecraft:custom_model_data": 7.0
+      },
+      "model": "extrabotany:item/cock_tail_7"
+    }
+  ]
+}

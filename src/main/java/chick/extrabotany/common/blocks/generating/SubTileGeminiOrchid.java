@@ -106,7 +106,12 @@ public class SubTileGeminiOrchid extends SubTilePassive implements SubTileDecay
     @Override
     public void setPassiveTicks(int x)
     {
+        sync();
         this.passiveDecayTicks = x;
+        if (x == 0)
+        {
+            emitParticle(ParticleTypes.ANGRY_VILLAGER, Math.random() * 0.2, 0.7, Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Override

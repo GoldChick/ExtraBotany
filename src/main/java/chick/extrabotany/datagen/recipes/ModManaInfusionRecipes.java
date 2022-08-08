@@ -30,9 +30,10 @@ public class ModManaInfusionRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        consumer.accept(new ManaInfusion(idFor("ironingot"), new ItemStack(Items.IRON_INGOT), Ingredient.of(Items.OBSIDIAN), 10000));
-        consumer.accept(ManaInfusion.conjuration(idFor("obsidian_dupe"), new ItemStack(Items.OBSIDIAN, 2), Ingredient.of(Items.OBSIDIAN), 10000));
-        consumer.accept(ManaInfusion.test(idFor("test"), new ItemStack(Items.OBSIDIAN, 64), Ingredient.of(Items.OBSIDIAN), 10000));
+        //test
+        //consumer.accept(new ManaInfusion(idFor("ironingot"), new ItemStack(Items.IRON_INGOT), Ingredient.of(Items.OBSIDIAN), 10000));
+        //consumer.accept(ManaInfusion.conjuration(idFor("obsidian_dupe"), new ItemStack(Items.OBSIDIAN, 2), Ingredient.of(Items.OBSIDIAN), 10000));
+        //consumer.accept(ManaInfusion.test(idFor("test"), new ItemStack(Items.OBSIDIAN, 64), Ingredient.of(Items.OBSIDIAN), 10000));
 
         consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMAREFUEL_PROP.get()), Ingredient.of(Items.COAL), 100));
     }
@@ -48,7 +49,7 @@ public class ModManaInfusionRecipes extends RecipeProvider
 
         private static final StateIngredient CONJURATION = StateIngredientHelper.of(ModBlocks.conjurationCatalyst);
         private static final StateIngredient ALCHEMY = StateIngredientHelper.of(ModBlocks.alchemyCatalyst);
-        private static final StateIngredient TEST = StateIngredientHelper.of(chick.extrabotany.common.ModBlocks.YLG_ORE.get());
+        //private static final StateIngredient TEST = StateIngredientHelper.of(chick.extrabotany.common.ModBlocks.YLG_ORE.get());
         //private static final StateIngredient DIMENSION = StateIngredientHelper.of(com.meteor.extrabotany.common.blocks.ModBlocks.dimensioncatalyst);
 
         private final ResourceLocation id;
@@ -82,9 +83,9 @@ public class ModManaInfusionRecipes extends RecipeProvider
         {
             return new ManaInfusion(id, output, input, mana, "", ALCHEMY);
         }
-        public static ManaInfusion test(ResourceLocation id, ItemStack output, Ingredient input, int mana)
+        //public static ManaInfusion test(ResourceLocation id, ItemStack output, Ingredient input, int mana)
         {
-            return new ManaInfusion(id, output, input, mana, "", TEST);
+        //    return new ManaInfusion(id, output, input, mana, "", TEST);
         }
         @Override
         public void serializeRecipeData(JsonObject json)

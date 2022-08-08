@@ -19,10 +19,6 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "额外植物学");
-        add(ModBlocks.YLG_ORE.get(), "叶落归矿石");
-        add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
-        add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
-        add(ModItems.OBSIDIAN_APPLE.get(), "黑曜石苹果");
         add(ModItems.SHADOW_INGOT.get(), "暗影锭");
         add(ModItems.PHOTON_INGOT.get(), "光子锭");
         add(ModItems.GILDED_POTATO.get(), "镀金服务器");
@@ -56,6 +52,10 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
         add(ModItems.EMPTY_BOTTLE.get(), "魔法玻璃空瓶");
         add(ModItems.MANA_DRINK.get(), "魔力鸡尾酒");
+        add(ModItems.COCK_TAIL.get(), "装有%s (%s)秘制鸡尾酒");
+        add("item.extrabotany.infinitewine","装有%s (%s)无限之酒");
+        add("item.extrabotany.splashgrenade","装有%s 圣水手雷");
+
         add("extrabotany.brew.revolution","革命");
         add("extrabotany.brew.allmighty","全能");
         add("extrabotany.brew.shell","龟壳");
@@ -114,7 +114,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.spiritfuel1", "精神燃料");
         add("extrabotany.page.spiritfuel2", "精神碎片");
 
-        add("extrabotany.entry.shadowium", "暗影锭");
+        add("extrabotany.entry.shadowium", "暗影锭（未完成）");
         add("extrabotany.page.shadowium0", "以镀金土豆泥作为媒介，将梦魇燃料和源质钢锭结合得到的全新材料$(item)暗影锭$(0)。相比源质钢锭，暗影锭拥有着更大的潜能。");
         add("extrabotany.page.shadowium1", "无人生还。");
         add("extrabotany.page.shadowium2", "");
@@ -125,7 +125,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.shadowium7", "暗影武士护腿");
         add("extrabotany.page.shadowium8", "暗影武士靴子");
 
-        add("extrabotany.entry.photonium", "光子锭");
+        add("extrabotany.entry.photonium", "光子锭（未完成）");
         add("extrabotany.page.photonium0", "精神燃料与源质钢锭的完美结合。$(item)光子锭$(0)是一种优秀的材料，它是暗影锭的对立面。");
         add("extrabotany.page.photonium1", "三块一个，十块三个。");
         add("extrabotany.page.photonium2", "");
@@ -171,7 +171,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.elementstone3", "水之符石");
         add("extrabotany.page.elementstone4", "火之符石");
 
-        add("extrabotany.entry.supreme_elementstone", "至高符石");
+        add("extrabotany.entry.supreme_elementstone", "至高符石（未完成）");
         add("extrabotany.page.supreme_elementstone0", "元素符石已经十分强大了。但是还有一种方法能从元素中取得更强大的力量。不过，这也导致了一些缺点，同时也加剧了不同元素之间的冲突。比如说，如果其中一个是至高级别的符石，那么你将无法同时使用$(item)风之符石$(0)和$(item)地之符石$(0)，或者$(item)火之符石$(0)和$(item)水之符石$(0)。");
         add("extrabotany.page.supreme_elementstone1", "Aero Stone");
         add("extrabotany.page.supreme_elementstone2", "Earth Stone");

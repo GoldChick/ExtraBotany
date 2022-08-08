@@ -5,17 +5,19 @@ import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.datagen.ModBlockTags;
 import chick.extrabotany.forge.client.model.ModLayerDefinitions;
+import chick.extrabotany.forge.client.render.ColorHandler;
 import com.google.common.base.Suppliers;
-import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.forge.CapabilityUtil;
@@ -49,6 +51,7 @@ public class ForgeClientInitializer
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
     }
+
     @SubscribeEvent
     public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {
@@ -57,6 +60,12 @@ public class ForgeClientInitializer
             ModBlockTags.setRenderType();
             //to make them transparent
         });
+    }
+
+    @SubscribeEvent
+    public static void registerItemColors(ColorHandlerEvent.Item evt)
+    {
+        ColorHandler.submitItems(evt.getItemColors()::register);
     }
 
 

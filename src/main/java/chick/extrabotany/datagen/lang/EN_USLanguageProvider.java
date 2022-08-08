@@ -20,10 +20,6 @@ public class EN_USLanguageProvider extends LanguageProvider
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "Extra Botany");
 
-        add(ModBlocks.YLG_ORE.get(), "YeLuoGui ore");
-        add(ModItems.RAW_YLG_CHUNK.get(), "Raw YeLuoGui Chunk");
-        add(ModItems.YLG_INGOT.get(), "Legendary YeLuoGui Ingot");
-        add(ModItems.OBSIDIAN_APPLE.get(), "Obsidian Apple");
         add(ModItems.NIGHTMAREFUEL_PROP.get(), "Nightmare Fuel");
         add(ModItems.SPIRITFUEL_PROP.get(), "Spirit Fuel");
         add(ModItems.SPIRIT_PROP.get(), "Spirit Fragment");
@@ -62,6 +58,9 @@ public class EN_USLanguageProvider extends LanguageProvider
 
         add(ModItems.EMPTY_BOTTLE.get(), "Empty Mana Glass Bottle");
         add(ModItems.MANA_DRINK.get(), "Mana Cocktail");
+        add(ModItems.COCK_TAIL.get(), "Special-made Cocktail of %s (%s)");
+        add("item.extrabotany.infinitewine","Infinite Wine of %s (%s)");
+        add("item.extrabotany.splashgrenade","Holy Grenade of %s");
         add("extrabotany.brew.revolution", "Revolution");
         add("extrabotany.brew.allmighty", "All-mighty");
         add("extrabotany.brew.shell", "Shell");

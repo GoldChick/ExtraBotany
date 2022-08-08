@@ -3,14 +3,11 @@ package chick.extrabotany.common;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.bauble.*;
 import chick.extrabotany.common.foods.NormalFoods;
+import chick.extrabotany.common.items.*;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
 import chick.extrabotany.common.tools.armors.ItemArmor;
 import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
-import chick.extrabotany.common.items.EmptyGlassBottle;
-import chick.extrabotany.common.items.ManaDrink;
-import chick.extrabotany.common.items.ManaReader;
-import chick.extrabotany.common.items.NightmareFuel;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -24,9 +21,6 @@ public class ModItems
 {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ExtraBotany.ITEM_GROUP);
-    public static final RegistryObject<Item> RAW_YLG_CHUNK = ITEMS.register("raw_yeluogui_chunk", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> YLG_INGOT = ITEMS.register("yeluogui_ingot", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> OBSIDIAN_APPLE = ITEMS.register("obsidian_apple", () -> new Item(new Item.Properties().stacksTo(16).food(NormalFoods.OBSIDIAN_APPLE).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> SPIRITFUEL_PROP = ITEMS.register("spiritfuel_prop", () -> new Item(new Item.Properties().food(NormalFoods.SPIRITFUEL_PROP).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> NIGHTMAREFUEL_PROP = ITEMS.register("nightmarefuel_prop", () -> new NightmareFuel(new Item.Properties().food(NormalFoods.NIGHTMAREFUEL_PROP).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> SPIRIT_PROP = ITEMS.register("spirit_prop", () -> new Item(ITEM_PROPERTIES));
@@ -41,6 +35,7 @@ public class ModItems
     public static final RegistryObject<Item> THE_UNIVERSE = ITEMS.register("theuniverse", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> EMPTY_BOTTLE = ITEMS.register("empty_bottle", () -> new EmptyGlassBottle(ITEM_PROPERTIES));
     public static final RegistryObject<Item> MANA_DRINK = ITEMS.register("mana_drink", () -> new ManaDrink(new Item.Properties().food(NormalFoods.MANA_DRINK).tab(ExtraBotany.ITEM_GROUP)));
+    public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES));
     /*
      *
      * these are baubles for curios mod

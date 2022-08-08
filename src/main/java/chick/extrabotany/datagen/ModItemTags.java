@@ -31,15 +31,11 @@ public class ModItemTags extends ItemTagsProvider
     protected void addTags()
     {
         tag(Tags.Items.ORES)
-                .add(ModBlocks.YLG_ORE_ITEM.get())
+        //        .add(ModBlocks.YLG_ORE_ITEM.get())
         ;
         tag(Tags.Items.INGOTS)
-                .add(ModItems.YLG_INGOT.get())
                 .add(ModItems.PHOTON_INGOT.get())
                 .add(ModItems.SHADOW_INGOT.get())
-        ;
-        tag(ModBlocks._YLG_ORE_ITEM)
-                .add(ModBlocks.YLG_ORE_ITEM.get())
         ;
         this.copy(ModTags.Blocks.MUNDANE_FLOATING_FLOWERS, ModTags.Items.MUNDANE_FLOATING_FLOWERS);
         this.copy(ModTags.Blocks.SPECIAL_FLOATING_FLOWERS, ModTags.Items.SPECIAL_FLOATING_FLOWERS);

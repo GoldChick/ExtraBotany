@@ -1,5 +1,6 @@
 package chick.extrabotany.common.items;
 
+import chick.extrabotany.common.ModItems;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,19 +20,18 @@ public class EmptyGlassBottle extends Item
     @Override
     public InteractionResult useOn(UseOnContext ctx)
     {
-        // ItemStack stack = ctx.getItemInHand();
         var tile = ctx.getLevel().getBlockEntity(ctx.getClickedPos());
         if (tile instanceof TilePool)
         {
             TilePool pool = (TilePool) tile;
-            if (ctx.getLevel().isClientSide && pool.getCurrentMana() >= 25000)
+            if (!ctx.getLevel().isClientSide && pool.getCurrentMana() >= 25000)
             {
                 pool.receiveMana(-25000);
                 if (!ctx.getPlayer().isCreative())
                 {
                     ctx.getItemInHand().shrink(1);
                 }
-                //ctx.getPlayer().getInventory().add(new ItemStack(ModItems.manadrink));
+                ctx.getPlayer().getInventory().add(new ItemStack(ModItems.MANA_DRINK.get()));
                 return InteractionResult.SUCCESS;
             }
         }

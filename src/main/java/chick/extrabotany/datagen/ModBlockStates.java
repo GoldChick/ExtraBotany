@@ -29,7 +29,6 @@ public class ModBlockStates extends BlockStateProvider
     @Override
     protected void registerStatesAndModels()
     {
-        simpleBlock(ModBlocks.YLG_ORE.get());
         //transparent rendertype in class ForgeClientInitializer
         simpleBlock(ModSubtiles.sunshinelily, new ConfiguredModel(models().singleTexture(ModSubtiles.sunshinelily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.moonlightlily, new ConfiguredModel(models().singleTexture(ModSubtiles.moonlightlily.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.moonlightlily))));

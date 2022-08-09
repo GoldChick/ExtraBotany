@@ -2,6 +2,7 @@ package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.bauble.*;
+import chick.extrabotany.common.crafting.CocktailRecipe;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.items.*;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
@@ -9,11 +10,16 @@ import chick.extrabotany.common.tools.armors.ItemArmor;
 import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vazkii.botania.common.block.ModPatterns;
+
+import java.util.function.BiConsumer;
 
 import static chick.extrabotany.ExtraBotany.MODID;
 
@@ -35,15 +41,18 @@ public class ModItems
     public static final RegistryObject<Item> THE_UNIVERSE = ITEMS.register("theuniverse", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> EMPTY_BOTTLE = ITEMS.register("empty_bottle", () -> new EmptyGlassBottle(ITEM_PROPERTIES));
     public static final RegistryObject<Item> MANA_DRINK = ITEMS.register("mana_drink", () -> new ManaDrink(new Item.Properties().food(NormalFoods.MANA_DRINK).tab(ExtraBotany.ITEM_GROUP)));
-    public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
     /*
      *
      * these are baubles for curios mod
      *
      */
+    public static final RegistryObject<Item> PYLON = ITEMS.register("pylon", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> DEATH_RING = ITEMS.register("deathring", () -> new DeathRing(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> POWER_GLOVE = ITEMS.register("powerglove", () -> new PowerGlove(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> JINGWEI_FEATHER = ITEMS.register("jingweifeather", () -> new JingweiFeather(ITEM_PROPERTIES));
     public static final RegistryObject<Item> AERO_STONE = ITEMS.register("aerostone", () -> new AeroStone(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> AQUA_STONE = ITEMS.register("aquastone", () -> new AquaStone(new Item.Properties().stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
+    public static final RegistryObject<Item> AQUA_STONE = ITEMS.register("aquastone", () -> new AquaStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> EARTH_STONE = ITEMS.register("earthstone", () -> new EarthStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> IGNIS_STONE = ITEMS.register("ignisstone", () -> new IgnisStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> FOUR_IN_ONE_STONE = ITEMS.register("fourinonestone", () -> new FourInOneStone(ITEM_PROPERTIES));
@@ -56,6 +65,7 @@ public class ModItems
      * for some reason, if they are assigned before,
      * items behind will be with nbt "damage" ,and can not stack.
      */
+    public static final RegistryObject<Item> ROD_OF_DISCORD = ITEMS.register("rodofdiscord", () -> new RodOfDiscord(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ItemShadowWarriorArmor(EquipmentSlot.HEAD));
     public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ItemShadowWarriorArmor(EquipmentSlot.CHEST));
     public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ItemShadowWarriorArmor(EquipmentSlot.LEGS));
@@ -67,6 +77,10 @@ public class ModItems
     public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", () -> new GoblinSlayerArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
     public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", () -> new GoblinSlayerArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
 
+    public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
+    {
+        r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));
+    }
 
     public static DeferredRegister<Item> GetItems()
     {

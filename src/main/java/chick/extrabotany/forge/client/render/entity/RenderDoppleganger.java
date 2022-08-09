@@ -1,4 +1,4 @@
-package chick.extrabotany.forge.client.model.entity;
+package chick.extrabotany.forge.client.render.entity;
 
 import chick.extrabotany.forge.client.EntityRenderers;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;

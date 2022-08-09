@@ -1,7 +1,6 @@
 package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
@@ -29,12 +28,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GILDED_MASHED_POTATO.get(), "Gilded Mashed Potato");
 
         add(ModItems.MANA_READER.get(), "Mana Reader");
+        add(ModItems.ROD_OF_DISCORD.get(), "Rod of Discord");
         add(ModItems.THE_CHAOS.get(), "The Chaos");
         add(ModItems.THE_ORIGIN.get(), "The Origin");
         add(ModItems.THE_END.get(), "The End");
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
 
         add(ModItems.DEATH_RING.get(), "Curse Ring");
+        add(ModItems.POWER_GLOVE.get(), "Power Glove");
+        add(ModItems.JINGWEI_FEATHER.get(), "Feather of Jingwei");
         add(ModItems.AERO_STONE.get(), "Aero Stone");
         add(ModItems.AQUA_STONE.get(), "Aqua Stone");
         add(ModItems.EARTH_STONE.get(), "Earth Stone");
@@ -101,7 +103,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
         add("advancement.extrabotany:thechaos_craft.title", "Chaos With No Chaos");
         add("advancement.extrabotany:thechaos_craft.desc", "Craft The Chaos");
-
+        add("advancement.extrabotany:rodofdiscord_craft.title", "NOT Discord");
+        add("advancement.extrabotany:rodofdiscord_craft.desc", "Craft Rod of Discord");
     }
 
     private void langPantchouli()
@@ -205,8 +208,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.brew6", "Gain super strength, but what's the cost?");
         add("extrabotany.page.brew7", "Almost all positive effects! But wouldn't last long.");
         add("extrabotany.page.brew8", "One can make you floating, may be better if used on enemies?");
-
-
+        add("extrabotany.entry.powerglove","Power Glove");
+        add("extrabotany.page.powerglove0","$(item)Power Glove$(0) allows you to auto leftclick at maximum attack speed if you keep pressing your mouse. It also slightly increase your attack speed.");
+        add("extrabotany.page.powerglove1","");
+        add("extrabotany.entry.rodofdiscord","Rod of Discord");
+        add("extrabotany.page.rodofdiscord0","$(item)Rod of Discord$(0) could teleport you to where you are aiming at with nausea effect. If you try to use it when it is cooling down, you will receive damage.");
+        add("extrabotany.page.rodofdiscord1","");
+        add("extrabotany.entry.jingweifeather","Feather of Jingwei");
+        add("extrabotany.page.jingweifeather0","Equipped with $(item)Feather of Jingwei$(0), every empty-handed punch will shoot a fire ball which could recover you 1 absorption and stack to 10 at max.");
+        add("extrabotany.page.jingweifeather1","");
         pantchouliFlower();
     }
 

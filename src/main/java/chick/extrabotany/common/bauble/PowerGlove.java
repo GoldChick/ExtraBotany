@@ -3,35 +3,35 @@ package chick.extrabotany.common.bauble;
 import chick.extrabotany.common.ModItems;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
-public class EarthStone extends ItemBauble
+public class PowerGlove extends ItemBauble
 {
-    public EarthStone(Properties props)
+    public PowerGlove(Properties props)
     {
-        super(props.stacksTo(1));
+        super(props);
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getEquippedAttributeModifiers(ItemStack stack)
     {
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
-        attributes.put(Attributes.ARMOR, new AttributeModifier(getBaubleUUID(stack), "Earth Stone", 2, AttributeModifier.Operation.ADDITION));
+        attributes.put(Attributes.ATTACK_SPEED, new AttributeModifier(getBaubleUUID(stack), "Power Glove", 0.12F, AttributeModifier.Operation.MULTIPLY_TOTAL));
         return attributes;
     }
+
 
     @Override
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {
-        return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AQUA_STONE.get(), entity).isEmpty()
-                ;
+        return EquipmentHandler.findOrEmpty(this, entity).isEmpty();
     }
 }

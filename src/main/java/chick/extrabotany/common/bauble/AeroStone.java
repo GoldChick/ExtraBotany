@@ -15,7 +15,7 @@ public class AeroStone extends ItemBauble
 {
     public AeroStone(Properties props)
     {
-        super(props);
+        super(props.stacksTo(1));
     }
 
     @Override
@@ -35,6 +35,4 @@ public class AeroStone extends ItemBauble
                 && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
                 ;
     }
-
-
 }

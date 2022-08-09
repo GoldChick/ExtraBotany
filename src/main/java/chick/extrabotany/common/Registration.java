@@ -6,6 +6,7 @@ import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -36,7 +37,9 @@ public class Registration
         ModBrews.registerBrews();
         //entities
         bind(ForgeRegistries.ENTITIES, ModEntities::registerEntities);
-
+        bus.addListener((EntityAttributeCreationEvent e) -> ModEntities.registerAttributes((type, builder) -> e.put(type, builder.build())));
+        //recipe
+        bind(ForgeRegistries.RECIPE_SERIALIZERS, ModItems::registerRecipeSerializers);
         initEvents();
     }
 

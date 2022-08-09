@@ -19,18 +19,24 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "额外植物学");
+        add(ModItems.NIGHTMAREFUEL_PROP.get(), "梦魇燃料");
+        add(ModItems.SPIRITFUEL_PROP.get(), "精神燃料");
+        add(ModItems.SPIRIT_PROP.get(), "精神碎片");
         add(ModItems.SHADOW_INGOT.get(), "暗影锭");
         add(ModItems.PHOTON_INGOT.get(), "光子锭");
         add(ModItems.GILDED_POTATO.get(), "镀金服务器");
         add(ModItems.GILDED_MASHED_POTATO.get(), "镀金土豆泥");
 
         add(ModItems.MANA_READER.get(), "魔力读取器");
+        add(ModItems.ROD_OF_DISCORD.get(), "不谐传送杖");
         add(ModItems.THE_CHAOS.get(), "混沌物质");
         add(ModItems.THE_ORIGIN.get(), "起源物质");
         add(ModItems.THE_END.get(), "终末物质");
         add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
 
         add(ModItems.DEATH_RING.get(), "诅咒指环");
+        add(ModItems.POWER_GLOVE.get(), "强力手套");
+        add(ModItems.JINGWEI_FEATHER.get(), "精卫之羽");
         add(ModItems.AERO_STONE.get(), "风之符石");
         add(ModItems.AQUA_STONE.get(), "水之符石");
         add(ModItems.EARTH_STONE.get(), "地之符石");
@@ -53,14 +59,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.EMPTY_BOTTLE.get(), "魔法玻璃空瓶");
         add(ModItems.MANA_DRINK.get(), "魔力鸡尾酒");
         add(ModItems.COCK_TAIL.get(), "装有%s (%s)秘制鸡尾酒");
-        add("item.extrabotany.infinitewine","装有%s (%s)无限之酒");
-        add("item.extrabotany.splashgrenade","装有%s 圣水手雷");
+        add("item.extrabotany.infinitewine", "装有%s (%s)无限之酒");
+        add("item.extrabotany.splashgrenade", "装有%s 圣水手雷");
 
-        add("extrabotany.brew.revolution","革命");
-        add("extrabotany.brew.allmighty","全能");
-        add("extrabotany.brew.shell","龟壳");
-        add("extrabotany.brew.deadpool","死灵");
-        add("extrabotany.brew.floating","漂浮");
+        add("extrabotany.brew.revolution", "革命");
+        add("extrabotany.brew.allmighty", "全能");
+        add("extrabotany.brew.shell", "龟壳");
+        add("extrabotany.brew.deadpool", "死灵");
+        add("extrabotany.brew.floating", "漂浮");
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -74,12 +80,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.moonlightlily, "月光百合");
         add(ModSubtiles.moonlightlilyFloating, "浮空月光百合");
         add(ModSubtiles.moonlightlily.getDescriptionId() + ".reference", "愿你能找到所有失去的东西");
-        add(ModSubtiles.omniviolet,"全知瑾");
-        add(ModSubtiles.omnivioletFloating,"浮空全知瑾");
-        add(ModSubtiles.omniviolet.getDescriptionId()+".reference","我知万物");
-        add(ModSubtiles.geminiorchid,"双子兰");
-        add(ModSubtiles.geminiorchidFloating,"浮空双子兰");
-        add(ModSubtiles.geminiorchid.getDescriptionId()+".reference","为什么乌鸦像写字台？");
+        add(ModSubtiles.omniviolet, "全知瑾");
+        add(ModSubtiles.omnivioletFloating, "浮空全知瑾");
+        add(ModSubtiles.omniviolet.getDescriptionId() + ".reference", "我知万物");
+        add(ModSubtiles.geminiorchid, "双子兰");
+        add(ModSubtiles.geminiorchidFloating, "浮空双子兰");
+        add(ModSubtiles.geminiorchid.getDescriptionId() + ".reference", "为什么乌鸦像写字台？");
         add(ModSubtiles.serenitian, "永寂龙胆");
         add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
         add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "无念，断绝");
@@ -88,15 +94,18 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
     private void langAdvancement()
     {
-        add("advancement.extrabotany:root.title","欢迎来到世界");
-        add("advancement.extrabotany:root.desc","不要错过今天，去过好每一天");
-        add("advancement.extrabotany:nightmarefuel_eat.title","Deep Dark Fantasy");
-        add("advancement.extrabotany:nightmarefuel_eat.desc","食用一个梦魇燃料(这真的能吃吗)");
-        add("advancement.extrabotany:manareader_craft.title","Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc","获得魔力读取器");
-        add("advancement.extrabotany:thechaos_craft.title","一点都不混沌的物质");
-        add("advancement.extrabotany:thechaos_craft.desc","合成混沌物质");
+        add("advancement.extrabotany:root.title", "欢迎来到世界");
+        add("advancement.extrabotany:root.desc", "不要错过今天，去过好每一天");
+        add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
+        add("advancement.extrabotany:nightmarefuel_eat.desc", "食用一个梦魇燃料(这真的能吃吗)");
+        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc", "获得魔力读取器");
+        add("advancement.extrabotany:thechaos_craft.title", "一点都不混沌的物质");
+        add("advancement.extrabotany:thechaos_craft.desc", "合成混沌物质");
+        add("advancement.extrabotany:rodofdiscord_craft.title", "不是Discord");
+        add("advancement.extrabotany:rodofdiscord_craft.desc", "合成不谐传送杖");
     }
+
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "额外的知识");
@@ -182,22 +191,31 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.deathring0", "$(item)诅咒指环$(0)能消耗少量的&4魔力$(0)使小范围内所视的生物获得凋零和不幸的效果。");
         add("extrabotany.page.deathring1", "力量本身并不可怕，可怕的是它的主人。");
 
-        add("extrabotany.entry.advancedmaterial","高等形式");
-        add("extrabotany.page.advancedmaterial0","借助$(item)精神碎片$(0)的力量将两种材料结合构成的高等形式，这类材料拥有着更强的属性与潜力。");
-        add("extrabotany.page.advancedmaterial1","混沌物质");
-        add("extrabotany.page.advancedmaterial2","起源物质");
-        add("extrabotany.page.advancedmaterial3","终末物质");
-        add("extrabotany.page.advancedmaterial4","宇宙物质");
-        add("extrabotany.entry.brew","全新酿造类型");
-        add("extrabotany.page.brew0","拿着魔法玻璃空瓶对着魔力池右键可以获得魔力鸡尾酒，饮用魔力鸡尾酒可以获得多种正面buff。");
-        add("extrabotany.page.brew1","");
-        add("extrabotany.page.brew2","比起普通的酿造能够多饮用两次，并且药水的持续时间也要来得更长。只需要将装有所需酿造的烧瓶和魔力鸡尾酒合成即可得到对应的秘制鸡尾酒。 ");
-        add("extrabotany.page.brew3","将装有所需酿造的秘制鸡尾酒和爆裂紫颂果合成即可得到对应的圣水手雷。圣水手雷爆炸后会给予大范围生物较高的伤害，给予玩家其所含的正面效果而给予其他生物负面效果。 <br>可以说是几乎完美的酿造，但为什么是一颗手雷呢?");
-        add("extrabotany.page.brew4","能够大幅提升挖掘效率，但是需要透支运气。");
-        add("extrabotany.page.brew5","拥有超强的防御力，但行动却也变得像乌龟一样慢。");
-        add("extrabotany.page.brew6","获得超强的力量，但是代价是什么?");
-        add("extrabotany.page.brew7","几乎所有的正面效果!但只能维持一小会。");
-        add("extrabotany.page.brew8","能够让人漂浮起来的药水，或许对敌人使用会更好?");
+        add("extrabotany.entry.advancedmaterial", "高等形式");
+        add("extrabotany.page.advancedmaterial0", "借助$(item)精神碎片$(0)的力量将两种材料结合构成的高等形式，这类材料拥有着更强的属性与潜力。");
+        add("extrabotany.page.advancedmaterial1", "混沌物质");
+        add("extrabotany.page.advancedmaterial2", "起源物质");
+        add("extrabotany.page.advancedmaterial3", "终末物质");
+        add("extrabotany.page.advancedmaterial4", "宇宙物质");
+        add("extrabotany.entry.brew", "全新酿造类型");
+        add("extrabotany.page.brew0", "拿着魔法玻璃空瓶对着魔力池右键可以获得魔力鸡尾酒，饮用魔力鸡尾酒可以获得多种正面buff。");
+        add("extrabotany.page.brew1", "");
+        add("extrabotany.page.brew2", "比起普通的酿造能够多饮用两次，并且药水的持续时间也要来得更长。只需要将装有所需酿造的烧瓶和魔力鸡尾酒合成即可得到对应的秘制鸡尾酒。 ");
+        add("extrabotany.page.brew3", "将装有所需酿造的秘制鸡尾酒和爆裂紫颂果合成即可得到对应的圣水手雷。圣水手雷爆炸后会给予大范围生物较高的伤害，给予玩家其所含的正面效果而给予其他生物负面效果。 <br>可以说是几乎完美的酿造，但为什么是一颗手雷呢?");
+        add("extrabotany.page.brew4", "能够大幅提升挖掘效率，但是需要透支运气。");
+        add("extrabotany.page.brew5", "拥有超强的防御力，但行动却也变得像乌龟一样慢。");
+        add("extrabotany.page.brew6", "获得超强的力量，但是代价是什么?");
+        add("extrabotany.page.brew7", "几乎所有的正面效果!但只能维持一小会。");
+        add("extrabotany.page.brew8", "能够让人漂浮起来的药水，或许对敌人使用会更好?");
+        add("extrabotany.entry.powerglove", "强力手套");
+        add("extrabotany.page.powerglove0", "装备$(item)强力手套$(0)后，摁住鼠标左键会自动以最高攻速进行攻击。");
+        add("extrabotany.page.powerglove1", "");
+        add("extrabotany.entry.rodofdiscord", "不谐传送杖");
+        add("extrabotany.page.rodofdiscord0", "$(item)不谐传送杖$(0)可以消耗魔力传送到准心所指的位置，但每次使用后会使使用者进入反胃状态。在冷却期间继续使用会消耗使用者的生命值。");
+        add("extrabotany.page.rodofdiscord1", "");
+        add("extrabotany.entry.jingweifeather","精卫之羽");
+        add("extrabotany.page.jingweifeather0","装备$(item)精卫之羽$(0)后，每次空手攻击都可以发射出一个火球，造成伤害的时候回复1点吸收值，吸收值最多叠加到10点。");
+        add("extrabotany.page.jingweifeather1","");
         pantchouliFlower();
     }
 
@@ -209,14 +227,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.moonlight_lily", "月光百合");
         add("extrabotany.page.moonlight_lily0", "拥有能在夜晚产生$(thing)魔力$(0)的能力，但产能效率并不可观。会在3个minecraft日后枯萎。");
         add("extrabotany.page.moonlight_lily1", "愚者的播种。");
-        add("extrabotany.entry.omni_violet","全知瑾");
-        add("extrabotany.page.omni_violet0","知识就是力量，$(item)全知瑾$(0)能够将书本或成书转化为$(thing)魔力$(0)。 如果你在其周围按附魔台方式摆放上书架或者能够替代书架的方块的话能够起到催化剂的效果，增加其产魔效率。书架离得太近或太远均不会产生效果。魔力产出最多达到原来的四倍。");
-        add("extrabotany.page.omni_violet1","阿克夏记录。");
-        add("extrabotany.entry.gemini_orchid","双子兰");
-        add("extrabotany.page.gemini_orchid0","$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
-        add("extrabotany.page.gemini_orchid1","我就是力量的化身!");
-        add("extrabotany.entry.serenitian","永寂龙胆");
-        add("extrabotany.page.serenitian0","$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
-        add("extrabotany.page.serenitian1","事事皆虚空");
+        add("extrabotany.entry.omni_violet", "全知瑾");
+        add("extrabotany.page.omni_violet0", "知识就是力量，$(item)全知瑾$(0)能够将书本或成书转化为$(thing)魔力$(0)。 如果你在其周围按附魔台方式摆放上书架或者能够替代书架的方块的话能够起到催化剂的效果，增加其产魔效率。书架离得太近或太远均不会产生效果。魔力产出最多达到原来的四倍。");
+        add("extrabotany.page.omni_violet1", "阿克夏记录。");
+        add("extrabotany.entry.gemini_orchid", "双子兰");
+        add("extrabotany.page.gemini_orchid0", "$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
+        add("extrabotany.page.gemini_orchid1", "我就是力量的化身!");
+        add("extrabotany.entry.serenitian", "永寂龙胆");
+        add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
+        add("extrabotany.page.serenitian1", "事事皆虚空");
     }
 }

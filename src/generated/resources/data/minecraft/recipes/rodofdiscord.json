@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " ag",
+    " xa",
+    "x  "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:livingwood_twig"
+    },
+    "a": {
+      "item": "botania:pixie_dust"
+    },
+    "g": {
+      "item": "extrabotany:thechaos"
+    }
+  },
+  "result": {
+    "item": "extrabotany:rodofdiscord"
+  }
+}

@@ -13,7 +13,7 @@ public class AquaStone extends ItemBauble
 {
     public AquaStone(Properties props)
     {
-        super(props);
+        super(props.stacksTo(1));
     }
 
     @SubscribeEvent

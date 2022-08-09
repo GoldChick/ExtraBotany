@@ -66,6 +66,8 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.AQUA_STONE.get())
                 .add(ModItems.EARTH_STONE.get())
                 .add(ModItems.IGNIS_STONE.get())
+                .add(ModItems.POWER_GLOVE.get())
+                .add(ModItems.JINGWEI_FEATHER.get())
                 .add(ModItems.SUPREME_AERO_STONE.get())
                 .add(ModItems.SUPREME_AQUA_STONE.get())
                 .add(ModItems.SUPREME_EARTH_STONE.get())

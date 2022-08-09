@@ -1,14 +1,15 @@
 {
-  "parent": "extrabotany:main/rune_pickup",
+  "parent": "extrabotany:main/thechaos_craft",
   "display": {
     "icon": {
-      "item": "botania:terrasteel_ingot"
+      "item": "extrabotany:rodofdiscord",
+      "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.extrabotany:terrasteelPickup.title"
+      "translate": "advancement.extrabotany:rodofdiscord_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:terrasteelPickup.desc"
+      "translate": "advancement.extrabotany:rodofdiscord_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +17,13 @@
     "hidden": false
   },
   "criteria": {
-    "terrasteel": {
+    "rodofdiscord": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "botania:terrasteel_ingot"
+              "extrabotany:rodofdiscord"
             ]
           }
         ]
@@ -31,7 +32,7 @@
   },
   "requirements": [
     [
-      "terrasteel"
+      "rodofdiscord"
     ]
   ]
 }

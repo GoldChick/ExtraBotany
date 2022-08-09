@@ -43,7 +43,7 @@ public class DeathRing extends ItemBauble implements ManaItemHandler
                         living.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 1));
                         living.addEffect(new MobEffectInstance(MobEffects.UNLUCK, 60, 1));
                         living.hurt(DamageSource.MAGIC, 0.5F);
-                        //to do: no dmg towards animals
+                        //TODO:不对动物造成伤害（和平友好之证
                     }
                 }
             }

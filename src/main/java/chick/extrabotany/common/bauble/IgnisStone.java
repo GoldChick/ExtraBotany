@@ -15,7 +15,7 @@ public class IgnisStone extends ItemBauble
 {
 
     public IgnisStone(Properties props) {
-        super(props);
+        super(props.stacksTo(1));
     }
 
     @Override

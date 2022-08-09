@@ -1,11 +1,13 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.datagen.ModBlockTags;
 import chick.extrabotany.forge.client.model.ModLayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
+import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -37,6 +39,7 @@ public class ForgeClientInitializer
     public static void clientInit(FMLClientSetupEvent evt)
     {
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
+        NetworkHandler.registerMessage();
     }
 
     @SubscribeEvent
@@ -50,6 +53,7 @@ public class ForgeClientInitializer
     {
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
+
     }
 
     @SubscribeEvent

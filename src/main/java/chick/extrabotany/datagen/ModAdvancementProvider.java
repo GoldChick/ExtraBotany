@@ -12,30 +12,24 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.HashCache;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
 import vazkii.botania.common.advancements.*;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.ModSubtiles;
-import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
 import vazkii.botania.common.entity.ModEntities;
 import vazkii.botania.common.item.ItemLexicon;
-import vazkii.botania.common.item.equipment.bauble.ItemFlightTiara;
 import vazkii.botania.common.lib.ModTags;
 import vazkii.botania.mixin.AccessorAdvancementProvider;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.IntStream;
 
 
 public class ModAdvancementProvider extends AdvancementProvider
@@ -85,7 +79,7 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .parent(nightmarefuel_eat)
                 .addCriterion("pickup", onPickup(ModItems.THE_CHAOS.get()))
                 .save(consumer, mainId("thechaos_craft"));
-
+/*
         Advancement runePickup = Advancement.Builder.advancement()
                 .display(simple(ModBlocks.runeAltar, "runePickup", FrameType.TASK))
                 .parent(thechaos_craft)
@@ -110,13 +104,19 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("guardian", KilledTrigger.TriggerInstance
                         .playerKilledEntity(EntityPredicate.Builder.entity().of(ModEntities.DOPPLEGANGER)))
                 .save(consumer, mainId("gaia_guardian_kill"));
-
+*/
         //parent: nightmarefuel
         Advancement.Builder.advancement()
                 .display(simple(ModItems.MANA_READER.get(), "manareader_craft", FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("manareader", onPickup(ModItems.MANA_READER.get()))
                 .save(consumer, mainId("manareader_craft"));
+        //parent: thechaos
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.ROD_OF_DISCORD.get(), "rodofdiscord_craft", FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion("rodofdiscord", onPickup(ModItems.ROD_OF_DISCORD.get()))
+                .save(consumer, mainId("rodofdiscord_craft"));
 
 /*
         // Parent: root
@@ -185,18 +185,6 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("elven_lexicon", elvenLexicon)
                 .requirements(RequirementsStrategy.OR)
                 .save(consumer, mainId("nightmarefuel_eat_lexicon"));
-        Advancement.Builder.advancement()
-                .parent(nightmarefuel_eat)
-                .addCriterion("apothecary", onPickup(ModBlocks.defaultAltar))
-                .addCriterion("elven_lexicon", elvenLexicon)
-                .requirements(RequirementsStrategy.OR)
-                .save(consumer, mainId("apothecary_pickup"));
-        Advancement.Builder.advancement()
-                .parent(nightmarefuel_eat)
-                .addCriterion("daisy", onPickup(ModSubtiles.pureDaisy))
-                .addCriterion("elven_lexicon", elvenLexicon)
-                .requirements(RequirementsStrategy.OR)
-                .save(consumer, mainId("pure_daisy_pickup"));
 //
         Advancement.Builder.advancement()
                 .parent(nightmarefuel_eat)
@@ -205,6 +193,7 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .requirements(RequirementsStrategy.OR)
                 .save(consumer, mainId("thechaos_craft_lexicon"));
 //
+        /*
         Advancement.Builder.advancement()
                 .parent(nightmarefuel_eat)
                 .addCriterion("altar", onPickup(ModBlocks.runeAltar))
@@ -222,6 +211,7 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .parent(elfPortalOpen)
                 .addCriterion("lexicon", elvenLexicon)
                 .save(consumer, mainId("elf_lexicon_pickup"));
+        */
     }
 
     private static void challengeAdvancements(Consumer<Advancement> consumer)

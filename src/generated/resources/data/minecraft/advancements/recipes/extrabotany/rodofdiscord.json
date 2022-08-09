@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:rodofdiscord"
+    ]
+  },
+  "criteria": {
+    "thechaos": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:thechaos"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:rodofdiscord"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "thechaos",
+      "has_the_recipe"
+    ]
+  ]
+}

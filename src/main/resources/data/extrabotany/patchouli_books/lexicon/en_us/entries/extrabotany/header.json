@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.header",
   "category": "extrabotany:extrabotany",
-  "icon": "extrabotany:obsidian_apple",
+  "icon": "extrabotany:pylon",
   "priority": true,
   "pages": [
     {

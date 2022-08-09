@@ -41,11 +41,14 @@ public class ModRunicAltarRecipes extends RecipeProvider
         Ingredient nightmare = Ingredient.of(ModItems.NIGHTMAREFUEL_PROP.get());
         Ingredient spirit = Ingredient.of(ModItems.SPIRITFUEL_PROP.get());
         Ingredient spirit_frag = Ingredient.of(ModItems.SPIRIT_PROP.get());
+        Ingredient cloth = Ingredient.of(vazkii.botania.common.item.ModItems.manaweaveCloth);
+
         Ingredient air = Ingredient.of(vazkii.botania.common.item.ModItems.runeAir);
         Ingredient earth = Ingredient.of(vazkii.botania.common.item.ModItems.runeEarth);
         Ingredient water = Ingredient.of(vazkii.botania.common.item.ModItems.runeWater);
         Ingredient fire = Ingredient.of(vazkii.botania.common.item.ModItems.runeFire);
         Ingredient envy = Ingredient.of(vazkii.botania.common.item.ModItems.runeEnvy);
+        Ingredient wrath = Ingredient.of(vazkii.botania.common.item.ModItems.runeWrath);
 
         consumer.accept(new RunicAltar(idFor("gildedpotato"), new ItemStack(ModItems.GILDED_POTATO.get()), 2000, Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.GOLD_INGOT)));
         consumer.accept(new RunicAltar(idFor("shadowium1"), new ItemStack(ModItems.SHADOW_INGOT.get()), 4200, mashed_potato, element_steel, nightmare, nightmare, nightmare));
@@ -57,6 +60,7 @@ public class ModRunicAltarRecipes extends RecipeProvider
         consumer.accept(new RunicAltar(idFor("earthstone"), new ItemStack(ModItems.EARTH_STONE.get()), 2000, earth, earth, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("ignisstone"), new ItemStack(ModItems.IGNIS_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("deathring"), new ItemStack(ModItems.DEATH_RING.get()), 2000, envy, mana_diamond, mana_steel, mana_steel, Ingredient.of(Items.WITHER_SKELETON_SKULL)));
+        consumer.accept(new RunicAltar(idFor("powerglove"), new ItemStack(ModItems.POWER_GLOVE.get()), 3200, cloth, cloth,cloth, mana_diamond, wrath));
 
     }
 

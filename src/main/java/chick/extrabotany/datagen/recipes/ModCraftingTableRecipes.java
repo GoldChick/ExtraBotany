@@ -3,6 +3,7 @@ package chick.extrabotany.datagen.recipes;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.crafting.CocktailRecipe;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -32,6 +33,8 @@ public class ModCraftingTableRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        SpecialRecipeBuilder.special(CocktailRecipe.SERIALIZER)
+                .save(consumer, "cock_tail");
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
                 .pattern("azx")
@@ -61,6 +64,28 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.manaGlass))
                 .save(consumer, "empty_bottle");
+        ShapedRecipeBuilder.shaped(ModItems.ROD_OF_DISCORD.get())
+                .pattern(" ag")
+                .pattern(" xa")
+                .pattern("x  ")
+                .define('x', vazkii.botania.common.item.ModItems.livingwoodTwig)
+                .define('a', vazkii.botania.common.item.ModItems.pixieDust)
+                .define('g', ModItems.THE_CHAOS.get())
+                .group(MODID)
+                .unlockedBy("thechaos", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.THE_CHAOS.get()))
+                .save(consumer, "rodofdiscord");
+        ShapedRecipeBuilder.shaped(ModItems.JINGWEI_FEATHER.get())
+                .pattern("gag")
+                .pattern("bxb")
+                .pattern("geg")
+                .define('x', Items.FEATHER)
+                .define('b', vazkii.botania.common.item.ModItems.runeFire)
+                .define('a', vazkii.botania.common.item.ModItems.pixieDust)
+                .define('g', vazkii.botania.common.item.ModItems.redQuartz)
+                .define('e', vazkii.botania.common.item.ModItems.lensFire)
+                .group(MODID)
+                .unlockedBy("feather", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FEATHER))
+                .save(consumer, "jingweifeather");
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
         armorRecipes(consumer);

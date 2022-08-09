@@ -1,0 +1,18 @@
+{
+  "name": "extrabotany.entry.powerglove",
+  "category": "botania:baubles",
+  "icon": "extrabotany:powerglove",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/runic_altar_pickup",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.powerglove0"
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "extrabotany.page.powerglove1",
+      "recipe": "extrabotany:runic_altar/powerglove"
+    }
+  ]
+}

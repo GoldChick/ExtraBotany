@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "gag",
+    "bxb",
+    "geg"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:feather"
+    },
+    "b": {
+      "item": "botania:rune_fire"
+    },
+    "a": {
+      "item": "botania:pixie_dust"
+    },
+    "g": {
+      "item": "botania:quartz_red"
+    },
+    "e": {
+      "item": "botania:lens_fire"
+    }
+  },
+  "result": {
+    "item": "extrabotany:jingweifeather"
+  }
+}

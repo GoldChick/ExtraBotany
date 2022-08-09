@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:jingweifeather"
+    ]
+  },
+  "criteria": {
+    "feather": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:feather"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:jingweifeather"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "feather",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -48,7 +48,7 @@ public class EntityAuraFire extends EntityProjectileBase
 
                 // float dmg = ExtraBotanyAPI.calcDamage(5F, player);
                 // DamageHandler.INSTANCE.dmg(result.getEntity(), player, dmg, DamageHandler.INSTANCE.NETURAL_PIERCING);
-                NetworkHandler.INSTANCE.sendToServer(new DamageMessage(5, 2, result.getEntity().getId()));
+                NetworkHandler.INSTANCE.sendToServer(new DamageMessage(5, 3, result.getEntity().getId()));
                 player.setAbsorptionAmount(Math.min(10, player.getAbsorptionAmount() + 1F));
                 discard();
             }

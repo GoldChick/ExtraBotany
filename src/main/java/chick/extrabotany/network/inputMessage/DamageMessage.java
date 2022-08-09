@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 public class DamageMessage
 {
     private static int damageNum;
-    private static int damageSource;   // 0=generic 1=Magic 2=Magic Fire
+    private static int damageSource;   // 0=Generic 1=Magic 2=Magic 3=On Fire
     private static int entityNum;
 
     public DamageMessage(int num, int source, int entity)
@@ -37,7 +37,7 @@ public class DamageMessage
             ServerLevel level = context.getSender().getLevel();
 
             level.getEntity(entityNum).hurt(getSource(), damageNum);
-            if (damageSource == 2)
+            if (damageSource == 3)
                 level.getEntity(entityNum).setSecondsOnFire(5);
         });
         context.setPacketHandled(true);
@@ -49,6 +49,7 @@ public class DamageMessage
                 {
                     default -> DamageSource.GENERIC;
                     case 1, 2 -> DamageSource.MAGIC;
+                    case 3 -> DamageSource.ON_FIRE;
                 };
     }
 }

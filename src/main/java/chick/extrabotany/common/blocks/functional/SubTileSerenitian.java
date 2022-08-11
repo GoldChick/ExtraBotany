@@ -21,14 +21,9 @@ public class SubTileSerenitian extends TileEntityFunctionalFlower
 {
     private static final int RANGE = 5;
 
-    protected SubTileSerenitian(BlockEntityType<?> type, BlockPos pos, BlockState state)
-    {
-        super(type, pos, state);
-    }
-
     public SubTileSerenitian(BlockPos pos, BlockState state)
     {
-        this(ModSubtiles.SERENITIAN, pos, state);
+        super(ModSubtiles.SERENITIAN, pos, state);
     }
 
     @Override
@@ -53,6 +48,7 @@ public class SubTileSerenitian extends TileEntityFunctionalFlower
                 }
             }
     }
+
     @Override
     public boolean acceptsRedstone()
     {

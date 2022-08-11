@@ -1,7 +1,7 @@
 package chick.extrabotany.network.inputMessage;
 
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.bauble.JingweiFeather;
+import chick.extrabotany.common.baubles.JingweiFeather;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;

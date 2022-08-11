@@ -6,12 +6,7 @@ import net.minecraft.world.food.FoodProperties;
 
 public class NormalFoods
 {
-    public static final FoodProperties OBSIDIAN_APPLE = (new FoodProperties.Builder()).nutrition(20).saturationMod(0.3F)
-            .effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 4), 1f)
-            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20, 1), 1f)
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60 * 20, 0), 1f)
-            .alwaysEat()
-            .build();
+    public static final FoodProperties FRIED_CHICKEN = (new FoodProperties.Builder()).alwaysEat().nutrition(6).saturationMod(0.5F).build();
     public static final FoodProperties SPIRITFUEL_PROP = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F)
             .alwaysEat()
             .effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 2), 1.0F)

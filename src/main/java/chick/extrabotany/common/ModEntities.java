@@ -1,6 +1,7 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.entities.EntitySplashGrenade;
 import chick.extrabotany.common.entities.projectile.EntityAuraFire;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -29,13 +30,23 @@ public class ModEntities
             .setTrackingRange(64)
             .setShouldReceiveVelocityUpdates(true)
             .build(ExtraBotany.MODID + "aurafire");
+    public static final EntityType<EntitySplashGrenade> SPLASH_GRENADE = EntityType.Builder
+            .<EntitySplashGrenade>of(EntitySplashGrenade::new, MobCategory.MISC)
+            .sized(0.05F, 0.05F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(ExtraBotany.MODID + "splashgrenade");
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> r)
     {
         r.accept(DOPPLEGANGER, new ResourceLocation(ExtraBotany.MODID, "doppleganger"));
         r.accept(AURAFIRE, new ResourceLocation(ExtraBotany.MODID, "aurafire"));
+        r.accept(SPLASH_GRENADE, new ResourceLocation(ExtraBotany.MODID, "splashgrenade"));
     }
-    public static void registerAttributes(BiConsumer<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> consumer) {
+
+    public static void registerAttributes(BiConsumer<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> consumer)
+    {
         consumer.accept(ModEntities.DOPPLEGANGER, Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.4)
                 .add(Attributes.MAX_HEALTH, EntityDoppleganger.MAX_HP)

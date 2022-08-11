@@ -78,11 +78,20 @@ public class ModItemTags extends ItemTagsProvider
         ;
 
         tag(accessory("belt"));
-        tag(accessory("body"));
+        tag(accessory("body"))
+                .add(ModItems.RED_SCARF.get())
+        ;
         tag(accessory("charm"));
-        tag(accessory("head"));
+        tag(accessory("head"))
+                .add(ModItems.FOX_EAR.get())
+                .add(ModItems.FOX_MASK.get())
+                .add(ModItems.SUPER_CROWN.get())
+                .add(ModItems.PYLON.get())
+                .add(ModItems.STONE_MASK.get())
+                .add(ModItems.THUG_LIFE.get())
+                .add(ModItems.BLACK_GLASSES.get())
+        ;
         tag(accessory("necklace"));
-
     }
 
     private static TagKey<Item> accessory(String name)

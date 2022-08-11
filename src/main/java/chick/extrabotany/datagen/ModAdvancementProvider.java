@@ -63,7 +63,7 @@ public class ModAdvancementProvider extends AdvancementProvider
 
         // Main progression line
         Advancement root = Advancement.Builder.advancement()
-                .display(rootDisplay(vazkii.botania.common.item.ModItems.lexicon, "advancement.extrabotany:root.title",
+                .display(rootDisplay(ModItems.PYLON.get(), "advancement.extrabotany:root.title",
                         "advancement.extrabotany:root.desc", prefix("textures/block/yeluogui_ore.png")))
                 .addCriterion("nightmare", onPickup(ModItems.NIGHTMAREFUEL_PROP.get()))
                 .save(consumer, mainId("root"));

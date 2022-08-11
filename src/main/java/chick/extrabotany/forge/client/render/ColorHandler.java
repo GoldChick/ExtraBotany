@@ -57,7 +57,7 @@ public final class ColorHandler
             int b = Math.max(0, Math.min(255, (color & 0xFF) + add));
 
             return r << 16 | g << 8 | b;
-        }, ModItems.COCK_TAIL.get());
+        }, ModItems.COCK_TAIL.get(), ModItems.SPLASH_GRENADE.get());
 
         //mana len render
                     /*

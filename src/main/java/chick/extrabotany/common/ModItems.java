@@ -1,14 +1,15 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.bauble.*;
+import chick.extrabotany.common.baubles.*;
+import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
+import chick.extrabotany.common.brews.Cocktail;
+import chick.extrabotany.common.brews.SplashGrenade;
 import chick.extrabotany.common.crafting.CocktailRecipe;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.items.*;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
-import chick.extrabotany.common.tools.armors.ItemArmor;
 import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
-import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,7 +18,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.botania.common.block.ModPatterns;
 
 import java.util.function.BiConsumer;
 
@@ -42,12 +42,23 @@ public class ModItems
     public static final RegistryObject<Item> EMPTY_BOTTLE = ITEMS.register("empty_bottle", () -> new EmptyGlassBottle(ITEM_PROPERTIES));
     public static final RegistryObject<Item> MANA_DRINK = ITEMS.register("mana_drink", () -> new ManaDrink(new Item.Properties().food(NormalFoods.MANA_DRINK).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
+    public static final RegistryObject<Item> SPLASH_GRENADE = ITEMS.register("splash_grenade", () -> new SplashGrenade(ITEM_PROPERTIES.stacksTo(32)));
+    public static final RegistryObject<Item> HERO_MEDAL = ITEMS.register("heromedal", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("friedchicken", () -> new Item(new Item.Properties().food(NormalFoods.FRIED_CHICKEN).tab(ExtraBotany.ITEM_GROUP)));
     /*
      *
      * these are baubles for curios mod
      *
      */
-    public static final RegistryObject<Item> PYLON = ITEMS.register("pylon", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> PYLON = ITEMS.register("pylon", () -> new Cosmetic(Cosmetic.Variant.Pylon, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FOX_EAR = ITEMS.register("foxear", () -> new Cosmetic(Cosmetic.Variant.FoxEar, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FOX_MASK = ITEMS.register("foxmask", () -> new Cosmetic(Cosmetic.Variant.FoxMask, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SUPER_CROWN = ITEMS.register("supercrown", () -> new Cosmetic(Cosmetic.Variant.SuperCrown, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> RED_SCARF = ITEMS.register("redscarf", () -> new Cosmetic(Cosmetic.Variant.RedScarf, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> BLACK_GLASSES = ITEMS.register("blackglasses", () -> new Cosmetic(Cosmetic.Variant.BlackGlasses, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> STONE_MASK = ITEMS.register("stonemask", () -> new Cosmetic(Cosmetic.Variant.StoneMask, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> THUG_LIFE = ITEMS.register("thuglife", () -> new Cosmetic(Cosmetic.Variant.ThugLife, ITEM_PROPERTIES));
+
     public static final RegistryObject<Item> DEATH_RING = ITEMS.register("deathring", () -> new DeathRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> POWER_GLOVE = ITEMS.register("powerglove", () -> new PowerGlove(ITEM_PROPERTIES));
     public static final RegistryObject<Item> JINGWEI_FEATHER = ITEMS.register("jingweifeather", () -> new JingweiFeather(ITEM_PROPERTIES));

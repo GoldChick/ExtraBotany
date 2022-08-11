@@ -34,6 +34,15 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.THE_END.get(), "终末物质");
         add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
 
+        add(ModItems.FOX_EAR.get(), "樱樱耳");
+        add(ModItems.FOX_MASK.get(), "附有记忆的面具");
+        add(ModItems.PYLON.get(), "模拟人生");
+        add(ModItems.SUPER_CROWN.get(), "超级王冠");
+        add(ModItems.THUG_LIFE.get(), "THUG LIFE");
+        add(ModItems.BLACK_GLASSES.get(),"黑框眼镜");
+        add(ModItems.RED_SCARF.get(),"红领巾");
+        add(ModItems.STONE_MASK.get(),"石鬼面");
+
         add(ModItems.DEATH_RING.get(), "诅咒指环");
         add(ModItems.POWER_GLOVE.get(), "强力手套");
         add(ModItems.JINGWEI_FEATHER.get(), "精卫之羽");
@@ -56,11 +65,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_CHEST.get(), "哥布林杀手胸甲");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "哥布林杀手护腿");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "哥布林杀手靴子");
+
+        add(ModItems.HERO_MEDAL.get(), "英雄勋章");
         add(ModItems.EMPTY_BOTTLE.get(), "魔法玻璃空瓶");
         add(ModItems.MANA_DRINK.get(), "魔力鸡尾酒");
         add(ModItems.COCK_TAIL.get(), "装有%s (%s)秘制鸡尾酒");
         add("item.extrabotany.infinitewine", "装有%s (%s)无限之酒");
-        add("item.extrabotany.splashgrenade", "装有%s 圣水手雷");
+        add(ModItems.SPLASH_GRENADE.get(), "装有%s 圣水手雷");
 
         add("extrabotany.brew.revolution", "革命");
         add("extrabotany.brew.allmighty", "全能");
@@ -86,9 +97,16 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.geminiorchid, "双子兰");
         add(ModSubtiles.geminiorchidFloating, "浮空双子兰");
         add(ModSubtiles.geminiorchid.getDescriptionId() + ".reference", "为什么乌鸦像写字台？");
+        add(ModSubtiles.bellflower, "风铃草");
+        add(ModSubtiles.bellflowerFloating, "浮空风铃草");
+        add(ModSubtiles.bellflower.getDescriptionId() + ".reference", "迷失的风");
+
         add(ModSubtiles.serenitian, "永寂龙胆");
         add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
         add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "无念，断绝");
+        add(ModSubtiles.annoying, "神烦花");
+        add(ModSubtiles.annoyingFloating, "浮空神烦花");
+        add(ModSubtiles.annoying.getDescriptionId() + ".reference", "摸了");
 
     }
 
@@ -213,9 +231,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.rodofdiscord", "不谐传送杖");
         add("extrabotany.page.rodofdiscord0", "$(item)不谐传送杖$(0)可以消耗魔力传送到准心所指的位置，但每次使用后会使使用者进入反胃状态。在冷却期间继续使用会消耗使用者的生命值。");
         add("extrabotany.page.rodofdiscord1", "");
-        add("extrabotany.entry.jingweifeather","精卫之羽");
-        add("extrabotany.page.jingweifeather0","装备$(item)精卫之羽$(0)后，每次空手攻击都可以发射出一个火球，造成伤害的时候回复1点吸收值，吸收值最多叠加到10点。");
-        add("extrabotany.page.jingweifeather1","");
+        add("extrabotany.entry.jingweifeather", "精卫之羽");
+        add("extrabotany.page.jingweifeather0", "装备$(item)精卫之羽$(0)后，每次空手攻击都可以发射出一个火球，造成伤害的时候回复1点吸收值，吸收值最多叠加到10点。");
+        add("extrabotany.page.jingweifeather1", "");
+        add("extrabotany.foxmaskinfo0", "与君相别离，不知何日是归期，我如朝露转瞬晞");
+        add("extrabotany.foxmaskinfo1", "如今面具和花散里分开了");
+        add("extrabotany.foxmaskinfo2", "派蒙也不会叫她面具巫女小姐了");
         pantchouliFlower();
     }
 
@@ -233,8 +254,17 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.gemini_orchid", "双子兰");
         add("extrabotany.page.gemini_orchid0", "$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
         add("extrabotany.page.gemini_orchid1", "我就是力量的化身!");
+        add("extrabotany.entry.bell_flower", "风铃花");
+        add("extrabotany.page.bell_flower0", "能将风能转化为$(thing)魔力$(0)的花，需要摆放在露天的地方，海拔越高效率越高。但它仍会枯萎。");
+        add("extrabotany.page.bell_flower1", "只有风暴才能击倒大树。");
+
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
         add("extrabotany.page.serenitian1", "事事皆虚空");
+        add("extrabotany.entry.annoying_flower", "神烦花");
+        add("extrabotany.page.annoying_flower0", "在$(item)神烦花$(0)周围摆放上一个带水的花药台，它就可以消耗$(thing)魔力$(0)来自动钓鱼。如果给它投喂香香鸡的话，它接下来几次的工作效率会得到大幅提高并有更高概率钓到稀有物品。");
+        add("extrabotany.page.annoying_flower1", "光与热。");
+        add("extrabotany.page.annoying_flower2", "浸泡过$(thing)魔力$(0)的香香鸡能够回复更多的饱食度。");
+        add("extrabotany.page.annoying_flower3", "毕竟我也不是什么恶魔。");
     }
 }

@@ -86,6 +86,43 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("feather", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FEATHER))
                 .save(consumer, "jingweifeather");
+        ShapedRecipeBuilder.shaped(ModItems.RED_SCARF.get())
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('a', vazkii.botania.common.item.ModItems.redPetal)
+                .group(MODID)
+                .unlockedBy("redPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.redPetal))
+                .save(consumer, "redscarf");
+        ShapedRecipeBuilder.shaped(ModItems.FOX_EAR.get())
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('a', vazkii.botania.common.item.ModItems.pinkPetal)
+                .group(MODID)
+                .unlockedBy("pinkPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.pinkPetal))
+                .save(consumer, "foxear");
+        ShapedRecipeBuilder.shaped(ModItems.BLACK_GLASSES.get())
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('a', vazkii.botania.common.item.ModItems.blackPetal)
+                .group(MODID)
+                .unlockedBy("blackPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.blackPetal))
+                .save(consumer, "blackglasses");
+        ShapedRecipeBuilder.shaped(ModItems.STONE_MASK.get())
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('a', vazkii.botania.common.item.ModItems.grayPetal)
+                .group(MODID)
+                .unlockedBy("grayPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.grayPetal))
+                .save(consumer, "stonemask");
+
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
         armorRecipes(consumer);

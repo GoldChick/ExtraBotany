@@ -48,6 +48,7 @@ public class ModBlockTags extends BlockTagsProvider
         ;
         tag(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS)
                 .add(ModSubtiles.serenitian)
+                .add(ModSubtiles.annoying)
         ;
         tag(ModTags.Blocks.SPECIAL_FLOATING_FLOWERS).add(registry.stream().filter(EXBOTANY_BLOCK)
                 .filter(b -> b instanceof BlockFloatingSpecialFlower)
@@ -55,16 +56,6 @@ public class ModBlockTags extends BlockTagsProvider
                 .toArray(Block[]::new))
         ;
 
-    }
-
-    public static void setRenderType()
-    {
-        setRenderLayer(ModSubtiles.sunshinelily, RenderType.cutout());
-        setRenderLayer(ModSubtiles.moonlightlily, RenderType.cutout());
-        setRenderLayer(ModSubtiles.omniviolet, RenderType.cutout());
-        setRenderLayer(ModSubtiles.geminiorchid, RenderType.cutout());
-
-        setRenderLayer(ModSubtiles.serenitian, RenderType.cutout());
     }
     @Override
     public String getName()

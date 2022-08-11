@@ -1,5 +1,7 @@
 package chick.extrabotany.common.items;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.mojang.math.Vector3d;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -8,7 +10,10 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +23,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.xplat.IXplatAbstractions;
+
+import java.util.UUID;
+
+import static vazkii.botania.common.item.equipment.bauble.ItemBauble.getBaubleUUID;
 
 public class RodOfDiscord extends Item
 {
@@ -26,6 +36,17 @@ public class RodOfDiscord extends Item
     public RodOfDiscord(Properties properties)
     {
         super(properties.durability(81));
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack)
+    {
+        Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
+        if (slot == EquipmentSlot.MAINHAND)
+        {
+            attributes.put(IXplatAbstractions.INSTANCE.getReachDistanceAttribute(), new AttributeModifier(getBaubleUUID(stack), "Rod of Discord", 30, AttributeModifier.Operation.ADDITION));
+        }
+        return attributes;
     }
 
     @Override

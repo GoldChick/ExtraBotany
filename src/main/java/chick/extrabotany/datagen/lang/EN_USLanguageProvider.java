@@ -34,6 +34,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.THE_END.get(), "The End");
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
 
+        add(ModItems.FOX_EAR.get(), "Fox Ear");
+        add(ModItems.FOX_MASK.get() ,"Mask with Memory");
+        add(ModItems.PYLON.get(), "Sims");
+        add(ModItems.SUPER_CROWN.get(), "Super Crown");
+        add(ModItems.THUG_LIFE.get(), "THUG LIFE");
+        add(ModItems.BLACK_GLASSES.get(),"Black Glasses");
+        add(ModItems.RED_SCARF.get(),"Red Scarf");
+        add(ModItems.STONE_MASK.get(),"Stone Mask");
+
         add(ModItems.DEATH_RING.get(), "Curse Ring");
         add(ModItems.POWER_GLOVE.get(), "Power Glove");
         add(ModItems.JINGWEI_FEATHER.get(), "Feather of Jingwei");
@@ -58,11 +67,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
 
+        add(ModItems.HERO_MEDAL.get(), "Hero Medal");
         add(ModItems.EMPTY_BOTTLE.get(), "Empty Mana Glass Bottle");
         add(ModItems.MANA_DRINK.get(), "Mana Cocktail");
         add(ModItems.COCK_TAIL.get(), "Special-made Cocktail of %s (%s)");
-        add("item.extrabotany.infinitewine","Infinite Wine of %s (%s)");
-        add("item.extrabotany.splashgrenade","Holy Grenade of %s");
+        add("item.extrabotany.infinitewine", "Infinite Wine of %s (%s)");
+        add(ModItems.SPLASH_GRENADE.get(), "Holy Grenade of %s");
         add("extrabotany.brew.revolution", "Revolution");
         add("extrabotany.brew.allmighty", "All-mighty");
         add("extrabotany.brew.shell", "Shell");
@@ -88,9 +98,16 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.geminiorchid, "Gemini Orchid");
         add(ModSubtiles.geminiorchidFloating, "Floating Gemini Orchid");
         add(ModSubtiles.geminiorchid.getDescriptionId() + ".reference", "Why is a raven like a writing desk?");
+        add(ModSubtiles.bellflower, "Bell Flower");
+        add(ModSubtiles.bellflowerFloating, "Floating Bell Flower");
+        add(ModSubtiles.bellflower.getDescriptionId() + ".reference", "Lost wind");
+
         add(ModSubtiles.serenitian, "Serenitian");
         add(ModSubtiles.serenitianFloating, "Floating Serenitian");
         add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "Torn to oblivion");
+        add(ModSubtiles.annoying,"Annoying Flower");
+        add(ModSubtiles.annoyingFloating,"Floating Annoying Flower");
+        add(ModSubtiles.annoying.getDescriptionId()+".reference","Time to rest");
     }
 
     private void langAdvancement()
@@ -208,15 +225,19 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.brew6", "Gain super strength, but what's the cost?");
         add("extrabotany.page.brew7", "Almost all positive effects! But wouldn't last long.");
         add("extrabotany.page.brew8", "One can make you floating, may be better if used on enemies?");
-        add("extrabotany.entry.powerglove","Power Glove");
-        add("extrabotany.page.powerglove0","$(item)Power Glove$(0) allows you to auto leftclick at maximum attack speed if you keep pressing your mouse. It also slightly increase your attack speed.");
-        add("extrabotany.page.powerglove1","");
-        add("extrabotany.entry.rodofdiscord","Rod of Discord");
-        add("extrabotany.page.rodofdiscord0","$(item)Rod of Discord$(0) could teleport you to where you are aiming at with nausea effect. If you try to use it when it is cooling down, you will receive damage.");
-        add("extrabotany.page.rodofdiscord1","");
-        add("extrabotany.entry.jingweifeather","Feather of Jingwei");
-        add("extrabotany.page.jingweifeather0","Equipped with $(item)Feather of Jingwei$(0), every empty-handed punch will shoot a fire ball which could recover you 1 absorption and stack to 10 at max.");
-        add("extrabotany.page.jingweifeather1","");
+        add("extrabotany.entry.powerglove", "Power Glove");
+        add("extrabotany.page.powerglove0", "$(item)Power Glove$(0) allows you to auto leftclick at maximum attack speed if you keep pressing your mouse. It also slightly increase your attack speed.");
+        add("extrabotany.page.powerglove1", "");
+        add("extrabotany.entry.rodofdiscord", "Rod of Discord");
+        add("extrabotany.page.rodofdiscord0", "$(item)Rod of Discord$(0) could teleport you to where you are aiming at with nausea effect. If you try to use it when it is cooling down, you will receive damage.");
+        add("extrabotany.page.rodofdiscord1", "");
+        add("extrabotany.entry.jingweifeather", "Feather of Jingwei");
+        add("extrabotany.page.jingweifeather0", "Equipped with $(item)Feather of Jingwei$(0), every empty-handed punch will shoot a fire ball which could recover you 1 absorption and stack to 10 at max.");
+        add("extrabotany.page.jingweifeather1", "");
+        //TODO:花散里面具英文
+        add("extrabotany.foxmaskinfo0","");
+        add("extrabotany.foxmaskinfo1","");
+        add("extrabotany.foxmaskinfo2","");
         pantchouliFlower();
     }
 
@@ -234,8 +255,19 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.gemini_orchid", "Gemini Orchid");
         add("extrabotany.page.gemini_orchid0", "A $(item)Gemini Orchid$(0) is like a thermoelectric generator. If you place a block of lava in one of eight blocks nearby, and then place a block of water in another position, it will begin to produce mana. The higher the gap between two blocks' temperatures, the quicker mana will be generated. Since it is a passive flower, it will decay after working for 3 days in minecraft..");
         add("extrabotany.page.gemini_orchid1", "I am power incarnate!");
+        add("extrabotany.entry.bell_flower","Bell Flower");
+        add("extrabotany.page.bell_flower0","When placed in the open, the Bell Flower creates $(thing)Mana$(0) from wind. The higher it is, the more mana it produces. A Livingrock Pedestal nearby with a Nature Orb in it can increase its mana generation efficiency. Since it is a passive flower, it will decay.");
+        add("extrabotany.page.bell_flower1","Only the storms can knock down the trees.");
+
+
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");
         add("extrabotany.page.serenitian1", "All shall fade away");
+        add("extrabotany.entry.annoying_flower","Annoying Flower");
+        add("extrabotany.page.annoying_flower0","The Annoying Flower can fish in nearby Petal Apothecary filled with water. For that process it will use mana. Feeding Fried Chicken Legs to it will significantly increase the efficiency and the chance of getting treasure.");
+        add("extrabotany.page.annoying_flower1","RK800.");
+        add("extrabotany.page.annoying_flower2","Cooked Chicken can be fried by soaking it in $(thing)Mana$(0). Fried Chicken Legs restore more hunger and give saturation.");
+        add("extrabotany.page.annoying_flower3","Neither an angel or a devil.");
+
     }
 }

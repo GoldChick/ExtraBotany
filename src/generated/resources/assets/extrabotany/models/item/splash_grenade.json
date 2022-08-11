@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "extrabotany:item/splash_grenade",
+    "layer1": "extrabotany:item/splash_grenade1"
+  }
+}

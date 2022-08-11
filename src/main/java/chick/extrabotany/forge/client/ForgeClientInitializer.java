@@ -1,10 +1,8 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
-import chick.extrabotany.datagen.ModBlockTags;
 import chick.extrabotany.forge.client.model.ModLayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
@@ -53,7 +51,6 @@ public class ForgeClientInitializer
     {
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
-
     }
 
     @SubscribeEvent
@@ -61,7 +58,7 @@ public class ForgeClientInitializer
     {
         event.enqueueWork(() ->
         {
-            ModBlockTags.setRenderType();
+            ModBlockStates.setRenderType();
             //to make them transparent
         });
     }
@@ -69,12 +66,14 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void registerItemColors(ColorHandlerEvent.Item evt)
     {
+        //for potions
         ColorHandler.submitItems(evt.getItemColors()::register);
     }
 
 
     private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
     {
+        //for wand
         var ret = new IdentityHashMap<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>();
         ModSubtiles.registerWandHudCaps((factory, types) ->
         {
@@ -88,6 +87,7 @@ public class ForgeClientInitializer
 
     private static void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
     {
+        //for wand
         var be = e.getObject();
 
         var makeWandHud = WAND_HUD.get().get(be.getType());

@@ -31,11 +31,10 @@ public class ModManaInfusionRecipes extends RecipeProvider
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
         //test
-        //consumer.accept(new ManaInfusion(idFor("ironingot"), new ItemStack(Items.IRON_INGOT), Ingredient.of(Items.OBSIDIAN), 10000));
         //consumer.accept(ManaInfusion.conjuration(idFor("obsidian_dupe"), new ItemStack(Items.OBSIDIAN, 2), Ingredient.of(Items.OBSIDIAN), 10000));
         //consumer.accept(ManaInfusion.test(idFor("test"), new ItemStack(Items.OBSIDIAN, 64), Ingredient.of(Items.OBSIDIAN), 10000));
-
         consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMAREFUEL_PROP.get()), Ingredient.of(Items.COAL), 100));
+        consumer.accept(new ManaInfusion(idFor("fried_chicken"), new ItemStack(ModItems.FRIED_CHICKEN.get()), Ingredient.of(Items.COOKED_CHICKEN), 600));
     }
 
     private static ResourceLocation idFor(String s)
@@ -79,14 +78,17 @@ public class ModManaInfusionRecipes extends RecipeProvider
         {
             return new ManaInfusion(id, output, input, mana, "", CONJURATION);
         }
+
         public static ManaInfusion alchemy(ResourceLocation id, ItemStack output, Ingredient input, int mana)
         {
             return new ManaInfusion(id, output, input, mana, "", ALCHEMY);
         }
+
         //public static ManaInfusion test(ResourceLocation id, ItemStack output, Ingredient input, int mana)
         {
-        //    return new ManaInfusion(id, output, input, mana, "", TEST);
+            //    return new ManaInfusion(id, output, input, mana, "", TEST);
         }
+
         @Override
         public void serializeRecipeData(JsonObject json)
         {

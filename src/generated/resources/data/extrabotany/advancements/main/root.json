@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "botania:lexicon"
+      "item": "extrabotany:pylon"
     },
     "title": {
       "translate": "advancement.extrabotany:root.title"

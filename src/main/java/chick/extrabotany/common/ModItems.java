@@ -59,6 +59,7 @@ public class ModItems
     public static final RegistryObject<Item> STONE_MASK = ITEMS.register("stonemask", () -> new Cosmetic(Cosmetic.Variant.StoneMask, ITEM_PROPERTIES));
     public static final RegistryObject<Item> THUG_LIFE = ITEMS.register("thuglife", () -> new Cosmetic(Cosmetic.Variant.ThugLife, ITEM_PROPERTIES));
 
+    public static final RegistryObject<Item> FROST_RING = ITEMS.register("frostring", () -> new FrostRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> DEATH_RING = ITEMS.register("deathring", () -> new DeathRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> POWER_GLOVE = ITEMS.register("powerglove", () -> new PowerGlove(ITEM_PROPERTIES));
     public static final RegistryObject<Item> JINGWEI_FEATHER = ITEMS.register("jingweifeather", () -> new JingweiFeather(ITEM_PROPERTIES));

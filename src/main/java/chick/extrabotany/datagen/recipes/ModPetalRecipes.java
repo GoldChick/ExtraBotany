@@ -91,7 +91,10 @@ public class ModPetalRecipes extends RecipeProvider
         consumer.accept(make(ModSubtiles.moonlightlily, red, red, red, white));
         consumer.accept(make(ModSubtiles.omniviolet, blue, blue, purple, purple, runeMana, runeSpring, runeLust));
         consumer.accept(make(ModSubtiles.geminiorchid, yellow, yellow, yellow, orange, orange, orange, manaPowder, manaPowder));
+        consumer.accept(make(ModSubtiles.reikarorchid, cyan, cyan, lightBlue, lightBlue, blue, runeEnvy, runeSloth, runePride));
+
         consumer.accept(make(ModSubtiles.serenitian, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed));
+        consumer.accept(make(ModSubtiles.annoying, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed));
 
         //ItemStack stack = new ItemStack(Items.PLAYER_HEAD);
         //ItemNBTHelper.setString(stack, "SkullOwner", "Vazkii");

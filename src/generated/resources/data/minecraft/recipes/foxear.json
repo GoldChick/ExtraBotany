@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "aaa",
+    "axa",
+    "aaa"
+  ],
+  "key": {
+    "x": {
+      "item": "extrabotany:spirit_prop"
+    },
+    "a": {
+      "item": "botania:pink_petal"
+    }
+  },
+  "result": {
+    "item": "extrabotany:foxear"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:stonemask"
+    ]
+  },
+  "criteria": {
+    "grayPetal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:gray_petal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:stonemask"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "grayPetal",
+      "has_the_recipe"
+    ]
+  ]
+}

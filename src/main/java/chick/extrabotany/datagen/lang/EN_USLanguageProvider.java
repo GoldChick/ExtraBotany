@@ -35,15 +35,16 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
 
         add(ModItems.FOX_EAR.get(), "Fox Ear");
-        add(ModItems.FOX_MASK.get() ,"Mask with Memory");
+        add(ModItems.FOX_MASK.get(), "Mask with Memory");
         add(ModItems.PYLON.get(), "Sims");
         add(ModItems.SUPER_CROWN.get(), "Super Crown");
         add(ModItems.THUG_LIFE.get(), "THUG LIFE");
-        add(ModItems.BLACK_GLASSES.get(),"Black Glasses");
-        add(ModItems.RED_SCARF.get(),"Red Scarf");
-        add(ModItems.STONE_MASK.get(),"Stone Mask");
+        add(ModItems.BLACK_GLASSES.get(), "Black Glasses");
+        add(ModItems.RED_SCARF.get(), "Red Scarf");
+        add(ModItems.STONE_MASK.get(), "Stone Mask");
 
         add(ModItems.DEATH_RING.get(), "Curse Ring");
+        add(ModItems.FROST_RING.get(), "Frost Star");
         add(ModItems.POWER_GLOVE.get(), "Power Glove");
         add(ModItems.JINGWEI_FEATHER.get(), "Feather of Jingwei");
         add(ModItems.AERO_STONE.get(), "Aero Stone");
@@ -101,13 +102,16 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.bellflower, "Bell Flower");
         add(ModSubtiles.bellflowerFloating, "Floating Bell Flower");
         add(ModSubtiles.bellflower.getDescriptionId() + ".reference", "Lost wind");
+        add(ModSubtiles.reikarorchid, "Reikar Orchid");
+        add(ModSubtiles.reikarorchidFloating, "Floating Reikar Orchid");
+        add(ModSubtiles.reikarorchid.getDescriptionId() + ".reference", "Game Crash");
 
         add(ModSubtiles.serenitian, "Serenitian");
         add(ModSubtiles.serenitianFloating, "Floating Serenitian");
         add(ModSubtiles.serenitian.getDescriptionId() + ".reference", "Torn to oblivion");
-        add(ModSubtiles.annoying,"Annoying Flower");
-        add(ModSubtiles.annoyingFloating,"Floating Annoying Flower");
-        add(ModSubtiles.annoying.getDescriptionId()+".reference","Time to rest");
+        add(ModSubtiles.annoying, "Annoying Flower");
+        add(ModSubtiles.annoyingFloating, "Floating Annoying Flower");
+        add(ModSubtiles.annoying.getDescriptionId() + ".reference", "Time to rest");
     }
 
     private void langAdvancement()
@@ -234,10 +238,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.jingweifeather", "Feather of Jingwei");
         add("extrabotany.page.jingweifeather0", "Equipped with $(item)Feather of Jingwei$(0), every empty-handed punch will shoot a fire ball which could recover you 1 absorption and stack to 10 at max.");
         add("extrabotany.page.jingweifeather1", "");
+        add("extrabotany.entry.frostring", "Frost Star");
+        add("extrabotany.page.frostring0", "The $(item)Frost Star$(0) freezes large areas of water and lava. It also applies slowness creatures looked at by the wearer.");
+        add("extrabotany.page.frostring1", "I am the frozen heart of the Scourge!");
+
+
         //TODO:花散里面具英文
-        add("extrabotany.foxmaskinfo0","");
-        add("extrabotany.foxmaskinfo1","");
-        add("extrabotany.foxmaskinfo2","");
+        add("extrabotany.foxmaskinfo0", "");
+        add("extrabotany.foxmaskinfo1", "");
+        add("extrabotany.foxmaskinfo2", "");
         pantchouliFlower();
     }
 
@@ -255,19 +264,21 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.gemini_orchid", "Gemini Orchid");
         add("extrabotany.page.gemini_orchid0", "A $(item)Gemini Orchid$(0) is like a thermoelectric generator. If you place a block of lava in one of eight blocks nearby, and then place a block of water in another position, it will begin to produce mana. The higher the gap between two blocks' temperatures, the quicker mana will be generated. Since it is a passive flower, it will decay after working for 3 days in minecraft..");
         add("extrabotany.page.gemini_orchid1", "I am power incarnate!");
-        add("extrabotany.entry.bell_flower","Bell Flower");
-        add("extrabotany.page.bell_flower0","When placed in the open, the Bell Flower creates $(thing)Mana$(0) from wind. The higher it is, the more mana it produces. A Livingrock Pedestal nearby with a Nature Orb in it can increase its mana generation efficiency. Since it is a passive flower, it will decay.");
-        add("extrabotany.page.bell_flower1","Only the storms can knock down the trees.");
-
+        add("extrabotany.entry.bell_flower", "Bell Flower");
+        add("extrabotany.page.bell_flower0", "When placed in a high and open place, the $(item)Bell Flower$(0) creates $(thing)Mana$(0) from wind. The higher it is, the more mana it produces. Blocks and other $(item)Bell Flower$(0) will decrease the mana output. A Livingrock Pedestal nearby with a Nature Orb in it can increase its mana generation efficiency. Please note that it will decay after working for 3 days in minecraft.");
+        add("extrabotany.page.bell_flower1", "Only the storms can knock down the trees.");
+        add("extrabotany.entry.reikarorchid","Reikar Lily");
+        add("extrabotany.page.reikarorchid0","The $(item)Reikar Lily$(0) turns the tremendous energy of lightning into $(thing)Mana$(0). When a lightning bolt hits nearby, it will generate a great amount of $(thing)Mana$(0) immediately. $(item)Reikar Lily$(0) itself could attract thunder. To absorb the lightning, the flower must not have any $(thing)Mana$(0) stored in it-- otherwise, it will explode.");
+        add("extrabotany.page.reikarorchid1","I Choose You!");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");
         add("extrabotany.page.serenitian1", "All shall fade away");
-        add("extrabotany.entry.annoying_flower","Annoying Flower");
-        add("extrabotany.page.annoying_flower0","The Annoying Flower can fish in nearby Petal Apothecary filled with water. For that process it will use mana. Feeding Fried Chicken Legs to it will significantly increase the efficiency and the chance of getting treasure.");
-        add("extrabotany.page.annoying_flower1","RK800.");
-        add("extrabotany.page.annoying_flower2","Cooked Chicken can be fried by soaking it in $(thing)Mana$(0). Fried Chicken Legs restore more hunger and give saturation.");
-        add("extrabotany.page.annoying_flower3","Neither an angel or a devil.");
+        add("extrabotany.entry.annoying_flower", "Annoying Flower");
+        add("extrabotany.page.annoying_flower0", "The Annoying Flower can fish in nearby Petal Apothecary filled with water. For that process it will use mana. Feeding Fried Chicken Legs to it will significantly increase the efficiency and the chance of getting treasure.");
+        add("extrabotany.page.annoying_flower1", "RK800.");
+        add("extrabotany.page.annoying_flower2", "Cooked Chicken can be fried by soaking it in $(thing)Mana$(0). Fried Chicken Legs restore more hunger and give saturation.");
+        add("extrabotany.page.annoying_flower3", "Neither an angel or a devil.");
 
     }
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:redscarf"
+    ]
+  },
+  "criteria": {
+    "redPetal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:red_petal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:redscarf"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "redPetal",
+      "has_the_recipe"
+    ]
+  ]
+}

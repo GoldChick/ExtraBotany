@@ -1,24 +1,24 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:deathring"
+    "item": "extrabotany:frostring"
   },
   "mana": 10000,
   "ingredients": [
     {
-      "item": "botania:rune_envy"
+      "item": "minecraft:ice"
     },
     {
-      "item": "botania:mana_diamond"
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "botania:rune_mana"
     },
     {
       "item": "botania:manasteel_ingot"
     },
     {
       "item": "botania:manasteel_ingot"
-    },
-    {
-      "item": "minecraft:wither_skeleton_skull"
     }
   ]
 }

@@ -78,6 +78,7 @@ public class ModItemModels extends ItemModelProvider
 
 
         singleTexture(ModItems.DEATH_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/deathring"));
+        singleTexture(ModItems.FROST_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/frostring"));
         singleTexture(ModItems.POWER_GLOVE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/powerglove"));
         singleTexture(ModItems.JINGWEI_FEATHER.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/jingweifeather"));
         singleTexture(ModItems.AERO_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aerostone"));
@@ -100,6 +101,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModSubtiles.omniviolet_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/omni_violet"));
         singleTexture(ModSubtiles.geminiorchid_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/gemini_orchid"));
         singleTexture(ModSubtiles.bellflower_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/bell_flower"));
+        singleTexture(ModSubtiles.reikarorchid_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/reikar_orchid"));
         //functional
         singleTexture(ModSubtiles.serenitian_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/serenitian"));
         singleTexture(ModSubtiles.annoying_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/annoying_flower"));

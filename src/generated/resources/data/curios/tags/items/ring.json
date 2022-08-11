@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "extrabotany:deathring"
+    "extrabotany:deathring",
+    "extrabotany:frostring"
   ]
 }

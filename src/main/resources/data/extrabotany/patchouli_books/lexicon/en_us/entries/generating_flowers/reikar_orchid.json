@@ -1,0 +1,22 @@
+{
+  "name": "extrabotany.entry.reikarorchid",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:reikar_orchid",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  "turnin": "botania:main/generating_flower",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.reikarorchid0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.reikarorchid1",
+      "recipe": "extrabotany:petal_apothecary/reikar_orchid"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "extrabotany:floating_reikarorchid": 1
+  }
+}

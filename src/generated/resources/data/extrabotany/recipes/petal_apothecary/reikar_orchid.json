@@ -1,0 +1,32 @@
+{
+  "type": "botania:petal_apothecary",
+  "output": {
+    "item": "extrabotany:reikar_orchid"
+  },
+  "ingredients": [
+    {
+      "tag": "botania:petals/cyan"
+    },
+    {
+      "tag": "botania:petals/cyan"
+    },
+    {
+      "tag": "botania:petals/light_blue"
+    },
+    {
+      "tag": "botania:petals/light_blue"
+    },
+    {
+      "tag": "botania:petals/blue"
+    },
+    {
+      "item": "botania:rune_envy"
+    },
+    {
+      "item": "botania:rune_sloth"
+    },
+    {
+      "item": "botania:rune_pride"
+    }
+  ]
+}

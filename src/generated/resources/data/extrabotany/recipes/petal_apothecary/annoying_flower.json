@@ -1,0 +1,32 @@
+{
+  "type": "botania:petal_apothecary",
+  "output": {
+    "item": "extrabotany:annoying_flower"
+  },
+  "ingredients": [
+    {
+      "tag": "botania:petals/purple"
+    },
+    {
+      "tag": "botania:petals/purple"
+    },
+    {
+      "tag": "botania:petals/blue"
+    },
+    {
+      "tag": "botania:petals/blue"
+    },
+    {
+      "item": "botania:life_essence"
+    },
+    {
+      "item": "botania:rune_mana"
+    },
+    {
+      "item": "botania:rune_sloth"
+    },
+    {
+      "item": "botania:rune_greed"
+    }
+  ]
+}

@@ -48,6 +48,7 @@ public class ModBlockStates extends BlockStateProvider
         simpleBlock(ModSubtiles.omniviolet, new ConfiguredModel(models().singleTexture(ModSubtiles.omniviolet.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.omniviolet))));
         simpleBlock(ModSubtiles.geminiorchid, new ConfiguredModel(models().singleTexture(ModSubtiles.geminiorchid.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.geminiorchid))));
         simpleBlock(ModSubtiles.bellflower, new ConfiguredModel(models().singleTexture(ModSubtiles.bellflower.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.bellflower))));
+        simpleBlock(ModSubtiles.reikarorchid, new ConfiguredModel(models().singleTexture(ModSubtiles.reikarorchid.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.reikarorchid))));
 
         simpleBlock(ModSubtiles.serenitian, new ConfiguredModel(models().singleTexture(ModSubtiles.serenitian.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.serenitian))));
         simpleBlock(ModSubtiles.annoying, new ConfiguredModel(models().singleTexture(ModSubtiles.annoying.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.annoying))));
@@ -57,6 +58,7 @@ public class ModBlockStates extends BlockStateProvider
         simpleBlock(ModSubtiles.omnivioletFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.omnivioletFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.geminiorchidFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.geminiorchidFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.bellflowerFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.bellflowerFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
+        simpleBlock(ModSubtiles.reikarorchidFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.reikarorchidFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
 
         simpleBlock(ModSubtiles.serenitianFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.serenitianFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
         simpleBlock(ModSubtiles.annoyingFloating, new ConfiguredModel(models().singleTexture(ModSubtiles.annoyingFloating.getRegistryName().getPath(), new ResourceLocation("extrabotany:block/shapes/cross"), "cross", blockTexture(ModSubtiles.sunshinelily))));
@@ -70,6 +72,7 @@ public class ModBlockStates extends BlockStateProvider
         consumer.register(ModSubtiles.OMNIVIOLET, RenderTileSpecialFlower::new);
         consumer.register(ModSubtiles.GEMINIORCHID, RenderTileSpecialFlower::new);
         consumer.register(ModSubtiles.BELLFLOWER, RenderTileSpecialFlower::new);
+        consumer.register(ModSubtiles.REIKARORCHID, RenderTileSpecialFlower::new);
         //floating functional
         consumer.register(ModSubtiles.SERENITIAN, RenderTileSpecialFlower::new);
         consumer.register(ModSubtiles.ANNOYINGFLOWER, RenderTileSpecialFlower::new);

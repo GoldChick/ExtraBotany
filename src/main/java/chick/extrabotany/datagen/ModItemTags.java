@@ -75,6 +75,7 @@ public class ModItemTags extends ItemTagsProvider
         ;
         tag(accessory("ring"))
                 .add(ModItems.DEATH_RING.get())
+                .add(ModItems.FROST_RING.get())
         ;
 
         tag(accessory("belt"));

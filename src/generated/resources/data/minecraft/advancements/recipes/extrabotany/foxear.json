@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:foxear"
+    ]
+  },
+  "criteria": {
+    "pinkPetal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:pink_petal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:foxear"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pinkPetal",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -65,6 +65,7 @@ public class RodOfDiscord extends Item
                 float health = Math.max(1F, player.getHealth() - player.getMaxHealth() / 6F);
                 player.setHealth(health);
             }
+            //TODO:传送到生物的时候似乎未生效
             stack.setDamageValue(stack.getMaxDamage() - 1);
         }
         return InteractionResult.PASS;

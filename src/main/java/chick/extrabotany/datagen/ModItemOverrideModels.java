@@ -42,7 +42,7 @@ public class ModItemOverrideModels implements DataProvider
     }
 
     @Override
-    public void run(HashCache cache) throws IOException
+    public void run(HashCache cache)
     {
         Set<Item> items = Registry.ITEM.stream().filter(i -> ExtraBotany.MODID.equals(Registry.ITEM.getKey(i).getNamespace()))
                 .collect(Collectors.toSet());
@@ -81,7 +81,7 @@ public class ModItemOverrideModels implements DataProvider
                     TextureMapping.layer0(chick.extrabotany.common.ModItems.EMPTY_BOTTLE.get()).put(LAYER1, overrideModel),
                     consumer);
 
-            flaskOverrides.add(overrideModel, Pair.of(new ResourceLocation( "custom_model_data"), (double)i));
+            flaskOverrides.add(overrideModel, Pair.of(new ResourceLocation("custom_model_data"), (double) i));
 
         }
         GENERATED_OVERRIDES_1.create(ModelLocationUtils.getModelLocation(chick.extrabotany.common.ModItems.COCK_TAIL.get()),

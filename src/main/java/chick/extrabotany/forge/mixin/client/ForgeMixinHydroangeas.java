@@ -15,8 +15,7 @@ import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 @Mixin(SubTileHydroangeas.class)
 public abstract class ForgeMixinHydroangeas extends SubTileFluidGenerator implements SubTileDecay
 {
-
-    //may cause crash!
+    //may cause error!
     @Shadow
     private int passiveDecayTicks;
 

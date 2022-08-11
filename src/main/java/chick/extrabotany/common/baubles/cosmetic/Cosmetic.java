@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -50,7 +51,7 @@ public class Cosmetic extends ItemBauble
 
     public Cosmetic(Variant variant, Properties props)
     {
-        super(props);
+        super(props.stacksTo(1));
         this.variant = variant;
         IProxy.INSTANCE.runOnClient(() -> () -> AccessoryRenderRegistry.register(this, new Cosmetic.Renderer()));
     }
@@ -61,9 +62,9 @@ public class Cosmetic extends ItemBauble
         var variant = ((Cosmetic) stack.getItem()).variant;
         if (variant == Variant.FoxMask)
         {
-            tooltip.add(new TextComponent("extrabotany.foxmaskinfo0").withStyle(ChatFormatting.ITALIC));
-            tooltip.add(new TextComponent("extrabotany.foxmaskinfo1").withStyle(ChatFormatting.ITALIC));
-            tooltip.add(new TextComponent("extrabotany.foxmaskinfo2").withStyle(ChatFormatting.ITALIC));
+            tooltip.add(new TranslatableComponent("extrabotany.foxmaskinfo0").withStyle(ChatFormatting.ITALIC));
+            tooltip.add(new TranslatableComponent("extrabotany.foxmaskinfo1").withStyle(ChatFormatting.ITALIC));
+            tooltip.add(new TranslatableComponent("extrabotany.foxmaskinfo2").withStyle(ChatFormatting.ITALIC));
         }
     }
 

@@ -44,6 +44,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.STONE_MASK.get(),"石鬼面");
 
         add(ModItems.DEATH_RING.get(), "诅咒指环");
+        add(ModItems.FROST_RING.get(), "霜冻之星");
         add(ModItems.POWER_GLOVE.get(), "强力手套");
         add(ModItems.JINGWEI_FEATHER.get(), "精卫之羽");
         add(ModItems.AERO_STONE.get(), "风之符石");
@@ -100,6 +101,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.bellflower, "风铃草");
         add(ModSubtiles.bellflowerFloating, "浮空风铃草");
         add(ModSubtiles.bellflower.getDescriptionId() + ".reference", "迷失的风");
+        add(ModSubtiles.reikarorchid, "雷卡兰");
+        add(ModSubtiles.reikarorchidFloating, "浮空雷卡兰");
+        add(ModSubtiles.reikarorchid.getDescriptionId() + ".reference", "游戏崩溃");
 
         add(ModSubtiles.serenitian, "永寂龙胆");
         add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
@@ -234,6 +238,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.jingweifeather", "精卫之羽");
         add("extrabotany.page.jingweifeather0", "装备$(item)精卫之羽$(0)后，每次空手攻击都可以发射出一个火球，造成伤害的时候回复1点吸收值，吸收值最多叠加到10点。");
         add("extrabotany.page.jingweifeather1", "");
+        add("extrabotany.entry.frostring","霜冻之星");
+        add("extrabotany.page.frostring0","$(item)霜冻之星$(0)能让装备者行走时冻结脚下大范围的水和岩浆，并会使小范围内装备者所视的生物大幅减速。");
+        add("extrabotany.page.frostring1","我是天灾的冰冻之心。");
         add("extrabotany.foxmaskinfo0", "与君相别离，不知何日是归期，我如朝露转瞬晞");
         add("extrabotany.foxmaskinfo1", "如今面具和花散里分开了");
         add("extrabotany.foxmaskinfo2", "派蒙也不会叫她面具巫女小姐了");
@@ -254,9 +261,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.gemini_orchid", "双子兰");
         add("extrabotany.page.gemini_orchid0", "$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
         add("extrabotany.page.gemini_orchid1", "我就是力量的化身!");
-        add("extrabotany.entry.bell_flower", "风铃花");
-        add("extrabotany.page.bell_flower0", "能将风能转化为$(thing)魔力$(0)的花，需要摆放在露天的地方，海拔越高效率越高。但它仍会枯萎。");
+        add("extrabotany.entry.bell_flower", "风铃草");
+        add("extrabotany.page.bell_flower0", "$(item)风铃草$(0)能将风能转化为$(thing)魔力$(0)，需要摆放在露天的高处，海拔越高效率越高。周围的方块或者$(item)风铃草$(0)会降低$(item)风铃草$(0)的效率。会在3个minecraft日后枯萎。");
         add("extrabotany.page.bell_flower1", "只有风暴才能击倒大树。");
+        add("extrabotany.entry.reikarorchid","雷卡兰");
+        add("extrabotany.page.reikarorchid0","$(item)雷卡兰$(0)在无魔力时可以将闪电的巨大能量转化为$(thing)魔力$(0)，每当有闪电劈在其附近时，就会立刻产出巨大$(thing)魔力$(0)，雷卡兰本身也具有一定的雷电吸引能力。若$(item)雷卡兰$(0)中储存有$(thing)魔力$(0)，则无法吸收闪电并且会引发爆炸。");
+        add("extrabotany.page.reikarorchid1","就决定是你了!");
 
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");

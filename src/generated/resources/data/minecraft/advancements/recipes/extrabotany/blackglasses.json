@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:blackglasses"
+    ]
+  },
+  "criteria": {
+    "blackPetal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:black_petal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:blackglasses"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blackPetal",
+      "has_the_recipe"
+    ]
+  ]
+}

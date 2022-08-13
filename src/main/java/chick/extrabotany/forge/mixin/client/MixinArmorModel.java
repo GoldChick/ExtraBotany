@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import java.util.function.Consumer;
 
 @Mixin(ItemArmor.class)
-public abstract class ForgeMixinArmorModel extends Item
+public abstract class MixinArmorModel extends Item
 {
-    private ForgeMixinArmorModel(Properties props)
+    private MixinArmorModel(Properties props)
     {
         super(props);
     }

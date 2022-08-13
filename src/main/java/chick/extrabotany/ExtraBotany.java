@@ -1,11 +1,14 @@
 package chick.extrabotany;
 
+import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.Registration;
+import chick.extrabotany.forge.client.handler.ConfigHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -22,12 +25,16 @@ public class ExtraBotany
         @Override
         public ItemStack makeIcon()
         {
-            return new ItemStack(Items.DIAMOND);
+            return new ItemStack(ModItems.PYLON.get());
         }
     };
 
     public ExtraBotany()
     {
+        //register
         Registration.initRegistration();
+        //create config
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }
 }

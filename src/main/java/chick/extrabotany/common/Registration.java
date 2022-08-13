@@ -3,6 +3,7 @@ package chick.extrabotany.common;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.brews.ModBrews;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
+import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,7 +24,6 @@ public class Registration
     public static void initRegistration()
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
         ModBlocks.GetBlocks().register(bus);
         ModBlocks.GetItems().register(bus);
 

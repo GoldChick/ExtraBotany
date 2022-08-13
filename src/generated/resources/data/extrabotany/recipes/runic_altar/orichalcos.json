@@ -1,0 +1,39 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:orichalcos"
+  },
+  "mana": 1000000,
+  "ingredients": [
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "botania:life_essence"
+    },
+    {
+      "item": "botania:life_essence"
+    },
+    {
+      "item": "botania:life_essence"
+    },
+    {
+      "item": "botania:life_essence"
+    },
+    {
+      "item": "extrabotany:heromedal"
+    },
+    {
+      "item": "extrabotany:gildedmashedpotato"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    }
+  ]
+}

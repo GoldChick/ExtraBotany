@@ -64,9 +64,9 @@ public class RodOfDiscord extends Item
             {
                 float health = Math.max(1F, player.getHealth() - player.getMaxHealth() / 6F);
                 player.setHealth(health);
-            }
+            } else
+                player.getMainHandItem().hurtAndBreak(stack.getMaxDamage() - 1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             //TODO:传送到生物的时候似乎未生效
-            stack.setDamageValue(stack.getMaxDamage() - 1);
         }
         return InteractionResult.PASS;
     }

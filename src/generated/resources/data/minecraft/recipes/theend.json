@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " x ",
+    "xzb",
+    " b "
+  ],
+  "key": {
+    "x": {
+      "item": "extrabotany:orichalcos"
+    },
+    "z": {
+      "item": "minecraft:ender_eye"
+    },
+    "b": {
+      "item": "botania:gaia_ingot"
+    }
+  },
+  "result": {
+    "item": "extrabotany:theend"
+  }
+}

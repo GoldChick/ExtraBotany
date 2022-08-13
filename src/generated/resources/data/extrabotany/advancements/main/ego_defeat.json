@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/thechaos_craft",
+  "display": {
+    "icon": {
+      "item": "extrabotany:heromedal"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:ego_defeat.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:ego_defeat.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pickup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:heromedal"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pickup"
+    ]
+  ]
+}

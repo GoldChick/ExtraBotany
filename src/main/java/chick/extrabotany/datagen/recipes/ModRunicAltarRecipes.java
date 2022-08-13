@@ -50,7 +50,9 @@ public class ModRunicAltarRecipes extends RecipeProvider
         Ingredient mana = Ingredient.of(vazkii.botania.common.item.ModItems.runeMana);
         Ingredient envy = Ingredient.of(vazkii.botania.common.item.ModItems.runeEnvy);
         Ingredient wrath = Ingredient.of(vazkii.botania.common.item.ModItems.runeWrath);
-
+        Ingredient gaiaIngot = Ingredient.of(vazkii.botania.common.item.ModItems.gaiaIngot);
+        Ingredient gaiaSoul = Ingredient.of(vazkii.botania.common.item.ModItems.lifeEssence);
+        Ingredient medal = Ingredient.of(ModItems.HERO_MEDAL.get());
         consumer.accept(new RunicAltar(idFor("gildedpotato"), new ItemStack(ModItems.GILDED_POTATO.get()), 2000, Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.POTATO), Ingredient.of(Items.GOLD_INGOT)));
         consumer.accept(new RunicAltar(idFor("shadowium1"), new ItemStack(ModItems.SHADOW_INGOT.get()), 4200, mashed_potato, element_steel, nightmare, nightmare, nightmare));
         consumer.accept(new RunicAltar(idFor("shadowium2"), new ItemStack(ModItems.SHADOW_INGOT.get(), 3), 10000, mashed_potato, element_steel, element_steel, element_steel, nightmare, nightmare, nightmare, nightmare, nightmare));
@@ -61,10 +63,11 @@ public class ModRunicAltarRecipes extends RecipeProvider
         consumer.accept(new RunicAltar(idFor("earthstone"), new ItemStack(ModItems.EARTH_STONE.get()), 2000, earth, earth, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("ignisstone"), new ItemStack(ModItems.IGNIS_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("deathring"), new ItemStack(ModItems.DEATH_RING.get()), 10000, envy, mana_diamond, mana_steel, mana_steel, Ingredient.of(Items.WITHER_SKELETON_SKULL)));
-        consumer.accept(new RunicAltar(idFor("frostring"), new ItemStack(ModItems.FROST_RING.get()), 10000, Ingredient.of(Items.ICE),  Ingredient.of(Items.ICE),mana, mana_steel, mana_steel));
+        consumer.accept(new RunicAltar(idFor("frostring"), new ItemStack(ModItems.FROST_RING.get()), 10000, Ingredient.of(Items.ICE), Ingredient.of(Items.ICE), mana, mana_steel, mana_steel));
 
         //mana clear ↓
-        consumer.accept(new RunicAltar(idFor("powerglove"), new ItemStack(ModItems.POWER_GLOVE.get()), 3200, cloth, cloth,cloth, mana_diamond, wrath));
+        consumer.accept(new RunicAltar(idFor("powerglove"), new ItemStack(ModItems.POWER_GLOVE.get()), 3200, cloth, cloth, cloth, mana_diamond, wrath));
+        consumer.accept(new RunicAltar(idFor("orichalcos"), new ItemStack(ModItems.ORICHALCOS.get()), 1000000, gaiaIngot, gaiaIngot, gaiaSoul, gaiaSoul, gaiaSoul, gaiaSoul, medal, mashed_potato,Ingredient.of(Items.AMETHYST_BLOCK),Ingredient.of(Items.AMETHYST_BLOCK)));
 
     }
 

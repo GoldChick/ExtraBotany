@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "botania:lens_normal"
+    },
+    {
+      "item": "botania:mana_powder"
+    },
+    {
+      "item": "botania:rune_fire"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:len_smelt"
+  }
+}

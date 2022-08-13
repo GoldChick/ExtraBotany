@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:floating_sunshine_lily"
+      "minecraft:theend"
     ]
   },
   "criteria": {
-    "has_item": {
+    "ingots": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:sunshine_lily"
+              "extrabotany:orichalcos"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:floating_sunshine_lily"
+        "recipe": "minecraft:theend"
       }
     }
   },
   "requirements": [
     [
-      "has_item",
+      "ingots",
       "has_the_recipe"
     ]
   ]

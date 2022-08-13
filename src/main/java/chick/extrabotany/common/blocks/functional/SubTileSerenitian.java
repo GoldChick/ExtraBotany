@@ -1,21 +1,11 @@
 package chick.extrabotany.common.blocks.functional;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.SubTileDecay;
-import chick.extrabotany.common.blocks.SubTilePassive;
+import chick.extrabotany.common.blocks.ISubTileDecay;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityFunctionalFlower;
-import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
-import vazkii.botania.api.subtile.TileEntitySpecialFlower;
-import vazkii.botania.common.block.subtile.generating.SubTileFluidGenerator;
-import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
 public class SubTileSerenitian extends TileEntityFunctionalFlower
 {
@@ -38,9 +28,9 @@ public class SubTileSerenitian extends TileEntityFunctionalFlower
             {
                 BlockPos pos = getEffectivePos().offset(dx, 0, dz);
                 var tile = level.getBlockEntity(pos);
-                if (tile instanceof SubTileDecay)
+                if (tile instanceof ISubTileDecay)
                 {
-                    SubTileDecay passive = (SubTileDecay) tile;
+                    ISubTileDecay passive = (ISubTileDecay) tile;
                     if (passive.getPassiveTicks() >= 100)
                     {
                         passive.setPassiveTicks(0);

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "extrabotany:thechaos"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:ticket"
+  }
+}

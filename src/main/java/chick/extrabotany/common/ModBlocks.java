@@ -26,8 +26,9 @@ public class ModBlocks
 
     //test blocks
 
-    //public static final RegistryObject<Block> YLG_ORE = BLOCKS.register("yeluogui_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
-    //public static final RegistryObject<Item> YLG_ORE_ITEM = fromBlock(YLG_ORE);
+    public static final RegistryObject<Block> DIMENSION_CATALYST = BLOCKS.register("dimension_catalyst", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
+    public static final RegistryObject<Item> DIMENSION_CATALYST_ITEM = fromBlock(DIMENSION_CATALYST);
+
     //public static final TagKey<Block> _YLG_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
     //public static final TagKey<Item> _YLG_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
 

@@ -33,16 +33,26 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.THE_ORIGIN.get(), "起源物质");
         add(ModItems.THE_END.get(), "终末物质");
         add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
+        add(ModItems.FRIED_CHICKEN.get(), "香香鸡");
+        add(ModBlocks.DIMENSION_CATALYST.get(), "次元催化剂");
+        add(ModItems.ORICHALCOS.get(), "奥利哈刚锭");
+        add(ModItems.TICKET.get(),"寄给自己的邀请函");
+
+        add(ModItems.LEN_SMELT.get(), "魔力透镜：冶炼");
+        add(ModItems.LEN_SMELT.get().getDescriptionId() + ".short", "冶炼");
+        add(ModItems.LEN_POTION.get(), "魔力透镜：药水：%s");
+        add(ModItems.LEN_POTION.get().getDescriptionId() + ".short", "药水");
 
         add(ModItems.FOX_EAR.get(), "樱樱耳");
         add(ModItems.FOX_MASK.get(), "附有记忆的面具");
         add(ModItems.PYLON.get(), "模拟人生");
         add(ModItems.SUPER_CROWN.get(), "超级王冠");
         add(ModItems.THUG_LIFE.get(), "THUG LIFE");
-        add(ModItems.BLACK_GLASSES.get(),"黑框眼镜");
-        add(ModItems.RED_SCARF.get(),"红领巾");
-        add(ModItems.STONE_MASK.get(),"石鬼面");
+        add(ModItems.BLACK_GLASSES.get(), "黑框眼镜");
+        add(ModItems.RED_SCARF.get(), "红领巾");
+        add(ModItems.STONE_MASK.get(), "石鬼面");
 
+        add(ModItems.PEACE_AMULET.get(), "和平友好之证");
         add(ModItems.DEATH_RING.get(), "诅咒指环");
         add(ModItems.FROST_RING.get(), "霜冻之星");
         add(ModItems.POWER_GLOVE.get(), "强力手套");
@@ -55,8 +65,10 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_AQUA_STONE.get(), "至高水之符石");
         add(ModItems.SUPREME_EARTH_STONE.get(), "至高地之符石");
         add(ModItems.SUPREME_IGNIS_STONE.get(), "至高火之符石");
+        add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
 
         add(ModItems.SHADOW_KATANA.get(), "影刃");
+        add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "暗影武士头盔");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "暗影武士胸甲");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "暗影武士护腿");
@@ -79,6 +91,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.brew.shell", "龟壳");
         add("extrabotany.brew.deadpool", "死灵");
         add("extrabotany.brew.floating", "漂浮");
+        add("extrabotanymisc.inventoryUnfeasible","你的背包里包含违禁物品，请再次检查你的背包！");
+        add("extrabotanymisc.unlegalPlayercount","在场玩家数大于召唤时的玩家数，这是不符合规则的！");
+        add("extrabotanymisc.description","你无法使用该物品直到你完成进度 <%s>。");
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -120,12 +135,19 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("advancement.extrabotany:root.desc", "不要错过今天，去过好每一天");
         add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
         add("advancement.extrabotany:nightmarefuel_eat.desc", "食用一个梦魇燃料(这真的能吃吗)");
-        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc", "获得魔力读取器");
         add("advancement.extrabotany:thechaos_craft.title", "一点都不混沌的物质");
         add("advancement.extrabotany:thechaos_craft.desc", "合成混沌物质");
+        add("advancement.extrabotany.egodefeat.title","KiLLER LADY");
+        add("advancement.extrabotany.egodefeat.desc","击败本我");
+
+        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc", "获得魔力读取器");
+
         add("advancement.extrabotany:rodofdiscord_craft.title", "不是Discord");
         add("advancement.extrabotany:rodofdiscord_craft.desc", "合成不谐传送杖");
+
+        add("advancement.extrabotany.sages_mana_ring_craft.title", "COLOR");
+        add("advancement.extrabotany.sages_mana_ring_craft.desc", "获得贤者魔力指环");
     }
 
     private void langPantchouli()
@@ -137,7 +159,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.header1", "每当您解锁新的进度时，书中的知识都会增加。我在此可以给您一个提示，食用梦魇燃料可以获得精神燃料。");
 
         add("extrabotany.entry.nightmarefuel", "梦魇燃料");
-        add("extrabotany.page.nightmarefuel0", "$(item)梦魇燃料$(0)是噩梦的集合体，食用后会遭遇不幸，但也可能是美梦的开始。");
+        add("extrabotany.page.nightmarefuel0", "$(item)梦魇燃料$(0)是噩梦的集合体，食用后会遭遇不幸，但也可能是美梦的开始。精灵们可能也会对这种东西感兴趣。（警告：瞬间伤害III会造成24点伤害！）");
         add("extrabotany.page.nightmarefuel1", "大脑在颤抖。");
 
         add("extrabotany.entry.spiritfuel", "精神燃料");
@@ -238,12 +260,33 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.jingweifeather", "精卫之羽");
         add("extrabotany.page.jingweifeather0", "装备$(item)精卫之羽$(0)后，每次空手攻击都可以发射出一个火球，造成伤害的时候回复1点吸收值，吸收值最多叠加到10点。");
         add("extrabotany.page.jingweifeather1", "");
-        add("extrabotany.entry.frostring","霜冻之星");
-        add("extrabotany.page.frostring0","$(item)霜冻之星$(0)能让装备者行走时冻结脚下大范围的水和岩浆，并会使小范围内装备者所视的生物大幅减速。");
-        add("extrabotany.page.frostring1","我是天灾的冰冻之心。");
+        add("extrabotany.entry.frostring", "霜冻之星");
+        add("extrabotany.page.frostring0", "$(item)霜冻之星$(0)能让装备者行走时冻结脚下大范围的水和岩浆，并会使小范围内装备者所视的生物大幅减速。");
+        add("extrabotany.page.frostring1", "我是天灾的冰冻之心。");
+        add("extrabotany.entry.sages_mana_ring", "贤者魔力指环");
+        add("extrabotany.page.sages_mana_ring0", "$(item)贤者魔力指环$(0)可以存储几乎无限的$(thing)魔力$(0)。");
+        add("extrabotany.page.sages_mana_ring1", "蛋糕是个谎言。");
         add("extrabotany.foxmaskinfo0", "与君相别离，不知何日是归期，我如朝露转瞬晞");
         add("extrabotany.foxmaskinfo1", "如今面具和花散里分开了");
         add("extrabotany.foxmaskinfo2", "派蒙也不会叫她面具巫女小姐了");
+        add("extrabotany.entry.lens", "全新魔力透镜");
+        add("extrabotany.page.lens0", "$(item)魔力透镜$(0)能够模拟魔力池，使魔力脉冲触碰的物品接受魔力灌注。如果在发射器下方放置炼金催化器或炼造催化器也会有对应的效果。<br>魔力透镜会提高每次魔力脉冲携带的魔力量。");
+        add("extrabotany.page.lens1", "魔力");
+        add("extrabotany.page.lens2", "$(item)冲击透镜$(0)会使魔力脉冲推动所有接触到的生物，强制它们跟随着魔力脉冲移动。");
+        add("extrabotany.page.lens3", "冲击");
+        add("extrabotany.page.lens4", "$(item)追踪透镜$(0)会使魔力脉冲锁定其3格以内的生物并持续追踪，直到其中一方消失。");
+        add("extrabotany.page.lens5", "追踪");
+        add("extrabotany.page.lens6", "$(item)冶炼透镜$(0)会冶炼魔力脉冲所触碰到的方块，掉落冶炼成品，这会消耗少量魔力。");
+        add("extrabotany.page.lens7", "冶炼");
+        add("extrabotany.page.lens8", "$(item)药水透镜$(0)会使魔力脉冲所触碰到的第一个生物获得对应的药水效果。<br>需要将透镜和对应的烧瓶酿造合成来决定其效果。");
+        add("extrabotany.page.lens9", "药水");
+        add("extrabotany.entry.dimension_catalyst", "次元催化器");
+        add("extrabotany.page.dimension_catalyst0", "$(item)次元催化器$(0)连接了主世界与其他两个次元，它可以消耗$(thing)魔力$(0)来将主世界的资源转化为其他次元内的资源。");
+        add("extrabotany.page.dimension_catalyst1", "");
+
+        add("extrabotany.entry.peace_amulet","和平友好之证");
+        add("extrabotany.page.peace_amulet0","装备$(item)和平友好之证$(0)后，本Mod内的所有装备不再会对其他玩家和非敌对生物造成影响。");
+        add("extrabotany.page.peace_amulet1","");
         pantchouliFlower();
     }
 
@@ -262,11 +305,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.gemini_orchid0", "$(item)双子兰$(0)相当于一台温差发电机。假如你在其周围8格内一格倒入岩浆，一格倒入水，它就会开始产出$(thing)魔力$(0)。8格内的最大温差越大，$(thing)魔力$(0)产出也就越快。<br>注意，这是一朵被动产能花，会在3个minecraft日后枯萎。");
         add("extrabotany.page.gemini_orchid1", "我就是力量的化身!");
         add("extrabotany.entry.bell_flower", "风铃草");
-        add("extrabotany.page.bell_flower0", "$(item)风铃草$(0)能将风能转化为$(thing)魔力$(0)，需要摆放在露天的高处，海拔越高效率越高。周围的方块或者$(item)风铃草$(0)会降低$(item)风铃草$(0)的效率。会在3个minecraft日后枯萎。");
+        add("extrabotany.page.bell_flower0", "$(item)风铃草$(0)能将风能转化为$(thing)魔力$(0)，需要摆放在露天的高处，海拔越高效率越高，直到y=319。周围的方块或者$(item)风铃草$(0)会降低$(item)风铃草$(0)的效率。会在3个minecraft日后枯萎。");
         add("extrabotany.page.bell_flower1", "只有风暴才能击倒大树。");
-        add("extrabotany.entry.reikarorchid","雷卡兰");
-        add("extrabotany.page.reikarorchid0","$(item)雷卡兰$(0)在无魔力时可以将闪电的巨大能量转化为$(thing)魔力$(0)，每当有闪电劈在其附近时，就会立刻产出巨大$(thing)魔力$(0)，雷卡兰本身也具有一定的雷电吸引能力。若$(item)雷卡兰$(0)中储存有$(thing)魔力$(0)，则无法吸收闪电并且会引发爆炸。");
-        add("extrabotany.page.reikarorchid1","就决定是你了!");
+        add("extrabotany.entry.reikarorchid", "雷卡兰");
+        add("extrabotany.page.reikarorchid0", "$(item)雷卡兰$(0)在无魔力时可以将闪电的巨大能量转化为$(thing)魔力$(0)，每当有闪电劈在其附近时，就会立刻产出巨大$(thing)魔力$(0)，雷卡兰本身也具有一定的雷电吸引能力。若$(item)雷卡兰$(0)中储存有$(thing)魔力$(0)，则无法吸收闪电并且会引发爆炸。");
+        add("extrabotany.page.reikarorchid1", "就决定是你了!");
 
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");

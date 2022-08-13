@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:sages_mana_ring"
+    ]
+  },
+  "criteria": {
+    "heromedal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:heromedal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:sages_mana_ring"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "heromedal",
+      "has_the_recipe"
+    ]
+  ]
+}

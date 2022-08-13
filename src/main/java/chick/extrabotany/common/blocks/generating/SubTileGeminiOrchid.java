@@ -1,7 +1,7 @@
 package chick.extrabotany.common.blocks.generating;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.SubTileDecay;
+import chick.extrabotany.common.blocks.ISubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileGeminiOrchid extends SubTilePassive implements SubTileDecay
+public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
 {
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
 

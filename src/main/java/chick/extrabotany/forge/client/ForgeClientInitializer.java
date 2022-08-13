@@ -1,25 +1,37 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
+import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.forge.client.model.ModLayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block.IWandHUD;
+import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.forge.CapabilityUtil;
 
 import java.util.Collections;
@@ -36,7 +48,12 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void clientInit(FMLClientSetupEvent evt)
     {
-        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        bus.addListener(MiscellaneousIcons.INSTANCE::onModelRegister);
+        bus.addListener(MiscellaneousIcons.INSTANCE::onModelBake);
+        var forgebus=MinecraftForge.EVENT_BUS;
+        forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
+        forgebus.addGenericListener(ItemStack.class, ForgeClientInitializer::attachItemCaps);
         NetworkHandler.registerMessage();
     }
 
@@ -53,27 +70,29 @@ public class ForgeClientInitializer
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
     }
 
+    /**
+     * 设置方块透明
+     */
     @SubscribeEvent
     public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {
-        event.enqueueWork(() ->
-        {
-            ModBlockStates.setRenderType();
-            //to make them transparent
-        });
+        event.enqueueWork(ModBlockStates::setRenderType);
     }
 
+    /**
+     *药水等的颜色
+     */
     @SubscribeEvent
     public static void registerItemColors(ColorHandlerEvent.Item evt)
     {
-        //for potions
         ColorHandler.submitItems(evt.getItemColors()::register);
     }
 
-
+    /**
+     * 森林法杖，下同
+     */
     private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
     {
-        //for wand
         var ret = new IdentityHashMap<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>();
         ModSubtiles.registerWandHudCaps((factory, types) ->
         {
@@ -98,4 +117,18 @@ public class ForgeClientInitializer
         }
     }
 
+    private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
+            ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
+    ));
+
+    private static void attachItemCaps(AttachCapabilitiesEvent<ItemStack> e)
+    {
+        var stack = e.getObject();
+        var makeManaItem = MANA_ITEM.get().get(stack.getItem());
+        if (makeManaItem != null)
+        {
+            e.addCapability(new ResourceLocation(ExtraBotany.MODID, "mana_item"),
+                    CapabilityUtil.makeProvider(BotaniaForgeCapabilities.MANA_ITEM, makeManaItem.apply(stack)));
+        }
+    }
 }

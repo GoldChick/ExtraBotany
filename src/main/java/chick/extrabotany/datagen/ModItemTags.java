@@ -34,6 +34,7 @@ public class ModItemTags extends ItemTagsProvider
         //        .add(ModBlocks.YLG_ORE_ITEM.get())
         ;
         tag(Tags.Items.INGOTS)
+                .add(ModItems.ORICHALCOS.get())
                 .add(ModItems.PHOTON_INGOT.get())
                 .add(ModItems.SHADOW_INGOT.get())
         ;
@@ -48,6 +49,9 @@ public class ModItemTags extends ItemTagsProvider
         this.copy(ModTags.Blocks.MINI_FLOWERS, ModTags.Items.MINI_FLOWERS);
 
         tag(ModTags.Items.MANA_USING_ITEMS)
+                .add(ModItems.SHADOW_KATANA.get())
+                .add(ModItems.ROD_OF_DISCORD.get())
+                .add(ModItems.SHADOW_KATANA.get())
                 .add(ModItems.SHADOW_KATANA.get())
                 .add(ModItems.SHADOW_WARRIOR_HELM.get())
                 .add(ModItems.SHADOW_WARRIOR_CHEST.get())
@@ -76,6 +80,7 @@ public class ModItemTags extends ItemTagsProvider
         tag(accessory("ring"))
                 .add(ModItems.DEATH_RING.get())
                 .add(ModItems.FROST_RING.get())
+                .add(ModItems.SAGES_MANA_RING.get())
         ;
 
         tag(accessory("belt"));

@@ -1,6 +1,9 @@
 package chick.extrabotany.common.blocks.generating;
 
+import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.entities.EntityFalseLightning;
+import chick.extrabotany.forge.IMixinGetData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -14,7 +17,7 @@ import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
 public class SubTileReikarOrchid extends TileEntityGeneratingFlower
 {
-    private static final int RANGE = 5;
+    private static final int RANGE = 3;
 
     public SubTileReikarOrchid(BlockPos pos, BlockState state)
     {
@@ -38,14 +41,27 @@ public class SubTileReikarOrchid extends TileEntityGeneratingFlower
         }
         for (var bolt : level.getEntitiesOfClass(LightningBolt.class, new AABB(getEffectivePos().offset(-RANGE, -RANGE, -RANGE), getEffectivePos().offset(RANGE + 1, RANGE + 1, RANGE + 1))))
         {
+            if (bolt instanceof EntityFalseLightning)
+                continue;
             if (getMana() == 0)
             {
-                addMana(getMaxMana());
+                if (bolt instanceof IMixinGetData && ((IMixinGetData) bolt).getInt() == 2)
+                {
+                    bolt.discard();
+                    var fBolt = new EntityFalseLightning(ModEntities.FALSE_LIGHTNING, level);
+                    fBolt.setPos(getEffectivePos().getX(), getEffectivePos().getY(), getEffectivePos().getZ());
+                    if (!level.isClientSide)
+                        level.addFreshEntity(fBolt);
+                    addMana(getMaxMana());
+                }
             } else
             {
-                level.explode(null, getEffectivePos().getX(), getEffectivePos().getY(), getEffectivePos().getZ(), 3.0F, Explosion.BlockInteraction.BREAK);
+                if (bolt instanceof IMixinGetData && ((IMixinGetData) bolt).getInt() == 1)
+                {
+                    level.explode(null, getEffectivePos().getX(), getEffectivePos().getY(), getEffectivePos().getZ(),
+                            1.0F, Explosion.BlockInteraction.BREAK);
+                }
             }
-            bolt.discard();
             sync();
         }
     }

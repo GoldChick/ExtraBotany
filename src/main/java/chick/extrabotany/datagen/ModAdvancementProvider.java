@@ -79,6 +79,12 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .parent(nightmarefuel_eat)
                 .addCriterion("pickup", onPickup(ModItems.THE_CHAOS.get()))
                 .save(consumer, mainId("thechaos_craft"));
+
+        Advancement ego_defeat = Advancement.Builder.advancement()
+                .display(simple(ModItems.HERO_MEDAL.get(), "ego_defeat", FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion("pickup", onPickup(ModItems.HERO_MEDAL.get()))
+                .save(consumer, mainId("ego_defeat"));
 /*
         Advancement runePickup = Advancement.Builder.advancement()
                 .display(simple(ModBlocks.runeAltar, "runePickup", FrameType.TASK))
@@ -185,14 +191,19 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("elven_lexicon", elvenLexicon)
                 .requirements(RequirementsStrategy.OR)
                 .save(consumer, mainId("nightmarefuel_eat_lexicon"));
-//
+
         Advancement.Builder.advancement()
                 .parent(nightmarefuel_eat)
                 .addCriterion("pickup", onPickup(ModItems.THE_CHAOS.get()))
                 .addCriterion("elven_lexicon", elvenLexicon)
                 .requirements(RequirementsStrategy.OR)
                 .save(consumer, mainId("thechaos_craft_lexicon"));
-//
+
+        Advancement.Builder.advancement()
+                .parent(thechaos_craft)
+                .addCriterion("pickup", onPickup(ModItems.HERO_MEDAL.get()))
+                .addCriterion("elven_lexicon", elvenLexicon)
+                .save(consumer, mainId("ego_defeat_lexicon"));
         /*
         Advancement.Builder.advancement()
                 .parent(nightmarefuel_eat)

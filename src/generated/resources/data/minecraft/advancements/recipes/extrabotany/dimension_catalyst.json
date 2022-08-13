@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:dimension_catalyst"
+    ]
+  },
+  "criteria": {
+    "alchemycatalyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:alchemy_catalyst"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:dimension_catalyst"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "alchemycatalyst",
+      "has_the_recipe"
+    ]
+  ]
+}

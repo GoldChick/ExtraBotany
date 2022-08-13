@@ -2,7 +2,7 @@ package chick.extrabotany.network;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.network.inputMessage.DamageMessage;
-import chick.extrabotany.network.inputMessage.JingweiMessage;
+import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import chick.extrabotany.network.inputMessage.PowerGloveMessage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -43,10 +43,10 @@ public class NetworkHandler
         );
         INSTANCE.registerMessage(
                 nextID(),
-                JingweiMessage.class,
-                JingweiMessage::encode,
-                JingweiMessage::decode,
-                JingweiMessage::handleJingweiFeather
+                LeftClickMessage.class,
+                LeftClickMessage::encode,
+                LeftClickMessage::decode,
+                LeftClickMessage::handleLeftClick
         );
         INSTANCE.registerMessage(
                 nextID(),

@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.mixin.client;
 
-import chick.extrabotany.common.blocks.SubTileDecay;
+import chick.extrabotany.common.blocks.ISubTileDecay;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.TagKey;
@@ -13,13 +13,13 @@ import vazkii.botania.common.block.subtile.generating.SubTileFluidGenerator;
 import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
 @Mixin(SubTileHydroangeas.class)
-public abstract class ForgeMixinHydroangeas extends SubTileFluidGenerator implements SubTileDecay
+public abstract class MixinHydroangeas extends SubTileFluidGenerator implements ISubTileDecay
 {
     //may cause error!
     @Shadow
     private int passiveDecayTicks;
 
-    protected ForgeMixinHydroangeas(BlockEntityType<?> type, BlockPos pos, BlockState state, TagKey<Fluid> consumedFluid, int startBurnTime, int manaPerTick, int maxCooldown)
+    protected MixinHydroangeas(BlockEntityType<?> type, BlockPos pos, BlockState state, TagKey<Fluid> consumedFluid, int startBurnTime, int manaPerTick, int maxCooldown)
     {
         super(type, pos, state, consumedFluid, startBurnTime, manaPerTick, maxCooldown);
     }
@@ -34,6 +34,7 @@ public abstract class ForgeMixinHydroangeas extends SubTileFluidGenerator implem
             emitParticle(ParticleTypes.ANGRY_VILLAGER, Math.random() * 0.2, 0.7, Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
         }
     }
+
     @Override
     public int getPassiveTicks()
     {

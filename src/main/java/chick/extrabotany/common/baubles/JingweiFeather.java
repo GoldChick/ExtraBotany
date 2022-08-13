@@ -1,8 +1,9 @@
 package chick.extrabotany.common.baubles;
 
 import chick.extrabotany.common.entities.projectile.EntityAuraFire;
+import chick.extrabotany.forge.IItemWithLeftClick;
 import chick.extrabotany.network.NetworkHandler;
-import chick.extrabotany.network.inputMessage.JingweiMessage;
+import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -14,7 +15,7 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
-public class JingweiFeather extends ItemBauble
+public class JingweiFeather extends ItemBauble implements IItemWithLeftClick
 {
     public static final int MANA_PER_DAMAGE = 300;
 
@@ -37,16 +38,17 @@ public class JingweiFeather extends ItemBauble
     public void leftClick(PlayerInteractEvent.LeftClickEmpty evt)
     {
         if (!EquipmentHandler.findOrEmpty(this, evt.getPlayer()).isEmpty())
-            NetworkHandler.INSTANCE.sendToServer(new JingweiMessage());
+            NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage());
 
     }
 
     public void leftClickBlock(PlayerInteractEvent.LeftClickBlock evt)
     {
         if (evt.getPlayer().level.isClientSide && !EquipmentHandler.findOrEmpty(this, evt.getPlayer()).isEmpty())
-            NetworkHandler.INSTANCE.sendToServer(new JingweiMessage());
+            NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage());
     }
 
+    @Override
     public void onLeftClick(Player player, Entity target)
     {
         if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && player.getAttackStrengthScale(0) == 1)

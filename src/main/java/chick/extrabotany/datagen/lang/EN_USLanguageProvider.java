@@ -1,6 +1,7 @@
 package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
@@ -33,6 +34,15 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.THE_ORIGIN.get(), "The Origin");
         add(ModItems.THE_END.get(), "The End");
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
+        add(ModItems.FRIED_CHICKEN.get(), "Fried Chicken");
+        add(ModBlocks.DIMENSION_CATALYST.get(), "Dimension Catalyst");
+        add(ModItems.ORICHALCOS.get(), "Orichalcos Ingot");
+        add(ModItems.TICKET.get(),"Invitation Letter to Yourself");
+
+        add(ModItems.LEN_SMELT.get(), "Mana Lens: Smelt");
+        add(ModItems.LEN_SMELT.get().getDescriptionId() + ".short", "Smelt");
+        add(ModItems.LEN_POTION.get(), "Mana Lens: Potion: %s");
+        add(ModItems.LEN_POTION.get().getDescriptionId() + ".short", "Potion");
 
         add(ModItems.FOX_EAR.get(), "Fox Ear");
         add(ModItems.FOX_MASK.get(), "Mask with Memory");
@@ -43,6 +53,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.RED_SCARF.get(), "Red Scarf");
         add(ModItems.STONE_MASK.get(), "Stone Mask");
 
+        add(ModItems.PEACE_AMULET.get(), "Peace Amulet");
         add(ModItems.DEATH_RING.get(), "Curse Ring");
         add(ModItems.FROST_RING.get(), "Frost Star");
         add(ModItems.POWER_GLOVE.get(), "Power Glove");
@@ -55,9 +66,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_AQUA_STONE.get(), "Supreme Aqua Stone");
         add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
         add(ModItems.SUPREME_IGNIS_STONE.get(), "Supreme Ignis Stone");
-
+        add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
+        add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "Shadow Warrior Leggings");
@@ -79,7 +91,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.brew.shell", "Shell");
         add("extrabotany.brew.deadpool", "Deadpool");
         add("extrabotany.brew.floating", "Floating");
-
+        add("extrabotanymisc.inventoryUnfeasible","You have something that isn't allowed in this boss fight. Check your inventory and tips in the lexicon again!");
+        add("extrabotanymisc.unlegalPlayercount","There are more people than there were when the boss is summoned. That's illegal!");
+        add("extrabotanymisc.description","You can not use it until you complete corresponding advancement <%s>.");
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -120,12 +134,19 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("advancement.extrabotany:root.desc", "Don't have a good day, have a great day");
         add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
         add("advancement.extrabotany:nightmarefuel_eat.desc", "Eat a Nightmare Fuel (Unbelievable)");
-        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
         add("advancement.extrabotany:thechaos_craft.title", "Chaos With No Chaos");
         add("advancement.extrabotany:thechaos_craft.desc", "Craft The Chaos");
+        add("extrabotany.egodefeat.title","KiLLER LADY");
+        add("extrabotany.egodefeat.desc","Defeat Ego");
+
+        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
+        add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
+
         add("advancement.extrabotany:rodofdiscord_craft.title", "NOT Discord");
         add("advancement.extrabotany:rodofdiscord_craft.desc", "Craft Rod of Discord");
+
+        add("advancement.extrabotany.sages_mana_ring_craft.title", "COLOR");
+        add("advancement.extrabotany.sages_mana_ring_craft.desc", "Obtain Sages Mana Ring");
     }
 
     private void langPantchouli()
@@ -137,7 +158,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.header1", "The more progress you have done, the more knowledge you will have. I could give you one hint, you could obtain Spirit Fuel by eating Nightmare Fuel.");
 
         add("extrabotany.entry.nightmarefuel", "Nightmare Fuel");
-        add("extrabotany.page.nightmarefuel0", "$(item)Nightmare Fuel$(0) is the aggregation of the nightmare, you will suffer after eating it, but it may be the beginning of a sweet dream.");
+        add("extrabotany.page.nightmarefuel0", "$(item)Nightmare Fuel$(0) is the aggregation of the nightmare, you will suffer after eating it, but it may be the beginning of a sweet dream. Elves may be interested in this. (Warning: instant damage III will cause 24 damage to player!)");
         add("extrabotany.page.nightmarefuel1", "The brain trembles.");
 
         add("extrabotany.entry.spiritfuel", "Spirit Fuel");
@@ -241,12 +262,29 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.frostring", "Frost Star");
         add("extrabotany.page.frostring0", "The $(item)Frost Star$(0) freezes large areas of water and lava. It also applies slowness creatures looked at by the wearer.");
         add("extrabotany.page.frostring1", "I am the frozen heart of the Scourge!");
-
-
-        //TODO:花散里面具英文
-        add("extrabotany.foxmaskinfo0", "");
-        add("extrabotany.foxmaskinfo1", "");
-        add("extrabotany.foxmaskinfo2", "");
+        add("extrabotany.entry.sages_mana_ring", "Sages Mana Ring");
+        add("extrabotany.page.sages_mana_ring0", "The $(item)Sages Mana Ring$(0) can store nearly a infinite amount of $(thing)Mana$(0).");
+        add("extrabotany.page.sages_mana_ring1", "The Cake is a Lie.");
+        add("extrabotany.foxmaskinfo0", "When shall we meet again after this parting? For life is like the morning dew.");
+        add("extrabotany.foxmaskinfo1", "Now that Hanachirusato has been separated from this mask,");
+        add("extrabotany.foxmaskinfo2", "Paimon doesn't get to call her the \"Masked Maiden\" anymore, right?");
+        add("extrabotany.entry.lens","Brand-new Mana Lens");
+        add("extrabotany.page.lens0","$(item)Mana Lens: Mana$(0) is like a Mana Pool, it will infuse the item with mana. If you place a Alchemy Catalyst or a Conjuration Catalyst under the spreader, it will do the cocorresponding work.");
+        add("extrabotany.page.lens1","Mana");
+        add("extrabotany.page.lens2","$(item)Mana Lens: Push$(0) will enable Mana Burst to force the entities it collide to move with it.");
+        add("extrabotany.page.lens3","Push");
+        add("extrabotany.page.lens4","$(item)Mana Lens: Trace$(0) will enable Mana Burst to locate the first entity within 3 meters and keep tracking until either is dead.");
+        add("extrabotany.page.lens5","Trace");
+        add("extrabotany.page.lens6","$(item)Mana Lens: Smelt$(0) is like a furnace, it will enable Mana Burst to smelt the block ti collide.");
+        add("extrabotany.page.lens7","Smelt");
+        add("extrabotany.page.lens8","$(item)Mana Lens: Potion$(0) will add potion effects to the first entity collided. Craft the lens with the brew flask to decide its effect.");
+        add("extrabotany.page.lens9","Potion");
+        add("extrabotany.entry.dimension_catalyst","Dimension Catalyst");
+        add("extrabotany.page.dimension_catalyst0","$(item)Dimension Catalyst$(0) connects the Overworld with other two dimensions. You can use $(thing)Mana$(0) to transform resources from overworld to those from other dimensions.");
+        add("extrabotany.page.dimension_catalyst1","");
+        add("extrabotany.entry.peace_amulet","Peace Amulet");
+        add("extrabotany.page.peace_amulet0","$(item)Peace Amulet$(0) could guarantee that all weapons in extrabotany will no longer deal damage to other players and friendly mobs.");
+        add("extrabotany.page.peace_amulet1","");
         pantchouliFlower();
     }
 
@@ -265,11 +303,11 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.gemini_orchid0", "A $(item)Gemini Orchid$(0) is like a thermoelectric generator. If you place a block of lava in one of eight blocks nearby, and then place a block of water in another position, it will begin to produce mana. The higher the gap between two blocks' temperatures, the quicker mana will be generated. Since it is a passive flower, it will decay after working for 3 days in minecraft..");
         add("extrabotany.page.gemini_orchid1", "I am power incarnate!");
         add("extrabotany.entry.bell_flower", "Bell Flower");
-        add("extrabotany.page.bell_flower0", "When placed in a high and open place, the $(item)Bell Flower$(0) creates $(thing)Mana$(0) from wind. The higher it is, the more mana it produces. Blocks and other $(item)Bell Flower$(0) will decrease the mana output. A Livingrock Pedestal nearby with a Nature Orb in it can increase its mana generation efficiency. Please note that it will decay after working for 3 days in minecraft.");
+        add("extrabotany.page.bell_flower0", "When placed in a high and open place, the $(item)Bell Flower$(0) creates $(thing)Mana$(0) from wind. The higher it is, the more mana it produces, which is capped at y=319. Blocks and other $(item)Bell Flower$(0) will decrease the mana output. A Livingrock Pedestal nearby with a Nature Orb in it can increase its mana generation efficiency. Please note that it will decay after working for 3 days in minecraft.");
         add("extrabotany.page.bell_flower1", "Only the storms can knock down the trees.");
-        add("extrabotany.entry.reikarorchid","Reikar Lily");
-        add("extrabotany.page.reikarorchid0","The $(item)Reikar Lily$(0) turns the tremendous energy of lightning into $(thing)Mana$(0). When a lightning bolt hits nearby, it will generate a great amount of $(thing)Mana$(0) immediately. $(item)Reikar Lily$(0) itself could attract thunder. To absorb the lightning, the flower must not have any $(thing)Mana$(0) stored in it-- otherwise, it will explode.");
-        add("extrabotany.page.reikarorchid1","I Choose You!");
+        add("extrabotany.entry.reikarorchid", "Reikar Lily");
+        add("extrabotany.page.reikarorchid0", "The $(item)Reikar Lily$(0) turns the tremendous energy of lightning into $(thing)Mana$(0). When a lightning bolt hits nearby, it will generate a great amount of $(thing)Mana$(0) immediately. $(item)Reikar Lily$(0) itself could attract thunder. To absorb the lightning, the flower must not have any $(thing)Mana$(0) stored in it-- otherwise, it will explode.");
+        add("extrabotany.page.reikarorchid1", "I Choose You!");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");

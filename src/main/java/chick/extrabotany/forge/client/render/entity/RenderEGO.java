@@ -1,5 +1,6 @@
 package chick.extrabotany.forge.client.render.entity;
 
+import chick.extrabotany.common.entities.EntityEGO;
 import chick.extrabotany.forge.client.EntityRenderers;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -15,16 +16,15 @@ import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import vazkii.botania.client.core.helper.CoreShaders;
 import vazkii.botania.client.core.helper.RenderHelper;
-import vazkii.botania.common.entity.EntityDoppleganger;
 
 import javax.annotation.Nonnull;
 
 
-public class RenderDoppleganger extends HumanoidMobRenderer<EntityDoppleganger, HumanoidModel<EntityDoppleganger>>
+public class RenderEGO extends HumanoidMobRenderer<EntityEGO, HumanoidModel<EntityEGO>>
 {
     private final Model normalModel;
     private final Model slimModel;
-    public RenderDoppleganger(EntityRendererProvider.Context ctx)
+    public RenderEGO(EntityRendererProvider.Context ctx)
     {
         super(ctx, new Model(ctx.bakeLayer(ModelLayers.PLAYER)), 0F);
         this.normalModel = (Model) this.getModel();
@@ -34,7 +34,7 @@ public class RenderDoppleganger extends HumanoidMobRenderer<EntityDoppleganger, 
         EntityRenderers.init(ctx);
     }
     @Override
-    public void render(@Nonnull EntityDoppleganger dopple, float yaw, float partialTicks, PoseStack ms, MultiBufferSource buffers, int light) {
+    public void render(@Nonnull EntityEGO dopple, float yaw, float partialTicks, PoseStack ms, MultiBufferSource buffers, int light) {
         int invulTime = dopple.getInvulTime();
         ShaderInstance shader = CoreShaders.doppleganger();
         if (shader != null) {
@@ -59,7 +59,7 @@ public class RenderDoppleganger extends HumanoidMobRenderer<EntityDoppleganger, 
 
         super.render(dopple, yaw, partialTicks, ms, buffers, light);
     }
-    private static class Model extends HumanoidModel<EntityDoppleganger>
+    private static class Model extends HumanoidModel<EntityEGO>
     {
         Model(ModelPart root)
         {

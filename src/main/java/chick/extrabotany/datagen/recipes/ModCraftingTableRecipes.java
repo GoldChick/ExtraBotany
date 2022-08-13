@@ -4,6 +4,7 @@ import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.crafting.CocktailRecipe;
+import chick.extrabotany.common.crafting.LenPotionRecipe;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -35,6 +36,10 @@ public class ModCraftingTableRecipes extends RecipeProvider
     {
         SpecialRecipeBuilder.special(CocktailRecipe.SERIALIZER)
                 .save(consumer, "cock_tail");
+        SpecialRecipeBuilder.special(LenPotionRecipe.SERIALIZER)
+                .save(consumer, "len_potion_brew");
+
+
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
                 .pattern("azx")
@@ -56,6 +61,16 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(), ModItems.PHOTON_INGOT.get()))
                 .save(consumer, "thechaos");
+        ShapedRecipeBuilder.shaped(ModItems.THE_END.get())
+                .pattern(" x ")
+                .pattern("xzb")
+                .pattern(" b ")
+                .define('x', ModItems.ORICHALCOS.get())
+                .define('z', Items.ENDER_EYE)
+                .define('b', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .group(MODID)
+                .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
+                .save(consumer, "theend");
         ShapedRecipeBuilder.shaped(ModItems.EMPTY_BOTTLE.get())
                 .pattern("x x")
                 .pattern("x x")
@@ -122,6 +137,30 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("grayPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.grayPetal))
                 .save(consumer, "stonemask");
+        ShapedRecipeBuilder.shaped(ModItems.SAGES_MANA_RING.get())
+                .pattern("aba")
+                .pattern("cxc")
+                .pattern("aca")
+                .define('x', vazkii.botania.common.item.ModItems.manaRingGreater)
+                .define('a', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('b', ModItems.HERO_MEDAL.get())
+                .define('c', vazkii.botania.common.item.ModItems.manaTablet)
+                .group(MODID)
+                .unlockedBy("heromedal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, "sages_mana_ring");
+        ShapedRecipeBuilder.shaped(ModBlocks.DIMENSION_CATALYST.get())
+                .pattern("aba")
+                .pattern("gxw")
+                .pattern("aca")
+                .define('x', vazkii.botania.common.block.ModBlocks.alchemyCatalyst)
+                .define('a', vazkii.botania.common.block.ModBlocks.livingrock)
+                .define('b', Items.ENDER_PEARL)
+                .define('g', Items.DIAMOND)
+                .define('w', Items.BLAZE_ROD)
+                .define('c', ModItems.SPIRITFUEL_PROP.get())
+                .group(MODID)
+                .unlockedBy("alchemycatalyst", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.alchemyCatalyst))
+                .save(consumer, "dimension_catalyst");
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -137,12 +176,29 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
                 .save(consumer, "gildedmashedpotato");
-        ShapelessRecipeBuilder.shapeless(ModSubtiles.sunshinelilyFloating)
-                .requires(ModSubtiles.sunshinelily)
-                .requires(ModTags.Items.MUNDANE_FLOATING_FLOWERS)
+        ShapelessRecipeBuilder.shapeless(ModItems.LEN_SMELT.get())
+                .requires(vazkii.botania.common.item.ModItems.lensNormal)
+                .requires(vazkii.botania.common.item.ModItems.manaPowder)
+                .requires(vazkii.botania.common.item.ModItems.runeFire)
                 .group(MODID)
-                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModSubtiles.sunshinelily))
-                .save(consumer, "floating_sunshine_lily");
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
+                .save(consumer, "len_smelt");
+        ShapelessRecipeBuilder.shapeless(ModItems.LEN_POTION.get())
+                .requires(vazkii.botania.common.item.ModItems.lensNormal)
+                .requires(vazkii.botania.common.item.ModItems.manaPowder)
+                .requires(vazkii.botania.common.item.ModItems.runeSpring)
+                .requires(vazkii.botania.common.item.ModItems.dragonstone)
+                .requires(vazkii.botania.common.item.ModItems.enderAirBottle)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
+                .save(consumer, "len_potion");
+        ShapelessRecipeBuilder.shapeless(ModItems.TICKET.get())
+                .requires(vazkii.botania.common.item.ModItems.gaiaIngot)
+                .requires(ModItems.THE_CHAOS.get())
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
+                .save(consumer, "ticket");
+
     }
 
     private void weaponRecipes(Consumer<FinishedRecipe> consumer)

@@ -1,19 +1,17 @@
 package chick.extrabotany.common.blocks.generating;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.SubTileDecay;
+import chick.extrabotany.common.blocks.ISubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileMoonlightLily extends SubTilePassive implements SubTileDecay
+public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDecay
 {
     private static final int RANGE = 2;
     private static final int DECAY_TIME = 72000;

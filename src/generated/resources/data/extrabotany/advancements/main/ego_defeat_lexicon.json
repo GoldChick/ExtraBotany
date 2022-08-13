@@ -1,0 +1,38 @@
+{
+  "parent": "extrabotany:main/thechaos_craft",
+  "criteria": {
+    "pickup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:heromedal"
+            ]
+          }
+        ]
+      }
+    },
+    "elven_lexicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:lexicon"
+            ],
+            "nbt": "{\"botania:elven_unlock\":1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pickup"
+    ],
+    [
+      "elven_lexicon"
+    ]
+  ]
+}

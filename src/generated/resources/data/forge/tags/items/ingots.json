@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "extrabotany:orichalcos",
     "extrabotany:photonium",
     "extrabotany:shadowium"
   ]

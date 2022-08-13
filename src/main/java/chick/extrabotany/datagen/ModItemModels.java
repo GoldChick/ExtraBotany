@@ -4,29 +4,13 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplate;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.data.models.model.TextureSlot;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import vazkii.botania.data.util.ModelWithOverrides;
-import vazkii.botania.data.util.OverrideHolder;
-import vazkii.botania.mixin.AccessorTextureSlot;
 
-import java.util.Optional;
-
-import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 public class ModItemModels extends ItemModelProvider
 {
-    private static final TextureSlot LAYER1 = AccessorTextureSlot.make("layer1");
-    private static final ModelTemplate GENERATED_1 = new ModelTemplate(Optional.of(new ResourceLocation("item/generated")), Optional.empty(), TextureSlot.LAYER0, LAYER1);
-    private static final ModelWithOverrides GENERATED_OVERRIDES_1 = new ModelWithOverrides(new ResourceLocation("item/generated"), TextureSlot.LAYER0, LAYER1);
-
     public ModItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper)
     {
         super(generator, ExtraBotany.MODID, existingFileHelper);
@@ -35,7 +19,7 @@ public class ModItemModels extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        //withExistingParent(ModBlocks.YLG_ORE_ITEM.get().getRegistryName().getPath(), modLoc("block/yeluogui_ore"));
+        withExistingParent(ModBlocks.DIMENSION_CATALYST_ITEM.get().getRegistryName().getPath(), modLoc("block/dimension_catalyst"));
 
         singleTexture(ModItems.SPIRITFUEL_PROP.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/spirit_fuel"));
         singleTexture(ModItems.NIGHTMAREFUEL_PROP.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/nightmare_fuel"));
@@ -45,18 +29,23 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.GILDED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedpotato"));
         singleTexture(ModItems.GILDED_MASHED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedmashedpotato"));
 
-        singleTexture(ModItems.MANA_READER.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/manareader"));
+        singleTexture(ModItems.MANA_READER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/manareader"));
         singleTexture(ModItems.THE_CHAOS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/thechaos"));
         singleTexture(ModItems.THE_END.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theend"));
         singleTexture(ModItems.THE_ORIGIN.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theorigin"));
         singleTexture(ModItems.THE_UNIVERSE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/theuniverse"));
         singleTexture(ModItems.EMPTY_BOTTLE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/empty_bottle"));
         singleTexture(ModItems.MANA_DRINK.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/mana_drink"));
-        singleTexture(ModItems.ROD_OF_DISCORD.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/rodofdiscord"));
+        singleTexture(ModItems.ROD_OF_DISCORD.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/rodofdiscord"));
         singleTexture(ModItems.SPLASH_GRENADE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/splash_grenade"));
         singleTexture(ModItems.SPLASH_GRENADE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer1", modLoc("item/splash_grenade1"));
         singleTexture(ModItems.HERO_MEDAL.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/heromedal"));
         singleTexture(ModItems.FRIED_CHICKEN.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/friedchicken"));
+        singleTexture(ModItems.TICKET.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/ticket"));
+        singleTexture(ModItems.ORICHALCOS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/orichalcos"));
+
+        singleTexture(ModItems.LEN_SMELT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_smelt"));
+        singleTexture(ModItems.LEN_POTION.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_potion"));
 
 
         registerBaubleModels();
@@ -77,6 +66,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.THUG_LIFE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/thuglife"));
 
 
+        singleTexture(ModItems.PEACE_AMULET.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/peace_amulet"));
         singleTexture(ModItems.DEATH_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/deathring"));
         singleTexture(ModItems.FROST_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/frostring"));
         singleTexture(ModItems.POWER_GLOVE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/powerglove"));
@@ -90,6 +80,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.SUPREME_AQUA_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aquastone"));
         singleTexture(ModItems.SUPREME_EARTH_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/earthstone"));
         singleTexture(ModItems.SUPREME_IGNIS_STONE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/ignisstone"));
+        singleTexture(ModItems.SAGES_MANA_RING.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/sages_mana_ring"));
     }
 
     private void registerFlowerModels()
@@ -109,7 +100,8 @@ public class ModItemModels extends ItemModelProvider
 
     private void registerWeaponModels()
     {
-        singleTexture(ModItems.SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/shadowkatana"));
+        singleTexture(ModItems.SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/shadowkatana"));
+        singleTexture(ModItems.TRUE_SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/trueshadowkatana"));
 
     }
 

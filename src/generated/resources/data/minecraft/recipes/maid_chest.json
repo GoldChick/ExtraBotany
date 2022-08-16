@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "b b",
+    "bab",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "botania:gaia_ingot"
+    },
+    "a": {
+      "item": "botania:terrasteel_chestplate"
+    },
+    "b": {
+      "item": "extrabotany:gold_cloth"
+    }
+  },
+  "result": {
+    "item": "extrabotany:maid_chest"
+  }
+}

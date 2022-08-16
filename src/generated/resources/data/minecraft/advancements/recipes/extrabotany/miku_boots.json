@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:miku_boots"
+    ]
+  },
+  "criteria": {
+    "manaweave": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:manaweave_cloth"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:miku_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "manaweave",
+      "has_the_recipe"
+    ]
+  ]
+}

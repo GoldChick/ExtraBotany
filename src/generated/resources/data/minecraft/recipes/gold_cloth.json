@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "bab",
+    "axa",
+    "bab"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:gold_ingot"
+    },
+    "a": {
+      "item": "botania:manaweave_cloth"
+    },
+    "b": {
+      "item": "botania:life_essence"
+    }
+  },
+  "result": {
+    "item": "extrabotany:gold_cloth"
+  }
+}

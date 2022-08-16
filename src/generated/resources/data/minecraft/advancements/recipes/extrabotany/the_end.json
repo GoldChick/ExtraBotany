@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:thechaos"
+      "minecraft:the_end"
     ]
   },
   "criteria": {
@@ -12,12 +12,7 @@
         "items": [
           {
             "items": [
-              "extrabotany:shadowium"
-            ]
-          },
-          {
-            "items": [
-              "extrabotany:photonium"
+              "extrabotany:orichalcos"
             ]
           }
         ]
@@ -26,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:thechaos"
+        "recipe": "minecraft:the_end"
       }
     }
   },

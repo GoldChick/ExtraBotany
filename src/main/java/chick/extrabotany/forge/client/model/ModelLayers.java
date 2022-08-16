@@ -12,13 +12,17 @@ import chick.extrabotany.ExtraBotany;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
-public class ModModelLayers
+public class ModelLayers
 {
     public static final ModelLayerLocation AVATAR = make("avatar");
     public static final ModelLayerLocation SHADOW_INNER_ARMOR = make("shadowwarrior_armor", "inner_armor");
     public static final ModelLayerLocation SHADOW_OUTER_ARMOR = make("shadowwarrior_armor", "outer_armor");
     public static final ModelLayerLocation GOBLIN_SLAYER_INNER = make("goblinslayer_armor", "inner_armor");
     public static final ModelLayerLocation GOBLIN_SLAYER_OUTER = make("goblinslayer_armor", "outer_armor");
+    public static final ModelLayerLocation MIKU_INNER = make("miku_armor", "inner_armor");
+    public static final ModelLayerLocation MIKU_OUTER = make("miku_armor", "outer_armor");
+    public static final ModelLayerLocation MAID_INNER = make("maid_armor", "inner_armor");
+    public static final ModelLayerLocation MAID_OUTER = make("maid_armor", "outer_armor");
 
     private static ModelLayerLocation make(String name)
     {

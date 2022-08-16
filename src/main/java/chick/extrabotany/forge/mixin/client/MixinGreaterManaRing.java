@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class MixinGreaterManaRing extends ItemBauble
 {
     @Final
-    @Shadow
+     @Shadow
     private static int MAX_MANA;
 
     public MixinGreaterManaRing(Properties props)
@@ -41,15 +41,15 @@ public abstract class MixinGreaterManaRing extends ItemBauble
 
     private String checkInt(String str)
     {
-        String newStr = new String();
+        StringBuilder newStr = new StringBuilder();
         for (int i = str.length() - 1; i >= 0; i--)
         {
-            newStr += str.charAt(i);
+            newStr.append(str.charAt(i));
             if ((str.length() - i) % 3 == 0 && i != 0)
             {
-                newStr += ",";
+                newStr.append(",");
             }
         }
-        return new StringBuffer(newStr).reverse().toString();
+        return new StringBuffer(newStr.toString()).reverse().toString();
     }
 }

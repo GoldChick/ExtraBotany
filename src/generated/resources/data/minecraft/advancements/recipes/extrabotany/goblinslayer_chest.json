@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:theend"
+      "minecraft:goblinslayer_chest"
     ]
   },
   "criteria": {
-    "ingots": {
+    "photonium": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:orichalcos"
+              "extrabotany:photonium"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:theend"
+        "recipe": "minecraft:goblinslayer_chest"
       }
     }
   },
   "requirements": [
     [
-      "ingots",
+      "photonium",
       "has_the_recipe"
     ]
   ]

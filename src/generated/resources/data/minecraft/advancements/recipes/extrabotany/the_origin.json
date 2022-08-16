@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:the_origin"
+    ]
+  },
+  "criteria": {
+    "ingots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:aerialite"
+            ]
+          },
+          {
+            "items": [
+              "extrabotany:photonium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:the_origin"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ingots",
+      "has_the_recipe"
+    ]
+  ]
+}

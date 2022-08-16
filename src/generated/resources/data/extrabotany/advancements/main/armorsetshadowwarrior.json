@@ -1,0 +1,83 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:shadowwarrior_chest",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:armorsetshadowwarrior.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:armorsetshadowwarrior.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "shadow_warrior1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowwarrior_helm"
+            ]
+          }
+        ]
+      }
+    },
+    "shadow_warrior2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowwarrior_chest"
+            ]
+          }
+        ]
+      }
+    },
+    "shadow_warrior3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowwarrior_legs"
+            ]
+          }
+        ]
+      }
+    },
+    "shadow_warrior4": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:shadowwarrior_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shadow_warrior1"
+    ],
+    [
+      "shadow_warrior2"
+    ],
+    [
+      "shadow_warrior3"
+    ],
+    [
+      "shadow_warrior4"
+    ]
+  ]
+}

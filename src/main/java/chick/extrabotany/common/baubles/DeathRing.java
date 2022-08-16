@@ -1,5 +1,6 @@
 package chick.extrabotany.common.baubles;
 
+import chick.extrabotany.network.DamageHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -33,17 +34,14 @@ public class DeathRing extends ItemBauble implements ManaItemHandler
                 for (LivingEntity living : entity.getLevel().getEntitiesOfClass(LivingEntity.class, new AABB(entity.position().add(-RANGE, -RANGE, -RANGE), entity.position().add(RANGE + 1, RANGE + 1, RANGE + 1))))
                 {
                     if (living.canBeSeenByAnyone()
-                            && living != entity
-                            && !living.hasPassenger(entity)
+                            && DamageHandler.INSTANCE.checkPassable(living, entity)
                             && ManaItemHandler.instance().requestManaExactForTool(stack, (Player) entity, MANA_PER_DAMAGE, true)
                             && entity.tickCount % 30 == 0
-                )
+                    )
                     {
-                        living.startSeenByPlayer((ServerPlayer) entity);
                         living.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 1));
                         living.addEffect(new MobEffectInstance(MobEffects.UNLUCK, 60, 1));
                         living.hurt(DamageSource.MAGIC, 0.5F);
-                        //TODO:不对动物造成伤害（和平友好之证
                     }
                 }
             }

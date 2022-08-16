@@ -24,7 +24,7 @@ public class SupremeAeroStone extends ItemBauble
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
         attributes.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 1", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
         attributes.put(Attributes.FLYING_SPEED, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 2", 0.75F, AttributeModifier.Operation.MULTIPLY_TOTAL));
-        attributes.put(Attributes.MAX_HEALTH, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 3", -4F, AttributeModifier.Operation.ADDITION));
+        attributes.put(Attributes.MAX_HEALTH, new AttributeModifier(getBaubleUUID(stack), "Aero Stone 3", -8F, AttributeModifier.Operation.ADDITION));
         return attributes;
     }
 

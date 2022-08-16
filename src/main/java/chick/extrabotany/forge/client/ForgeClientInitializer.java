@@ -6,7 +6,7 @@ import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
-import chick.extrabotany.forge.client.model.ModLayerDefinitions;
+import chick.extrabotany.forge.client.model.LayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelBakeEvent;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -60,7 +58,7 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions evt)
     {
-        ModLayerDefinitions.init(evt::registerLayerDefinition);
+        LayerDefinitions.init(evt::registerLayerDefinition);
     }
 
     @SubscribeEvent

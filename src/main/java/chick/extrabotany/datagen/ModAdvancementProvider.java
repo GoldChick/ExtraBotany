@@ -64,7 +64,7 @@ public class ModAdvancementProvider extends AdvancementProvider
         // Main progression line
         Advancement root = Advancement.Builder.advancement()
                 .display(rootDisplay(ModItems.PYLON.get(), "advancement.extrabotany:root.title",
-                        "advancement.extrabotany:root.desc", prefix("textures/block/yeluogui_ore.png")))
+                        "advancement.extrabotany:root.desc", prefix("textures/block/dimension_catalyst.png")))
                 .addCriterion("nightmare", onPickup(ModItems.NIGHTMAREFUEL_PROP.get()))
                 .save(consumer, mainId("root"));
 
@@ -117,12 +117,33 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .parent(nightmarefuel_eat)
                 .addCriterion("manareader", onPickup(ModItems.MANA_READER.get()))
                 .save(consumer, mainId("manareader_craft"));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.SPIRIT_PROP.get(), "spiritfragment_craft", FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("spirit", onPickup(ModItems.SPIRIT_PROP.get()))
+                .save(consumer, mainId("spiritfragment_craft"));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.SHADOW_WARRIOR_CHEST.get(), "armorsetshadowwarrior", FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("shadow_warrior1", onPickup(ModItems.SHADOW_WARRIOR_HELM.get()))
+                .addCriterion("shadow_warrior2", onPickup(ModItems.SHADOW_WARRIOR_CHEST.get()))
+                .addCriterion("shadow_warrior3", onPickup(ModItems.SHADOW_WARRIOR_LEGS.get()))
+                .addCriterion("shadow_warrior4", onPickup(ModItems.SHADOW_WARRIOR_BOOTS.get()))
+                .save(consumer, mainId("armorsetshadowwarrior"));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.GOBLINSLAYER_CHEST.get(), "armorsetgoblinslayer", FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("goblin_slayer1", onPickup(ModItems.GOBLINSLAYER_HELM.get()))
+                .addCriterion("goblin_slayer2", onPickup(ModItems.GOBLINSLAYER_CHEST.get()))
+                .addCriterion("goblin_slayer3", onPickup(ModItems.GOBLINSLAYER_LEGS.get()))
+                .addCriterion("goblin_slayer4", onPickup(ModItems.GOBLINSLAYER_BOOTS.get()))
+                .save(consumer, mainId("armorsetgoblinslayer"));
         //parent: thechaos
         Advancement.Builder.advancement()
-                .display(simple(ModItems.ROD_OF_DISCORD.get(), "rodofdiscord_craft", FrameType.TASK))
+                .display(simple(ModItems.ROD_OF_DISCORD.get(), "rodofdiscord_craft2", FrameType.TASK))
                 .parent(thechaos_craft)
                 .addCriterion("rodofdiscord", onPickup(ModItems.ROD_OF_DISCORD.get()))
-                .save(consumer, mainId("rodofdiscord_craft"));
+                .save(consumer, mainId("rodofdiscord_craft2"));
 
 /*
         // Parent: root

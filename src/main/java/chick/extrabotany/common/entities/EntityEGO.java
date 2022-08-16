@@ -17,12 +17,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
 import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -56,6 +58,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.network.NetworkHooks;
 import vazkii.botania.client.fx.WispParticleData;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.handler.ModSounds;
 import vazkii.botania.common.helper.MathHelper;
 import vazkii.botania.common.helper.VecHelper;
@@ -112,7 +115,6 @@ public class EntityEGO extends Mob
     private int changeWeaponDelay = 0;
     private int attackDelay = 0;
     private float damageTaken = 0;
-    private boolean aggro = false;
     private int tpDelay = 0;
     private int playerCount = 0;
     private BlockPos source = BlockPos.ZERO;
@@ -210,6 +212,7 @@ public class EntityEGO extends Mob
             stack.shrink(1);
 
             EntityEGO e = ModEntities.EGO.create(level);
+            e.tpDelay = SPAWN_TICKS;
             e.setPos(pos.getX() + 0.5, pos.getY() + 3, pos.getZ() + 0.5);
             e.setWeaponType(0);
             e.setCustomName(player.getDisplayName());
@@ -349,7 +352,6 @@ public class EntityEGO extends Mob
     {
         super.addAdditionalSaveData(cmp);
         cmp.putInt(TAG_TPDELAY, tpDelay);
-        cmp.putBoolean(TAG_AGGRO, aggro);
         cmp.putInt(TAG_SOURCE_X, source.getX());
         cmp.putInt(TAG_SOURCE_Y, source.getY());
         cmp.putInt(TAG_SOURCE_Z, source.getZ());
@@ -368,7 +370,6 @@ public class EntityEGO extends Mob
         int y = cmp.getInt(TAG_SOURCE_Y);
         int z = cmp.getInt(TAG_SOURCE_Z);
         source = new BlockPos(x, y, z);
-        aggro = cmp.getBoolean(TAG_AGGRO);
         tpDelay = cmp.getInt(TAG_TPDELAY);
         playerCount = cmp.contains(TAG_PLAYER_COUNT) ? cmp.getInt(TAG_PLAYER_COUNT) : 1;
         if (this.hasCustomName())
@@ -713,6 +714,15 @@ public class EntityEGO extends Mob
                     player.getInventory().setItem(i, ItemStack.EMPTY);
                 }
             }
+            for (int i = 0; i < EquipmentHandler.getAllWorn(player).getContainerSize(); i++)
+            {
+                final ItemStack stack = EquipmentHandler.getAllWorn(player).getItem(i);
+                if (!checkFeasibility(stack))
+                {
+                    player.drop(stack, false);
+                    EquipmentHandler.getAllWorn(player).setItem(i, ItemStack.EMPTY);
+                }
+            }
         }
     }
 
@@ -737,11 +747,12 @@ public class EntityEGO extends Mob
 
         Entity target = getPlayersAround().get(0);
 
-        this.setItemInHand(InteractionHand.OFF_HAND, getWeapon());
+        this.setItemInHand(InteractionHand.MAIN_HAND, getWeapon());
         this.swing(InteractionHand.MAIN_HAND);
-        //this.swing(InteractionHand.OFF_HAND);
         if (!level.isClientSide)
         {
+            if (!getPlayersAround().isEmpty())
+                getPlayersAround().get(0).swing(InteractionHand.MAIN_HAND);
             //TODO weapon type
             switch (getWeaponType())
             {
@@ -768,7 +779,6 @@ public class EntityEGO extends Mob
         }
         return true;
     }
-
 
     /*
 
@@ -857,7 +867,6 @@ public class EntityEGO extends Mob
 
         List<Integer> WAVES = Arrays.asList(waves);
 
-
         //--tp action--
         if (--tpDelay <= 0)
         {
@@ -870,7 +879,7 @@ public class EntityEGO extends Mob
         {
             if (tryAttack())
             {
-                attackDelay = (int) (80 - getStage() * 15 + 15 * Math.random());
+                attackDelay = (int) (60 - getStage() * 10 + 15 * Math.random());
             }
         }
         if (invul > 0)
@@ -904,12 +913,6 @@ public class EntityEGO extends Mob
             }
         }
 
-        if (!aggro)
-        {
-            //--init tp--
-            tpDelay = SPAWN_TICKS;
-            aggro = true;
-        }
     }
 
     @Override

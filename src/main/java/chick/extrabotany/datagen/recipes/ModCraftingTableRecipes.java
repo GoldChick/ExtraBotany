@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import vazkii.botania.common.lib.ModTags;
 
@@ -60,7 +61,17 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', ModItems.PHOTON_INGOT.get())
                 .group(MODID)
                 .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(), ModItems.PHOTON_INGOT.get()))
-                .save(consumer, "thechaos");
+                .save(consumer, "the_chaos");
+        ShapedRecipeBuilder.shaped(ModItems.THE_ORIGIN.get())
+                .pattern(" x ")
+                .pattern("xzb")
+                .pattern(" b ")
+                .define('x', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('z', Blocks.POINTED_DRIPSTONE)
+                .define('b', ModItems.AERIALITE_INGOT.get())
+                .group(MODID)
+                .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AERIALITE_INGOT.get(), ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "the_origin");
         ShapedRecipeBuilder.shaped(ModItems.THE_END.get())
                 .pattern(" x ")
                 .pattern("xzb")
@@ -70,7 +81,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', vazkii.botania.common.item.ModItems.gaiaIngot)
                 .group(MODID)
                 .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
-                .save(consumer, "theend");
+                .save(consumer, "the_end");
         ShapedRecipeBuilder.shaped(ModItems.EMPTY_BOTTLE.get())
                 .pattern("x x")
                 .pattern("x x")
@@ -161,6 +172,25 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("alchemycatalyst", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.alchemyCatalyst))
                 .save(consumer, "dimension_catalyst");
+        ShapedRecipeBuilder.shaped(ModItems.PEACE_AMULET.get())
+                .pattern(" a ")
+                .pattern("axa")
+                .pattern(" a ")
+                .define('x', vazkii.botania.common.block.ModBlocks.livingwood)
+                .define('a', vazkii.botania.common.block.ModBlocks.livingrock)
+                .group(MODID)
+                .unlockedBy("rock", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.livingrock))
+                .save(consumer, "peace_amulet");
+        ShapedRecipeBuilder.shaped(ModItems.GOLD_CLOTH.get())
+                .pattern("bab")
+                .pattern("axa")
+                .pattern("bab")
+                .define('x', Items.GOLD_INGOT)
+                .define('a', vazkii.botania.common.item.ModItems.manaweaveCloth)
+                .define('b', vazkii.botania.common.item.ModItems.lifeEssence)
+                .group(MODID)
+                .unlockedBy("life_essence", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "gold_cloth");
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -248,5 +278,113 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
                 .save(consumer, "shadowwarrior_boots");
+        ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_HELM.get())
+                .pattern("xxx")
+                .pattern("x x")
+                .pattern("   ")
+                .define('x', ModItems.PHOTON_INGOT.get())
+                .group(MODID)
+                .unlockedBy("photonium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "goblinslayer_helm");
+        ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_CHEST.get())
+                .pattern("x x")
+                .pattern("xxx")
+                .pattern("xxx")
+                .define('x', ModItems.PHOTON_INGOT.get())
+                .group(MODID)
+                .unlockedBy("photonium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "goblinslayer_chest");
+        ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_LEGS.get())
+                .pattern("xxx")
+                .pattern("x x")
+                .pattern("x x")
+                .define('x', ModItems.PHOTON_INGOT.get())
+                .group(MODID)
+                .unlockedBy("photonium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "goblinslayer_legs");
+        ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_BOOTS.get())
+                .pattern("x x")
+                .pattern("x x")
+                .pattern("   ")
+                .define('x', ModItems.PHOTON_INGOT.get())
+                .group(MODID)
+                .unlockedBy("photonium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, "goblinslayer_boots");
+        ShapedRecipeBuilder.shaped(ModItems.MIKU_HELM.get())
+                .pattern("xxx")
+                .pattern("xax")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.manaweaveCloth)
+                .define('a', vazkii.botania.common.item.ModItems.manasteelHelm)
+                .group(MODID)
+                .unlockedBy("manaweave", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaweaveCloth))
+                .save(consumer, "miku_helm");
+        ShapedRecipeBuilder.shaped(ModItems.MIKU_CHEST.get())
+                .pattern("xxx")
+                .pattern("xax")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.manaweaveCloth)
+                .define('a', vazkii.botania.common.item.ModItems.manasteelChest)
+                .group(MODID)
+                .unlockedBy("manaweave", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaweaveCloth))
+                .save(consumer, "miku_chest");
+        ShapedRecipeBuilder.shaped(ModItems.MIKU_LEGS.get())
+                .pattern("xxx")
+                .pattern("xax")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.manaweaveCloth)
+                .define('a', vazkii.botania.common.item.ModItems.manasteelLegs)
+                .group(MODID)
+                .unlockedBy("manaweave", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaweaveCloth))
+                .save(consumer, "miku_legs");
+        ShapedRecipeBuilder.shaped(ModItems.MIKU_BOOTS.get())
+                .pattern("xxx")
+                .pattern("xax")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.manaweaveCloth)
+                .define('a', vazkii.botania.common.item.ModItems.manasteelBoots)
+                .group(MODID)
+                .unlockedBy("manaweave", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaweaveCloth))
+                .save(consumer, "miku_boots");
+        ShapedRecipeBuilder.shaped(ModItems.MAID_HELM.get())
+                .pattern("xxx")
+                .pattern("bab")
+                .pattern("   ")
+                .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('a', vazkii.botania.common.item.ModItems.terrasteelHelm)
+                .define('b', ModItems.GOLD_CLOTH.get())
+                .group(MODID)
+                .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
+                .save(consumer, "maid_helm");
+        ShapedRecipeBuilder.shaped(ModItems.MAID_CHEST.get())
+                .pattern("b b")
+                .pattern("bab")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('a', vazkii.botania.common.item.ModItems.terrasteelChest)
+                .define('b', ModItems.GOLD_CLOTH.get())
+                .group(MODID)
+                .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
+                .save(consumer, "maid_chest");
+        ShapedRecipeBuilder.shaped(ModItems.MAID_LEGS.get())
+                .pattern("xxx")
+                .pattern("bab")
+                .pattern("b b")
+                .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('a', vazkii.botania.common.item.ModItems.terrasteelLegs)
+                .define('b', ModItems.GOLD_CLOTH.get())
+                .group(MODID)
+                .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
+                .save(consumer, "maid_legs");
+        ShapedRecipeBuilder.shaped(ModItems.MAID_BOOTS.get())
+                .pattern("   ")
+                .pattern("bab")
+                .pattern("xxx")
+                .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('a', vazkii.botania.common.item.ModItems.terrasteelBoots)
+                .define('b', ModItems.GOLD_CLOTH.get())
+                .group(MODID)
+                .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
+                .save(consumer, "maid_boots");
     }
 }

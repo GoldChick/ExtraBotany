@@ -12,12 +12,12 @@
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.photonium1",
-      "recipe": "extrabotany:runic_altar/photonium"
+      "recipe": "extrabotany:runic_altar/photonium1"
     },
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.photonium2",
-      "recipe": "extrabotany:runic_altar/photonium_"
+      "recipe": "extrabotany:runic_altar/photonium2"
     },
     {
       "type": "text",
@@ -26,22 +26,22 @@
     {
       "type": "crafting",
       "text": "extrabotany.page.photonium4",
-      "recipe": "extrabotany:goblinslayer_helm"
+      "recipe": "minecraft:goblinslayer_helm"
     },
     {
       "type": "crafting",
       "text": "extrabotany.page.photonium5",
-      "recipe": "extrabotany:goblinslayer_chest"
+      "recipe": "minecraft:goblinslayer_chest"
     },
     {
       "type": "crafting",
       "text": "extrabotany.page.photonium6",
-      "recipe": "extrabotany:goblinslayer_legs"
+      "recipe": "minecraft:goblinslayer_legs"
     },
     {
       "type": "crafting",
       "text": "extrabotany.page.photonium7",
-      "recipe": "extrabotany:goblinslayer_boots"
+      "recipe": "minecraft:goblinslayer_boots"
     }
   ]
 }

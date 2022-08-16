@@ -19,22 +19,25 @@ public enum ModArmorsTier implements ArmorMaterial
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             2.0F,
             0.0F,
-            () ->
-            {
-                return Ingredient.of(Items.OBSIDIAN);
-            }
+            () -> Ingredient.of(Items.OBSIDIAN)
     ),
-    ARMOR_SHADOWIUM("shadowium",
-            23,
-            new int[]{3, 7, 6, 3},
-            28,
-            SoundEvents.ARMOR_EQUIP_CHAIN,
-            1.5F,
-            0.0F,
-            () ->
-            {
-                return Ingredient.of(ModItems.SHADOW_INGOT.get());
-            }
+    ARMOR_SHADOWIUM("shadowium", 24, new int[]{2, 5, 6, 2}, 26,
+            SoundEvents.ARMOR_EQUIP_IRON, 1F, 0.0F, () -> Ingredient.of(ModItems.SHADOW_INGOT.get())
+    ),
+    ARMOR_PHOTONIUM("photonium", 27, new int[]{3, 5, 7, 2}, 30,
+            SoundEvents.ARMOR_EQUIP_IRON, 1F, 0.0F, () -> Ingredient.of(ModItems.PHOTON_INGOT.get())
+    ),
+    MIKU("miku", 5, new int[]{2, 4, 5, 1}, 22,
+            SoundEvents.ARMOR_EQUIP_LEATHER, 0F, 0.0F, () -> Ingredient.of(ModItems.MANA_DRINK.get())
+    ),
+    MAID("maid", 40, new int[]{4, 7, 9, 4}, 32,
+            SoundEvents.ARMOR_EQUIP_DIAMOND, 3F, 0.0F, () -> Ingredient.of(ModItems.PHOTON_INGOT.get())
+    ),//ing: GOLD_CLOTH
+    SHOOTING_GUARDIAN("shooting_guardian", 34, new int[]{3, 7, 8, 4}, 34,
+            SoundEvents.ARMOR_EQUIP_IRON, 2F, 0.0F, () -> Ingredient.of(ModItems.ORICHALCOS.get())
+    ),
+    SILENT_SAGES("silent_sages", 50, new int[]{4, 8, 9, 5}, 40,
+            SoundEvents.ARMOR_EQUIP_IRON, 3F, 0.0F, () -> Ingredient.of(ModItems.ORICHALCOS.get())
     );
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
 
@@ -62,7 +65,7 @@ public enum ModArmorsTier implements ArmorMaterial
     @Override
     public int getDurabilityForSlot(EquipmentSlot p_40410_)
     {
-        return MAX_DAMAGE_ARRAY[p_40410_.getIndex()] * this.enchantability;
+        return MAX_DAMAGE_ARRAY[p_40410_.getIndex()] * this.maxDamageFactor;
     }
 
     @Override

@@ -1,15 +1,14 @@
 {
-  "parent": "extrabotany:main/thechaos_craft",
+  "parent": "extrabotany:main/nightmarefuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:rodofdiscord",
-      "nbt": "{Damage:0}"
+      "item": "extrabotany:spirit_prop"
     },
     "title": {
-      "translate": "advancement.extrabotany:rodofdiscord_craft.title"
+      "translate": "advancement.extrabotany:spiritfragment_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:rodofdiscord_craft.desc"
+      "translate": "advancement.extrabotany:spiritfragment_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -17,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "rodofdiscord": {
+    "spirit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:rodofdiscord"
+              "extrabotany:spirit_prop"
             ]
           }
         ]
@@ -32,7 +31,7 @@
   },
   "requirements": [
     [
-      "rodofdiscord"
+      "spirit"
     ]
   ]
 }

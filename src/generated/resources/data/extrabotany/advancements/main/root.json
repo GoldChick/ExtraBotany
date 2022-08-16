@@ -13,7 +13,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "extrabotany:textures/block/yeluogui_ore.png"
+    "background": "extrabotany:textures/block/dimension_catalyst.png"
   },
   "criteria": {
     "nightmare": {

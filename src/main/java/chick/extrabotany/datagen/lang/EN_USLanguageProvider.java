@@ -38,6 +38,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModBlocks.DIMENSION_CATALYST.get(), "Dimension Catalyst");
         add(ModItems.ORICHALCOS.get(), "Orichalcos Ingot");
         add(ModItems.TICKET.get(),"Invitation Letter to Yourself");
+        add(ModItems.AERIALITE_INGOT.get(), "Aerialite");
+        add(ModItems.GOLD_CLOTH.get(), "Das Rheingold");
 
         add(ModItems.LEN_SMELT.get(), "Mana Lens: Smelt");
         add(ModItems.LEN_SMELT.get().getDescriptionId() + ".short", "Smelt");
@@ -74,11 +76,18 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "Shadow Warrior Leggings");
         add(ModItems.SHADOW_WARRIOR_BOOTS.get(), "Shadow Warrior Boots");
-
         add(ModItems.GOBLINSLAYER_HELM.get(), "Goblin Slayer Helmet");
         add(ModItems.GOBLINSLAYER_CHEST.get(), "Goblin Slayer Chestplate");
         add(ModItems.GOBLINSLAYER_LEGS.get(), "Goblin Slayer Leggings");
         add(ModItems.GOBLINSLAYER_BOOTS.get(), "Goblin Slayer Boots");
+        add(ModItems.MIKU_HELM.get(),"Starry Idol Headgear");
+        add(ModItems.MIKU_CHEST.get(),"Starry Idol Suit");
+        add(ModItems.MIKU_LEGS.get(),"Starry Idol Skirt");
+        add(ModItems.MIKU_BOOTS.get(),"Starry Idol Boots");
+        add(ModItems.MAID_HELM.get(), "Pleiades Combat Maid Headgear");
+        add(ModItems.MAID_CHEST.get(), "Pleiades Combat Maid Suit");
+        add(ModItems.MAID_LEGS.get(), "Pleiades Combat Maid Skirt");
+        add(ModItems.MAID_BOOTS.get(), "Pleiades Combat Maid Boots");
 
         add(ModItems.HERO_MEDAL.get(), "Hero Medal");
         add(ModItems.EMPTY_BOTTLE.get(), "Empty Mana Glass Bottle");
@@ -136,36 +145,48 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("advancement.extrabotany:nightmarefuel_eat.desc", "Eat a Nightmare Fuel (Unbelievable)");
         add("advancement.extrabotany:thechaos_craft.title", "Chaos With No Chaos");
         add("advancement.extrabotany:thechaos_craft.desc", "Craft The Chaos");
-        add("extrabotany.egodefeat.title","KiLLER LADY");
-        add("extrabotany.egodefeat.desc","Defeat Ego");
+        add("advancement.extrabotany:egodefeat.title","KiLLER LADY");
+        add("advancement.extrabotany:egodefeat.desc","Defeat Ego");
 
         add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
         add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
+        add("advancement.extrabotany:armorsetmiku.title","cat's dance");
+        add("advancement.extrabotany:armorsetmiku.desc","Equip Starry Idol Armor Set");
+        add("advancement.extrabotany:armorsetgoblinslayer.title","Befall");
+        add("advancement.extrabotany:armorsetgoblinslayer.desc","Equip Goblin Slayer Armor Set");
+        add("advancement.extrabotany:armorsetshadowwarrior.title","Crazy ∞ nighT");
+        add("advancement.extrabotany:armorsetshadowwarrior.desc","Equip Shadow Warrior Armor Set");
+        add("advancement.extrabotany:spiritfragment_craft.title","PONPONPON");
+        add("advancement.extrabotany:spiritfragment_craft.desc","Obtain Spirit Fragment");
 
-        add("advancement.extrabotany:rodofdiscord_craft.title", "NOT Discord");
+        add("advancement.extrabotany:rodofdiscord_craft.title", "NOT Discord!");
         add("advancement.extrabotany:rodofdiscord_craft.desc", "Craft Rod of Discord");
+        add("advancement.extrabotany:armorsetmaid.title","Drug Of Gold");
+        add("advancement.extrabotany:armorsetmaid.desc","Equip Pleiades Combat Maid Armor Set");
+        add("advancement.extrabotany:armorsetshootingguardian.title","CONNECT");
+        add("advancement.extrabotany:armorsetshootingguardian.desc","Equip Shooting Guardian Armor Set");
 
-        add("advancement.extrabotany.sages_mana_ring_craft.title", "COLOR");
-        add("advancement.extrabotany.sages_mana_ring_craft.desc", "Obtain Sages Mana Ring");
+        add("advancement.extrabotany:sages_mana_ring_craft.title", "COLOR");
+        add("advancement.extrabotany:sages_mana_ring_craft.desc", "Obtain Sages Mana Ring");
+        add("advancement.extrabotany:sunringcraft.title","Promise");
+        add("advancement.extrabotany:sunringcraft.desc","Obtain Ring of Sacred Sun");
+        add("advancement.extrabotany:moonpendantcraft.title","Crystalline");
+        add("advancement.extrabotany:moonpendantcraft.desc","Obtain Heart of Corrupted Moon");
     }
 
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "Extra Botania");
-
         add("extrabotany.entry.header", "Welcome to the World");
         add("extrabotany.page.header0", "Welcome to the World of the supreme principle of Mana! You are the one who has great potential and I believe you will have a shiny, bright future. I am sure you are hunger for more knowledge. Follow me, I will pass on my knowledge and experience to you.");
         add("extrabotany.page.header1", "The more progress you have done, the more knowledge you will have. I could give you one hint, you could obtain Spirit Fuel by eating Nightmare Fuel.");
-
         add("extrabotany.entry.nightmarefuel", "Nightmare Fuel");
         add("extrabotany.page.nightmarefuel0", "$(item)Nightmare Fuel$(0) is the aggregation of the nightmare, you will suffer after eating it, but it may be the beginning of a sweet dream. Elves may be interested in this. (Warning: instant damage III will cause 24 damage to player!)");
         add("extrabotany.page.nightmarefuel1", "The brain trembles.");
-
         add("extrabotany.entry.spiritfuel", "Spirit Fuel");
         add("extrabotany.page.spiritfuel0", "$(item)Spirit Fuel$(0) is an important material which could be obtained by two ways. The first way is to eat $(item)Nightmare Fuel$(0). The second is by Elven Trade through Alfheim Portal. Spirit Fuel can be refined into $(item)Spirit Fragment$(0) through Alfheim Portal.");
         add("extrabotany.page.spiritfuel1", "Spirit Fuel");
         add("extrabotany.page.spiritfuel2", "Spirit Fragment");
-
         add("extrabotany.entry.photonium", "Photonium");
         add("extrabotany.page.photonium0", "Photonium is the opposite side of Shadowium. It combines the power of Spirit Fuel and Elementium.");
         add("extrabotany.page.photonium1", "Three for one, Ten for three.");
@@ -175,7 +196,6 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.photonium5", "Goblin Slayer Chestplate");
         add("extrabotany.page.photonium6", "Goblin Slayer Leggings");
         add("extrabotany.page.photonium7", "Goblin Slayer Boots");
-
         add("extrabotany.entry.shadowium", "Shadowium");
         add("extrabotany.page.shadowium0", "With the magic of Gilded Mashed Potato, we can use Nightmare Fuel and a Elementium Ingot to make Shadowium. It's a very special kind of material and it performs better than Elementium.");
         add("extrabotany.page.shadowium1", "And Then There Were None.");
@@ -186,25 +206,27 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.shadowium6", "Shadow Warrior Chestplate");
         add("extrabotany.page.shadowium7", "Shadow Warrior Leggings");
         add("extrabotany.page.shadowium8", "Shadow Warrior Boots");
-
         add("extrabotany.entry.gildedpotato", "Gilded Potato");
         add("extrabotany.page.gildedpotato0", "The Gilded Potato may have other uses. It might be useful in the future.");
         add("extrabotany.page.gildedpotato1", "There is a miracle, something magical.");
         add("extrabotany.page.gildedpotato2", "A mashed potato made from gilded potato. It could be delicious.");
         add("extrabotany.page.gildedpotato3", "Golden Legendary");
-
         add("extrabotany.entry.manareader", "Mana Reader");
         add("extrabotany.page.manareader0", "By right clicking a Mana Pool with a Mana Reader in your main-hand, you can check out how much mana it has. Not very accurate for small figures.");
         add("extrabotany.page.manareader1", "Lemme check it!");
-
+        add("extrabotany.armorset.mana.desc", "Totally %s less Mana cost on Mana Tools and Rods");
+        add("extrabotany.armorset.magic_protection.desc", "Totally %s less Magic Damage received");
         add("extrabotany.armorset.miku.desc", "Super Mana Affinity.");
         add("extrabotany.armorset.maid.desc0", "Super Empty-handed Power.");
         add("extrabotany.armorset.maid.desc1", "Greater Regeneration.");
         add("extrabotany.armorset.maid.desc2", "Mana Affinity.");
+        add("extrabotany.armorset.maid.desc3", "Clear Negative Effects.");
         add("extrabotany.armorset.shadowwarrior.desc0", "This night is so frightful and boundless. That my eyes come down with gloomy darkness.");
         add("extrabotany.armorset.shadowwarrior.desc1", "But just by them both. I am seeking my rosiness.");
+        add("extrabotany.armorset.shadowwarrior.desc2", "More powerful during the night");
         add("extrabotany.armorset.goblinslayer.desc0", "Praise the Sun.");
         add("extrabotany.armorset.goblinslayer.desc1", "May the sun enlighten you.");
+        add("extrabotany.armorset.goblinslayer.desc2", "More powerful during the day");
         add("extrabotany.armorset.shootingguardian.desc0", "Faster Bow Drawing.");
         add("extrabotany.armorset.shootingguardian.desc1", "Grant Armor-Piercing and Life Stealing.");
         add("extrabotany.armorset.shootingguardian.desc2", "Faster Speed.");
@@ -214,32 +236,27 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.armorset.miku.name", "Starry Idol");
         add("extrabotany.armorset.maid.name", "Pleiades Combat Maid");
         add("extrabotany.armorset.shootingguardian.name", "Shooting Guardian");
-
         add("extrabotany.entry.elementstone", "Stones of Four Element");
         add("extrabotany.page.elementstone0", "Element Stone made by corresponding element rune, it provides different amplifications. $(item)Aero Stone$(0) amplify movement, $(item)Earth Stone$(0) provides armor protection, $(item)Aqua Stone$(0) provides mana discount and $(item)Ignis Stone$(0) amplify damage.");
         add("extrabotany.page.elementstone1", "Aero Stone");
         add("extrabotany.page.elementstone2", "Earth Stone");
         add("extrabotany.page.elementstone3", "Aqua Stone");
         add("extrabotany.page.elementstone4", "Ignis Stone");
-
         add("extrabotany.entry.supreme_elementstone", "Supreme Stones");
         add("extrabotany.page.supreme_elementstone0", "Element Stones are so powerful. But there is one way to get even stronger power from element. However, this results in some disadvantages. And this also exacerbates the conflict between the different elements. For example, $(item)Aero Stone$(0) and $(item)Earth Stone$(0) can not work together if one of them is $(item)Supreme$(0) version. So will $(item)Aqua Stone$(0) and $(item)Ignis Stone$(0) do.");
         add("extrabotany.page.supreme_elementstone1", "Aero Stone");
         add("extrabotany.page.supreme_elementstone2", "Earth Stone");
         add("extrabotany.page.supreme_elementstone3", "Aqua Stone");
         add("extrabotany.page.supreme_elementstone4", "Ignis Stone");
-
         add("extrabotany.entry.deathring", "Death Ring");
         add("extrabotany.page.deathring0", "The $(item)Death Ring$(0) applies the Wither and Unluck effect on creatures near the wearer at the cost of some $(thing)Mana$(0).");
         add("extrabotany.page.deathring1", "Do not fear power... fear those who wield it!");
-
         add("extrabotany.entry.advancedmaterial", "Advanced Form");
         add("extrabotany.page.advancedmaterial0", "Combine two forms of material into one with the catalyst of $(item)Spirit Fragment$(0), those material has greater power and proficiency.");
         add("extrabotany.page.advancedmaterial1", "The Chaos");
         add("extrabotany.page.advancedmaterial2", "The Origin");
         add("extrabotany.page.advancedmaterial3", "The End");
         add("extrabotany.page.advancedmaterial4", "The Universe");
-
         add("extrabotany.entry.brew", "New types of brew");
         add("extrabotany.page.brew0", "Hold an Empty Mana Glass Bottle and right-click a Mana Pool with enough mana, and you will acquire a tasty drink.");
         add("extrabotany.page.brew1", "");
@@ -285,6 +302,36 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.peace_amulet","Peace Amulet");
         add("extrabotany.page.peace_amulet0","$(item)Peace Amulet$(0) could guarantee that all weapons in extrabotany will no longer deal damage to other players and friendly mobs.");
         add("extrabotany.page.peace_amulet1","");
+        add("extrabotany.entry.ego","Ego (The Guardian of Gaia III)");
+        add("extrabotany.page.ego0","200,000 Natural breath from a Nature Orb or an Invitation Letter can be used to summon an even more powerful Gaia Guardian. Its great powers and new abilties should be feared. New rules should be obeyed. Equipped armor and weapons have to be from Vanilla Minecraft or Botania or extrabotany(except if its changed in the config);. Any others will be disarmed and dropped on the ground.");
+        add("extrabotany.page.ego1","Challengers can not outnumber the number when it is summoned, or Ego will vanish. Ego is proficient in every type of weapon. In Stage One, Ego will use $(item)True Terra Blade$(0) or $(item)True Shadow Katana$(0). When entering Stage Two, Ego will be invulnerable for a period of time and meanwhile keep summoning landmines. Different colors means different effects.");
+        add("extrabotany.page.ego2","Battle Field");
+        add("extrabotany.page.ego3","Invitation Letter");
+        add("extrabotany.page.ego4","Ego could use $(item)Influx Waver$(0) and $(item)Star Wrath$(0) in Stage Two. After its health reaches a threshold, Stage Three begins. Ego starts to be invulnerable again, meanwhile it keeps recovering and summons a wave of minions. Four minions use four different weapons. Defeating all minions in advance could terminate Ego's invulnerability.");
+        add("extrabotany.page.ego5","Ego only use $(item)First Fractal$(0) in Stage Three, and all its abilities maximize. Challengers could be awarded with $(item)Pandora's Box$(0) after defeating Ego, with a $(item)Medal for Heroism$(0) inside it.");
+        add("extrabotany.page.ego6","Hallowed Dogma");
+        add("extrabotany.entry.gold_cloth","Das Rheingold");
+        add("extrabotany.page.gold_cloth0","$(item)Das Rheingold$(0) can empty the binding of a relic, just crafting the relic with it.");
+        add("extrabotany.page.gold_cloth1","");
+        add("extrabotany.page.gold_cloth2","An improved version of Terrasteel Armor. The wearer will gain the ability of regeneration while wearing a full set of it. It will also clear negative effects and give the wearer super powers when empty-handed.");
+        add("extrabotany.page.gold_cloth3","Pleiades Combat Maid Headgear");
+        add("extrabotany.page.gold_cloth4","Pleiades Combat Maid Suit");
+        add("extrabotany.page.gold_cloth5","Pleiades Combat Maid Skirt");
+        add("extrabotany.page.gold_cloth6","Pleiades Combat Maid Boots");
+        add("extrabotany.entry.miku","Starry Idol Armor Set");
+        add("extrabotany.page.miku0","An improved version of Manasteel Armor,it gives the wearer a high mana discount.");
+        add("extrabotany.page.miku1","Starry Idol Headgear");
+        add("extrabotany.page.miku2","Starry Idol Suit");
+        add("extrabotany.page.miku3","Starry Idol Skirt");
+        add("extrabotany.page.miku4","Starry Idol Boots");
+        add("extrabotany.entry.aerialite","Aerialite");
+        add("extrabotany.page.aerialite0","Infuse the power of the sky and mana into $(item)Dragonstone$(0), and then it forms into $(item)Aerialite$(0), a magical alloy. Its property is as great as $(item)Terrasteel$(0).");
+        add("extrabotany.page.aerialite1","");
+        add("extrabotany.page.aerialite2","Armor made by Aerialite provides considerable protection. With a set of armors, player grants higher motility, greater attack and life stealing ability. Also the speed of drawing bows is boosted. However, it greatly nerfs player's regeneration ability.");
+        add("extrabotany.page.aerialite3","Shooting Guardian Helmet");
+        add("extrabotany.page.aerialite4","Shooting Guardian Chestplate");
+        add("extrabotany.page.aerialite5","Shooting Guardian Leggings");
+        add("extrabotany.page.aerialite6","Shooting Guardian Boots");
         pantchouliFlower();
     }
 

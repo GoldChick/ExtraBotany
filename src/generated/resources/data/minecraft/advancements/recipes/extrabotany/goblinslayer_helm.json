@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:goblinslayer_helm"
+    ]
+  },
+  "criteria": {
+    "photonium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:photonium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:goblinslayer_helm"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "photonium",
+      "has_the_recipe"
+    ]
+  ]
+}

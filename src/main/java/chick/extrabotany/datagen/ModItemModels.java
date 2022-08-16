@@ -25,6 +25,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.NIGHTMAREFUEL_PROP.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/nightmare_fuel"));
         singleTexture(ModItems.SPIRIT_PROP.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/spirit"));
         singleTexture(ModItems.SHADOW_INGOT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/shadowium"));
+        singleTexture(ModItems.AERIALITE_INGOT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/aerialite"));
         singleTexture(ModItems.PHOTON_INGOT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/photonium"));
         singleTexture(ModItems.GILDED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedpotato"));
         singleTexture(ModItems.GILDED_MASHED_POTATO.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gildedmashedpotato"));
@@ -43,9 +44,11 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.FRIED_CHICKEN.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/friedchicken"));
         singleTexture(ModItems.TICKET.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/ticket"));
         singleTexture(ModItems.ORICHALCOS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/orichalcos"));
+        singleTexture(ModItems.GOLD_CLOTH.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gold_cloth"));
 
         singleTexture(ModItems.LEN_SMELT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_smelt"));
         singleTexture(ModItems.LEN_POTION.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_potion"));
+        singleTexture(ModItems.LEN_MANA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_mana"));
 
 
         registerBaubleModels();
@@ -115,6 +118,14 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.GOBLINSLAYER_CHEST.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/goblinslayer_chest"));
         singleTexture(ModItems.GOBLINSLAYER_LEGS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/goblinslayer_legs"));
         singleTexture(ModItems.GOBLINSLAYER_BOOTS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/goblinslayer_boots"));
+        singleTexture(ModItems.MIKU_HELM.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/miku_helm"));
+        singleTexture(ModItems.MIKU_CHEST.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/miku_chest"));
+        singleTexture(ModItems.MIKU_LEGS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/miku_legs"));
+        singleTexture(ModItems.MIKU_BOOTS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/miku_boots"));
+        singleTexture(ModItems.MAID_HELM.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/maid_helm"));
+        singleTexture(ModItems.MAID_CHEST.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/maid_chest"));
+        singleTexture(ModItems.MAID_LEGS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/maid_legs"));
+        singleTexture(ModItems.MAID_BOOTS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/maid_boots"));
 
     }
 }

@@ -1,11 +1,3 @@
-/*
- * This class is distributed as part of the Botania Mod.
- * Get the Source Code in github:
- * https://github.com/Vazkii/Botania
- *
- * Botania is Open Source and distributed under the
- * Botania License: http://botaniamod.net/license.php
- */
 package chick.extrabotany.forge.client.model.armor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -36,7 +28,6 @@ public class ModelArmor extends HumanoidModel<LivingEntity>
             super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             return;
         }
-/*
 		this.head.xRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getX();
 		this.head.yRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getY();
 		this.head.zRot = ((float) Math.PI / 180F) * entityIn.getHeadPose().getZ();
@@ -59,7 +50,7 @@ public class ModelArmor extends HumanoidModel<LivingEntity>
 		this.rightLeg.zRot = ((float) Math.PI / 180F) * entityIn.getRightLegPose().getZ();
 		this.rightLeg.setPos(-1.9F, 11.0F, 0.0F);
 		this.hat.copyFrom(this.head);
-		*/
+
 
     }
 

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " x ",
+    "xzb",
+    " b "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:terrasteel_ingot"
+    },
+    "z": {
+      "item": "minecraft:pointed_dripstone"
+    },
+    "b": {
+      "item": "extrabotany:aerialite"
+    }
+  },
+  "result": {
+    "item": "extrabotany:theorigin"
+  }
+}

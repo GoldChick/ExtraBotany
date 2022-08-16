@@ -1,13 +1,20 @@
 {
   "replace": false,
   "values": [
-    "extrabotany:shadowkatana",
     "extrabotany:rodofdiscord",
     "extrabotany:shadowkatana",
-    "extrabotany:shadowkatana",
+    "extrabotany:trueshadowkatana",
     "extrabotany:shadowwarrior_helm",
     "extrabotany:shadowwarrior_chest",
     "extrabotany:shadowwarrior_legs",
-    "extrabotany:shadowwarrior_boots"
+    "extrabotany:shadowwarrior_boots",
+    "extrabotany:goblinslayer_helm",
+    "extrabotany:goblinslayer_chest",
+    "extrabotany:goblinslayer_legs",
+    "extrabotany:goblinslayer_boots",
+    "extrabotany:miku_helm",
+    "extrabotany:miku_chest",
+    "extrabotany:miku_legs",
+    "extrabotany:miku_boots"
   ]
 }

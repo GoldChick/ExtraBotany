@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " a ",
+    "axa",
+    " a "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:livingwood"
+    },
+    "a": {
+      "item": "botania:livingrock"
+    }
+  },
+  "result": {
+    "item": "extrabotany:peace_amulet"
+  }
+}

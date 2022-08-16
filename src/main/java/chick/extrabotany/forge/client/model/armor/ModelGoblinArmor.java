@@ -3,11 +3,10 @@ package chick.extrabotany.forge.client.model.armor;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
-public class ModelGoblinSlayerArmor
+public class ModelGoblinArmor
 {
     public static MeshDefinition createInsideMesh()
     {
-
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
 
@@ -29,7 +28,6 @@ public class ModelGoblinSlayerArmor
 
     public static MeshDefinition createOutsideMesh()
     {
-
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
 
@@ -107,14 +105,8 @@ public class ModelGoblinSlayerArmor
                 , PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1745F));
 
 
-        var rightLeg = root.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(112, 112).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false)
-                .texOffs(108, 61).mirror().addBox(-2.5F, -0.5F, -2.5F, 5.0F, 13.0F, 5.0F, new CubeDeformation(0.0F)).mirror(false)
-                .texOffs(98, 61).mirror().addBox(-2.1F, 1.0F, -3.5F, 4.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false)
-                .texOffs(84, 70).mirror().addBox(-3.1F, 2.0F, -3.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(1.9F, 12.0F, 0.0F));
-        var leftLeg = root.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(112, 112).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F))
-                .texOffs(108, 61).addBox(-2.5F, -0.5F, -2.5F, 5.0F, 13.0F, 5.0F, new CubeDeformation(0.0F))
-                .texOffs(98, 61).addBox(-2.0F, 1.0F, -3.5F, 4.0F, 5.0F, 1.0F, new CubeDeformation(0.0F))
-                .texOffs(84, 70).addBox(-3.0F, 2.0F, -3.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.9F, 12.0F, 0.0F));
+        var rightLeg = root.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.ZERO);
+        var leftLeg = root.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.ZERO);
         PartDefinition bootL = leftLeg.addOrReplaceChild("bootL", CubeListBuilder.create().texOffs(24, 31).addBox(-3.0F, 8.0F, -3.0F, 6.0F, 5.0F, 6.0F, new CubeDeformation(0.0F))
                 .texOffs(24, 42).addBox(-3.0F, 6.0F, 2.0F, 6.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
                 .texOffs(24, 45).addBox(2.0F, 6.0F, -1.0F, 1.0F, 2.0F, 3.0F, new CubeDeformation(0.0F))

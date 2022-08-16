@@ -12,22 +12,22 @@
     {
       "type": "crafting",
       "text": "extrabotany.page.advancedmaterial1",
-      "recipe": "minecraft:thechaos"
+      "recipe": "minecraft:the_chaos"
     },
     {
       "type": "crafting",
       "text": "extrabotany.page.advancedmaterial2",
-      "recipe": "minecraft:theorigin"
+      "recipe": "minecraft:the_origin"
     },
     {
       "type": "crafting",
       "text": "extrabotany.page.advancedmaterial3",
-      "recipe": "minecraft:theend"
+      "recipe": "minecraft:the_end"
     },
     {
       "type": "botania:terrasteel",
       "text": "extrabotany.page.advancedmaterial4",
-      "recipe": "extrabotany:terra_plate/theuniverse"
+      "recipe": "extrabotany:terra_plate/the_universe"
     }
   ]
 }

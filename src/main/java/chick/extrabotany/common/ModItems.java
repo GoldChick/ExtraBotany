@@ -13,7 +13,9 @@ import chick.extrabotany.common.lens.LenPotion;
 import chick.extrabotany.common.lens.LenPotionBase;
 import chick.extrabotany.common.lens.LenSmelt;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
-import chick.extrabotany.common.tools.armors.ItemShadowWarriorArmor;
+import chick.extrabotany.common.tools.armors.MaidArmor;
+import chick.extrabotany.common.tools.armors.MikuArmor;
+import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +40,7 @@ public class ModItems
     public static final RegistryObject<Item> NIGHTMAREFUEL_PROP = ITEMS.register("nightmarefuel_prop", () -> new NightmareFuel(new Item.Properties().food(NormalFoods.NIGHTMAREFUEL_PROP).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> SPIRIT_PROP = ITEMS.register("spirit_prop", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> SHADOW_INGOT = ITEMS.register("shadowium", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> AERIALITE_INGOT = ITEMS.register("aerialite", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> PHOTON_INGOT = ITEMS.register("photonium", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_POTATO = ITEMS.register("gildedpotato", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GILDED_MASHED_POTATO = ITEMS.register("gildedmashedpotato", () -> new Item(new Item.Properties().food(NormalFoods.GILDED_MASHED_POTATO).stacksTo(1).tab(ExtraBotany.ITEM_GROUP)));
@@ -48,15 +51,23 @@ public class ModItems
     public static final RegistryObject<Item> THE_UNIVERSE = ITEMS.register("theuniverse", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> EMPTY_BOTTLE = ITEMS.register("empty_bottle", () -> new EmptyGlassBottle(ITEM_PROPERTIES));
     public static final RegistryObject<Item> MANA_DRINK = ITEMS.register("mana_drink", () -> new ManaDrink(new Item.Properties().food(NormalFoods.MANA_DRINK).tab(ExtraBotany.ITEM_GROUP)));
-    public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SPLASH_GRENADE = ITEMS.register("splash_grenade", () -> new SplashGrenade(ITEM_PROPERTIES.stacksTo(32)));
     public static final RegistryObject<Item> HERO_MEDAL = ITEMS.register("heromedal", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("friedchicken", () -> new Item(new Item.Properties().food(NormalFoods.FRIED_CHICKEN).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> TICKET = ITEMS.register("ticket", () -> new Ticket(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> ORICHALCOS  = ITEMS.register("orichalcos", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> ORICHALCOS = ITEMS.register("orichalcos", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> GOLD_CLOTH = ITEMS.register("gold_cloth", () -> new Item(ITEM_PROPERTIES));
 
+    /**
+     * stacksTo 32
+     */
+    public static final RegistryObject<Item> SPLASH_GRENADE = ITEMS.register("splash_grenade", () -> new SplashGrenade(ITEM_PROPERTIES.stacksTo(32)));
+    /**
+     * stacksTo 1
+     */
+    public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> LEN_SMELT = ITEMS.register("len_smelt", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSmelt(), vazkii.botania.common.item.lens.ItemLens.PROP_TOUCH));
     public static final RegistryObject<Item> LEN_POTION = ITEMS.register("len_potion", () -> new LenPotionBase(ITEM_PROPERTIES.stacksTo(1), new LenPotion(), vazkii.botania.common.item.lens.ItemLens.PROP_INTERACTION));
+    public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new Item(ITEM_PROPERTIES));
     /**
      * these are baubles for curios mod
      **/
@@ -84,16 +95,16 @@ public class ModItems
     public static final RegistryObject<Item> SUPREME_EARTH_STONE = ITEMS.register("supreme_earthstone", () -> new SupremeEarthStone(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> SUPREME_IGNIS_STONE = ITEMS.register("supreme_ignisstone", () -> new SupremeIgnisStone(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> SAGES_MANA_RING = ITEMS.register("sages_mana_ring", () -> new SagesManaRing(ITEM_PROPERTIES));
-    /*
+    /**
      * these are armors and weapons.(items with damage)
      * for some reason, if they are assigned before,
      * items behind will be with nbt "damage" ,and can not stack.
      */
     public static final RegistryObject<Item> ROD_OF_DISCORD = ITEMS.register("rodofdiscord", () -> new RodOfDiscord(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ItemShadowWarriorArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ItemShadowWarriorArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ItemShadowWarriorArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ItemShadowWarriorArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ShadowWarriorArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ShadowWarriorArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ShadowWarriorArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ShadowWarriorArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
     public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", () -> new ShadowKatana(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TRUE_SHADOW_KATANA = ITEMS.register("trueshadowkatana", () -> new TrueShadowKatana(ITEM_PROPERTIES));
 
@@ -101,6 +112,15 @@ public class ModItems
     public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", () -> new GoblinSlayerArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
     public static final RegistryObject<Item> GOBLINSLAYER_LEGS = ITEMS.register("goblinslayer_legs", () -> new GoblinSlayerArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
     public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = ITEMS.register("goblinslayer_boots", () -> new GoblinSlayerArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
+
+    public static final RegistryObject<Item> MIKU_HELM = ITEMS.register("miku_helm", () -> new MikuArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MIKU_CHEST = ITEMS.register("miku_chest", () -> new MikuArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MIKU_LEGS = ITEMS.register("miku_legs", () -> new MikuArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MIKU_BOOTS = ITEMS.register("miku_boots", () -> new MikuArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MAID_HELM = ITEMS.register("maid_helm", () -> new MaidArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MAID_CHEST = ITEMS.register("maid_chest", () -> new MaidArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MAID_LEGS = ITEMS.register("maid_legs", () -> new MaidArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> MAID_BOOTS = ITEMS.register("maid_boots", () -> new MaidArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
 
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {

@@ -49,14 +49,22 @@ public class ModItemTags extends ItemTagsProvider
         this.copy(ModTags.Blocks.MINI_FLOWERS, ModTags.Items.MINI_FLOWERS);
 
         tag(ModTags.Items.MANA_USING_ITEMS)
-                .add(ModItems.SHADOW_KATANA.get())
                 .add(ModItems.ROD_OF_DISCORD.get())
                 .add(ModItems.SHADOW_KATANA.get())
-                .add(ModItems.SHADOW_KATANA.get())
+                .add(ModItems.TRUE_SHADOW_KATANA.get())
+
                 .add(ModItems.SHADOW_WARRIOR_HELM.get())
                 .add(ModItems.SHADOW_WARRIOR_CHEST.get())
                 .add(ModItems.SHADOW_WARRIOR_LEGS.get())
                 .add(ModItems.SHADOW_WARRIOR_BOOTS.get())
+                .add(ModItems.GOBLINSLAYER_HELM.get())
+                .add(ModItems.GOBLINSLAYER_CHEST.get())
+                .add(ModItems.GOBLINSLAYER_LEGS.get())
+                .add(ModItems.GOBLINSLAYER_BOOTS.get())
+                .add(ModItems.MIKU_HELM.get())
+                .add(ModItems.MIKU_CHEST.get())
+                .add(ModItems.MIKU_LEGS.get())
+                .add(ModItems.MIKU_BOOTS.get())
         ;
         baublesTags();
 

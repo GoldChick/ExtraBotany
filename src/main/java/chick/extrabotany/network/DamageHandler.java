@@ -38,9 +38,6 @@ public final class DamageHandler
                 return false;
             //&& target.isNonBoss()
         }
-        if (source instanceof Mob)
-            if (target instanceof Mob)
-                return false;
         return true;
     }
 

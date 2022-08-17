@@ -1,10 +1,12 @@
 package chick.extrabotany.network;
 
 import chick.extrabotany.common.ModItems;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import vazkii.botania.common.handler.EquipmentHandler;
 
@@ -19,9 +21,11 @@ public final class DamageHandler
     public final int NETURAL_PIERCING = 2;
     public final int MAGIC_PIERCING = 3;
     public final int LIFE_LOSING = 4;
+    public final int LIFE_LOSINT_ABSORB = 5;
 
     /**
-     * 判断是否可行
+     * 判断是否可行,source为player并且佩戴和平友好之证的时候无法对友好生物（不extend Mob的）造成伤害
+     * 两个玩家都佩戴和平友好之证的时候无法互相造成伤害
      */
     public boolean checkPassable(Entity target, Entity source)
     {
@@ -34,9 +38,7 @@ public final class DamageHandler
             {
                 return !sourceEquipped && EquipmentHandler.findOrEmpty(ModItems.PEACE_AMULET.get(), targetPlayer).isEmpty();
             }
-            if (sourceEquipped && !(target instanceof Mob))
-                return false;
-            //&& target.isNonBoss()
+            return !sourceEquipped || target instanceof Mob;
         }
         return true;
     }
@@ -51,13 +53,13 @@ public final class DamageHandler
     }
 
     /**
-     * 错乱（？
+     * 将计算的伤害加上读取的Attributes.ATTACK_DAMAGE（
      */
     public static float calcDamage(float orig, Player player)
     {
         if (player == null)
             return orig;
-        double value = 0F;
+        double value = player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         return (float) (orig + value);
     }
 
@@ -70,46 +72,33 @@ public final class DamageHandler
             return false;
         switch (type)
         {
-            case NETURAL:
+            case NETURAL ->
             {
-                if (source instanceof Player)
+                if (source instanceof Player player)
                 {
-                    Player player = (Player) source;
-                    DamageSource s = DamageSource.playerAttack(player);
-                    return target.hurt(s, amount);
-                } else if (source instanceof LivingEntity)
+                    return target.hurt(DamageSource.playerAttack(player), amount);
+                } else if (source instanceof LivingEntity living)
                 {
-                    LivingEntity living = (LivingEntity) source;
-                    DamageSource s = DamageSource.mobAttack(living);
-                    return target.hurt(s, amount);
+                    return target.hurt(DamageSource.mobAttack(living), amount);
                 } else
                 {
                     return target.hurt(DamageSource.GENERIC, amount);
                 }
             }
-            case MAGIC:
+            case MAGIC ->
             {
-                if (source == null)
-                {
-                    DamageSource s = DamageSource.MAGIC;
-                    return target.hurt(s, amount);
-                } else
-                {
-                    DamageSource s = DamageSource.indirectMagic(source, source);
-                    return target.hurt(s, amount);
-                }
+                DamageSource s = source == null ? DamageSource.MAGIC : DamageSource.indirectMagic(source, source);
+                return target.hurt(s, amount);
             }
-            case NETURAL_PIERCING:
+            case NETURAL_PIERCING ->
             {
                 target.setInvulnerable(false);
-                if (source instanceof Player)
+                if (source instanceof Player player)
                 {
-                    Player player = (Player) source;
                     DamageSource s = DamageSource.playerAttack(player).bypassArmor().bypassMagic();
                     return target.hurt(s, amount);
-                } else if (source instanceof LivingEntity)
+                } else if (source instanceof LivingEntity living)
                 {
-                    LivingEntity living = (LivingEntity) source;
                     DamageSource s = DamageSource.mobAttack(living).bypassArmor().bypassMagic();
                     return target.hurt(s, amount);
                 } else
@@ -117,31 +106,51 @@ public final class DamageHandler
                     return target.hurt(DamageSource.GENERIC, amount);
                 }
             }
-            case MAGIC_PIERCING:
+            case MAGIC_PIERCING ->
             {
                 target.setInvulnerable(false);
-                if (source == null)
+                DamageSource s = source == null ? DamageSource.MAGIC.bypassArmor().bypassMagic() : DamageSource.indirectMagic(source, source).bypassMagic().bypassArmor();
+                return target.hurt(s, amount);
+            }
+            case LIFE_LOSING ->
+            {
+                if (!(target instanceof LivingEntity living))
+                    return false;
+                float currentHealth = living.getHealth();
+                float trueHealth = Math.max(0F, currentHealth - amount);
+                if (trueHealth == 0F)
                 {
-                    DamageSource s = DamageSource.MAGIC.bypassArmor().bypassMagic();
-                    return target.hurt(s, amount);
+                    living.killed((ServerLevel) living.level, (LivingEntity) source);
                 } else
                 {
-                    DamageSource s = DamageSource.indirectMagic(source, source).bypassMagic().bypassArmor();
-                    return target.hurt(s, amount);
+                    living.setHealth(trueHealth);
                 }
+
+                return dmg(target, source, 0.01F, NETURAL);
             }
-            case LIFE_LOSING:
+            case LIFE_LOSINT_ABSORB ->
             {
-                if (!(target instanceof LivingEntity))
+                if (!(target instanceof LivingEntity living))
                     return false;
-                LivingEntity living = (LivingEntity) target;
-                float currentHealth = living.getHealth();
-                float trueHealth = Math.max(1F, currentHealth - amount);
-                living.setHealth(trueHealth);
+                float currentYellowHealth = living.getAbsorptionAmount();
+                if (currentYellowHealth >= amount)
+                {
+                    living.setAbsorptionAmount(living.getAbsorptionAmount() - amount);
+                } else
+                {
+                    float trueHealth = Math.max(0F, living.getHealth() - amount + living.getAbsorptionAmount());
+                    living.setAbsorptionAmount(0);
+                    if (trueHealth == 0F)
+                    {
+                        living.killed((ServerLevel) living.level, (LivingEntity) source);
+                    } else
+                    {
+                        living.setHealth(trueHealth);
+                    }
+                }
                 return dmg(target, source, 0.01F, NETURAL);
             }
         }
         return false;
     }
-
 }

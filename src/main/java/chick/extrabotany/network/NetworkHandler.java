@@ -55,14 +55,12 @@ public class NetworkHandler
                 DamageMessage::decode,
                 DamageMessage::handleDamage
         );
-
     }
 
     private static void sendToNearby(Level level, BlockPos pos, Object toSend)
     {
-        if (level instanceof ServerLevel)
+        if (level instanceof ServerLevel ws)
         {
-            var ws = (ServerLevel) level;
             ws.getChunkSource().chunkMap.getPlayers(new ChunkPos(pos), false)
                     .stream().filter(p -> p.distanceToSqr(pos.getX(), pos.getY(), pos.getZ()) < 64 * 64)
                     .forEach(p -> INSTANCE.send(PacketDistributor.PLAYER.with(() -> p), toSend));

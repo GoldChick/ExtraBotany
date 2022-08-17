@@ -72,6 +72,11 @@ public class EN_USLanguageProvider extends LanguageProvider
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
+        add(ModItems.TRUE_TERRA_BLADE.get(), "True Terra Blade");
+        add(ModItems.TRUE_THUNDER_CALLER.get(), "True Thunder Caller");
+        add(ModItems.TRUE_STAR_CALLER.get(), "True Star Caller");
+        add(ModItems.FIRST_FRACTAL.get(), "First Fractal");
+
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "Shadow Warrior Leggings");

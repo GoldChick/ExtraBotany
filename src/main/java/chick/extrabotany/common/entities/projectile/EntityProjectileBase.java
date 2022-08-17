@@ -19,6 +19,8 @@ import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntityProjectileBase extends ThrowableProjectile
 {
@@ -41,7 +43,7 @@ public class EntityProjectileBase extends ThrowableProjectile
     private static final EntityDataAccessor<Float> TARGET_POS_Z = SynchedEntityData.defineId(EntityProjectileBase.class,
             EntityDataSerializers.FLOAT);
 
-
+    protected List<LivingEntity> attackedEntities = new ArrayList<>();
     public EntityProjectileBase(EntityType<? extends ThrowableProjectile> type, Level level)
     {
         super(type, level);

@@ -4,10 +4,8 @@ import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.network.DamageHandler;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -16,18 +14,19 @@ import vazkii.botania.client.fx.WispParticleData;
 
 import java.util.List;
 
-public class EntityTrueShadowKatanaProjectile extends EntityProjectileBase
+public class EntityTrueTerraBladeProjectile extends EntityProjectileBase
 {
-    public static final int LIVE_TICKS = 40;
+    public static final int LIVE_TICKS = 60;
 
-    public EntityTrueShadowKatanaProjectile(EntityType<? extends ThrowableProjectile> type, Level level)
+
+    public EntityTrueTerraBladeProjectile(EntityType<? extends ThrowableProjectile> type, Level level)
     {
         super(type, level);
     }
 
-    public EntityTrueShadowKatanaProjectile(Level level, LivingEntity thrower)
+    public EntityTrueTerraBladeProjectile(Level level, LivingEntity thrower)
     {
-        super(ModEntities.TRUE_SHADOW_KATANA, level, thrower);
+        super(ModEntities.TRUE_TERRA_BLADE, level, thrower);
     }
 
     @Override
@@ -42,31 +41,27 @@ public class EntityTrueShadowKatanaProjectile extends EntityProjectileBase
             return;
         }
 
-        if (this.tickCount <= 3)
-            return;
+        super.tick();
 
         if (level.isClientSide && tickCount % 2 == 0)
         {
-            level.addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0D, 0D, 0D);
+            WispParticleData data = WispParticleData.wisp(0.3F, 0.1F, 0.95F, 0.1F, 1F);
+            ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
-        super.tick();
 
-        if (!level.isClientSide)
+        if (!level.isClientSide && tickCount % 3 == 0)
         {
             AABB axis = new AABB(getX(), getY(), getZ(), xOld, yOld, zOld).inflate(2);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, axis);
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
-                living.setInvulnerable(false);
-                DamageHandler.INSTANCE.dmg(living, getOwner(), 5.5F, DamageHandler.INSTANCE.MAGIC);
+                DamageHandler.INSTANCE.dmg(living, getOwner(), 7F, DamageHandler.INSTANCE.MAGIC);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
+                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F, DamageHandler.INSTANCE.LIFE_LOSING);
                     attackedEntities.add(living);
                 }
-                discard();
-                break;
             }
         }
     }
@@ -74,6 +69,6 @@ public class EntityTrueShadowKatanaProjectile extends EntityProjectileBase
     @Override
     public BakedModel getIcon()
     {
-        return MiscellaneousIcons.INSTANCE.trueshadowkatanaprojectileModel[0];
+        return MiscellaneousIcons.INSTANCE.trueterrabladeprojectileModel[0];
     }
 }

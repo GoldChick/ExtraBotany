@@ -10,9 +10,9 @@ public class PowerGloveMessage
 {
     private static int entity;
 
-    public PowerGloveMessage(int entity)
+    public PowerGloveMessage(int e)
     {
-        this.entity = entity;
+        entity = e;
     }
 
     public void encode(FriendlyByteBuf buf)
@@ -30,7 +30,12 @@ public class PowerGloveMessage
         context.enqueueWork(() ->
         {
             ServerPlayer player = context.getSender();
-            player.attack(context.getSender().level.getEntity(entity));
+            if (player != null)
+            {
+                var a = player.level.getEntity(entity);
+                if (a != null)
+                    player.attack(a);
+            }
         });
         context.setPacketHandled(true);
     }

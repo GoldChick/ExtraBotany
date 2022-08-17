@@ -2,8 +2,8 @@ package chick.extrabotany.forge.client.render.entity;
 
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.entities.projectile.EntityProjectileBase;
+import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -31,7 +31,6 @@ public class RenderProjectile extends EntityRenderer<EntityProjectileBase>
     {
         Minecraft mc = Minecraft.getInstance();
 
-        //dont know why push twice
         matrixStackIn.pushPose();
         float s = 1.2F;
         //matrixStackIn.scale(s, s, s);
@@ -43,8 +42,12 @@ public class RenderProjectile extends EntityRenderer<EntityProjectileBase>
         BakedModel model = weapon.getIcon();
         int color = 0xFFFFFF | ((int) (alpha * 255F)) << 24;
 
-
-        RenderHelper.renderItemCustomColor(mc.player, new ItemStack(ModItems.TRUE_SHADOW_KATANA.get()), color, matrixStackIn, bufferIn, 0xF000F0, OverlayTexture.NO_OVERLAY, model);
+        var item = ModItems.TRUE_SHADOW_KATANA.get();//default
+        if (weapon instanceof EntityTrueTerraBladeProjectile)
+        {
+            item = ModItems.TRUE_TERRA_BLADE.get();
+        }
+        RenderHelper.renderItemCustomColor(mc.player, new ItemStack(item), color, matrixStackIn, bufferIn, 0xF000F0, OverlayTexture.NO_OVERLAY, model);
 
         //matrixStackIn.scale(1 / s, 1 / s, 1 / s);
 

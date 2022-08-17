@@ -70,6 +70,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
         add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
+        add(ModItems.TRUE_TERRA_BLADE.get(), "真·泰拉之刃");
+        add(ModItems.TRUE_THUNDER_CALLER.get(), "真·召雷者");
+        add(ModItems.TRUE_STAR_CALLER.get(), "真·召星者");
+        add(ModItems.FIRST_FRACTAL.get(), "最初分型");
+
+
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "暗影武士头盔");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "暗影武士胸甲");
         add(ModItems.SHADOW_WARRIOR_LEGS.get(), "暗影武士护腿");

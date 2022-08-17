@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class MixinGreaterManaRing extends ItemBauble
 {
     @Final
-     @Shadow
+    @Shadow
     private static int MAX_MANA;
 
     public MixinGreaterManaRing(Properties props)

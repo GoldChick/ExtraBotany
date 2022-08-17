@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SagesManaRing extends ItemManaRing
 {
-    private static final int MAX_MANA = Integer.MAX_VALUE;
+    private static final int MAX_MANA = Integer.MAX_VALUE - 1;
 
     public SagesManaRing(Properties props)
     {

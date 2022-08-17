@@ -5,6 +5,8 @@ import chick.extrabotany.network.NetworkHandler;
 import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
@@ -16,15 +18,16 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.relic.RelicImpl;
 import vazkii.botania.xplat.IXplatAbstractions;
 
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ItemSwordRelic extends SwordItem implements IItemWithLeftClick
+public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftClick
 {
-    private static final int MANA_PER_DAMAGE = 120;
-    public ItemSwordRelic(Tier tier, int atkDamage, float atkSpeed, Properties prop)
+    public SwordRelicBase(Tier tier, int atkDamage, float atkSpeed, Properties prop)
     {
         super(tier, atkDamage, atkSpeed, prop);
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
@@ -63,11 +66,17 @@ public class ItemSwordRelic extends SwordItem implements IItemWithLeftClick
                 relic.tickBinding(player);
             }
 
-            if (!player.level.isClientSide && stack.getDamageValue() > 0 && ManaItemHandler.instance().requestManaExact(stack, player, MANA_PER_DAMAGE * 2, true))
+            if (!player.level.isClientSide && stack.getDamageValue() > 0 && ManaItemHandler.instance().requestManaExact(stack, player, getManaPerDamage() * 2, true))
             {
                 stack.setDamageValue(stack.getDamageValue() - 1);
             }
         }
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
+    {
+        return ToolCommons.damageItemIfPossible(stack, amount, entity, getManaPerDamage());
     }
 
     @Override
@@ -81,12 +90,31 @@ public class ItemSwordRelic extends SwordItem implements IItemWithLeftClick
     {
         RelicImpl.addDefaultTooltip(stack, tooltip);
     }
+
     public static BlockHitResult raytraceFromEntity(Entity e, double distance, boolean fluids)
     {
         return (BlockHitResult) e.pick(distance, 1, fluids);
     }
-    @Override
-    public void onLeftClick(Player living, Entity target)
+
+    public abstract int getManaPerDamage();
+
+    public void attack(LivingEntity player, Entity target)
     {
+        attack(player, target, 1, 1D,1F);
+    }
+
+    public abstract void attack(LivingEntity player, Entity target, int times, double speedTime,float damageTime);
+
+    @Override
+    public void onLeftClick(Player player, Entity target)
+    {
+        if (!player.level.isClientSide
+                && !player.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()
+                && player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == this
+                && player.getAttackStrengthScale(0) == 1
+                && ManaItemHandler.instance().requestManaExactForTool(player.getItemBySlot(EquipmentSlot.MAINHAND), player, getManaPerDamage(), true))
+        {
+            attack(player, target);
+        }
     }
 }

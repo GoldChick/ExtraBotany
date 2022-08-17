@@ -6,6 +6,7 @@ import chick.extrabotany.common.entities.EntityFalseLightning;
 import chick.extrabotany.common.entities.EntitySplashGrenade;
 import chick.extrabotany.common.entities.projectile.EntityAuraFire;
 import chick.extrabotany.common.entities.projectile.EntityTrueShadowKatanaProjectile;
+import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -49,6 +50,13 @@ public class ModEntities
             .setTrackingRange(64)
             .setShouldReceiveVelocityUpdates(true)
             .build(ExtraBotany.MODID + "trueshadowkatana");
+public static final EntityType<EntityTrueTerraBladeProjectile> TRUE_TERRA_BLADE = EntityType.Builder
+            .<EntityTrueTerraBladeProjectile>of(EntityTrueTerraBladeProjectile::new, MobCategory.MISC)
+            .sized(0.05F, 0.05F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(ExtraBotany.MODID + "trueterrablade");
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> r)
     {
@@ -57,6 +65,7 @@ public class ModEntities
         r.accept(SPLASH_GRENADE, new ResourceLocation(ExtraBotany.MODID, "splashgrenade"));
         r.accept(FALSE_LIGHTNING, new ResourceLocation(ExtraBotany.MODID, "false_lighting"));
         r.accept(TRUE_SHADOW_KATANA, new ResourceLocation(ExtraBotany.MODID, "trueshadowkatana"));
+        r.accept(TRUE_TERRA_BLADE, new ResourceLocation(ExtraBotany.MODID, "trueterrablade"));
     }
 
     public static void registerAttributes(BiConsumer<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> consumer)

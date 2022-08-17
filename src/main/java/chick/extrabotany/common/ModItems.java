@@ -18,6 +18,7 @@ import chick.extrabotany.common.tools.armors.MikuArmor;
 import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
+import chick.extrabotany.common.tools.weapons.TrueTerraBlade;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -106,7 +107,6 @@ public class ModItems
     public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = ITEMS.register("shadowwarrior_legs", () -> new ShadowWarriorArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
     public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = ITEMS.register("shadowwarrior_boots", () -> new ShadowWarriorArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
     public static final RegistryObject<Item> SHADOW_KATANA = ITEMS.register("shadowkatana", () -> new ShadowKatana(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> TRUE_SHADOW_KATANA = ITEMS.register("trueshadowkatana", () -> new TrueShadowKatana(ITEM_PROPERTIES));
 
     public static final RegistryObject<Item> GOBLINSLAYER_HELM = ITEMS.register("goblinslayer_helm", () -> new GoblinSlayerArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
     public static final RegistryObject<Item> GOBLINSLAYER_CHEST = ITEMS.register("goblinslayer_chest", () -> new GoblinSlayerArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
@@ -122,6 +122,11 @@ public class ModItems
     public static final RegistryObject<Item> MAID_LEGS = ITEMS.register("maid_legs", () -> new MaidArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
     public static final RegistryObject<Item> MAID_BOOTS = ITEMS.register("maid_boots", () -> new MaidArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
 
+    public static final RegistryObject<Item> TRUE_SHADOW_KATANA = ITEMS.register("trueshadowkatana", () -> new TrueShadowKatana(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> TRUE_TERRA_BLADE = ITEMS.register("trueterrablade", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> TRUE_THUNDER_CALLER = ITEMS.register("truethundercaller", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> TRUE_STAR_CALLER = ITEMS.register("truestarcaller", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FIRST_FRACTAL = ITEMS.register("firstfractal", () -> new TrueTerraBlade(ITEM_PROPERTIES));
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {
         r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));

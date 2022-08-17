@@ -41,7 +41,7 @@ public class MiscellaneousIcons
         // addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/strengthenslash"));
         //  addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/flamescionring"));
         //   addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/influxwaverprojectile"));
-        //   addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/trueterrabladeprojectile"));
+        addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/trueterrabladeprojectile"));
         addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/trueshadowkatanaprojectile"));
         //   for (int i = 0; i < 4; i++) {
         //       addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/wing_" + i));
@@ -58,7 +58,7 @@ public class MiscellaneousIcons
         // strengthenSlashModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/strengthenslash"));
         // flamescionringModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/flamescionring"));
         // influxwaverprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/influxwaverprojectile"));
-        // trueterrabladeprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/trueterrabladeprojectile"));
+        trueterrabladeprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/trueterrabladeprojectile"));
         trueshadowkatanaprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/trueshadowkatanaprojectile"));
         // for(int i = 0; i < coregodWingsModel.length; i++){
         //     coregodWingsModel[i] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_" + i));

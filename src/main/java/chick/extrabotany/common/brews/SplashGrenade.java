@@ -47,7 +47,6 @@ import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 public class SplashGrenade extends Item implements IBrewItem
 {
     private static final String TAG_BREW_KEY = "brewKey";
-    private static final float amplifier = 0;
     private static final float multiplier = 0.6F;
 
 
@@ -128,7 +127,7 @@ public class SplashGrenade extends Item implements IBrewItem
 
                 if (effectinstance.getAmplifier() > 0)
                 {
-                    iformattabletextcomponent = new TranslatableComponent("potion.withAmplifier", iformattabletextcomponent, new TranslatableComponent("potion.potency." + (effectinstance.getAmplifier() + amplifier)));
+                    iformattabletextcomponent = new TranslatableComponent("potion.withAmplifier", iformattabletextcomponent, new TranslatableComponent("potion.potency." + effectinstance.getAmplifier()));
                 }
 
                 if (effectinstance.getDuration() > 20)

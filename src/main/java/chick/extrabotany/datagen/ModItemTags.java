@@ -52,6 +52,7 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.ROD_OF_DISCORD.get())
                 .add(ModItems.SHADOW_KATANA.get())
                 .add(ModItems.TRUE_SHADOW_KATANA.get())
+                .add(ModItems.TRUE_TERRA_BLADE.get())
 
                 .add(ModItems.SHADOW_WARRIOR_HELM.get())
                 .add(ModItems.SHADOW_WARRIOR_CHEST.get())

@@ -2,7 +2,6 @@ package chick.extrabotany.common.entities;
 
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
 import chick.extrabotany.forge.client.handler.ConfigHandler;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.ChatFormatting;
@@ -14,17 +13,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
 import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -32,7 +30,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -42,6 +39,8 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -55,6 +54,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 import vazkii.botania.client.fx.WispParticleData;
 import vazkii.botania.common.block.ModBlocks;
@@ -75,17 +75,15 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class EntityEGO extends Mob
+public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
 {
-    //implements IEntityAdditionalSpawnData
     public static final float ARENA_RANGE = 12F;
     public static final int ARENA_HEIGHT = 5;
 
     private static final int SPAWN_TICKS = 160;
-    public static final float MAX_HP = 500F;
+    public static final float MAX_HP = 600F;
 
     private static final String TAG_INVUL_TIME = "invulTime";
-    private static final String TAG_AGGRO = "aggro";
     private static final String TAG_SOURCE_X = "sourceX";
     private static final String TAG_SOURCE_Y = "sourceY";
     private static final String TAG_SOURCE_Z = "sourcesZ";
@@ -112,15 +110,12 @@ public class EntityEGO extends Mob
             new ResourceLocation("thaumictinkerer", "magnet")
     );
 
-    private int changeWeaponDelay = 0;
-    private int attackDelay = 0;
     private float damageTaken = 0;
     private int tpDelay = 0;
     private int playerCount = 0;
     private BlockPos source = BlockPos.ZERO;
     private final List<UUID> playersWhoAttacked = new ArrayList<>();
     private final ServerBossEvent bossInfo = (ServerBossEvent) new ServerBossEvent(ModEntities.EGO.getDescription(), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.PROGRESS).setCreateWorldFog(true);
-    ;
     private UUID bossInfoUUID = bossInfo.getId();
     public Player trueKiller = null;
 
@@ -318,9 +313,7 @@ public class EntityEGO extends Mob
         return switch (getWeaponType())
                 {
                     default -> new ItemStack(ModItems.TRUE_SHADOW_KATANA.get());
-                    //     return new ItemStack(ModItems.trueshadowkatana);
-                    case 1 -> new ItemStack(Items.WOODEN_SWORD);
-                    //     return new ItemStack(ModItems.trueterrablade);
+                    case 1 -> new ItemStack(ModItems.TRUE_TERRA_BLADE.get());
                     case 2 -> new ItemStack(Items.WOODEN_SWORD);
                     //     return new ItemStack(ModItems.influxwaver);
                     case 3 -> new ItemStack(Items.WOODEN_SWORD);
@@ -333,8 +326,10 @@ public class EntityEGO extends Mob
     @Override
     protected void registerGoals()
     {
-        goalSelector.addGoal(0, new FloatGoal(this));
-        goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, ARENA_RANGE * 1.5F));
+        goalSelector.addGoal(1, new EGOGoal(this));
+        goalSelector.addGoal(2, new FloatGoal(this));
+        goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, ARENA_RANGE * 1.5F));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     @Override
@@ -403,11 +398,8 @@ public class EntityEGO extends Mob
             damageTaken += dmg;
             if (damageTaken >= 50)
             {
-                if (tryAttack())
-                {
-                    damageTaken = 0;
-                    teleportRandomly();
-                }
+                damageTaken = 0;
+                teleportRandomly();
             }
             return super.hurt(source, dmg);
         }
@@ -729,7 +721,7 @@ public class EntityEGO extends Mob
     /**
      * 场上玩家多于召唤时的人数则消失
      */
-    public void unlegalPlayercount()
+    public void illegalPlayerCount()
     {
         if (getPlayersAround().size() > playerCount)
         {
@@ -740,48 +732,7 @@ public class EntityEGO extends Mob
         }
     }
 
-    public boolean tryAttack()
-    {
-        if (getPlayersAround().isEmpty())
-            return false;
-
-        Entity target = getPlayersAround().get(0);
-
-        this.setItemInHand(InteractionHand.MAIN_HAND, getWeapon());
-        this.swing(InteractionHand.MAIN_HAND);
-        if (!level.isClientSide)
-        {
-            if (!getPlayersAround().isEmpty())
-                getPlayersAround().get(0).swing(InteractionHand.MAIN_HAND);
-            //TODO weapon type
-            switch (getWeaponType())
-            {
-                default -> ((TrueShadowKatana) ModItems.TRUE_SHADOW_KATANA.get()).attackEntity(this, target);
-                /*
-                case 1:
-                    ((ItemTrueTerrablade) ModItems.trueterrablade).attackEntity(this, target);
-                case 2:
-                    ((ItemInfluxWaver) ModItems.influxwaver).attackEntity(this, target);
-                case 3:
-                {
-                    ((ItemStarWrath) ModItems.starwrath).attackEntity(this, target);
-                    break;
-                }
-                case 4:
-                {
-                    ((ItemFirstFractal) ModItems.firstfractal).attackEntity(this, target);
-                    break;
-                }
-                */
-            }
-            ;
-
-        }
-        return true;
-    }
-
     /*
-
             if (changeWeaponDelay > 0)
             {
                 changeWeaponDelay--;
@@ -798,13 +749,6 @@ public class EntityEGO extends Mob
                 tpTimes++;
             }
 
-            if (getStage() == 0 && getHealth() < 0.75F * getMaxHealth())
-            {
-                setStage(1);
-                setInvulTime(460);
-                Collections.shuffle(WAVES);
-                this.setPositionAndUpdate(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
-            }
             if (getStage() == 1 && getHealth() < 0.25F * getMaxHealth())
             {
                 setStage(2);
@@ -857,30 +801,20 @@ public class EntityEGO extends Mob
         }
         if (!isAlive() || players.isEmpty())
             return;
-        if (!level.isClientSide)
-            for (Player player : getPlayersAround())
-                disarm(player);
-        unlegalPlayercount();
+        for (Player player : getPlayersAround())
+            disarm(player);
+        illegalPlayerCount();
         //--scan end--
-
+        //TODO:已经转移到了goal里
         int invul = getInvulTime();
 
         List<Integer> WAVES = Arrays.asList(waves);
-
         //--tp action--
         if (--tpDelay <= 0)
         {
             teleportRandomly();
             tpTimes++;
             tpDelay = 100 - getStage() * 10;
-        }
-        //--attack action--
-        if (--attackDelay <= 0)
-        {
-            if (tryAttack())
-            {
-                attackDelay = (int) (60 - getStage() * 10 + 15 * Math.random());
-            }
         }
         if (invul > 0)
         {
@@ -912,7 +846,16 @@ public class EntityEGO extends Mob
                 }
             }
         }
-
+        //--change phase--
+        if (getStage() == 0 && getHealth() < 0.75F * getMaxHealth())
+        {
+            setStage(1);
+            setInvulTime(460);
+            tpDelay = 460;
+            setWeaponType(1);
+            Collections.shuffle(WAVES);
+            this.setPos(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
+        }
     }
 
     @Override
@@ -1022,7 +965,6 @@ public class EntityEGO extends Mob
 
         if (oldPosVec.distanceToSqr(newPosVec) > 1)
         {
-            //damage players in the path of the teleport
             for (Player player : getPlayersAround())
             {
                 boolean hit = player.getBoundingBox().inflate(0.25).clip(oldPosVec, newPosVec)
@@ -1055,29 +997,40 @@ public class EntityEGO extends Mob
         return bossInfoUUID;
     }
 
-    public void readSpawnData(int playerCount, boolean hardMode, BlockPos source, UUID bossInfoUUID)
-    {
-        this.playerCount = playerCount;
-        this.source = source;
-        this.bossInfoUUID = bossInfoUUID;
-        //TODO : idk whats it
-
-        IProxy.INSTANCE.runOnClient(() -> () -> EntityEGO.EgoMusic.play(this));
-    }
-
     @Nonnull
     @Override
     public Packet<?> getAddEntityPacket()
     {
         return NetworkHooks.getEntitySpawningPacket(this);
-        //  return IXplatAbstractions.INSTANCE.toVanillaClientboundPacket(
-        //           new PacketSpawnDoppleganger(new ClientboundAddMobPacket(this), playerCount, hardMode, source, bossInfoUUID));
+        //   return IXplatAbstractions.INSTANCE.toVanillaClientboundPacket(
+        //          new PacketSpawnDoppleganger(new ClientboundAddMobPacket(this), playerCount, hardMode, source, bossInfoUUID));
     }
 
     @Override
     public boolean canBeLeashed(Player player)
     {
         return false;
+    }
+
+    @Override
+    public void writeSpawnData(FriendlyByteBuf buffer)
+    {
+        buffer.writeInt(playerCount);
+        buffer.writeLong(source.asLong());
+        buffer.writeLong(bossInfoUUID.getMostSignificantBits());
+        buffer.writeLong(bossInfoUUID.getLeastSignificantBits());
+    }
+
+    @Override
+    public void readSpawnData(FriendlyByteBuf additionalData)
+    {
+        playerCount = additionalData.readInt();
+        source = BlockPos.of(additionalData.readLong());
+        long msb = additionalData.readLong();
+        long lsb = additionalData.readLong();
+        bossInfoUUID = new UUID(msb, lsb);
+        //IProxy.INSTANCE.runOnClient(() -> () -> EntityEGO.EgoMusic.play(this));
+        Minecraft.getInstance().getSoundManager().play(new EntityEGO.EgoMusic(this));
     }
 
     /**
@@ -1091,12 +1044,14 @@ public class EntityEGO extends Mob
         public EgoMusic(EntityEGO guardian)
         {
             super(ModSounds.gaiaMusic2, SoundSource.RECORDS);
+            //TODO:音乐还没搞进来
             //super(ModSounds.swordland, SoundCategory.RECORDS);
             this.guardian = guardian;
             this.x = guardian.getSource().getX();
             this.y = guardian.getSource().getY();
             this.z = guardian.getSource().getZ();
-            // this.repeat = true; TODO restore once LWJGL3/vanilla bug fixed? AND CHANGE MUSIC
+            // this.repeat = true;
+            // TODO restore once LWJGL3/vanilla bug fixed? AND CHANGE MUSIC
         }
 
         public static void play(EntityEGO guardian)

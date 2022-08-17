@@ -2,7 +2,6 @@ package chick.extrabotany.common.tools.armors;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,18 +12,18 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.api.mana.IManaDiscountArmor;
-import vazkii.botania.api.mana.ManaDiscountEvent;
+import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.gui.TooltipHandler;
 import vazkii.botania.client.lib.LibResources;
-import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.helper.ItemNBTHelper;
+import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.proxy.IProxy;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public abstract class ArmorBase extends ArmorItem implements IPhantomInkable, IManaDiscountArmor
 {
@@ -35,6 +34,22 @@ public abstract class ArmorBase extends ArmorItem implements IPhantomInkable, IM
     {
         super(material, slot, properties);
         this.armorTexture = armorTexture;
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, Level level, Player player)
+    {
+        super.onArmorTick(stack, level, player);
+        if (!level.isClientSide && stack.getDamageValue() > 0 && ManaItemHandler.instance().requestManaExactForTool(stack, player, getManaPerDamage() * 2, true))
+        {
+            stack.setDamageValue(stack.getDamageValue() - 1);
+        }
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
+    {
+        return ToolCommons.damageItemIfPossible(stack, amount, entity, getManaPerDamage());
     }
 
     public boolean hasArmorSuit(LivingEntity player)

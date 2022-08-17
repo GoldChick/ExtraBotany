@@ -3,19 +3,16 @@ package chick.extrabotany.common.tools.weapons;
 import chick.extrabotany.common.entities.projectile.EntityTrueShadowKatanaProjectile;
 import chick.extrabotany.network.DamageHandler;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.helper.VecHelper;
 
 import java.util.List;
 
-public class TrueShadowKatana extends ItemSwordRelic
+public class TrueShadowKatana extends SwordRelicBase
 {
     public static final int MANA_PER_DAMAGE = 800;
 
@@ -24,7 +21,10 @@ public class TrueShadowKatana extends ItemSwordRelic
         super(Tiers.DIAMOND, 5, -2F, prop);
     }
 
-    public void attackEntity(LivingEntity player, Entity target)
+    /**
+     * @param times Max 3
+     */
+    public void attack(LivingEntity player, Entity target, int times, double speedTime, float damageTime)
     {
         Vec3 targetpos = Vec3.ZERO;
 
@@ -37,8 +37,7 @@ public class TrueShadowKatana extends ItemSwordRelic
 
         if (list.size() == 0)
         {
-            var pos = raytraceFromEntity(player, 64F, true).getBlockPos();
-            targetpos = target == null ? new Vec3(pos.getX(), pos.getY(), pos.getZ()).add(0, 1, 0) : target.position().add(0, 1, 0);
+            targetpos = target == null ? raytraceFromEntity(player, 64F, true).getLocation().add(0, 1, 0) : target.position().add(0, 1, 0);
         } else if (player instanceof Mob && ((Mob) player).getTarget() != null && entities.contains(((Mob) player).getTarget()))
         {
             targetpos = ((Mob) player).getTarget().position();
@@ -56,10 +55,7 @@ public class TrueShadowKatana extends ItemSwordRelic
                 }
             }
         }
-        /**
- * 设置剑气数量
- */
-        for (int i = 2; i < 3; i++)
+        for (int i = 3 - times; i < 3; i++)
         {
             Vec3 look = new Vec3(player.getLookAngle().x, player.getLookAngle().y, player.getLookAngle().z).multiply(1, 0, 1);
 
@@ -95,21 +91,20 @@ public class TrueShadowKatana extends ItemSwordRelic
             proj.setPos(end.x, end.y, end.z);
             proj.setTargetPos(targetpos);
             proj.faceTargetAccurately(0.75F);
-            proj.setDeltaMovement(proj.getDeltaMovement().scale(2D));
+            proj.setDeltaMovement(proj.getDeltaMovement().scale(speedTime));
             player.level.addFreshEntity(proj);
         }
     }
 
     @Override
-    public void onLeftClick(Player player, Entity target)
+    public void attack(LivingEntity player, Entity target)
     {
-        if (!player.level.isClientSide
-                && !player.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()
-                && player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == this
-                && player.getAttackStrengthScale(0) == 1
-                && ManaItemHandler.instance().requestManaExactForTool(player.getItemBySlot(EquipmentSlot.MAINHAND), player, MANA_PER_DAMAGE, true))
-        {
-            attackEntity(player, target);
-        }
+        attack(player, target, 2, 1D, 1F);
+    }
+
+    @Override
+    public int getManaPerDamage()
+    {
+        return MANA_PER_DAMAGE;
     }
 }

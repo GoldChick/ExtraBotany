@@ -24,6 +24,7 @@ public final class EntityRenderers
        consumer.accept(ModEntities.FALSE_LIGHTNING, LightningBoltRenderer::new);
        consumer.accept(ModEntities.SPLASH_GRENADE, ThrownItemRenderer::new);
        consumer.accept(ModEntities.TRUE_SHADOW_KATANA, RenderProjectile::new);
+       consumer.accept(ModEntities.TRUE_TERRA_BLADE, RenderProjectile::new);
     }
     public static void init(EntityRendererProvider.Context ctx)
     {

@@ -105,7 +105,10 @@ public class ModItemModels extends ItemModelProvider
     {
         singleTexture(ModItems.SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/shadowkatana"));
         singleTexture(ModItems.TRUE_SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/trueshadowkatana"));
-
+        singleTexture(ModItems.TRUE_TERRA_BLADE.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/trueterrablade"));
+        singleTexture(ModItems.TRUE_THUNDER_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truethundercaller"));
+        singleTexture(ModItems.TRUE_STAR_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truestarcaller"));
+        singleTexture(ModItems.FIRST_FRACTAL.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/firstfractal"));
     }
 
     private void registereArmorModels()

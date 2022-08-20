@@ -100,10 +100,10 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
 
     public void attack(LivingEntity player, Entity target)
     {
-        attack(player, target, 1, 1D,1F);
+        attack(player, target, 1, 1D, 1F);
     }
 
-    public abstract void attack(LivingEntity player, Entity target, int times, double speedTime,float damageTime);
+    public abstract void attack(LivingEntity player, Entity target, int times, double speedTime, float damageTime);
 
     @Override
     public void onLeftClick(Player player, Entity target)

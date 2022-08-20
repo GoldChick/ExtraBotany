@@ -49,6 +49,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.LEN_SMELT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_smelt"));
         singleTexture(ModItems.LEN_POTION.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_potion"));
         singleTexture(ModItems.LEN_MANA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_mana"));
+        singleTexture(ModItems.LEN_TRACE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_trace"));
 
 
         registerBaubleModels();
@@ -106,8 +107,8 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/shadowkatana"));
         singleTexture(ModItems.TRUE_SHADOW_KATANA.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/trueshadowkatana"));
         singleTexture(ModItems.TRUE_TERRA_BLADE.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/trueterrablade"));
-        singleTexture(ModItems.TRUE_THUNDER_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truethundercaller"));
-        singleTexture(ModItems.TRUE_STAR_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truestarcaller"));
+        singleTexture(ModItems.TRUE_THUNSTAR_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truethunstarcaller"));
+        singleTexture(ModItems.INFLUX_WAVER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/influxwaver"));
         singleTexture(ModItems.FIRST_FRACTAL.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/firstfractal"));
     }
 

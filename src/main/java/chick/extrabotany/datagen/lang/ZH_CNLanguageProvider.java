@@ -2,6 +2,7 @@ package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
+import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
@@ -71,8 +72,8 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
         add(ModItems.TRUE_TERRA_BLADE.get(), "真·泰拉之刃");
-        add(ModItems.TRUE_THUNDER_CALLER.get(), "真·召雷者");
-        add(ModItems.TRUE_STAR_CALLER.get(), "真·召星者");
+        add(ModItems.TRUE_THUNSTAR_CALLER.get(), "真·星雷者");
+        add(ModItems.INFLUX_WAVER.get(), "波涌之刃");
         add(ModItems.FIRST_FRACTAL.get(), "最初分型");
 
 
@@ -110,6 +111,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         langFlower();
         langAdvancement();
         langPantchouli();
+        add(ModEntities.EGO,"本我");
+        add(ModEntities.EGO_LANDMINE,"本我地雷");
+        add(ModEntities.EGO_MINION,"本我仆从");
+        add(ModEntities.AURAFIRE,"火焰");
+        add(ModEntities.SPLASH_GRENADE,"圣水手雷");
+        add(ModEntities.FALSE_LIGHTNING,"仿真闪电");
+        add(ModEntities.TRUE_SHADOW_KATANA,"真·影刃");
+        add(ModEntities.TRUE_TERRA_BLADE,"真·泰拉之刃");
     }
 
     private void langFlower()
@@ -336,6 +345,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.aerialite4","银翼护卫胸甲");
         add("extrabotany.page.aerialite5","银翼护卫护腿");
         add("extrabotany.page.aerialite6","银翼护卫靴子");
+
+        add("extrabotany.entry.true_swords","真·剑");
+        add("extrabotany.page.true_swords0","经过研究，$(item)盖亚之魂$(0)和其他材料能够解放你所拥有的一些武器的真正力量。因此，这些武器在盖亚的手中也将更加强大。");
+        add("extrabotany.page.true_thunstar_caller","$(item)召雷者和召星者$(0)的升级版。每次挥动会从天上导引出闪电。虽然距离真正的闪电尚有不足，但用于攻击已经足够。当击中着火的敌人时会因为超载的原因增加伤害。");
+        add("extrabotany.page.true_terra_blade","$(item)泰拉之刃$(0)的升级版。每次挥动都会发射可以贯穿敌人的剑气。");
+        add("extrabotany.page.true_shadow_katana","$(item)影刃$(0)的升级版。每次挥动都会召唤两把真影刃自动索敌并追击敌人。");
+
+        add("extrabotany.page.influx_waver","未完成。");
         pantchouliFlower();
     }
 

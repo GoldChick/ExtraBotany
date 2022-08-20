@@ -6,12 +6,14 @@ import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
 import chick.extrabotany.common.brews.Cocktail;
 import chick.extrabotany.common.brews.SplashGrenade;
 import chick.extrabotany.common.crafting.CocktailRecipe;
+import chick.extrabotany.common.crafting.GrenadeRecipe;
 import chick.extrabotany.common.crafting.LenPotionRecipe;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.items.*;
 import chick.extrabotany.common.lens.LenPotion;
 import chick.extrabotany.common.lens.LenPotionBase;
 import chick.extrabotany.common.lens.LenSmelt;
+import chick.extrabotany.common.lens.LenTrace;
 import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
 import chick.extrabotany.common.tools.armors.MaidArmor;
 import chick.extrabotany.common.tools.armors.MikuArmor;
@@ -19,6 +21,7 @@ import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
 import chick.extrabotany.common.tools.weapons.TrueTerraBlade;
+import chick.extrabotany.common.tools.weapons.TrueThunStarCaller;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -69,6 +72,7 @@ public class ModItems
     public static final RegistryObject<Item> LEN_SMELT = ITEMS.register("len_smelt", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSmelt(), vazkii.botania.common.item.lens.ItemLens.PROP_TOUCH));
     public static final RegistryObject<Item> LEN_POTION = ITEMS.register("len_potion", () -> new LenPotionBase(ITEM_PROPERTIES.stacksTo(1), new LenPotion(), vazkii.botania.common.item.lens.ItemLens.PROP_INTERACTION));
     public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> LEN_TRACE = ITEMS.register("len_trace", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenTrace(), ItemLens.PROP_ORIENTATION));
     /**
      * these are baubles for curios mod
      **/
@@ -124,13 +128,15 @@ public class ModItems
 
     public static final RegistryObject<Item> TRUE_SHADOW_KATANA = ITEMS.register("trueshadowkatana", () -> new TrueShadowKatana(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TRUE_TERRA_BLADE = ITEMS.register("trueterrablade", () -> new TrueTerraBlade(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> TRUE_THUNDER_CALLER = ITEMS.register("truethundercaller", () -> new TrueTerraBlade(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> TRUE_STAR_CALLER = ITEMS.register("truestarcaller", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> TRUE_THUNSTAR_CALLER = ITEMS.register("truethunstarcaller", () -> new TrueThunStarCaller(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> INFLUX_WAVER = ITEMS.register("influxwaver", () -> new TrueTerraBlade(ITEM_PROPERTIES));
     public static final RegistryObject<Item> FIRST_FRACTAL = ITEMS.register("firstfractal", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {
         r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));
         r.accept(LenPotionRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "len_potion_bind"));
+        r.accept(GrenadeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "grenade_bind"));
     }
 
     public static DeferredRegister<Item> GetItems()

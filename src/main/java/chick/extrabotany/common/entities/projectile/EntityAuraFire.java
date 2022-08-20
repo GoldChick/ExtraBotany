@@ -1,14 +1,14 @@
 package chick.extrabotany.common.entities.projectile;
 
 import chick.extrabotany.common.ModEntities;
-import chick.extrabotany.network.NetworkHandler;
-import chick.extrabotany.network.inputMessage.DamageMessage;
+import chick.extrabotany.network.DamageHandler;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class EntityAuraFire extends EntityProjectileBase
 {
@@ -27,8 +27,6 @@ public class EntityAuraFire extends EntityProjectileBase
     public void tick()
     {
         super.tick();
-        if (this.tickCount > 80)
-            this.discard();
         if (this.level.isClientSide)
             for (int i = 0; i < 5; i++)
                 this.level.addParticle(ParticleTypes.FLAME, this.getX() + Math.random() * 0.4F - 0.2F,
@@ -37,21 +35,23 @@ public class EntityAuraFire extends EntityProjectileBase
     }
 
     @Override
-    public void onHitEntity(EntityHitResult result)
+    public void onHitEntity(@NotNull EntityHitResult result)
     {
-        if (getOwner() instanceof Player)
+        if (getOwner() instanceof Player player)
         {
-            Player player = (Player) getOwner();
             if (result.getEntity() != player)
             {
-                //TODO:和平友好之证
-
-                // float dmg = ExtraBotanyAPI.calcDamage(5F, player);
-                // DamageHandler.INSTANCE.dmg(result.getEntity(), player, dmg, DamageHandler.INSTANCE.NETURAL_PIERCING);
-                NetworkHandler.INSTANCE.sendToServer(new DamageMessage(5, 3, result.getEntity().getId()));
+                float dmg = DamageHandler.calcDamage(5F, player);
+                DamageHandler.INSTANCE.dmg(result.getEntity(), player, dmg, DamageHandler.INSTANCE.NETURAL_PIERCING);
                 player.setAbsorptionAmount(Math.min(10, player.getAbsorptionAmount() + 1F));
                 discard();
             }
         }
+    }
+
+    @Override
+    public int getLifeTicks()
+    {
+        return 80;
     }
 }

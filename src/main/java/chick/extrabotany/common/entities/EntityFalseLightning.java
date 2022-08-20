@@ -13,4 +13,5 @@ public class EntityFalseLightning extends LightningBolt
         super(type, level);
         setVisualOnly(true);
     }
+
 }

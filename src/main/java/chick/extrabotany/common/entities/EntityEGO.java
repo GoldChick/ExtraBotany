@@ -1,7 +1,7 @@
 package chick.extrabotany.common.entities;
 
 import chick.extrabotany.common.ModEntities;
-import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.ModSounds;
 import chick.extrabotany.forge.client.handler.ConfigHandler;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.ChatFormatting;
@@ -25,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -39,11 +40,9 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -56,10 +55,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.client.fx.WispParticleData;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.handler.EquipmentHandler;
-import vazkii.botania.common.handler.ModSounds;
 import vazkii.botania.common.helper.MathHelper;
 import vazkii.botania.common.helper.VecHelper;
 import vazkii.botania.common.lib.ModTags;
@@ -73,9 +72,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
+public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
 {
     public static final float ARENA_RANGE = 12F;
     public static final int ARENA_HEIGHT = 5;
@@ -83,15 +81,17 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
     private static final int SPAWN_TICKS = 160;
     public static final float MAX_HP = 600F;
 
-    private static final String TAG_INVUL_TIME = "invulTime";
+
     private static final String TAG_SOURCE_X = "sourceX";
     private static final String TAG_SOURCE_Y = "sourceY";
     private static final String TAG_SOURCE_Z = "sourcesZ";
+
     private static final String TAG_PLAYER_COUNT = "playerCount";
     private static final String TAG_STAGE = "stage";
     private static final String TAG_WEAPONTYPE = "weapontype";
     private static final String TAG_TPDELAY = "tpDelay";
-
+    private static final String TAG_ATTACKDELAY = "attackDelay";
+    private static final String TAG_INVUL_TIME = "invulTime";
     private static final int DAMAGE_CAP = 25;
     private static final TagKey<Block> BLACKLIST = ModTags.Blocks.GAIA_BREAK_BLACKLIST;
     private static final EntityDataAccessor<Integer> INVUL_TIME = SynchedEntityData.defineId(EntityEGO.class, EntityDataSerializers.INT);
@@ -112,11 +112,13 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
 
     private float damageTaken = 0;
     private int tpDelay = 0;
+    private int attackDelay = 0;
     private int playerCount = 0;
     private BlockPos source = BlockPos.ZERO;
     private final List<UUID> playersWhoAttacked = new ArrayList<>();
     private final ServerBossEvent bossInfo = (ServerBossEvent) new ServerBossEvent(ModEntities.EGO.getDescription(), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.PROGRESS).setCreateWorldFog(true);
     private UUID bossInfoUUID = bossInfo.getId();
+
     public Player trueKiller = null;
 
     private int MAX_WAVE = 6;
@@ -217,12 +219,14 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             int playerCount = e.getPlayersAround().size();
             e.playerCount = playerCount;
             e.setInvulTime(0);
+            e.setAttackDelay(100);
+            e.setTpDelay(160);
             float healthMultiplier = 0.4F + playerCount * 0.6F;
             e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(MAX_HP * healthMultiplier);
 
             e.getAttribute(Attributes.ARMOR).setBaseValue(20);
             //e.playSound(SoundEvents.ENTITY_ENDER_DRAGON_GROWL, 10F, 0.1F);
-            e.playSound(ModSounds.gaiaSummon, 1F, 1F);
+            e.playSound(vazkii.botania.common.handler.ModSounds.gaiaSummon, 1F, 1F);
             e.finalizeSpawn((ServerLevelAccessor) level, level.getCurrentDifficultyAt(e.blockPosition()), MobSpawnType.EVENT, null, null);
 
             level.addFreshEntity(e);
@@ -307,29 +311,12 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         }
     }
 
-    //TODO: 不同阶段切换武器
-    public ItemStack getWeapon()
-    {
-        return switch (getWeaponType())
-                {
-                    default -> new ItemStack(ModItems.TRUE_SHADOW_KATANA.get());
-                    case 1 -> new ItemStack(ModItems.TRUE_TERRA_BLADE.get());
-                    case 2 -> new ItemStack(Items.WOODEN_SWORD);
-                    //     return new ItemStack(ModItems.influxwaver);
-                    case 3 -> new ItemStack(Items.WOODEN_SWORD);
-                    //     return new ItemStack(ModItems.starwrath);
-                    case 4 -> new ItemStack(Items.WOODEN_SWORD);
-                    //     return new ItemStack(ModItems.firstfractal);
-                };
-    }
-
     @Override
     protected void registerGoals()
     {
         goalSelector.addGoal(1, new EGOGoal(this));
         goalSelector.addGoal(2, new FloatGoal(this));
         goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, ARENA_RANGE * 1.5F));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     @Override
@@ -341,12 +328,12 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         entityData.define(WEAPON_TYPE, 0);
     }
 
-
     @Override
     public void addAdditionalSaveData(CompoundTag cmp)
     {
         super.addAdditionalSaveData(cmp);
         cmp.putInt(TAG_TPDELAY, tpDelay);
+        cmp.putInt(TAG_ATTACKDELAY, attackDelay);
         cmp.putInt(TAG_SOURCE_X, source.getX());
         cmp.putInt(TAG_SOURCE_Y, source.getY());
         cmp.putInt(TAG_SOURCE_Z, source.getZ());
@@ -366,6 +353,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         int z = cmp.getInt(TAG_SOURCE_Z);
         source = new BlockPos(x, y, z);
         tpDelay = cmp.getInt(TAG_TPDELAY);
+        attackDelay = cmp.getInt(TAG_ATTACKDELAY);
         playerCount = cmp.contains(TAG_PLAYER_COUNT) ? cmp.getInt(TAG_PLAYER_COUNT) : 1;
         if (this.hasCustomName())
         {
@@ -389,7 +377,6 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         Entity e = source.getEntity();
         if (e instanceof Player player && isTruePlayer(e) && getInvulTime() == 0)
         {
-
             if (!playersWhoAttacked.contains(player.getUUID()))
             {
                 playersWhoAttacked.add(player.getUUID());
@@ -400,6 +387,13 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             {
                 damageTaken = 0;
                 teleportRandomly();
+                if (attackDelay >= 20)
+                {
+                    attackDelay /= 2;
+                } else
+                {
+                    attackDelay -= 10;
+                }
             }
             return super.hurt(source, dmg);
         }
@@ -457,34 +451,21 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
                     player.removeEffect(MobEffects.WITHER);
                 }
             }
-            //TODO:地雷、仆从
-            /*
-            LivingEntity entitylivingbase = getAttackingEntity();
-
-            playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 20F, (1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F) * 0.7F);
-            world.addParticle(ParticleTypes.EXPLOSION_EMITTER, getPosX(), getPosY(), getPosZ(), 1D, 0D, 0D);
-
-            for (EntityEGOLandmine landmine : world.getEntitiesWithinAABB(EntityEGOLandmine.class, getArenaBB(getSource())))
+            for (EntityEGOLandmine landmine : level.getEntitiesOfClass(EntityEGOLandmine.class, getArenaBB(getSource())))
             {
-                landmine.remove();
-            }
-
-            for (EntityEGOMinion minion : world.getEntitiesWithinAABB(EntityEGOMinion.class, getArenaBB(getSource())))
-            {
-                minion.remove();
-            }
-            // Stop all the pixies leftover from the fight
-            for (EntityPixie pixie : level.getEntitiesOfClass(EntityPixie.class, getArenaBB(getSource()), p -> p.isAlive() && p.getPixieType() == 1)) {
-                pixie.spawnAnim();
-                pixie.discard();
-            }
-            for (EntityMagicLandmine landmine : level.getEntitiesOfClass(EntityMagicLandmine.class, getArenaBB(getSource()))) {
                 landmine.discard();
             }
-            */
+
+            for (EntityEGOMinion minion : level.getEntitiesOfClass(EntityEGOMinion.class, getArenaBB(getSource())))
+            {
+                minion.discard();
+            }
+
         }
-        playSound(ModSounds.gaiaDeath, 1F, (1F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F) * 0.7F);
+        playSound(SoundEvents.GENERIC_EXPLODE, 20F, (1F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F) * 0.7F);
         level.addParticle(ParticleTypes.EXPLOSION_EMITTER, getX(), getY(), getZ(), 1D, 0D, 0D);
+
+        //playSound(ModSounds.gaiaDeath, 1F, (1F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F) * 0.7F);
     }
 
     @Override
@@ -635,8 +616,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         List<MobEffect> potionsToRemove = player.getActiveEffects().stream()
                 .filter(effect -> effect.getDuration() < 160 && effect.isAmbient() && ((AccessorMobEffect) effect.getEffect()).getType() != MobEffectCategory.HARMFUL)
                 .map(MobEffectInstance::getEffect)
-                .distinct()
-                .collect(Collectors.toList());
+                .distinct().toList();
 
         potionsToRemove.forEach(potion ->
         {
@@ -665,11 +645,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             return true;
 
         String modid = stack.getItem().getRegistryName().getNamespace();
-        if (modid.contains("extrabotany") || modid.contains("botania") || modid.contains("minecraft"))
-        {
-            return true;
-        }
-        return false;
+        return modid.contains("extrabotany") || modid.contains("botania") || modid.contains("minecraft");
     }
 
     /**
@@ -743,20 +719,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
                 setWeaponType(weaponType);
             }
 
-            if (getStage() >= 1 && tpTimes % 7 == 0)
-            {
-                EntityEGOLandmine.spawnLandmine(world.rand.nextInt(8), world, source, this);
-                tpTimes++;
-            }
 
-            if (getStage() == 1 && getHealth() < 0.25F * getMaxHealth())
-            {
-                setStage(2);
-                setInvulTime(600);
-                setWeaponType(4);
-                EntityEGOMinion.spawn(this, world, getSource(), 60F * playerCount);
-                this.setPositionAndUpdate(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
-            }
 
         }
     */
@@ -805,17 +768,14 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             disarm(player);
         illegalPlayerCount();
         //--scan end--
-        //TODO:已经转移到了goal里
         int invul = getInvulTime();
 
         List<Integer> WAVES = Arrays.asList(waves);
+        //--attack action--
+        attackDelay--;
         //--tp action--
-        if (--tpDelay <= 0)
-        {
-            teleportRandomly();
-            tpTimes++;
-            tpDelay = 100 - getStage() * 10;
-        }
+        tpDelay--;
+        //--invul action--
         if (invul > 0)
         {
             setInvulTime(invul - 1);
@@ -827,7 +787,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
                     if (invul % 60 == 0)
                         if (wave < MAX_WAVE)
                         {
-                            //EntityEGOLandmine.spawnLandmine(wave, world, source, this);
+                            EntityEGOLandmine.spawnLandmine(wave, level, source, this);
                             wave++;
                         }
                     return;
@@ -855,7 +815,23 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             setWeaponType(1);
             Collections.shuffle(WAVES);
             this.setPos(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
+        } else if (getStage() == 1 && getHealth() < 0.25F * getMaxHealth())
+        {
+            setStage(2);
+            setInvulTime(600);
+            setWeaponType(-1);
+            EntityEGOMinion.spawn(this, level, getSource(), 60F * playerCount);
+            this.setPos(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
+
         }
+        /*
+        if (getStage() >= 1 && tpTimes % 7 == 0)
+        {
+            EntityEGOLandmine.spawnLandmine(level.random.nextInt(8), level, source, this);
+            tpTimes++;
+        }else
+        */
+
     }
 
     @Override
@@ -871,14 +847,14 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
     }
 
     @Override
-    public void startSeenByPlayer(ServerPlayer player)
+    public void startSeenByPlayer(@NotNull ServerPlayer player)
     {
         super.startSeenByPlayer(player);
         bossInfo.addPlayer(player);
     }
 
     @Override
-    public void stopSeenByPlayer(ServerPlayer player)
+    public void stopSeenByPlayer(@NotNull ServerPlayer player)
     {
         super.stopSeenByPlayer(player);
         bossInfo.removePlayer(player);
@@ -908,13 +884,12 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
             super.pushEntities();
     }
 
-    private void teleportRandomly()
+    public void teleportRandomly()
     {
         //choose a location to teleport to
         double oldX = getX(), oldY = getY(), oldZ = getZ();
         double newX, newY = source.getY(), newZ;
         int tries = 0;
-
         do
         {
             newX = source.getX() + (random.nextDouble() - .5) * ARENA_RANGE;
@@ -941,8 +916,8 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         teleportTo(newX, newY, newZ);
 
         //play sound
-        level.playSound(null, oldX, oldY, oldZ, ModSounds.gaiaTeleport, this.getSoundSource(), 1F, 1F);
-        this.playSound(ModSounds.gaiaTeleport, 1F, 1F);
+        level.playSound(null, oldX, oldY, oldZ, vazkii.botania.common.handler.ModSounds.gaiaTeleport, this.getSoundSource(), 1F, 1F);
+        this.playSound(vazkii.botania.common.handler.ModSounds.gaiaTeleport, 1F, 1F);
 
         Random random = getRandom();
 
@@ -992,11 +967,6 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         }
     }
 
-    public UUID getBossInfoUuid()
-    {
-        return bossInfoUUID;
-    }
-
     @Nonnull
     @Override
     public Packet<?> getAddEntityPacket()
@@ -1029,8 +999,9 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         long msb = additionalData.readLong();
         long lsb = additionalData.readLong();
         bossInfoUUID = new UUID(msb, lsb);
-        //IProxy.INSTANCE.runOnClient(() -> () -> EntityEGO.EgoMusic.play(this));
-        Minecraft.getInstance().getSoundManager().play(new EntityEGO.EgoMusic(this));
+
+        IProxy.INSTANCE.runOnClient(() -> () -> EntityEGO.EgoMusic.play(this));
+        //Minecraft.getInstance().getSoundManager().play(new EntityEGO.EgoMusic(this));
     }
 
     /**
@@ -1043,9 +1014,7 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
 
         public EgoMusic(EntityEGO guardian)
         {
-            super(ModSounds.gaiaMusic2, SoundSource.RECORDS);
-            //TODO:音乐还没搞进来
-            //super(ModSounds.swordland, SoundCategory.RECORDS);
+            super(ModSounds.swordland, SoundSource.RECORDS);
             this.guardian = guardian;
             this.x = guardian.getSource().getX();
             this.y = guardian.getSource().getY();
@@ -1078,14 +1047,14 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         return entityData.get(INVUL_TIME);
     }
 
-    public BlockPos getSource()
-    {
-        return source;
-    }
-
     public void setInvulTime(int time)
     {
         entityData.set(INVUL_TIME, time);
+    }
+
+    public BlockPos getSource()
+    {
+        return source;
     }
 
     public int getStage()
@@ -1093,9 +1062,9 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         return entityData.get(STAGE);
     }
 
-    public void setStage(int time)
+    public void setStage(int stage)
     {
-        entityData.set(STAGE, time);
+        entityData.set(STAGE, stage);
     }
 
     public int getWeaponType()
@@ -1103,8 +1072,28 @@ public class EntityEGO extends Mob implements IEntityAdditionalSpawnData
         return entityData.get(WEAPON_TYPE);
     }
 
-    public void setWeaponType(int time)
+    public void setWeaponType(int weaponType)
     {
-        entityData.set(WEAPON_TYPE, time);
+        entityData.set(WEAPON_TYPE, weaponType);
+    }
+
+    public int getTpDelay()
+    {
+        return tpDelay;
+    }
+
+    public void setTpDelay(int tpDelay)
+    {
+        this.tpDelay = tpDelay;
+    }
+
+    public int getAttackDelay()
+    {
+        return attackDelay;
+    }
+
+    public void setAttackDelay(int attackDelay)
+    {
+        this.attackDelay = attackDelay;
     }
 }

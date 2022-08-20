@@ -7,62 +7,54 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import vazkii.botania.client.core.proxy.ClientProxy;
-import vazkii.botania.client.fx.WispParticleData;
 
 import java.util.List;
 
 public class EntityTrueShadowKatanaProjectile extends EntityProjectileBase
 {
-    public static final int LIVE_TICKS = 40;
 
     public EntityTrueShadowKatanaProjectile(EntityType<? extends ThrowableProjectile> type, Level level)
     {
         super(type, level);
     }
 
-    public EntityTrueShadowKatanaProjectile(Level level, LivingEntity thrower)
+    @Override
+    public int getLifeTicks()
+    {
+        return 40;
+    }
+
+    public EntityTrueShadowKatanaProjectile(Level level, LivingEntity thrower, float damageTime)
     {
         super(ModEntities.TRUE_SHADOW_KATANA, level, thrower);
+        this.damageTime = damageTime;
     }
 
     @Override
     public void tick()
     {
-        if (this.tickCount >= LIVE_TICKS)
-            discard();
-
-        if (!level.isClientSide && (getOwner() == null || getOwner().isRemoved()))
-        {
-            discard();
-            return;
-        }
-
+        super.tick();
         if (this.tickCount <= 3)
             return;
-
         if (level.isClientSide && tickCount % 2 == 0)
         {
             level.addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0D, 0D, 0D);
         }
-        super.tick();
-
         if (!level.isClientSide)
         {
-            AABB axis = new AABB(getX(), getY(), getZ(), xOld, yOld, zOld).inflate(2);
+            AABB axis = new AABB(getX(), getY(), getZ(), xOld, yOld, zOld).inflate(1);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, axis);
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
                 living.setInvulnerable(false);
-                DamageHandler.INSTANCE.dmg(living, getOwner(), 5.5F, DamageHandler.INSTANCE.MAGIC);
+                DamageHandler.INSTANCE.dmg(living, getOwner(), 5.5F * damageTime, DamageHandler.INSTANCE.MAGIC);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
+                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F * damageTime, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
                     attackedEntities.add(living);
                 }
                 discard();

@@ -35,5 +35,6 @@ public class ModLootTables extends BaseLootTableProvider
         lootTables.put(ModSubtiles.serenitianFloating, createSimpleTable("floating_serenitian", ModSubtiles.serenitianFloating));
         lootTables.put(ModSubtiles.annoying, createSimpleTable("annoying", ModSubtiles.annoying));
         lootTables.put(ModSubtiles.annoyingFloating, createSimpleTable("floating_annoying", ModSubtiles.annoyingFloating));
+
     }
 }

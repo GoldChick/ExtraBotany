@@ -40,6 +40,8 @@ public class Registration
         bus.addListener((EntityAttributeCreationEvent e) -> ModEntities.registerAttributes((type, builder) -> e.put(type, builder.build())));
         //recipe
         bind(ForgeRegistries.RECIPE_SERIALIZERS, ModItems::registerRecipeSerializers);
+        //sounds
+        bind(ForgeRegistries.SOUND_EVENTS, ModSounds::init);
         initEvents();
     }
 

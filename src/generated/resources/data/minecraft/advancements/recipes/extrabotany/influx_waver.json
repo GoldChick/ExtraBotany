@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:influx_waver"
+    ]
+  },
+  "criteria": {
+    "gaia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:life_essence"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:influx_waver"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gaia",
+      "has_the_recipe"
+    ]
+  ]
+}

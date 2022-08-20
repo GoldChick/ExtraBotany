@@ -1,7 +1,6 @@
 package chick.extrabotany.network;
 
 import chick.extrabotany.common.ModItems;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -116,16 +115,20 @@ public final class DamageHandler
             {
                 if (!(target instanceof LivingEntity living))
                     return false;
-                float currentHealth = living.getHealth();
-                float trueHealth = Math.max(0F, currentHealth - amount);
-                if (trueHealth == 0F)
+                float trueHealth = Math.max(0F, living.getHealth() - amount);
+                if (trueHealth <= 0)
                 {
-                    living.killed((ServerLevel) living.level, (LivingEntity) source);
+                    dmg(target, source, 0.01F, NETURAL);
+                    if (source instanceof Player player)
+                        living.die(DamageSource.playerAttack(player));
+                    else if (source instanceof LivingEntity livingEntity)
+                        living.die(DamageSource.mobAttack(livingEntity));
+                    if (living.getHealth() > 0)
+                        living.setHealth(-1F);
                 } else
                 {
                     living.setHealth(trueHealth);
                 }
-
                 return dmg(target, source, 0.01F, NETURAL);
             }
             case LIFE_LOSINT_ABSORB ->
@@ -140,9 +143,15 @@ public final class DamageHandler
                 {
                     float trueHealth = Math.max(0F, living.getHealth() - amount + living.getAbsorptionAmount());
                     living.setAbsorptionAmount(0);
-                    if (trueHealth == 0F)
+                    if (trueHealth <= 0)
                     {
-                        living.killed((ServerLevel) living.level, (LivingEntity) source);
+                        dmg(target, source, 0.01F, NETURAL);
+                        if (source instanceof Player player)
+                            living.die(DamageSource.playerAttack(player));
+                        else if (source instanceof LivingEntity livingEntity)
+                            living.die(DamageSource.mobAttack(livingEntity));
+                        if (living.getHealth() > 0)
+                            living.setHealth(-1F);
                     } else
                     {
                         living.setHealth(trueHealth);

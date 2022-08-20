@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " db",
+    "xad",
+    "#x "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:life_essence"
+    },
+    "#": {
+      "item": "botania:terra_sword"
+    },
+    "a": {
+      "item": "extrabotany:theorigin"
+    },
+    "b": {
+      "item": "botania:terrasteel_ingot"
+    },
+    "d": {
+      "item": "minecraft:moss_block"
+    }
+  },
+  "result": {
+    "item": "extrabotany:trueterrablade"
+  }
+}

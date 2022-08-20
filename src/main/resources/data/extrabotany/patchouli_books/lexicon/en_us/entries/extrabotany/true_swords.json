@@ -1,0 +1,33 @@
+{
+  "name": "extrabotany.entry.true_swords",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:trueterrablade",
+  "entry_color": "aa00aa",
+  "advancement": "botania:main/gaia_guardian_kill",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.true_swords0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.true_shadow_katana",
+      "recipe": "minecraft:true_shadow_katana"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.true_thunstar_caller",
+      "recipe": "minecraft:true_thunstar_caller"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.true_terra_blade",
+      "recipe": "minecraft:true_terra_blade"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.influx_waver",
+      "recipe": "minecraft:influx_waver"
+    }
+  ]
+}

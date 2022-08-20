@@ -2,17 +2,14 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.crafting.CocktailRecipe;
+import chick.extrabotany.common.crafting.GrenadeRecipe;
 import chick.extrabotany.common.crafting.LenPotionRecipe;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import vazkii.botania.common.lib.ModTags;
 
 import java.util.function.Consumer;
 
@@ -39,6 +36,8 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .save(consumer, "cock_tail");
         SpecialRecipeBuilder.special(LenPotionRecipe.SERIALIZER)
                 .save(consumer, "len_potion_brew");
+        SpecialRecipeBuilder.special(GrenadeRecipe.SERIALIZER)
+                .save(consumer, "grenade_brew");
 
 
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
@@ -222,6 +221,13 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
                 .save(consumer, "len_potion");
+        ShapelessRecipeBuilder.shapeless(ModItems.LEN_TRACE.get())
+                .requires(vazkii.botania.common.item.ModItems.lensNormal)
+                .requires(vazkii.botania.common.item.ModItems.runeGreed)
+                .requires(vazkii.botania.common.item.ModItems.manaPowder)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
+                .save(consumer, "len_trace");
         ShapelessRecipeBuilder.shapeless(ModItems.TICKET.get())
                 .requires(vazkii.botania.common.item.ModItems.gaiaIngot)
                 .requires(ModItems.THE_CHAOS.get())
@@ -242,6 +248,55 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
                 .save(consumer, "shadow_katana");
+        ShapedRecipeBuilder.shaped(ModItems.TRUE_SHADOW_KATANA.get())
+                .pattern(" b#")
+                .pattern("xab")
+                .pattern("#x ")
+                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
+                .define('#', ModItems.SHADOW_KATANA.get())
+                .define('a', ModItems.THE_ORIGIN.get())
+                .define('b', Blocks.BLACKSTONE)
+                .group(MODID)
+                .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "true_shadow_katana");
+        ShapedRecipeBuilder.shaped(ModItems.TRUE_TERRA_BLADE.get())
+                .pattern(" db")
+                .pattern("xad")
+                .pattern("#x ")
+                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
+                .define('#', vazkii.botania.common.item.ModItems.terraSword)
+                .define('a', ModItems.THE_ORIGIN.get())
+                .define('b', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('d', Blocks.MOSS_BLOCK)
+                .group(MODID)
+                .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "true_terra_blade");
+        ShapedRecipeBuilder.shaped(ModItems.TRUE_THUNSTAR_CALLER.get())
+                .pattern("bdk")
+                .pattern("xad")
+                .pattern("#xb")
+                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
+                .define('#', vazkii.botania.common.item.ModItems.thunderSword)
+                .define('k', vazkii.botania.common.item.ModItems.starSword)
+                .define('a', ModItems.THE_ORIGIN.get())
+                .define('b', Blocks.LIGHTNING_ROD)
+                .define('d', ModItems.AERIALITE_INGOT.get())
+                .group(MODID)
+                .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "true_thunstar_caller");
+        ShapedRecipeBuilder.shaped(ModItems.INFLUX_WAVER.get())
+                .pattern(" bd")
+                .pattern("xab")
+                .pattern("#x ")
+                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
+                .define('#', vazkii.botania.common.item.ModItems.starSword)
+                .define('a', ModItems.THE_ORIGIN.get())
+                .define('b', Items.QUARTZ)
+                .define('d', vazkii.botania.common.item.ModItems.terrasteel)
+                .group(MODID)
+                .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "influx_waver");
+
     }
 
     private void armorRecipes(Consumer<FinishedRecipe> consumer)

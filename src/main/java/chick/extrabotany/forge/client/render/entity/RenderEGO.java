@@ -1,79 +1,112 @@
 package chick.extrabotany.forge.client.render.entity;
 
-import chick.extrabotany.common.entities.EntityEGO;
 import chick.extrabotany.forge.client.EntityRenderers;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.resources.ResourceLocation;
-import vazkii.botania.client.core.helper.CoreShaders;
-import vazkii.botania.client.core.helper.RenderHelper;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.SkullBlockEntity;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.*;
 
-
-public class RenderEGO extends HumanoidMobRenderer<EntityEGO, HumanoidModel<EntityEGO>>
+public class RenderEGO extends HumanoidMobRenderer<Monster, HumanoidModel<Monster>>
 {
-    private final Model normalModel;
-    private final Model slimModel;
+    //private final Model normalModel;
+    //private final Model slimModel;
+    private static final Cache<String, GameProfile> GAME_PROFILE_CACHE = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
+    private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(0, 2, 1, TimeUnit.MINUTES, new LinkedBlockingQueue());
+    private static final GameProfile EMPTY_GAME_PROFILE = new GameProfile(null, "EMPTY");
+
+    private static final ResourceLocation TEXTURE_ALEX = new ResourceLocation("textures/entity/alex.png");
+
 
     public RenderEGO(EntityRendererProvider.Context ctx)
     {
         super(ctx, new Model(ctx.bakeLayer(ModelLayers.PLAYER)), 0F);
-        this.normalModel = (Model) this.getModel();
-        this.slimModel = new Model(ctx.bakeLayer(ModelLayers.PLAYER_SLIM));
-        // Call this here bc no other place with access to Context
+        //this.normalModel = (Model) this.getModel();
+       // this.slimModel = new Model(ctx.bakeLayer(ModelLayers.PLAYER_SLIM));
         ArmorModels.init(ctx);
         EntityRenderers.init(ctx);
     }
 
+    @Nonnull
     @Override
-    public void render(@Nonnull EntityEGO dopple, float yaw, float partialTicks, PoseStack ms, MultiBufferSource buffers, int light)
+    public ResourceLocation getTextureLocation(@NotNull Monster mob)
     {
-        int invulTime = dopple.getInvulTime();
-        ShaderInstance shader = CoreShaders.doppleganger();
-        if (shader != null) {
-            float grainIntensity, disfiguration;
-            if (invulTime > 0) {
-                grainIntensity = invulTime > 20 ? 1F : invulTime * 0.05F;
-                disfiguration = grainIntensity * 0.3F;
-            } else {
-                disfiguration = (0.025F + dopple.hurtTime * ((1F - 0.15F) / 20F)) / 2F;
-                grainIntensity = 0.05F + dopple.hurtTime * ((1F - 0.15F) / 10F);
-            }
-            shader.safeGetUniform("BotanyGrainIntensity").set(grainIntensity);
-            shader.safeGetUniform("BotanyDisfiguration").set(disfiguration);
-        }
-        var view = Minecraft.getInstance().getCameraEntity();
-        if (view instanceof AbstractClientPlayer && DefaultPlayerSkin.getSkinModelName(view.getUUID()).equals("slim"))
-        {
-            this.model = slimModel;
-        } else
-        {
-            this.model = normalModel;
-        }
-
-        super.render(dopple, yaw, partialTicks, ms, buffers, light);
+        if (mob.getCustomName() != null)
+            return getPlayerSkin(mob.getCustomName().getString());
+        else
+            return getPlayerSkin("Gold_Chick");
     }
 
-    private static class Model extends HumanoidModel<EntityEGO>
+
+    public static ResourceLocation getPlayerSkin(String name)
+    {
+        GameProfile newProfile = null;
+        Minecraft minecraft = Minecraft.getInstance();
+        try
+        {
+            newProfile = GAME_PROFILE_CACHE.get(name, () ->
+            {
+                THREAD_POOL.submit(() ->
+                {
+                    GameProfile profile = new GameProfile(null, name);
+                    //= SkullTileEntity.updateGameProfile(profile);
+
+
+                    SkullBlockEntity.updateGameprofile(profile, profileNew ->
+                    {
+                        //minecraft.enqueue(() ->
+                        {
+                            if (profileNew != null)
+                            {
+                                GAME_PROFILE_CACHE.put(name, profileNew);
+                            }
+                        }
+                        //);
+                    });
+                });
+                return EMPTY_GAME_PROFILE;
+            });
+        } catch (ExecutionException ignore)
+        {
+        }
+
+        if (newProfile != null)
+        {
+            Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> map = minecraft.getSkinManager().getInsecureSkinInformation(newProfile);
+            if (map.containsKey(MinecraftProfileTexture.Type.SKIN))
+            {
+                return minecraft.getSkinManager().registerTexture(map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN);
+            } else
+            {
+                UUID uuid = Player.createPlayerUUID(newProfile);
+                return DefaultPlayerSkin.getDefaultSkin(uuid);
+            }
+        }
+        return TEXTURE_ALEX;
+    }
+    private static class Model extends HumanoidModel<Monster>
     {
         Model(ModelPart root)
         {
-            //super(root, RenderType::entityCutoutNoCull);
-            super(root, RenderHelper::getDopplegangerLayer);
+            super(root, RenderType::entityCutoutNoCull);
         }
     }
-
 }

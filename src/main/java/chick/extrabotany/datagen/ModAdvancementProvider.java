@@ -1,6 +1,7 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
@@ -21,11 +22,7 @@ import net.minecraft.world.level.ItemLike;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
 import vazkii.botania.common.advancements.*;
-import vazkii.botania.common.block.ModBlocks;
-import vazkii.botania.common.block.ModSubtiles;
-import vazkii.botania.common.entity.ModEntities;
 import vazkii.botania.common.item.ItemLexicon;
-import vazkii.botania.common.lib.ModTags;
 import vazkii.botania.mixin.AccessorAdvancementProvider;
 
 import java.util.List;
@@ -83,8 +80,9 @@ public class ModAdvancementProvider extends AdvancementProvider
         Advancement ego_defeat = Advancement.Builder.advancement()
                 .display(simple(ModItems.HERO_MEDAL.get(), "ego_defeat", FrameType.TASK))
                 .parent(thechaos_craft)
-                .addCriterion("pickup", onPickup(ModItems.HERO_MEDAL.get()))
+                .addCriterion("ego", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(ModEntities.EGO)))
                 .save(consumer, mainId("ego_defeat"));
+
 /*
         Advancement runePickup = Advancement.Builder.advancement()
                 .display(simple(ModBlocks.runeAltar, "runePickup", FrameType.TASK))
@@ -104,12 +102,7 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("portal", new AlfPortalTrigger.Instance(EntityPredicate.Composite.ANY, ItemPredicate.ANY, LocationPredicate.ANY))
                 .save(consumer, mainId("elf_portal_open"));
 
-        Advancement gaiaGuardianKill = Advancement.Builder.advancement()
-                .display(simple(ModBlocks.gaiaHead, "gaiaGuardianKill", FrameType.TASK))
-                .parent(elfPortalOpen)
-                .addCriterion("guardian", KilledTrigger.TriggerInstance
-                        .playerKilledEntity(EntityPredicate.Builder.entity().of(ModEntities.DOPPLEGANGER)))
-                .save(consumer, mainId("gaia_guardian_kill"));
+
 */
         //parent: nightmarefuel
         Advancement.Builder.advancement()
@@ -222,7 +215,7 @@ public class ModAdvancementProvider extends AdvancementProvider
 
         Advancement.Builder.advancement()
                 .parent(thechaos_craft)
-                .addCriterion("pickup", onPickup(ModItems.HERO_MEDAL.get()))
+                .addCriterion("ego", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(ModEntities.EGO)))
                 .addCriterion("elven_lexicon", elvenLexicon)
                 .save(consumer, mainId("ego_defeat_lexicon"));
         /*

@@ -87,7 +87,7 @@ public class TrueShadowKatana extends SwordRelicBase
 
             Vec3 end = pl.add(axis1);
 
-            EntityTrueShadowKatanaProjectile proj = new EntityTrueShadowKatanaProjectile(player.level, player);
+            EntityTrueShadowKatanaProjectile proj = new EntityTrueShadowKatanaProjectile(player.level, player, damageTime);
             proj.setPos(end.x, end.y, end.z);
             proj.setTargetPos(targetpos);
             proj.faceTargetAccurately(0.75F);
@@ -99,7 +99,7 @@ public class TrueShadowKatana extends SwordRelicBase
     @Override
     public void attack(LivingEntity player, Entity target)
     {
-        attack(player, target, 2, 1D, 1F);
+        attack(player, target, 2, 0.8D, 1F);
     }
 
     @Override

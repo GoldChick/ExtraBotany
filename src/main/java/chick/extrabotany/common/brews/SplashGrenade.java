@@ -59,16 +59,15 @@ public class SplashGrenade extends Item implements IBrewItem
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
         var stack = player.getItemInHand(hand);
-        EntitySplashGrenade sg = new EntitySplashGrenade(level, player);
-        sg.setItem(stack);
-        sg.setPos(player.getX(), player.getY() + 1.1D, player.getZ());
-        sg.shootFromRotation(player, player.getXRot(), player.getYRot(), -5.0F, 0.8F, 1.0F);
         if (!level.isClientSide)
         {
+            EntitySplashGrenade sg = new EntitySplashGrenade(level, player);
+            sg.setItem(stack);
+            sg.setPos(player.getX(), player.getY() + 1.1D, player.getZ());
+            sg.shootFromRotation(player, player.getXRot(), player.getYRot(), -5.0F, 0.8F, 1.0F);
             level.addFreshEntity(sg);
         }
-        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.SPLASH_POTION_THROW, SoundSource.PLAYERS, 0.5F, 0.8F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SPLASH_POTION_THROW, SoundSource.PLAYERS, 0.5F, 0.8F);
         if (!player.isCreative())
         {
             stack.shrink(1);

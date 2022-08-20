@@ -2,6 +2,7 @@ package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
+import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
@@ -73,8 +74,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
         add(ModItems.TRUE_TERRA_BLADE.get(), "True Terra Blade");
-        add(ModItems.TRUE_THUNDER_CALLER.get(), "True Thunder Caller");
-        add(ModItems.TRUE_STAR_CALLER.get(), "True Star Caller");
+        add(ModItems.TRUE_THUNSTAR_CALLER.get(), "True Thunstar Caller");
+        add(ModItems.INFLUX_WAVER.get(), "Influx Waver");
         add(ModItems.FIRST_FRACTAL.get(), "First Fractal");
 
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
@@ -111,6 +112,14 @@ public class EN_USLanguageProvider extends LanguageProvider
         langFlower();
         langAdvancement();
         langPantchouli();
+        add(ModEntities.EGO,"EGO");
+        add(ModEntities.EGO_LANDMINE,"EGO Landmine");
+        add(ModEntities.EGO_MINION,"EGO Minion");
+        add(ModEntities.AURAFIRE,"Aura Fire");
+        add(ModEntities.SPLASH_GRENADE,"Splash Grenade");
+        add(ModEntities.FALSE_LIGHTNING,"Simulated Lightning");
+        add(ModEntities.TRUE_SHADOW_KATANA,"True Shadow Katana");
+        add(ModEntities.TRUE_TERRA_BLADE,"True Terra Blade");
     }
 
     private void langFlower()
@@ -337,6 +346,14 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.aerialite4","Shooting Guardian Chestplate");
         add("extrabotany.page.aerialite5","Shooting Guardian Leggings");
         add("extrabotany.page.aerialite6","Shooting Guardian Boots");
+
+        add("extrabotany.entry.true_swords","True Swords");
+        add("extrabotany.page.true_swords0","$(item)Gaia Spirit$(0) and other materials can unleash the true power of some of the weapons you have. These weapons will also be more powerful in Gaia's hands.");
+        add("extrabotany.page.true_thunstar_caller","An upgrade to $(item)Thunder Caller$(0) and $(item)Star Caller$(0). It summons lightning from sky. However, it is not true lightning. A burning enemy will increase the damage due to Overload.");
+        add("extrabotany.page.true_terra_blade","An upgrade to $(item)Terra Blade$(0). Its projectile will pierce through enemies.");
+        add("extrabotany.page.true_shadow_katana","An upgrade to $(item)Shadow Katana$(0). It could summon two projection that automatically trace enemies.");
+        add("extrabotany.page.influx_waver","WIP.");
+
         pantchouliFlower();
     }
 

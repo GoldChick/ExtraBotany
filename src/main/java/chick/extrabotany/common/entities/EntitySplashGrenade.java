@@ -29,8 +29,7 @@ import java.util.List;
 
 public class EntitySplashGrenade extends ThrowableItemProjectile
 {
-    private static final EntityDataAccessor<ItemStack> ITEM = SynchedEntityData.defineId(EntitySplashGrenade.class,
-            EntityDataSerializers.ITEM_STACK);
+    private static final EntityDataAccessor<ItemStack> ITEM = SynchedEntityData.defineId(EntitySplashGrenade.class, EntityDataSerializers.ITEM_STACK);
 
     public EntitySplashGrenade(EntityType<? extends ThrowableItemProjectile> type, Level level)
     {
@@ -46,11 +45,8 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
     @Override
     public void tick()
     {
-        Player player = (Player) getOwner();
-        if (!level.isClientSide && (player == null))
+        if (!level.isClientSide && ((getOwner() == null) || getOwner().isRemoved()))
         {
-            //Not clear the meaning in (if)
-            //player.removed
             discard();
             return;
         }
@@ -60,9 +56,9 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
     @Override
     protected void onHitEntity(EntityHitResult hitResult)
     {
-        if (hitResult.getEntity() != getOwner())
+        //if (getOwner() != null && hitResult.getEntity() != getOwner())
         {
-            onImpact();
+            //   onImpact();
         }
     }
 
@@ -74,9 +70,8 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
 
     public void onImpact()
     {
-        if (getPotion().getItem() instanceof IBrewItem)
+        if (getPotion().getItem() instanceof IBrewItem bi)
         {
-            IBrewItem bi = (IBrewItem) getPotion().getItem();
             Brew brew = bi.getBrew(getPotion());
             double range = 5;
             AABB bounds = new AABB(getX() - range, getY() - range, getZ() - range,
@@ -117,7 +112,8 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
                 this.level.levelEvent(i, this.blockPosition(), brew.getColor(getPotion()));
             }
         }
-        this.discard();
+        if (!level.isClientSide)
+            this.discard();
     }
 
     @Override
@@ -147,10 +143,7 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
 
     public void setItem(ItemStack stack)
     {
-        this.getEntityData().set(ITEM, Util.make(stack.copy(), (itemStack) ->
-        {
-            itemStack.setCount(1);
-        }));
+        this.getEntityData().set(ITEM, Util.make(stack.copy(), (itemStack) -> itemStack.setCount(1)));
     }
 
     @Override
@@ -167,8 +160,7 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
 
     public ItemStack getPotion()
     {
-        ItemStack itemstack = this.getEntityData().get(ITEM);
-        return itemstack;
+        return this.getEntityData().get(ITEM);
     }
 
     @Nonnull

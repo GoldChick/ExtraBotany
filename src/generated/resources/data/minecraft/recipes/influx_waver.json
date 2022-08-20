@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " bd",
+    "xab",
+    "#x "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:life_essence"
+    },
+    "#": {
+      "item": "botania:star_sword"
+    },
+    "a": {
+      "item": "extrabotany:theorigin"
+    },
+    "b": {
+      "item": "minecraft:quartz"
+    },
+    "d": {
+      "item": "botania:terrasteel_ingot"
+    }
+  },
+  "result": {
+    "item": "extrabotany:influxwaver"
+  }
+}

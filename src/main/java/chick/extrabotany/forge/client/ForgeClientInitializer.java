@@ -2,6 +2,7 @@ package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.ModSounds;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.datagen.ModBlockStates;
@@ -11,6 +12,7 @@ import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -47,13 +49,16 @@ public class ForgeClientInitializer
     public static void clientInit(FMLClientSetupEvent evt)
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        //projectile model
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelRegister);
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelBake);
-        var forgebus=MinecraftForge.EVENT_BUS;
+
+        var forgebus = MinecraftForge.EVENT_BUS;
         forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
         forgebus.addGenericListener(ItemStack.class, ForgeClientInitializer::attachItemCaps);
         NetworkHandler.registerMessage();
     }
+
 
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions evt)
@@ -78,7 +83,7 @@ public class ForgeClientInitializer
     }
 
     /**
-     *药水等的颜色
+     * 药水等的颜色
      */
     @SubscribeEvent
     public static void registerItemColors(ColorHandlerEvent.Item evt)

@@ -1,0 +1,18 @@
+{
+  "music.ego": {
+    "sounds": [
+      {
+        "name": "extrabotany:music/swordland",
+        "stream": true
+      }
+    ]
+  },
+  "music.herrscher": {
+    "sounds": [
+      {
+        "name": "extrabotany:music/salvation",
+        "stream": true
+      }
+    ]
+  }
+}

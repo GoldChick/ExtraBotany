@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " b#",
+    "xab",
+    "#x "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:life_essence"
+    },
+    "#": {
+      "item": "extrabotany:shadowkatana"
+    },
+    "a": {
+      "item": "extrabotany:theorigin"
+    },
+    "b": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "result": {
+    "item": "extrabotany:trueshadowkatana"
+  }
+}

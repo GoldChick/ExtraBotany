@@ -18,11 +18,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityProjectileBase extends ThrowableProjectile
+public abstract class EntityProjectileBase extends ThrowableProjectile
 {
     private static final String TAG_ROTATION = "rotation";
     private static final String TAG_PITCH = "pitch";
@@ -44,6 +43,8 @@ public class EntityProjectileBase extends ThrowableProjectile
             EntityDataSerializers.FLOAT);
 
     protected List<LivingEntity> attackedEntities = new ArrayList<>();
+    protected float damageTime = 1;
+
     public EntityProjectileBase(EntityType<? extends ThrowableProjectile> type, Level level)
     {
         super(type, level);
@@ -165,6 +166,21 @@ public class EntityProjectileBase extends ThrowableProjectile
         setTargetPosZ(cmp.getFloat(TAG_TARGETPOSZ));
     }
 
+    @Override
+    public void tick()
+    {
+        super.tick();
+        if (!level.isClientSide && (getOwner() == null || getOwner().isRemoved()))
+        {
+            discard();
+            return;
+        }
+        if (tickCount > getLifeTicks())
+            discard();
+    }
+
+    public abstract int getLifeTicks();
+
     public float getRotation()
     {
         return entityData.get(ROTATION);
@@ -224,6 +240,7 @@ public class EntityProjectileBase extends ThrowableProjectile
     {
         entityData.set(TARGET_POS_Z, f);
     }
+
     @Nonnull
     @Override
     public Packet<?> getAddEntityPacket()

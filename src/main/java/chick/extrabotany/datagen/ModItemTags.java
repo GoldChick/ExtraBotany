@@ -53,6 +53,9 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.SHADOW_KATANA.get())
                 .add(ModItems.TRUE_SHADOW_KATANA.get())
                 .add(ModItems.TRUE_TERRA_BLADE.get())
+                .add(ModItems.TRUE_THUNSTAR_CALLER.get())
+                .add(ModItems.INFLUX_WAVER.get())
+                .add(ModItems.FIRST_FRACTAL.get())
 
                 .add(ModItems.SHADOW_WARRIOR_HELM.get())
                 .add(ModItems.SHADOW_WARRIOR_CHEST.get())
@@ -68,12 +71,10 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.MIKU_BOOTS.get())
         ;
         baublesTags();
-
     }
 
     private void baublesTags()
     {
-
         tag(accessory("curio"))
                 .add(ModItems.AERO_STONE.get())
                 .add(ModItems.AQUA_STONE.get())

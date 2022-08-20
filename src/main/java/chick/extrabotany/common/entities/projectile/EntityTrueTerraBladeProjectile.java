@@ -16,39 +16,26 @@ import java.util.List;
 
 public class EntityTrueTerraBladeProjectile extends EntityProjectileBase
 {
-    public static final int LIVE_TICKS = 60;
-
-
     public EntityTrueTerraBladeProjectile(EntityType<? extends ThrowableProjectile> type, Level level)
     {
         super(type, level);
     }
 
-    public EntityTrueTerraBladeProjectile(Level level, LivingEntity thrower)
+    public EntityTrueTerraBladeProjectile(Level level, LivingEntity thrower, float damageTime)
     {
         super(ModEntities.TRUE_TERRA_BLADE, level, thrower);
+        this.damageTime = damageTime;
     }
 
     @Override
     public void tick()
     {
-        if (this.tickCount >= LIVE_TICKS)
-            discard();
-
-        if (!level.isClientSide && (getOwner() == null || getOwner().isRemoved()))
-        {
-            discard();
-            return;
-        }
-
         super.tick();
-
         if (level.isClientSide && tickCount % 2 == 0)
         {
             WispParticleData data = WispParticleData.wisp(0.3F, 0.1F, 0.95F, 0.1F, 1F);
             ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
-
         if (!level.isClientSide && tickCount % 3 == 0)
         {
             AABB axis = new AABB(getX(), getY(), getZ(), xOld, yOld, zOld).inflate(2);
@@ -56,14 +43,26 @@ public class EntityTrueTerraBladeProjectile extends EntityProjectileBase
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
-                DamageHandler.INSTANCE.dmg(living, getOwner(), 7F, DamageHandler.INSTANCE.MAGIC);
+                DamageHandler.INSTANCE.dmg(living, getOwner(), 7F * damageTime, DamageHandler.INSTANCE.MAGIC);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F, DamageHandler.INSTANCE.LIFE_LOSING);
+                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F * damageTime, DamageHandler.INSTANCE.LIFE_LOSING);
                     attackedEntities.add(living);
+                }
+                tickCount += 20;
+                if (tickCount > getLifeTicks())
+                {
+                    discard();
+                    break;
                 }
             }
         }
+    }
+
+    @Override
+    public int getLifeTicks()
+    {
+        return 60;
     }
 
     @Override

@@ -1,14 +1,16 @@
 {
   "parent": "extrabotany:main/thechaos_craft",
   "criteria": {
-    "pickup": {
-      "trigger": "minecraft:inventory_changed",
+    "ego": {
+      "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "items": [
+        "entity": [
           {
-            "items": [
-              "extrabotany:heromedal"
-            ]
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "extrabotany:ego"
+            },
+            "entity": "this"
           }
         ]
       }
@@ -29,7 +31,7 @@
   },
   "requirements": [
     [
-      "pickup"
+      "ego"
     ],
     [
       "elven_lexicon"

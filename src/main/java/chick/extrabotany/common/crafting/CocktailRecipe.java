@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.brew.IBrewItem;
 
 public class CocktailRecipe extends CustomRecipe
@@ -26,6 +27,7 @@ public class CocktailRecipe extends CustomRecipe
     {
         boolean foundBrew = false;
         boolean foundItem = false;
+
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
@@ -34,21 +36,19 @@ public class CocktailRecipe extends CustomRecipe
                 if (stack.getItem() == vazkii.botania.common.item.ModItems.brewFlask && !foundBrew)
                 {
                     foundBrew = true;
-                } else if (!foundItem)
+                } else if (stack.getItem() == ModItems.MANA_DRINK.get() && !foundItem)
                 {
-                    if (stack.getItem() == ModItems.MANA_DRINK.get())
-                    {
-                        foundItem = true;
-                    } else
-                    {
-                        return false;
-                    }
+                    foundItem = true;
+                } else
+                {
+                    return false;
                 }
             }
         }
         return foundBrew && foundItem;
     }
 
+    @NotNull
     @Override
     public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv)
     {
@@ -59,11 +59,13 @@ public class CocktailRecipe extends CustomRecipe
             if (!stack.isEmpty() && stack.getItem() == vazkii.botania.common.item.ModItems.brewFlask)
             {
                 nonnulllist.set(i, new ItemStack(vazkii.botania.common.item.ModItems.flask));
+                break;
             }
         }
         return nonnulllist;
     }
 
+    @NotNull
     @Override
     public ItemStack assemble(CraftingContainer inv)
     {
@@ -72,12 +74,10 @@ public class CocktailRecipe extends CustomRecipe
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
-            if (!stack.isEmpty())
+            if (!stack.isEmpty() && stack.getItem() == vazkii.botania.common.item.ModItems.brewFlask)
             {
-                if (stack.getItem() == vazkii.botania.common.item.ModItems.brewFlask && brewstack.isEmpty())
-                {
-                    brewstack = stack;
-                }
+                brewstack = stack;
+                break;
             }
         }
 
@@ -94,6 +94,7 @@ public class CocktailRecipe extends CustomRecipe
         return width > 1 || height > 1;
     }
 
+    @NotNull
     @Override
     public RecipeSerializer<?> getSerializer()
     {

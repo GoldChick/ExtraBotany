@@ -1,4 +1,4 @@
-package chick.extrabotany.common.blocks;
+package chick.extrabotany.api.block;
 
 public interface ISubTileDecay
 {

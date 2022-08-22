@@ -1,9 +1,7 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -17,7 +15,6 @@ import vazkii.botania.common.lib.ModTags;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 
 public class ModBlockTags extends BlockTagsProvider
 {

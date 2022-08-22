@@ -2,14 +2,14 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.crafting.CocktailRecipe;
-import chick.extrabotany.common.crafting.GrenadeRecipe;
-import chick.extrabotany.common.crafting.LenPotionRecipe;
+import chick.extrabotany.common.crafting.*;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
+import vazkii.botania.common.lib.ModTags;
 
 import java.util.function.Consumer;
 
@@ -24,7 +24,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
     }
 
     @Override
-    public String getName()
+    public @NotNull String getName()
     {
         return "extrabotany craftingTable recipes";
     }
@@ -33,12 +33,15 @@ public class ModCraftingTableRecipes extends RecipeProvider
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
         SpecialRecipeBuilder.special(CocktailRecipe.SERIALIZER)
-                .save(consumer, "cock_tail");
+                .save(consumer, "cocktail_upgrade_craft");
         SpecialRecipeBuilder.special(LenPotionRecipe.SERIALIZER)
-                .save(consumer, "len_potion_brew");
+                .save(consumer, "len_potion_bind_craft");
         SpecialRecipeBuilder.special(GrenadeRecipe.SERIALIZER)
-                .save(consumer, "grenade_brew");
-
+                .save(consumer, "grenade_bind_craft");
+        SpecialRecipeBuilder.special(DupeRuneRecipe.SERIALIZER)
+                .save(consumer, "rune_dupe_craft");
+        SpecialRecipeBuilder.special(GoldClothRecipe.SERIALIZER)
+                .save(consumer, "gold_cloth_craft");
 
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
@@ -190,6 +193,15 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("life_essence", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
                 .save(consumer, "gold_cloth");
+        ShapedRecipeBuilder.shaped(ModItems.UNIVERSAL_PETAL.get(), 8)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
+                .define('a', ModTags.Items.PETALS)
+                .group(MODID)
+                .unlockedBy("life_essence", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "universal_petal");
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -234,6 +246,32 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
                 .save(consumer, "ticket");
+        ShapelessRecipeBuilder.shapeless(ModItems.ELEMENT_RUNE.get(), 8)
+                .requires(vazkii.botania.common.item.ModItems.lifeEssence)
+                .requires(vazkii.botania.common.item.ModItems.runeFire)
+                .requires(vazkii.botania.common.item.ModItems.runeAir)
+                .requires(vazkii.botania.common.item.ModItems.runeEarth)
+                .requires(vazkii.botania.common.item.ModItems.runeWater)
+                .requires(vazkii.botania.common.item.ModItems.runeSpring)
+                .requires(vazkii.botania.common.item.ModItems.runeSummer)
+                .requires(vazkii.botania.common.item.ModItems.runeAutumn)
+                .requires(vazkii.botania.common.item.ModItems.runeWinter)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "element_rune");
+        ShapelessRecipeBuilder.shapeless(ModItems.SIN_RUNE.get(), 8)
+                .requires(vazkii.botania.common.item.ModItems.lifeEssence)
+                .requires(vazkii.botania.common.item.ModItems.runeMana)
+                .requires(vazkii.botania.common.item.ModItems.runeGreed)
+                .requires(vazkii.botania.common.item.ModItems.runeEnvy)
+                .requires(vazkii.botania.common.item.ModItems.runeWrath)
+                .requires(vazkii.botania.common.item.ModItems.runeSloth)
+                .requires(vazkii.botania.common.item.ModItems.runeGluttony)
+                .requires(vazkii.botania.common.item.ModItems.runePride)
+                .requires(vazkii.botania.common.item.ModItems.runeLust)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
+                .save(consumer, "sin_rune");
 
     }
 
@@ -288,15 +326,14 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern(" bd")
                 .pattern("xab")
                 .pattern("#x ")
-                .define('x', vazkii.botania.common.item.ModItems.lifeEssence)
-                .define('#', vazkii.botania.common.item.ModItems.starSword)
+                .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('#', vazkii.botania.common.item.ModItems.terraSword)
                 .define('a', ModItems.THE_ORIGIN.get())
-                .define('b', Items.QUARTZ)
-                .define('d', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('b', ModItems.CORAL_ITEM)
+                .define('d', Items.HEART_OF_THE_SEA)
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
                 .save(consumer, "influx_waver");
-
     }
 
     private void armorRecipes(Consumer<FinishedRecipe> consumer)

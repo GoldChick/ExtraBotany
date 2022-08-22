@@ -1,14 +1,19 @@
 package chick.extrabotany.common.tools.weapons;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.entities.projectile.EntityTrueShadowKatanaProjectile;
 import chick.extrabotany.network.DamageHandler;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.helper.VecHelper;
+import vazkii.botania.common.item.relic.RelicImpl;
 
 import java.util.List;
 
@@ -95,7 +100,10 @@ public class TrueShadowKatana extends SwordRelicBase
             player.level.addFreshEntity(proj);
         }
     }
-
+    public static IRelic makeRelic(ItemStack stack)
+    {
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID,"challenge/true_shadow_katana"));
+    }
     @Override
     public void attack(LivingEntity player, Entity target)
     {

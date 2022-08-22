@@ -47,8 +47,7 @@ public final class DamageHandler
      */
     public List<LivingEntity> getFilteredEntities(List<LivingEntity> entities, Entity source)
     {
-        List<LivingEntity> list = entities.stream().filter((living) -> checkPassable(living, source) && !living.isRemoved()).collect(Collectors.toList());
-        return list;
+        return entities.stream().filter((living) -> checkPassable(living, source) && !living.isRemoved()).collect(Collectors.toList());
     }
 
     /**

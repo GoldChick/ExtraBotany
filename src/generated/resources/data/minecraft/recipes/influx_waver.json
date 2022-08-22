@@ -8,19 +8,19 @@
   ],
   "key": {
     "x": {
-      "item": "botania:life_essence"
+      "item": "botania:gaia_ingot"
     },
     "#": {
-      "item": "botania:star_sword"
+      "item": "botania:terra_sword"
     },
     "a": {
       "item": "extrabotany:theorigin"
     },
     "b": {
-      "item": "minecraft:quartz"
+      "tag": "extrabotany:coral_item"
     },
     "d": {
-      "item": "botania:terrasteel_ingot"
+      "item": "minecraft:heart_of_the_sea"
     }
   },
   "result": {

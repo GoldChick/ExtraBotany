@@ -30,11 +30,20 @@ public class ModManaInfusionRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        //test
-        //consumer.accept(ManaInfusion.conjuration(idFor("obsidian_dupe"), new ItemStack(Items.OBSIDIAN, 2), Ingredient.of(Items.OBSIDIAN), 10000));
-        //consumer.accept(ManaInfusion.test(idFor("test"), new ItemStack(Items.OBSIDIAN, 64), Ingredient.of(Items.OBSIDIAN), 10000));
         consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMAREFUEL_PROP.get()), Ingredient.of(Items.COAL), 100));
         consumer.accept(new ManaInfusion(idFor("fried_chicken"), new ItemStack(ModItems.FRIED_CHICKEN.get()), Ingredient.of(Items.COOKED_CHICKEN), 600));
+
+        consumer.accept(ManaInfusion.dimension(idFor("enderpearl"), new ItemStack(Items.ENDER_PEARL), Ingredient.of(Items.DIAMOND), 20000));
+        consumer.accept(ManaInfusion.dimension(idFor("shulker_shell"), new ItemStack(Items.SHULKER_SHELL), Ingredient.of(Items.DIAMOND_HORSE_ARMOR), 20000));
+        consumer.accept(ManaInfusion.dimension(idFor("chorus_fruit"), new ItemStack(Items.CHORUS_FRUIT), Ingredient.of(Items.APPLE), 500));
+        consumer.accept(ManaInfusion.dimension(idFor("end_stone"), new ItemStack(Items.END_STONE), Ingredient.of(Items.STONE), 500));
+        consumer.accept(ManaInfusion.dimension(idFor("nether_rack"), new ItemStack(Items.NETHERRACK), Ingredient.of(Items.COBBLESTONE), 500));
+        consumer.accept(ManaInfusion.dimension(idFor("soul_sand"), new ItemStack(Items.SOUL_SAND), Ingredient.of(Items.SAND), 500));
+        consumer.accept(ManaInfusion.dimension(idFor("quartz_ore"), new ItemStack(Items.NETHER_QUARTZ_ORE), Ingredient.of(Items.IRON_ORE), 2000));
+        consumer.accept(ManaInfusion.dimension(idFor("blaze_rod"), new ItemStack(Items.BLAZE_ROD, 2), Ingredient.of(Items.BLAZE_ROD), 20000));
+        consumer.accept(ManaInfusion.dimension(idFor("totem_of_undying"), new ItemStack(Items.TOTEM_OF_UNDYING), Ingredient.of(Items.NETHER_STAR), 50000));
+        consumer.accept(ManaInfusion.dimension(idFor("elytra"), new ItemStack(Items.ELYTRA), Ingredient.of(ModItems.THE_ORIGIN.get()), 50000));
+
     }
 
     private static ResourceLocation idFor(String s)
@@ -48,8 +57,7 @@ public class ModManaInfusionRecipes extends RecipeProvider
 
         private static final StateIngredient CONJURATION = StateIngredientHelper.of(ModBlocks.conjurationCatalyst);
         private static final StateIngredient ALCHEMY = StateIngredientHelper.of(ModBlocks.alchemyCatalyst);
-        //private static final StateIngredient TEST = StateIngredientHelper.of(chick.extrabotany.common.ModBlocks.YLG_ORE.get());
-        //private static final StateIngredient DIMENSION = StateIngredientHelper.of(com.meteor.extrabotany.common.blocks.ModBlocks.dimensioncatalyst);
+        private static final StateIngredient DIMENSION = StateIngredientHelper.of(chick.extrabotany.common.ModBlocks.DIMENSION_CATALYST.get());
 
         private final ResourceLocation id;
         private final Ingredient input;
@@ -84,9 +92,9 @@ public class ModManaInfusionRecipes extends RecipeProvider
             return new ManaInfusion(id, output, input, mana, "", ALCHEMY);
         }
 
-        //public static ManaInfusion test(ResourceLocation id, ItemStack output, Ingredient input, int mana)
+        public static ManaInfusion dimension(ResourceLocation id, ItemStack output, Ingredient input, int mana)
         {
-            //    return new ManaInfusion(id, output, input, mana, "", TEST);
+            return new ManaInfusion(id, output, input, mana, "", DIMENSION);
         }
 
         @Override

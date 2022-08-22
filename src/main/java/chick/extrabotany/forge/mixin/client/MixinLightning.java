@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.mixin.client;
 
-import chick.extrabotany.forge.IMixinGetData;
+import chick.extrabotany.api.IMixinGetData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;

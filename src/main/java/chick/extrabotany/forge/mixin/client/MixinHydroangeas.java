@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.mixin.client;
 
-import chick.extrabotany.common.blocks.ISubTileDecay;
+import chick.extrabotany.api.block.ISubTileDecay;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.TagKey;

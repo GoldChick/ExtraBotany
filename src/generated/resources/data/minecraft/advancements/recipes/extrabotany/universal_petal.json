@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:universal_petal"
+    ]
+  },
+  "criteria": {
+    "life_essence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:life_essence"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:universal_petal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "life_essence",
+      "has_the_recipe"
+    ]
+  ]
+}

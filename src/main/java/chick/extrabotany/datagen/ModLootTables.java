@@ -26,6 +26,8 @@ public class ModLootTables extends BaseLootTableProvider
         //        ModBlocks.YLG_ORE.get(),
         //        createSilkTouchTable("yeluogui_ore", ModBlocks.YLG_ORE.get(), ModItems.RAW_YLG_CHUNK.get(), 1, 3)
         //);
+        lootTables.put(ModBlocks.DIMENSION_CATALYST.get(),createSimpleTable("dimension_catalyst",ModBlocks.DIMENSION_CATALYST.get()));
+
         lootTables.put(ModSubtiles.omniviolet, createSimpleTable("omniviolet", ModSubtiles.omniviolet));
         lootTables.put(ModSubtiles.omnivioletFloating, createSimpleTable("floating_omniviolet", ModSubtiles.omnivioletFloating));
         lootTables.put(ModSubtiles.reikarorchid, createSimpleTable("reikarorchid", ModSubtiles.reikarorchid));

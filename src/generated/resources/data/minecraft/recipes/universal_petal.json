@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "aaa",
+    "axa",
+    "aaa"
+  ],
+  "key": {
+    "x": {
+      "item": "botania:life_essence"
+    },
+    "a": {
+      "tag": "botania:petals"
+    }
+  },
+  "result": {
+    "item": "extrabotany:universe_petal",
+    "count": 8
+  }
+}

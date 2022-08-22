@@ -1,7 +1,7 @@
 package chick.extrabotany.network.inputMessage;
 
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.forge.IItemWithLeftClick;
+import chick.extrabotany.api.item.IItemWithLeftClick;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

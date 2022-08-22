@@ -1,5 +1,6 @@
 package chick.extrabotany.common.entities;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModSounds;
 import chick.extrabotany.forge.client.handler.ConfigHandler;
@@ -48,6 +49,8 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -469,6 +472,12 @@ public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
     }
 
     @Override
+    protected ResourceLocation getDefaultLootTable()
+    {
+        return new ResourceLocation(ExtraBotany.MODID,"entities/ego");
+    }
+
+    @Override
     protected void dropFromLootTable(@Nonnull DamageSource source, boolean wasRecentlyHit)
     {
         // Save true killer, they get extra loot
@@ -866,17 +875,7 @@ public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
         return super.isPushable() && getInvulTime() == 0;
     }
 
-    /*
-        @Override
-        public ResourceLocation getLootTable()
-        {
-            if (getStage() < 2)
-            {
-                return LootTables.EMPTY;
-            }
-            return prefix("ego");
-        }
-    */
+
     @Override
     protected void pushEntities()
     {

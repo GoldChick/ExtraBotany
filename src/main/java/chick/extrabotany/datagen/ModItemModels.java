@@ -45,12 +45,18 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.TICKET.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/ticket"));
         singleTexture(ModItems.ORICHALCOS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/orichalcos"));
         singleTexture(ModItems.GOLD_CLOTH.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/gold_cloth"));
+        singleTexture(ModItems.REWARD_BAG_A.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/reward_bag_a"));
+        singleTexture(ModItems.REWARD_BAG_B.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/reward_bag_b"));
+        singleTexture(ModItems.REWARD_BAG_C.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/reward_bag_c"));
+        singleTexture(ModItems.REWARD_BAG_D.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/reward_bag_d"));
+        singleTexture(ModItems.SIN_RUNE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/sin_rune"));
+        singleTexture(ModItems.ELEMENT_RUNE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/element_rune"));
 
         singleTexture(ModItems.LEN_SMELT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_smelt"));
         singleTexture(ModItems.LEN_POTION.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_potion"));
         singleTexture(ModItems.LEN_MANA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_mana"));
         singleTexture(ModItems.LEN_TRACE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_trace"));
-
+        singleTexture(ModItems.TREASURE_BOX.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/treasure_box"));
 
         registerBaubleModels();
         registerFlowerModels();
@@ -110,6 +116,8 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.TRUE_THUNSTAR_CALLER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/truethunstarcaller"));
         singleTexture(ModItems.INFLUX_WAVER.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/influxwaver"));
         singleTexture(ModItems.FIRST_FRACTAL.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/firstfractal"));
+        singleTexture(ModItems.BUDDHISTRELICS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/buddhistrelics"));
+        singleTexture(ModItems.CAMERA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/camera"));
     }
 
     private void registereArmorModels()

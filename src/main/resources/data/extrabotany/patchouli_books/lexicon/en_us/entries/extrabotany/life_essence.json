@@ -1,0 +1,27 @@
+{
+  "name": "extrabotany.entry.life_essence",
+  "category": "extrabotany:extrabotany",
+  "icon": "botania:life_essence",
+  "advancement": "botania:main/gaia_guardian_kill",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.life_essence0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.life_essence1",
+      "recipe": "minecraft:universal_petal"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.life_essence2",
+      "recipe": "minecraft:element_rune"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.life_essence3",
+      "recipe": "minecraft:sin_rune"
+    }
+  ]
+}

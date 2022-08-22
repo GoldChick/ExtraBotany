@@ -35,14 +35,18 @@ public class ConfigHandler
     {
 
         public final ForgeConfigSpec.BooleanValue disableDisarm;
+        public final ForgeConfigSpec.DoubleValue gaiaDamageTimes;
 
         public Common(ForgeConfigSpec.Builder builder)
         {
             //TODO:为什么要禁用缴械捏noob
             builder.push("common");
             disableDisarm = builder
-                    .comment("Whether to disable the Ego's disarm. Default is false.")
+                    .comment("Whether to disable the Ego's disarm. Default is false(Not Recommend).")
                     .define("disableDisarm", false);
+            gaiaDamageTimes = builder
+                    .comment("How many times damage will EGO(Gaia III) do when it use weapons.")
+                    .defineInRange("gaiaDamageTimes", 1.0D, 0D, 10D);
             builder.pop();
         }
 

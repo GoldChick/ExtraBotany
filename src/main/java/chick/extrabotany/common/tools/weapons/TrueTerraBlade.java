@@ -1,10 +1,15 @@
 package chick.extrabotany.common.tools.weapons;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.phys.Vec3;
+import vazkii.botania.api.item.IRelic;
+import vazkii.botania.common.item.relic.RelicImpl;
 
 public class TrueTerraBlade extends SwordRelicBase
 {
@@ -32,7 +37,10 @@ public class TrueTerraBlade extends SwordRelicBase
             player.level.addFreshEntity(proj);
         }
     }
-
+    public static IRelic makeRelic(ItemStack stack)
+    {
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID,"challenge/true_terra_blade"));
+    }
     @Override
     public int getManaPerDamage()
     {

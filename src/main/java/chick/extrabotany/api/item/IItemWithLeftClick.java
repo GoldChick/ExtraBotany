@@ -1,4 +1,4 @@
-package chick.extrabotany.forge;
+package chick.extrabotany.api.item;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

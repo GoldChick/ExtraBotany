@@ -1,21 +1,17 @@
 package chick.extrabotany.datagen;
 
-import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import vazkii.botania.client.render.entity.RenderDoppleganger;
-import vazkii.botania.common.entity.ModEntities;
 import vazkii.botania.common.lib.ModTags;
 
 import static chick.extrabotany.ExtraBotany.MODID;
@@ -47,6 +43,28 @@ public class ModItemTags extends ItemTagsProvider
         this.copy(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS, ModTags.Items.FUNCTIONAL_SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.SPECIAL_FLOWERS, ModTags.Items.SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.MINI_FLOWERS, ModTags.Items.MINI_FLOWERS);
+
+        this.copy(BlockTags.CORALS, ModItems.CORAL_ITEM);
+
+        for (var color : DyeColor.values())
+        {
+            tag(ModTags.Items.getPetalTag(color)).add(ModItems.UNIVERSAL_PETAL.get());
+        }
+        tag(ModTags.Items.LENS)
+                .add(ModItems.LEN_MANA.get())
+                .add(ModItems.LEN_POTION.get())
+                .add(ModItems.LEN_SMELT.get())
+                .add(ModItems.LEN_TRACE.get())
+        ;
+
+        tag(ModTags.Items.RUNES)
+                .add(ModItems.SIN_RUNE.get())
+                .add(ModItems.ELEMENT_RUNE.get())
+        ;
+
+        tag(ModTags.Items.RODS)
+                .add(ModItems.ROD_OF_DISCORD.get())
+        ;
 
         tag(ModTags.Items.MANA_USING_ITEMS)
                 .add(ModItems.ROD_OF_DISCORD.get())

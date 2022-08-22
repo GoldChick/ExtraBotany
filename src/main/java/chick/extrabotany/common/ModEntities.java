@@ -3,6 +3,7 @@ package chick.extrabotany.common;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.entities.*;
 import chick.extrabotany.common.entities.projectile.EntityAuraFire;
+import chick.extrabotany.common.entities.projectile.EntityInfluxWaverProjectile;
 import chick.extrabotany.common.entities.projectile.EntityTrueShadowKatanaProjectile;
 import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
 import net.minecraft.resources.ResourceLocation;
@@ -71,6 +72,13 @@ public class ModEntities
             .setTrackingRange(64)
             .setShouldReceiveVelocityUpdates(true)
             .build(ExtraBotany.MODID + "trueterrablade");
+    public static final EntityType<EntityInfluxWaverProjectile> INFLUX_WAVER = EntityType.Builder
+            .<EntityInfluxWaverProjectile>of(EntityInfluxWaverProjectile::new, MobCategory.MISC)
+            .sized(0.05F, 0.05F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(ExtraBotany.MODID + "influxwaver");
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> r)
     {
@@ -82,6 +90,7 @@ public class ModEntities
         r.accept(FALSE_LIGHTNING, new ResourceLocation(ExtraBotany.MODID, "false_lighting"));
         r.accept(TRUE_SHADOW_KATANA, new ResourceLocation(ExtraBotany.MODID, "trueshadowkatana"));
         r.accept(TRUE_TERRA_BLADE, new ResourceLocation(ExtraBotany.MODID, "trueterrablade"));
+        r.accept(INFLUX_WAVER, new ResourceLocation(ExtraBotany.MODID, "influxwaver"));
     }
 
     public static void registerAttributes(BiConsumer<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> consumer)

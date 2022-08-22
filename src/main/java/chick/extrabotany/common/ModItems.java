@@ -1,36 +1,32 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.api.WeightCategory;
 import chick.extrabotany.common.baubles.*;
 import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
 import chick.extrabotany.common.brews.Cocktail;
 import chick.extrabotany.common.brews.SplashGrenade;
-import chick.extrabotany.common.crafting.CocktailRecipe;
-import chick.extrabotany.common.crafting.GrenadeRecipe;
-import chick.extrabotany.common.crafting.LenPotionRecipe;
+import chick.extrabotany.common.crafting.*;
 import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.items.*;
-import chick.extrabotany.common.lens.LenPotion;
-import chick.extrabotany.common.lens.LenPotionBase;
-import chick.extrabotany.common.lens.LenSmelt;
-import chick.extrabotany.common.lens.LenTrace;
-import chick.extrabotany.common.tools.armors.GoblinSlayerArmor;
-import chick.extrabotany.common.tools.armors.MaidArmor;
-import chick.extrabotany.common.tools.armors.MikuArmor;
-import chick.extrabotany.common.tools.armors.ShadowWarriorArmor;
-import chick.extrabotany.common.tools.weapons.ShadowKatana;
-import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
-import chick.extrabotany.common.tools.weapons.TrueTerraBlade;
-import chick.extrabotany.common.tools.weapons.TrueThunStarCaller;
+import chick.extrabotany.common.lens.*;
+import chick.extrabotany.common.tools.armors.*;
+import chick.extrabotany.common.tools.weapons.*;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vazkii.botania.common.item.lens.ItemLens;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 import static chick.extrabotany.ExtraBotany.MODID;
@@ -61,6 +57,25 @@ public class ModItems
     public static final RegistryObject<Item> ORICHALCOS = ITEMS.register("orichalcos", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> GOLD_CLOTH = ITEMS.register("gold_cloth", () -> new Item(ITEM_PROPERTIES));
 
+    public static final List<WeightCategory> categoryListA = new ArrayList<>();
+    public static final List<WeightCategory> categoryListB = new ArrayList<>();
+    public static final List<WeightCategory> categoryListC = new ArrayList<>();
+    public static final List<WeightCategory> categoryListD = new ArrayList<>();
+    public static final RegistryObject<Item> REWARD_BAG_A = ITEMS.register("reward_bag_a", () -> new RewardBag(ITEM_PROPERTIES, categoryListA));
+    public static final RegistryObject<Item> REWARD_BAG_B = ITEMS.register("reward_bag_b", () -> new RewardBag(ITEM_PROPERTIES, categoryListB));
+    public static final RegistryObject<Item> REWARD_BAG_C = ITEMS.register("reward_bag_c", () -> new RewardBag(ITEM_PROPERTIES, categoryListC));
+    public static final RegistryObject<Item> REWARD_BAG_D = ITEMS.register("reward_bag_d", () -> new RewardBag(ITEM_PROPERTIES, categoryListD));
+
+
+    public static final RegistryObject<Item> ELEMENT_RUNE = ITEMS.register("element_rune", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SIN_RUNE = ITEMS.register("sin_rune", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> UNIVERSAL_PETAL = ITEMS.register("universe_petal", () -> new Item(ITEM_PROPERTIES));
+
+    //TODO:原石的英文
+    public static final RegistryObject<Item> ORIGINAL_STONE = ITEMS.register("original_stone", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> JIU_CHAN_ZHI_YUAN = ITEMS.register("jiuchanzhiyuan", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> XIANG_YU_ZHI_YUAN = ITEMS.register("xiangyuzhiyuan", () -> new Item(ITEM_PROPERTIES));
+
     /**
      * stacksTo 32
      */
@@ -68,11 +83,13 @@ public class ModItems
     /**
      * stacksTo 1
      */
+    public static final RegistryObject<Item> TREASURE_BOX = ITEMS.register("treasure_box", () -> new TreasureBox(ITEM_PROPERTIES));
     public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> LEN_SMELT = ITEMS.register("len_smelt", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSmelt(), vazkii.botania.common.item.lens.ItemLens.PROP_TOUCH));
     public static final RegistryObject<Item> LEN_POTION = ITEMS.register("len_potion", () -> new LenPotionBase(ITEM_PROPERTIES.stacksTo(1), new LenPotion(), vazkii.botania.common.item.lens.ItemLens.PROP_INTERACTION));
-    public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenMana(10000), ItemLens.PROP_ORIENTATION));
     public static final RegistryObject<Item> LEN_TRACE = ITEMS.register("len_trace", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenTrace(), ItemLens.PROP_ORIENTATION));
+    public static final RegistryObject<Item> LEN_SUPERCONDUCTOR = ITEMS.register("len_superconductor", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSuperConductor(), ItemLens.PROP_DAMAGE));
     /**
      * these are baubles for curios mod
      **/
@@ -129,14 +146,55 @@ public class ModItems
     public static final RegistryObject<Item> TRUE_SHADOW_KATANA = ITEMS.register("trueshadowkatana", () -> new TrueShadowKatana(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TRUE_TERRA_BLADE = ITEMS.register("trueterrablade", () -> new TrueTerraBlade(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TRUE_THUNSTAR_CALLER = ITEMS.register("truethunstarcaller", () -> new TrueThunStarCaller(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> INFLUX_WAVER = ITEMS.register("influxwaver", () -> new TrueTerraBlade(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FIRST_FRACTAL = ITEMS.register("firstfractal", () -> new TrueTerraBlade(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> INFLUX_WAVER = ITEMS.register("influxwaver", () -> new InfluxWaver(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FIRST_FRACTAL = ITEMS.register("firstfractal", () -> new InfluxWaver(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> BUDDHISTRELICS = ITEMS.register("buddhistrelics", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> CAMERA = ITEMS.register("camera", () -> new Item(ITEM_PROPERTIES));
+
+    public static final TagKey<Item> CORAL_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "coral_item"));
 
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {
         r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));
         r.accept(LenPotionRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "len_potion_bind"));
         r.accept(GrenadeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "grenade_bind"));
+        r.accept(DupeRuneRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "rune_dupe"));
+        r.accept(GoldClothRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "gold_cloth_unbind"));
+        //just place it here lol
+        registerRewardBag();
+    }
+
+    private static void registerRewardBag()
+    {
+        categoryListA.add(new WeightCategory(new ItemStack(UNIVERSAL_PETAL.get(), 4), 10));
+        categoryListA.add(new WeightCategory(new ItemStack(UNIVERSAL_PETAL.get(), 8), 10));
+        categoryListA.add(new WeightCategory(new ItemStack(UNIVERSAL_PETAL.get(), 6), 30));
+
+        categoryListB.add(new WeightCategory(new ItemStack(ELEMENT_RUNE.get(), 2), 80));
+        categoryListB.add(new WeightCategory(new ItemStack(SIN_RUNE.get(), 1), 20));
+
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.manaSteel, 4), 15));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.manaPearl, 4), 15));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.manaDiamond, 4), 15));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.elementium, 3), 11));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.pixieDust, 3), 11));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.dragonstone, 3), 11));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.manaPowder, 8), 10));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.terrasteel, 1), 9));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.lifeEssence, 4), 8));
+        categoryListC.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.gaiaIngot, 1), 7));
+        categoryListC.add(new WeightCategory(new ItemStack(HERO_MEDAL.get(), 1), 1));
+
+        categoryListD.add(new WeightCategory(new ItemStack(Items.COAL, 6), 40));
+        categoryListD.add(new WeightCategory(new ItemStack(Items.IRON_INGOT, 4), 36));
+        categoryListD.add(new WeightCategory(new ItemStack(Items.GOLD_INGOT, 4), 24));
+        categoryListD.add(new WeightCategory(new ItemStack(Items.REDSTONE, 8), 22));
+        categoryListD.add(new WeightCategory(new ItemStack(Items.ENDER_PEARL, 4), 20));
+        categoryListD.add(new WeightCategory(new ItemStack(Items.DIAMOND, 1), 18));
+        categoryListD.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.blackerLotus, 2), 16));
+        categoryListD.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.overgrowthSeed, 1), 12));
+
+        categoryListD.add(new WeightCategory(new ItemStack(BUDDHISTRELICS.get()), 1));
     }
 
     public static DeferredRegister<Item> GetItems()

@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.brew.IBrewItem;
 
 public class LenPotionRecipe extends CustomRecipe
@@ -35,21 +36,19 @@ public class LenPotionRecipe extends CustomRecipe
                 if (stack.getItem() == ModItems.COCK_TAIL.get() && !foundBrew)
                 {
                     foundBrew = true;
-                } else if (!foundItem)
+                } else if (stack.getItem() == ModItems.LEN_POTION.get() && !foundItem)
                 {
-                    if (stack.getItem() == ModItems.LEN_POTION.get())
-                    {
-                        foundItem = true;
-                    } else
-                    {
-                        return false;
-                    }
+                    foundItem = true;
+                } else
+                {
+                    return false;
                 }
             }
         }
         return foundBrew && foundItem;
     }
 
+    @NotNull
     @Override
     public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv)
     {
@@ -60,11 +59,13 @@ public class LenPotionRecipe extends CustomRecipe
             if (!stack.isEmpty() && stack.getItem() == ModItems.COCK_TAIL.get())
             {
                 nonnulllist.set(i, new ItemStack(ModItems.EMPTY_BOTTLE.get()));
+                break;
             }
         }
         return nonnulllist;
     }
 
+    @NotNull
     @Override
     public ItemStack assemble(CraftingContainer inv)
     {
@@ -72,12 +73,10 @@ public class LenPotionRecipe extends CustomRecipe
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
-            if (!stack.isEmpty())
+            if (!stack.isEmpty() && stack.getItem() == ModItems.COCK_TAIL.get())
             {
-                if (stack.getItem() == ModItems.COCK_TAIL.get() && brewstack.isEmpty())
-                {
-                    brewstack = stack;
-                }
+                brewstack = stack;
+                break;
             }
         }
         IBrewItem brew = (IBrewItem) brewstack.getItem();

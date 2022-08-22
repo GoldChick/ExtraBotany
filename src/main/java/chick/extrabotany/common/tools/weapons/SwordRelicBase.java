@@ -1,6 +1,6 @@
 package chick.extrabotany.common.tools.weapons;
 
-import chick.extrabotany.forge.IItemWithLeftClick;
+import chick.extrabotany.api.item.IItemWithLeftClick;
 import chick.extrabotany.network.NetworkHandler;
 import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import net.minecraft.network.chat.Component;
@@ -8,15 +8,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.relic.RelicImpl;
@@ -34,6 +32,10 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
         MinecraftForge.EVENT_BUS.addListener(this::leftClickBlock);
         MinecraftForge.EVENT_BUS.addListener(this::attackEntity);
     }
+
+    public abstract int getManaPerDamage();
+
+    public abstract void attack(LivingEntity player, Entity target, int times, double speedTime, float damageTime);
 
     public void attackEntity(AttackEntityEvent evt)
     {
@@ -73,6 +75,13 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
         }
     }
 
+    @NotNull
+    @Override
+    public Rarity getRarity(ItemStack stack)
+    {
+        return Rarity.EPIC;
+    }
+
     @Override
     public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
     {
@@ -96,14 +105,11 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
         return (BlockHitResult) e.pick(distance, 1, fluids);
     }
 
-    public abstract int getManaPerDamage();
-
     public void attack(LivingEntity player, Entity target)
     {
         attack(player, target, 1, 1D, 1F);
     }
 
-    public abstract void attack(LivingEntity player, Entity target, int times, double speedTime, float damageTime);
 
     @Override
     public void onLeftClick(Player player, Entity target)

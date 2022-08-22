@@ -1,6 +1,7 @@
 package chick.extrabotany.forge.client.render.entity;
 
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.entities.projectile.EntityInfluxWaverProjectile;
 import chick.extrabotany.common.entities.projectile.EntityProjectileBase;
 import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -33,7 +34,7 @@ public class RenderProjectile extends EntityRenderer<EntityProjectileBase>
 
         matrixStackIn.pushPose();
         float s = 1.2F;
-        //matrixStackIn.scale(s, s, s);
+        matrixStackIn.scale(s, s, s);
         matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(weapon.getRotation() + 90F));
         matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(weapon.getPitch()));
         matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(-45));
@@ -46,10 +47,13 @@ public class RenderProjectile extends EntityRenderer<EntityProjectileBase>
         if (weapon instanceof EntityTrueTerraBladeProjectile)
         {
             item = ModItems.TRUE_TERRA_BLADE.get();
+        } else if (weapon instanceof EntityInfluxWaverProjectile)
+        {
+            item = ModItems.INFLUX_WAVER.get();
         }
         RenderHelper.renderItemCustomColor(mc.player, new ItemStack(item), color, matrixStackIn, bufferIn, 0xF000F0, OverlayTexture.NO_OVERLAY, model);
 
-        //matrixStackIn.scale(1 / s, 1 / s, 1 / s);
+        matrixStackIn.scale(1 / s, 1 / s, 1 / s);
 
         matrixStackIn.popPose();
         super.render(weapon, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);

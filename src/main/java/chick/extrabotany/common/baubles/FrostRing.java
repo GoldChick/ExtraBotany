@@ -1,6 +1,6 @@
 package chick.extrabotany.common.baubles;
 
-import net.minecraft.server.level.ServerPlayer;
+import chick.extrabotany.network.DamageHandler;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +13,6 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 public class FrostRing extends ItemBauble
 {
-    //TODO:霜冻之星-和平友好之证
     public FrostRing(Properties props)
     {
         super(props.stacksTo(1));
@@ -38,7 +37,7 @@ public class FrostRing extends ItemBauble
                 {
                     if (living.canBeSeenByAnyone()
                             && living != entity
-                            //  && DamageHandler.INSTANCE.checkPassable(living, entity)
+                            && DamageHandler.INSTANCE.checkPassable(living, entity)
                             && entity.tickCount % 20 == 0
                             && ManaItemHandler.instance().requestManaExactForTool(stack, (Player) entity, MANA_PER_DAMAGE, true))
                     {

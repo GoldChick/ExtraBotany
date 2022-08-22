@@ -1,7 +1,7 @@
 package chick.extrabotany.common.baubles;
 
 import chick.extrabotany.common.entities.projectile.EntityAuraFire;
-import chick.extrabotany.forge.IItemWithLeftClick;
+import chick.extrabotany.api.item.IItemWithLeftClick;
 import chick.extrabotany.network.NetworkHandler;
 import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import net.minecraft.world.InteractionHand;

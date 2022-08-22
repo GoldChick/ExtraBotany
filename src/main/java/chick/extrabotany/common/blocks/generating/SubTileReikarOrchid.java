@@ -3,7 +3,7 @@ package chick.extrabotany.common.blocks.generating;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.entities.EntityFalseLightning;
-import chick.extrabotany.forge.IMixinGetData;
+import chick.extrabotany.api.IMixinGetData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;

@@ -2,6 +2,7 @@ package chick.extrabotany.common.entities;
 
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.tools.weapons.InfluxWaver;
 import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
 import chick.extrabotany.common.tools.weapons.TrueTerraBlade;
 import chick.extrabotany.common.tools.weapons.TrueThunStarCaller;
@@ -171,7 +172,7 @@ public class EntityEGOMinion extends Monster
                 case 0 -> ((TrueShadowKatana) ModItems.TRUE_SHADOW_KATANA.get()).attack(this, getTarget());
                 case 1 -> ((TrueTerraBlade) ModItems.TRUE_TERRA_BLADE.get()).attack(this, getTarget());
                 case 2 -> ((TrueThunStarCaller) ModItems.TRUE_THUNSTAR_CALLER.get()).attack(this, getTarget());
-                case 3 -> ((TrueTerraBlade) ModItems.INFLUX_WAVER.get()).attack(this, getTarget());
+                case 3 -> ((InfluxWaver) ModItems.INFLUX_WAVER.get()).attack(this, getTarget());
             }
         }
         return true;

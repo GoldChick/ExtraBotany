@@ -26,6 +26,7 @@ public final class EntityRenderers
 
         consumer.accept(ModEntities.TRUE_SHADOW_KATANA, RenderProjectile::new);
         consumer.accept(ModEntities.TRUE_TERRA_BLADE, RenderProjectile::new);
+        consumer.accept(ModEntities.INFLUX_WAVER, RenderProjectile::new);
     }
 
     public static void init(EntityRendererProvider.Context ctx)

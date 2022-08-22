@@ -37,15 +37,12 @@ public class GrenadeRecipe extends CustomRecipe
                 if (stack.getItem() == ModItems.COCK_TAIL.get() && !foundBrew)
                 {
                     foundBrew = true;
-                } else if (!foundItem)
+                } else if (stack.getItem() == Items.POPPED_CHORUS_FRUIT && !foundItem)
                 {
-                    if (stack.getItem() == Items.POPPED_CHORUS_FRUIT)
-                    {
-                        foundItem = true;
-                    } else
-                    {
-                        return false;
-                    }
+                    foundItem = true;
+                } else
+                {
+                    return false;
                 }
             }
         }
@@ -63,6 +60,7 @@ public class GrenadeRecipe extends CustomRecipe
             if (!stack.isEmpty() && stack.getItem() == ModItems.COCK_TAIL.get())
             {
                 nonnulllist.set(i, new ItemStack(ModItems.EMPTY_BOTTLE.get()));
+                break;
             }
         }
         return nonnulllist;
@@ -76,12 +74,10 @@ public class GrenadeRecipe extends CustomRecipe
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
-            if (!stack.isEmpty())
+            if (!stack.isEmpty() && stack.getItem() == ModItems.COCK_TAIL.get())
             {
-                if (stack.getItem() == ModItems.COCK_TAIL.get() && brewstack.isEmpty())
-                {
-                    brewstack = stack;
-                }
+                brewstack = stack;
+                break;
             }
         }
         IBrewItem brew = (IBrewItem) brewstack.getItem();

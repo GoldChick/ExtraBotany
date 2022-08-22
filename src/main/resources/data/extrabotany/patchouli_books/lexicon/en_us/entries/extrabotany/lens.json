@@ -48,6 +48,10 @@
       "type": "crafting",
       "text": "extrabotany.page.lens9",
       "recipe": "minecraft:len_potion"
+    },
+    {
+      "type": "text",
+      "text": "extrabotany.page.lens10"
     }
   ]
 }

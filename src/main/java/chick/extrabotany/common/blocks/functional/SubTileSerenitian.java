@@ -1,7 +1,7 @@
 package chick.extrabotany.common.blocks.functional;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.ISubTileDecay;
+import chick.extrabotany.api.block.ISubTileDecay;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;

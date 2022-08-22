@@ -1,4 +1,4 @@
-package chick.extrabotany.forge;
+package chick.extrabotany.api;
 
 
 public interface IMixinGetData

@@ -1,7 +1,7 @@
 package chick.extrabotany.common.blocks.generating;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.ISubTileDecay;
+import chick.extrabotany.api.block.ISubTileDecay;
 import chick.extrabotany.common.blocks.SubTilePassive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

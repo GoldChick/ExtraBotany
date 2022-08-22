@@ -44,6 +44,21 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.LEN_SMELT.get().getDescriptionId() + ".short", "冶炼");
         add(ModItems.LEN_POTION.get(), "魔力透镜：药水：%s");
         add(ModItems.LEN_POTION.get().getDescriptionId() + ".short", "药水");
+        add(ModItems.LEN_TRACE.get(), "魔力透镜：追踪");
+        add(ModItems.LEN_TRACE.get().getDescriptionId() + ".short", "追踪");
+        add(ModItems.LEN_MANA.get(), "魔力透镜：魔力");
+        add(ModItems.LEN_MANA.get().getDescriptionId() + ".short", "魔力");
+        add(ModItems.LEN_SUPERCONDUCTOR.get(), "Mana Lens: 魔力透镜：超导");
+        add(ModItems.LEN_SUPERCONDUCTOR.get().getDescriptionId() + ".short", "超导");
+
+        add(ModItems.TREASURE_BOX.get(), "潘多拉魔盒");
+        add(ModItems.REWARD_BAG_A.get(), "奖励袋Eins");
+        add(ModItems.REWARD_BAG_B.get(), "奖励袋Zwei");
+        add(ModItems.REWARD_BAG_C.get(), "奖励袋Drei");
+        add(ModItems.REWARD_BAG_D.get(), "奖励袋Vier");
+        add(ModItems.UNIVERSAL_PETAL.get(), "彩虹花瓣");
+        add(ModItems.ELEMENT_RUNE.get(), "元灵符文");
+        add(ModItems.SIN_RUNE.get(), "大罪符文");
 
         add(ModItems.FOX_EAR.get(), "樱樱耳");
         add(ModItems.FOX_MASK.get(), "附有记忆的面具");
@@ -111,14 +126,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         langFlower();
         langAdvancement();
         langPantchouli();
-        add(ModEntities.EGO,"本我");
-        add(ModEntities.EGO_LANDMINE,"本我地雷");
-        add(ModEntities.EGO_MINION,"本我仆从");
-        add(ModEntities.AURAFIRE,"火焰");
-        add(ModEntities.SPLASH_GRENADE,"圣水手雷");
-        add(ModEntities.FALSE_LIGHTNING,"仿真闪电");
-        add(ModEntities.TRUE_SHADOW_KATANA,"真·影刃");
-        add(ModEntities.TRUE_TERRA_BLADE,"真·泰拉之刃");
+        add(ModEntities.EGO, "本我");
+        add(ModEntities.EGO_LANDMINE, "本我地雷");
+        add(ModEntities.EGO_MINION, "本我仆从");
+        add(ModEntities.AURAFIRE, "火焰");
+        add(ModEntities.SPLASH_GRENADE, "圣水手雷");
+        add(ModEntities.FALSE_LIGHTNING, "仿真闪电");
+        add(ModEntities.TRUE_SHADOW_KATANA, "真·影刃");
+        add(ModEntities.TRUE_TERRA_BLADE, "真·泰拉之刃");
     }
 
     private void langFlower()
@@ -309,6 +324,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.lens7", "冶炼");
         add("extrabotany.page.lens8", "$(item)药水透镜$(0)会使魔力脉冲所触碰到的第一个生物获得对应的药水效果。<br>需要将透镜和对应的烧瓶酿造合成来决定其效果。");
         add("extrabotany.page.lens9", "药水");
+        add("extrabotany.page.lens10", "$(item)超导透镜$(0)会增加魔力脉冲携带的魔力、魔力流失的速率、魔力脉冲的速度，同时会对玩家和其他生物造成大量伤害。注意：$(thing)不会降低防御。$(0)(不会做)");
         add("extrabotany.entry.dimension_catalyst", "次元催化器");
         add("extrabotany.page.dimension_catalyst0", "$(item)次元催化器$(0)连接了主世界与其他两个次元，它可以消耗$(thing)魔力$(0)来将主世界的资源转化为其他次元内的资源。");
         add("extrabotany.page.dimension_catalyst1", "");
@@ -337,22 +353,27 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.miku2", "星空歌姬服");
         add("extrabotany.page.miku3", "星空歌姬裙甲");
         add("extrabotany.page.miku4", "星空歌姬鞋子");
-        add("extrabotany.entry.aerialite","天空锭");
-        add("extrabotany.page.aerialite0","将天空的力量与大量的魔力注入到$(item)龙石$(0)中得到的高级合金，拥有着媲美$(item)泰拉钢$(0)的优秀属性。");
-        add("extrabotany.page.aerialite1","");
-        add("extrabotany.page.aerialite2","由天空锭制成的护甲，拥有着优秀的保护能力。当穿齐一套时，可以赋予玩家极高的机动性、攻击力和吸血能力，并使玩家的拉弓速度翻倍。但玩家的生命恢复能力会受到限制。");
-        add("extrabotany.page.aerialite3","银翼护卫头盔");
-        add("extrabotany.page.aerialite4","银翼护卫胸甲");
-        add("extrabotany.page.aerialite5","银翼护卫护腿");
-        add("extrabotany.page.aerialite6","银翼护卫靴子");
+        add("extrabotany.entry.aerialite", "天空锭");
+        add("extrabotany.page.aerialite0", "将天空的力量与大量的魔力注入到$(item)龙石$(0)中得到的高级合金，拥有着媲美$(item)泰拉钢$(0)的优秀属性。");
+        add("extrabotany.page.aerialite1", "");
+        add("extrabotany.page.aerialite2", "由天空锭制成的护甲，拥有着优秀的保护能力。当穿齐一套时，可以赋予玩家极高的机动性、攻击力和吸血能力，并使玩家的拉弓速度翻倍。但玩家的生命恢复能力会受到限制。");
+        add("extrabotany.page.aerialite3", "银翼护卫头盔");
+        add("extrabotany.page.aerialite4", "银翼护卫胸甲");
+        add("extrabotany.page.aerialite5", "银翼护卫护腿");
+        add("extrabotany.page.aerialite6", "银翼护卫靴子");
+        add("extrabotany.entry.life_essence", "盖亚之魂研究");
+        add("extrabotany.page.life_essence0", "在一些材料中混入$(item)盖亚之魂$(0)可以让他们不分彼此。不过，这可能会导致合成冲突。");
+        add("extrabotany.page.life_essence1", "可以代替所有花瓣的彩虹花瓣");
+        add("extrabotany.page.life_essence2", "可以代替合成所需八种符文的元灵符文");
+        add("extrabotany.page.life_essence3", "可以代替合成所需八种符文的大罪符文");
 
-        add("extrabotany.entry.true_swords","真·剑");
-        add("extrabotany.page.true_swords0","经过研究，$(item)盖亚之魂$(0)和其他材料能够解放你所拥有的一些武器的真正力量。因此，这些武器在盖亚的手中也将更加强大。");
-        add("extrabotany.page.true_thunstar_caller","$(item)召雷者和召星者$(0)的升级版。每次挥动会从天上导引出闪电。虽然距离真正的闪电尚有不足，但用于攻击已经足够。当击中着火的敌人时会因为超载的原因增加伤害。");
-        add("extrabotany.page.true_terra_blade","$(item)泰拉之刃$(0)的升级版。每次挥动都会发射可以贯穿敌人的剑气。");
-        add("extrabotany.page.true_shadow_katana","$(item)影刃$(0)的升级版。每次挥动都会召唤两把真影刃自动索敌并追击敌人。");
+        add("extrabotany.entry.true_swords", "真·剑");
+        add("extrabotany.page.true_swords0", "经过研究，$(item)盖亚之魂$(0)和其他材料能够解放你所拥有的一些武器的真正力量。因此，这些武器在盖亚的手中也将更加强大。");
+        add("extrabotany.page.true_thunstar_caller", "$(item)召雷者和召星者$(0)的升级版。每次挥动会从天上导引出闪电。虽然距离真正的闪电尚有不足，但用于攻击已经足够。当击中着火的敌人时会因为超载的原因增加伤害。");
+        add("extrabotany.page.true_terra_blade", "$(item)泰拉之刃$(0)的升级版。每次挥动都会发射可以贯穿敌人的剑气。");
+        add("extrabotany.page.true_shadow_katana", "$(item)影刃$(0)的升级版。每次挥动都会召唤两把真影刃自动索敌并追击敌人。");
 
-        add("extrabotany.page.influx_waver","未完成。");
+        add("extrabotany.page.influx_waver", "每次挥动所发射的剑气会在命中敌人后在其附近重新出现并追击敌人。");
         pantchouliFlower();
     }
 

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "xdx",
+    "aba",
+    " x "
+  ],
+  "key": {
+    "x": {
+      "item": "botania:livingwood_twig"
+    },
+    "d": {
+      "item": "botania:manasteel_ingot"
+    },
+    "a": {
+      "item": "botania:mana_string"
+    },
+    "b": {
+      "item": "minecraft:tripwire_hook"
+    }
+  },
+  "result": {
+    "item": "extrabotany:livingwood_crossbow"
+  }
+}

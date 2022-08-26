@@ -43,8 +43,6 @@ public class Registration
         //sounds
         bind(ForgeRegistries.SOUND_EVENTS, ModSounds::init);
         initEvents();
-
-
     }
 
     public static <T extends IForgeRegistryEntry<T>> void bind(IForgeRegistry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source)

@@ -1,0 +1,6 @@
+{
+  "parent": "extrabotany:item/livingwood_crossbow",
+  "textures": {
+    "layer0": "extrabotany:item/livingwood_crossbow_firework"
+  }
+}

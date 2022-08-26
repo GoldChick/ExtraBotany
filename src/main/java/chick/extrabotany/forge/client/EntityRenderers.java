@@ -21,6 +21,7 @@ public final class EntityRenderers
         consumer.accept(ModEntities.EGO_MINION, RenderEGO::new);
         consumer.accept(ModEntities.EGO_LANDMINE, RenderEGOLandmine::new);
         consumer.accept(ModEntities.AURAFIRE, RenderDummy::new);
+        consumer.accept(ModEntities.MAGIC_ARROW, RenderDummy::new);
         consumer.accept(ModEntities.FALSE_LIGHTNING, LightningBoltRenderer::new);
         consumer.accept(ModEntities.SPLASH_GRENADE, ThrownItemRenderer::new);
 

@@ -26,12 +26,10 @@ import vazkii.botania.common.item.lens.ItemLens;
 import vazkii.botania.common.item.lens.Lens;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.Map;
 
-import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 public class LenPotionBase extends ItemLens implements IBrewItem
 {

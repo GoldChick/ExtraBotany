@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "aaa",
+    "axa",
+    "aaa"
+  ],
+  "key": {
+    "x": {
+      "item": "extrabotany:genesis_crystal"
+    },
+    "a": {
+      "tag": "botania:mana_diamond_gems"
+    }
+  },
+  "result": {
+    "item": "extrabotany:primo_gem",
+    "count": 48
+  }
+}

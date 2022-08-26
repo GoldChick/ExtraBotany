@@ -1,0 +1,86 @@
+{
+  "name": "extrabotany.entry.genesis_crystal",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:genesis_crystal",
+  "advancement": "extrabotany:main/ego_defeat_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.genesis_crystal0"
+    },
+    {
+      "type": "botania:crafting_multi",
+      "text": "extrabotany.page.genesis_crystal1",
+      "recipes": [
+        "minecraft:crystal_to_gem1",
+        "minecraft:crystal_to_gem2",
+        "minecraft:crystal_to_gem3",
+        "minecraft:crystal_to_gem4",
+        "minecraft:crystal_to_gem5",
+        "minecraft:crystal_to_gem6",
+        "minecraft:crystal_to_gem7",
+        "minecraft:crystal_to_gem8"
+      ]
+    },
+    {
+      "type": "extrabotany:many_crafting",
+      "text": "extrabotany.page.genesis_crystal2",
+      "slot": [
+        "null",
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem",
+        "extrabotany:primo_gem",
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem",
+        "null"
+      ],
+      "result": [
+        "extrabotany:intertwined_fate"
+      ],
+      "nums": [
+        0,
+        32,
+        0,
+        32,
+        32,
+        32,
+        0,
+        32,
+        0,
+        1
+      ]
+    },
+    {
+      "type": "extrabotany:many_crafting",
+      "text": "extrabotany.page.genesis_crystal3",
+      "slot": [
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem",
+        "null",
+        "extrabotany:primo_gem"
+      ],
+      "result": [
+        "extrabotany:acquaint_fate"
+      ],
+      "nums": [
+        32,
+        0,
+        32,
+        0,
+        32,
+        0,
+        32,
+        0,
+        32,
+        1
+      ]
+    }
+  ]
+}

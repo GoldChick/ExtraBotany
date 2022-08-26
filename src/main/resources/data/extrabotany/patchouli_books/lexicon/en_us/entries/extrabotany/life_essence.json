@@ -15,13 +15,14 @@
     },
     {
       "type": "crafting",
-      "text": "extrabotany.page.life_essence2",
-      "recipe": "minecraft:element_rune"
+      "recipe": "minecraft:element_rune",
+      "recipe2": "minecraft:sin_rune"
     },
     {
       "type": "crafting",
-      "text": "extrabotany.page.life_essence3",
-      "recipe": "minecraft:sin_rune"
+      "title": "extrabotany.page.title.example",
+      "text": "extrabotany.page.life_essence2",
+      "recipe": "minecraft:rune_dupe_example"
     }
   ]
 }

@@ -15,6 +15,7 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.data.util.ModelWithOverrides;
 import vazkii.botania.data.util.OverrideHolder;
@@ -65,6 +66,7 @@ public class ModItemOverrideModels implements DataProvider
         }
     }
 
+    @NotNull
     @Override
     public String getName()
     {
@@ -82,7 +84,6 @@ public class ModItemOverrideModels implements DataProvider
                     consumer);
 
             flaskOverrides.add(overrideModel, Pair.of(new ResourceLocation("custom_model_data"), (double) i));
-
         }
         GENERATED_OVERRIDES_1.create(ModelLocationUtils.getModelLocation(chick.extrabotany.common.ModItems.COCK_TAIL.get()),
                 TextureMapping.layer0(chick.extrabotany.common.ModItems.EMPTY_BOTTLE.get()).put(LAYER1, TextureMapping.getItemTexture(chick.extrabotany.common.ModItems.COCK_TAIL.get(), "_0")),

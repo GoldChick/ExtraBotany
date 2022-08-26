@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.common.item.equipment.ICustomDamageItem;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.relic.RelicImpl;
 import vazkii.botania.xplat.IXplatAbstractions;
@@ -23,7 +24,7 @@ import vazkii.botania.xplat.IXplatAbstractions;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftClick
+public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftClick, ICustomDamageItem
 {
     public SwordRelicBase(Tier tier, int atkDamage, float atkSpeed, Properties prop)
     {

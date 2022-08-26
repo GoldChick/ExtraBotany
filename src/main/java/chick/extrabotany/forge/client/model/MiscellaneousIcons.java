@@ -35,11 +35,12 @@ public class MiscellaneousIcons
     {
         Set<Material> materials = AccessorModelBakery.getMaterials();
         materials.add(dimensionCatalystOverlay);
-        //for (int i = 0; i < 10; i++) {
-        //     addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/sworddomain_" + i));
-        //}
-        // addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/strengthenslash"));
-        //  addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/flamescionring"));
+        for (int i = 0; i < 10; i++)
+        {
+            addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/sworddomain_" + i));
+        }
+        //addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/strengthenslash"));
+        //addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/flamescionring"));
         addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/influxwaverprojectile"));
         addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/trueterrabladeprojectile"));
         addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/trueshadowkatanaprojectile"));
@@ -47,15 +48,16 @@ public class MiscellaneousIcons
         {
             addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/wing_" + i));
         }
-        //   addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/wing_coregod"));
-        //   addSpecialModel(new ResourceLocation(ExtraBotany.MODID,"icon/butterflyprojectile"));
+        addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/wing_coregod"));
+        //addSpecialModel(new ResourceLocation(ExtraBotany.MODID, "icon/butterflyprojectile"));
     }
 
     public void onModelBake(ModelBakeEvent evt)
     {
-        // for(int i = 0; i < firstFractalWeaponModels.length; i++){
-        //     firstFractalWeaponModels[i] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/sworddomain_" + i));
-        // }
+        for (int i = 0; i < firstFractalWeaponModels.length; i++)
+        {
+            firstFractalWeaponModels[i] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/sworddomain_" + i));
+        }
         // strengthenSlashModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/strengthenslash"));
         // flamescionringModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/flamescionring"));
         influxwaverprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/influxwaverprojectile"));
@@ -65,7 +67,7 @@ public class MiscellaneousIcons
         {
             coregodWingsModel[i] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_" + i));
         }
-        // coregodModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_coregod"));
+        coregodModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_coregod"));
         // butterflyprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/butterflyprojectile"));
     }
 

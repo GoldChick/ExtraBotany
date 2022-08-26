@@ -8,7 +8,10 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -34,26 +37,20 @@ public class RewardBag extends Item
 
     @NotNull
     @Override
-    public InteractionResult useOn(@NotNull UseOnContext context)
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-        var player = context.getPlayer();
-        if (player != null)
+        var reward = BonusHelper.rollItem(categoryList);
+
+        if (!reward.isEmpty() && !level.isClientSide)
         {
-            var level = player.level;
-
-            var reward = BonusHelper.rollItem(categoryList);
-
-            if (!reward.isEmpty() && !level.isClientSide)
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 0.5F, 0.4F / (level.random.nextFloat() * 0.4F + 0.8F));
+            player.drop(reward, true).setNoPickUpDelay();
+            if (!player.isCreative())
             {
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 0.5F, 0.4F / (level.random.nextFloat() * 0.4F + 0.8F));
-                player.drop(reward, true).setNoPickUpDelay();
-                if (!player.isCreative())
-                {
-                    context.getItemInHand().shrink(1);
-                }
+                player.getItemInHand(hand).shrink(1);
             }
         }
-        return InteractionResult.PASS;
+        return InteractionResultHolder.success(player.getItemInHand(hand));
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -5,8 +5,10 @@ import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import vazkii.botania.common.impl.BotaniaAPIImpl;
 
 
 public class ModItemModels extends ItemModelProvider
@@ -52,10 +54,16 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.SIN_RUNE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/sin_rune"));
         singleTexture(ModItems.ELEMENT_RUNE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/element_rune"));
 
+        singleTexture(ModItems.INTERTWINED_FATE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/intertwined_fate"));
+        singleTexture(ModItems.ACQUAINT_FATE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/acquaint_fate"));
+        singleTexture(ModItems.PRIMO_GEM.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/primo_gem"));
+        singleTexture(ModItems.GENESIS_CRYSTAL.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/genesis_crystal"));
+
         singleTexture(ModItems.LEN_SMELT.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_smelt"));
         singleTexture(ModItems.LEN_POTION.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_potion"));
         singleTexture(ModItems.LEN_MANA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_mana"));
         singleTexture(ModItems.LEN_TRACE.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_trace"));
+        singleTexture(ModItems.LEN_SUPERCONDUCTOR.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/len_superconductor"));
         singleTexture(ModItems.TREASURE_BOX.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/treasure_box"));
 
         registerBaubleModels();
@@ -118,6 +126,7 @@ public class ModItemModels extends ItemModelProvider
         singleTexture(ModItems.FIRST_FRACTAL.get().getRegistryName().getPath(), mcLoc("item/handheld"), "layer0", modLoc("item/firstfractal"));
         singleTexture(ModItems.BUDDHISTRELICS.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/buddhistrelics"));
         singleTexture(ModItems.CAMERA.get().getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("item/camera"));
+
     }
 
     private void registereArmorModels()

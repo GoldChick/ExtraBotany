@@ -71,10 +71,13 @@ public class ModItems
     public static final RegistryObject<Item> SIN_RUNE = ITEMS.register("sin_rune", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> UNIVERSAL_PETAL = ITEMS.register("universe_petal", () -> new Item(ITEM_PROPERTIES));
 
-    //TODO:原石的英文
-    public static final RegistryObject<Item> ORIGINAL_STONE = ITEMS.register("original_stone", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> JIU_CHAN_ZHI_YUAN = ITEMS.register("jiuchanzhiyuan", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> XIANG_YU_ZHI_YUAN = ITEMS.register("xiangyuzhiyuan", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> GENESIS_CRYSTAL = ITEMS.register("genesis_crystal", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> PRIMO_GEM = ITEMS.register("primo_gem", () -> new Item(ITEM_PROPERTIES));
+
+    public static final List<WeightCategory> categoryListIntertwined = new ArrayList<>();
+    public static final List<WeightCategory> categoryListAcquaint = new ArrayList<>();
+    public static final RegistryObject<Item> INTERTWINED_FATE = ITEMS.register("intertwined_fate", () -> new RewardBag(ITEM_PROPERTIES, categoryListIntertwined));
+    public static final RegistryObject<Item> ACQUAINT_FATE = ITEMS.register("acquaint_fate", () -> new RewardBag(ITEM_PROPERTIES, categoryListAcquaint));
 
     /**
      * stacksTo 32
@@ -87,7 +90,7 @@ public class ModItems
     public static final RegistryObject<Item> COCK_TAIL = ITEMS.register("cock_tail", () -> new Cocktail(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> LEN_SMELT = ITEMS.register("len_smelt", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSmelt(), vazkii.botania.common.item.lens.ItemLens.PROP_TOUCH));
     public static final RegistryObject<Item> LEN_POTION = ITEMS.register("len_potion", () -> new LenPotionBase(ITEM_PROPERTIES.stacksTo(1), new LenPotion(), vazkii.botania.common.item.lens.ItemLens.PROP_INTERACTION));
-    public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenMana(10000), ItemLens.PROP_ORIENTATION));
+    public static final RegistryObject<Item> LEN_MANA = ITEMS.register("len_mana", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenMana(6400), ItemLens.PROP_ORIENTATION));
     public static final RegistryObject<Item> LEN_TRACE = ITEMS.register("len_trace", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenTrace(), ItemLens.PROP_ORIENTATION));
     public static final RegistryObject<Item> LEN_SUPERCONDUCTOR = ITEMS.register("len_superconductor", () -> new ItemLens(ITEM_PROPERTIES.stacksTo(1), new LenSuperConductor(), ItemLens.PROP_DAMAGE));
     /**
@@ -122,6 +125,8 @@ public class ModItems
      * for some reason, if they are assigned before,
      * items behind will be with nbt "damage" ,and can not stack.
      */
+    public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = ITEMS.register("livingwood_crossbow", () -> new LivingWoodCrossBow(ITEM_PROPERTIES));
+
     public static final RegistryObject<Item> ROD_OF_DISCORD = ITEMS.register("rodofdiscord", () -> new RodOfDiscord(ITEM_PROPERTIES.stacksTo(1)));
     public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = ITEMS.register("shadowwarrior_helm", () -> new ShadowWarriorArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
     public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = ITEMS.register("shadowwarrior_chest", () -> new ShadowWarriorArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
@@ -150,6 +155,7 @@ public class ModItems
     public static final RegistryObject<Item> FIRST_FRACTAL = ITEMS.register("firstfractal", () -> new InfluxWaver(ITEM_PROPERTIES));
     public static final RegistryObject<Item> BUDDHISTRELICS = ITEMS.register("buddhistrelics", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> CAMERA = ITEMS.register("camera", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FAILNAUGHT = ITEMS.register("failnaught", () -> new Failnaught(ITEM_PROPERTIES));
 
     public static final TagKey<Item> CORAL_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "coral_item"));
 
@@ -160,6 +166,7 @@ public class ModItems
         r.accept(GrenadeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "grenade_bind"));
         r.accept(DupeRuneRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "rune_dupe"));
         r.accept(GoldClothRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "gold_cloth_unbind"));
+        r.accept(PrimoGemRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "primo_gem_buy_fate"));
         //just place it here lol
         registerRewardBag();
     }
@@ -195,6 +202,13 @@ public class ModItems
         categoryListD.add(new WeightCategory(new ItemStack(vazkii.botania.common.item.ModItems.overgrowthSeed, 1), 12));
 
         categoryListD.add(new WeightCategory(new ItemStack(BUDDHISTRELICS.get()), 1));
+
+
+        categoryListIntertwined.add(new WeightCategory(new ItemStack(ModItems.REWARD_BAG_C.get(),2),1));
+        categoryListIntertwined.add(new WeightCategory(new ItemStack(ModItems.REWARD_BAG_D.get(),2),1));
+
+        categoryListAcquaint.add(new WeightCategory(new ItemStack(ModItems.REWARD_BAG_A.get(),4),2));
+        categoryListAcquaint.add(new WeightCategory(new ItemStack(ModItems.REWARD_BAG_B.get(),3),1));
     }
 
     public static DeferredRegister<Item> GetItems()

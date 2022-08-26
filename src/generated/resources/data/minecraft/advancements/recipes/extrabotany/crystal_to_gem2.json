@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:crystal_to_gem2"
+    ]
+  },
+  "criteria": {
+    "genesis_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:genesis_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:crystal_to_gem2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "genesis_crystal",
+      "has_the_recipe"
+    ]
+  ]
+}

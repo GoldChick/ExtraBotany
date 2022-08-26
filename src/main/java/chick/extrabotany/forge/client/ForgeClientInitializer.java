@@ -1,6 +1,7 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
@@ -12,6 +13,7 @@ import chick.extrabotany.forge.client.model.LayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -56,11 +58,10 @@ public class ForgeClientInitializer
         //projectile model
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelRegister);
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelBake);
+        ModItemProperties.init((item, id, prop) -> ItemProperties.register(item.asItem(), id, prop));
         // Anything that touches vanilla registries needs to happen during *a* registry event
         // So just use a random one
-        bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> {
-            ModLootModifiers.init();
-        });
+        bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
 
         var forgebus = MinecraftForge.EVENT_BUS;
         forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
@@ -80,6 +81,8 @@ public class ForgeClientInitializer
     {
         ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
+
+
     }
 
     /**
@@ -135,8 +138,10 @@ public class ForgeClientInitializer
             ModItems.TRUE_TERRA_BLADE.get(), TrueTerraBlade::makeRelic,
             ModItems.TRUE_SHADOW_KATANA.get(), TrueShadowKatana::makeRelic,
             ModItems.TRUE_THUNSTAR_CALLER.get(), TrueThunStarCaller::makeRelic,
-            ModItems.INFLUX_WAVER.get(), InfluxWaver::makeRelic
+            ModItems.INFLUX_WAVER.get(), InfluxWaver::makeRelic,
+            ModItems.FAILNAUGHT.get(), Failnaught::makeRelic
     ));
+
     private static void attachItemCaps(AttachCapabilitiesEvent<ItemStack> e)
     {
         var stack = e.getObject();
@@ -148,8 +153,9 @@ public class ForgeClientInitializer
         }
 
         var makeRelic = RELIC.get().get(stack.getItem());
-        if (makeRelic != null) {
-            e.addCapability(new ResourceLocation(ExtraBotany.MODID,"relic"),
+        if (makeRelic != null)
+        {
+            e.addCapability(new ResourceLocation(ExtraBotany.MODID, "relic"),
                     CapabilityUtil.makeProvider(BotaniaForgeCapabilities.RELIC, makeRelic.apply(stack)));
         }
     }

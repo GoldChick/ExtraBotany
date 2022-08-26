@@ -74,6 +74,7 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.TRUE_THUNSTAR_CALLER.get())
                 .add(ModItems.INFLUX_WAVER.get())
                 .add(ModItems.FIRST_FRACTAL.get())
+                .add(ModItems.FAILNAUGHT.get())
 
                 .add(ModItems.SHADOW_WARRIOR_HELM.get())
                 .add(ModItems.SHADOW_WARRIOR_CHEST.get())

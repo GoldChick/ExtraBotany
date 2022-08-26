@@ -8,8 +8,10 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.common.lib.ModTags;
+import vazkii.botania.data.recipes.WrapperResult;
 
 import java.util.function.Consumer;
 
@@ -29,19 +31,33 @@ public class ModCraftingTableRecipes extends RecipeProvider
         return "extrabotany craftingTable recipes";
     }
 
+    protected void buildSpecialCraftingRecipes(Consumer<FinishedRecipe> consumer)
+    {
+        SpecialRecipeBuilder.special(CocktailRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "cocktail_upgrade_craft");
+        SpecialRecipeBuilder.special(LenPotionRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "len_potion_bind_craft");
+        SpecialRecipeBuilder.special(GrenadeRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "grenade_bind_craft");
+        SpecialRecipeBuilder.special(DupeRuneRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "rune_dupe_craft");
+        SpecialRecipeBuilder.special(GoldClothRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "gold_cloth_craft");
+        SpecialRecipeBuilder.special(PrimoGemRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "primo_gem_buy_fate_craft");
+
+        ShapelessRecipeBuilder.shapeless(vazkii.botania.common.item.ModItems.runeFire, 2)
+                .requires(ModItems.ELEMENT_RUNE.get())
+                .requires(vazkii.botania.common.item.ModItems.runeFire)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ELEMENT_RUNE.get()))
+                .save(consumer, "rune_dupe_example");
+    }
+
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        SpecialRecipeBuilder.special(CocktailRecipe.SERIALIZER)
-                .save(consumer, "cocktail_upgrade_craft");
-        SpecialRecipeBuilder.special(LenPotionRecipe.SERIALIZER)
-                .save(consumer, "len_potion_bind_craft");
-        SpecialRecipeBuilder.special(GrenadeRecipe.SERIALIZER)
-                .save(consumer, "grenade_bind_craft");
-        SpecialRecipeBuilder.special(DupeRuneRecipe.SERIALIZER)
-                .save(consumer, "rune_dupe_craft");
-        SpecialRecipeBuilder.special(GoldClothRecipe.SERIALIZER)
-                .save(consumer, "gold_cloth_craft");
+        buildSpecialCraftingRecipes(consumer);
 
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
@@ -202,6 +218,78 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("life_essence", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
                 .save(consumer, "universal_petal");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 32)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', vazkii.botania.common.item.ModItems.lifeEssence)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem1");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 24)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', Tags.Items.GEMS_AMETHYST)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem2");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 3)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', ModTags.Items.INGOTS_MANASTEEL)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem3");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 27)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', ModTags.Items.BLOCKS_MANASTEEL)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem4");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 48)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', ModTags.Items.GEMS_MANA_DIAMOND)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem5");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 480)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', vazkii.botania.common.block.ModBlocks.manaDiamondBlock)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem6");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 460)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem7");
+        ShapedRecipeBuilder.shaped(ModItems.PRIMO_GEM.get(), 114)
+                .pattern("aaa")
+                .pattern("axa")
+                .pattern("aaa")
+                .define('x', ModItems.GENESIS_CRYSTAL.get())
+                .define('a', Tags.Items.STORAGE_BLOCKS_AMETHYST)
+                .group(MODID)
+                .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
+                .save(consumer, "crystal_to_gem8");
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -240,6 +328,13 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
                 .save(consumer, "len_trace");
+        ShapelessRecipeBuilder.shapeless(ModItems.LEN_MANA.get())
+                .requires(vazkii.botania.common.item.ModItems.lensNormal)
+                .requires(vazkii.botania.common.item.ModItems.runeMana)
+                .requires(vazkii.botania.common.item.ModItems.manaPowder)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
+                .save(consumer, "len_mana");
         ShapelessRecipeBuilder.shapeless(ModItems.TICKET.get())
                 .requires(vazkii.botania.common.item.ModItems.gaiaIngot)
                 .requires(ModItems.THE_CHAOS.get())
@@ -277,7 +372,18 @@ public class ModCraftingTableRecipes extends RecipeProvider
 
     private void weaponRecipes(Consumer<FinishedRecipe> consumer)
     {
-        ShapedRecipeBuilder.shaped(ModItems.SHADOW_KATANA.get())
+        ShapedRecipeBuilder.shaped(ModItems.LIVINGWOOD_CROSSBOW.get())
+                .pattern("xdx")
+                .pattern("aba")
+                .pattern(" x ")
+                .define('x', vazkii.botania.common.item.ModItems.livingwoodTwig)
+                .define('d', vazkii.botania.common.item.ModItems.manaSteel)
+                .define('a', vazkii.botania.common.item.ModItems.manaString)
+                .define('b', Items.TRIPWIRE_HOOK)
+                .group(MODID)
+                .unlockedBy("manasteel", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaSteel))
+                .save(consumer, "livingwood_crossbow");
+      ShapedRecipeBuilder.shaped(ModItems.SHADOW_KATANA.get())
                 .pattern("x  ")
                 .pattern("x  ")
                 .pattern("#  ")

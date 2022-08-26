@@ -48,7 +48,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.LEN_TRACE.get().getDescriptionId() + ".short", "追踪");
         add(ModItems.LEN_MANA.get(), "魔力透镜：魔力");
         add(ModItems.LEN_MANA.get().getDescriptionId() + ".short", "魔力");
-        add(ModItems.LEN_SUPERCONDUCTOR.get(), "Mana Lens: 魔力透镜：超导");
+        add(ModItems.LEN_SUPERCONDUCTOR.get(), "魔力透镜：超导");
         add(ModItems.LEN_SUPERCONDUCTOR.get().getDescriptionId() + ".short", "超导");
 
         add(ModItems.TREASURE_BOX.get(), "潘多拉魔盒");
@@ -59,6 +59,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.UNIVERSAL_PETAL.get(), "彩虹花瓣");
         add(ModItems.ELEMENT_RUNE.get(), "元灵符文");
         add(ModItems.SIN_RUNE.get(), "大罪符文");
+
+        add(ModItems.GENESIS_CRYSTAL.get(), "创世结晶");
+        add(ModItems.PRIMO_GEM.get(), "原石");
+        add(ModItems.ACQUAINT_FATE.get(), "相遇之缘");
+        add(ModItems.INTERTWINED_FATE.get(), "纠缠之缘");
 
         add(ModItems.FOX_EAR.get(), "樱樱耳");
         add(ModItems.FOX_MASK.get(), "附有记忆的面具");
@@ -85,6 +90,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
 
         add(ModItems.SHADOW_KATANA.get(), "影刃");
+        add(ModItems.LIVINGWOOD_CROSSBOW.get(), "活木弩");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
         add(ModItems.TRUE_TERRA_BLADE.get(), "真·泰拉之刃");
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "真·星雷者");
@@ -361,11 +367,18 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.aerialite4", "银翼护卫胸甲");
         add("extrabotany.page.aerialite5", "银翼护卫护腿");
         add("extrabotany.page.aerialite6", "银翼护卫靴子");
-        add("extrabotany.entry.life_essence", "盖亚之魂研究");
-        add("extrabotany.page.life_essence0", "在一些材料中混入$(item)盖亚之魂$(0)可以让他们不分彼此。不过，这可能会导致合成冲突。");
-        add("extrabotany.page.life_essence1", "可以代替所有花瓣的彩虹花瓣");
-        add("extrabotany.page.life_essence2", "可以代替合成所需八种符文的元灵符文");
-        add("extrabotany.page.life_essence3", "可以代替合成所需八种符文的大罪符文");
+        add("extrabotany.entry.life_essence", "盖亚之魂材料");
+        add("extrabotany.page.life_essence0", "在一些材料中混入$(item)盖亚之魂$(0)可以让他们不分彼此。比如，$(item)彩虹花瓣$(0)可以直接代替其他花瓣参加合成；$(item)元灵符文$(0)、$(item)大罪符文$(0)可以通过和其他符文合成的方式转变为其他符文。不过，这可能会导致合成冲突。");
+        add("extrabotany.page.life_essence1", "One For All");
+        add("extrabotany.page.life_essence2", "两种符文和合成所需的八种符文中的任意一个合成，可以得到两个该符文。");
+        add("extrabotany.entry.genesis_crystal", "创世结晶");
+        add("extrabotany.page.genesis_crystal0", "借助大量本我的掉落物，可以从异空间内获得一些有用的物品。");
+        add("extrabotany.page.genesis_crystal1", "使用创世结晶获取原石。");
+        add("extrabotany.page.genesis_crystal2", "合成纠缠之缘。");
+        add("extrabotany.page.genesis_crystal3", "合成相遇之缘。");
+        add("extrabotany.entry.livingwood_crossbow", "活木弩");
+        add("extrabotany.page.livingwood_crossbow0", "仿照活木弓的方式，可以用$(item)活木$(0)、$(item)魔力钢锭$(0)和$(item)蕴魔丝线(0)制造更加耐用的活木弩。此外，它也可以用魔力修复。");
+        add("extrabotany.page.livingwood_crossbow1", "它能把飞机打下来么？");
 
         add("extrabotany.entry.true_swords", "真·剑");
         add("extrabotany.page.true_swords0", "经过研究，$(item)盖亚之魂$(0)和其他材料能够解放你所拥有的一些武器的真正力量。因此，这些武器在盖亚的手中也将更加强大。");

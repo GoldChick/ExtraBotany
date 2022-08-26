@@ -26,12 +26,10 @@ public class LenPotion extends Lens
     {
         var entity = burst.entity();
 
-        AABB axis = new AABB(entity.getX(), entity.getY(), entity.getZ(), entity.xOld, entity.yOld, entity.zOld);
-        //.grow(1);
+        AABB axis = new AABB(entity.getX(), entity.getY(), entity.getZ(), entity.xOld, entity.yOld, entity.zOld).inflate(1);
         List<LivingEntity> entities = entity.level.getEntitiesOfClass(LivingEntity.class, axis);
-        if (stack.getItem() instanceof LenPotionBase)
+        if (stack.getItem() instanceof LenPotionBase lens)
         {
-            LenPotionBase lens = (LenPotionBase) stack.getItem();
             Brew brew = lens.getBrew(stack);
             for (LivingEntity living : entities)
             {

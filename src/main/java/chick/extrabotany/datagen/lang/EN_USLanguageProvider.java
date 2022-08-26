@@ -60,6 +60,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.UNIVERSAL_PETAL.get(), "Universal Petal");
         add(ModItems.ELEMENT_RUNE.get(), "Rune of Element");
         add(ModItems.SIN_RUNE.get(), "Rune of Sin");
+        add(ModItems.GENESIS_CRYSTAL.get(), "Genesis Crystal");
+        add(ModItems.PRIMO_GEM.get(), "Primogem");
+        add(ModItems.ACQUAINT_FATE.get(), "Acquaint Fate");
+        add(ModItems.INTERTWINED_FATE.get(), "Intertwined Fate");
 
         add(ModItems.FOX_EAR.get(), "Fox Ear");
         add(ModItems.FOX_MASK.get(), "Mask with Memory");
@@ -86,6 +90,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
+        add(ModItems.LIVINGWOOD_CROSSBOW.get(), "Livingwood Crossbow");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
         add(ModItems.TRUE_TERRA_BLADE.get(), "True Terra Blade");
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "True Thunstar Caller");
@@ -362,6 +367,18 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.aerialite4", "Shooting Guardian Chestplate");
         add("extrabotany.page.aerialite5", "Shooting Guardian Leggings");
         add("extrabotany.page.aerialite6", "Shooting Guardian Boots");
+        add("extrabotany.entry.life_essence", "Gaia Spirit Materials");
+        add("extrabotany.page.life_essence0", "Mixing $(item)Gaia Spirit(0) in some materials can make them indistinguishable from each other. For example, $(item)Universal Petal$(0) can directly replace other petals in crafting. $(item)Rune of Element(0) and $(item)Rune of Sin(0) can be transformed into other runes. However, this sometimes leads to crafting conflicts.");
+        add("extrabotany.page.life_essence1", "One For All");
+        add("extrabotany.page.life_essence2", "When crafts with any one of the 8 kinds of runes required for crafting itself, you will obtain two base runes.");
+        add("extrabotany.entry.genesis_crystal", "Genesis Crystal");
+        add("extrabotany.page.genesis_crystal0", "You can obtain some useful items from unknown space with the help of a large number of EGO drops.");
+        add("extrabotany.page.genesis_crystal1", "Craft Primo Gem.");
+        add("extrabotany.page.genesis_crystal2", "Craft Intertwined Fate.");
+        add("extrabotany.page.genesis_crystal3", "Craft Acquaint Fate.");
+        add("extrabotany.entry.livingwood_crossbow", "Livingwood Crossbow");
+        add("extrabotany.page.livingwood_crossbow0", "Similar to how Livingwood Bow was created, $(item)Livingwood$(0), $(item)Mana Steel$(0) and $(item)Mana String$(0) can be used to craft sturdier %(item)Livingwood Crossbow$(0). It will also repair itself using $(thing)Mana$(0).");
+        add("extrabotany.page.livingwood_crossbow1", "Does it shoot airplanes?");
 
         add("extrabotany.entry.true_swords", "True Swords");
         add("extrabotany.page.true_swords0", "$(item)Gaia Spirit$(0) and other materials can unleash the true power of some of the weapons you have. These weapons will also be more powerful in Gaia's hands.");
@@ -370,6 +387,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.true_shadow_katana", "An upgrade to $(item)Shadow Katana$(0). It could summon two projection that automatically trace enemies.");
         add("extrabotany.page.influx_waver", "Its projectile will constantly attack the first entity it contacts..");
 
+        add("extrabotany.page.title.example", "An Example");
         pantchouliFlower();
     }
 

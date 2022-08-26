@@ -3,6 +3,7 @@ package chick.extrabotany.forge.client.render;
 import chick.extrabotany.common.ModItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
@@ -29,8 +30,7 @@ public final class ColorHandler
 
     public static void submitItems(ItemHandlerConsumer items)
     {
-        //items.register((s, t) -> t == 0 ? Mth.hsvToRgb(ClientTickHandler.ticksInGame * 2 % 360 / 360F, 0.25F, 1F) : -1,
-        //        ModItems.lifeEssence, ModItems.gaiaIngot);
+        items.register((s, t) -> t == 0 ? Mth.hsvToRgb(ClientTickHandler.ticksInGame * 2 % 360 / 360F, 0.25F, 1F) : -1, ModItems.UNIVERSAL_PETAL.get());
 
         items.register((s, t) ->
         {

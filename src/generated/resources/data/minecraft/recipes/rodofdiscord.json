@@ -14,10 +14,10 @@
       "item": "botania:pixie_dust"
     },
     "g": {
-      "item": "extrabotany:thechaos"
+      "item": "extrabotany:the_chaos"
     }
   },
   "result": {
-    "item": "extrabotany:rodofdiscord"
+    "item": "extrabotany:rod_of_discord"
   }
 }

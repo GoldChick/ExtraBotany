@@ -1,0 +1,83 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:goblinslayer_chest",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:armorsetshootingguardian.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:armorsetshootingguardian.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "shootingguardian1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:goblinslayer_helm"
+            ]
+          }
+        ]
+      }
+    },
+    "shootingguardian2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:goblinslayer_chest"
+            ]
+          }
+        ]
+      }
+    },
+    "shootingguardian3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:goblinslayer_legs"
+            ]
+          }
+        ]
+      }
+    },
+    "shootingguardian4": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:goblinslayer_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shootingguardian1"
+    ],
+    [
+      "shootingguardian2"
+    ],
+    [
+      "shootingguardian3"
+    ],
+    [
+      "shootingguardian4"
+    ]
+  ]
+}

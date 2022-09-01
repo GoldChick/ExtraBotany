@@ -1,8 +1,8 @@
 package chick.extrabotany.common.tools.weapons;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.entities.projectile.EntityTrueShadowKatanaProjectile;
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.entities.projectile.relic_projectile.EntityTrueShadowKatanaProjectile;
+import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

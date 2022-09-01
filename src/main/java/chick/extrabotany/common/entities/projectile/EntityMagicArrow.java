@@ -1,7 +1,7 @@
 package chick.extrabotany.common.entities.projectile;
 
 import chick.extrabotany.common.ModEntities;
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -28,8 +28,6 @@ public class EntityMagicArrow extends ThrowableProjectile
     private static final EntityDataAccessor<Integer> DAMAGE = SynchedEntityData.defineId(EntityMagicArrow.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> LIFE = SynchedEntityData.defineId(EntityMagicArrow.class, EntityDataSerializers.INT);
 
-    private LivingEntity thrower;
-
     public EntityMagicArrow(EntityType<? extends EntityMagicArrow> type, Level level)
     {
         super(type, level);
@@ -38,7 +36,7 @@ public class EntityMagicArrow extends ThrowableProjectile
     public EntityMagicArrow(Level level, LivingEntity thrower)
     {
         this(ModEntities.MAGIC_ARROW, level);
-        this.thrower = thrower;
+        setOwner(thrower);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class EntityMagicArrow extends ThrowableProjectile
     {
         super.tick();
 
-        if (!level.isClientSide && (thrower == null || !(thrower instanceof Player) || thrower.isRemoved()))
+        if (!level.isClientSide && (getOwner() == null || !(getOwner() instanceof Player) || getOwner().isRemoved()))
         {
             discard();
             return;
@@ -66,7 +64,7 @@ public class EntityMagicArrow extends ThrowableProjectile
             ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
 
-        Player player = (Player) thrower;
+        Player player = (Player) getOwner();
         if (!level.isClientSide)
         {
             AABB axis = new AABB(getX() - 2F, getY() - 2F, getZ() - 2F, xOld + 2F, yOld + 2F, zOld + 2F);

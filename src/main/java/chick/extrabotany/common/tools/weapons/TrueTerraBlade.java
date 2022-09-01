@@ -1,7 +1,7 @@
 package chick.extrabotany.common.tools.weapons;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.entities.projectile.EntityTrueTerraBladeProjectile;
+import chick.extrabotany.common.entities.projectile.relic_projectile.EntityTrueTerraBladeProjectile;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

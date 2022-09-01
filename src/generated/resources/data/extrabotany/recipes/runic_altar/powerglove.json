@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:powerglove"
+    "item": "extrabotany:power_glove"
   },
   "mana": 3200,
   "ingredients": [

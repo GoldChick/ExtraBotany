@@ -24,49 +24,58 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FloatingFlowerModelProvider implements DataProvider {
-	private final DataGenerator generator;
+public class FloatingFlowerModelProvider implements DataProvider
+{
+    private final DataGenerator generator;
 
-	public FloatingFlowerModelProvider(DataGenerator generator) {
-		this.generator = generator;
-	}
+    public FloatingFlowerModelProvider(DataGenerator generator)
+    {
+        this.generator = generator;
+    }
 
-	@Override
-	public void run(HashCache cache) throws IOException {
-		List<Tuple<String, JsonElement>> jsons = new ArrayList<>();
-		for (Block b : Registry.BLOCK) {
-			ResourceLocation id = Registry.BLOCK.getKey(b);
-			if (ExtraBotany.MODID.equals(id.getNamespace()) && b instanceof BlockFloatingFlower) {
-				String name = id.getPath();
-				String nonFloat;
-				if (name.endsWith("_floating_flower")) {
-					nonFloat = name.replace("_floating_flower", "_mystical_flower");
-				} else {
-					nonFloat = name.replace("floating_", "");
-				}
+    @Override
+    public void run(HashCache cache) throws IOException
+    {
+        List<Tuple<String, JsonElement>> jsons = new ArrayList<>();
+        for (Block b : Registry.BLOCK)
+        {
+            ResourceLocation id = Registry.BLOCK.getKey(b);
+            if (ExtraBotany.MODID.equals(id.getNamespace()) && b instanceof BlockFloatingFlower)
+            {
+                String name = id.getPath();
+                String nonFloat;
+                if (name.endsWith("_floating_flower"))
+                {
+                    nonFloat = name.replace("_floating_flower", "_mystical_flower");
+                } else
+                {
+                    nonFloat = name.replace("floating_", "");
+                }
 
-				JsonObject obj = new JsonObject();
-				obj.addProperty("parent", "minecraft:block/block");
-				obj.addProperty("loader", IClientXplatAbstractions.FLOATING_FLOWER_MODEL_LOADER_ID.toString());
-				JsonObject flower = new JsonObject();
-				flower.addProperty("parent", "extrabotany:" + "block/" + nonFloat);
-				obj.add("flower", flower);
-				jsons.add(new Tuple<>(name, obj));
-			}
-		}
+                JsonObject obj = new JsonObject();
+                obj.addProperty("parent", "minecraft:block/block");
+                obj.addProperty("loader", IClientXplatAbstractions.FLOATING_FLOWER_MODEL_LOADER_ID.toString());
+                JsonObject flower = new JsonObject();
+                flower.addProperty("parent", "extrabotany:" + "block/" + nonFloat);
+                obj.add("flower", flower);
+                jsons.add(new Tuple<>(name, obj));
+            }
+        }
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		for (Tuple<String, JsonElement> pair : jsons) {
-			Path blockPath = generator.getOutputFolder().resolve("assets/" + ExtraBotany.MODID + "/models/block/" + pair.getA() + ".json");
-			Path itemPath = generator.getOutputFolder().resolve("assets/" + ExtraBotany.MODID + "/models/item/" + pair.getA() + ".json");
-			DataProvider.save(gson, cache, pair.getB(), blockPath);
-			DataProvider.save(gson, cache, pair.getB(), itemPath);
-		}
-	}
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        for (Tuple<String, JsonElement> pair : jsons)
+        {
+            Path blockPath = generator.getOutputFolder().resolve("assets/" + ExtraBotany.MODID + "/models/block/" + pair.getA() + ".json");
+            Path itemPath = generator.getOutputFolder().resolve("assets/" + ExtraBotany.MODID + "/models/item/" + pair.getA() + ".json");
+            DataProvider.save(gson, cache, pair.getB(), blockPath);
+            DataProvider.save(gson, cache, pair.getB(), itemPath);
+        }
+    }
 
-	@Nonnull
-	@Override
-	public String getName() {
-		return "Botania floating flower models";
-	}
+    @Nonnull
+    @Override
+    public String getName()
+    {
+        return "Botania floating flower models";
+    }
 }

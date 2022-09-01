@@ -1,9 +1,8 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
+import chick.extrabotany.common.blocks.DimensionCatalyst;
+import chick.extrabotany.common.libs.LibBlockNames;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -26,18 +25,18 @@ public class ModBlocks
 
     //test blocks
 
-    public static final RegistryObject<Block> DIMENSION_CATALYST = BLOCKS.register("dimension_catalyst", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
+    public static final RegistryObject<Block> DIMENSION_CATALYST = BLOCKS.register(LibBlockNames.DIMENSION_CATALYST, () -> new DimensionCatalyst(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
     public static final RegistryObject<Item> DIMENSION_CATALYST_ITEM = fromBlock(DIMENSION_CATALYST);
 
     //public static final TagKey<Block> _YLG_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
     //public static final TagKey<Item> _YLG_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
 
-    public static DeferredRegister<Item> GetItems()
+    public static DeferredRegister<Item> getItems()
     {
         return ITEMS;
     }
 
-    public static DeferredRegister<Block> GetBlocks()
+    public static DeferredRegister<Block> getBlocks()
     {
         return BLOCKS;
     }

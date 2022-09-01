@@ -14,5 +14,13 @@
         "stream": true
       }
     ]
+  },
+  "sound.chouka": {
+    "sounds": [
+      {
+        "name": "extrabotany:sound/chouka",
+        "stream": true
+      }
+    ]
   }
 }

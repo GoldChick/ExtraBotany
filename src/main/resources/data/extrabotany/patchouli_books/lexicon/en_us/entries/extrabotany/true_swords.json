@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.true_swords",
   "category": "extrabotany:extrabotany",
-  "icon": "extrabotany:trueterrablade",
+  "icon": "extrabotany:true_terra_blade",
   "entry_color": "aa00aa",
   "advancement": "botania:main/gaia_guardian_kill",
   "pages": [

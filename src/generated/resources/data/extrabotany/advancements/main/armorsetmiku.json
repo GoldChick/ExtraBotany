@@ -1,0 +1,83 @@
+{
+  "parent": "extrabotany:main/nightmarefuel_eat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:miku_chest",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:armorsetmiku.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:armorsetmiku.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "miku1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:miku_helm"
+            ]
+          }
+        ]
+      }
+    },
+    "miku2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:miku_chest"
+            ]
+          }
+        ]
+      }
+    },
+    "miku3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:miku_legs"
+            ]
+          }
+        ]
+      }
+    },
+    "miku4": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:miku_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "miku1"
+    ],
+    [
+      "miku2"
+    ],
+    [
+      "miku3"
+    ],
+    [
+      "miku4"
+    ]
+  ]
+}

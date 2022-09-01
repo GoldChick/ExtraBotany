@@ -14,7 +14,7 @@
       "item": "botania:terra_sword"
     },
     "a": {
-      "item": "extrabotany:theorigin"
+      "item": "extrabotany:the_origin"
     },
     "b": {
       "item": "botania:terrasteel_ingot"
@@ -24,6 +24,6 @@
     }
   },
   "result": {
-    "item": "extrabotany:trueterrablade"
+    "item": "extrabotany:true_terra_blade"
   }
 }

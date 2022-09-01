@@ -3,6 +3,7 @@ package chick.extrabotany.datagen;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.FrameType;
@@ -62,26 +63,26 @@ public class ModAdvancementProvider extends AdvancementProvider
         Advancement root = Advancement.Builder.advancement()
                 .display(rootDisplay(ModItems.PYLON.get(), "advancement.extrabotany:root.title",
                         "advancement.extrabotany:root.desc", prefix("textures/block/dimension_catalyst.png")))
-                .addCriterion("nightmare", onPickup(ModItems.NIGHTMAREFUEL_PROP.get()))
-                .save(consumer, mainId("root"));
+                .addCriterion("nightmare", onPickup(ModItems.NIGHTMARE_FUEL.get()))
+                .save(consumer, mainId(LibAdvancementNames.ROOT));
 
         Advancement nightmarefuel_eat = Advancement.Builder.advancement()
-                .display(simple(ModItems.NIGHTMAREFUEL_PROP.get(), "nightmarefuel_eat", FrameType.TASK))
+                .display(simple(ModItems.NIGHTMARE_FUEL.get(), LibAdvancementNames.NIGHTMARE_FUEL_EAT, FrameType.TASK))
                 .parent(root)
-                .addCriterion("nightmare", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.NIGHTMAREFUEL_PROP.get()))
-                .save(consumer, mainId("nightmarefuel_eat"));
+                .addCriterion("nightmare", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.NIGHTMARE_FUEL.get()))
+                .save(consumer, mainId(LibAdvancementNames.NIGHTMARE_FUEL_EAT));
 
         Advancement thechaos_craft = Advancement.Builder.advancement()
-                .display(simple(ModItems.THE_CHAOS.get(), "thechaos_craft", FrameType.TASK))
+                .display(simple(ModItems.THE_CHAOS.get(), LibAdvancementNames.THE_CHAOS_CRAFT, FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("pickup", onPickup(ModItems.THE_CHAOS.get()))
-                .save(consumer, mainId("thechaos_craft"));
+                .save(consumer, mainId(LibAdvancementNames.THE_CHAOS_CRAFT));
 
         Advancement ego_defeat = Advancement.Builder.advancement()
-                .display(simple(ModItems.HERO_MEDAL.get(), "ego_defeat", FrameType.TASK))
+                .display(simple(ModItems.HERO_MEDAL.get(), LibAdvancementNames.EGO_DEFEAT, FrameType.TASK))
                 .parent(thechaos_craft)
                 .addCriterion("ego", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(ModEntities.EGO)))
-                .save(consumer, mainId("ego_defeat"));
+                .save(consumer, mainId(LibAdvancementNames.EGO_DEFEAT));
 
 /*
         Advancement runePickup = Advancement.Builder.advancement()
@@ -106,37 +107,82 @@ public class ModAdvancementProvider extends AdvancementProvider
 */
         //parent: nightmarefuel
         Advancement.Builder.advancement()
-                .display(simple(ModItems.MANA_READER.get(), "manareader_craft", FrameType.TASK))
+                .display(simple(ModItems.MANA_READER.get(), LibAdvancementNames.MANA_READER_CRAFT, FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("manareader", onPickup(ModItems.MANA_READER.get()))
-                .save(consumer, mainId("manareader_craft"));
+                .save(consumer, mainId(LibAdvancementNames.MANA_READER_CRAFT));
         Advancement.Builder.advancement()
-                .display(simple(ModItems.SPIRIT_PROP.get(), "spiritfragment_craft", FrameType.TASK))
+                .display(simple(ModItems.SPIRIT_FRAG.get(), LibAdvancementNames.SPIRIT_FRAG, FrameType.TASK))
                 .parent(nightmarefuel_eat)
-                .addCriterion("spirit", onPickup(ModItems.SPIRIT_PROP.get()))
-                .save(consumer, mainId("spiritfragment_craft"));
+                .addCriterion("spirit", onPickup(ModItems.SPIRIT_FRAG.get()))
+                .save(consumer, mainId(LibAdvancementNames.SPIRIT_FRAG));
         Advancement.Builder.advancement()
-                .display(simple(ModItems.SHADOW_WARRIOR_CHEST.get(), "armorsetshadowwarrior", FrameType.TASK))
+                .display(simple(ModItems.SHADOW_WARRIOR_CHEST.get(), LibAdvancementNames.SHADOW_WARRIOR, FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("shadow_warrior1", onPickup(ModItems.SHADOW_WARRIOR_HELM.get()))
                 .addCriterion("shadow_warrior2", onPickup(ModItems.SHADOW_WARRIOR_CHEST.get()))
                 .addCriterion("shadow_warrior3", onPickup(ModItems.SHADOW_WARRIOR_LEGS.get()))
                 .addCriterion("shadow_warrior4", onPickup(ModItems.SHADOW_WARRIOR_BOOTS.get()))
-                .save(consumer, mainId("armorsetshadowwarrior"));
+                .save(consumer, mainId(LibAdvancementNames.SHADOW_WARRIOR));
         Advancement.Builder.advancement()
-                .display(simple(ModItems.GOBLINSLAYER_CHEST.get(), "armorsetgoblinslayer", FrameType.TASK))
+                .display(simple(ModItems.GOBLINSLAYER_CHEST.get(), LibAdvancementNames.GOBLIN_SLAYER, FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("goblin_slayer1", onPickup(ModItems.GOBLINSLAYER_HELM.get()))
                 .addCriterion("goblin_slayer2", onPickup(ModItems.GOBLINSLAYER_CHEST.get()))
                 .addCriterion("goblin_slayer3", onPickup(ModItems.GOBLINSLAYER_LEGS.get()))
                 .addCriterion("goblin_slayer4", onPickup(ModItems.GOBLINSLAYER_BOOTS.get()))
-                .save(consumer, mainId("armorsetgoblinslayer"));
+                .save(consumer, mainId(LibAdvancementNames.GOBLIN_SLAYER));
+         Advancement.Builder.advancement()
+                .display(simple(ModItems.MIKU_CHEST.get(), LibAdvancementNames.MIKU, FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("miku1", onPickup(ModItems.MIKU_HELM.get()))
+                .addCriterion("miku2", onPickup(ModItems.MIKU_CHEST.get()))
+                .addCriterion("miku3", onPickup(ModItems.MIKU_LEGS.get()))
+                .addCriterion("miku4", onPickup(ModItems.MIKU_BOOTS.get()))
+                .save(consumer, mainId(LibAdvancementNames.MIKU));
+         Advancement.Builder.advancement()
+                .display(simple(ModItems.MAID_CHEST.get(), LibAdvancementNames.MAID, FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("maid1", onPickup(ModItems.MAID_HELM.get()))
+                .addCriterion("maid2", onPickup(ModItems.MAID_CHEST.get()))
+                .addCriterion("maid3", onPickup(ModItems.MAID_LEGS.get()))
+                .addCriterion("maid4", onPickup(ModItems.MAID_BOOTS.get()))
+                .save(consumer, mainId(LibAdvancementNames.MAID));
+         Advancement.Builder.advancement()
+                .display(simple(ModItems.GOBLINSLAYER_CHEST.get(), LibAdvancementNames.SHOOTING_GUARDIAN, FrameType.TASK))
+                .parent(nightmarefuel_eat)
+                .addCriterion("shootingguardian1", onPickup(ModItems.GOBLINSLAYER_HELM.get()))
+                .addCriterion("shootingguardian2", onPickup(ModItems.GOBLINSLAYER_CHEST.get()))
+                .addCriterion("shootingguardian3", onPickup(ModItems.GOBLINSLAYER_LEGS.get()))
+                .addCriterion("shootingguardian4", onPickup(ModItems.GOBLINSLAYER_BOOTS.get()))
+                .save(consumer, mainId(LibAdvancementNames.SHOOTING_GUARDIAN));
         //parent: thechaos
         Advancement.Builder.advancement()
-                .display(simple(ModItems.ROD_OF_DISCORD.get(), "rodofdiscord_craft2", FrameType.TASK))
+                .display(simple(ModItems.ROD_OF_DISCORD.get(), LibAdvancementNames.ROD_OF_DISCORD_CRAFT, FrameType.TASK))
                 .parent(thechaos_craft)
                 .addCriterion("rodofdiscord", onPickup(ModItems.ROD_OF_DISCORD.get()))
-                .save(consumer, mainId("rodofdiscord_craft2"));
+                .save(consumer, mainId(LibAdvancementNames.ROD_OF_DISCORD_CRAFT));
+        //parent:ego
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.FAILNAUGHT.get(), LibAdvancementNames.FAILNAUGHT_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion("failnaught", onPickup(ModItems.FAILNAUGHT.get()))
+                .save(consumer, mainId(LibAdvancementNames.FAILNAUGHT_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.FIRST_FRACTAL.get(), LibAdvancementNames.FIRST_FRACTAL_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion("first_fractal", onPickup(ModItems.FIRST_FRACTAL.get()))
+                .save(consumer, mainId(LibAdvancementNames.FIRST_FRACTAL_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.EXCALIBER.get(), LibAdvancementNames.EXCALIBER_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion("excaliber", onPickup(ModItems.EXCALIBER.get()))
+                .save(consumer, mainId(LibAdvancementNames.EXCALIBER_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.THE_UNIVERSE.get(), LibAdvancementNames.THE_UNIVERSE_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion("the_universe", onPickup(ModItems.THE_UNIVERSE.get()))
+                .save(consumer, mainId(LibAdvancementNames.THE_UNIVERSE_CRAFT));
 
 /*
         // Parent: root
@@ -201,7 +247,7 @@ public class ModAdvancementProvider extends AdvancementProvider
         //just for Lexicon locks
         Advancement.Builder.advancement()
                 .parent(root)
-                .addCriterion("nightmare", onPickup(ModItems.NIGHTMAREFUEL_PROP.get()))
+                .addCriterion("nightmare", onPickup(ModItems.NIGHTMARE_FUEL.get()))
                 .addCriterion("elven_lexicon", elvenLexicon)
                 .requirements(RequirementsStrategy.OR)
                 .save(consumer, mainId("nightmarefuel_eat_lexicon"));

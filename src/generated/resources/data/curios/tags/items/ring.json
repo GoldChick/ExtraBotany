@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "extrabotany:deathring",
-    "extrabotany:frostring",
+    "extrabotany:death_ring",
+    "extrabotany:frost_ring",
     "extrabotany:sages_mana_ring"
   ]
 }

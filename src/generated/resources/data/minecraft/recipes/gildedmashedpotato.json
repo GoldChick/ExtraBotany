@@ -3,7 +3,7 @@
   "group": "extrabotany",
   "ingredients": [
     {
-      "item": "extrabotany:gildedpotato"
+      "item": "extrabotany:gilded_potato"
     },
     {
       "item": "minecraft:bowl"
@@ -13,6 +13,6 @@
     }
   ],
   "result": {
-    "item": "extrabotany:gildedmashedpotato"
+    "item": "extrabotany:gilded_mashed_potato"
   }
 }

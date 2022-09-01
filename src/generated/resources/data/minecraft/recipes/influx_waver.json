@@ -14,7 +14,7 @@
       "item": "botania:terra_sword"
     },
     "a": {
-      "item": "extrabotany:theorigin"
+      "item": "extrabotany:the_origin"
     },
     "b": {
       "tag": "extrabotany:coral_item"
@@ -24,6 +24,6 @@
     }
   },
   "result": {
-    "item": "extrabotany:influxwaver"
+    "item": "extrabotany:influx_waver"
   }
 }

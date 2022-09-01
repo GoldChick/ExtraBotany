@@ -2,12 +2,12 @@
   "type": "botania:elven_trade",
   "ingredients": [
     {
-      "item": "extrabotany:spiritfuel_prop"
+      "item": "extrabotany:spirit_fuel"
     }
   ],
   "output": [
     {
-      "item": "extrabotany:spirit_prop"
+      "item": "extrabotany:spirit_frag"
     }
   ]
 }

@@ -11,16 +11,16 @@
       "item": "botania:life_essence"
     },
     "#": {
-      "item": "extrabotany:shadowkatana"
+      "item": "extrabotany:shadow_katana"
     },
     "a": {
-      "item": "extrabotany:theorigin"
+      "item": "extrabotany:the_origin"
     },
     "b": {
       "item": "minecraft:blackstone"
     }
   },
   "result": {
-    "item": "extrabotany:trueshadowkatana"
+    "item": "extrabotany:true_shadow_katana"
   }
 }

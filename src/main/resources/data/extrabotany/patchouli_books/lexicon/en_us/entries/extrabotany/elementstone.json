@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.elementstone",
   "category": "extrabotany:extrabotany",
-  "icon": "extrabotany:aerostone",
+  "icon": "extrabotany:aero_stone",
   "advancement": "botania:main/runic_altar_pickup",
   "pages": [
     {

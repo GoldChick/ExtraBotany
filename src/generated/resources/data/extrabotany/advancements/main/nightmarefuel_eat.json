@@ -2,7 +2,7 @@
   "parent": "extrabotany:main/root",
   "display": {
     "icon": {
-      "item": "extrabotany:nightmarefuel_prop"
+      "item": "extrabotany:nightmare_fuel"
     },
     "title": {
       "translate": "advancement.extrabotany:nightmarefuel_eat.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "item": {
           "items": [
-            "extrabotany:nightmarefuel_prop"
+            "extrabotany:nightmare_fuel"
           ]
         }
       }

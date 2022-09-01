@@ -3,6 +3,7 @@ package chick.extrabotany.datagen.recipes;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.crafting.*;
+import chick.extrabotany.common.libs.LibItemNames;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.common.lib.ModTags;
-import vazkii.botania.data.recipes.WrapperResult;
 
 import java.util.function.Consumer;
 
@@ -66,16 +66,16 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('o', vazkii.botania.common.item.ModItems.manaDiamond)
                 .define('x', vazkii.botania.common.item.ModItems.manaPowder)
                 .define('z', vazkii.botania.common.item.ModItems.livingwoodTwig)
-                .define('a', ModItems.NIGHTMAREFUEL_PROP.get())
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
                 .group(MODID)
-                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.NIGHTMAREFUEL_PROP.get()))
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.NIGHTMARE_FUEL.get()))
                 .save(consumer, "manareader");
         ShapedRecipeBuilder.shaped(ModItems.THE_CHAOS.get())
                 .pattern(" x ")
                 .pattern("xzb")
                 .pattern(" b ")
                 .define('x', ModItems.SHADOW_INGOT.get())
-                .define('z', ModItems.SPIRIT_PROP.get())
+                .define('z', ModItems.SPIRIT_FRAG.get())
                 .define('b', ModItems.PHOTON_INGOT.get())
                 .group(MODID)
                 .unlockedBy("ingots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get(), ModItems.PHOTON_INGOT.get()))
@@ -134,7 +134,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("aaa")
                 .pattern("axa")
                 .pattern("aaa")
-                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('x', ModItems.SPIRIT_FRAG.get())
                 .define('a', vazkii.botania.common.item.ModItems.redPetal)
                 .group(MODID)
                 .unlockedBy("redPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.redPetal))
@@ -143,7 +143,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("aaa")
                 .pattern("axa")
                 .pattern("aaa")
-                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('x', ModItems.SPIRIT_FRAG.get())
                 .define('a', vazkii.botania.common.item.ModItems.pinkPetal)
                 .group(MODID)
                 .unlockedBy("pinkPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.pinkPetal))
@@ -152,7 +152,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("aaa")
                 .pattern("axa")
                 .pattern("aaa")
-                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('x', ModItems.SPIRIT_FRAG.get())
                 .define('a', vazkii.botania.common.item.ModItems.blackPetal)
                 .group(MODID)
                 .unlockedBy("blackPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.blackPetal))
@@ -161,7 +161,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("aaa")
                 .pattern("axa")
                 .pattern("aaa")
-                .define('x', ModItems.SPIRIT_PROP.get())
+                .define('x', ModItems.SPIRIT_FRAG.get())
                 .define('a', vazkii.botania.common.item.ModItems.grayPetal)
                 .group(MODID)
                 .unlockedBy("grayPetal", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.grayPetal))
@@ -186,7 +186,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', Items.ENDER_PEARL)
                 .define('g', Items.DIAMOND)
                 .define('w', Items.BLAZE_ROD)
-                .define('c', ModItems.SPIRITFUEL_PROP.get())
+                .define('c', ModItems.SPIRIT_FUEL.get())
                 .group(MODID)
                 .unlockedBy("alchemycatalyst", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.alchemyCatalyst))
                 .save(consumer, "dimension_catalyst");
@@ -383,7 +383,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("manasteel", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaSteel))
                 .save(consumer, "livingwood_crossbow");
-      ShapedRecipeBuilder.shaped(ModItems.SHADOW_KATANA.get())
+        ShapedRecipeBuilder.shaped(ModItems.SHADOW_KATANA.get())
                 .pattern("x  ")
                 .pattern("x  ")
                 .pattern("#  ")
@@ -440,6 +440,27 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
                 .save(consumer, "influx_waver");
+        ShapedRecipeBuilder.shaped(ModItems.EXCALIBER.get())
+                .pattern(" b ")
+                .pattern(" a ")
+                .pattern(" x ")
+                .define('x', vazkii.botania.common.item.ModItems.dreamwoodTwig)
+                .define('b', ModItems.HERO_MEDAL.get())
+                .define('a', vazkii.botania.common.item.ModItems.terrasteelBoots)
+                .group(MODID)
+                .unlockedBy("hero_medal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, LibItemNames.EXCALIBER);
+        ShapedRecipeBuilder.shaped(ModItems.INFLUX_WAVER.get())
+                .pattern(" xd")
+                .pattern("#ad")
+                .pattern(" xd")
+                .define('x', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('#', ModItems.AERIALITE_INGOT.get())
+                .define('a', ModItems.ORICHALCOS.get())
+                .define('d', vazkii.botania.common.item.ModItems.manaString)
+                .group(MODID)
+                .unlockedBy("orichalcos", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
+                .save(consumer, LibItemNames.FAILNAUGHT);
     }
 
     private void armorRecipes(Consumer<FinishedRecipe> consumer)

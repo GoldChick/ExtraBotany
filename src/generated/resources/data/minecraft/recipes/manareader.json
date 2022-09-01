@@ -17,10 +17,10 @@
       "item": "botania:livingwood_twig"
     },
     "a": {
-      "item": "extrabotany:nightmarefuel_prop"
+      "item": "extrabotany:nightmare_fuel"
     }
   },
   "result": {
-    "item": "extrabotany:manareader"
+    "item": "extrabotany:mana_reader"
   }
 }

@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:ignisstone"
+    "item": "extrabotany:ignite_stone"
   },
   "mana": 2000,
   "ingredients": [

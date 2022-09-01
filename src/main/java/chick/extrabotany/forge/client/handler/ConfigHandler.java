@@ -35,6 +35,7 @@ public class ConfigHandler
     {
 
         public final ForgeConfigSpec.BooleanValue disableDisarm;
+        public final ForgeConfigSpec.BooleanValue doProjectileBreakBlock;
         public final ForgeConfigSpec.DoubleValue gaiaDamageTimes;
 
         public Common(ForgeConfigSpec.Builder builder)
@@ -44,12 +45,16 @@ public class ConfigHandler
             disableDisarm = builder
                     .comment("Whether to disable the Ego's disarm. Default is false(Not Recommend).")
                     .define("disableDisarm", false);
+
+            doProjectileBreakBlock = builder
+                    .comment("Whether Relic projectiles break blocks. Default is false.")
+                    .define("doProjectileBreakBlock", false);
+
             gaiaDamageTimes = builder
                     .comment("How many times damage will EGO(Gaia III) do when it use weapons.")
-                    .defineInRange("gaiaDamageTimes", 1.0D, 0D, 10D);
+                    .defineInRange("gaiaDamageTimes", 2.0D, 0D, 10D);
             builder.pop();
         }
-
     }
 
     public static final Common COMMON;

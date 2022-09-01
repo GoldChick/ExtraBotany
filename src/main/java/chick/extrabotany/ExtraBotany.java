@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -23,7 +24,7 @@ public class ExtraBotany
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(TAB_NAME)
     {
         @Override
-        public ItemStack makeIcon()
+        public @NotNull ItemStack makeIcon()
         {
             return new ItemStack(ModItems.PYLON.get());
         }

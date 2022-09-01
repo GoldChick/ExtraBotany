@@ -31,8 +31,8 @@ public class DataGenerators
             generator.addProvider(new ModItemOverrideModels(generator));
             generator.addProvider(new ModAdvancementProvider(generator, event.getExistingFileHelper()));
             generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
-            generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new ModItemModels(generator, event.getExistingFileHelper()));
+            generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new EN_USLanguageProvider(generator, "en_us"));
             generator.addProvider(new ZH_CNLanguageProvider(generator, "zh_cn"));
         }

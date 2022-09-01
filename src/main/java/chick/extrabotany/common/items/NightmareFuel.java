@@ -1,15 +1,11 @@
 package chick.extrabotany.common.items;
 
 import chick.extrabotany.common.ModItems;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
 public class NightmareFuel extends Item
@@ -24,7 +20,7 @@ public class NightmareFuel extends Item
     {
         if (entity instanceof Player)
         {
-            ((Player) entity).getInventory().add(new ItemStack(ModItems.SPIRITFUEL_PROP.get()));
+            ((Player) entity).getInventory().add(new ItemStack(ModItems.SPIRIT_FUEL.get()));
         }
         return super.finishUsingItem(stack, level, entity);
     }

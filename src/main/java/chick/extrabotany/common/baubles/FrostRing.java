@@ -1,6 +1,6 @@
 package chick.extrabotany.common.baubles;
 
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

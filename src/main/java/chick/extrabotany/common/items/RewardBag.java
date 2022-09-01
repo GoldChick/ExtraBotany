@@ -27,7 +27,7 @@ import java.util.List;
 
 public class RewardBag extends Item
 {
-    List<WeightCategory> categoryList;
+    private final  List<WeightCategory> categoryList;
 
     public RewardBag(Properties prop, List<WeightCategory> categoryList)
     {
@@ -39,7 +39,7 @@ public class RewardBag extends Item
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-        var reward = BonusHelper.rollItem(categoryList);
+        var reward = BonusHelper.rollItem(categoryList).getCategory();
 
         if (!reward.isEmpty() && !level.isClientSide)
         {

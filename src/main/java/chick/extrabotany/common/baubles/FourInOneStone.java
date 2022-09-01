@@ -40,8 +40,8 @@ public class FourInOneStone extends ItemBauble
                 && EquipmentHandler.findOrEmpty(ModItems.SUPREME_AQUA_STONE.get(), entity).isEmpty()
                 && EquipmentHandler.findOrEmpty(ModItems.EARTH_STONE.get(), entity).isEmpty()
                 && EquipmentHandler.findOrEmpty(ModItems.SUPREME_EARTH_STONE.get(), entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.IGNIS_STONE.get(), entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_IGNIS_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.IGNITE_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_IGNITE_STONE.get(), entity).isEmpty()
                 ;
     }
 

@@ -30,8 +30,8 @@ public class SupremeAquaStone extends ItemBauble
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_IGNIS_STONE.get(), entity).isEmpty()
-                && EquipmentHandler.findOrEmpty(ModItems.IGNIS_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.SUPREME_IGNITE_STONE.get(), entity).isEmpty()
+                && EquipmentHandler.findOrEmpty(ModItems.IGNITE_STONE.get(), entity).isEmpty()
                 && EquipmentHandler.findOrEmpty(ModItems.AQUA_STONE.get(), entity).isEmpty()
                 && EquipmentHandler.findOrEmpty(ModItems.FOUR_IN_ONE_STONE.get(), entity).isEmpty()
                 ;

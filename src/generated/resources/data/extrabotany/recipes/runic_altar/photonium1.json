@@ -6,19 +6,19 @@
   "mana": 4200,
   "ingredients": [
     {
-      "item": "extrabotany:gildedmashedpotato"
+      "item": "extrabotany:gilded_mashed_potato"
     },
     {
       "item": "botania:elementium_ingot"
     },
     {
-      "item": "extrabotany:spiritfuel_prop"
+      "item": "extrabotany:spirit_fuel"
     },
     {
-      "item": "extrabotany:spiritfuel_prop"
+      "item": "extrabotany:spirit_fuel"
     },
     {
-      "item": "extrabotany:spiritfuel_prop"
+      "item": "extrabotany:spirit_fuel"
     }
   ]
 }

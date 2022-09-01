@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:aquastone"
+    "item": "extrabotany:aqua_stone"
   },
   "mana": 2000,
   "ingredients": [

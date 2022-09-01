@@ -31,8 +31,8 @@ public class ModElvenTradeRecipes extends RecipeProvider
     @Override
     public void buildCraftingRecipes(Consumer<net.minecraft.data.recipes.FinishedRecipe> consumer)
     {
-        consumer.accept(new ElvenTrade(id("spiritfuel"), new ItemStack(ModItems.SPIRITFUEL_PROP.get()), Ingredient.of(ModItems.NIGHTMAREFUEL_PROP.get())));
-        consumer.accept(new ElvenTrade(id("spirit"), new ItemStack(ModItems.SPIRIT_PROP.get()), Ingredient.of(ModItems.SPIRITFUEL_PROP.get())));
+        consumer.accept(new ElvenTrade(id("spiritfuel"), new ItemStack(ModItems.SPIRIT_FUEL.get()), Ingredient.of(ModItems.NIGHTMARE_FUEL.get())));
+        consumer.accept(new ElvenTrade(id("spirit"), new ItemStack(ModItems.SPIRIT_FRAG.get()), Ingredient.of(ModItems.SPIRIT_FUEL.get())));
     }
 
     private static ResourceLocation id(String path)

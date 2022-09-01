@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:gildedpotato"
+    "item": "extrabotany:gilded_potato"
   },
   "mana": 2000,
   "ingredients": [

@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:the_universe"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:the_universe_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:the_universe_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "the_universe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:the_universe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "the_universe"
+    ]
+  ]
+}

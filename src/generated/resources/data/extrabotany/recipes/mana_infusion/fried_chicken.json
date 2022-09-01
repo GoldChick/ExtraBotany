@@ -4,7 +4,7 @@
     "item": "minecraft:cooked_chicken"
   },
   "output": {
-    "item": "extrabotany:friedchicken"
+    "item": "extrabotany:fried_chicken"
   },
   "mana": 600
 }

@@ -17,7 +17,7 @@
       "item": "botania:star_sword"
     },
     "a": {
-      "item": "extrabotany:theorigin"
+      "item": "extrabotany:the_origin"
     },
     "b": {
       "item": "minecraft:lightning_rod"
@@ -27,6 +27,6 @@
     }
   },
   "result": {
-    "item": "extrabotany:truethunstarcaller"
+    "item": "extrabotany:true_thunstar_caller"
   }
 }

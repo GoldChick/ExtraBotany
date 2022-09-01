@@ -81,6 +81,62 @@
         32,
         1
       ]
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "extrabotany.entry.genesis_crystal",
+      "multiblock": {
+        "pattern": [
+          [
+            "     ",
+            "     ",
+            "  T  ",
+            "     ",
+            "     "
+          ],
+          [
+            "     ",
+            "  F  ",
+            " FDF ",
+            "  F  ",
+            "     "
+          ],
+          [
+            "     ",
+            "  G  ",
+            " GDG ",
+            "  G  ",
+            "     "
+          ],
+          [
+            "WABAR",
+            "AGGGA",
+            "BGDGB",
+            "AGGGA",
+            "RABAW"
+          ],
+          [
+            "_____",
+            "_BAB_",
+            "_A0A_",
+            "_BAB_",
+            "_____"
+          ]
+        ],
+        "mapping": {
+          "G": "minecraft:water",
+          "F": "minecraft:water[level=1]",
+          "A": "botania:livingrock",
+          "D": "botania:livingrock_wall[waterlogged=true]",
+          "B": "botania:shimmerrock",
+          "0": "botania:shimmerrock",
+          "W": "botania:mana_diamond_block",
+          "R": "botania:dragonstone_block",
+          "T": "extrabotany:dimension_catalyst"
+        },
+        "symmetrical": true
+      },
+      "text": "extrabotany.entry.genesis_crystal"
     }
   ]
 }

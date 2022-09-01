@@ -1,7 +1,7 @@
 {
   "type": "botania:mana_infusion",
   "input": {
-    "item": "extrabotany:theorigin"
+    "item": "extrabotany:the_origin"
   },
   "output": {
     "nbt": {

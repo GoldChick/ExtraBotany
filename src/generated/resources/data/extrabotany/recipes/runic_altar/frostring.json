@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:frostring"
+    "item": "extrabotany:frost_ring"
   },
   "mana": 10000,
   "ingredients": [

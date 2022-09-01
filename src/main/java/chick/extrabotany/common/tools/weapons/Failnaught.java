@@ -2,7 +2,7 @@ package chick.extrabotany.common.tools.weapons;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.entities.projectile.EntityMagicArrow;
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -57,18 +57,20 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem
             int i = (int) ((getUseDuration(stack) - timeLeft) * 1F);
             if (i < 8)
                 return;
-            int rank = (i - 8) / 5;
-            if (ManaItemHandler.instance().requestManaExactForTool(stack, player, Math.min(800, 350 + rank * 20), true))
+            //max at i=110
+            float rank = (i - 2.5F) / 5;
+
+            if (ManaItemHandler.instance().requestManaExactForTool(stack, player, Math.min(800, 350 + (int) (rank * 20)), true))
             {
                 EntityMagicArrow arrow = new EntityMagicArrow(worldIn, player);
                 arrow.setPos(player.getX(), player.getY() + 1.1D, player.getZ());
                 arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
-                arrow.setDamage((int) Math.min(50, DamageHandler.calcDamage(7 + rank * 0.5F, player)));
+                arrow.setDamage((int) Math.min(50, DamageHandler.calcDamage(7 + rank * 2F, player)));
                 arrow.setYRot(player.getYRot());
                 int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER_ARROWS, living);
                 if (j > 0)
                 {
-                    arrow.setDamage(arrow.getDamage() + j);
+                    arrow.setDamage(arrow.getDamage() + j * 2);
                 }
                 arrow.setLife(Math.min(150, 5 + i * 4));
 
@@ -83,7 +85,7 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem
     @Override
     public float chargeVelocityMultiplier()
     {
-        return 0.5F;
+        return 0.2F;
     }
 
     @Override

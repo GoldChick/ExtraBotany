@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.client.render.entity;
 
-import chick.extrabotany.common.entities.EntityEGOLandmine;
+import chick.extrabotany.common.entities.ego.EntityEGOLandmine;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;

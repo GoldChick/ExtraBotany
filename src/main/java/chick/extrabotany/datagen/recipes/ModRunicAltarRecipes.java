@@ -38,9 +38,9 @@ public class ModRunicAltarRecipes extends RecipeProvider
         Ingredient element_steel = Ingredient.of(vazkii.botania.common.item.ModItems.elementium);
         Ingredient mana_diamond = Ingredient.of(vazkii.botania.common.item.ModItems.manaDiamond);
         Ingredient mana_steel = Ingredient.of(vazkii.botania.common.item.ModItems.manaSteel);
-        Ingredient nightmare = Ingredient.of(ModItems.NIGHTMAREFUEL_PROP.get());
-        Ingredient spirit = Ingredient.of(ModItems.SPIRITFUEL_PROP.get());
-        Ingredient spirit_frag = Ingredient.of(ModItems.SPIRIT_PROP.get());
+        Ingredient nightmare = Ingredient.of(ModItems.NIGHTMARE_FUEL.get());
+        Ingredient spirit = Ingredient.of(ModItems.SPIRIT_FUEL.get());
+        Ingredient spirit_frag = Ingredient.of(ModItems.SPIRIT_FRAG.get());
         Ingredient cloth = Ingredient.of(vazkii.botania.common.item.ModItems.manaweaveCloth);
 
         Ingredient air = Ingredient.of(vazkii.botania.common.item.ModItems.runeAir);
@@ -61,7 +61,7 @@ public class ModRunicAltarRecipes extends RecipeProvider
         consumer.accept(new RunicAltar(idFor("aerostone"), new ItemStack(ModItems.AERO_STONE.get()), 2000, air, air, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("aquastone"), new ItemStack(ModItems.AQUA_STONE.get()), 2000, water, water, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("earthstone"), new ItemStack(ModItems.EARTH_STONE.get()), 2000, earth, earth, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
-        consumer.accept(new RunicAltar(idFor("ignisstone"), new ItemStack(ModItems.IGNIS_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
+        consumer.accept(new RunicAltar(idFor("ignisstone"), new ItemStack(ModItems.IGNITE_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("deathring"), new ItemStack(ModItems.DEATH_RING.get()), 10000, envy, mana_diamond, mana_steel, mana_steel, Ingredient.of(Items.WITHER_SKELETON_SKULL)));
         consumer.accept(new RunicAltar(idFor("frostring"), new ItemStack(ModItems.FROST_RING.get()), 10000, Ingredient.of(Items.ICE), Ingredient.of(Items.ICE), mana, mana_steel, mana_steel));
 

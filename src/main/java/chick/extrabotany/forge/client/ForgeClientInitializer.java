@@ -1,19 +1,21 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.loot.ModLootModifiers;
+import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
+import chick.extrabotany.common.loots.ModLootModifiers;
 import chick.extrabotany.common.tools.weapons.*;
-import chick.extrabotany.datagen.ModBlockStates;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.forge.client.model.LayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
 import chick.extrabotany.network.NetworkHandler;
 import com.google.common.base.Suppliers;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -31,6 +33,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
@@ -38,6 +41,7 @@ import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.forge.CapabilityUtil;
+import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -50,7 +54,6 @@ import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 @Mod.EventBusSubscriber(modid = ExtraBotany.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeClientInitializer
 {
-
     @SubscribeEvent
     public static void clientInit(FMLClientSetupEvent evt)
     {
@@ -58,6 +61,7 @@ public class ForgeClientInitializer
         //projectile model
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelRegister);
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelBake);
+        bus.addListener(ForgeClientInitializer::commonInit);
         ModItemProperties.init((item, id, prop) -> ItemProperties.register(item.asItem(), id, prop));
         // Anything that touches vanilla registries needs to happen during *a* registry event
         // So just use a random one
@@ -69,6 +73,11 @@ public class ForgeClientInitializer
         NetworkHandler.registerMessage();
     }
 
+    //Not Client LOL
+    public static void commonInit(FMLCommonSetupEvent evt)
+    {
+        PatchouliAPI.get().registerMultiblock(Registry.BLOCK.getKey(ModBlocks.DIMENSION_CATALYST.get()), TileDimensionCatalyst.MULTIBLOCK.get());
+    }
 
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions evt)
@@ -79,10 +88,8 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt)
     {
-        ModBlockStates.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
-
-
+        EntityRenderers.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
     }
 
     /**
@@ -91,7 +98,7 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {
-        event.enqueueWork(ModBlockStates::setRenderType);
+        event.enqueueWork(EntityRenderers::setRenderType);
     }
 
     /**
@@ -139,7 +146,8 @@ public class ForgeClientInitializer
             ModItems.TRUE_SHADOW_KATANA.get(), TrueShadowKatana::makeRelic,
             ModItems.TRUE_THUNSTAR_CALLER.get(), TrueThunStarCaller::makeRelic,
             ModItems.INFLUX_WAVER.get(), InfluxWaver::makeRelic,
-            ModItems.FAILNAUGHT.get(), Failnaught::makeRelic
+            ModItems.FAILNAUGHT.get(), Failnaught::makeRelic,
+            ModItems.EXCALIBER.get(), Excaliber::makeRelic
     ));
 
     private static void attachItemCaps(AttachCapabilitiesEvent<ItemStack> e)

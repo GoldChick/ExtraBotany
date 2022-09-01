@@ -13,7 +13,7 @@ public class TreasureBox extends Item
 {
     public TreasureBox(Properties prop)
     {
-        super(prop.stacksTo(1));
+        super(prop);
     }
 
     @NotNull
@@ -25,11 +25,11 @@ public class TreasureBox extends Item
         {
             if (!player.level.isClientSide)
             {
-                // player.drop(new ItemStack(ModItems.REWARD_BAG_A.get(), 32), true).setNoPickUpDelay();
-                // player.drop(new ItemStack(ModItems.REWARD_BAG_B.get(), 16), true).setNoPickUpDelay();
+                player.drop(new ItemStack(ModItems.REWARD_BAG_A.get(), 32), true).setNoPickUpDelay();
+                player.drop(new ItemStack(ModItems.REWARD_BAG_B.get(), 16), true).setNoPickUpDelay();
 
-                // player.drop(new ItemStack(ModItems.REWARD_BAG_C.get(), 10), true).setNoPickUpDelay();
-                // player.drop(new ItemStack(ModItems.REWARD_BAG_D.get(), 10), true).setNoPickUpDelay();
+                player.drop(new ItemStack(ModItems.REWARD_BAG_C.get(), 10), true).setNoPickUpDelay();
+                player.drop(new ItemStack(ModItems.REWARD_BAG_D.get(), 10), true).setNoPickUpDelay();
 
                 player.drop(new ItemStack(ModItems.HERO_MEDAL.get()), true).setNoPickUpDelay();
 

@@ -2,7 +2,7 @@
   "parent": "extrabotany:main/nightmarefuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:spirit_prop"
+      "item": "extrabotany:spirit_frag"
     },
     "title": {
       "translate": "advancement.extrabotany:spiritfragment_craft.title"
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-              "extrabotany:spirit_prop"
+              "extrabotany:spirit_frag"
             ]
           }
         ]

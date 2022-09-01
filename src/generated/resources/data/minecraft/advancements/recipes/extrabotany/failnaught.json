@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:failnaught"
+    ]
+  },
+  "criteria": {
+    "orichalcos": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:orichalcos"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:failnaught"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "orichalcos",
+      "has_the_recipe"
+    ]
+  ]
+}

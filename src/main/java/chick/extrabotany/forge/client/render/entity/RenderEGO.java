@@ -27,8 +27,6 @@ import java.util.concurrent.*;
 
 public class RenderEGO extends HumanoidMobRenderer<Monster, HumanoidModel<Monster>>
 {
-    //private final Model normalModel;
-    //private final Model slimModel;
     private static final Cache<String, GameProfile> GAME_PROFILE_CACHE = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
     private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(0, 2, 1, TimeUnit.MINUTES, new LinkedBlockingQueue());
     private static final GameProfile EMPTY_GAME_PROFILE = new GameProfile(null, "EMPTY");
@@ -39,8 +37,6 @@ public class RenderEGO extends HumanoidMobRenderer<Monster, HumanoidModel<Monste
     public RenderEGO(EntityRendererProvider.Context ctx)
     {
         super(ctx, new Model(ctx.bakeLayer(ModelLayers.PLAYER)), 0F);
-        //this.normalModel = (Model) this.getModel();
-       // this.slimModel = new Model(ctx.bakeLayer(ModelLayers.PLAYER_SLIM));
         ArmorModels.init(ctx);
         EntityRenderers.init(ctx);
     }

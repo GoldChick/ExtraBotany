@@ -8,13 +8,13 @@
   ],
   "key": {
     "x": {
-      "item": "extrabotany:spirit_prop"
+      "item": "extrabotany:spirit_frag"
     },
     "a": {
       "item": "botania:pink_petal"
     }
   },
   "result": {
-    "item": "extrabotany:foxear"
+    "item": "extrabotany:fox_ear"
   }
 }

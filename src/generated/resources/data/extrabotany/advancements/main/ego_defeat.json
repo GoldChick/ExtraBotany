@@ -2,7 +2,7 @@
   "parent": "extrabotany:main/thechaos_craft",
   "display": {
     "icon": {
-      "item": "extrabotany:heromedal"
+      "item": "extrabotany:hero_medal"
     },
     "title": {
       "translate": "advancement.extrabotany:ego_defeat.title"

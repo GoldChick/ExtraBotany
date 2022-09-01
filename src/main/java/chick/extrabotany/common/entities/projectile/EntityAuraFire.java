@@ -1,7 +1,8 @@
 package chick.extrabotany.common.entities.projectile;
 
 import chick.extrabotany.common.ModEntities;
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.base.DamageHandler;
+import chick.extrabotany.common.entities.projectile.relic_projectile.RelicProjectileBase;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,17 +11,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class EntityAuraFire extends EntityProjectileBase
+public class EntityAuraFire extends RelicProjectileBase
 {
 
-    public EntityAuraFire(EntityType<? extends EntityProjectileBase> type, Level level)
+    public EntityAuraFire(EntityType<? extends RelicProjectileBase> type, Level level)
     {
         super(type, level);
     }
 
     public EntityAuraFire(Level level, LivingEntity owner)
     {
-        super(ModEntities.AURAFIRE, level, owner);
+        super(ModEntities.AURAFIRE, level, owner,1F);
     }
 
     @Override
@@ -53,5 +54,17 @@ public class EntityAuraFire extends EntityProjectileBase
     public int getLifeTicks()
     {
         return 80;
+    }
+
+    @Override
+    public int getTickPerBlock()
+    {
+        return 0;
+    }
+
+    @Override
+    public int getTickBreakBlockCap()
+    {
+        return 81;
     }
 }

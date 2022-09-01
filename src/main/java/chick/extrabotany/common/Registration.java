@@ -1,9 +1,9 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.brews.ModBrews;
 import chick.extrabotany.common.tools.weapons.ShadowKatana;
-import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,12 +24,15 @@ public class Registration
     public static void initRegistration()
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModBlocks.GetBlocks().register(bus);
-        ModBlocks.GetItems().register(bus);
+        ModBlocks.getBlocks().register(bus);
+        ModBlocks.getItems().register(bus);
 
         ModItems.GetItems().register(bus);
 
-        //flowers
+        ModEffects.getEffects().register(bus);
+        //tiles
+        bind(ForgeRegistries.BLOCK_ENTITIES, ModTiles::registerTiles);
+        //flowers(subtile
         bind(ForgeRegistries.BLOCKS, ModSubtiles::registerBlocks);
         bind(ForgeRegistries.ITEMS, ModSubtiles::registerItemBlocks);
         bind(ForgeRegistries.BLOCK_ENTITIES, ModSubtiles::registerTEs);

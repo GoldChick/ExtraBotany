@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:aerostone"
+    "item": "extrabotany:aero_stone"
   },
   "mana": 2000,
   "ingredients": [

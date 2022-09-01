@@ -11,13 +11,13 @@
       "item": "extrabotany:shadowium"
     },
     "z": {
-      "item": "extrabotany:spirit_prop"
+      "item": "extrabotany:spirit_frag"
     },
     "b": {
       "item": "extrabotany:photonium"
     }
   },
   "result": {
-    "item": "extrabotany:thechaos"
+    "item": "extrabotany:the_chaos"
   }
 }

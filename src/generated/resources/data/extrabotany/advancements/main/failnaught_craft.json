@@ -1,0 +1,38 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:failnaught",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:failnaught_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:failnaught_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "failnaught": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:failnaught"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "failnaught"
+    ]
+  ]
+}

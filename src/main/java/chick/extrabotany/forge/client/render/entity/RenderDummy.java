@@ -5,15 +5,18 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.inventory.InventoryMenu;
+import org.jetbrains.annotations.NotNull;
 
-public class RenderDummy extends EntityRenderer
+public class RenderDummy<T extends Entity> extends EntityRenderer<T>
 {
     public RenderDummy(EntityRendererProvider.Context ctx)
     {
         super(ctx);
     }
+
+    @NotNull
     @Override
-    public ResourceLocation getTextureLocation(Entity entity)
+    public ResourceLocation getTextureLocation(T entity)
     {
         return InventoryMenu.BLOCK_ATLAS;
     }

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " xd",
+    "#ad",
+    " xd"
+  ],
+  "key": {
+    "x": {
+      "item": "botania:terrasteel_ingot"
+    },
+    "#": {
+      "item": "extrabotany:aerialite"
+    },
+    "a": {
+      "item": "extrabotany:orichalcos"
+    },
+    "d": {
+      "item": "botania:mana_string"
+    }
+  },
+  "result": {
+    "item": "extrabotany:influx_waver"
+  }
+}

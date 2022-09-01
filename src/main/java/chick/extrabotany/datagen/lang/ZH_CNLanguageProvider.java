@@ -2,9 +2,11 @@ package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
+import chick.extrabotany.common.ModEffects;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -20,9 +22,14 @@ public class ZH_CNLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "额外植物学");
-        add(ModItems.NIGHTMAREFUEL_PROP.get(), "梦魇燃料");
-        add(ModItems.SPIRITFUEL_PROP.get(), "精神燃料");
-        add(ModItems.SPIRIT_PROP.get(), "精神碎片");
+        add(ModEffects.BLOOD_TEMPTATION.get(), "血之诱惑");
+        add(ModEffects.DIVINE_JUSTICE.get(), "神圣裁决");
+        add(ModEffects.VEGETABLE.get(), "绿意盎然");
+        add(ModEffects.TIME_LOCK.get(), "时空锁定");
+
+        add(ModItems.NIGHTMARE_FUEL.get(), "梦魇燃料");
+        add(ModItems.SPIRIT_FUEL.get(), "精神燃料");
+        add(ModItems.SPIRIT_FRAG.get(), "精神碎片");
         add(ModItems.SHADOW_INGOT.get(), "暗影锭");
         add(ModItems.PHOTON_INGOT.get(), "光子锭");
         add(ModItems.GILDED_POTATO.get(), "镀金服务器");
@@ -82,11 +89,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.AERO_STONE.get(), "风之符石");
         add(ModItems.AQUA_STONE.get(), "水之符石");
         add(ModItems.EARTH_STONE.get(), "地之符石");
-        add(ModItems.IGNIS_STONE.get(), "火之符石");
+        add(ModItems.IGNITE_STONE.get(), "火之符石");
         add(ModItems.SUPREME_AERO_STONE.get(), "至高风之符石");
         add(ModItems.SUPREME_AQUA_STONE.get(), "至高水之符石");
         add(ModItems.SUPREME_EARTH_STONE.get(), "至高地之符石");
-        add(ModItems.SUPREME_IGNIS_STONE.get(), "至高火之符石");
+        add(ModItems.SUPREME_IGNITE_STONE.get(), "至高火之符石");
         add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
 
         add(ModItems.SHADOW_KATANA.get(), "影刃");
@@ -132,6 +139,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         langFlower();
         langAdvancement();
         langPantchouli();
+        otherLangs();
         add(ModEntities.EGO, "本我");
         add(ModEntities.EGO_LANDMINE, "本我地雷");
         add(ModEntities.EGO_MINION, "本我仆从");
@@ -174,39 +182,39 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
     private void langAdvancement()
     {
-        add("advancement.extrabotany:root.title", "欢迎来到世界");
-        add("advancement.extrabotany:root.desc", "不要错过今天，去过好每一天");
-        add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
-        add("advancement.extrabotany:nightmarefuel_eat.desc", "食用一个梦魇燃料(这真的能吃吗)");
-        add("advancement.extrabotany:thechaos_craft.title", "一点都不混沌的物质");
-        add("advancement.extrabotany:thechaos_craft.desc", "合成混沌物质");
-        add("advancement.extrabotany:egodefeat.title", "KiLLER LADY");
-        add("advancement.extrabotany:egodefeat.desc", "击败本我");
+        prefixAdvancement(LibAdvancementNames.ROOT, "欢迎来到世界", "不要错过今天，去过好每一天");
+        prefixAdvancement(LibAdvancementNames.NIGHTMARE_FUEL_EAT, "Deep Dark Fantasy", "食用一个梦魇燃料(这真的能吃吗)");
+        prefixAdvancement(LibAdvancementNames.THE_CHAOS_CRAFT, "一点都不混沌的物质", "合成混沌物质");
+        prefixAdvancement(LibAdvancementNames.EGO_DEFEAT, "KiLLER LADY", "击败本我");
 
-        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc", "获得魔力读取器");
-        add("advancement.extrabotany:armorsetmiku.title", "cat's dance");
-        add("advancement.extrabotany:armorsetmiku.desc", "装备一套星空歌姬");
-        add("advancement.extrabotany:armorsetgoblinslayer.title", "Befall");
-        add("advancement.extrabotany:armorsetgoblinslayer.desc", "装备一套哥布林杀手");
-        add("advancement.extrabotany:armorsetshadowwarrior.title", "Crazy ∞ nighT");
-        add("advancement.extrabotany:armorsetshadowwarrior.desc", "装备一套暗影武士");
-        add("advancement.extrabotany:spiritfragment_craft.title", "PONPONPON");
-        add("advancement.extrabotany:spiritfragment_craft.desc", "获得精神碎片");
+        prefixAdvancement(LibAdvancementNames.MANA_READER_CRAFT, "Satisfaction", "获得魔力读取器");
+        prefixAdvancement(LibAdvancementNames.SPIRIT_FRAG, "PONPONPON", "获得精神碎片");
+        prefixAdvancement(LibAdvancementNames.SHADOW_WARRIOR, "Crazy ∞ nighT", "装备一套暗影武士");
+        prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "装备一套哥布林杀手");
+        prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "装备一套星空歌姬");
+        prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "装备一套昴星团战斗女仆");
+        prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "装备一套银翼护卫");
 
-        add("advancement.extrabotany:rodofdiscord_craft.title", "不是Discord");
-        add("advancement.extrabotany:rodofdiscord_craft.desc", "合成不谐传送杖");
-        add("advancement.extrabotany:armorsetmaid.title", "Drug Of Gold");
-        add("advancement.extrabotany:armorsetmaid.desc", "装备一套昴星团战斗女仆");
-        add("advancement.extrabotany:armorsetshootingguardian.title", "CONNECT");
-        add("advancement.extrabotany:armorsetshootingguardian.desc", "装备一套银翼护卫");
+        prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "不是Discord", "合成不谐传送杖");
 
-        add("advancement.extrabotany:sages_mana_ring_craft.title", "COLOR");
-        add("advancement.extrabotany:sages_mana_ring_craft.desc", "获得贤者魔力指环");
+
+        prefixAdvancement(LibAdvancementNames.FAILNAUGHT_CRAFT, "from Y to Y", "合成百中弓");
+        prefixAdvancement(LibAdvancementNames.EXCALIBER_CRAFT, "ReAct", "合成王者圣剑");
+        prefixAdvancement(LibAdvancementNames.FIRST_FRACTAL_CRAFT, "Infinity +1 Sword", "合成最初分型");
+        prefixAdvancement(LibAdvancementNames.THE_UNIVERSE_CRAFT, "Gears of Love", "合成宇宙之心");
+        prefixAdvancement(LibAdvancementNames.SAGES_MANA_RING_CRAFT, "COLOR", "合成贤者魔力指环");
+
+
         add("advancement.extrabotany:sunringcraft.title", "Promise");
         add("advancement.extrabotany:sunringcraft.desc", "获得圣阳尊戒");
         add("advancement.extrabotany:moonpendantcraft.title", "Crystalline");
         add("advancement.extrabotany:moonpendantcraft.desc", "获得蚀月之心");
+    }
+
+    private void prefixAdvancement(String name, String title, String text)
+    {
+        add("advancement.extrabotany:" + name + ".title", title);
+        add("advancement.extrabotany:" + name + ".desc", text);
     }
 
     private void langPantchouli()
@@ -379,14 +387,23 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.livingwood_crossbow", "活木弩");
         add("extrabotany.page.livingwood_crossbow0", "仿照活木弓的方式，可以用$(item)活木$(0)、$(item)魔力钢锭$(0)和$(item)蕴魔丝线(0)制造更加耐用的活木弩。此外，它也可以用魔力修复。");
         add("extrabotany.page.livingwood_crossbow1", "它能把飞机打下来么？");
-
         add("extrabotany.entry.true_swords", "真·剑");
         add("extrabotany.page.true_swords0", "经过研究，$(item)盖亚之魂$(0)和其他材料能够解放你所拥有的一些武器的真正力量。因此，这些武器在盖亚的手中也将更加强大。");
         add("extrabotany.page.true_thunstar_caller", "$(item)召雷者和召星者$(0)的升级版。每次挥动会从天上导引出闪电。虽然距离真正的闪电尚有不足，但用于攻击已经足够。当击中着火的敌人时会因为超载的原因增加伤害。");
         add("extrabotany.page.true_terra_blade", "$(item)泰拉之刃$(0)的升级版。每次挥动都会发射可以贯穿敌人的剑气。");
         add("extrabotany.page.true_shadow_katana", "$(item)影刃$(0)的升级版。每次挥动都会召唤两把真影刃自动索敌并追击敌人。");
-
         add("extrabotany.page.influx_waver", "每次挥动所发射的剑气会在命中敌人后在其附近重新出现并追击敌人。");
+        add("extrabotany.entry.failnaught", "百中弓");
+        add("extrabotany.page.failnaught0", "$(item)百中弓$(0)可以消耗魔力发射出一支能够贯穿敌人的箭矢，这支箭能对周围较大范围敌人造成伤害。蓄力时间越久，箭矢的伤害就越高，飞行距离也越长。");
+        add("extrabotany.page.failnaught1", "百发百中。");
+        add("extrabotany.entry.buddhistrelics", "源初造物丨虚空万藏");
+        add("extrabotany.page.buddhistrelics0", "$(item)源初造物丨虚空万藏$(0)可以近乎完美地模拟几种遗物的形态，使用者可以通过ctrl键来切换形态，但维持其他形态需要持续消耗魔力，一旦魔力不足就会恢复原形。各形态的数据都是独立储存的。");
+        add("extrabotany.entry.excaliber", "王者圣剑");
+        add("extrabotany.page.excaliber0", "$(item)王者圣剑$(0)可以消耗魔力发射金色的魔力光束，魔力光束可以追踪敌人并造成物理穿甲伤害。");
+        add("extrabotany.page.excaliber1", "");
+        add("extrabotany.entry.mastermanaring", "大师魔力之戒");
+        add("extrabotany.page.mastermanaring0", "$(item)大师魔力之戒$(0)能够储存近乎无限的魔力。");
+        add("extrabotany.page.mastermanaring1", "蛋糕是个谎言。");
         pantchouliFlower();
     }
 
@@ -410,7 +427,6 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.reikarorchid", "雷卡兰");
         add("extrabotany.page.reikarorchid0", "$(item)雷卡兰$(0)在无魔力时可以将闪电的巨大能量转化为$(thing)魔力$(0)，每当有闪电劈在其附近时，就会立刻产出巨大$(thing)魔力$(0)，雷卡兰本身也具有一定的雷电吸引能力。若$(item)雷卡兰$(0)中储存有$(thing)魔力$(0)，则无法吸收闪电并且会引发爆炸。");
         add("extrabotany.page.reikarorchid1", "就决定是你了!");
-
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
         add("extrabotany.page.serenitian1", "事事皆虚空");
@@ -419,5 +435,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.annoying_flower1", "光与热。");
         add("extrabotany.page.annoying_flower2", "浸泡过$(thing)魔力$(0)的香香鸡能够回复更多的饱食度。");
         add("extrabotany.page.annoying_flower3", "毕竟我也不是什么恶魔。");
+    }
+
+    private void otherLangs()
+    {
+        add("extrabotany.chouka.multiblock_error", "不在正确的抽卡池上！");
+        add("extrabotany.chouka.is_active", "有玩家正在使用这个抽卡池！！");
     }
 }

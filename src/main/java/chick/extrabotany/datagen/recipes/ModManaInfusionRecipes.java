@@ -30,7 +30,7 @@ public class ModManaInfusionRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMAREFUEL_PROP.get()), Ingredient.of(Items.COAL), 100));
+        consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMARE_FUEL.get()), Ingredient.of(Items.COAL), 100));
         consumer.accept(new ManaInfusion(idFor("fried_chicken"), new ItemStack(ModItems.FRIED_CHICKEN.get()), Ingredient.of(Items.COOKED_CHICKEN), 600));
 
         consumer.accept(ManaInfusion.dimension(idFor("enderpearl"), new ItemStack(Items.ENDER_PEARL), Ingredient.of(Items.DIAMOND), 20000));

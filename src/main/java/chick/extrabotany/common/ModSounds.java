@@ -19,6 +19,7 @@ public class ModSounds
 
     public static final SoundEvent swordland = makeSoundEvent("music.ego");
     public static final SoundEvent salvation = makeSoundEvent("music.herrscher");
+    public static final SoundEvent chouka = makeSoundEvent("sound.chouka");
 
     private static SoundEvent makeSoundEvent(String name)
     {

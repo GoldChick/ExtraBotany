@@ -3,16 +3,16 @@
   "mana": 1000000,
   "ingredients": [
     {
-      "item": "extrabotany:thechaos"
+      "item": "extrabotany:the_chaos"
     },
     {
-      "item": "extrabotany:theorigin"
+      "item": "extrabotany:the_origin"
     },
     {
-      "item": "extrabotany:theend"
+      "item": "extrabotany:the_end"
     }
   ],
   "result": {
-    "item": "extrabotany:theuniverse"
+    "item": "extrabotany:the_universe"
   }
 }

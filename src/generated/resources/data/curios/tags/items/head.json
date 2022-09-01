@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "extrabotany:foxear",
-    "extrabotany:foxmask",
-    "extrabotany:supercrown",
+    "extrabotany:fox_ear",
+    "extrabotany:fox_mask",
+    "extrabotany:super_crown",
     "extrabotany:pylon",
-    "extrabotany:stonemask",
-    "extrabotany:thuglife",
-    "extrabotany:blackglasses"
+    "extrabotany:stone_mask",
+    "extrabotany:thug_life",
+    "extrabotany:black_glasses"
   ]
 }

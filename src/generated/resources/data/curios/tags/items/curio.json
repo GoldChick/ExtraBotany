@@ -1,15 +1,15 @@
 {
   "replace": false,
   "values": [
-    "extrabotany:aerostone",
-    "extrabotany:aquastone",
-    "extrabotany:earthstone",
-    "extrabotany:ignisstone",
-    "extrabotany:powerglove",
-    "extrabotany:jingweifeather",
-    "extrabotany:supreme_aerostone",
-    "extrabotany:supreme_aquastone",
-    "extrabotany:supreme_earthstone",
-    "extrabotany:supreme_ignisstone"
+    "extrabotany:aero_stone",
+    "extrabotany:aqua_stone",
+    "extrabotany:earth_stone",
+    "extrabotany:ignite_stone",
+    "extrabotany:power_glove",
+    "extrabotany:jingwei_feather",
+    "extrabotany:supreme_aero_stone",
+    "extrabotany:supreme_aqua_stone",
+    "extrabotany:supreme_earth_stone",
+    "extrabotany:supreme_ignite_stone"
   ]
 }

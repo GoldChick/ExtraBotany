@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.spiritfuel",
   "category": "extrabotany:extrabotany",
-  "icon": "extrabotany:spiritfuel_prop",
+  "icon": "extrabotany:spirit_fuel",
   "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
   "pages": [
     {

@@ -2,9 +2,11 @@ package chick.extrabotany.datagen.lang;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
+import chick.extrabotany.common.ModEffects;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -20,10 +22,14 @@ public class EN_USLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add("itemGroup." + ExtraBotany.TAB_NAME, "Extra Botany");
+        add(ModEffects.BLOOD_TEMPTATION.get(), "Blood Temptation");
+        add(ModEffects.DIVINE_JUSTICE.get(), "Divine Justice");
+        add(ModEffects.VEGETABLE.get(), "Green Hat");
+        add(ModEffects.TIME_LOCK.get(), "Time Lock");
 
-        add(ModItems.NIGHTMAREFUEL_PROP.get(), "Nightmare Fuel");
-        add(ModItems.SPIRITFUEL_PROP.get(), "Spirit Fuel");
-        add(ModItems.SPIRIT_PROP.get(), "Spirit Fragment");
+        add(ModItems.NIGHTMARE_FUEL.get(), "Nightmare Fuel");
+        add(ModItems.SPIRIT_FUEL.get(), "Spirit Fuel");
+        add(ModItems.SPIRIT_FRAG.get(), "Spirit Fragment");
         add(ModItems.SHADOW_INGOT.get(), "Shadowium");
         add(ModItems.PHOTON_INGOT.get(), "Photonium");
         add(ModItems.GILDED_POTATO.get(), "Gilded Potato");
@@ -82,11 +88,11 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.AERO_STONE.get(), "Aero Stone");
         add(ModItems.AQUA_STONE.get(), "Aqua Stone");
         add(ModItems.EARTH_STONE.get(), "Earth Stone");
-        add(ModItems.IGNIS_STONE.get(), "Ignis Stone");
+        add(ModItems.IGNITE_STONE.get(), "Ignis Stone");
         add(ModItems.SUPREME_AERO_STONE.get(), "Supreme Aero Stone");
         add(ModItems.SUPREME_AQUA_STONE.get(), "Supreme Aqua Stone");
         add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
-        add(ModItems.SUPREME_IGNIS_STONE.get(), "Supreme Ignis Stone");
+        add(ModItems.SUPREME_IGNITE_STONE.get(), "Supreme Ignis Stone");
         add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
 
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
@@ -172,41 +178,38 @@ public class EN_USLanguageProvider extends LanguageProvider
 
     private void langAdvancement()
     {
-        add("advancement.extrabotany:root.title", "Welcome to the World");
-        add("advancement.extrabotany:root.desc", "Don't have a good day, have a great day");
-        add("advancement.extrabotany:nightmarefuel_eat.title", "Deep Dark Fantasy");
-        add("advancement.extrabotany:nightmarefuel_eat.desc", "Eat a Nightmare Fuel (Unbelievable)");
-        add("advancement.extrabotany:thechaos_craft.title", "Chaos With No Chaos");
-        add("advancement.extrabotany:thechaos_craft.desc", "Craft The Chaos");
-        add("advancement.extrabotany:egodefeat.title", "KiLLER LADY");
-        add("advancement.extrabotany:egodefeat.desc", "Defeat Ego");
+        prefixAdvancement(LibAdvancementNames.ROOT, "Welcome to the World", "Don't have a good day, have a great day");
+        prefixAdvancement(LibAdvancementNames.NIGHTMARE_FUEL_EAT, "Deep Dark Fantasy", "Eat a Nightmare Fuel (Unbelievable)");
+        prefixAdvancement(LibAdvancementNames.THE_CHAOS_CRAFT, "Chaos With No Chaos", "Craft The Chaos");
+        prefixAdvancement(LibAdvancementNames.EGO_DEFEAT, "KiLLER LADY", "Defeat Ego");
 
-        add("advancement.extrabotany:manareader_craft.title", "Satisfaction");
-        add("advancement.extrabotany:manareader_craft.desc", "Obtain Mana Reader");
-        add("advancement.extrabotany:armorsetmiku.title", "cat's dance");
-        add("advancement.extrabotany:armorsetmiku.desc", "Equip Starry Idol Armor Set");
-        add("advancement.extrabotany:armorsetgoblinslayer.title", "Befall");
-        add("advancement.extrabotany:armorsetgoblinslayer.desc", "Equip Goblin Slayer Armor Set");
-        add("advancement.extrabotany:armorsetshadowwarrior.title", "Crazy ∞ nighT");
-        add("advancement.extrabotany:armorsetshadowwarrior.desc", "Equip Shadow Warrior Armor Set");
-        add("advancement.extrabotany:spiritfragment_craft.title", "PONPONPON");
-        add("advancement.extrabotany:spiritfragment_craft.desc", "Obtain Spirit Fragment");
+        prefixAdvancement(LibAdvancementNames.MANA_READER_CRAFT, "Satisfaction", "Obtain Mana Reader");
+        prefixAdvancement(LibAdvancementNames.SPIRIT_FRAG, "PONPONPON", "Obtain Spirit Fragment");
+        prefixAdvancement(LibAdvancementNames.SHADOW_WARRIOR, "Crazy ∞ nighT", "Equip Shadow Warrior Armor Set");
+        prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "Equip Goblin Slayer Armor Set");
+        prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "Equip Starry Idol Armor Set");
+        prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "Equip Pleiades Combat Maid Armor Set");
+        prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "Equip Shooting Guardian Armor Set");
 
-        add("advancement.extrabotany:rodofdiscord_craft.title", "NOT Discord!");
-        add("advancement.extrabotany:rodofdiscord_craft.desc", "Craft Rod of Discord");
-        add("advancement.extrabotany:armorsetmaid.title", "Drug Of Gold");
-        add("advancement.extrabotany:armorsetmaid.desc", "Equip Pleiades Combat Maid Armor Set");
-        add("advancement.extrabotany:armorsetshootingguardian.title", "CONNECT");
-        add("advancement.extrabotany:armorsetshootingguardian.desc", "Equip Shooting Guardian Armor Set");
+        prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "NOT Discord!", "Craft Rod of Discord");
 
-        add("advancement.extrabotany:sages_mana_ring_craft.title", "COLOR");
-        add("advancement.extrabotany:sages_mana_ring_craft.desc", "Obtain Sages Mana Ring");
+
+        prefixAdvancement(LibAdvancementNames.FAILNAUGHT_CRAFT, "from Y to Y", "Craft Failnaught");
+        prefixAdvancement(LibAdvancementNames.EXCALIBER_CRAFT, "ReAct", "Craft First Fractal");
+        prefixAdvancement(LibAdvancementNames.FIRST_FRACTAL_CRAFT, "Infinity +1 Sword", "Craft Excaliber");
+        prefixAdvancement(LibAdvancementNames.THE_UNIVERSE_CRAFT, "Gears of Love", "Craft The Universe");
+        prefixAdvancement(LibAdvancementNames.SAGES_MANA_RING_CRAFT, "COLOR", "Craft Sages Mana Ring");
+
         add("advancement.extrabotany:sunringcraft.title", "Promise");
         add("advancement.extrabotany:sunringcraft.desc", "Obtain Ring of Sacred Sun");
         add("advancement.extrabotany:moonpendantcraft.title", "Crystalline");
         add("advancement.extrabotany:moonpendantcraft.desc", "Obtain Heart of Corrupted Moon");
     }
-
+    private void prefixAdvancement(String name, String title, String text)
+    {
+        add("advancement.extrabotany:" + name + ".title", title);
+        add("advancement.extrabotany:" + name + ".desc", text);
+    }
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "Extra Botania");
@@ -379,13 +382,20 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.livingwood_crossbow", "Livingwood Crossbow");
         add("extrabotany.page.livingwood_crossbow0", "Similar to how Livingwood Bow was created, $(item)Livingwood$(0), $(item)Mana Steel$(0) and $(item)Mana String$(0) can be used to craft sturdier %(item)Livingwood Crossbow$(0). It will also repair itself using $(thing)Mana$(0).");
         add("extrabotany.page.livingwood_crossbow1", "Does it shoot airplanes?");
-
         add("extrabotany.entry.true_swords", "True Swords");
         add("extrabotany.page.true_swords0", "$(item)Gaia Spirit$(0) and other materials can unleash the true power of some of the weapons you have. These weapons will also be more powerful in Gaia's hands.");
         add("extrabotany.page.true_thunstar_caller", "An upgrade to $(item)Thunder Caller$(0) and $(item)Star Caller$(0). It summons lightning from sky. However, it is not true lightning. A burning enemy will increase the damage due to Overload.");
         add("extrabotany.page.true_terra_blade", "An upgrade to $(item)Terra Blade$(0). Its projectile will pierce through enemies.");
         add("extrabotany.page.true_shadow_katana", "An upgrade to $(item)Shadow Katana$(0). It could summon two projection that automatically trace enemies.");
         add("extrabotany.page.influx_waver", "Its projectile will constantly attack the first entity it contacts..");
+        add("extrabotany.entry.failnaught","Failnaught");
+        add("extrabotany.page.failnaught0","The $(item)Failnaught$(0) uses $(thing)Mana$(0) to shoot magic arrows which pierce through enemies and deal damage to the creatures in the area. The longer you draw the bow, the more damage it will deal.");
+        add("extrabotany.page.failnaught1","A hundred shots, a hundred bullseyes.");
+        add("extrabotany.entry.buddhistrelics","Origin Creation - Omniscience");
+        add("extrabotany.page.buddhistrelics0","$(item)Origin Creation - The Omniscience$(0) relic can simulate some of the Relics by pressing ctrl to switch its form. Keeping other forms will cost $(thing)Mana$(0). With insufficient mana it will change to its original form.");
+        add("extrabotany.entry.excaliber","Excaliber");
+        add("extrabotany.page.excaliber0","$(item)Excaliber$(0) could shoot golden mana beam that will automatically trace enemies in a large area.");
+        add("extrabotany.page.excaliber1","");
 
         add("extrabotany.page.title.example", "An Example");
         pantchouliFlower();

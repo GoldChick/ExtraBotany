@@ -1,13 +1,11 @@
 package chick.extrabotany.common.items;
 
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.entities.EntityEGO;
+import chick.extrabotany.common.entities.ego.EntityEGO;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
-import vazkii.botania.common.entity.EntityDoppleganger;
 
 
 import javax.annotation.Nonnull;

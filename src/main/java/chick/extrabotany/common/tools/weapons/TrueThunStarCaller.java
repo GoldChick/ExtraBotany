@@ -3,7 +3,7 @@ package chick.extrabotany.common.tools.weapons;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.entities.EntityFalseLightning;
-import chick.extrabotany.network.DamageHandler;
+import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;

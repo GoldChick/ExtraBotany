@@ -2,7 +2,7 @@
   "parent": "extrabotany:main/nightmarefuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:thechaos"
+      "item": "extrabotany:the_chaos"
     },
     "title": {
       "translate": "advancement.extrabotany:thechaos_craft.title"
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-              "extrabotany:thechaos"
+              "extrabotany:the_chaos"
             ]
           }
         ]

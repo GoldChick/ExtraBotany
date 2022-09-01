@@ -1,7 +1,7 @@
 {
   "type": "botania:runic_altar",
   "output": {
-    "item": "extrabotany:deathring"
+    "item": "extrabotany:death_ring"
   },
   "mana": 10000,
   "ingredients": [

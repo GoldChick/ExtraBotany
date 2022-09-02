@@ -1,12 +1,16 @@
 package chick.extrabotany.common.tools.weapons;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.api.advancement.IAdvancementRequirement;
 import chick.extrabotany.common.entities.projectile.EntityMagicArrow;
 import chick.extrabotany.common.base.DamageHandler;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -28,13 +32,13 @@ import vazkii.botania.xplat.IXplatAbstractions;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem
+public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem, IAdvancementRequirement
 {
     private static final int MANA_PER_DAMAGE = 320;
 
     public Failnaught(Properties prop)
     {
-        super(prop);
+        super(prop.durability(1999));
     }
 
     public static IRelic makeRelic(ItemStack stack)
@@ -47,6 +51,20 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem
     {
         boolean infinity = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
         return ToolCommons.damageItemIfPossible(stack, amount, entity, MANA_PER_DAMAGE / ((infinity) ? 2 : 1));
+    }
+
+    @NotNull
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+    {
+        var stack = player.getItemInHand(hand);
+        if (ManaItemHandler.instance().requestManaExactForTool(stack, player, 800, false))
+        {
+            return InteractionResultHolder.success(stack);
+        } else
+        {
+            return InteractionResultHolder.fail(stack);
+        }
     }
 
     @Override
@@ -128,11 +146,9 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem
         return false;
     }
 
-    //TODO: advancement
-
-    //@Override
-    //public String getAdvancementName()
-    //{
-    //  return LibAdvancementNames.EGODEFEAT;
-    //}
+    @Override
+    public String getAdvancementName()
+    {
+        return LibAdvancementNames.EGO_DEFEAT;
+    }
 }

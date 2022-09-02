@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "b#b",
+    "bab",
+    "bbb"
+  ],
+  "key": {
+    "#": {
+      "item": "botania:manasteel_ingot"
+    },
+    "a": {
+      "item": "minecraft:shield"
+    },
+    "b": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "extrabotany:dirt_shield"
+  }
+}

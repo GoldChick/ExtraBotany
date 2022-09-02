@@ -72,6 +72,8 @@ public class LibItemNames
 
 
     public static String MANA_READER = "mana_reader";
+    public static String MANASTEEL_SHIELD = "manasteel_shield";
+    public static String ELEMENT_SHIELD = "elementium_shield";
     public static String FOREST_BOOK = "forest_book";
     public static String DIRT_SHIELD = "dirt_shield";
     public static String LIVINGWOOD_CROSSBOW = "livingwood_crossbow";

@@ -1,6 +1,8 @@
 package chick.extrabotany.common.tools.weapons;
 
+import chick.extrabotany.api.advancement.IAdvancementRequirement;
 import chick.extrabotany.common.entities.projectile.relic_projectile.EntityPhantomSword;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
@@ -17,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static vazkii.botania.common.item.equipment.bauble.ItemBauble.getBaubleUUID;
 
-public class FirstFractal extends SwordRelicBase
+public class FirstFractal extends SwordRelicBase implements IAdvancementRequirement
 {
     public FirstFractal(Properties prop)
     {
@@ -82,5 +84,11 @@ public class FirstFractal extends SwordRelicBase
         sword2.setVariety(9);
         sword2.setDeltaMovement(sword2.getDeltaMovement().scale(speedTime).scale(0.6D));
         player.level.addFreshEntity(sword2);
+    }
+
+    @Override
+    public String getAdvancementName()
+    {
+        return LibAdvancementNames.EGO_DEFEAT;
     }
 }

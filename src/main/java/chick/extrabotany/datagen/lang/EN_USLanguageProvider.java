@@ -95,6 +95,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_IGNITE_STONE.get(), "Supreme Ignis Stone");
         add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
 
+        add(ModItems.MANASTEEL_SHIELD.get(), "Mana Steel Shield");
+        add(ModItems.ELEMENT_SHIELD.get(), "Elementium Shield");
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "Livingwood Crossbow");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
@@ -167,6 +169,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.reikarorchid, "Reikar Orchid");
         add(ModSubtiles.reikarorchidFloating, "Floating Reikar Orchid");
         add(ModSubtiles.reikarorchid.getDescriptionId() + ".reference", "Game Crash");
+        add(ModSubtiles.bloodyenchantress, "Bloody Enchantress");
+        add(ModSubtiles.bloodyenchantressFloating, "Floating Bloody Enchantress");
+        add(ModSubtiles.bloodyenchantress.getDescriptionId() + ".reference", "A bargain forged in blood and shadow");
 
         add(ModSubtiles.serenitian, "Serenitian");
         add(ModSubtiles.serenitianFloating, "Floating Serenitian");
@@ -188,9 +193,11 @@ public class EN_USLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.SHADOW_WARRIOR, "Crazy ∞ nighT", "Equip Shadow Warrior Armor Set");
         prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "Equip Goblin Slayer Armor Set");
         prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "Equip Starry Idol Armor Set");
+        prefixAdvancement(LibAdvancementNames.BLOODY_ENCHANTRESS_USE, "Sweet Devil", "Use a Bloody Enchantress to generate mana");
+
+
         prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "Equip Pleiades Combat Maid Armor Set");
         prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "Equip Shooting Guardian Armor Set");
-
         prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "NOT Discord!", "Craft Rod of Discord");
 
 
@@ -212,7 +219,7 @@ public class EN_USLanguageProvider extends LanguageProvider
     }
     private void langPantchouli()
     {
-        add("extrabotany.category.extrabotany", "Extra Botania");
+        add("extrabotany.category.extrabotany", "Extra Knowledge");
         add("extrabotany.entry.header", "Welcome to the World");
         add("extrabotany.page.header0", "Welcome to the World of the supreme principle of Mana! You are the one who has great potential and I believe you will have a shiny, bright future. I am sure you are hunger for more knowledge. Follow me, I will pass on my knowledge and experience to you.");
         add("extrabotany.page.header1", "The more progress you have done, the more knowledge you will have. I could give you one hint, you could obtain Spirit Fuel by eating Nightmare Fuel.");
@@ -396,6 +403,11 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.excaliber","Excaliber");
         add("extrabotany.page.excaliber0","$(item)Excaliber$(0) could shoot golden mana beam that will automatically trace enemies in a large area.");
         add("extrabotany.page.excaliber1","");
+        add("extrabotany.entry.manasteel_shield", "Mana Shield");
+        add("extrabotany.page.manasteel_shield0", "Wooden Shield is too easy to damage. Using $(item)Mana Steel$(0) to replace $(item)Iron$(0) may be better.");
+        add("extrabotany.page.manasteel_shield1", "Circling the square.");
+        add("extrabotany.page.manasteel_shield2", "Adding $(item)Dirt(0) to the crafting materials will make the shield more compatible with the ground. Right-clicking at the ground will quickly create a wall of $(item)Dirt$(0). However, this makes the shield less durable and lose its original defensive ability.");
+        add("extrabotany.page.manasteel_shield3", "Is it strong enough?");
 
         add("extrabotany.page.title.example", "An Example");
         pantchouliFlower();
@@ -421,6 +433,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.reikarorchid", "Reikar Lily");
         add("extrabotany.page.reikarorchid0", "The $(item)Reikar Lily$(0) turns the tremendous energy of lightning into $(thing)Mana$(0). When a lightning bolt hits nearby, it will generate a great amount of $(thing)Mana$(0) immediately. $(item)Reikar Lily$(0) itself could attract thunder. To absorb the lightning, the flower must not have any $(thing)Mana$(0) stored in it-- otherwise, it will explode.");
         add("extrabotany.page.reikarorchid1", "I Choose You!");
+        add("extrabotany.entry.bloodyenchantress","Bloody Enchantress");
+        add("extrabotany.page.bloodyenchantress0","The $(item)Bloody Enchantress$(0) creates $(thing)Mana$(0) by consuming nearby creatures' life. Creatures sacrificed to the Bloody Enchantress will not produce any drops or experience.");
+        add("extrabotany.page.bloodyenchantress1","Every bite will add a effect called Blood Temptation and overlay with higher amplifier one, the mana production will decrease according to the level of Blood Temptation, and the flower will stop working if the total level of Blood Temptation of all the creatures nearby is over a threshold.");
+        add("extrabotany.page.bloodyenchantress2","The only cure is death.");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    " # ",
+    "#a#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "botania:elementium_ingot"
+    },
+    "a": {
+      "item": "minecraft:shield"
+    }
+  },
+  "result": {
+    "item": "extrabotany:elementium_shield"
+  }
+}

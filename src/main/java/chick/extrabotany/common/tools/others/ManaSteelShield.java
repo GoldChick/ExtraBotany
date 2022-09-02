@@ -1,32 +1,29 @@
-package chick.extrabotany.common.tools.weapons;
+package chick.extrabotany.common.tools.others;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.Level;
 import vazkii.botania.api.mana.ManaItemHandler;
-import vazkii.botania.common.item.ModItems;
+import vazkii.botania.common.item.equipment.ICustomDamageItem;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
+import vazkii.botania.common.lib.ModTags;
 
 import java.util.function.Consumer;
 
-public class LivingWoodCrossBow extends CrossbowItem
+public class ManaSteelShield extends ShieldItem implements ICustomDamageItem
 {
-    public LivingWoodCrossBow(Properties prop)
+    public ManaSteelShield(Properties prop)
     {
         super(prop.durability(250));
     }
 
-    public float chargeVelocityMultiplier()
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
     {
-        return 1F;
-    }
-
-    public int getManaPerDamage()
-    {
-        return 40;
+        return ToolCommons.damageItemIfPossible(stack, amount, entity, getManaPerDamage());
     }
 
     @Override
@@ -39,14 +36,13 @@ public class LivingWoodCrossBow extends CrossbowItem
     }
 
     @Override
-    public boolean isValidRepairItem(ItemStack crossbow, ItemStack material)
+    public boolean isValidRepairItem(ItemStack item, ItemStack material)
     {
-        return material.is(ModItems.livingwoodTwig);
+        return material.is(ModTags.Items.INGOTS_MANASTEEL);
     }
 
-    @Override
-    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
+    public int getManaPerDamage()
     {
-        return ToolCommons.damageItemIfPossible(stack, amount, entity, getManaPerDamage());
+        return 60;
     }
 }

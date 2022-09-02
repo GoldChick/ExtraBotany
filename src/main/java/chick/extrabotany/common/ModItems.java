@@ -12,10 +12,7 @@ import chick.extrabotany.common.foods.NormalFoods;
 import chick.extrabotany.common.items.*;
 import chick.extrabotany.common.items.lens.*;
 import chick.extrabotany.common.tools.armors.*;
-import chick.extrabotany.common.tools.others.DirtShield;
-import chick.extrabotany.common.tools.others.ForestBook;
-import chick.extrabotany.common.tools.others.ManaReader;
-import chick.extrabotany.common.tools.others.RodOfDiscord;
+import chick.extrabotany.common.tools.others.*;
 import chick.extrabotany.common.tools.weapons.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -100,8 +97,8 @@ public class ModItems
     public static final RegistryObject<Item> LEN_TRACE = register(LibItemNames.LEN_TRACE, () -> new ItemLens(stackTo1(), new LenTrace(), ItemLens.PROP_ORIENTATION));
     public static final RegistryObject<Item> LEN_SUPERCONDUCTOR = register(LibItemNames.LEN_SUPERCONDUCTOR, () -> new ItemLens(stackTo1(), new LenSuperConductor(), ItemLens.PROP_DAMAGE));
 
-    public static final RegistryObject<Item> FOREST_BOOK = register(LibItemNames.FOREST_BOOK,()->new ForestBook(stackTo1()));
-    public static final RegistryObject<Item> DIRT_SHIELD = register(LibItemNames.DIRT_SHIELD,()->new DirtShield(stackTo1()));
+    public static final RegistryObject<Item> FOREST_BOOK = register(LibItemNames.FOREST_BOOK, () -> new ForestBook(stackTo1()));
+    public static final RegistryObject<Item> DIRT_SHIELD = register(LibItemNames.DIRT_SHIELD, () -> new DirtShield(stackTo1()));
     /**
      * these are baubles for curios mod
      **/
@@ -134,38 +131,43 @@ public class ModItems
      * for some reason, if they are assigned before,
      * items behind will be with nbt "damage" ,and can not stack.
      */
-    public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = register(LibItemNames.LIVINGWOOD_CROSSBOW, () -> new LivingWoodCrossBow(ITEM_PROPERTIES));
-
-    public static final RegistryObject<Item> ROD_OF_DISCORD = register(LibItemNames.ROD_OF_DISCORD, () -> new RodOfDiscord(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = register(LibItemNames.SHADOWWARRIOR_HELM, () -> new ShadowWarriorArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = register(LibItemNames.SHADOWWARRIOR_CHEST, () -> new ShadowWarriorArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = register(LibItemNames.SHADOWWARRIOR_LEGS, () -> new ShadowWarriorArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = register(LibItemNames.SHADOWWARRIOR_BOOTS, () -> new ShadowWarriorArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SHADOW_KATANA = register(LibItemNames.SHADOW_KATANA, () -> new ShadowKatana(ITEM_PROPERTIES));
-
-    public static final RegistryObject<Item> GOBLINSLAYER_HELM = register(LibItemNames.GOBLINSLAYER_HELM, () -> new GoblinSlayerArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = register(LibItemNames.GOBLINSLAYER_CHEST, () -> new GoblinSlayerArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = register(LibItemNames.GOBLINSLAYER_LEGS, () -> new GoblinSlayerArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = register(LibItemNames.GOBLINSLAYER_BOOTS, () -> new GoblinSlayerArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
-
-    public static final RegistryObject<Item> MIKU_HELM = register(LibItemNames.MIKU_HELM, () -> new MikuArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MIKU_CHEST = register(LibItemNames.MIKU_CHEST, () -> new MikuArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MIKU_LEGS = register(LibItemNames.MIKU_LEGS, () -> new MikuArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MIKU_BOOTS = register(LibItemNames.MIKU_BOOTS, () -> new MikuArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MAID_HELM = register(LibItemNames.MAID_HELM, () -> new MaidArmor(EquipmentSlot.HEAD, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MAID_CHEST = register(LibItemNames.MAID_CHEST, () -> new MaidArmor(EquipmentSlot.CHEST, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MAID_LEGS = register(LibItemNames.MAID_LEGS, () -> new MaidArmor(EquipmentSlot.LEGS, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> MAID_BOOTS = register(LibItemNames.MAID_BOOTS, () -> new MaidArmor(EquipmentSlot.FEET, ITEM_PROPERTIES));
-
-    public static final RegistryObject<Item> TRUE_SHADOW_KATANA = register(LibItemNames.TRUE_SHADOW_KATANA, () -> new TrueShadowKatana(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> TRUE_TERRA_BLADE = register(LibItemNames.TRUE_TERRA_BLADE, () -> new TrueTerraBlade(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> TRUE_THUNSTAR_CALLER = register(LibItemNames.TRUE_THUNSTAR_CALLER, () -> new TrueThunStarCaller(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> INFLUX_WAVER = register(LibItemNames.INFLUX_WAVER, () -> new InfluxWaver(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FIRST_FRACTAL = register(LibItemNames.FIRST_FRACTAL, () -> new FirstFractal(ITEM_PROPERTIES));
     public static final RegistryObject<Item> BUDDHISTRELICS = register(LibItemNames.BUDDHISTRELICS);
     public static final RegistryObject<Item> CAMERA = register(LibItemNames.CAMERA);
-    public static final RegistryObject<Item> EXCALIBER = register(LibItemNames.EXCALIBER, () -> new Excaliber(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FAILNAUGHT = register(LibItemNames.FAILNAUGHT, () -> new Failnaught(ITEM_PROPERTIES));
+    //item with durability
+    public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = register(LibItemNames.LIVINGWOOD_CROSSBOW, () -> new LivingWoodCrossBow(stackTo1()));
+
+    public static final RegistryObject<Item> MANASTEEL_SHIELD = register(LibItemNames.MANASTEEL_SHIELD, () -> new ManaSteelShield(stackTo1()));
+    public static final RegistryObject<Item> ELEMENT_SHIELD = register(LibItemNames.ELEMENT_SHIELD, () -> new ElementSteelShield(stackTo1()));
+
+    public static final RegistryObject<Item> ROD_OF_DISCORD = register(LibItemNames.ROD_OF_DISCORD, () -> new RodOfDiscord(stackTo1()));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = register(LibItemNames.SHADOWWARRIOR_HELM, () -> new ShadowWarriorArmor(EquipmentSlot.HEAD, stackTo1()));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = register(LibItemNames.SHADOWWARRIOR_CHEST, () -> new ShadowWarriorArmor(EquipmentSlot.CHEST, stackTo1()));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_LEGS = register(LibItemNames.SHADOWWARRIOR_LEGS, () -> new ShadowWarriorArmor(EquipmentSlot.LEGS, stackTo1()));
+    public static final RegistryObject<Item> SHADOW_WARRIOR_BOOTS = register(LibItemNames.SHADOWWARRIOR_BOOTS, () -> new ShadowWarriorArmor(EquipmentSlot.FEET, stackTo1()));
+    public static final RegistryObject<Item> SHADOW_KATANA = register(LibItemNames.SHADOW_KATANA, () -> new ShadowKatana(stackTo1()));
+
+    public static final RegistryObject<Item> GOBLINSLAYER_HELM = register(LibItemNames.GOBLINSLAYER_HELM, () -> new GoblinSlayerArmor(EquipmentSlot.HEAD, stackTo1()));
+    public static final RegistryObject<Item> GOBLINSLAYER_CHEST = register(LibItemNames.GOBLINSLAYER_CHEST, () -> new GoblinSlayerArmor(EquipmentSlot.CHEST, stackTo1()));
+    public static final RegistryObject<Item> GOBLINSLAYER_LEGS = register(LibItemNames.GOBLINSLAYER_LEGS, () -> new GoblinSlayerArmor(EquipmentSlot.LEGS, stackTo1()));
+    public static final RegistryObject<Item> GOBLINSLAYER_BOOTS = register(LibItemNames.GOBLINSLAYER_BOOTS, () -> new GoblinSlayerArmor(EquipmentSlot.FEET, stackTo1()));
+
+    public static final RegistryObject<Item> MIKU_HELM = register(LibItemNames.MIKU_HELM, () -> new MikuArmor(EquipmentSlot.HEAD, stackTo1()));
+    public static final RegistryObject<Item> MIKU_CHEST = register(LibItemNames.MIKU_CHEST, () -> new MikuArmor(EquipmentSlot.CHEST, stackTo1()));
+    public static final RegistryObject<Item> MIKU_LEGS = register(LibItemNames.MIKU_LEGS, () -> new MikuArmor(EquipmentSlot.LEGS, stackTo1()));
+    public static final RegistryObject<Item> MIKU_BOOTS = register(LibItemNames.MIKU_BOOTS, () -> new MikuArmor(EquipmentSlot.FEET, stackTo1()));
+    public static final RegistryObject<Item> MAID_HELM = register(LibItemNames.MAID_HELM, () -> new MaidArmor(EquipmentSlot.HEAD, stackTo1()));
+    public static final RegistryObject<Item> MAID_CHEST = register(LibItemNames.MAID_CHEST, () -> new MaidArmor(EquipmentSlot.CHEST, stackTo1()));
+    public static final RegistryObject<Item> MAID_LEGS = register(LibItemNames.MAID_LEGS, () -> new MaidArmor(EquipmentSlot.LEGS, stackTo1()));
+    public static final RegistryObject<Item> MAID_BOOTS = register(LibItemNames.MAID_BOOTS, () -> new MaidArmor(EquipmentSlot.FEET, stackTo1()));
+
+    public static final RegistryObject<Item> TRUE_SHADOW_KATANA = register(LibItemNames.TRUE_SHADOW_KATANA, () -> new TrueShadowKatana(stackTo1()));
+    public static final RegistryObject<Item> TRUE_TERRA_BLADE = register(LibItemNames.TRUE_TERRA_BLADE, () -> new TrueTerraBlade(stackTo1()));
+    public static final RegistryObject<Item> TRUE_THUNSTAR_CALLER = register(LibItemNames.TRUE_THUNSTAR_CALLER, () -> new TrueThunStarCaller(stackTo1()));
+    public static final RegistryObject<Item> INFLUX_WAVER = register(LibItemNames.INFLUX_WAVER, () -> new InfluxWaver(stackTo1()));
+    public static final RegistryObject<Item> FIRST_FRACTAL = register(LibItemNames.FIRST_FRACTAL, () -> new FirstFractal(stackTo1()));
+
+    public static final RegistryObject<Item> EXCALIBER = register(LibItemNames.EXCALIBER, () -> new Excaliber(stackTo1()));
+    public static final RegistryObject<Item> FAILNAUGHT = register(LibItemNames.FAILNAUGHT, () -> new Failnaught(stackTo1()));
 
     public static final TagKey<Item> CORAL_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "coral_item"));
 

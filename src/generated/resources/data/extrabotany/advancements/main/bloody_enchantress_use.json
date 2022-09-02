@@ -1,0 +1,28 @@
+{
+  "parent": "extrabotany:main/thechaos_craft",
+  "display": {
+    "icon": {
+      "item": "extrabotany:bloody_enchantress"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:bloody_enchantress_use.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:bloody_enchantress_use.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code_triggered": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code_triggered"
+    ]
+  ]
+}

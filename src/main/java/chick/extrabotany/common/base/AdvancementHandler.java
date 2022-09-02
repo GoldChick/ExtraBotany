@@ -36,7 +36,7 @@ public final class AdvancementHandler
 
     public void grantAdvancement(ServerPlayer player, String id)
     {
-        PlayerHelper.grantCriterion(player, new ResourceLocation(ExtraBotany.MODID, "main/" + id), "code_triggered");
+        PlayerHelper.grantCriterion(player, new ResourceLocation(ExtraBotany.MODID, "main/"+id), "code_triggered");
     }
 
     public static boolean checkAdvancement(Player player, String modid, String advancement)

@@ -446,7 +446,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern(" x ")
                 .define('x', vazkii.botania.common.item.ModItems.dreamwoodTwig)
                 .define('b', ModItems.HERO_MEDAL.get())
-                .define('a', vazkii.botania.common.item.ModItems.terrasteelBoots)
+                .define('a', vazkii.botania.common.item.ModItems.terraSword)
                 .group(MODID)
                 .unlockedBy("hero_medal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
                 .save(consumer, LibItemNames.EXCALIBER);
@@ -461,6 +461,34 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("orichalcos", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
                 .save(consumer, LibItemNames.FAILNAUGHT);
+        ShapedRecipeBuilder.shaped(ModItems.DIRT_SHIELD.get())
+                .pattern("b#b")
+                .pattern("bab")
+                .pattern("bbb")
+                .define('#', vazkii.botania.common.item.ModItems.manaSteel)
+                .define('a', Items.SHIELD)
+                .define('b', Items.DIRT)
+                .group(MODID)
+                .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(Items.SHIELD))
+                .save(consumer, LibItemNames.DIRT_SHIELD);
+        ShapedRecipeBuilder.shaped(ModItems.MANASTEEL_SHIELD.get())
+                .pattern(" # ")
+                .pattern("#a#")
+                .pattern(" # ")
+                .define('#', vazkii.botania.common.item.ModItems.manaSteel)
+                .define('a', Items.SHIELD)
+                .group(MODID)
+                .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaSteel))
+                .save(consumer, LibItemNames.MANASTEEL_SHIELD);
+        ShapedRecipeBuilder.shaped(ModItems.ELEMENT_SHIELD.get())
+                .pattern(" # ")
+                .pattern("#a#")
+                .pattern(" # ")
+                .define('#', vazkii.botania.common.item.ModItems.elementium)
+                .define('a', Items.SHIELD)
+                .group(MODID)
+                .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.elementium))
+                .save(consumer, LibItemNames.ELEMENT_SHIELD);
     }
 
     private void armorRecipes(Consumer<FinishedRecipe> consumer)

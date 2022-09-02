@@ -64,18 +64,20 @@ public class SubTileBloodyEnchantress extends TileEntityGeneratingFlower
                             continue;
                         if (amp < 10)
                         {
-                            addMana((int) (22F * 12F * (1F - 0.04F * amp - 0.02F * ampAll)));
+                            addMana((int) (25F * 20F * (1F - 0.04F * amp - 0.02F * ampAll)));
                         } else
                             break;
-                        living.addEffect(new MobEffectInstance(ModEffects.BLOOD_TEMPTATION.get(), 100, 0));
-                        //TODO:check it
-
-                        //ExtraBotanyAPI.addPotionEffect(living, ModEffects.BLOOD_TEMPATION, 100, 10, true);
+                        int lv = 0;
+                        if (living.hasEffect(ModEffects.BLOOD_TEMPTATION.get()))
+                        {
+                            lv = living.getEffect(ModEffects.BLOOD_TEMPTATION.get()).getAmplifier() + 1;
+                        }
+                        living.addEffect(new MobEffectInstance(ModEffects.BLOOD_TEMPTATION.get(), 8 * 20, lv));
                         if (living instanceof ServerPlayer)
                         {
                             AdvancementHandler.INSTANCE.grantAdvancement((ServerPlayer) living, LibAdvancementNames.BLOODY_ENCHANTRESS_USE);
                         }
-                        living.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic().bypassInvul(), 5F);
+                        living.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic().bypassInvul(), 4F);
                         living.hurt(DamageSource.MAGIC, 0.01F);
                         cdTime += 20;
                     }

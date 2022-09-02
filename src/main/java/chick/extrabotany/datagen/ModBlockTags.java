@@ -44,6 +44,7 @@ public class ModBlockTags extends BlockTagsProvider
                 .add(ModSubtiles.geminiorchid)
                 .add(ModSubtiles.bellflower)
                 .add(ModSubtiles.reikarorchid)
+                .add(ModSubtiles.bloodyenchantress)
         ;
         tag(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS)
                 .add(ModSubtiles.serenitian)

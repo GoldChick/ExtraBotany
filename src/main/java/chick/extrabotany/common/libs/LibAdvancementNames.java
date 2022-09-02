@@ -18,9 +18,9 @@ public class LibAdvancementNames
     public static final String ROD_OF_DISCORD_CRAFT = "rodofdiscord_craft";
 
     public static final String BLOODY_ENCHANTRESS_USE = "bloody_enchantress_use";
+    public static final String TINKLE_FLOWER_USE = "tinkle_flower_use";
 
-
-
+    public static final String INFINITE_WINE_CRAFT = "infinite_wine_craft";
     public static final String FAILNAUGHT_CRAFT = "failnaught_craft";
     public static final String EXCALIBER_CRAFT = "excaliber_craft";
     public static final String FIRST_FRACTAL_CRAFT = "first_fractal_craft";

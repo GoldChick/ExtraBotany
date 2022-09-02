@@ -3,6 +3,7 @@ package chick.extrabotany.datagen;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
@@ -132,7 +133,7 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("goblin_slayer3", onPickup(ModItems.GOBLINSLAYER_LEGS.get()))
                 .addCriterion("goblin_slayer4", onPickup(ModItems.GOBLINSLAYER_BOOTS.get()))
                 .save(consumer, mainId(LibAdvancementNames.GOBLIN_SLAYER));
-         Advancement.Builder.advancement()
+        Advancement.Builder.advancement()
                 .display(simple(ModItems.MIKU_CHEST.get(), LibAdvancementNames.MIKU, FrameType.TASK))
                 .parent(nightmarefuel_eat)
                 .addCriterion("miku1", onPickup(ModItems.MIKU_HELM.get()))
@@ -140,28 +141,33 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion("miku3", onPickup(ModItems.MIKU_LEGS.get()))
                 .addCriterion("miku4", onPickup(ModItems.MIKU_BOOTS.get()))
                 .save(consumer, mainId(LibAdvancementNames.MIKU));
-         Advancement.Builder.advancement()
+        //parent: thechaos
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.ROD_OF_DISCORD.get(), LibAdvancementNames.ROD_OF_DISCORD_CRAFT, FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, onPickup(ModItems.ROD_OF_DISCORD.get()))
+                .save(consumer, mainId(LibAdvancementNames.ROD_OF_DISCORD_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModSubtiles.bloodyenchantress, LibAdvancementNames.BLOODY_ENCHANTRESS_USE, FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion("code_triggered", new ImpossibleTrigger.TriggerInstance())
+                .save(consumer, mainId(LibAdvancementNames.BLOODY_ENCHANTRESS_USE));
+        Advancement.Builder.advancement()
                 .display(simple(ModItems.MAID_CHEST.get(), LibAdvancementNames.MAID, FrameType.TASK))
-                .parent(nightmarefuel_eat)
+                .parent(thechaos_craft)
                 .addCriterion("maid1", onPickup(ModItems.MAID_HELM.get()))
                 .addCriterion("maid2", onPickup(ModItems.MAID_CHEST.get()))
                 .addCriterion("maid3", onPickup(ModItems.MAID_LEGS.get()))
                 .addCriterion("maid4", onPickup(ModItems.MAID_BOOTS.get()))
                 .save(consumer, mainId(LibAdvancementNames.MAID));
-         Advancement.Builder.advancement()
+        Advancement.Builder.advancement()
                 .display(simple(ModItems.GOBLINSLAYER_CHEST.get(), LibAdvancementNames.SHOOTING_GUARDIAN, FrameType.TASK))
-                .parent(nightmarefuel_eat)
+                .parent(thechaos_craft)
                 .addCriterion("shootingguardian1", onPickup(ModItems.GOBLINSLAYER_HELM.get()))
                 .addCriterion("shootingguardian2", onPickup(ModItems.GOBLINSLAYER_CHEST.get()))
                 .addCriterion("shootingguardian3", onPickup(ModItems.GOBLINSLAYER_LEGS.get()))
                 .addCriterion("shootingguardian4", onPickup(ModItems.GOBLINSLAYER_BOOTS.get()))
                 .save(consumer, mainId(LibAdvancementNames.SHOOTING_GUARDIAN));
-        //parent: thechaos
-        Advancement.Builder.advancement()
-                .display(simple(ModItems.ROD_OF_DISCORD.get(), LibAdvancementNames.ROD_OF_DISCORD_CRAFT, FrameType.TASK))
-                .parent(thechaos_craft)
-                .addCriterion("rodofdiscord", onPickup(ModItems.ROD_OF_DISCORD.get()))
-                .save(consumer, mainId(LibAdvancementNames.ROD_OF_DISCORD_CRAFT));
         //parent:ego
         Advancement.Builder.advancement()
                 .display(simple(ModItems.FAILNAUGHT.get(), LibAdvancementNames.FAILNAUGHT_CRAFT, FrameType.TASK))

@@ -1,0 +1,27 @@
+{
+  "name": "extrabotany.entry.manasteel_shield",
+  "category": "botania:tools",
+  "icon": "extrabotany:manasteel_shield",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.manasteel_shield0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.manasteel_shield1",
+      "recipe": "minecraft:manasteel_shield"
+    },
+    {
+      "type": "text",
+      "text": "extrabotany.page.manasteel_shield2"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.manasteel_shield3",
+      "recipe": "minecraft:dirt_shield"
+    }
+  ]
+}

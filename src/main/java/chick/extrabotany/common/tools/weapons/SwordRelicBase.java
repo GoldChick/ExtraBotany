@@ -28,7 +28,7 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
 {
     public SwordRelicBase(Tier tier, int atkDamage, float atkSpeed, Properties prop)
     {
-        super(tier, atkDamage, atkSpeed, prop);
+        super(tier, atkDamage, atkSpeed, prop.durability(1999));
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
         MinecraftForge.EVENT_BUS.addListener(this::leftClickBlock);
         MinecraftForge.EVENT_BUS.addListener(this::attackEntity);

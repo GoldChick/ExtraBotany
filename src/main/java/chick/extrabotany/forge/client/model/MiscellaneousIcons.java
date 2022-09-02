@@ -3,12 +3,16 @@ package chick.extrabotany.forge.client.model;
 import chick.extrabotany.ExtraBotany;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.resources.model.ModelBakery;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import vazkii.botania.client.model.GunModel;
 import vazkii.botania.mixin.client.AccessorModelBakery;
 
+import java.util.Map;
 import java.util.Set;
 
 import static net.minecraftforge.client.model.ForgeModelBakery.addSpecialModel;
@@ -54,6 +58,9 @@ public class MiscellaneousIcons
 
     public void onModelBake(ModelBakeEvent evt)
     {
+        onItemModelBake(evt.getModelLoader(), evt.getModelRegistry());
+
+        //projectiles
         for (int i = 0; i < firstFractalWeaponModels.length; i++)
         {
             firstFractalWeaponModels[i] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/sworddomain_" + i));
@@ -70,7 +77,18 @@ public class MiscellaneousIcons
         coregodModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_coregod"));
         // butterflyprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/butterflyprojectile"));
     }
+    private void onItemModelBake(ModelBakery loader, Map<ResourceLocation, BakedModel> map)
+    {
+        /*
+        ModelResourceLocation key = new ModelResourceLocation("botania:mana_gun", "inventory");
+        BakedModel originalModel = map.get(key);
+        ModelResourceLocation clipKey = new ModelResourceLocation("botania:mana_gun_clip", "inventory");
+        BakedModel originalModelClip = map.get(clipKey);
+        map.put(key, new GunModel(loader, originalModel, originalModelClip));
 
+
+         */
+    }
     private static Material mainAtlas(String name)
     {
         return new Material(InventoryMenu.BLOCK_ATLAS, new ResourceLocation(ExtraBotany.MODID, name));

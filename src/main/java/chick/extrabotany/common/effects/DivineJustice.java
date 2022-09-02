@@ -17,7 +17,7 @@ public class DivineJustice extends MobEffect
     public DivineJustice()
     {
         super(MobEffectCategory.HARMFUL, 0XFF7F50);
-        addAttributeModifier(Attributes.MAX_HEALTH, "FB353E1C-4180-4865-B01B-BCCE9785ACA3", -0.05F, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        addAttributeModifier(Attributes.MAX_HEALTH, "FB353E1C-4180-4865-B01B-BCCE9785ACA3", -0.10F, AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DivineJustice extends MobEffect
     @Override
     public void applyEffectTick(LivingEntity living, int amplified)
     {
-        living.hurt(DamageSource.MAGIC.bypassArmor().bypassInvul().bypassMagic(), amplified * 2);
+        living.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), amplified * 2);
     }
 
     @Override

@@ -10,6 +10,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import vazkii.botania.common.lib.ModTags;
@@ -43,9 +44,18 @@ public class ModItemTags extends ItemTagsProvider
         this.copy(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS, ModTags.Items.FUNCTIONAL_SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.SPECIAL_FLOWERS, ModTags.Items.SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.MINI_FLOWERS, ModTags.Items.MINI_FLOWERS);
-
-        this.copy(BlockTags.CORALS, ModItems.CORAL_ITEM);
-
+        
+        tag(ModItems.CORAL_ITEM)
+                .add(Items.BRAIN_CORAL)
+                .add(Items.TUBE_CORAL)
+                .add(Items.FIRE_CORAL)
+                .add(Items.BUBBLE_CORAL)
+                .add(Items.HORN_CORAL)
+                .add(Items.BRAIN_CORAL_FAN)
+                .add(Items.TUBE_CORAL_FAN)
+                .add(Items.FIRE_CORAL_FAN)
+                .add(Items.BUBBLE_CORAL_FAN)
+                .add(Items.HORN_CORAL_FAN);
         for (var color : DyeColor.values())
         {
             tag(ModTags.Items.getPetalTag(color)).add(ModItems.UNIVERSAL_PETAL.get());

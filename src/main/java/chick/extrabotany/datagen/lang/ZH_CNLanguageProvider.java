@@ -96,6 +96,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_IGNITE_STONE.get(), "至高火之符石");
         add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
 
+
+        add(ModItems.MANASTEEL_SHIELD.get(), "魔力钢盾牌");
+        add(ModItems.ELEMENT_SHIELD.get(), "源质钢盾牌");
         add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "活木弩");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
@@ -170,6 +173,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.reikarorchid, "雷卡兰");
         add(ModSubtiles.reikarorchidFloating, "浮空雷卡兰");
         add(ModSubtiles.reikarorchid.getDescriptionId() + ".reference", "游戏崩溃");
+        add(ModSubtiles.bloodyenchantress, "鲜血妖姬");
+        add(ModSubtiles.bloodyenchantressFloating, "浮空鲜血妖姬");
+        add(ModSubtiles.bloodyenchantress.getDescriptionId() + ".reference", "用鲜血和暗影缔结契约吧");
 
         add(ModSubtiles.serenitian, "永寂龙胆");
         add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
@@ -192,9 +198,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.SHADOW_WARRIOR, "Crazy ∞ nighT", "装备一套暗影武士");
         prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "装备一套哥布林杀手");
         prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "装备一套星空歌姬");
+        prefixAdvancement(LibAdvancementNames.BLOODY_ENCHANTRESS_USE, "Sweet Devil", "将自己沐浴在血海中");
+
+
         prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "装备一套昴星团战斗女仆");
         prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "装备一套银翼护卫");
-
         prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "不是Discord", "合成不谐传送杖");
 
 
@@ -404,6 +412,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.mastermanaring", "大师魔力之戒");
         add("extrabotany.page.mastermanaring0", "$(item)大师魔力之戒$(0)能够储存近乎无限的魔力。");
         add("extrabotany.page.mastermanaring1", "蛋糕是个谎言。");
+        add("extrabotany.entry.manasteel_shield", "魔力盾牌");
+        add("extrabotany.page.manasteel_shield0", "普通的盾牌实在是太容易损坏了。使用$(item)魔力钢锭$(0)代替$(item)铁锭$(0)可能会更好一些。");
+        add("extrabotany.page.manasteel_shield1", "化方为圆。");
+        add("extrabotany.page.manasteel_shield2", "在制作材料中加入$(item)泥土(0)会让盾牌和大地的亲和能力更强，右击地面可以迅速创建一堵土墙。不幸的是，这让盾牌的耐久显著降低了，并且失去了普通的防御能力。");
+        add("extrabotany.page.manasteel_shield3", "它会掉渣吗。");
         pantchouliFlower();
     }
 
@@ -427,6 +440,11 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.reikarorchid", "雷卡兰");
         add("extrabotany.page.reikarorchid0", "$(item)雷卡兰$(0)在无魔力时可以将闪电的巨大能量转化为$(thing)魔力$(0)，每当有闪电劈在其附近时，就会立刻产出巨大$(thing)魔力$(0)，雷卡兰本身也具有一定的雷电吸引能力。若$(item)雷卡兰$(0)中储存有$(thing)魔力$(0)，则无法吸收闪电并且会引发爆炸。");
         add("extrabotany.page.reikarorchid1", "就决定是你了!");
+        add("extrabotany.entry.bloodyenchantress", "鲜血妖姬");
+        add("extrabotany.page.bloodyenchantress0", "$(item)鲜血妖姬$(0)能够将生物的生命值转化为$(thing)魔力$(0)，一旦有生物在其附近就会开始$(thing)魔力$(0)的转化，效率较为可观。需要注意的是通过这种方式献祭的生物不会有任何掉落。");
+        add("extrabotany.page.bloodyenchantress1", "每次噬咬都会给对方添加血之诱惑效果并不断叠加，每层效果都会降低花的产魔，并且周围生物血之诱惑效果等级总和超过一定值时会停止工作。");
+        add("extrabotany.page.bloodyenchantress2", "死亡是唯一的解药。");
+
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");
         add("extrabotany.page.serenitian1", "事事皆虚空");

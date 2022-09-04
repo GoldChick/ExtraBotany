@@ -1,9 +1,6 @@
 package chick.extrabotany.common;
 
-import chick.extrabotany.common.effects.BloodTempation;
-import chick.extrabotany.common.effects.DivineJustice;
-import chick.extrabotany.common.effects.TimeLock;
-import chick.extrabotany.common.effects.Vegetable;
+import chick.extrabotany.common.effects.*;
 import chick.extrabotany.common.libs.LibEffectNames;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,6 +17,8 @@ public class ModEffects
     public static final RegistryObject<MobEffect> VEGETABLE = MOB_EFFECTS.register(LibEffectNames.VEGETABLE, Vegetable::new);
     public static final RegistryObject<MobEffect> DIVINE_JUSTICE = MOB_EFFECTS.register(LibEffectNames.DIVINE_JUSTICE, DivineJustice::new);
     public static final RegistryObject<MobEffect> TIME_LOCK = MOB_EFFECTS.register(LibEffectNames.TIME_LOCK, TimeLock::new);
+    public static final RegistryObject<MobEffect> BALANCE = MOB_EFFECTS.register(LibEffectNames.BALANCE, Balance::new);
+    public static final RegistryObject<MobEffect> REMEMBER = MOB_EFFECTS.register(LibEffectNames.REMEMBER, Remember::new);
 
     public static DeferredRegister<MobEffect> getEffects()
     {

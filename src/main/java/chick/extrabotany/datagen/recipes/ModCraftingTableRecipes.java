@@ -7,6 +7,8 @@ import chick.extrabotany.common.libs.LibItemNames;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -489,6 +491,17 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.elementium))
                 .save(consumer, LibItemNames.ELEMENT_SHIELD);
+        ShapedRecipeBuilder.shaped(ModItems.FOREST_BOOK.get())
+                .pattern("bab")
+                .pattern("b#b")
+                .pattern("bcb")
+                .define('#', vazkii.botania.common.item.ModItems.lexicon)
+                .define('c', vazkii.botania.common.item.ModItems.runeFire)
+                .define('a', Items.GOLDEN_APPLE)
+                .define('b', ItemTags.LEAVES)
+                .group(MODID)
+                .unlockedBy("lexicon", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lexicon))
+                .save(consumer, LibItemNames.FOREST_BOOK);
     }
 
     private void armorRecipes(Consumer<FinishedRecipe> consumer)
@@ -500,7 +513,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer, "shadowwarrior_helm");
+                .save(consumer, LibItemNames.SHADOWWARRIOR_HELM);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_WARRIOR_CHEST.get())
                 .pattern("x x")
                 .pattern("xxx")
@@ -508,7 +521,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer, "shadowwarrior_chest");
+                .save(consumer,  LibItemNames.SHADOWWARRIOR_CHEST);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_WARRIOR_LEGS.get())
                 .pattern("xxx")
                 .pattern("x x")
@@ -516,7 +529,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer, "shadowwarrior_legs");
+                .save(consumer,  LibItemNames.SHADOWWARRIOR_LEGS);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_WARRIOR_BOOTS.get())
                 .pattern("x x")
                 .pattern("x x")
@@ -524,7 +537,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer, "shadowwarrior_boots");
+                .save(consumer,  LibItemNames.SHADOWWARRIOR_BOOTS);
         ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_HELM.get())
                 .pattern("xxx")
                 .pattern("x x")

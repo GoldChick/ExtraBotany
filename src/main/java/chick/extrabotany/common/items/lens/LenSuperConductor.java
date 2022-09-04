@@ -1,6 +1,7 @@
 package chick.extrabotany.common.items.lens;
 
 import chick.extrabotany.common.base.DamageHandler;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +36,7 @@ public class LenSuperConductor extends Lens
         {
             if (!burst.isFake())
             {
-                DamageHandler.INSTANCE.dmg(living, null, living instanceof Player ? 25F : 8F, DamageHandler.INSTANCE.MAGIC_PIERCING);
+                DamageHandler.INSTANCE.doDamage(living, DamageSource.MAGIC, living instanceof Player ? 25F : 8F,  0);
             }
         }
     }

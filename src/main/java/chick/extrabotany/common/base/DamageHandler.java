@@ -7,6 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.Nullable;
 import vazkii.botania.common.handler.EquipmentHandler;
 
 import java.util.List;
@@ -16,12 +17,20 @@ public final class DamageHandler
 {
     public static final DamageHandler INSTANCE = new DamageHandler();
 
-    public final int NETURAL = 0;
-    public final int MAGIC = 1;
-    public final int NETURAL_PIERCING = 2;
-    public final int MAGIC_PIERCING = 3;
     public final int LIFE_LOSING = 4;
-    public final int LIFE_LOSINT_ABSORB = 5;
+
+    public final int BYPASS_ARMOR = 1,
+            BYPASS_MAGIC = 1 << 1,
+            BYPASS_ABSORB = 1 << 2,
+            BYPASS_INVUL = 1 << 3,
+            SCALE_WITH_DIFFICULTY = 1 << 4,
+            FIRE = 1 << 5,
+            MAGIC = 1 << 6,
+            PROJECTILE = 1 << 7,
+            EXPLOSION = 1 << 8,
+            NO_AGGRO = 1 << 9,
+            FALL = 1 << 10,
+            CREATIVE = 1 << 12;
 
     /**
      * 判断是否可行,source为player并且佩戴和平友好之证的时候无法对友好生物（不extend Mob的）造成伤害
@@ -29,7 +38,7 @@ public final class DamageHandler
      */
     public boolean checkPassable(Entity target, Entity source)
     {
-        if (target == source)
+        if (target == source || target.isRemoved())
             return false;
         if (source instanceof Player sourcePlayer)
         {
@@ -67,50 +76,8 @@ public final class DamageHandler
      */
     public boolean dmg(Entity target, Entity source, float amount, int type)
     {
-        if (target == null || !checkPassable(target, source))
-            return false;
         switch (type)
         {
-            case NETURAL ->
-            {
-                if (source instanceof Player player)
-                {
-                    return target.hurt(DamageSource.playerAttack(player), amount);
-                } else if (source instanceof LivingEntity living)
-                {
-                    return target.hurt(DamageSource.mobAttack(living), amount);
-                } else
-                {
-                    return target.hurt(DamageSource.GENERIC, amount);
-                }
-            }
-            case MAGIC ->
-            {
-                DamageSource s = source == null ? DamageSource.MAGIC : DamageSource.indirectMagic(source, source);
-                return target.hurt(s, amount);
-            }
-            case NETURAL_PIERCING ->
-            {
-                target.setInvulnerable(false);
-                if (source instanceof Player player)
-                {
-                    DamageSource s = DamageSource.playerAttack(player).bypassArmor().bypassMagic();
-                    return target.hurt(s, amount);
-                } else if (source instanceof LivingEntity living)
-                {
-                    DamageSource s = DamageSource.mobAttack(living).bypassArmor().bypassMagic();
-                    return target.hurt(s, amount);
-                } else
-                {
-                    return target.hurt(DamageSource.GENERIC, amount);
-                }
-            }
-            case MAGIC_PIERCING ->
-            {
-                target.setInvulnerable(false);
-                DamageSource s = source == null ? DamageSource.MAGIC.bypassArmor().bypassMagic() : DamageSource.indirectMagic(source, source).bypassMagic().bypassArmor();
-                return target.hurt(s, amount);
-            }
             case LIFE_LOSING ->
             {
                 if (!(target instanceof LivingEntity living))
@@ -118,7 +85,6 @@ public final class DamageHandler
                 float trueHealth = Math.max(0F, living.getHealth() - amount);
                 if (trueHealth <= 0)
                 {
-                    dmg(target, source, 0.01F, NETURAL);
                     if (source instanceof Player player)
                         living.die(DamageSource.playerAttack(player));
                     else if (source instanceof LivingEntity livingEntity)
@@ -129,37 +95,87 @@ public final class DamageHandler
                 {
                     living.setHealth(trueHealth);
                 }
-                return dmg(target, source, 0.01F, NETURAL);
-            }
-            case LIFE_LOSINT_ABSORB ->
-            {
-                if (!(target instanceof LivingEntity living))
-                    return false;
-                float currentYellowHealth = living.getAbsorptionAmount();
-                if (currentYellowHealth >= amount)
-                {
-                    living.setAbsorptionAmount(living.getAbsorptionAmount() - amount);
-                } else
-                {
-                    float trueHealth = Math.max(0F, living.getHealth() - amount + living.getAbsorptionAmount());
-                    living.setAbsorptionAmount(0);
-                    if (trueHealth <= 0)
-                    {
-                        dmg(target, source, 0.01F, NETURAL);
-                        if (source instanceof Player player)
-                            living.die(DamageSource.playerAttack(player));
-                        else if (source instanceof LivingEntity livingEntity)
-                            living.die(DamageSource.mobAttack(livingEntity));
-                        if (living.getHealth() > 0)
-                            living.setHealth(-1F);
-                    } else
-                    {
-                        living.setHealth(trueHealth);
-                    }
-                }
-                return dmg(target, source, 0.01F, NETURAL);
+                return true;
             }
         }
         return false;
+    }
+
+    public boolean doDamage(Entity target, DamageSource s, float amount, boolean bypassInvulnerable, int type)
+    {
+        if (target == null || target.isRemoved())
+            return false;
+        if (s.getEntity() != null && !checkPassable(target, s.getEntity()))
+            return false;
+        if (bypassInvulnerable)
+        {
+            target.invulnerableTime = 0;
+        }
+        return hurt(target, s, amount, type);
+    }
+
+    public boolean doDamage(Entity target, DamageSource s, float amount, int type)
+    {
+        if (target == null || target.isRemoved())
+            return false;
+        if (s.getEntity() != null && !checkPassable(target, s.getEntity()))
+            return false;
+        return hurt(target, s, amount, type);
+    }
+
+    public boolean doDamage(Entity target, @Nullable Entity item, Entity source, float amount, boolean bypassInvulnerable, int type)
+    {
+        DamageSource s;
+        if (source instanceof Player player)
+        {
+            s = DamageSource.playerAttack(player);
+        } else
+        {
+            var mob = (LivingEntity) source;
+            s = (item == null) ? DamageSource.mobAttack(mob) : DamageSource.indirectMobAttack(item, mob);
+        }
+        return doDamage(target, s, amount, bypassInvulnerable, type);
+    }
+
+    private boolean hurt(Entity target, DamageSource s, float amount, int type)
+    {
+        if ((type & BYPASS_ARMOR) > 0)
+            s.bypassArmor();
+        if ((type & BYPASS_MAGIC) > 0)
+            s.bypassMagic();
+        float absorbNum = 0;
+        if ((type & BYPASS_ABSORB) > 0 && target instanceof Player player)
+        {
+            absorbNum = player.getAbsorptionAmount();
+            player.setAbsorptionAmount(0);
+
+        }
+        if ((type & BYPASS_INVUL) > 0)
+            target.invulnerableTime = 0;
+        if ((type & SCALE_WITH_DIFFICULTY) > 0)
+            s.setScalesWithDifficulty();
+        if ((type & FIRE) > 0)
+            s.setIsFire();
+        if ((type & MAGIC) > 0)
+            s.setMagic();
+        if ((type & PROJECTILE) > 0)
+            s.setProjectile();
+        if ((type & EXPLOSION) > 0)
+            s.setExplosion();
+        if ((type & NO_AGGRO) > 0)
+            s.setNoAggro();
+        if ((type & FALL) > 0)
+            s.setIsFall();
+        //TODO: THIS MAY CAUSE WRONG IN PVP MODE
+        if ((type & CREATIVE) > 0)
+            s.bypassInvul();
+
+        //do damage here
+        boolean result = target.hurt(s, amount);
+        if ((type & BYPASS_ABSORB) > 0 && target instanceof Player player && !target.isRemoved())
+        {
+            player.setAbsorptionAmount(absorbNum);
+        }
+        return result;
     }
 }

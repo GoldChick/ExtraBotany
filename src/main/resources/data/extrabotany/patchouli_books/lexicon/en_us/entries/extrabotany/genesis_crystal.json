@@ -84,7 +84,7 @@
     },
     {
       "type": "patchouli:multiblock",
-      "name": "extrabotany.entry.genesis_crystal",
+      "name": "extrabotany.page.genesis_crystal4",
       "multiblock": {
         "pattern": [
           [
@@ -136,7 +136,7 @@
         },
         "symmetrical": true
       },
-      "text": "extrabotany.entry.genesis_crystal"
+      "text": "extrabotany.page.genesis_crystal5"
     }
   ]
 }

@@ -26,6 +26,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModEffects.DIVINE_JUSTICE.get(), "Divine Justice");
         add(ModEffects.VEGETABLE.get(), "Green Hat");
         add(ModEffects.TIME_LOCK.get(), "Time Lock");
+        add(ModEffects.REMEMBER.get(), "Remember");
+        add(ModEffects.BALANCE.get(), "Balance");
 
         add(ModItems.NIGHTMARE_FUEL.get(), "Nightmare Fuel");
         add(ModItems.SPIRIT_FUEL.get(), "Spirit Fuel");
@@ -97,6 +99,8 @@ public class EN_USLanguageProvider extends LanguageProvider
 
         add(ModItems.MANASTEEL_SHIELD.get(), "Mana Steel Shield");
         add(ModItems.ELEMENT_SHIELD.get(), "Elementium Shield");
+        add(ModItems.DIRT_SHIELD.get(), "Magic Dirt Shield");
+        add(ModItems.FOREST_BOOK.get(), "Aranyaka");
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "Livingwood Crossbow");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
@@ -104,6 +108,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "True Thunstar Caller");
         add(ModItems.INFLUX_WAVER.get(), "Influx Waver");
         add(ModItems.FIRST_FRACTAL.get(), "First Fractal");
+        add(ModItems.FAILNAUGHT.get(), "Failnaught");
+        add(ModItems.EXCALIBER.get(), "Excaliber");
 
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");
@@ -136,6 +142,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotanymisc.inventoryUnfeasible", "You have something that isn't allowed in this boss fight. Check your inventory and tips in the lexicon again!");
         add("extrabotanymisc.unlegalPlayercount", "There are more people than there were when the boss is summoned. That's illegal!");
         add("extrabotanymisc.description", "You can not use it until you complete corresponding advancement <%s>.");
+        otherLangs();
         langFlower();
         langAdvancement();
         langPantchouli();
@@ -147,6 +154,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModEntities.FALSE_LIGHTNING, "Simulated Lightning");
         add(ModEntities.TRUE_SHADOW_KATANA, "True Shadow Katana");
         add(ModEntities.TRUE_TERRA_BLADE, "True Terra Blade");
+        add(ModEntities.INFLUX_WAVER, "Influx Waver");
+        add(ModEntities.MAGIC_ARROW, "Magic Arrow");
+        add(ModEntities.PHANTOM_SWORD, "Sword of Zenith");
     }
 
     private void langFlower()
@@ -212,11 +222,13 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("advancement.extrabotany:moonpendantcraft.title", "Crystalline");
         add("advancement.extrabotany:moonpendantcraft.desc", "Obtain Heart of Corrupted Moon");
     }
+
     private void prefixAdvancement(String name, String title, String text)
     {
         add("advancement.extrabotany:" + name + ".title", title);
         add("advancement.extrabotany:" + name + ".desc", text);
     }
+
     private void langPantchouli()
     {
         add("extrabotany.category.extrabotany", "Extra Knowledge");
@@ -386,6 +398,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.genesis_crystal1", "Craft Primo Gem.");
         add("extrabotany.page.genesis_crystal2", "Craft Intertwined Fate.");
         add("extrabotany.page.genesis_crystal3", "Craft Acquaint Fate.");
+        add("extrabotany.page.genesis_crystal4", "Wish Pool");
+        add("extrabotany.page.genesis_crystal5", "Right click the $(item)Dimension Catalyst$(0) with $(item)Intertwined Fate$(0) or $(item)Acquaint Fate$(0) to start wish!");
+
         add("extrabotany.entry.livingwood_crossbow", "Livingwood Crossbow");
         add("extrabotany.page.livingwood_crossbow0", "Similar to how Livingwood Bow was created, $(item)Livingwood$(0), $(item)Mana Steel$(0) and $(item)Mana String$(0) can be used to craft sturdier %(item)Livingwood Crossbow$(0). It will also repair itself using $(thing)Mana$(0).");
         add("extrabotany.page.livingwood_crossbow1", "Does it shoot airplanes?");
@@ -395,20 +410,22 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.true_terra_blade", "An upgrade to $(item)Terra Blade$(0). Its projectile will pierce through enemies.");
         add("extrabotany.page.true_shadow_katana", "An upgrade to $(item)Shadow Katana$(0). It could summon two projection that automatically trace enemies.");
         add("extrabotany.page.influx_waver", "Its projectile will constantly attack the first entity it contacts..");
-        add("extrabotany.entry.failnaught","Failnaught");
-        add("extrabotany.page.failnaught0","The $(item)Failnaught$(0) uses $(thing)Mana$(0) to shoot magic arrows which pierce through enemies and deal damage to the creatures in the area. The longer you draw the bow, the more damage it will deal.");
-        add("extrabotany.page.failnaught1","A hundred shots, a hundred bullseyes.");
-        add("extrabotany.entry.buddhistrelics","Origin Creation - Omniscience");
-        add("extrabotany.page.buddhistrelics0","$(item)Origin Creation - The Omniscience$(0) relic can simulate some of the Relics by pressing ctrl to switch its form. Keeping other forms will cost $(thing)Mana$(0). With insufficient mana it will change to its original form.");
-        add("extrabotany.entry.excaliber","Excaliber");
-        add("extrabotany.page.excaliber0","$(item)Excaliber$(0) could shoot golden mana beam that will automatically trace enemies in a large area.");
-        add("extrabotany.page.excaliber1","");
+        add("extrabotany.entry.failnaught", "Failnaught");
+        add("extrabotany.page.failnaught0", "The $(item)Failnaught$(0) uses $(thing)Mana$(0) to shoot magic arrows which pierce through enemies and deal damage to the creatures in the area. The longer you draw the bow, the more damage it will deal.");
+        add("extrabotany.page.failnaught1", "A hundred shots, a hundred bullseyes.");
+        add("extrabotany.entry.buddhistrelics", "Origin Creation - Omniscience");
+        add("extrabotany.page.buddhistrelics0", "$(item)Origin Creation - The Omniscience$(0) relic can simulate some of the Relics by pressing ctrl to switch its form. Keeping other forms will cost $(thing)Mana$(0). With insufficient mana it will change to its original form.");
+        add("extrabotany.entry.excaliber", "Excaliber");
+        add("extrabotany.page.excaliber0", "$(item)Excaliber$(0) could shoot golden mana beam that will automatically trace enemies in a large area.");
+        add("extrabotany.page.excaliber1", "");
         add("extrabotany.entry.manasteel_shield", "Mana Shield");
         add("extrabotany.page.manasteel_shield0", "Wooden Shield is too easy to damage. Using $(item)Mana Steel$(0) to replace $(item)Iron$(0) may be better.");
         add("extrabotany.page.manasteel_shield1", "Circling the square.");
         add("extrabotany.page.manasteel_shield2", "Adding $(item)Dirt(0) to the crafting materials will make the shield more compatible with the ground. Right-clicking at the ground will quickly create a wall of $(item)Dirt$(0). However, this makes the shield less durable and lose its original defensive ability.");
         add("extrabotany.page.manasteel_shield3", "Is it strong enough?");
-
+        add("extrabotany.entry.forest_book", "Aranyaka");
+        add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1 $(thing)hp$(0), capped at 5.");
+        add("extrabotany.page.forest_book1", "\"Hello,\" \"Thank You,\" and the Final \"Goodbye\".");
         add("extrabotany.page.title.example", "An Example");
         pantchouliFlower();
     }
@@ -433,10 +450,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.reikarorchid", "Reikar Lily");
         add("extrabotany.page.reikarorchid0", "The $(item)Reikar Lily$(0) turns the tremendous energy of lightning into $(thing)Mana$(0). When a lightning bolt hits nearby, it will generate a great amount of $(thing)Mana$(0) immediately. $(item)Reikar Lily$(0) itself could attract thunder. To absorb the lightning, the flower must not have any $(thing)Mana$(0) stored in it-- otherwise, it will explode.");
         add("extrabotany.page.reikarorchid1", "I Choose You!");
-        add("extrabotany.entry.bloodyenchantress","Bloody Enchantress");
-        add("extrabotany.page.bloodyenchantress0","The $(item)Bloody Enchantress$(0) creates $(thing)Mana$(0) by consuming nearby creatures' life. Creatures sacrificed to the Bloody Enchantress will not produce any drops or experience.");
-        add("extrabotany.page.bloodyenchantress1","Every bite will add a effect called Blood Temptation and overlay with higher amplifier one, the mana production will decrease according to the level of Blood Temptation, and the flower will stop working if the total level of Blood Temptation of all the creatures nearby is over a threshold.");
-        add("extrabotany.page.bloodyenchantress2","The only cure is death.");
+        add("extrabotany.entry.bloodyenchantress", "Bloody Enchantress");
+        add("extrabotany.page.bloodyenchantress0", "The $(item)Bloody Enchantress$(0) creates $(thing)Mana$(0) by consuming nearby creatures' life. Creatures sacrificed to the Bloody Enchantress will not produce any drops or experience.");
+        add("extrabotany.page.bloodyenchantress1", "Every bite will add a effect called Blood Temptation and overlay with higher amplifier one, the mana production will decrease according to the level of Blood Temptation, and the flower will stop working if the total level of Blood Temptation of all the creatures nearby is over a threshold.");
+        add("extrabotany.page.bloodyenchantress2", "The only cure is death.");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");
@@ -447,5 +464,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.annoying_flower2", "Cooked Chicken can be fried by soaking it in $(thing)Mana$(0). Fried Chicken Legs restore more hunger and give saturation.");
         add("extrabotany.page.annoying_flower3", "Neither an angel or a devil.");
 
+    }
+
+    private void otherLangs()
+    {
+        add("extrabotany.wish.is_active", "Someone is using this!!");
     }
 }

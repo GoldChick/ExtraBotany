@@ -210,8 +210,6 @@ public abstract class RelicProjectileBase extends ThrowableProjectile
         float damageTimes = (getOwner() instanceof Player) ? 1.0F : 3.0F;
         if (tickCount > getLifeTicks() * damageTimes)
             discard();
-        if (getDeltaMovement().equals(Vec3.ZERO))
-            return;
     }
 
     public abstract int getLifeTicks();

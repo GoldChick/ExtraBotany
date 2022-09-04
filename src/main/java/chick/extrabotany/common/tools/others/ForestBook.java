@@ -1,10 +1,15 @@
 package chick.extrabotany.common.tools.others;
 
+import chick.extrabotany.common.ModEffects;
 import chick.extrabotany.common.base.DamageHandler;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class ForestBook extends Item
@@ -16,18 +21,19 @@ public class ForestBook extends Item
 
     @NotNull
     @Override
-    public InteractionResult useOn(UseOnContext ctx)
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-        if (ctx.getPlayer() != null && !ctx.getLevel().isClientSide && ctx.getPlayer().getHealth() > 0)
+        var stack = player.getItemInHand(hand);
+        if (!level.isClientSide && player.getHealth() > 0)
         {
-            //TODO应该有一个buff标记，以免二次使用
-            if (ctx.getPlayer().getAbsorptionAmount() < 10F)
+            if (player.getAbsorptionAmount() < 10F && !player.hasEffect(ModEffects.REMEMBER.get()))
             {
-                ctx.getPlayer().hurt(DamageSource.MAGIC.bypassArmor().bypassInvul().bypassMagic(), 10.0F);
-                ctx.getPlayer().setAbsorptionAmount(ctx.getPlayer().getAbsorptionAmount() + 10.0F);
-                return InteractionResult.SUCCESS;
+                DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 8.0F, DamageHandler.INSTANCE.CREATIVE + DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
+                player.setAbsorptionAmount(10.0F);
+                player.addEffect(new MobEffectInstance(ModEffects.REMEMBER.get(), 5 * 20, 0));
+                return InteractionResultHolder.success(stack);
             }
         }
-        return InteractionResult.FAIL;
+        return InteractionResultHolder.fail(stack);
     }
 }

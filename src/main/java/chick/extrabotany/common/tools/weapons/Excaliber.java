@@ -170,7 +170,7 @@ public class Excaliber extends SwordRelicBase implements ILensEffect, ICustomDam
                     float damage = BotaniaAPI.instance().getTerrasteelItemTier().getAttackDamageBonus() + 3F;
                     if (!burst.isFake() && !entity.level.isClientSide)
                     {
-                        DamageHandler.INSTANCE.dmg(living, thrower, damage, DamageHandler.INSTANCE.NETURAL_PIERCING);
+                        DamageHandler.INSTANCE.doDamage(living, burst.entity(), thrower, damage, false, 0);
                         entity.discard();
                         break;
                     }

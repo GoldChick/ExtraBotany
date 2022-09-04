@@ -5,11 +5,13 @@ import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.common.base.DamageHandler;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -43,14 +45,14 @@ public class EntityTrueShadowKatanaProjectile extends RelicProjectileBase
 
     public EntityTrueShadowKatanaProjectile(Level level, LivingEntity thrower, float damageTime)
     {
-        super(ModEntities.TRUE_SHADOW_KATANA, level, thrower,damageTime);
+        super(ModEntities.TRUE_SHADOW_KATANA, level, thrower, damageTime);
     }
 
     @Override
     public void tick()
     {
         super.tick();
-        if (this.tickCount <= 3)
+        if (getDeltaMovement().equals(Vec3.ZERO) || this.tickCount <= 3)
             return;
         if (level.isClientSide && tickCount % 2 == 0)
         {
@@ -63,11 +65,10 @@ public class EntityTrueShadowKatanaProjectile extends RelicProjectileBase
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
-                living.setInvulnerable(false);
-                DamageHandler.INSTANCE.dmg(living, getOwner(), 5.5F * damageTime, DamageHandler.INSTANCE.MAGIC);
+                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 6F * damageTime, false, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 2F * damageTime, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
+                    DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 2F * damageTime, true, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
                     attackedEntities.add(living);
                 }
                 discard();
@@ -75,6 +76,7 @@ public class EntityTrueShadowKatanaProjectile extends RelicProjectileBase
             }
         }
     }
+
     @OnlyIn(Dist.CLIENT)
     @Override
     public BakedModel getIcon()

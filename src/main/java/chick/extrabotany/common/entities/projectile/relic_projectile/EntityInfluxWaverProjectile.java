@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import vazkii.botania.client.core.proxy.ClientProxy;
@@ -58,7 +60,7 @@ public class EntityInfluxWaverProjectile extends RelicProjectileBase
 
         super.tick();
 
-        if (this.removeFlag != -1)
+        if (getDeltaMovement().equals(Vec3.ZERO) || this.removeFlag != -1)
             return;
 
         if (level.isClientSide && tickCount % 2 == 0)
@@ -78,17 +80,10 @@ public class EntityInfluxWaverProjectile extends RelicProjectileBase
             {
                 if (!living.isRemoved())
                 {
+                    //TODO WIP
                     living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
-                    if (getOwner() instanceof Player)
-                    {
-                        DamageHandler.INSTANCE.dmg(living, getOwner(), 12F * damageTime, DamageHandler.INSTANCE.NETURAL);
-                    } else
-                    {
-                        if (living.invulnerableTime == 0)
-                            DamageHandler.INSTANCE.dmg(living, getOwner(), 2.5F * damageTime, DamageHandler.INSTANCE.LIFE_LOSING);
-                        DamageHandler.INSTANCE.dmg(living, getOwner(), 7F * damageTime, DamageHandler.INSTANCE.MAGIC);
-                    }
-
+                    DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this, getOwner()), 7F * damageTime, DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY + DamageHandler.INSTANCE.PROJECTILE);
+                    DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this, getOwner()), 3F * damageTime, DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY + DamageHandler.INSTANCE.PROJECTILE);
                     flag = living.isRemoved();
                     if (getStrikeTimes() > 0 && !flag)
                     {

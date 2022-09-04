@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -72,16 +73,15 @@ public class EntityPhantomSword extends RelicProjectileBase
             return;
         }
 
-
         if (getFake())
         {
             this.setDeltaMovement(0D, 0D, 0D);
             return;
         }
 
-
         super.tick();
-
+        if (getDeltaMovement().equals(Vec3.ZERO))
+            return;
         if (!level.isClientSide && !getFake() && this.tickCount % 6 == 0)
         {
             EntityPhantomSword illusion = new EntityPhantomSword(level);
@@ -100,14 +100,16 @@ public class EntityPhantomSword extends RelicProjectileBase
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
+                //TODO:WIP
+                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 10F * damageTime, true, DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.PROJECTILE);
+
                 if (getOwner() instanceof Player)
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 10F * damageTime, DamageHandler.INSTANCE.MAGIC_PIERCING);
-                } else
+                 } else
                 {
-                    DamageHandler.INSTANCE.dmg(living, getOwner(), 10F * damageTime, DamageHandler.INSTANCE.MAGIC);
+                    //   DamageHandler.INSTANCE.dmg(living, getOwner(), 10F * damageTime, DamageHandler.INSTANCE.MAGIC);
                 }
-                DamageHandler.INSTANCE.dmg(living, getOwner(), 2.5F * damageTime, DamageHandler.INSTANCE.LIFE_LOSING);
+                //DamageHandler.INSTANCE.doDamage(living, getOwner(), 2.5F * damageTime, true,DamageHandler.INSTANCE.LIFE_LOSING);
             }
         }
     }

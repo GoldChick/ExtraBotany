@@ -80,11 +80,9 @@ public class TrueShadowKatana extends SwordRelicBase
             Vec3 axis = look.normalize().cross(new Vec3(-1, 0, -1)).normalize();
 
             double rot = mod * Math.PI / 4 - Math.PI / 4;
-
-            Vec3 axis1 = axis.scale(div * 2.5 + 2).lerp(look, rot);
-            //TODO what does rotate change to?
-            //whats this?
-            //rotate(rot, look);
+            //VecHelper.rotate()
+            //Vec3 axis1 = axis.scale(div * 2.5 + 2).lerp(look, rot);
+            var axis1 = VecHelper.rotate(axis.scale(div * 2.5 + 2), rot, look);
             if (axis1.y < 0)
             {
                 axis1 = axis1.multiply(1, -1, 1);
@@ -100,10 +98,12 @@ public class TrueShadowKatana extends SwordRelicBase
             player.level.addFreshEntity(proj);
         }
     }
+
     public static IRelic makeRelic(ItemStack stack)
     {
-        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID,"challenge/true_shadow_katana"));
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "challenge/true_shadow_katana"));
     }
+
     @Override
     public void attack(LivingEntity player, Entity target)
     {

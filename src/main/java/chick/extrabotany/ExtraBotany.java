@@ -19,7 +19,7 @@ public class ExtraBotany
     public static final String MODID = "extrabotany";//mod name
     public static final String TAB_NAME = "extrabotany";//Name in creative inventury
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(TAB_NAME)
     {

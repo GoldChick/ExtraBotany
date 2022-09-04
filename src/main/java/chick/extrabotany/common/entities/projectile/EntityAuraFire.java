@@ -4,6 +4,7 @@ import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.base.DamageHandler;
 import chick.extrabotany.common.entities.projectile.relic_projectile.RelicProjectileBase;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -43,7 +44,8 @@ public class EntityAuraFire extends RelicProjectileBase
             if (result.getEntity() != player)
             {
                 float dmg = DamageHandler.calcDamage(5F, player);
-                DamageHandler.INSTANCE.dmg(result.getEntity(), player, dmg, DamageHandler.INSTANCE.NETURAL_PIERCING);
+
+                DamageHandler.INSTANCE.doDamage(result.getEntity(), DamageSource.indirectMagic(this,getOwner()), dmg, DamageHandler.INSTANCE.FIRE);
                 player.setAbsorptionAmount(Math.min(10, player.getAbsorptionAmount() + 1F));
                 discard();
             }

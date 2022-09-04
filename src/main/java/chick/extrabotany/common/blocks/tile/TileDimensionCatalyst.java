@@ -11,6 +11,7 @@ import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -138,12 +139,8 @@ public class TileDimensionCatalyst extends TileMod
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.chouka, SoundSource.PLAYERS, 20F, 1F);
                 } else
                 {
-                    player.sendMessage(new TextComponent("is active!").withStyle(ChatFormatting.RED), Util.NIL_UUID);
-
+                    player.sendMessage(new TranslatableComponent("extrabotany.wish.is_active").withStyle(ChatFormatting.RED), Util.NIL_UUID);
                 }
-            } else
-            {
-                player.sendMessage(new TextComponent("chouka failed!").withStyle(ChatFormatting.RED), Util.NIL_UUID);
             }
         }
         return true;

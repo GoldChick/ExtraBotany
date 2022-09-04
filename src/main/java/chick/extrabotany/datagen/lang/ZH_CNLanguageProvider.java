@@ -26,6 +26,8 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModEffects.DIVINE_JUSTICE.get(), "神圣裁决");
         add(ModEffects.VEGETABLE.get(), "绿意盎然");
         add(ModEffects.TIME_LOCK.get(), "时空锁定");
+        add(ModEffects.REMEMBER.get(), "铭记");
+        add(ModEffects.BALANCE.get(), "平衡");
 
         add(ModItems.NIGHTMARE_FUEL.get(), "梦魇燃料");
         add(ModItems.SPIRIT_FUEL.get(), "精神燃料");
@@ -99,6 +101,8 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
         add(ModItems.MANASTEEL_SHIELD.get(), "魔力钢盾牌");
         add(ModItems.ELEMENT_SHIELD.get(), "源质钢盾牌");
+        add(ModItems.DIRT_SHIELD.get(), "魔力泥土盾牌");
+        add(ModItems.FOREST_BOOK.get(), "森林书");
         add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "活木弩");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
@@ -106,6 +110,8 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "真·星雷者");
         add(ModItems.INFLUX_WAVER.get(), "波涌之刃");
         add(ModItems.FIRST_FRACTAL.get(), "最初分型");
+        add(ModItems.FAILNAUGHT.get(), "百中弓");
+        add(ModItems.EXCALIBER.get(), "王者圣剑");
 
 
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "暗影武士头盔");
@@ -151,6 +157,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModEntities.FALSE_LIGHTNING, "仿真闪电");
         add(ModEntities.TRUE_SHADOW_KATANA, "真·影刃");
         add(ModEntities.TRUE_TERRA_BLADE, "真·泰拉之刃");
+        add(ModEntities.INFLUX_WAVER, "波涌之刃");
+        add(ModEntities.MAGIC_ARROW, "魔法箭矢");
+        add(ModEntities.PHANTOM_SWORD, "天顶剑");
     }
 
     private void langFlower()
@@ -392,6 +401,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.genesis_crystal1", "使用创世结晶获取原石。");
         add("extrabotany.page.genesis_crystal2", "合成纠缠之缘。");
         add("extrabotany.page.genesis_crystal3", "合成相遇之缘。");
+        add("extrabotany.page.genesis_crystal4", "祈愿池");
+        add("extrabotany.page.genesis_crystal5", "使用$(item)纠缠之缘￥(0)或者$(item)相遇之缘$(0)右击$(item)次元催化剂$(0)开始祈愿。");
+
         add("extrabotany.entry.livingwood_crossbow", "活木弩");
         add("extrabotany.page.livingwood_crossbow0", "仿照活木弓的方式，可以用$(item)活木$(0)、$(item)魔力钢锭$(0)和$(item)蕴魔丝线(0)制造更加耐用的活木弩。此外，它也可以用魔力修复。");
         add("extrabotany.page.livingwood_crossbow1", "它能把飞机打下来么？");
@@ -417,6 +429,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield1", "化方为圆。");
         add("extrabotany.page.manasteel_shield2", "在制作材料中加入$(item)泥土(0)会让盾牌和大地的亲和能力更强，右击地面可以迅速创建一堵土墙。不幸的是，这让盾牌的耐久显著降低了，并且失去了普通的防御能力。");
         add("extrabotany.page.manasteel_shield3", "它会掉渣吗。");
+        add("extrabotany.entry.forest_book", "森林书");
+        add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多5生命值。");
+        add("extrabotany.page.forest_book1", "“你好”，“谢谢”，最后是“再见”。");
         pantchouliFlower();
     }
 
@@ -457,7 +472,6 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
     private void otherLangs()
     {
-        add("extrabotany.chouka.multiblock_error", "不在正确的抽卡池上！");
-        add("extrabotany.chouka.is_active", "有玩家正在使用这个抽卡池！！");
+        add("extrabotany.wish.is_active", "有玩家正在使用这个祈愿池！！");
     }
 }

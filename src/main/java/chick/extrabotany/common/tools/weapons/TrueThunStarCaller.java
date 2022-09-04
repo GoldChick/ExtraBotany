@@ -50,24 +50,28 @@ public class TrueThunStarCaller extends SwordRelicBase
                     damage = 7F - (float) newList.size() * 0.2F;
                 else if (newList.size() <= 10)
                     damage = 11F - (float) newList.size();
-
-                DamageHandler.INSTANCE.dmg(livingEntity, player, damage * damageTime, DamageHandler.INSTANCE.LIFE_LOSING);
                 EntityFalseLightning falseLightning = new EntityFalseLightning(ModEntities.FALSE_LIGHTNING, player.level);
                 falseLightning.setPos(livingEntity.position());
                 player.level.addFreshEntity(falseLightning);
+
+                int i = DamageHandler.INSTANCE.MAGIC + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ARMOR + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY;
+
+                DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, damage * damageTime, true, i + DamageHandler.INSTANCE.BYPASS_ABSORB);
+
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, 0));
                 if (livingEntity.isOnFire())
                 {
-                    DamageHandler.INSTANCE.dmg(livingEntity, player, 5F * damageTime, DamageHandler.INSTANCE.LIFE_LOSING);
+                    DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, 5F * damageTime, true, i);
                     livingEntity.setRemainingFireTicks(0);
                     Minecraft.getInstance().level.addParticle(ParticleTypes.EXPLOSION_EMITTER, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), 1D, 0D, 0D);
                 }
             }
         }
     }
+
     public static IRelic makeRelic(ItemStack stack)
     {
-        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID,"challenge/true_thunstar_caller"));
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "challenge/true_thunstar_caller"));
     }
 }

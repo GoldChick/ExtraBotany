@@ -60,7 +60,8 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem, 
         var stack = player.getItemInHand(hand);
         if (ManaItemHandler.instance().requestManaExactForTool(stack, player, 800, false))
         {
-            return InteractionResultHolder.success(stack);
+            player.startUsingItem(hand);
+            return InteractionResultHolder.consume(stack);
         } else
         {
             return InteractionResultHolder.fail(stack);

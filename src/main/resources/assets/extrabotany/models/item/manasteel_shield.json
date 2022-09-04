@@ -1,5 +1,8 @@
 {
-  "parent": "extrabotany:item/manasteel_shield_base",
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "extrabotany:item/manasteel_shield"
+  },
   "display": {
     "thirdperson_righthand": {
       "rotation": [

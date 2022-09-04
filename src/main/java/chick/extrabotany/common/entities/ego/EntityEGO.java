@@ -404,7 +404,6 @@ public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
 
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
 
-    //--------------------------------------------------------------------------------
     public static boolean isTruePlayer(Entity e)
     {
         if (!(e instanceof Player player))
@@ -835,9 +834,12 @@ public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
         } else if (getStage() == 2 && getHealth() < 0.05F * getMaxHealth())
         {
             setStage(3);
+            setWeaponType(4);
             setInvulTime(460);
             tpDelay = 460;
             this.setPos(source.getX() + 0.5, source.getY() + 3, source.getZ() + 0.5);
+            Collections.shuffle(WAVES);
+            wave = 0;
 
             var beam = new EntityEGOBeam(level);
             Vec3 vec = new Vec3(6, 0, 0);

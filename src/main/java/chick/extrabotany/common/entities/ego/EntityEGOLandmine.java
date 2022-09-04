@@ -272,7 +272,7 @@ public class EntityEGOLandmine extends Entity
                 List<Player> players = level.getEntitiesOfClass(Player.class, getBoundingBox().inflate(0, 12, 0));
                 for (Player player : players)
                 {
-                    DamageHandler.INSTANCE.dmg(player, summoner, 5F, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
+                    DamageHandler.INSTANCE.doDamage(player, DamageSource.indirectMagic(this, summoner), 5F,  0);
                     switch (getLandmineType())
                     {
                         default ->
@@ -293,7 +293,7 @@ public class EntityEGOLandmine extends Entity
                             player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
                         }
                         case 2 ->
-                                DamageHandler.INSTANCE.dmg(player, summoner, 15F, DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
+                                DamageHandler.INSTANCE.doDamage(player, DamageSource.indirectMagic(this, summoner), 20F,  0);
                     }
                 }
             }

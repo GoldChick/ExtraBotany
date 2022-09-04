@@ -6,4 +6,6 @@ public class LibEffectNames
     public static final String TIME_LOCK = "time_lock";
     public static final String DIVINE_JUSTICE = "divine_justice";
     public static final String VEGETABLE = "vegetable";
+    public static final String BALANCE = "balance";
+    public static final String REMEMBER = "remember";
 }

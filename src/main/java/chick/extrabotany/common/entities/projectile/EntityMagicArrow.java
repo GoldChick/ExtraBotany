@@ -2,17 +2,25 @@ package chick.extrabotany.common.entities.projectile;
 
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.base.DamageHandler;
+import chick.extrabotany.forge.client.handler.ConfigHandler;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BeaconBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.client.core.proxy.ClientProxy;
@@ -37,6 +45,23 @@ public class EntityMagicArrow extends ThrowableProjectile
     {
         this(ModEntities.MAGIC_ARROW, level);
         setOwner(thrower);
+    }
+
+    @Override
+    protected void onHitBlock(BlockHitResult hitResult)
+    {
+        var state = level.getBlockState(hitResult.getBlockPos());
+        var hardness = state.getDestroySpeed(level, hitResult.getBlockPos());
+        var vec3 = getDeltaMovement();
+        setDeltaMovement(Vec3.ZERO);
+        if (ConfigHandler.COMMON.doProjectileBreakBlock.get()  && !(state.getBlock() instanceof BeaconBlock))
+        {
+            level.removeBlock(hitResult.getBlockPos(), false);
+            level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, hitResult.getBlockPos(), Block.getId(state));
+            tickCount += 2;
+            setDeltaMovement(vec3);
+        }
+        super.onHitBlock(hitResult);
     }
 
     @Override
@@ -72,7 +97,7 @@ public class EntityMagicArrow extends ThrowableProjectile
             var livings = DamageHandler.INSTANCE.getFilteredEntities(entities, player);
             for (LivingEntity living : livings)
             {
-                DamageHandler.INSTANCE.dmg(living, player, getDamage(), DamageHandler.INSTANCE.NETURAL_PIERCING);
+                DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this,getOwner()), getDamage(), DamageHandler.INSTANCE.BYPASS_MAGIC);
             }
         }
 

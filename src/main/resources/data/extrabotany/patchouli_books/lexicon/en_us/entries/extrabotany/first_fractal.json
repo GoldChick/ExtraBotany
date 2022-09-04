@@ -12,7 +12,7 @@
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.firstfractal1",
-      "recipe": "extrabotany:runic_altar/firstfractal"
+      "recipe": "extrabotany:runic_altar/first_fractal"
     }
   ]
 }

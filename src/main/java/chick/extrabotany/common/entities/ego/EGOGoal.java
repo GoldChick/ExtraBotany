@@ -1,11 +1,7 @@
 package chick.extrabotany.common.entities.ego;
 
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.entities.ego.EntityEGO;
-import chick.extrabotany.common.tools.weapons.InfluxWaver;
-import chick.extrabotany.common.tools.weapons.TrueShadowKatana;
-import chick.extrabotany.common.tools.weapons.TrueTerraBlade;
-import chick.extrabotany.common.tools.weapons.TrueThunStarCaller;
+import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.forge.client.handler.ConfigHandler;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -65,11 +61,13 @@ public class EGOGoal extends Goal
         if (!entityEGO.level.isClientSide)
         {
             if (entityEGO.getPlayersAround().isEmpty())
+            {
+                entityEGO.discard();
                 return false;
+            }
             entityEGO.swing(InteractionHand.MAIN_HAND);
             Entity target = entityEGO.getPlayersAround().get(0);
             var damageTimes = (ConfigHandler.COMMON.gaiaDamageTimes.get()).floatValue();
-            //TODO weapon type
             switch (entityEGO.getWeaponType())
             {
                 case 0 ->
@@ -79,18 +77,16 @@ public class EGOGoal extends Goal
                 case 2 ->
                         ((TrueThunStarCaller) ModItems.TRUE_THUNSTAR_CALLER.get()).attack(entityEGO, target, 1, 1D, damageTimes);
                 case 3 -> ((InfluxWaver) ModItems.INFLUX_WAVER.get()).attack(entityEGO, target, 1, 1.1D, damageTimes);
-                case 4 ->
-                        ((TrueTerraBlade) ModItems.TRUE_TERRA_BLADE.get()).attack(entityEGO, target, 4, 1.1D, damageTimes);
+                case 4 -> ((FirstFractal) ModItems.FIRST_FRACTAL.get()).attack(entityEGO, target, 1, 1D, damageTimes);
             }
         }
-        if (entityEGO.getWeaponType() > 0)
-            changeWeaponAfter();
+        if (entityEGO.getWeaponType() > 0) changeWeaponAfter();
         return true;
     }
 
     public void changeWeaponBefore()
     {
-        if (entityEGO.getStage() > 1)
+        if (entityEGO.getStage() > 1 && entityEGO.getStage() < 3)
         {
             for (var player : entityEGO.getPlayersAround())
             {
@@ -105,10 +101,10 @@ public class EGOGoal extends Goal
 
     public void changeWeaponAfter()
     {
-        if (entityEGO.getStage() > 1)
+        if (entityEGO.getStage() == 2)
         {
             Random random = new Random();
-            entityEGO.setWeaponType(random.nextInt(2));
+            entityEGO.setWeaponType(random.nextInt(3));
         }
     }
 

@@ -11,6 +11,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -33,7 +34,6 @@ import static chick.extrabotany.common.blocks.tile.TileDimensionCatalyst.VEC_OFF
 
 public class EntityEGOBeam extends Entity
 {
-    private boolean doAttack;
     private List<WeightCategory> stackList = new ArrayList<>();
 
     private Player target;
@@ -47,6 +47,8 @@ public class EntityEGOBeam extends Entity
     private static final String TAG_TARGET_COLOR_B = "targetcolorb";
     private static final String TAG_SPEED_MODIFIER = "speedmodifier";
     private static final String TAG_DAMAGE = "damage";
+    private static final String TAG_DO_ATTACK = "do_attack";
+    private static final EntityDataAccessor<Boolean> DO_ATTACK = SynchedEntityData.defineId(EntityEGOBeam.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> COLOR_R = SynchedEntityData.defineId(EntityEGOBeam.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> COLOR_G = SynchedEntityData.defineId(EntityEGOBeam.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> COLOR_B = SynchedEntityData.defineId(EntityEGOBeam.class, EntityDataSerializers.FLOAT);
@@ -64,23 +66,24 @@ public class EntityEGOBeam extends Entity
     public EntityEGOBeam(Level level)
     {
         super(ModEntities.EGO_BEAM, level);
-        doAttack = true;
+        entityData.set(DO_ATTACK, true);
     }
 
     public EntityEGOBeam(Level level, boolean doAttack, List<WeightCategory> stackList, Color targetColor, Player target)
     {
         super(ModEntities.EGO_BEAM, level);
-        this.doAttack = doAttack;
         this.stackList.addAll(stackList);
         this.target = target;
         setTargetColorR((float) (targetColor.getRed()) / 255F);
         setTargetColorG((float) (targetColor.getGreen()) / 255F);
         setTargetColorB((float) (targetColor.getBlue()) / 255F);
+        entityData.set(DO_ATTACK, doAttack);
     }
 
     @Override
     protected void defineSynchedData()
     {
+        entityData.define(DO_ATTACK, true);
         entityData.define(COLOR_R, 0.0F);
         entityData.define(COLOR_G, 0.0F);
         entityData.define(COLOR_B, 0.0F);
@@ -100,6 +103,7 @@ public class EntityEGOBeam extends Entity
         this.setTargetColorR(cmp.getFloat(TAG_TARGET_COLOR_R));
         this.setTargetColorG(cmp.getFloat(TAG_TARGET_COLOR_G));
         this.setTargetColorB(cmp.getFloat(TAG_TARGET_COLOR_B));
+        this.entityData.set(DO_ATTACK, cmp.getBoolean(TAG_DO_ATTACK));
     }
 
     @Override
@@ -113,6 +117,7 @@ public class EntityEGOBeam extends Entity
         cmp.putFloat(TAG_TARGET_COLOR_B, this.getTargetColorB());
         cmp.putFloat(TAG_SPEED_MODIFIER, this.getSpeedModifier());
         cmp.putFloat(TAG_DAMAGE, this.getBeamDamage());
+        cmp.putBoolean(TAG_DO_ATTACK, this.entityData.get(DO_ATTACK));
     }
 
     @NotNull
@@ -126,7 +131,7 @@ public class EntityEGOBeam extends Entity
     public void tick()
     {
         super.tick();
-        if (doAttack)
+        if (entityData.get(DO_ATTACK))
         {
             if (this.tickCount >= 460 || level.getDifficulty() == Difficulty.PEACEFUL)
             {
@@ -156,10 +161,7 @@ public class EntityEGOBeam extends Entity
 
                 for (Player player : players)
                 {
-                    if (player.invulnerableTime <= 5)
-                    {
-                        DamageHandler.INSTANCE.dmg(player, summoner, this.getBeamDamage(), DamageHandler.INSTANCE.LIFE_LOSINT_ABSORB);
-                    }
+                    DamageHandler.INSTANCE.doDamage(player, DamageSource.indirectMagic(this, summoner), this.getBeamDamage(),  DamageHandler.INSTANCE.CREATIVE);
                 }
             } else
             {
@@ -183,10 +185,20 @@ public class EntityEGOBeam extends Entity
                     double d0 = (getX());
                     double d1 = (getY() + 0.5D + 4D);
                     double d2 = (getZ());
-                    Collections.shuffle(VEC_OFFSET);
+
+                    List<Vec3> vecs;
+                    if (stackList.size() > 1)
+                    {
+                        Collections.shuffle(VEC_OFFSET);
+                        vecs = VEC_OFFSET;
+                    } else
+                    {
+                        vecs = List.of(Vec3.ZERO);
+                    }
+
                     for (int i = 0; i < stackList.size(); i++)
                     {
-                        var vec = VEC_OFFSET.get(i);
+                        var vec = vecs.get(i);
                         var item = stackList.get(i).getCategory().copy();
                         ItemEntity entity = new ItemEntity(level, d0 + vec.x, d1 + vec.y, d2 + vec.z, item);
                         entity.setPickUpDelay(30);
@@ -208,9 +220,9 @@ public class EntityEGOBeam extends Entity
                 {
                     WispParticleData data = WispParticleData.wisp(0.5F, 0.1F, 0.85F, 0.1F, 1F);
                     ClientProxy.INSTANCE.addParticleForceNear(level, data, getX() + i, getY() + 4.5F, getZ() + j, 0, 0, 0);
-
                 }
             }
+
         }
     }
 

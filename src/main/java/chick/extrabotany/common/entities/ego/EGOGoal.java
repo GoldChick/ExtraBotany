@@ -2,7 +2,7 @@ package chick.extrabotany.common.entities.ego;
 
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.tools.weapons.*;
-import chick.extrabotany.forge.client.handler.ConfigHandler;
+import chick.extrabotany.common.base.ConfigHandler;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -71,13 +71,13 @@ public class EGOGoal extends Goal
             switch (entityEGO.getWeaponType())
             {
                 case 0 ->
-                        ((TrueShadowKatana) ModItems.TRUE_SHADOW_KATANA.get()).attack(entityEGO, target, 3, 0.9D, damageTimes);
+                        ((TrueShadowKatana) ModItems.TRUE_SHADOW_KATANA.get()).attack(entityEGO, target, 5, 1D, damageTimes);
                 case 1 ->
-                        ((TrueTerraBlade) ModItems.TRUE_TERRA_BLADE.get()).attack(entityEGO, target, 3, 0.9D, damageTimes);
+                        ((TrueTerraBlade) ModItems.TRUE_TERRA_BLADE.get()).attack(entityEGO, target, 3, 1D, damageTimes);
                 case 2 ->
                         ((TrueThunStarCaller) ModItems.TRUE_THUNSTAR_CALLER.get()).attack(entityEGO, target, 1, 1D, damageTimes);
                 case 3 -> ((InfluxWaver) ModItems.INFLUX_WAVER.get()).attack(entityEGO, target, 1, 1.1D, damageTimes);
-                case 4 -> ((FirstFractal) ModItems.FIRST_FRACTAL.get()).attack(entityEGO, target, 1, 1D, damageTimes);
+                case 4 -> ((FirstFractal) ModItems.FIRST_FRACTAL.get()).attack(entityEGO, target, 1, 1D, 0.8F);
             }
         }
         if (entityEGO.getWeaponType() > 0) changeWeaponAfter();

@@ -2,8 +2,7 @@ package chick.extrabotany.common.entities.projectile;
 
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.base.DamageHandler;
-import chick.extrabotany.forge.client.handler.ConfigHandler;
-import net.minecraft.core.Vec3i;
+import chick.extrabotany.common.base.ConfigHandler;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;

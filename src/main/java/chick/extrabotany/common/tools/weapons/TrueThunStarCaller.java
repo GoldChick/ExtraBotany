@@ -56,13 +56,13 @@ public class TrueThunStarCaller extends SwordRelicBase
 
                 int i = DamageHandler.INSTANCE.MAGIC + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ARMOR + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY;
 
-                DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, damage * damageTime, true, i + DamageHandler.INSTANCE.BYPASS_ABSORB);
+                DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, damage * damageTime, DamageHandler.INSTANCE.BYPASS_INVUL + i + DamageHandler.INSTANCE.BYPASS_ABSORB);
 
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, 0));
                 if (livingEntity.isOnFire())
                 {
-                    DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, 5F * damageTime, true, i);
+                    DamageHandler.INSTANCE.doDamage(livingEntity, falseLightning, player, 5F * damageTime, DamageHandler.INSTANCE.BYPASS_INVUL + i);
                     livingEntity.setRemainingFireTicks(0);
                     Minecraft.getInstance().level.addParticle(ParticleTypes.EXPLOSION_EMITTER, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), 1D, 0D, 0D);
                 }

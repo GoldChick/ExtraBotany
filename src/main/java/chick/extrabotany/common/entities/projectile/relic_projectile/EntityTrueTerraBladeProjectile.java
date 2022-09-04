@@ -1,5 +1,6 @@
 package chick.extrabotany.common.entities.projectile.relic_projectile;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.common.base.DamageHandler;
@@ -7,6 +8,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -41,21 +43,20 @@ public class EntityTrueTerraBladeProjectile extends RelicProjectileBase
             WispParticleData data = WispParticleData.wisp(0.3F, 0.1F, 0.95F, 0.1F, 1F);
             ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
-        if (!level.isClientSide && tickCount % 3 == 0)
+        if (!level.isClientSide)
         {
             AABB axis = new AABB(getX(), getY(), getZ(), xOld, yOld, zOld).inflate(2);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, axis);
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
-                DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this, getOwner()), 7F * damageTime, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
+                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 9F * damageTime, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this, getOwner()), 2F * damageTime, DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY)
-                    ;
+                    DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 2F * damageTime, TRUE_PROJECTILE_MAGIC_DMG);
                     attackedEntities.add(living);
+                    tickCount += 20;
                 }
-                tickCount += 20;
                 if (tickCount > getLifeTicks())
                 {
                     discard();

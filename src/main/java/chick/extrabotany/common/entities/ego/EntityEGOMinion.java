@@ -73,7 +73,7 @@ public class EntityEGOMinion extends Monster
     public void registerGoals()
     {
         super.registerGoals();
-        this.goalSelector.addGoal(4,new HurtByTargetGoal(this, Player.class));
+        this.goalSelector.addGoal(4, new HurtByTargetGoal(this, Player.class));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 64.0F));
     }
 
@@ -151,7 +151,7 @@ public class EntityEGOMinion extends Monster
 
         if (this.attackCooldown == 0)
         {
-            this.setItemInHand(InteractionHand.MAIN_HAND,getWeapon());
+            this.setItemInHand(InteractionHand.MAIN_HAND, getWeapon());
             if (tryAttack())
                 this.attackCooldown = 90 + level.random.nextInt(40);
         }
@@ -195,31 +195,13 @@ public class EntityEGOMinion extends Monster
     @Override
     public boolean hurt(DamageSource source, float amount)
     {
-        Entity e = source.getDirectEntity();
-        if (e instanceof Player && isTruePlayer(e))
-        {
-            float RANGE = 8F;
-            AABB axis = new AABB(position().add(-RANGE, -RANGE, -RANGE)
-                    , position().add(RANGE + 1, RANGE + 1, RANGE + 1));
-            List<EntityEGOMinion> minions = level.getEntitiesOfClass(EntityEGOMinion.class, axis);
-            float resistance = Math.min(0.6F, minions.size() * 0.15F);
-            int cap = 20;
-            return super.hurt(source, Math.min(cap, amount * (1F - resistance)));
-        }
-        return false;
-    }
-
-    private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
-
-    public static boolean isTruePlayer(Entity e)
-    {
-        if (!(e instanceof Player player))
-        {
-            return false;
-        }
-
-        String name = player.getName().getString();
-        return !(player instanceof FakePlayer || FAKE_PLAYER_PATTERN.matcher(name).matches());
+        float RANGE = 8F;
+        AABB axis = new AABB(position().add(-RANGE, -RANGE, -RANGE)
+                , position().add(RANGE + 1, RANGE + 1, RANGE + 1));
+        List<EntityEGOMinion> minions = level.getEntitiesOfClass(EntityEGOMinion.class, axis);
+        float resistance = Math.min(0.6F, minions.size() * 0.15F);
+        int cap = 20;
+        return super.hurt(source, Math.min(cap, amount * (1F - resistance)));
     }
 
     @Override

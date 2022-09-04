@@ -3,7 +3,7 @@ package chick.extrabotany.common.entities.ego;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModSounds;
-import chick.extrabotany.forge.client.handler.ConfigHandler;
+import chick.extrabotany.common.base.ConfigHandler;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;

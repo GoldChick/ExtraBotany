@@ -24,7 +24,7 @@ public class Remember extends MobEffect
         if (living instanceof Player player)
         {
             float amount = Math.min(player.getAbsorptionAmount(), (amp + 1) * 10F);
-            player.heal(amount / 2F);
+            player.heal(amount * 0.8F);
             player.setAbsorptionAmount(player.getAbsorptionAmount() - amount);
         }
     }

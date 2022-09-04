@@ -1,12 +1,23 @@
 package chick.extrabotany.common.base;
 
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.entities.projectile.relic_projectile.RelicProjectileBase;
+import chick.extrabotany.common.tools.others.ManaSteelShield;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.common.handler.EquipmentHandler;
 
@@ -16,8 +27,6 @@ import java.util.stream.Collectors;
 public final class DamageHandler
 {
     public static final DamageHandler INSTANCE = new DamageHandler();
-
-    public final int LIFE_LOSING = 4;
 
     public final int BYPASS_ARMOR = 1,
             BYPASS_MAGIC = 1 << 1,
@@ -71,49 +80,6 @@ public final class DamageHandler
         return (float) (orig + value);
     }
 
-    /**
-     * 造成伤害（考虑和平友好之证）
-     */
-    public boolean dmg(Entity target, Entity source, float amount, int type)
-    {
-        switch (type)
-        {
-            case LIFE_LOSING ->
-            {
-                if (!(target instanceof LivingEntity living))
-                    return false;
-                float trueHealth = Math.max(0F, living.getHealth() - amount);
-                if (trueHealth <= 0)
-                {
-                    if (source instanceof Player player)
-                        living.die(DamageSource.playerAttack(player));
-                    else if (source instanceof LivingEntity livingEntity)
-                        living.die(DamageSource.mobAttack(livingEntity));
-                    if (living.getHealth() > 0)
-                        living.setHealth(-1F);
-                } else
-                {
-                    living.setHealth(trueHealth);
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean doDamage(Entity target, DamageSource s, float amount, boolean bypassInvulnerable, int type)
-    {
-        if (target == null || target.isRemoved())
-            return false;
-        if (s.getEntity() != null && !checkPassable(target, s.getEntity()))
-            return false;
-        if (bypassInvulnerable)
-        {
-            target.invulnerableTime = 0;
-        }
-        return hurt(target, s, amount, type);
-    }
-
     public boolean doDamage(Entity target, DamageSource s, float amount, int type)
     {
         if (target == null || target.isRemoved())
@@ -123,7 +89,7 @@ public final class DamageHandler
         return hurt(target, s, amount, type);
     }
 
-    public boolean doDamage(Entity target, @Nullable Entity item, Entity source, float amount, boolean bypassInvulnerable, int type)
+    public boolean doDamage(Entity target, @Nullable Entity item, Entity source, float amount, int type)
     {
         DamageSource s;
         if (source instanceof Player player)
@@ -131,51 +97,137 @@ public final class DamageHandler
             s = DamageSource.playerAttack(player);
         } else
         {
-            var mob = (LivingEntity) source;
-            s = (item == null) ? DamageSource.mobAttack(mob) : DamageSource.indirectMobAttack(item, mob);
+            if (source instanceof LivingEntity mob)
+            {
+                s = (item == null) ? DamageSource.mobAttack(mob) : DamageSource.indirectMobAttack(item, mob);
+            } else
+            {
+                s = DamageSource.GENERIC;
+            }
         }
-        return doDamage(target, s, amount, bypassInvulnerable, type);
+        return doDamage(target, s, amount, type);
     }
 
-    private boolean hurt(Entity target, DamageSource s, float amount, int type)
+    private boolean hurt(Entity target, DamageSource source, float amount, int type)
     {
         if ((type & BYPASS_ARMOR) > 0)
-            s.bypassArmor();
+            source.bypassArmor();
         if ((type & BYPASS_MAGIC) > 0)
-            s.bypassMagic();
+            source.bypassMagic();
         float absorbNum = 0;
         if ((type & BYPASS_ABSORB) > 0 && target instanceof Player player)
         {
             absorbNum = player.getAbsorptionAmount();
             player.setAbsorptionAmount(0);
-
         }
         if ((type & BYPASS_INVUL) > 0)
+        {
             target.invulnerableTime = 0;
+            source.bypassInvul();
+        }
         if ((type & SCALE_WITH_DIFFICULTY) > 0)
-            s.setScalesWithDifficulty();
-        if ((type & FIRE) > 0)
-            s.setIsFire();
-        if ((type & MAGIC) > 0)
-            s.setMagic();
-        if ((type & PROJECTILE) > 0)
-            s.setProjectile();
-        if ((type & EXPLOSION) > 0)
-            s.setExplosion();
-        if ((type & NO_AGGRO) > 0)
-            s.setNoAggro();
-        if ((type & FALL) > 0)
-            s.setIsFall();
+            source.setScalesWithDifficulty();
         //TODO: THIS MAY CAUSE WRONG IN PVP MODE
+        if ((type & FIRE) > 0)
+            source.setIsFire();
+        if ((type & MAGIC) > 0)
+            source.setMagic();
+        if ((type & PROJECTILE) > 0)
+            source.setProjectile();
+        if ((type & EXPLOSION) > 0)
+            source.setExplosion();
+        if ((type & NO_AGGRO) > 0)
+            source.setNoAggro();
+        if ((type & FALL) > 0)
+            source.setIsFall();
         if ((type & CREATIVE) > 0)
-            s.bypassInvul();
+            source.bypassInvul();
 
+        //Manasteel Shield
+        //This only block Projectiles in Extrabotany!
+        if (target instanceof LivingEntity living)
+        {
+            float blockedDmg;
+            if (!living.level.isClientSide && amount > 0.0F && isDamageSourceBlocked(living, source))
+            {
+                final float originalAmount = amount;
+                net.minecraftforge.event.entity.living.ShieldBlockEvent ev = net.minecraftforge.common.ForgeHooks.onShieldBlock(living, source, amount);
+                if (!ev.isCanceled())
+                {
+                    if (ev.shieldTakesDamage() && living instanceof Player player)
+                        hurtCurrentlyUsedShield(player, amount);
+                    blockedDmg = ev.getBlockedDamage();
+                    amount -= ev.getBlockedDamage();
+
+                    living.level.broadcastEntityEvent(living, (byte) 29);
+                    if (target instanceof ServerPlayer spTarget)
+                    {
+                        CriteriaTriggers.ENTITY_HURT_PLAYER.trigger(spTarget, source, originalAmount, amount, true);
+                        if (blockedDmg > 0.0F)
+                        {
+                            (spTarget).awardStat(Stats.CUSTOM.get(Stats.DAMAGE_BLOCKED_BY_SHIELD), Math.round(blockedDmg * 10.0F));
+                        }
+                    }
+
+                    if (source.getEntity() instanceof ServerPlayer spSource)
+                    {
+                        CriteriaTriggers.PLAYER_HURT_ENTITY.trigger(spSource, target, source, originalAmount, amount, true);
+                    }
+                }
+            }
+        }
         //do damage here
-        boolean result = target.hurt(s, amount);
+        boolean result = amount > 0 && target.hurt(source, amount);
         if ((type & BYPASS_ABSORB) > 0 && target instanceof Player player && !target.isRemoved())
         {
             player.setAbsorptionAmount(absorbNum);
         }
         return result;
+    }
+
+    public boolean isDamageSourceBlocked(LivingEntity target, DamageSource source)
+    {
+        Entity entity = source.getDirectEntity();
+        boolean flag = !(entity instanceof RelicProjectileBase);
+
+
+        if (target.isBlocking() && target.getUseItem().getItem() instanceof ManaSteelShield && !flag)
+        {
+            Vec3 vec32 = source.getSourcePosition();
+            if (vec32 != null)
+            {
+                Vec3 vec3 = target.getViewVector(1.0F);
+                Vec3 vec31 = vec32.vectorTo(target.position()).normalize();
+                vec31 = new Vec3(vec31.x, 0.0D, vec31.z);
+                return vec31.dot(vec3) < 0.0D;
+            }
+        }
+        return false;
+    }
+
+    private void hurtCurrentlyUsedShield(Player target, float dmg)
+    {
+
+        if (target.getUseItem().canPerformAction(net.minecraftforge.common.ToolActions.SHIELD_BLOCK))
+        {
+            if (!target.level.isClientSide && target instanceof ServerPlayer sp)
+            {
+                sp.awardStat(Stats.ITEM_USED.get(target.getUseItem().getItem()));
+            }
+
+            int i = 1 + Mth.floor(dmg);
+            InteractionHand interactionhand = target.getUsedItemHand();
+            target.getUseItem().hurtAndBreak(i, target, (player) ->
+            {
+                player.broadcastBreakEvent(interactionhand);
+                net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(target, target.getUseItem(), interactionhand);
+            });
+            if (target.getUseItem().isEmpty())
+            {
+                target.setItemSlot(interactionhand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+                target.stopUsingItem();
+                target.playSound(SoundEvents.SHIELD_BREAK, 0.8F, 0.8F + target.level.random.nextFloat() * 0.4F);
+            }
+        }
     }
 }

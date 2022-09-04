@@ -2,7 +2,7 @@ package chick.extrabotany;
 
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.Registration;
-import chick.extrabotany.forge.client.handler.ConfigHandler;
+import chick.extrabotany.common.base.ConfigHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;

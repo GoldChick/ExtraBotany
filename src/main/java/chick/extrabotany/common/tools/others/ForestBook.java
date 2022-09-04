@@ -26,12 +26,15 @@ public class ForestBook extends Item
         var stack = player.getItemInHand(hand);
         if (!level.isClientSide && player.getHealth() > 0)
         {
-            if (player.getAbsorptionAmount() < 10F && !player.hasEffect(ModEffects.REMEMBER.get()))
+            if (!player.hasEffect(ModEffects.REMEMBER.get()))
             {
-                DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 8.0F, DamageHandler.INSTANCE.CREATIVE + DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
-                player.setAbsorptionAmount(10.0F);
                 player.addEffect(new MobEffectInstance(ModEffects.REMEMBER.get(), 5 * 20, 0));
-                return InteractionResultHolder.success(stack);
+                if (player.getAbsorptionAmount() < 10F)
+                {
+                    DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 8.0F, DamageHandler.INSTANCE.CREATIVE + DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
+                    player.setAbsorptionAmount(10.0F);
+                    return InteractionResultHolder.success(stack);
+                }
             }
         }
         return InteractionResultHolder.fail(stack);

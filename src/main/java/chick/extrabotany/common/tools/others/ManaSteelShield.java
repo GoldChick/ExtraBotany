@@ -13,17 +13,11 @@ import vazkii.botania.common.lib.ModTags;
 
 import java.util.function.Consumer;
 
-public class ManaSteelShield extends ShieldItem implements ICustomDamageItem
+public class ManaSteelShield extends ShieldItem
 {
     public ManaSteelShield(Properties prop)
     {
         super(prop.durability(250));
-    }
-
-    @Override
-    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken)
-    {
-        return ToolCommons.damageItemIfPossible(stack, amount, entity, getManaPerDamage());
     }
 
     @Override

@@ -430,7 +430,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield2", "在制作材料中加入$(item)泥土(0)会让盾牌和大地的亲和能力更强，右击地面可以迅速创建一堵土墙。不幸的是，这让盾牌的耐久显著降低了，并且失去了普通的防御能力。");
         add("extrabotany.page.manasteel_shield3", "它会掉渣吗。");
         add("extrabotany.entry.forest_book", "森林书");
-        add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多5生命值。");
+        add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多8生命值。");
         add("extrabotany.page.forest_book1", "“你好”，“谢谢”，最后是“再见”。");
         pantchouliFlower();
     }

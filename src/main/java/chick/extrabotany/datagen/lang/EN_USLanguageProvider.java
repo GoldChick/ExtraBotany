@@ -424,7 +424,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield2", "Adding $(item)Dirt(0) to the crafting materials will make the shield more compatible with the ground. Right-clicking at the ground will quickly create a wall of $(item)Dirt$(0). However, this makes the shield less durable and lose its original defensive ability.");
         add("extrabotany.page.manasteel_shield3", "Is it strong enough?");
         add("extrabotany.entry.forest_book", "Aranyaka");
-        add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1 $(thing)hp$(0), capped at 5.");
+        add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1.6 $(thing)hp$(0), capped at 5 hearts.");
         add("extrabotany.page.forest_book1", "\"Hello,\" \"Thank You,\" and the Final \"Goodbye\".");
         add("extrabotany.page.title.example", "An Example");
         pantchouliFlower();

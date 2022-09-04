@@ -1,6 +1,6 @@
 package chick.extrabotany.common.entities.projectile.relic_projectile;
 
-import chick.extrabotany.forge.client.handler.ConfigHandler;
+import chick.extrabotany.common.base.ConfigHandler;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -30,6 +30,8 @@ import java.util.List;
 
 public abstract class RelicProjectileBase extends ThrowableProjectile
 {
+    protected static final int TRUE_PROJECTILE_MAGIC_DMG = 11011101;
+
     private static final String TAG_ROTATION = "rotation";
     private static final String TAG_PITCH = "pitch";
     private static final String TAG_TARGETPOS = "targetpos";
@@ -186,14 +188,17 @@ public abstract class RelicProjectileBase extends ThrowableProjectile
 
         float factor = (getOwner() instanceof Player) ? 1.0F : 3.0F;
 
-        if (ConfigHandler.COMMON.doProjectileBreakBlock.get() && hardness >= 0F && hardness < 5.0F && !(state.getBlock() instanceof BeaconBlock) && getLifeTicks() * factor - tickCount >= getTickBreakBlockCap())
+        if (!level.isClientSide)
         {
-            level.removeBlock(hitResult.getBlockPos(), false);
-            level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, hitResult.getBlockPos(), Block.getId(state));
-            tickCount += getTickPerBlock();
-        } else
-        {
-            setDeltaMovement(Vec3.ZERO);
+            if (ConfigHandler.COMMON.doProjectileBreakBlock.get() && hardness >= 0F && hardness < 5.0F && !(state.getBlock() instanceof BeaconBlock) && getLifeTicks() * factor - tickCount >= getTickBreakBlockCap())
+            {
+                level.removeBlock(hitResult.getBlockPos(), false);
+                level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, hitResult.getBlockPos(), Block.getId(state));
+                tickCount += getTickPerBlock();
+            } else
+            {
+                setDeltaMovement(Vec3.ZERO);
+            }
         }
         super.onHitBlock(hitResult);
     }

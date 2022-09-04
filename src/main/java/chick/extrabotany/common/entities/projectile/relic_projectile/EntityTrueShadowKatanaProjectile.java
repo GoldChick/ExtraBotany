@@ -65,10 +65,10 @@ public class EntityTrueShadowKatanaProjectile extends RelicProjectileBase
             List<LivingEntity> list = DamageHandler.INSTANCE.getFilteredEntities(entities, getOwner());
             for (LivingEntity living : list)
             {
-                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 6F * damageTime, false, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
+                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 6F * damageTime, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
                 if (attackedEntities != null && !attackedEntities.contains(living))
                 {
-                    DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 2F * damageTime, true, DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.SCALE_WITH_DIFFICULTY);
+                    DamageHandler.INSTANCE.doDamage(living, this, getOwner(), damageTime, TRUE_PROJECTILE_MAGIC_DMG);
                     attackedEntities.add(living);
                 }
                 discard();

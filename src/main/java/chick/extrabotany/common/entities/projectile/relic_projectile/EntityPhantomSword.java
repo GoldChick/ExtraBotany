@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -101,15 +102,7 @@ public class EntityPhantomSword extends RelicProjectileBase
             for (LivingEntity living : list)
             {
                 //TODO:WIP
-                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 10F * damageTime, true, DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.PROJECTILE);
-
-                if (getOwner() instanceof Player)
-                {
-                 } else
-                {
-                    //   DamageHandler.INSTANCE.dmg(living, getOwner(), 10F * damageTime, DamageHandler.INSTANCE.MAGIC);
-                }
-                //DamageHandler.INSTANCE.doDamage(living, getOwner(), 2.5F * damageTime, true,DamageHandler.INSTANCE.LIFE_LOSING);
+                DamageHandler.INSTANCE.doDamage(living, this, getOwner(), 2F * damageTime, DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.PROJECTILE + DamageHandler.INSTANCE.BYPASS_ARMOR);
             }
         }
     }

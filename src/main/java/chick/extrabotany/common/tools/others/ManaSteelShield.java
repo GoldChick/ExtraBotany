@@ -1,19 +1,22 @@
 package chick.extrabotany.common.tools.others;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+import vazkii.botania.api.mana.IManaDiscountArmor;
 import vazkii.botania.api.mana.ManaItemHandler;
-import vazkii.botania.common.item.equipment.ICustomDamageItem;
-import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.ModTags;
 
-import java.util.function.Consumer;
+import java.util.List;
 
-public class ManaSteelShield extends ShieldItem
+public class ManaSteelShield extends ShieldItem implements IManaDiscountArmor
 {
     public ManaSteelShield(Properties prop)
     {
@@ -27,6 +30,19 @@ public class ManaSteelShield extends ShieldItem
         {
             stack.setDamageValue(stack.getDamageValue() - 1);
         }
+    }
+
+    @Override
+    public float getDiscount(ItemStack stack, int slot, Player player, @Nullable ItemStack tool)
+    {
+        return 0.1F;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags)
+    {
+        list.add(new TranslatableComponent("extrabotany.armorset.magic_protection.desc", "10%").withStyle(ChatFormatting.AQUA));
+        super.appendHoverText(stack, level, list, flags);
     }
 
     @Override

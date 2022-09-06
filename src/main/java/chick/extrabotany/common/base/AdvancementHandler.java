@@ -36,7 +36,7 @@ public final class AdvancementHandler
 
     public void grantAdvancement(ServerPlayer player, String id)
     {
-        PlayerHelper.grantCriterion(player, new ResourceLocation(ExtraBotany.MODID, "main/"+id), "code_triggered");
+        PlayerHelper.grantCriterion(player, new ResourceLocation(ExtraBotany.MODID, "main/" + id), "code_triggered");
     }
 
     public static boolean checkAdvancement(Player player, String modid, String advancement)
@@ -99,9 +99,8 @@ public final class AdvancementHandler
     {
         if (event.isCancelable() && !event.getPlayer().isCreative())
         {
-            if (event.getItemStack().getItem() instanceof IAdvancementRequirement)
+            if (event.getItemStack().getItem() instanceof IAdvancementRequirement r)
             {
-                IAdvancementRequirement r = (IAdvancementRequirement) event.getItemStack().getItem();
                 if (!checkAdvancement(event.getPlayer(), ExtraBotany.MODID, r.getAdvancementName()))
                     event.setCanceled(true);
             }
@@ -112,14 +111,15 @@ public final class AdvancementHandler
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onTooltip(ItemTooltipEvent event)
     {
-        if (event.getItemStack().getItem() instanceof IAdvancementRequirement)
+        if (event.getItemStack().getItem() instanceof IAdvancementRequirement r)
         {
-            IAdvancementRequirement r = (IAdvancementRequirement) event.getItemStack().getItem();
             var playerSP = Minecraft.getInstance().player;
             if (playerSP != null)
             {
                 if (!hasDone(ExtraBotany.MODID, r.getAdvancementName()))
-                    event.getToolTip().add(new TranslatableComponent("extrabotanymisc.description", new TranslatableComponent("extrabotany." + r.getAdvancementName() + ".title")).withStyle(ChatFormatting.RED));
+                {
+                    event.getToolTip().add(1,new TranslatableComponent("extrabotanymisc.description", new TranslatableComponent("advancement.extrabotany:" + r.getAdvancementName() + ".title").withStyle(ChatFormatting.AQUA)).withStyle(ChatFormatting.RED));
+                }
             }
         }
     }

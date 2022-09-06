@@ -42,5 +42,6 @@ public class ModItemProperties
 
         ClampedItemPropertyFunction blocking = (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F;
         consumer.accept(ModItems.MANASTEEL_SHIELD.get(), new ResourceLocation("blocking"), blocking);
+        consumer.accept(ModItems.ELEMENT_SHIELD.get(), new ResourceLocation("blocking"), blocking);
     }
 }

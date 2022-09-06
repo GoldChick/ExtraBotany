@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "extrabotany:item/manasteel_shield"
+    "layer0": "extrabotany:item/elementium_shield"
   },
   "display": {
     "thirdperson_righthand": {
@@ -129,7 +129,7 @@
       "predicate": {
         "blocking": 1
       },
-      "model": "extrabotany:item/manasteel_shield_blocking"
+      "model": "extrabotany:item/elementium_shield_blocking"
     }
   ]
 }

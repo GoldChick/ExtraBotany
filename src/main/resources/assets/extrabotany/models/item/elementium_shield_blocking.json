@@ -1,5 +1,5 @@
 {
- "parent": "extrabotany:item/manasteel_shield",
+ "parent": "extrabotany:item/elementium_shield",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [ 45, 135, 0 ],

@@ -208,7 +208,7 @@
   "extrabotany.page.excaliber1": "",
   "extrabotany.page.failnaught0": "The $(item)Failnaught$(0) uses $(thing)Mana$(0) to shoot magic arrows which pierce through enemies and deal damage to the creatures in the area. The longer you draw the bow, the more damage it will deal.",
   "extrabotany.page.failnaught1": "A hundred shots, a hundred bullseyes.",
-  "extrabotany.page.forest_book0": "With $(item)Golden Apple$(0) and the power of Nature, you can craft (item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1 $(thing)hp$(0), capped at 5.",
+  "extrabotany.page.forest_book0": "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1.6 $(thing)hp$(0), capped at 5 hearts.",
   "extrabotany.page.forest_book1": "\"Hello,\" \"Thank You,\" and the Final \"Goodbye\".",
   "extrabotany.page.frostring0": "The $(item)Frost Star$(0) freezes large areas of water and lava. It also applies slowness creatures looked at by the wearer.",
   "extrabotany.page.frostring1": "I am the frozen heart of the Scourge!",

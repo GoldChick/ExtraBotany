@@ -2,6 +2,7 @@ package chick.extrabotany.common.base;
 
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.entities.projectile.relic_projectile.RelicProjectileBase;
+import chick.extrabotany.common.tools.others.ElementSteelShield;
 import chick.extrabotany.common.tools.others.ManaSteelShield;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -80,6 +81,20 @@ public final class DamageHandler
         return (float) (orig + value);
     }
 
+    /**
+     * BYPASS_ARMOR = 1<P>
+     * BYPASS_MAGIC = 1 << 1<P>
+     * BYPASS_ABSORB = 1 << 2<P>
+     * BYPASS_INVUL = 1 << 3<P>
+     * SCALE_WITH_DIFFICULTY = 1 << 4<P>
+     * FIRE = 1 << 5<P>
+     * MAGIC = 1 << 6<P>
+     * PROJECTILE = 1 << 7<P>
+     * EXPLOSION = 1 << 8<P>
+     * NO_AGGRO = 1 << 9<P>
+     * FALL = 1 << 10<P>
+     * CREATIVE = 1 << 12
+     */
     public boolean doDamage(Entity target, DamageSource s, float amount, int type)
     {
         if (target == null || target.isRemoved())
@@ -88,7 +103,20 @@ public final class DamageHandler
             return false;
         return hurt(target, s, amount, type);
     }
-
+    /**
+     * BYPASS_ARMOR = 1<P>
+     * BYPASS_MAGIC = 1 << 1<P>
+     * BYPASS_ABSORB = 1 << 2<P>
+     * BYPASS_INVUL = 1 << 3<P>
+     * SCALE_WITH_DIFFICULTY = 1 << 4<P>
+     * FIRE = 1 << 5<P>
+     * MAGIC = 1 << 6<P>
+     * PROJECTILE = 1 << 7<P>
+     * EXPLOSION = 1 << 8<P>
+     * NO_AGGRO = 1 << 9<P>
+     * FALL = 1 << 10<P>
+     * CREATIVE = 1 << 12
+     */
     public boolean doDamage(Entity target, @Nullable Entity item, Entity source, float amount, int type)
     {
         DamageSource s;
@@ -190,8 +218,8 @@ public final class DamageHandler
         Entity entity = source.getDirectEntity();
         boolean flag = !(entity instanceof RelicProjectileBase);
 
-
-        if (target.isBlocking() && target.getUseItem().getItem() instanceof ManaSteelShield && !flag)
+//TODO:如何block更好
+        if (target.isBlocking() && target.getUseItem().getItem() instanceof ElementSteelShield && !flag)
         {
             Vec3 vec32 = source.getSourcePosition();
             if (vec32 != null)

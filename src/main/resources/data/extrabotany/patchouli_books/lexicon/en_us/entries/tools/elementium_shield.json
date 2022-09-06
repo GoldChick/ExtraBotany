@@ -13,6 +13,21 @@
       "type": "crafting",
       "text": "extrabotany.page.elementium_shield1",
       "recipe": "minecraft:elementium_shield"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.elementium_shield2",
+      "recipe": "minecraft:elementium_shield"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.elementium_shield3",
+      "recipe": "minecraft:elementium_shield"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.elementium_shield4",
+      "recipe": "minecraft:elementium_shield"
     }
   ]
 }

@@ -141,11 +141,6 @@ public class ForgeClientInitializer
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
     ));
-    private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_RULER_ITEM = Suppliers.memoize(() -> Map.of(
-            vazkii.botania.common.item.ModItems.manaRing, SagesManaRing.GreaterManaItem::new,
-            vazkii.botania.common.item.ModItems.manaRingGreater, SagesManaRing.GreaterManaItem::new,
-            ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
-    ));
     private static final Supplier<Map<Item, Function<ItemStack, IRelic>>> RELIC = Suppliers.memoize(() -> Map.of(
             ModItems.TRUE_TERRA_BLADE.get(), TrueTerraBlade::makeRelic,
             ModItems.TRUE_SHADOW_KATANA.get(), TrueShadowKatana::makeRelic,

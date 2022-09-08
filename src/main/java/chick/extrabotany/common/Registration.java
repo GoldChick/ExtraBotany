@@ -66,6 +66,6 @@ public class Registration
     private static void initEvents()
     {
         IEventBus bus = MinecraftForge.EVENT_BUS;
-        bus.addListener((PlayerInteractEvent.RightClickItem event) -> ShadowKatana.attackEntity(event.getPlayer(), event.getHand(), event.getItemStack()));
+       // bus.addListener((PlayerInteractEvent.RightClickItem event) -> ShadowKatana.attackEntity(event.getPlayer(), event.getHand(), event.getItemStack()));
     }
 }

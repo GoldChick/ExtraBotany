@@ -1,25 +1,18 @@
 package chick.extrabotany.common.tools.others;
 
-import chick.extrabotany.ExtraBotany;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.Util;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import vazkii.botania.common.handler.PixieHandler;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.lib.ModTags;
-
 
 import static vazkii.botania.common.item.equipment.bauble.ItemBauble.getBaubleUUID;
 
@@ -29,7 +22,7 @@ public class ElementSteelShield extends ManaSteelShield
 
     public ElementSteelShield(Properties prop)
     {
-        super(prop.durability(300));
+        super(prop.durability(250));
         MinecraftForge.EVENT_BUS.addListener(this::onShieldBlock);
     }
 

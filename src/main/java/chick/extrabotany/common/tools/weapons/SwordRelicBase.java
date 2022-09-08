@@ -29,8 +29,7 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
     public SwordRelicBase(Tier tier, int atkDamage, float atkSpeed, Properties prop)
     {
         super(tier, atkDamage, atkSpeed, prop.durability(1999));
-        MinecraftForge.EVENT_BUS.addListener(this::leftClick);
-        MinecraftForge.EVENT_BUS.addListener(this::leftClickBlock);
+        MinecraftForge.EVENT_BUS.addListener(this::leftClicks);
         MinecraftForge.EVENT_BUS.addListener(this::attackEntity);
     }
 
@@ -46,18 +45,16 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
         }
     }
 
-    public void leftClick(PlayerInteractEvent.LeftClickEmpty evt)
+    public void leftClicks(PlayerInteractEvent evt)
     {
-        if (!evt.getItemStack().isEmpty() && evt.getItemStack().getItem() == this)
-            NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage(LeftClickMessage.LeftClickType.True_Weapon));
+        if (evt instanceof PlayerInteractEvent.LeftClickEmpty || evt instanceof PlayerInteractEvent.LeftClickBlock)
+        {
+            if (evt.getPlayer().level.isClientSide && !evt.getItemStack().isEmpty() && evt.getItemStack().getItem() == this)
+            {
+                NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage(LeftClickMessage.LeftClickType.True_Weapon));
+            }
+        }
     }
-
-    public void leftClickBlock(PlayerInteractEvent.LeftClickBlock evt)
-    {
-        if (evt.getPlayer().level.isClientSide && !evt.getItemStack().isEmpty() && evt.getItemStack().getItem() == this)
-            NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage(LeftClickMessage.LeftClickType.True_Weapon));
-    }
-
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected)
     {

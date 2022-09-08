@@ -430,10 +430,10 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield2", "在制作材料中加入$(item)泥土(0)会让盾牌和大地的亲和能力更强，右击地面可以迅速创建一堵土墙。不幸的是，这让盾牌的耐久显著降低了，并且失去了普通的防御能力。");
         add("extrabotany.page.manasteel_shield3", "它会掉渣吗。");
         add("extrabotany.entry.elementium_shield", "高级魔力盾牌");
-        add("extrabotany.page.elementium_shield0", "使用更好的材料制作的盾牌具有更加特殊的能力。这些盾牌均能够格挡一些$(thing)遗物$(0)产生的弹射物。");
+        add("extrabotany.page.elementium_shield0", "使用更好的材料制作的盾牌具有更加特殊的能力。这些盾牌均能够格挡一些$(thing)遗物$(0)产生的弹射物。然而，这些盾牌普遍具有较低的耐久，难以持续使用。");
         add("extrabotany.page.elementium_shield1", "$(item)源质钢盾牌$(0)成功格挡伤害后会暂时提升盾牌本身的属性。");
         add("extrabotany.page.elementium_shield2", "$(item)混沌盾牌$(0)成功格挡伤害后会对周围的生物（包括使用者）造成一定爆炸伤害。");
-        add("extrabotany.page.elementium_shield3", "$(item)泰拉钢盾牌$(0)成功格挡伤害后会对面前的生物造成一定伤害。");
+        add("extrabotany.page.elementium_shield3", "$(item)泰拉钢盾牌$(0)会反弹部分成功格挡的近战伤害。");
         add("extrabotany.page.elementium_shield4", "$(item)天空盾牌$(0)成功格挡伤害后会暂时让使用者变得更加轻盈。");
         add("extrabotany.entry.forest_book", "森林书");
         add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多8生命值。");

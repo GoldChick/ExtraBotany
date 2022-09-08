@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -33,7 +34,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 
-public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamageItem
+public class ShadowKatana extends SwordItem implements ICustomDamageItem
 {
     public static final int MANA_PER_DAMAGE = 2;
 
@@ -42,17 +43,15 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
         super(Tiers.GOLD, -1, 0, prop);
     }
 
-    public static InteractionResult attackEntity(Player player, InteractionHand hand, ItemStack stack)
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-        if (hand == InteractionHand.MAIN_HAND
-                && stack.getItem() == ModItems.SHADOW_KATANA.get()
-                && stack.getDamageValue() == 0)
-        {
-            EntityManaBurst burst = getBurst(player, player.getMainHandItem());
-            player.level.addFreshEntity(burst);
-            stack.setDamageValue(stack.getDamageValue() + 30);
-        }
-        return InteractionResult.PASS;
+        ItemStack stack = player.getItemInHand(hand);
+
+        var look = player.getLookAngle().scale(5.0D);
+        player.setPos(player.position().add(look));
+        player.playSound(SoundEvents.ENDERMAN_TELEPORT,1,1);
+        return InteractionResultHolder.success(stack);
     }
 
     @Override
@@ -74,85 +73,5 @@ public class ShadowKatana extends SwordItem implements ILensEffect, ICustomDamag
     public int getManaPerDamage()
     {
         return MANA_PER_DAMAGE;
-    }
-
-    public static EntityManaBurst getBurst(Player player, ItemStack stack)
-    {
-        EntityManaBurst burst = new EntityManaBurst(player);
-
-        float motionModifier = 20F;
-        burst.setColor(0x7B68EE);
-        burst.setMana(400);
-        burst.setStartingMana(400);
-        burst.setMinManaLoss(32);
-        burst.setManaLossPerTick(400F);
-        burst.setGravity(0F);
-        burst.setDeltaMovement(burst.getDeltaMovement().scale(motionModifier));
-
-        burst.setSourceLens(stack.copy());
-        return burst;
-    }
-
-    @Override
-    public void apply(ItemStack stack, BurstProperties props, Level level)
-    {
-    }
-
-    @Override
-    public boolean collideBurst(IManaBurst burst, HitResult pos, boolean isManaBlock, boolean shouldKill, ItemStack stack)
-    {
-        return shouldKill;
-    }
-
-    @Override
-    public void updateBurst(IManaBurst burst, ItemStack stack)
-    {
-        ThrowableProjectile entity = burst.entity();
-        AABB axis = new AABB(entity.getX(), entity.getY(), entity.getZ(), entity.xOld, entity.yOld, entity.zOld).inflate(1);
-        List<LivingEntity> entities = entity.level.getEntitiesOfClass(LivingEntity.class, axis);
-        Entity thrower = entity.getOwner();
-
-        for (LivingEntity living : entities)
-        {
-            if (living == thrower
-                    || living instanceof Player livingPlayer
-                    && thrower instanceof Player throwingPlayer
-                    && !throwingPlayer.canHarmPlayer(livingPlayer))
-            {
-                continue;
-            }
-            int mana = burst.getMana();
-            if (mana > 0)
-            {
-                burst.setMana(0);
-                if (!burst.isFake() && entity.level.isClientSide)
-                {
-                    Vec3 delta = new Vec3(living.getX() - thrower.getX(), 0, living.getZ() - thrower.getZ()).normalize();
-                    thrower.setPos(new Vec3(living.getX() + 3 * delta.x, living.getY(), living.getZ() + 3 * delta.z));
-                    // i dont know 180 or -180 is limit, which may cause crash
-                    if (thrower.getYRot() > 0)
-                    {
-                        thrower.setYRot(thrower.getYRot() - 180);
-                    } else
-                    {
-                        thrower.setYRot(thrower.getYRot() + 180);
-                    }
-                    entity.discard();
-                    break;
-                }
-                if (!entity.level.isClientSide)
-                {
-                    entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
-                    thrower.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
-                    entity.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
-                }
-            }
-        }
-    }
-
-    @Override
-    public boolean doParticles(IManaBurst burst, ItemStack stack)
-    {
-        return true;
     }
 }

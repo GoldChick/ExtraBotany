@@ -6,9 +6,7 @@
   "client": [
     "client.MixinArmorModel",
     "client.MixinHydroangeas",
-    "client.MixinLightning",
-    "client.MixinManaRing",
-    "client.MixinGreaterManaRing"
+    "client.MixinLightning"
   ],
   "injectors": {
     "defaultRequire": 1

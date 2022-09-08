@@ -7,6 +7,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientAdvancements;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
@@ -71,6 +72,13 @@ public final class AdvancementHandler
         return null;
     }
 
+    /**
+     * 使用了反射，更换版本可能会出现问题
+     * 在net.minecraft:mappings_official.zip中应当可以搜索到
+     * <p>
+     *
+     * @throws RuntimeException If Field Name Has Been Changed
+     */
     public static boolean hasDone(String modid, String advancement)
     {
         ResourceLocation id = ResourceLocation.tryParse(modid + ":main/" + advancement);
@@ -83,11 +91,17 @@ public final class AdvancementHandler
                 Advancement adv = cm.getAdvancements().get(id);
                 if (adv != null)
                 {
-                    Map<Advancement, AdvancementProgress> progressMap =
-                            ObfuscationReflectionHelper.getPrivateValue(ClientAdvancements.class, cm,
-                                    "progress");
-                    AdvancementProgress progress = progressMap.get(adv);
-                    return progress != null && progress.isDone();
+                    try
+                    {
+                        Map<Advancement, AdvancementProgress> progressMap =
+                                ObfuscationReflectionHelper.getPrivateValue(ClientAdvancements.class, cm,
+                                        "f_104390_");
+                        AdvancementProgress progress = progressMap != null ? progressMap.get(adv) : null;
+                        return progress != null && progress.isDone();
+                    } catch (Exception e)
+                    {
+                        throw new RuntimeException(ExtraBotany.MODID + "AdvancementHandler Error! Field ID has been changed!");
+                    }
                 }
             }
         }
@@ -114,12 +128,10 @@ public final class AdvancementHandler
         if (event.getItemStack().getItem() instanceof IAdvancementRequirement r)
         {
             var playerSP = Minecraft.getInstance().player;
-            if (playerSP != null)
+            if (playerSP != null && !hasDone(ExtraBotany.MODID, r.getAdvancementName()))
             {
-                if (!hasDone(ExtraBotany.MODID, r.getAdvancementName()))
-                {
-                    event.getToolTip().add(1,new TranslatableComponent("extrabotanymisc.description", new TranslatableComponent("advancement.extrabotany:" + r.getAdvancementName() + ".title").withStyle(ChatFormatting.AQUA)).withStyle(ChatFormatting.RED));
-                }
+                event.getToolTip().add(1, new TextComponent(" "));
+                event.getToolTip().add(1, new TranslatableComponent("extrabotanymisc.description", new TranslatableComponent("advancement.extrabotany:" + r.getAdvancementName() + ".title").withStyle(ChatFormatting.AQUA)).withStyle(ChatFormatting.RED));
             }
         }
     }

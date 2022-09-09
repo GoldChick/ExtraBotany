@@ -1,9 +1,11 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.base.ISubTilePassiveFlowerImpl;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
@@ -68,7 +70,7 @@ public class ForgeClientInitializer
         bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
 
         var forgebus = MinecraftForge.EVENT_BUS;
-        forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBeCapabilities);
+        forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBlockEntityCapabilities);
         forgebus.addGenericListener(ItemStack.class, ForgeClientInitializer::attachItemCaps);
         NetworkHandler.registerMessage();
     }
@@ -125,8 +127,12 @@ public class ForgeClientInitializer
         });
         return Collections.unmodifiableMap(ret);
     });
-
-    private static void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
+    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntityType<?>, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
+            vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
+            ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
+            ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new
+    ));
+    private static void attachBlockEntityCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
     {
         var be = e.getObject();
 
@@ -141,6 +147,7 @@ public class ForgeClientInitializer
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
     ));
+
     private static final Supplier<Map<Item, Function<ItemStack, IRelic>>> RELIC = Suppliers.memoize(() -> Map.of(
             ModItems.TRUE_TERRA_BLADE.get(), TrueTerraBlade::makeRelic,
             ModItems.TRUE_SHADOW_KATANA.get(), TrueShadowKatana::makeRelic,

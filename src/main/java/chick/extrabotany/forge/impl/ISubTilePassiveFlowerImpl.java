@@ -2,6 +2,7 @@ package chick.extrabotany.forge.impl;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.common.base.ConfigHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Blocks;
@@ -78,7 +79,7 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
     {
         Vec3 offset = flower.getLevel().getBlockState(flower.getEffectivePos()).getOffset(flower.getLevel(), flower.getEffectivePos());
 
-        if (Minecraft.getInstance().level != null)
+        if (Minecraft.getInstance().level != null && ConfigHandler.CLIENT.serenitianParticle.get())
         {
             Minecraft.getInstance().level.addParticle(ParticleTypes.ANGRY_VILLAGER,
                     flower.getBlockPos().getX() + offset.x + Math.random() * 0.2,

@@ -7,15 +7,14 @@ public class ConfigHandler
 {
     public static class Client
     {
-
-        public final ForgeConfigSpec.BooleanValue disablelogInfo;
+        public final ForgeConfigSpec.BooleanValue serenitianParticle;
 
         public Client(ForgeConfigSpec.Builder builder)
         {
             builder.push("client");
-            disablelogInfo = builder
-                    .comment("Whether to disable the spam in the logs. Default is false.")
-                    .define("disableLogSpam", false);
+            serenitianParticle = builder
+                    .comment("Whether Serenitian creates particles when it works.")
+                    .define("serenitianParticle", true);
             builder.pop();
         }
 

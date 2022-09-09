@@ -14,7 +14,6 @@ import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 public class SubTileBellflower extends TileEntityGeneratingFlower
 {
     private static final int RANGE = 3;
-    private static final int DECAY_TIME = 72000;
     private final ISubTilePassiveFlower flower;
 
     public SubTileBellflower(BlockPos pos, BlockState state)

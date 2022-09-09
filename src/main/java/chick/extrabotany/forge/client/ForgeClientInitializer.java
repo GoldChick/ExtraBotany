@@ -132,7 +132,9 @@ public class ForgeClientInitializer
     private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
             vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
             ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new
+            ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new,
+            ModSubtiles.BELLFLOWER, ISubTilePassiveFlowerImpl::new,
+            ModSubtiles.GEMINIORCHID, ISubTilePassiveFlowerImpl::new
     ));
 
     private static void attachBlockEntityCapabilities(AttachCapabilitiesEvent<BlockEntity> e)

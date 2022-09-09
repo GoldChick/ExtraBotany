@@ -1,23 +1,26 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
+import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.SubTilePassive;
+import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
+import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileBellflower extends SubTilePassive
+public class SubTileBellflower extends TileEntityGeneratingFlower
 {
     private static final int RANGE = 3;
     private static final int DECAY_TIME = 72000;
+    private final ISubTilePassiveFlower flower;
 
     public SubTileBellflower(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.BELLFLOWER, pos, state);
+        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -51,20 +54,11 @@ public class SubTileBellflower extends SubTilePassive
         }
         if (this.level.canSeeSky(this.getEffectivePos()) && y > baseY)
         {
-            if (++passiveDecayTicks > DECAY_TIME)
+            flower.addPassiveTicks();
+            int rain = this.level.isRaining() ? 10 : 0;
+            if (flower.getPassiveTicks() % 10 == 0)
             {
-                getLevel().destroyBlock(getBlockPos(), false);
-                if (Blocks.DEAD_BUSH.defaultBlockState().canSurvive(getLevel(), getBlockPos()))
-                {
-                    getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
-                }
-            } else
-            {
-                int rain = this.level.isRaining() ? 10 : 0;
-                if (this.passiveDecayTicks % 10 == 0)
-                {
-                    addMana((baseGen + rain) * (int) (0.3F * (float) y / (float) baseY * times));
-                }
+                addMana((baseGen + rain) * (int) (0.3F * (float) y / (float) baseY * times));
             }
             sync();
         }
@@ -86,14 +80,14 @@ public class SubTileBellflower extends SubTilePassive
     public void writeToPacketNBT(CompoundTag cmp)
     {
         super.writeToPacketNBT(cmp);
-        cmp.putInt("bellI", passiveDecayTicks);
+        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
     }
 
     @Override
     public void readFromPacketNBT(CompoundTag cmp)
     {
         super.readFromPacketNBT(cmp);
-        passiveDecayTicks = cmp.getInt("bellI");
+        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Nullable
@@ -102,5 +96,4 @@ public class SubTileBellflower extends SubTilePassive
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
     }
-
 }

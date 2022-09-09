@@ -5,7 +5,6 @@
   "package": "chick.extrabotany.forge.mixin",
   "client": [
     "client.MixinArmorModel",
-    "client.MixinHydroangeas",
     "client.MixinLightning"
   ],
   "injectors": {

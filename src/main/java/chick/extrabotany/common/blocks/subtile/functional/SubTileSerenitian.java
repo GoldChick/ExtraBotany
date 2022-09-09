@@ -1,7 +1,7 @@
 package chick.extrabotany.common.blocks.subtile.functional;
 
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.api.block.ISubTileDecay;
+import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
@@ -28,12 +28,13 @@ public class SubTileSerenitian extends TileEntityFunctionalFlower
             {
                 BlockPos pos = getEffectivePos().offset(dx, 0, dz);
                 var tile = level.getBlockEntity(pos);
-                if (tile instanceof ISubTileDecay)
+                if (tile != null)
                 {
-                    ISubTileDecay passive = (ISubTileDecay) tile;
-                    if (passive.getPassiveTicks() >= 100)
+                    var c = IXplatAbstractions.INSTANCE.findPassiveFlower(tile);
+                    if (c != null && c.getPassiveTicks() >= 100)
                     {
-                        passive.setPassiveTicks(0);
+                        c.setPassiveTicks(0);
+                        c.serenitianWorks();
                     }
                 }
             }

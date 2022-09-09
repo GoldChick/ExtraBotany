@@ -1,13 +1,15 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.api.ExtraBotanyForgeCapabilities;
 import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.base.ISubTilePassiveFlowerImpl;
+import chick.extrabotany.forge.impl.ISubTilePassiveFlowerImpl;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.subtile.generating.SubTileMoonlightLily;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
 import chick.extrabotany.common.loots.ModLootModifiers;
 import chick.extrabotany.common.tools.weapons.*;
@@ -113,7 +115,7 @@ public class ForgeClientInitializer
     }
 
     /**
-     * 森林法杖，下同
+     * Register BlockEntity Capabilities
      */
     private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
     {
@@ -127,11 +129,12 @@ public class ForgeClientInitializer
         });
         return Collections.unmodifiableMap(ret);
     });
-    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntityType<?>, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
+    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
             vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
             ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
             ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new
     ));
+
     private static void attachBlockEntityCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
     {
         var be = e.getObject();
@@ -142,8 +145,18 @@ public class ForgeClientInitializer
             e.addCapability(prefix("wand_hud"),
                     CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, makeWandHud.apply(be)));
         }
+
+        var passiveFlower = PASSIVE_FLOWER.get().get(be.getType());
+        if (passiveFlower != null)
+        {
+            e.addCapability(new ResourceLocation(ExtraBotany.MODID, "passive_flower"),
+                    CapabilityUtil.makeProvider(ExtraBotanyForgeCapabilities.PASSIVE_FLOWER, passiveFlower.apply(be)));
+        }
     }
 
+    /**
+     * Register Item Capabilities
+     */
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
     ));

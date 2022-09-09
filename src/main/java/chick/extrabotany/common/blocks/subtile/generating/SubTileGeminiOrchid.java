@@ -1,28 +1,27 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
+import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.api.block.ISubTileDecay;
-import chick.extrabotany.common.blocks.SubTilePassive;
+import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 import vazkii.botania.api.subtile.RadiusDescriptor;
+import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
+public class SubTileGeminiOrchid extends TileEntityGeneratingFlower
 {
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
 
     private static final int RANGE = 2;
-    private static final int DECAY_TIME = 72000;
-
+    private final ISubTilePassiveFlower flower;
     public SubTileGeminiOrchid(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.GEMINIORCHID, pos, state);
+        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -36,7 +35,6 @@ public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
     {
         return 0xFFFF00;
     }
-
 
     @Override
     public void tickFlower()
@@ -67,14 +65,8 @@ public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
             }
             if (getMana() < getMaxMana() && tempMax > tempMin)
             {
-                if (++passiveDecayTicks > DECAY_TIME)
-                {
-                    getLevel().destroyBlock(getBlockPos(), false);
-                    if (Blocks.DEAD_BUSH.defaultBlockState().canSurvive(getLevel(), getBlockPos()))
-                    {
-                        getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
-                    }
-                } else if (ticksExisted % 8 == 0)
+               flower.addPassiveTicks();
+                 if (flower.getPassiveTicks() % 8 == 0)
                 {
                     addMana((tempMax - tempMin) / 100 > 0 ? (tempMax - tempMin) / 100 : 1);
                 }
@@ -87,14 +79,14 @@ public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
     public void writeToPacketNBT(CompoundTag cmp)
     {
         super.writeToPacketNBT(cmp);
-        cmp.putInt("geminiI", passiveDecayTicks);
+        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
     }
 
     @Override
     public void readFromPacketNBT(CompoundTag cmp)
     {
         super.readFromPacketNBT(cmp);
-        passiveDecayTicks = cmp.getInt("geminiI");
+        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Override
@@ -103,20 +95,4 @@ public class SubTileGeminiOrchid extends SubTilePassive implements ISubTileDecay
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
     }
 
-    @Override
-    public void setPassiveTicks(int x)
-    {
-        sync();
-        this.passiveDecayTicks = x;
-        if (x == 0)
-        {
-            emitParticle(ParticleTypes.ANGRY_VILLAGER, Math.random() * 0.2, 0.7, Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
-        }
-    }
-
-    @Override
-    public int getPassiveTicks()
-    {
-        return passiveDecayTicks;
-    }
 }

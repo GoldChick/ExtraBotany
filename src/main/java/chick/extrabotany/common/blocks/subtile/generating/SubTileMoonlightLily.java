@@ -1,25 +1,26 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
+import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.api.block.ISubTileDecay;
-import chick.extrabotany.common.blocks.SubTilePassive;
+import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
+import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDecay
+public class SubTileMoonlightLily extends TileEntityGeneratingFlower
 {
     private static final int RANGE = 2;
-    private static final int DECAY_TIME = 72000;
     private boolean particle = false;
+    private final ISubTilePassiveFlower flower;
 
     public SubTileMoonlightLily(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.MOONLIGHTLILY, pos, state);
+        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -48,18 +49,9 @@ public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDeca
                     particle = false;
                 } else
                 {
-                    if (++passiveDecayTicks > DECAY_TIME)
-                    {
-                        getLevel().destroyBlock(getBlockPos(), false);
-                        if (Blocks.DEAD_BUSH.defaultBlockState().canSurvive(getLevel(), getBlockPos()))
-                        {
-                            getLevel().setBlockAndUpdate(getBlockPos(), Blocks.DEAD_BUSH.defaultBlockState());
-                        }
-                    } else
-                    {
-                        particle = true;
-                        addMana(1);
-                    }
+                    flower.addPassiveTicks();
+                    particle = true;
+                    addMana(1);
                 }
                 sync();
             } else
@@ -81,7 +73,7 @@ public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDeca
     {
         super.writeToPacketNBT(cmp);
         cmp.putBoolean("moonB", particle);
-        cmp.putInt("moonI", passiveDecayTicks);
+        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
     }
 
     @Override
@@ -89,7 +81,7 @@ public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDeca
     {
         super.readFromPacketNBT(cmp);
         particle = cmp.getBoolean("moonB");
-        passiveDecayTicks = cmp.getInt("moonI");
+        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Nullable
@@ -97,21 +89,5 @@ public class SubTileMoonlightLily extends SubTilePassive implements ISubTileDeca
     public RadiusDescriptor getRadius()
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
-    }
-
-    @Override
-    public void setPassiveTicks(int x)
-    {
-        sync();
-        this.passiveDecayTicks = x;
-        if (x == 0)
-        {
-            emitParticle(ParticleTypes.ANGRY_VILLAGER, Math.random() * 0.2, 0.7, Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
-        }
-    }
-    @Override
-    public int getPassiveTicks()
-    {
-        return passiveDecayTicks;
     }
 }

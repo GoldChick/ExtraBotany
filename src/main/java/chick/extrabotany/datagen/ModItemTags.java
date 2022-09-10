@@ -136,7 +136,9 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.THUG_LIFE.get())
                 .add(ModItems.BLACK_GLASSES.get())
         ;
-        tag(accessory("necklace"));
+        tag(accessory("necklace"))
+                .add(ModItems.PURE_DAISY_PENDANT.get())
+        ;
     }
 
     private static TagKey<Item> accessory(String name)

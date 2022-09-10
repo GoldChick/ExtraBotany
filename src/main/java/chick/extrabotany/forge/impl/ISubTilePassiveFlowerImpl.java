@@ -1,14 +1,13 @@
 package chick.extrabotany.forge.impl;
 
-import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.base.ConfigHandler;
+import chick.extrabotany.common.base.ExtrabotanyReflectHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import vazkii.botania.api.subtile.TileEntitySpecialFlower;
 import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
@@ -37,7 +36,7 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
     {
         if (flower instanceof SubTileHydroangeas hydroangeas)
         {
-            return ObfuscationReflectionHelper.getPrivateValue(SubTileHydroangeas.class, hydroangeas, "passiveDecayTicks");
+            return ExtrabotanyReflectHelper.getPrivateValue(SubTileHydroangeas.class, hydroangeas, "passiveDecayTicks");
         }
         return passiveTicks;
     }
@@ -47,7 +46,7 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
     {
         if (flower instanceof SubTileHydroangeas hydroangeas)
         {
-            ObfuscationReflectionHelper.setPrivateValue(SubTileHydroangeas.class, hydroangeas, 0, "passiveDecayTicks");
+            ExtrabotanyReflectHelper.setPrivateValue(SubTileHydroangeas.class, hydroangeas, 0, "passiveDecayTicks");
         }
         passiveTicks = x;
     }

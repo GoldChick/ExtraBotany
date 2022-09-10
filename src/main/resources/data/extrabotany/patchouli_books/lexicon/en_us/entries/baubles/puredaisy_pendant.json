@@ -1,0 +1,18 @@
+{
+  "name": "extrabotany.entry.puredaisy_pendant",
+  "category": "botania:baubles",
+  "icon": "extrabotany:puredaisy_pendant",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/pure_daisy_pickup",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.puredaisy_pendant0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.puredaisy_pendant1",
+      "recipe": "minecraft:puredaisy_pendant"
+    }
+  ]
+}

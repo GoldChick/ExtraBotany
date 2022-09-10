@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "package": "chick.extrabotany.forge.mixin",
   "client": [
-    "client.MixinArmorModel",
-    "client.MixinLightning"
+    "client.MixinArmorModel"
   ],
   "injectors": {
     "defaultRequire": 1

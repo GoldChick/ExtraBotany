@@ -1,9 +1,9 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
 import chick.extrabotany.common.ModEntities;
+import chick.extrabotany.common.base.ExtrabotanyReflectHelper;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.entities.EntityFalseLightning;
-import chick.extrabotany.api.IMixinGetData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -43,9 +43,10 @@ public class SubTileReikarOrchid extends TileEntityGeneratingFlower
         {
             if (bolt instanceof EntityFalseLightning)
                 continue;
+            int life = ExtrabotanyReflectHelper.getPrivateValue(LightningBolt.class, bolt, "f_20860_");
             if (getMana() == 0)
             {
-                if (bolt instanceof IMixinGetData && ((IMixinGetData) bolt).getInt() == 2)
+                if (life == 2)
                 {
                     bolt.discard();
                     var fBolt = new EntityFalseLightning(ModEntities.FALSE_LIGHTNING, level);
@@ -56,7 +57,7 @@ public class SubTileReikarOrchid extends TileEntityGeneratingFlower
                 }
             } else
             {
-                if (bolt instanceof IMixinGetData && ((IMixinGetData) bolt).getInt() == 1)
+                if (life == 1)
                 {
                     level.explode(null, getEffectivePos().getX(), getEffectivePos().getY(), getEffectivePos().getZ(),
                             1.0F, Explosion.BlockInteraction.BREAK);

@@ -55,6 +55,7 @@ public class LibItemNames
 
 
     public static String PEACE_AMULET = "peace_amulet";
+    public static String PURE_DAISY_PENDANT = "puredaisy_pendant";
     public static String FROST_RING = "frost_ring";
     public static String DEATH_RING = "death_ring";
     public static String POWER_GLOVE = "power_glove";
@@ -74,9 +75,13 @@ public class LibItemNames
     public static String MANA_READER = "mana_reader";
     public static String MANASTEEL_SHIELD = "manasteel_shield";
     public static String ELEMENT_SHIELD = "elementium_shield";
+    public static String TERRA_SHIELD = "terrasteel_shield";
     public static String FOREST_BOOK = "forest_book";
     public static String DIRT_SHIELD = "dirt_shield";
     public static String LIVINGWOOD_CROSSBOW = "livingwood_crossbow";
+    public static String CRYSTAL_CROSSBOW = "crystal_crossbow";
+    public static String MINI_LIVINGWOOD_BOW = "mini_livingwood_bow";
+    public static String MINI_CRYSTAL_BOW = "mini_crystal_bow";
     public static String ROD_OF_DISCORD = "rod_of_discord";
     public static String SHADOWWARRIOR_HELM = "shadowwarrior_helm";
     public static String SHADOWWARRIOR_CHEST = "shadowwarrior_chest";

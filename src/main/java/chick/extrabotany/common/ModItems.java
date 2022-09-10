@@ -112,6 +112,7 @@ public class ModItems
     public static final RegistryObject<Item> THUG_LIFE = register(LibItemNames.THUG_LIFE, () -> new Cosmetic(Cosmetic.Variant.ThugLife, ITEM_PROPERTIES));
 
     public static final RegistryObject<Item> PEACE_AMULET = register(LibItemNames.PEACE_AMULET);
+    public static final RegistryObject<Item> PURE_DAISY_PENDANT = register(LibItemNames.PURE_DAISY_PENDANT,()->new PureDaisyPendant(stackTo1()));
     public static final RegistryObject<Item> FROST_RING = register(LibItemNames.FROST_RING, () -> new FrostRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> DEATH_RING = register(LibItemNames.DEATH_RING, () -> new DeathRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> POWER_GLOVE = register(LibItemNames.POWER_GLOVE, () -> new PowerGlove(ITEM_PROPERTIES));

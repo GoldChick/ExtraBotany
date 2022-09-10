@@ -403,7 +403,6 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.genesis_crystal3", "合成相遇之缘。");
         add("extrabotany.page.genesis_crystal4", "祈愿池");
         add("extrabotany.page.genesis_crystal5", "使用$(item)纠缠之缘￥(0)或者$(item)相遇之缘$(0)右击$(item)次元催化剂$(0)开始祈愿。");
-
         add("extrabotany.entry.livingwood_crossbow", "活木弩");
         add("extrabotany.page.livingwood_crossbow0", "仿照活木弓的方式，可以用$(item)活木$(0)、$(item)魔力钢锭$(0)和$(item)蕴魔丝线(0)制造更加耐用的活木弩。此外，它也可以用魔力修复。");
         add("extrabotany.page.livingwood_crossbow1", "它能把飞机打下来么？");
@@ -438,6 +437,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.forest_book", "森林书");
         add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多8生命值。");
         add("extrabotany.page.forest_book1", "“你好”，“谢谢”，最后是“再见”。");
+        add("extrabotany.entry.puredaisy_pendant", "白雏菊项链");
+        add("extrabotany.page.puredaisy_pendant0", "手持$(item)白雏菊项链$(0)右击方块与$(item)白雏菊$(0)效果相同，但这一过程需要消耗少量魔力，并且随着使用次数的增加，冷却时间也会变长。即使采用某些方法修复它的耐久也是如此。");
+        add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
         pantchouliFlower();
     }
 

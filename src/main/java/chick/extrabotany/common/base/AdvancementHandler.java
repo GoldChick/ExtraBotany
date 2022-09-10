@@ -24,7 +24,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import top.theillusivec4.curios.api.CuriosApi;
 import vazkii.botania.common.helper.PlayerHelper;
 
@@ -72,13 +71,6 @@ public final class AdvancementHandler
         return null;
     }
 
-    /**
-     * 使用了反射，更换版本可能会出现问题
-     * 在net.minecraft:mappings_official.zip中应当可以搜索到
-     * <p>
-     *
-     * @throws RuntimeException If Field Name Has Been Changed
-     */
     public static boolean hasDone(String modid, String advancement)
     {
         ResourceLocation id = ResourceLocation.tryParse(modid + ":main/" + advancement);
@@ -91,17 +83,9 @@ public final class AdvancementHandler
                 Advancement adv = cm.getAdvancements().get(id);
                 if (adv != null)
                 {
-                    try
-                    {
-                        Map<Advancement, AdvancementProgress> progressMap =
-                                ObfuscationReflectionHelper.getPrivateValue(ClientAdvancements.class, cm,
-                                        "f_104390_");
-                        AdvancementProgress progress = progressMap != null ? progressMap.get(adv) : null;
-                        return progress != null && progress.isDone();
-                    } catch (Exception e)
-                    {
-                        throw new RuntimeException(ExtraBotany.MODID + "AdvancementHandler Error! Field ID has been changed!");
-                    }
+                    Map<Advancement, AdvancementProgress> progressMap = ExtrabotanyReflectHelper.getPrivateValue(ClientAdvancements.class, cm, "f_104390_");
+                    AdvancementProgress progress = progressMap != null ? progressMap.get(adv) : null;
+                    return progress != null && progress.isDone();
                 }
             }
         }
@@ -139,9 +123,8 @@ public final class AdvancementHandler
     @SubscribeEvent
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
     {
-        if (event.getEntity() instanceof Player && !event.getEntityLiving().level.isClientSide)
+        if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide)
         {
-            final Player player = (Player) event.getEntityLiving();
             if (player.isCreative())
             {
                 return;

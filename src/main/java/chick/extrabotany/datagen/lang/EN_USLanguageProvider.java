@@ -426,7 +426,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.forest_book", "Aranyaka");
         add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1.6 $(thing)hp$(0), capped at 5 hearts.");
         add("extrabotany.page.forest_book1", "\"Hello,\" \"Thank You,\" and the Final \"Goodbye\".");
-        add("extrabotany.page.title.example", "An Example");
+        add("extrabotany.entry.puredaisy_pendant", "Pure Daisy Pendant");
+        add("extrabotany.page.puredaisy_pendant0", "By holding a $(item)Pure Daisy Pendant$(0) and right-clicking a block, you can instantly transform blocks like a $(item)Pure Daisy$(0), at the cost of a little mana. The more you use it, the more it cools down, even if you find some methods to repair it.");
+        add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
         pantchouliFlower();
     }
 

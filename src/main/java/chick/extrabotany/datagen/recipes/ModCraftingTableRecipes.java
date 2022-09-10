@@ -2,23 +2,31 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.crafting.*;
 import chick.extrabotany.common.libs.LibItemNames;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.common.lib.ModTags;
+import vazkii.botania.mixin.AccessorRecipeProvider;
 
 import java.util.function.Consumer;
 
 import static chick.extrabotany.ExtraBotany.MODID;
 import static vazkii.botania.common.block.ModSubtiles.bergamute;
+import static vazkii.botania.data.recipes.RecipeProvider.conditionsFromItem;
 
 public class ModCraftingTableRecipes extends RecipeProvider
 {
@@ -61,6 +69,15 @@ public class ModCraftingTableRecipes extends RecipeProvider
     {
         buildSpecialCraftingRecipes(consumer);
 
+        for (var block : new Block[]{
+                ModSubtiles.bloodyenchantress,ModSubtiles.reikarorchid,ModSubtiles.bellflower,
+                ModSubtiles.sunshinelily,ModSubtiles.moonlightlily,ModSubtiles.omniviolet,
+                ModSubtiles.geminiorchid,
+                ModSubtiles.annoying,ModSubtiles.serenitian
+        })
+        {
+            createFloatingFlowerRecipe(consumer, block);
+        }
         ShapedRecipeBuilder.shaped(ModItems.MANA_READER.get())
                 .pattern(" xo")
                 .pattern("azx")
@@ -292,6 +309,15 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("genesis_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GENESIS_CRYSTAL.get()))
                 .save(consumer, "crystal_to_gem8");
+        ShapedRecipeBuilder.shaped(ModItems.PURE_DAISY_PENDANT.get())
+                .pattern("axa")
+                .pattern(" a ")
+                .pattern("   ")
+                .define('x', ModTags.Items.NUGGETS_MANASTEEL)
+                .define('a', vazkii.botania.common.block.ModSubtiles.pureDaisy)
+                .group(MODID)
+                .unlockedBy("pure_daisy", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModSubtiles.pureDaisy))
+                .save(consumer, LibItemNames.PURE_DAISY_PENDANT);
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -306,14 +332,14 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .requires(Items.SUGAR)
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
-                .save(consumer, "gildedmashedpotato");
+                .save(consumer, LibItemNames.GILDED_MASHED_POTATO);
         ShapelessRecipeBuilder.shapeless(ModItems.LEN_SMELT.get())
                 .requires(vazkii.botania.common.item.ModItems.lensNormal)
                 .requires(vazkii.botania.common.item.ModItems.manaPowder)
                 .requires(vazkii.botania.common.item.ModItems.runeFire)
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
-                .save(consumer, "len_smelt");
+                .save(consumer, LibItemNames.LEN_SMELT);
         ShapelessRecipeBuilder.shapeless(ModItems.LEN_POTION.get())
                 .requires(vazkii.botania.common.item.ModItems.lensNormal)
                 .requires(vazkii.botania.common.item.ModItems.manaPowder)
@@ -322,21 +348,21 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .requires(vazkii.botania.common.item.ModItems.enderAirBottle)
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
-                .save(consumer, "len_potion");
+                .save(consumer, LibItemNames.LEN_POTION);
         ShapelessRecipeBuilder.shapeless(ModItems.LEN_TRACE.get())
                 .requires(vazkii.botania.common.item.ModItems.lensNormal)
                 .requires(vazkii.botania.common.item.ModItems.runeGreed)
                 .requires(vazkii.botania.common.item.ModItems.manaPowder)
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
-                .save(consumer, "len_trace");
+                .save(consumer, LibItemNames.LEN_TRACE);
         ShapelessRecipeBuilder.shapeless(ModItems.LEN_MANA.get())
                 .requires(vazkii.botania.common.item.ModItems.lensNormal)
                 .requires(vazkii.botania.common.item.ModItems.runeMana)
                 .requires(vazkii.botania.common.item.ModItems.manaPowder)
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lensNormal))
-                .save(consumer, "len_mana");
+                .save(consumer, LibItemNames.LEN_MANA);
         ShapelessRecipeBuilder.shapeless(ModItems.TICKET.get())
                 .requires(vazkii.botania.common.item.ModItems.gaiaIngot)
                 .requires(ModItems.THE_CHAOS.get())
@@ -521,7 +547,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer,  LibItemNames.SHADOWWARRIOR_CHEST);
+                .save(consumer, LibItemNames.SHADOWWARRIOR_CHEST);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_WARRIOR_LEGS.get())
                 .pattern("xxx")
                 .pattern("x x")
@@ -529,7 +555,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer,  LibItemNames.SHADOWWARRIOR_LEGS);
+                .save(consumer, LibItemNames.SHADOWWARRIOR_LEGS);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_WARRIOR_BOOTS.get())
                 .pattern("x x")
                 .pattern("x x")
@@ -537,7 +563,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', ModItems.SHADOW_INGOT.get())
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer,  LibItemNames.SHADOWWARRIOR_BOOTS);
+                .save(consumer, LibItemNames.SHADOWWARRIOR_BOOTS);
         ShapedRecipeBuilder.shaped(ModItems.GOBLINSLAYER_HELM.get())
                 .pattern("xxx")
                 .pattern("x x")
@@ -646,5 +672,17 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
                 .save(consumer, "maid_boots");
+    }
+
+
+    protected void createFloatingFlowerRecipe(Consumer<FinishedRecipe> consumer, ItemLike input)
+    {
+        ResourceLocation inputName = Registry.ITEM.getKey(input.asItem());
+        Item output = Registry.ITEM.getOptional(new ResourceLocation(inputName.getNamespace(), "floating_" + inputName.getPath())).get();
+        ShapelessRecipeBuilder.shapeless(output)
+                .requires(ModTags.Items.FLOATING_FLOWERS)
+                .requires(input)
+                .unlockedBy("has_item", conditionsFromItem(input))
+                .save(consumer);
     }
 }

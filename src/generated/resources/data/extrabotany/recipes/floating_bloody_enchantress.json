@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "botania:floating_flowers"
+    },
+    {
+      "item": "extrabotany:bloody_enchantress"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:floating_bloody_enchantress"
+  }
+}

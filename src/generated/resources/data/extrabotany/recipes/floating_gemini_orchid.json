@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "botania:floating_flowers"
+    },
+    {
+      "item": "extrabotany:gemini_orchid"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:floating_gemini_orchid"
+  }
+}

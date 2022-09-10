@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "botania:floating_flowers"
+    },
+    {
+      "item": "extrabotany:bell_flower"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:floating_bell_flower"
+  }
+}

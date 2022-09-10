@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:puredaisy_pendant"
+    ]
+  },
+  "criteria": {
+    "pure_daisy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botania:pure_daisy"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:puredaisy_pendant"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pure_daisy",
+      "has_the_recipe"
+    ]
+  ]
+}

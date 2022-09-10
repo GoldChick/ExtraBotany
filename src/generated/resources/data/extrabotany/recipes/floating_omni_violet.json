@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "botania:floating_flowers"
+    },
+    {
+      "item": "extrabotany:omni_violet"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:floating_omni_violet"
+  }
+}

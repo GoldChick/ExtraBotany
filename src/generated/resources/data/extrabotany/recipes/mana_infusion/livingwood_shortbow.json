@@ -1,0 +1,13 @@
+{
+  "type": "botania:mana_infusion",
+  "input": {
+    "item": "botania:livingwood_bow"
+  },
+  "output": {
+    "nbt": {
+      "Damage": 0
+    },
+    "item": "extrabotany:livingwood_shortbow"
+  },
+  "mana": 2000
+}

@@ -1,4 +1,4 @@
-package chick.extrabotany.common.tools.weapons;
+package chick.extrabotany.common.tools.weapons.ranged;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

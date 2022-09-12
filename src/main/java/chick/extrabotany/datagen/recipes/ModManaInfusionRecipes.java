@@ -2,6 +2,7 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.libs.LibItemNames;
 import com.google.gson.JsonObject;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -30,7 +31,8 @@ public class ModManaInfusionRecipes extends RecipeProvider
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        consumer.accept(new ManaInfusion(idFor("nightmarefuel"), new ItemStack(ModItems.NIGHTMARE_FUEL.get()), Ingredient.of(Items.COAL), 100));
+        consumer.accept(new ManaInfusion(idFor(LibItemNames.NIGHTMARE_FUEL), new ItemStack(ModItems.NIGHTMARE_FUEL.get()), Ingredient.of(Items.COAL), 1000));
+        consumer.accept(new ManaInfusion(idFor(LibItemNames.LIVINGWOOD_SHORTBOW), new ItemStack(ModItems.LIVINGWOOD_SHORTBOW.get()), Ingredient.of(vazkii.botania.common.item.ModItems.livingwoodBow), 2000));
         consumer.accept(new ManaInfusion(idFor("fried_chicken"), new ItemStack(ModItems.FRIED_CHICKEN.get()), Ingredient.of(Items.COOKED_CHICKEN), 600));
 
         consumer.accept(ManaInfusion.dimension(idFor("enderpearl"), new ItemStack(Items.ENDER_PEARL), Ingredient.of(Items.DIAMOND), 20000));

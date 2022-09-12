@@ -80,8 +80,8 @@ public class LibItemNames
     public static String DIRT_SHIELD = "dirt_shield";
     public static String LIVINGWOOD_CROSSBOW = "livingwood_crossbow";
     public static String CRYSTAL_CROSSBOW = "crystal_crossbow";
-    public static String MINI_LIVINGWOOD_BOW = "mini_livingwood_bow";
-    public static String MINI_CRYSTAL_BOW = "mini_crystal_bow";
+    public static String LIVINGWOOD_SHORTBOW = "livingwood_shortbow";
+    public static String CRYSTAL_SHORTBOW = "crystal_shortbow";
     public static String ROD_OF_DISCORD = "rod_of_discord";
     public static String SHADOWWARRIOR_HELM = "shadowwarrior_helm";
     public static String SHADOWWARRIOR_CHEST = "shadowwarrior_chest";

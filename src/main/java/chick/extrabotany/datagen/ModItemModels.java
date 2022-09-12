@@ -9,6 +9,8 @@ import chick.extrabotany.common.libs.LibItemNames;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -29,19 +31,18 @@ public class ModItemModels extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        withExistingParent(ModBlocks.DIMENSION_CATALYST_ITEM.get().getRegistryName().getPath(), modLoc("block/dimension_catalyst"));
 
         var list = new ArrayList<>(Registry.ITEM.stream()
                 .filter(p -> p.getRegistryName().getNamespace().equals(ExtraBotany.MODID))
                 .filter(p -> !(p instanceof ItemBlockSpecialFlower))
                 .filter(p -> !(p instanceof ShieldItem))
-                .filter(p -> !(p instanceof SwordItem)).toList());
+                .filter(p -> !(p instanceof SwordItem))
+                .filter(p->!(p instanceof ProjectileWeaponItem))
+                .toList());
         list.remove(ModBlocks.DIMENSION_CATALYST_ITEM.get());
         //write in ModItemOverrideModel
         list.remove(ModItems.COCK_TAIL.get());
         //write by hand
-        list.remove(ModItems.FAILNAUGHT.get());
-        list.remove(ModItems.LIVINGWOOD_CROSSBOW.get());
         list.remove(ModItems.UNIVERSAL_PETAL.get());
         //not completed yet
         list.remove(ModItems.SUPREME_EARTH_STONE.get());
@@ -60,18 +61,19 @@ public class ModItemModels extends ItemModelProvider
 
     private void registerFlowerModels()
     {
+        withExistingParent(ModBlocks.DIMENSION_CATALYST_ITEM.get().getRegistryName().getPath(), modLoc("block/"+LibBlockNames.DIMENSION_CATALYST));
         //no floating flowers here
         //generating
         singleTexture(ModSubtiles.sunshinelily_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/" + LibBlockNames.SUNSHINE_LILY));
-        singleTexture(ModSubtiles.moonlightlily_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/moonlight_lily"));
-        singleTexture(ModSubtiles.omniviolet_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/omni_violet"));
-        singleTexture(ModSubtiles.geminiorchid_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/gemini_orchid"));
-        singleTexture(ModSubtiles.bellflower_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/bell_flower"));
+        singleTexture(ModSubtiles.moonlightlily_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.MOONLIGHT_LILY));
+        singleTexture(ModSubtiles.omniviolet_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.OMNI_VIOLET));
+        singleTexture(ModSubtiles.geminiorchid_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.GEMINI_ORCHID));
+        singleTexture(ModSubtiles.bellflower_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.BELL_FLOWER));
         singleTexture(ModSubtiles.reikarorchid_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/" + LibBlockNames.REIKAR_ORCHID));
         singleTexture(ModSubtiles.bloodyenchantress_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/" + LibBlockNames.BLOODY_ENCHANTRESS));
         //functional
-        singleTexture(ModSubtiles.serenitian_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/serenitian"));
-        singleTexture(ModSubtiles.annoying_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/annoying_flower"));
+        singleTexture(ModSubtiles.serenitian_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.SERENITIAN));
+        singleTexture(ModSubtiles.annoying_item.getRegistryName().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/"+LibBlockNames.ANNOYING_FLOWER));
     }
 
     private void registerWeaponModels()

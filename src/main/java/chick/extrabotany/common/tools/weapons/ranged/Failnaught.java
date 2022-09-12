@@ -1,4 +1,4 @@
-package chick.extrabotany.common.tools.weapons;
+package chick.extrabotany.common.tools.weapons.ranged;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.advancement.IAdvancementRequirement;

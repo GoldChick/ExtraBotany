@@ -103,6 +103,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.FOREST_BOOK.get(), "Aranyaka");
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "Livingwood Crossbow");
+        add(ModItems.LIVINGWOOD_SHORTBOW.get(), "Livingwood Shortbow");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
         add(ModItems.TRUE_TERRA_BLADE.get(), "True Terra Blade");
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "True Thunstar Caller");

@@ -1,0 +1,36 @@
+{
+  "name": "extrabotany.entry.mini_item",
+  "category": "botania:tools",
+  "icon": "extrabotany:livingwood_shortbow",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.mini_item0"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "text": "extrabotany.page.mini_item1",
+      "recipes": "extrabotany:mana_infusion/livingwood_shortbow"
+    },
+    {
+      "type": "text",
+      "text": "extrabotany.page.mini_item2"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "text": "extrabotany.page.mini_item3",
+      "recipes": "extrabotany:mana_infusion/livingwood_shortbow"
+    },
+    {
+      "type": "text",
+      "text": "extrabotany.page.mini_item4"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "text": "extrabotany.page.mini_item5",
+      "recipes": "extrabotany:mana_infusion/livingwood_shortbow"
+    }
+  ]
+}

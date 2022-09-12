@@ -14,7 +14,7 @@ public class LeftClickMessage
 {
     public enum LeftClickType
     {
-        Jingwei(), True_Weapon(1);
+        Jingwei(), True_Weapon(1), ShortBow(2);
         public final int type;
 
         LeftClickType()
@@ -34,10 +34,12 @@ public class LeftClickMessage
     {
         lcType = type;
     }
+
     public LeftClickMessage()
     {
         lcType = LeftClickType.Jingwei;
     }
+
     public void encode(FriendlyByteBuf buf)
     {
     }
@@ -58,7 +60,7 @@ public class LeftClickMessage
                 var item = switch (lcType.type)
                         {
                             default -> EquipmentHandler.findOrEmpty(ModItems.JINGWEI_FEATHER.get(), player).getItem();
-                            case 1 -> player.getItemInHand(InteractionHand.MAIN_HAND).getItem();
+                            case 1, 2 -> player.getItemInHand(InteractionHand.MAIN_HAND).getItem();
                         };
                 context.enqueueWork(() -> ((IItemWithLeftClick) item).onLeftClick(player, null));
             }

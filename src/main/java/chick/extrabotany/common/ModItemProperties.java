@@ -1,6 +1,6 @@
 package chick.extrabotany.common;
 
-import chick.extrabotany.common.tools.weapons.LivingWoodCrossBow;
+import chick.extrabotany.common.tools.weapons.ranged.LivingWoodCrossBow;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;

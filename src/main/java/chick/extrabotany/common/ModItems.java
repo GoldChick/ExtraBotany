@@ -14,6 +14,10 @@ import chick.extrabotany.common.items.lens.*;
 import chick.extrabotany.common.tools.armors.*;
 import chick.extrabotany.common.tools.others.*;
 import chick.extrabotany.common.tools.weapons.*;
+import chick.extrabotany.common.tools.weapons.ranged.CrystalCrossBow;
+import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
+import chick.extrabotany.common.tools.weapons.ranged.LivingWoodCrossBow;
+import chick.extrabotany.common.tools.weapons.ranged.LivingWoodShortBow;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -136,6 +140,8 @@ public class ModItems
     public static final RegistryObject<Item> CAMERA = register(LibItemNames.CAMERA);
     //item with durability
     public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = register(LibItemNames.LIVINGWOOD_CROSSBOW, () -> new LivingWoodCrossBow(stackTo1()));
+    public static final RegistryObject<Item> CRYSTAL_CROSSBOW = register(LibItemNames.CRYSTAL_CROSSBOW, () -> new CrystalCrossBow(stackTo1()));
+    public static final RegistryObject<Item> LIVINGWOOD_SHORTBOW = register(LibItemNames.LIVINGWOOD_SHORTBOW, () -> new LivingWoodShortBow(stackTo1()));
 
     public static final RegistryObject<Item> MANASTEEL_SHIELD = register(LibItemNames.MANASTEEL_SHIELD, () -> new ManaSteelShield(stackTo1()));
     public static final RegistryObject<Item> ELEMENT_SHIELD = register(LibItemNames.ELEMENT_SHIELD, () -> new ElementSteelShield(stackTo1()));

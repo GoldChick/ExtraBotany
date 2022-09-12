@@ -36,8 +36,8 @@ public class ElementSteelShield extends ManaSteelShield
         }
         if (slot == EquipmentSlot.MAINHAND)
         {
-            ret.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(getBaubleUUID(stack), "Shield modifier2", 4, AttributeModifier.Operation.ADDITION));
-            ret.put(Attributes.ATTACK_SPEED, new AttributeModifier(getBaubleUUID(stack), "Shield modifier3", ItemNBTHelper.getBoolean(stack, TAG_CHARGED, false) ? -2.4F : -3.2F, AttributeModifier.Operation.ADDITION));
+            ret.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", 4D, AttributeModifier.Operation.ADDITION));
+            ret.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", ItemNBTHelper.getBoolean(stack, TAG_CHARGED, false) ? -2.4D : -3.2D, AttributeModifier.Operation.ADDITION));
         }
         return ret;
     }

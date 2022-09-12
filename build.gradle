@@ -20,7 +20,7 @@ apply plugin: 'maven-publish'
 // apply MixinGradle 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.18.2-0.1.4.1'
+version = '1.18.2-0.1.4.2'
 group = 'extrabotany' //'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'extrabotany'
 

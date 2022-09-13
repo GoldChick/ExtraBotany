@@ -49,6 +49,7 @@ public class ModPetalRecipes extends RecipeProvider
     @Override
     public void buildCraftingRecipes(Consumer<net.minecraft.data.recipes.FinishedRecipe> consumer)
     {
+        //TODO: 其实可以直接继承bot的类的，限于时间地点原因就不这么做了
         Ingredient white = tagIngr("petals/white");
         Ingredient orange = tagIngr("petals/orange");
         Ingredient magenta = tagIngr("petals/magenta");
@@ -92,15 +93,12 @@ public class ModPetalRecipes extends RecipeProvider
         consumer.accept(make(ModSubtiles.omniviolet, blue, blue, purple, purple, runeMana, runeSpring, runeLust));
         consumer.accept(make(ModSubtiles.geminiorchid, yellow, yellow, yellow, orange, orange, orange, manaPowder, manaPowder));
         consumer.accept(make(ModSubtiles.reikarorchid, cyan, cyan, lightBlue, lightBlue, blue, runeEnvy, runeSloth, runePride));
+        consumer.accept(make(ModSubtiles.bellflower, yellow, yellow, green, green, manaPowder));
+        consumer.accept(make(ModSubtiles.bloodyenchantress, red, red, red, red, runeFire, runeSummer, runeWrath));
 
-        consumer.accept(make(ModSubtiles.serenitian, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed));
-        consumer.accept(make(ModSubtiles.annoying, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed));
+        consumer.accept(make(ModSubtiles.serenitian, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed, redstoneRoot));
+        consumer.accept(make(ModSubtiles.annoying, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed, redstoneRoot));
 
-        //ItemStack stack = new ItemStack(Items.PLAYER_HEAD);
-        //ItemNBTHelper.setString(stack, "SkullOwner", "Vazkii");
-        //Ingredient[] inputs = new Ingredient[16];
-        //Arrays.fill(inputs, pink);
-        //consumer.accept(new NbtOutputResult(new FinishedRecipe(idFor(prefix("vazkii_head")), stack, inputs), stack.getTag()));
     }
 
     protected static Ingredient tagIngr(String tag)

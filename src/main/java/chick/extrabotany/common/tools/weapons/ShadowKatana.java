@@ -1,5 +1,9 @@
 package chick.extrabotany.common.tools.weapons;
 
+import chick.extrabotany.ExtraBotany;
+import net.minecraft.Util;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -10,12 +14,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.item.equipment.ICustomDamageItem;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 
 import java.util.function.Consumer;
+
+import static java.lang.Math.PI;
 
 
 public class ShadowKatana extends SwordItem implements ICustomDamageItem
@@ -30,12 +38,27 @@ public class ShadowKatana extends SwordItem implements ICustomDamageItem
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {
-
         ItemStack stack = player.getItemInHand(hand);
         var hitResult = (BlockHitResult) player.pick(5, 1, false);
-
-        player.setPos(hitResult.getLocation().add(0, 0.5D, 0));
-
+        Vec3 offset;
+        switch (hitResult.getDirection())
+        {
+            case DOWN -> offset = new Vec3(0, -0.5, 0);
+            case EAST -> offset = new Vec3(0.35, 0, 0);
+            case WEST -> offset = new Vec3(-0.35, 0, 0);
+            case SOUTH -> offset = new Vec3(0, 0, 0.35);
+            case NORTH -> offset = new Vec3(0, 0, -0.35);
+            default -> offset = new Vec3(0, 0, 0);
+        }
+        player.setPos(hitResult.getLocation().add(offset));
+        if (level.isClientSide)
+        {
+            for (int i = 0; i < 360; i += 10)
+            {
+                double j = ((double) i) / 180F * PI;
+                level.addParticle(ParticleTypes.ENCHANTED_HIT, player.getX() + Math.cos(j), player.getY() + 1D, player.getZ()+Math.sin(j), 0, 0, 0);
+            }
+        }
         player.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
         return InteractionResultHolder.success(stack);
     }

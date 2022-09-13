@@ -5,8 +5,6 @@ import chick.extrabotany.network.NetworkHandler;
 import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,7 +15,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -30,6 +27,8 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 
 import java.util.function.Consumer;
+
+import static chick.extrabotany.common.tools.weapons.ranged.ManaShortArrow.shootArrow;
 
 public class LivingWoodShortBow extends BowItem implements IItemWithLeftClick
 {
@@ -91,7 +90,7 @@ public class LivingWoodShortBow extends BowItem implements IItemWithLeftClick
                 }
                 int useTicks = Math.round(player.getAttackStrengthScale(0) * 20);
 
-                shootArrow(player, null, projectileStack, useTicks, 0.5D, 1);
+                shootArrow(player, projectileStack, useTicks, 0.5D, 1);
 
                 boolean flag1 = player.getAbilities().instabuild || (projectileStack.getItem() instanceof ArrowItem && ((ArrowItem) projectileStack.getItem()).isInfinite(projectileStack, stack, player));
                 if (!flag1)
@@ -124,59 +123,6 @@ public class LivingWoodShortBow extends BowItem implements IItemWithLeftClick
         }
     }
 
-    /**
-     * just shoot
-     * it does not check whether you can shoot
-     *
-     * @param living       shooter
-     * @param useTicks     0tick-20tick
-     * @param damageFactor dmg will * this float
-     * @param kbBase       kb will + this int
-     */
-    public void shootArrow(LivingEntity living, @Nullable Entity target, @Nullable ItemStack arrow, int useTicks, double damageFactor, int kbBase)
-    {
-        ItemStack stack = living.getItemInHand(InteractionHand.MAIN_HAND);
-
-        float power = getPowerForTime(useTicks);
-        var level = living.getLevel();
-
-        if (arrow == null)
-        {
-            arrow = ItemStack.EMPTY;
-        }
-        if (!level.isClientSide)
-        {
-            ArrowItem arrowitem = (ArrowItem) Items.ARROW;
-
-            AbstractArrow abstractarrow = arrowitem.createArrow(level, arrow, living);
-            abstractarrow = customArrow(abstractarrow);
-            abstractarrow.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, power * 3.0F, 1.0F);
-
-            abstractarrow.setCritArrow(useTicks == 20);
-
-            int power_level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
-            if (power_level > 0)
-            {
-                abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() + (double) power_level * 0.5D + 0.5D);
-            }
-            abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() * damageFactor);
-
-            abstractarrow.setKnockback(kbBase + EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, stack));
-
-            abstractarrow.setSecondsOnFire(100 * EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack));
-
-            stack.hurtAndBreak(1, living, (p) -> p.broadcastBreakEvent(living.getUsedItemHand()));
-
-            if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) <= 0 && (arrow.is(Items.SPECTRAL_ARROW) || arrow.is(Items.TIPPED_ARROW)))
-            {
-                abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-            }
-            level.addFreshEntity(abstractarrow);
-
-            level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + power * 0.5F);
-
-        }
-    }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack)

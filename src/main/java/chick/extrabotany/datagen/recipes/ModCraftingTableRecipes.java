@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -70,10 +71,10 @@ public class ModCraftingTableRecipes extends RecipeProvider
         buildSpecialCraftingRecipes(consumer);
 
         for (var block : new Block[]{
-                ModSubtiles.bloodyenchantress,ModSubtiles.reikarorchid,ModSubtiles.bellflower,
-                ModSubtiles.sunshinelily,ModSubtiles.moonlightlily,ModSubtiles.omniviolet,
+                ModSubtiles.bloodyenchantress, ModSubtiles.reikarorchid, ModSubtiles.bellflower,
+                ModSubtiles.sunshinelily, ModSubtiles.moonlightlily, ModSubtiles.omniviolet,
                 ModSubtiles.geminiorchid,
-                ModSubtiles.annoying,ModSubtiles.serenitian
+                ModSubtiles.annoying, ModSubtiles.serenitian
         })
         {
             createFloatingFlowerRecipe(consumer, block);
@@ -463,11 +464,11 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('x', vazkii.botania.common.item.ModItems.gaiaIngot)
                 .define('#', vazkii.botania.common.item.ModItems.terraSword)
                 .define('a', ModItems.THE_ORIGIN.get())
-                .define('b', ModItems.CORAL_ITEM)
+                .define('b', Ingredient.of(Items.BRAIN_CORAL, Items.TUBE_CORAL, Items.FIRE_CORAL, Items.BUBBLE_CORAL, Items.HORN_CORAL, Items.BRAIN_CORAL_FAN, Items.TUBE_CORAL_FAN, Items.FIRE_CORAL_FAN, Items.BUBBLE_CORAL_FAN, Items.HORN_CORAL_FAN))
                 .define('d', Items.HEART_OF_THE_SEA)
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
-                .save(consumer, "influx_waver");
+                .save(consumer, LibItemNames.INFLUX_WAVER);
         ShapedRecipeBuilder.shaped(ModItems.EXCALIBER.get())
                 .pattern(" b ")
                 .pattern(" a ")

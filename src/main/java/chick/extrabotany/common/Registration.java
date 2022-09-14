@@ -3,12 +3,10 @@ package chick.extrabotany.common;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.brews.ModBrews;
-import chick.extrabotany.common.tools.weapons.ShadowKatana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,7 +25,7 @@ public class Registration
         ModBlocks.getBlocks().register(bus);
         ModBlocks.getItems().register(bus);
 
-        ModItems.GetItems().register(bus);
+        ModItems.getItems().register(bus);
 
         ModEffects.getEffects().register(bus);
         //tiles

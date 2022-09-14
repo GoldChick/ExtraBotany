@@ -44,18 +44,7 @@ public class ModItemTags extends ItemTagsProvider
         this.copy(ModTags.Blocks.FUNCTIONAL_SPECIAL_FLOWERS, ModTags.Items.FUNCTIONAL_SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.SPECIAL_FLOWERS, ModTags.Items.SPECIAL_FLOWERS);
         this.copy(ModTags.Blocks.MINI_FLOWERS, ModTags.Items.MINI_FLOWERS);
-        
-        tag(ModItems.CORAL_ITEM)
-                .add(Items.BRAIN_CORAL)
-                .add(Items.TUBE_CORAL)
-                .add(Items.FIRE_CORAL)
-                .add(Items.BUBBLE_CORAL)
-                .add(Items.HORN_CORAL)
-                .add(Items.BRAIN_CORAL_FAN)
-                .add(Items.TUBE_CORAL_FAN)
-                .add(Items.FIRE_CORAL_FAN)
-                .add(Items.BUBBLE_CORAL_FAN)
-                .add(Items.HORN_CORAL_FAN);
+
         for (var color : DyeColor.values())
         {
             tag(ModTags.Items.getPetalTag(color)).add(ModItems.UNIVERSAL_PETAL.get());

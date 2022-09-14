@@ -18,9 +18,7 @@ import chick.extrabotany.common.tools.weapons.ranged.CrystalCrossBow;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
 import chick.extrabotany.common.tools.weapons.ranged.LivingWoodCrossBow;
 import chick.extrabotany.common.tools.weapons.ranged.LivingWoodShortBow;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -176,8 +174,6 @@ public class ModItems
     public static final RegistryObject<Item> EXCALIBER = register(LibItemNames.EXCALIBER, () -> new Excaliber(stackTo1()));
     public static final RegistryObject<Item> FAILNAUGHT = register(LibItemNames.FAILNAUGHT, () -> new Failnaught(stackTo1()));
 
-    public static final TagKey<Item> CORAL_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "coral_item"));
-
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {
         r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));
@@ -243,7 +239,7 @@ public class ModItems
         return new Item.Properties().tab(ExtraBotany.ITEM_GROUP).stacksTo(1);
     }
 
-    public static DeferredRegister<Item> GetItems()
+    public static DeferredRegister<Item> getItems()
     {
         return ITEMS;
     }

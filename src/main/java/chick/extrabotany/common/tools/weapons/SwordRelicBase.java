@@ -4,6 +4,7 @@ import chick.extrabotany.api.item.IItemWithLeftClick;
 import chick.extrabotany.network.NetworkHandler;
 import chick.extrabotany.network.inputMessage.LeftClickMessage;
 import net.minecraft.network.chat.Component;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,6 +56,7 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
             }
         }
     }
+
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected)
     {
@@ -119,6 +121,8 @@ public abstract class SwordRelicBase extends SwordItem implements IItemWithLeftC
                 && ManaItemHandler.instance().requestManaExactForTool(player.getItemBySlot(EquipmentSlot.MAINHAND), player, getManaPerDamage(), true))
         {
             attack(player, target);
+            //player stats here
+            player.awardStat(Stats.ITEM_USED.get(this));
         }
     }
 }

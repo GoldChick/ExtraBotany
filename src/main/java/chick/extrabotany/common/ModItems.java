@@ -106,17 +106,17 @@ public class ModItems
     /**
      * these are baubles for curios mod
      **/
-    public static final RegistryObject<Item> PYLON = register(LibItemNames.PYLON, () -> new Cosmetic(Cosmetic.Variant.Pylon, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FOX_EAR = register(LibItemNames.FOX_EAR, () -> new Cosmetic(Cosmetic.Variant.FoxEar, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FOX_MASK = register(LibItemNames.FOX_MASK, () -> new Cosmetic(Cosmetic.Variant.FoxMask, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SUPER_CROWN = register(LibItemNames.SUPER_CROWN, () -> new Cosmetic(Cosmetic.Variant.SuperCrown, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> RED_SCARF = register(LibItemNames.RED_SCARF, () -> new Cosmetic(Cosmetic.Variant.RedScarf, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> BLACK_GLASSES = register(LibItemNames.BLACK_GLASSES, () -> new Cosmetic(Cosmetic.Variant.BlackGlasses, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> STONE_MASK = register(LibItemNames.STONE_MASK, () -> new Cosmetic(Cosmetic.Variant.StoneMask, ITEM_PROPERTIES));
-    public static final RegistryObject<Item> THUG_LIFE = register(LibItemNames.THUG_LIFE, () -> new Cosmetic(Cosmetic.Variant.ThugLife, ITEM_PROPERTIES));
+    public static final RegistryObject<Item> PYLON = register(LibItemNames.PYLON, () -> new Cosmetic(Cosmetic.Variant.Pylon, stackTo1()));
+    public static final RegistryObject<Item> FOX_EAR = register(LibItemNames.FOX_EAR, () -> new Cosmetic(Cosmetic.Variant.FoxEar, stackTo1()));
+    public static final RegistryObject<Item> FOX_MASK = register(LibItemNames.FOX_MASK, () -> new Cosmetic(Cosmetic.Variant.FoxMask, stackTo1()));
+    public static final RegistryObject<Item> SUPER_CROWN = register(LibItemNames.SUPER_CROWN, () -> new Cosmetic(Cosmetic.Variant.SuperCrown, stackTo1()));
+    public static final RegistryObject<Item> RED_SCARF = register(LibItemNames.RED_SCARF, () -> new Cosmetic(Cosmetic.Variant.RedScarf, stackTo1()));
+    public static final RegistryObject<Item> BLACK_GLASSES = register(LibItemNames.BLACK_GLASSES, () -> new Cosmetic(Cosmetic.Variant.BlackGlasses, stackTo1()));
+    public static final RegistryObject<Item> STONE_MASK = register(LibItemNames.STONE_MASK, () -> new Cosmetic(Cosmetic.Variant.StoneMask, stackTo1()));
+    public static final RegistryObject<Item> THUG_LIFE = register(LibItemNames.THUG_LIFE, () -> new Cosmetic(Cosmetic.Variant.ThugLife, stackTo1()));
 
     public static final RegistryObject<Item> PEACE_AMULET = register(LibItemNames.PEACE_AMULET);
-    public static final RegistryObject<Item> PURE_DAISY_PENDANT = register(LibItemNames.PURE_DAISY_PENDANT,()->new PureDaisyPendant(stackTo1()));
+    public static final RegistryObject<Item> PURE_DAISY_PENDANT = register(LibItemNames.PURE_DAISY_PENDANT, () -> new PureDaisyPendant(stackTo1()));
     public static final RegistryObject<Item> FROST_RING = register(LibItemNames.FROST_RING, () -> new FrostRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> DEATH_RING = register(LibItemNames.DEATH_RING, () -> new DeathRing(ITEM_PROPERTIES));
     public static final RegistryObject<Item> POWER_GLOVE = register(LibItemNames.POWER_GLOVE, () -> new PowerGlove(ITEM_PROPERTIES));

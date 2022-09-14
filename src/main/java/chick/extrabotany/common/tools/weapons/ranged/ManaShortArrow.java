@@ -2,6 +2,7 @@ package chick.extrabotany.common.tools.weapons.ranged;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,6 +32,7 @@ public class ManaShortArrow extends Item
         var stack = player.getItemInHand(hand);
         int ticks = Math.round(player.getAttackStrengthScale(0) * 20);
         shootArrow(player, null, ticks, 0.52D, 1);
+        player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.consume(stack);
     }
 

@@ -2,6 +2,7 @@ package chick.extrabotany.common.tools.others;
 
 import net.minecraft.Util;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -41,12 +42,16 @@ public class ManaReader extends Item
         {
             mana = ((TileSpreader) tile).getCurrentMana();
         }
-        if (ctx.getLevel().isClientSide)
+        if (player != null)
         {
-            if (mana >= 0)
-                player.sendMessage(new TextComponent(String.format("Mana:%d", mana)), Util.NIL_UUID);
-            else
-                player.sendMessage(new TextComponent("No Mana"), Util.NIL_UUID);
+            if (ctx.getLevel().isClientSide)
+            {
+                if (mana >= 0)
+                {
+                    player.sendMessage(new TextComponent(String.format("Mana:%d", mana)), Util.NIL_UUID);
+                }
+            }
+            player.awardStat(Stats.ITEM_USED.get(this));
         }
         return InteractionResult.PASS;
     }

@@ -9,6 +9,7 @@ import com.google.common.collect.Multimap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -73,11 +74,11 @@ public class Excaliber extends SwordRelicBase implements ILensEffect, ICustomDam
     @Override
     public void attack(LivingEntity player, Entity target, int times, double speedTime, float damageTime)
     {
-        if (player instanceof Player)
+        if (player instanceof Player p)
         {
             if (!player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == this)
             {
-                EntityManaBurst burst = getBurst((Player) player, player.getItemInHand(InteractionHand.MAIN_HAND));
+                EntityManaBurst burst = getBurst(p, player.getItemInHand(InteractionHand.MAIN_HAND));
                 player.level.addFreshEntity(burst);
                 ToolCommons.damageItemIfPossible(player.getItemInHand(InteractionHand.MAIN_HAND), 1, player, getManaPerDamage());
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.terraBlade,

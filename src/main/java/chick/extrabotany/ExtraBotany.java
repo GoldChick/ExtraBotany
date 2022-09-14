@@ -4,6 +4,7 @@ import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.Registration;
 import chick.extrabotany.common.base.ConfigHandler;
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -17,6 +18,7 @@ import org.slf4j.Logger;
 public class ExtraBotany
 {
     public static final String MODID = "extrabotany";//mod name
+
     public static final String TAB_NAME = "extrabotany";//Name in creative inventury
 
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -24,11 +26,23 @@ public class ExtraBotany
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(TAB_NAME)
     {
         @Override
+        public boolean showTitle()
+        {
+            return super.showTitle();
+        }
+
+        @Override
+        public boolean hasSearchBar()
+        {
+            return true;
+        }
+
+        @Override
         public @NotNull ItemStack makeIcon()
         {
             return new ItemStack(ModItems.PYLON.get());
         }
-    };
+    }.setBackgroundImage(new ResourceLocation("tab_extrabotany.png"));
 
     public ExtraBotany()
     {

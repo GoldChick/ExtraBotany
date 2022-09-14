@@ -22,7 +22,7 @@ public class JingweiFeather extends ItemBauble implements IItemWithLeftClick
     public JingweiFeather(Properties props)
     {
         super(props.stacksTo(1));
-        MinecraftForge.EVENT_BUS.addListener(this::leftClick);
+        MinecraftForge.EVENT_BUS.addListener(this::leftClickEmpty);
         MinecraftForge.EVENT_BUS.addListener(this::leftClickBlock);
         MinecraftForge.EVENT_BUS.addListener(this::attackEntity);
     }
@@ -34,18 +34,21 @@ public class JingweiFeather extends ItemBauble implements IItemWithLeftClick
             onLeftClick(evt.getPlayer(), evt.getTarget());
         }
     }
-
-    public void leftClick(PlayerInteractEvent.LeftClickEmpty evt)
+    @Override
+    public void leftClickEmpty(PlayerInteractEvent.LeftClickEmpty evt)
     {
         if (!EquipmentHandler.findOrEmpty(this, evt.getPlayer()).isEmpty())
             NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage());
 
     }
 
+    @Override
     public void leftClickBlock(PlayerInteractEvent.LeftClickBlock evt)
     {
         if (evt.getPlayer().level.isClientSide && !EquipmentHandler.findOrEmpty(this, evt.getPlayer()).isEmpty())
+        {
             NetworkHandler.INSTANCE.sendToServer(new LeftClickMessage());
+        }
     }
 
     @Override

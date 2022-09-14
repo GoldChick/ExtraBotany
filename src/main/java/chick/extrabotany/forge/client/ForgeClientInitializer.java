@@ -1,7 +1,7 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.ExtraBotanyForgeCapabilities;
+import chick.extrabotany.api.ExtraBotanyCapabilities;
 import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
@@ -72,8 +72,9 @@ public class ForgeClientInitializer
         bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
 
         var forgebus = MinecraftForge.EVENT_BUS;
-        forgebus.addGenericListener(BlockEntity.class, ForgeClientInitializer::attachBlockEntityCapabilities);
-        forgebus.addGenericListener(ItemStack.class, ForgeClientInitializer::attachItemCaps);
+        //TODO: changed. check it after
+        forgebus.addGenericListener(BlockEntity.class, ForgeCapabilityInit::attachBlockEntityCaps);
+        forgebus.addGenericListener(ItemStack.class, ForgeCapabilityInit::attachItemStackCaps);
         NetworkHandler.registerMessage();
     }
 
@@ -152,7 +153,7 @@ public class ForgeClientInitializer
         if (passiveFlower != null)
         {
             e.addCapability(new ResourceLocation(ExtraBotany.MODID, "passive_flower"),
-                    CapabilityUtil.makeProvider(ExtraBotanyForgeCapabilities.PASSIVE_FLOWER, passiveFlower.apply(be)));
+                    CapabilityUtil.makeProvider(ExtraBotanyCapabilities.PASSIVE_FLOWER, passiveFlower.apply(be)));
         }
     }
 

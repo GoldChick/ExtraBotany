@@ -1,5 +1,7 @@
 package chick.extrabotany.common.baubles;
 
+import chick.extrabotany.api.item.IItemWithRightClick;
+import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -33,17 +35,18 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class PureDaisyPendant extends ItemBauble
+public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
 {
     public PureDaisyPendant(Properties props)
     {
-        super(props.durability(64));
+        super(Variant.PureDaisyPendant, props.durability(64));
         MinecraftForge.EVENT_BUS.addListener(this::rightClickBlock);
     }
 
     public static final String TAG_USE = "use_count";
     public static final String TAG_CD = "cool_down";
 
+    @Override
     public void rightClickBlock(PlayerInteractEvent.RightClickBlock evt)
     {
         var stack = EquipmentHandler.findOrEmpty(this, evt.getPlayer());

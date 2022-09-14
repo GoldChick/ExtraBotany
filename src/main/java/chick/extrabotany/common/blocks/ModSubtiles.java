@@ -45,6 +45,10 @@ public class ModSubtiles
     public static final Block reikarorchidFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.REIKARORCHID);
     public static final Block bloodyenchantress = new BlockSpecialFlower(MobEffects.HARM, 114, FLOWER_PROPS, () -> ModSubtiles.BLOODYENCHANTRESS);
     public static final Block bloodyenchantressFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.BLOODYENCHANTRESS);
+    public static final Block edelweiss = new BlockSpecialFlower(MobEffects.MOVEMENT_SLOWDOWN, 10, FLOWER_PROPS, () -> ModSubtiles.EDELWEISS);
+    public static final Block edelweissFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.EDELWEISS);
+    public static final Block tinkleflower = new BlockSpecialFlower(MobEffects.DIG_SPEED, 10, FLOWER_PROPS, () -> ModSubtiles.TINKLEFLOWER);
+    public static final Block tinkleflowerFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.TINKLEFLOWER);
     //functional
     public static final Block serenitian = new BlockSpecialFlower(MobEffects.ABSORPTION, 48, FLOWER_PROPS, () -> ModSubtiles.SERENITIAN);
     public static final Block serenitianFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.SERENITIAN);
@@ -59,6 +63,9 @@ public class ModSubtiles
     public static final BlockEntityType<SubTileBellflower> BELLFLOWER = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileBellflower::new, bellflower, bellflowerFloating);
     public static final BlockEntityType<SubTileReikarOrchid> REIKARORCHID = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileReikarOrchid::new, reikarorchid, reikarorchidFloating);
     public static final BlockEntityType<SubTileBloodyEnchantress> BLOODYENCHANTRESS = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileBloodyEnchantress::new, bloodyenchantress, bloodyenchantressFloating);
+    public static final BlockEntityType<SubTileEdelweiss> EDELWEISS = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileEdelweiss::new, edelweiss, edelweissFloating);
+    public static final BlockEntityType<SubTileTinkle> TINKLEFLOWER = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileTinkle::new, tinkleflower, tinkleflowerFloating);
+
 
     public static final BlockEntityType<SubTileSerenitian> SERENITIAN = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileSerenitian::new, serenitian, serenitianFloating);
     public static final BlockEntityType<SubTileAnnoyingFlower> ANNOYINGFLOWER = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileAnnoyingFlower::new, annoying, annoyingFloating);
@@ -78,6 +85,10 @@ public class ModSubtiles
     public static final Item reikarorchidFloating_item = new ItemBlockSpecialFlower(reikarorchidFloating, props);
     public static final Item bloodyenchantress_item = new ItemBlockSpecialFlower(bloodyenchantress, props);
     public static final Item bloodyenchantressFloating_item = new ItemBlockSpecialFlower(bloodyenchantressFloating, props);
+    public static final Item edelweiss_item = new ItemBlockSpecialFlower(edelweiss, props);
+    public static final Item edelweissFloating_item = new ItemBlockSpecialFlower(edelweissFloating, props);
+    public static final Item tinkleflower_item = new ItemBlockSpecialFlower(tinkleflower, props);
+    public static final Item tinkleflowerFloating_item = new ItemBlockSpecialFlower(tinkleflowerFloating, props);
     //functional items
     public static final Item serenitian_item = new ItemBlockSpecialFlower(serenitian, props);
     public static final Item serenitianFloating_item = new ItemBlockSpecialFlower(serenitianFloating, props);
@@ -93,6 +104,8 @@ public class ModSubtiles
         registerFlowerAndFloating(bellflower, bellflowerFloating, LibBlockNames.BELL_FLOWER, r);
         registerFlowerAndFloating(reikarorchid, reikarorchidFloating, LibBlockNames.REIKAR_ORCHID, r);
         registerFlowerAndFloating(bloodyenchantress, bloodyenchantressFloating, LibBlockNames.BLOODY_ENCHANTRESS, r);
+        registerFlowerAndFloating(edelweiss, edelweissFloating, LibBlockNames.EDELWEISS, r);
+        registerFlowerAndFloating(tinkleflower, tinkleflowerFloating, LibBlockNames.TINKLE_FLOWER, r);
 
 
         registerFlowerAndFloating(serenitian, serenitianFloating, LibBlockNames.SERENITIAN, r);
@@ -122,6 +135,10 @@ public class ModSubtiles
         r.accept(reikarorchidFloating_item, getId(reikarorchidFloating));
         r.accept(bloodyenchantress_item, getId(bloodyenchantress));
         r.accept(bloodyenchantressFloating_item, getId(bloodyenchantressFloating));
+        r.accept(edelweiss_item, getId(edelweiss));
+        r.accept(edelweissFloating_item, getId(edelweissFloating));
+        r.accept(tinkleflower_item, getId(tinkleflower));
+        r.accept(tinkleflowerFloating_item, getId(tinkleflowerFloating));
         //functional
         r.accept(serenitian_item, getId(serenitian));
         r.accept(serenitianFloating_item, getId(serenitianFloating));
@@ -132,23 +149,30 @@ public class ModSubtiles
     public static void registerWandHudCaps(ModTiles.BECapConsumer<IWandHUD> consumer)
     {
         consumer.accept(be -> new TileEntityGeneratingFlower.GeneratingWandHud<>((TileEntityGeneratingFlower) be),
-                SUNSHINELILY, MOONLIGHTLILY, OMNIVIOLET, GEMINIORCHID, BELLFLOWER, REIKARORCHID, BLOODYENCHANTRESS);
+                SUNSHINELILY, MOONLIGHTLILY, OMNIVIOLET, GEMINIORCHID, BELLFLOWER, REIKARORCHID, BLOODYENCHANTRESS, EDELWEISS, TINKLEFLOWER);
         consumer.accept(be -> new TileEntityFunctionalFlower.FunctionalWandHud<>((TileEntityFunctionalFlower) be),
                 SERENITIAN, ANNOYINGFLOWER);
     }
 
     public static void registerTEs(BiConsumer<BlockEntityType<?>, ResourceLocation> r)
     {
-        r.accept(SUNSHINELILY, getId(sunshinelily));
-        r.accept(MOONLIGHTLILY, getId(moonlightlily));
-        r.accept(OMNIVIOLET, getId(omniviolet));
-        r.accept(GEMINIORCHID, getId(geminiorchid));
-        r.accept(BELLFLOWER, getId(bellflower));
-        r.accept(REIKARORCHID, getId(reikarorchid));
-        r.accept(BLOODYENCHANTRESS, getId(bloodyenchantress));
+        r.accept(SUNSHINELILY, getBEId(sunshinelily));
+        r.accept(MOONLIGHTLILY, getBEId(moonlightlily));
+        r.accept(OMNIVIOLET, getBEId(omniviolet));
+        r.accept(GEMINIORCHID, getBEId(geminiorchid));
+        r.accept(BELLFLOWER, getBEId(bellflower));
+        r.accept(REIKARORCHID, getBEId(reikarorchid));
+        r.accept(BLOODYENCHANTRESS, getBEId(bloodyenchantress));
+        r.accept(EDELWEISS, getBEId(edelweiss));
+        r.accept(TINKLEFLOWER, getBEId(tinkleflower));
         //functional
-        r.accept(SERENITIAN, getId(serenitian));
-        r.accept(ANNOYINGFLOWER, getId(annoying));
+        r.accept(SERENITIAN, getBEId(serenitian));
+        r.accept(ANNOYINGFLOWER, getBEId(annoying));
+    }
+
+    private static ResourceLocation getBEId(Block b)
+    {
+        return new ResourceLocation(ExtraBotany.MODID, LibBlockNames.FLOWER_BE_TYPE_PREFIX + b.getRegistryName().getPath());
     }
 
     private static ResourceLocation getId(Block b)

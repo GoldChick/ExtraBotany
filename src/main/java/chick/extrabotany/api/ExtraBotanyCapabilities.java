@@ -8,7 +8,7 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 /**
  * it has nothing now lol
  */
-public class ExtraBotanyForgeCapabilities
+public class ExtraBotanyCapabilities
 {
     public static final Capability<ISubTilePassiveFlower> PASSIVE_FLOWER = CapabilityManager.get(new CapabilityToken<>() {});
 

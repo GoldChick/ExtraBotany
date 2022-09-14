@@ -70,6 +70,7 @@ public class LibItemNames
     public static String SUPREME_IGNITE_STONE = "supreme_ignite_stone";
     public static String SUPREME_EARTH_STONE = "supreme_earth_stone";
     public static String SAGES_MANA_RING = "sages_mana_ring";
+    public static String POTATO_CHIPS = "potato_chips";
 
 
     public static String MANA_READER = "mana_reader";

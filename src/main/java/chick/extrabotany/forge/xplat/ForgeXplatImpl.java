@@ -1,7 +1,7 @@
 package chick.extrabotany.forge.xplat;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.ExtraBotanyForgeCapabilities;
+import chick.extrabotany.api.ExtraBotanyCapabilities;
 import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -46,7 +46,7 @@ public class ForgeXplatImpl implements IXplatAbstractions
     @Override
     public ISubTilePassiveFlower findPassiveFlower(BlockEntity blockEntity)
     {
-        return blockEntity.getCapability(ExtraBotanyForgeCapabilities.PASSIVE_FLOWER).orElse(null);
+        return blockEntity.getCapability(ExtraBotanyCapabilities.PASSIVE_FLOWER).orElse(null);
     }
 
 }

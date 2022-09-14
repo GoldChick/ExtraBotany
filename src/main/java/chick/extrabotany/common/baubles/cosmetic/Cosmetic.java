@@ -27,7 +27,8 @@ public class Cosmetic extends ItemBauble
 {
     public enum Variant
     {
-        Pylon(), FoxEar(), FoxMask(), SuperCrown(),RedScarf(1),BlackGlasses(),StoneMask(),ThugLife();
+        Pylon(), FoxEar(), FoxMask(), SuperCrown(), RedScarf(1), BlackGlasses(), StoneMask(), ThugLife(),
+        PureDaisyPendant(1);
 
         /*
          * 0=head 1=body
@@ -51,7 +52,7 @@ public class Cosmetic extends ItemBauble
 
     public Cosmetic(Variant variant, Properties props)
     {
-        super(props.stacksTo(1));
+        super(props);
         this.variant = variant;
         IProxy.INSTANCE.runOnClient(() -> () -> AccessoryRenderRegistry.register(this, new Cosmetic.Renderer()));
     }
@@ -70,7 +71,6 @@ public class Cosmetic extends ItemBauble
 
     public static class Renderer implements AccessoryRenderer
     {
-
         @Override
         public void doRender(HumanoidModel<?> bipedModel, ItemStack stack, LivingEntity living, PoseStack ms, MultiBufferSource buffers, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
         {
@@ -82,13 +82,17 @@ public class Cosmetic extends ItemBauble
                     //default(0 or something else): head
                     bipedModel.head.translateAndRotate(ms);
                 }
-                case 1->
+                case 1 ->
                 {
                     bipedModel.body.translateAndRotate(ms);
                 }
+                case 2 ->
+                {
+                    //it will come soon
+                }
             }
             //dont know whats it for (?
-            //ms.push();
+            ms.pushPose();
             switch (variant)
             {
                 case FoxEar ->
@@ -126,9 +130,15 @@ public class Cosmetic extends ItemBauble
                     ms.translate(0, -0.2, -0.3);
                     ms.scale(0.7F, -0.7F, -0.7F);
                 }
+                case PureDaisyPendant ->
+                {
+                    //this is, maybe same?
+                    ms.translate(0, 0.16, -0.15);
+                    ms.scale(0.55F, -0.55F, -0.55F);
+                }
                 default ->
                 {
-                    //pylon
+                    //default is pylon
                     ms.translate(0, -0.8, -0.1F);
                     ms.scale(0.5F, -0.5F, -0.5F);
                 }
@@ -141,6 +151,6 @@ public class Cosmetic extends ItemBauble
     {
         Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.NONE,
                 light, OverlayTexture.NO_OVERLAY, ms, buffers, living.getId());
-        //ms.popPose();
+        ms.popPose();
     }
 }

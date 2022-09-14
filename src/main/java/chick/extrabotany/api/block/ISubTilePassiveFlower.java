@@ -3,7 +3,8 @@ package chick.extrabotany.api.block;
 import net.minecraftforge.event.TickEvent;
 
 /**
- * capability for passive flower
+ * <b>CAPABILITY</b> for passive flower<p>
+ * have a default Implement<p>
  * you need to store passive ticks in block nbt
  */
 public interface ISubTilePassiveFlower

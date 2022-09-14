@@ -2,6 +2,7 @@ package chick.extrabotany.common.tools.others;
 
 import chick.extrabotany.common.ModEffects;
 import chick.extrabotany.common.base.DamageHandler;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,6 +34,7 @@ public class ForestBook extends Item
                 {
                     DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 8.0F, DamageHandler.INSTANCE.CREATIVE + DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
                     player.setAbsorptionAmount(10.0F);
+                    player.awardStat(Stats.ITEM_USED.get(this));
                     return InteractionResultHolder.success(stack);
                 }
             }

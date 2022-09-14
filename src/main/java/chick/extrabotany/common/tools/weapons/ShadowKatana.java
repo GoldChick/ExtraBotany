@@ -56,7 +56,7 @@ public class ShadowKatana extends SwordItem implements ICustomDamageItem
             for (int i = 0; i < 360; i += 10)
             {
                 double j = ((double) i) / 180F * PI;
-                level.addParticle(ParticleTypes.ENCHANTED_HIT, player.getX() + Math.cos(j), player.getY() + 1D, player.getZ()+Math.sin(j), 0, 0, 0);
+                level.addParticle(ParticleTypes.PORTAL, player.getX() + Math.cos(j), player.getY() + 1D, player.getZ() + Math.sin(j), 0, -0.3D, 0);
             }
         }
         player.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);

@@ -1,6 +1,7 @@
 package chick.extrabotany.forge.client.model;
 
 import chick.extrabotany.forge.client.model.armor.*;
+import chick.extrabotany.forge.client.model.entity.ModelJudahSpear;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 
@@ -21,5 +22,7 @@ public class LayerDefinitions
         consumer.accept(ModelLayers.MIKU_OUTER, () -> LayerDefinition.create(ModelMikuArmor.createOutsideMesh(), 128, 128));
         consumer.accept(ModelLayers.MAID_INNER, () -> LayerDefinition.create(ModelMaidArmor.createInsideMesh(), 128, 128));
         consumer.accept(ModelLayers.MAID_OUTER, () -> LayerDefinition.create(ModelMaidArmor.createOutsideMesh(), 128, 128));
+
+        consumer.accept(ModelLayers.JUDAH_SPEAR, ModelJudahSpear::createBodyLayer);
     }
 }

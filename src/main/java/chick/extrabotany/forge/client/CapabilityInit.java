@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 
 import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
-public class ForgeCapabilityInit
+public class CapabilityInit
 {
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new

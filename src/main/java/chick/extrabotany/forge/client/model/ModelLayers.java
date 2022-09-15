@@ -12,9 +12,14 @@ import chick.extrabotany.ExtraBotany;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
+import static chick.extrabotany.ExtraBotany.prefixRl;
+import static chick.extrabotany.forge.client.LibResourse.JUDAH_SPEAR_MODEL;
+
 public class ModelLayers
 {
     public static final ModelLayerLocation AVATAR = make("avatar");
+    public static final ModelLayerLocation JUDAH_SPEAR = make(JUDAH_SPEAR_MODEL);
+
     public static final ModelLayerLocation SHADOW_INNER_ARMOR = make("shadowwarrior_armor", "inner_armor");
     public static final ModelLayerLocation SHADOW_OUTER_ARMOR = make("shadowwarrior_armor", "outer_armor");
     public static final ModelLayerLocation GOBLIN_SLAYER_INNER = make("goblinslayer_armor", "inner_armor");
@@ -33,12 +38,8 @@ public class ModelLayers
     {
         // Don't add to vanilla's ModelLayers. It seems to only be used for error checking
         // And would be annoying to do under Forge's parallel mod loading
-        return new ModelLayerLocation(prefix(name), layer);
+        return new ModelLayerLocation(prefixRl(name), layer);
     }
 
-    public static ResourceLocation prefix(String path)
-    {
-        return new ResourceLocation(ExtraBotany.MODID, path);
-    }
 
 }

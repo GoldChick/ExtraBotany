@@ -2,7 +2,6 @@ package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModEntities;
-import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.libs.LibBlockNames;
 import chick.extrabotany.forge.client.render.entity.*;
@@ -19,11 +18,9 @@ import vazkii.botania.api.subtile.TileEntitySpecialFlower;
 import vazkii.botania.client.render.tile.RenderTileSpecialFlower;
 import vazkii.botania.common.block.BlockSpecialFlower;
 
-import java.util.List;
-
 import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 
-public final class EntityRenderers
+public final class EntityRendererInit
 {
     public interface EntityRendererConsumer
     {
@@ -47,6 +44,10 @@ public final class EntityRenderers
 
         consumer.accept(ModEntities.FALSE_LIGHTNING, LightningBoltRenderer::new);
         consumer.accept(ModEntities.ACTION_ENTITY, RenderDummy::new);
+
+        consumer.accept(ModEntities.JUDAH_OATH, RenderJudah::new);
+        consumer.accept(ModEntities.JUDAH_SPEAR, RenderJudahSpear::new);
+        consumer.accept(ModEntities.JUDAH_SWORD, RenderDummy::new);
     }
 
     public static void registerBlockEntityRenderers(vazkii.botania.client.render.entity.EntityRenderers.BERConsumer consumer)

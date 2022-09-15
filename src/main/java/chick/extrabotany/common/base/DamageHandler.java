@@ -3,7 +3,6 @@ package chick.extrabotany.common.base;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.entities.projectile.relic_projectile.RelicProjectileBase;
 import chick.extrabotany.common.tools.others.ElementSteelShield;
-import chick.extrabotany.common.tools.others.ManaSteelShield;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -103,21 +102,25 @@ public final class DamageHandler
             return false;
         return hurt(target, s, amount, type);
     }
+
     /**
-     * BYPASS_ARMOR = 1<P>
-     * BYPASS_MAGIC = 1 << 1<P>
-     * BYPASS_ABSORB = 1 << 2<P>
-     * BYPASS_INVUL = 1 << 3<P>
-     * SCALE_WITH_DIFFICULTY = 1 << 4<P>
-     * FIRE = 1 << 5<P>
-     * MAGIC = 1 << 6<P>
-     * PROJECTILE = 1 << 7<P>
-     * EXPLOSION = 1 << 8<P>
-     * NO_AGGRO = 1 << 9<P>
-     * FALL = 1 << 10<P>
-     * CREATIVE = 1 << 12
+     * @param item   Nullable, need source non-null
+     * @param source Nullable, too
+     *               <ul>
+     *               <li>BYPASS_ARMOR = 1
+     *               <li>BYPASS_MAGIC = 1 << 1
+     *               <li>BYPASS_ABSORB = 1 << 2
+     *               <li>BYPASS_INVUL = 1 << 3
+     *               <li>SCALE_WITH_DIFFICULTY = 1 << 4
+     *               <li>FIRE = 1 << 5
+     *               <li>MAGIC = 1 << 6
+     *               <li>PROJECTILE = 1 << 7
+     *               <li>EXPLOSION = 1 << 8
+     *               <li>NO_AGGRO = 1 << 9
+     *               <li>FALL = 1 << 10
+     *               <li>CREATIVE = 1 << 12</ul>
      */
-    public boolean doDamage(Entity target, @Nullable Entity item, Entity source, float amount, int type)
+    public boolean doDamage(Entity target, @Nullable Entity item, @Nullable Entity source, float amount, int type)
     {
         DamageSource s;
         if (source instanceof Player player)
@@ -130,7 +133,7 @@ public final class DamageHandler
                 s = (item == null) ? DamageSource.mobAttack(mob) : DamageSource.indirectMobAttack(item, mob);
             } else
             {
-                s = DamageSource.GENERIC;
+                s = new DamageSource("generic");
             }
         }
         return doDamage(target, s, amount, type);

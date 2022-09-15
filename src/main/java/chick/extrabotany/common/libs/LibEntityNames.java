@@ -16,5 +16,9 @@ public class LibEntityNames
     public static final String MAGIC_ARROW = "magic_arrow";
     public static final String FALSE_LIGHTNING = "false_lighting";
 
+    public static final String JUDAH_OATH = "judah_of_oath";
+    public static final String JUDAH_SPEAR = "judah_spear";
+    public static final String JUDAH_SWORD = "judah_sword";
+
     public static final String ACTION_ENTITY = "action_entity";
 }

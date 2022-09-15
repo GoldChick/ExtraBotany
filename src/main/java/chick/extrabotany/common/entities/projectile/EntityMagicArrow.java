@@ -53,7 +53,7 @@ public class EntityMagicArrow extends ThrowableProjectile
         var hardness = state.getDestroySpeed(level, hitResult.getBlockPos());
         var vec3 = getDeltaMovement();
         setDeltaMovement(Vec3.ZERO);
-        if (ConfigHandler.COMMON.doProjectileBreakBlock.get()  && !(state.getBlock() instanceof BeaconBlock))
+        if (ConfigHandler.COMMON.doProjectileBreakBlock.get() && hardness > 0 && !(state.getBlock() instanceof BeaconBlock))
         {
             level.removeBlock(hitResult.getBlockPos(), false);
             level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, hitResult.getBlockPos(), Block.getId(state));
@@ -96,7 +96,7 @@ public class EntityMagicArrow extends ThrowableProjectile
             var livings = DamageHandler.INSTANCE.getFilteredEntities(entities, player);
             for (LivingEntity living : livings)
             {
-                DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this,getOwner()), getDamage(), DamageHandler.INSTANCE.BYPASS_MAGIC);
+                DamageHandler.INSTANCE.doDamage(living, DamageSource.indirectMagic(this, getOwner()), getDamage(), DamageHandler.INSTANCE.BYPASS_MAGIC);
             }
         }
 

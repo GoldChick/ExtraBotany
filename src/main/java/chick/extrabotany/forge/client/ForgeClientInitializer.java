@@ -72,9 +72,9 @@ public class ForgeClientInitializer
         bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
 
         var forgebus = MinecraftForge.EVENT_BUS;
-        //TODO: changed. check it after
-        forgebus.addGenericListener(BlockEntity.class, ForgeCapabilityInit::attachBlockEntityCaps);
-        forgebus.addGenericListener(ItemStack.class, ForgeCapabilityInit::attachItemStackCaps);
+
+        forgebus.addGenericListener(BlockEntity.class, CapabilityInit::attachBlockEntityCaps);
+        forgebus.addGenericListener(ItemStack.class, CapabilityInit::attachItemStackCaps);
         NetworkHandler.registerMessage();
     }
 
@@ -93,8 +93,8 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt)
     {
-        EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
-        EntityRenderers.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
+        EntityRendererInit.registerEntityRenderers(evt::registerEntityRenderer);
+        EntityRendererInit.registerBlockEntityRenderers(evt::registerBlockEntityRenderer);
     }
 
     /**
@@ -103,7 +103,7 @@ public class ForgeClientInitializer
     @SubscribeEvent
     public static void onRenderTypeSetup(FMLClientSetupEvent event)
     {
-        event.enqueueWork(EntityRenderers::setRenderType);
+        event.enqueueWork(EntityRendererInit::setRenderType);
     }
 
     /**

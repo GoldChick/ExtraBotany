@@ -59,7 +59,7 @@ public class MiscellaneousIcons
     public void onModelBake(ModelBakeEvent evt)
     {
         onItemModelBake(evt.getModelLoader(), evt.getModelRegistry());
-
+        onEntityModelBake(evt);
         //projectiles
         for (int i = 0; i < firstFractalWeaponModels.length; i++)
         {
@@ -77,6 +77,7 @@ public class MiscellaneousIcons
         coregodModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/wing_coregod"));
         // butterflyprojectileModel[0] = evt.getModelRegistry().get(new ResourceLocation(ExtraBotany.MODID, "icon/butterflyprojectile"));
     }
+
     private void onItemModelBake(ModelBakery loader, Map<ResourceLocation, BakedModel> map)
     {
         /*
@@ -85,10 +86,14 @@ public class MiscellaneousIcons
         ModelResourceLocation clipKey = new ModelResourceLocation("botania:mana_gun_clip", "inventory");
         BakedModel originalModelClip = map.get(clipKey);
         map.put(key, new GunModel(loader, originalModel, originalModelClip));
-
-
          */
     }
+
+    private void onEntityModelBake(ModelBakeEvent evt)
+    {
+
+    }
+
     private static Material mainAtlas(String name)
     {
         return new Material(InventoryMenu.BLOCK_ATLAS, new ResourceLocation(ExtraBotany.MODID, name));

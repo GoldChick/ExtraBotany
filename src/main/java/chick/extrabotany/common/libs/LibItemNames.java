@@ -110,6 +110,7 @@ public class LibItemNames
     public static String CAMERA = "camera";
     public static String FAILNAUGHT = "failnaught";
     public static String EXCALIBER = "excaliber";
+    public static String JUDAH_OATH = "judah_of_oath";
 
 
 }

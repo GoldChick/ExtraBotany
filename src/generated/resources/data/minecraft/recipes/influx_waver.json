@@ -16,9 +16,38 @@
     "a": {
       "item": "extrabotany:the_origin"
     },
-    "b": {
-      "tag": "extrabotany:coral_item"
-    },
+    "b": [
+      {
+        "item": "minecraft:brain_coral"
+      },
+      {
+        "item": "minecraft:tube_coral"
+      },
+      {
+        "item": "minecraft:fire_coral"
+      },
+      {
+        "item": "minecraft:bubble_coral"
+      },
+      {
+        "item": "minecraft:horn_coral"
+      },
+      {
+        "item": "minecraft:brain_coral_fan"
+      },
+      {
+        "item": "minecraft:tube_coral_fan"
+      },
+      {
+        "item": "minecraft:fire_coral_fan"
+      },
+      {
+        "item": "minecraft:bubble_coral_fan"
+      },
+      {
+        "item": "minecraft:horn_coral_fan"
+      }
+    ],
     "d": {
       "item": "minecraft:heart_of_the_sea"
     }

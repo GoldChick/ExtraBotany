@@ -54,15 +54,6 @@ public class EntitySplashGrenade extends ThrowableItemProjectile
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult hitResult)
-    {
-        //if (getOwner() != null && hitResult.getEntity() != getOwner())
-        {
-            //   onImpact();
-        }
-    }
-
-    @Override
     protected void onHitBlock(BlockHitResult hitResult)
     {
         onImpact();

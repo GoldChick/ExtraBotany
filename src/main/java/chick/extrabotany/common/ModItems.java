@@ -14,10 +14,7 @@ import chick.extrabotany.common.items.lens.*;
 import chick.extrabotany.common.tools.armors.*;
 import chick.extrabotany.common.tools.others.*;
 import chick.extrabotany.common.tools.weapons.*;
-import chick.extrabotany.common.tools.weapons.ranged.CrystalCrossBow;
-import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
-import chick.extrabotany.common.tools.weapons.ranged.LivingWoodCrossBow;
-import chick.extrabotany.common.tools.weapons.ranged.LivingWoodShortBow;
+import chick.extrabotany.common.tools.weapons.ranged.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -173,6 +170,7 @@ public class ModItems
 
     public static final RegistryObject<Item> EXCALIBER = register(LibItemNames.EXCALIBER, () -> new Excaliber(stackTo1()));
     public static final RegistryObject<Item> FAILNAUGHT = register(LibItemNames.FAILNAUGHT, () -> new Failnaught(stackTo1()));
+    public static final RegistryObject<Item> JUDAH_OATH = register(LibItemNames.JUDAH_OATH, () -> new JudahOath(stackTo1()));
 
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {

@@ -23,7 +23,7 @@ public class ExtraBotany
 
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(TAB_NAME)
+    public static final CreativeModeTab ITEM_GROUP = (new CreativeModeTab(TAB_NAME)
     {
         @Override
         public boolean showTitle()
@@ -42,7 +42,7 @@ public class ExtraBotany
         {
             return new ItemStack(ModItems.PYLON.get());
         }
-    }.setBackgroundImage(new ResourceLocation("tab_extrabotany.png"));
+    }).hideTitle().setBackgroundImage(new ResourceLocation("textures/gui/container/creative_inventory/tab_extrabotany.png"));
 
     public ExtraBotany()
     {
@@ -51,5 +51,15 @@ public class ExtraBotany
         //create config
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
+    }
+
+    public static String prefix(String string)
+    {
+        return MODID + ":" + string;
+    }
+
+    public static ResourceLocation prefixRl(String string)
+    {
+        return new ResourceLocation(MODID, string);
     }
 }

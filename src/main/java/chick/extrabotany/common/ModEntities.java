@@ -6,6 +6,9 @@ import chick.extrabotany.common.entities.ego.EntityEGO;
 import chick.extrabotany.common.entities.ego.EntityEGOBeam;
 import chick.extrabotany.common.entities.ego.EntityEGOLandmine;
 import chick.extrabotany.common.entities.ego.EntityEGOMinion;
+import chick.extrabotany.common.entities.judah.EntityJudahOath;
+import chick.extrabotany.common.entities.judah.EntityJudahSpear;
+import chick.extrabotany.common.entities.judah.EntityJudahSword;
 import chick.extrabotany.common.entities.projectile.*;
 import chick.extrabotany.common.entities.projectile.relic_projectile.*;
 import chick.extrabotany.common.libs.LibEntityNames;
@@ -15,6 +18,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.function.BiConsumer;
+
+import static chick.extrabotany.ExtraBotany.prefix;
 
 public class ModEntities
 {
@@ -47,7 +52,7 @@ public class ModEntities
             .setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(128)
             .setUpdateInterval(2)
-            .build(ExtraBotany.MODID + "ego_beam");
+            .build(prefix(LibEntityNames.EGO_BEAM));
     public static final EntityType<EntityAuraFire> AURAFIRE = EntityType.Builder
             .<EntityAuraFire>of(EntityAuraFire::new, MobCategory.MISC)
             .sized(0.1F, 0.1F)
@@ -99,18 +104,42 @@ public class ModEntities
             .setShouldReceiveVelocityUpdates(true)
             .build(ExtraBotany.MODID + "magicarrow");
 
+    public static final EntityType<EntityJudahOath> JUDAH_OATH = EntityType.Builder
+            .<EntityJudahOath>of(EntityJudahOath::new, MobCategory.MISC)
+            .sized(0.25F, 0.75F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(prefix(LibEntityNames.JUDAH_OATH));
+    public static final EntityType<EntityJudahSpear> JUDAH_SPEAR = EntityType.Builder
+            .<EntityJudahSpear>of(EntityJudahSpear::new, MobCategory.MISC)
+            .sized(0.05F, 2F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(prefix(LibEntityNames.JUDAH_SPEAR));
+    public static final EntityType<EntityJudahSword> JUDAH_SWORD = EntityType.Builder
+            .<EntityJudahSword>of(EntityJudahSword::new, MobCategory.MISC)
+            .sized(0.05F, 0.05F)
+            .setUpdateInterval(10)
+            .setTrackingRange(64)
+            .setShouldReceiveVelocityUpdates(true)
+            .build(prefix(LibEntityNames.JUDAH_SWORD));
+
+
     public static final EntityType<EntityFalseLightning> FALSE_LIGHTNING = EntityType.Builder
             .<EntityFalseLightning>of(EntityFalseLightning::new, MobCategory.MISC)
             .sized(0.0F, 0.0F)
             .clientTrackingRange(16)
             .updateInterval(Integer.MAX_VALUE)
-            .build(ExtraBotany.MODID + "false_lighting");
+            .build(prefix(LibEntityNames.FALSE_LIGHTNING));
     public static final EntityType<EntityAction> ACTION_ENTITY = EntityType.Builder
             .<EntityAction>of(EntityAction::new, MobCategory.MISC)
             .sized(0.0F, 0.0F)
             .clientTrackingRange(16)
             .updateInterval(Integer.MAX_VALUE)
-            .build(ExtraBotany.MODID + "action_entity");
+            .build(prefix(LibEntityNames.ACTION_ENTITY));
+
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> r)
     {
@@ -126,6 +155,9 @@ public class ModEntities
         r.accept(INFLUX_WAVER, new ResourceLocation(ExtraBotany.MODID, "influxwaver"));
         r.accept(PHANTOM_SWORD, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.PHANTOM_SWORD));
         r.accept(MAGIC_ARROW, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.MAGIC_ARROW));
+        r.accept(JUDAH_OATH, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.JUDAH_OATH));
+        r.accept(JUDAH_SPEAR, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.JUDAH_SPEAR));
+        r.accept(JUDAH_SWORD, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.JUDAH_SWORD));
 
         r.accept(FALSE_LIGHTNING, new ResourceLocation(ExtraBotany.MODID, LibEntityNames.FALSE_LIGHTNING));
 

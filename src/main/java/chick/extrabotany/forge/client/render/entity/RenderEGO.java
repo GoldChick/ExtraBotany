@@ -1,6 +1,6 @@
 package chick.extrabotany.forge.client.render.entity;
 
-import chick.extrabotany.forge.client.EntityRenderers;
+import chick.extrabotany.forge.client.EntityRendererInit;
 import chick.extrabotany.forge.client.model.armor.ArmorModels;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -38,7 +38,7 @@ public class RenderEGO extends HumanoidMobRenderer<Monster, HumanoidModel<Monste
     {
         super(ctx, new Model(ctx.bakeLayer(ModelLayers.PLAYER)), 0F);
         ArmorModels.init(ctx);
-        EntityRenderers.init(ctx);
+        EntityRendererInit.init(ctx);
     }
 
     @Nonnull

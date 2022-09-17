@@ -28,7 +28,7 @@ public class Cosmetic extends ItemBauble
     public enum Variant
     {
         Pylon(), FoxEar(), FoxMask(), SuperCrown(), RedScarf(1), BlackGlasses(), StoneMask(), ThugLife(),
-        PureDaisyPendant(1);
+        PureDaisyPendant(1),PotatoChip();
 
         /*
          * 0=head 1=body

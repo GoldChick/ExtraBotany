@@ -105,7 +105,7 @@ public final class DamageHandler
 
     /**
      * @param item   Nullable, need source non-null
-     * @param source Nullable, too
+     * @param source Nullable, too. need Living
      *               <ul>
      *               <li>BYPASS_ARMOR = 1
      *               <li>BYPASS_MAGIC = 1 << 1

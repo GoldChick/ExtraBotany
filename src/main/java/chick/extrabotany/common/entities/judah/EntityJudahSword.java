@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.client.core.proxy.ClientProxy;
+import vazkii.botania.client.fx.SparkleParticleData;
 import vazkii.botania.client.fx.WispParticleData;
 
 import java.util.List;
@@ -49,7 +50,6 @@ public class EntityJudahSword extends Entity
     @Override
     protected void defineSynchedData()
     {
-        //this.setSize(0F, 0F);
         entityData.define(DAMAGE, 0F);
         entityData.define(START_POS, BlockPos.ZERO);
         entityData.define(END_POS, BlockPos.ZERO);
@@ -58,10 +58,9 @@ public class EntityJudahSword extends Entity
     @Override
     public void tick()
     {
-        // IBota.proxy.sparkleFX(posX, posY, posZ, r, g, b, 1.8F, 25);
         if (level.isClientSide)
         {
-            WispParticleData data = WispParticleData.wisp(0.5F, 1.00F, 0.7F, 0.7F, 1F);
+            SparkleParticleData data = SparkleParticleData.sparkle(1.8F, 1.00F, 0.7F, 0.7F, 25);
             ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
         BlockPos start = getStartPos();
@@ -70,7 +69,9 @@ public class EntityJudahSword extends Entity
         motion = motion.normalize().scale(0.75D);
         setPos(position().add(motion));
 
-        for (LivingEntity entity : getEntitiesCollided())
+        var collided = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPosition()).inflate(0.25D));
+
+        for (LivingEntity entity : collided)
         {
             if (entity instanceof Player)
                 continue;
@@ -86,41 +87,23 @@ public class EntityJudahSword extends Entity
             Vec3 oldPosVec = new Vec3(start.getX(), start.getY(), start.getZ());
             Vec3 newPosVec = new Vec3(end.getX(), end.getY(), end.getZ());
 
-            for (LivingEntity entity : getEntitiesAround())
+            var around = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPosition()).inflate(13F));
+            for (LivingEntity entity : around)
             {
                 if (entity instanceof Player)
                     continue;
                 var rtr = entity.getBoundingBox().inflate(1.8D).intersects(oldPosVec, newPosVec);
                 if (rtr)
                 {
-                    /*
-                    entity.hurt(DamageSource.MAGIC.setDamageBypassesArmor().setDamageIsAbsolute(), getDamage() * 0.6F);
-                    entity.hurtResistantTime = 0;
-                    entity.hurt(DamageSource.LAVA.setDamageBypassesArmor().setDamageIsAbsolute(), getDamage() * 0.3F);
+                    DamageHandler.INSTANCE.doDamage(entity, new DamageSource("magic"), getDamage() * 0.6F, 0b1001001);
+                    DamageHandler.INSTANCE.doDamage(entity, new DamageSource("lava"), getDamage() * 0.3F, 0b101001);
+                    DamageHandler.INSTANCE.doDamage(entity, null, this, getDamage() * 0.3F, 0b1011);
 
-                    //  ExtraBotanyAPI.dealTrueDamage(entity, entity, getDamage() * 0.3F);
-                     */
                     entity.setSecondsOnFire(5);
                 }
             }
             discard();
         }
-    }
-
-    public List<LivingEntity> getEntitiesCollided()
-    {
-        return level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPosition()).inflate(0.25D));
-        //float range = 0.75F;
-        //(source.getX() + 0.5 - range, source.getY() + 0.5 - range, source.getZ() + 0.5 - range,
-        //source.getX() + 0.5 + range, source.getY() + 0.5 + range, source.getZ() + 0.5 + range));
-    }
-
-    public List<LivingEntity> getEntitiesAround()
-    {
-        float range = 13F;
-        return level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPosition()).inflate(range));
-        //(source.getX() + 0.5 - range, source.getY() + 0.5 - range, source.getZ() + 0.5 - range,
-        //source.getX() + 0.5 + range, source.getY() + 0.5 + range, source.getZ() + 0.5 + range));
     }
 
     @Override

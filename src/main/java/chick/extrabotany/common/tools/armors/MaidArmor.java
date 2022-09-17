@@ -76,7 +76,10 @@ public class MaidArmor extends ArmorBase
         super.onArmorTick(stack, level, player);
         if (!level.isClientSide && hasArmorSuit(player) && getSlot() == EquipmentSlot.HEAD)
         {
-            ManaItemHandler.instance().dispatchManaExact(stack, player, 1, true);
+            if (player.tickCount % 10 == 0) {
+                ManaItemHandler.instance().dispatchManaExact(stack, player, 10, true);
+            }
+            //ManaItemHandler.instance().dispatchManaExact(stack, player, 1, true);
             if (player.getHealth() < player.getMaxHealth() && level.dayTime() % 30 == 0)
                 player.heal(1F);
             if (level.dayTime() % 20 == 0)

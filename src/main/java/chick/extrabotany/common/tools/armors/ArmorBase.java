@@ -18,6 +18,7 @@ import vazkii.botania.api.mana.IManaDiscountArmor;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.gui.TooltipHandler;
 import vazkii.botania.client.lib.LibResources;
+import vazkii.botania.common.annotations.SoftImplement;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.proxy.IProxy;
@@ -36,10 +37,9 @@ public abstract class ArmorBase extends ArmorItem implements IPhantomInkable, IM
         this.armorTexture = armorTexture;
     }
 
-    @Override
+    @SoftImplement("IForgeItem")
     public void onArmorTick(ItemStack stack, Level level, Player player)
     {
-        super.onArmorTick(stack, level, player);
         if (!level.isClientSide && stack.getDamageValue() > 0 && ManaItemHandler.instance().requestManaExactForTool(stack, player, getManaPerDamage() * 2, true))
         {
             stack.setDamageValue(stack.getDamageValue() - 1);

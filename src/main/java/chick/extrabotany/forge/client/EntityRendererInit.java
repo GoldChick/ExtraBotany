@@ -46,7 +46,7 @@ public final class EntityRendererInit
         consumer.accept(ModEntities.ACTION_ENTITY, RenderDummy::new);
 
         consumer.accept(ModEntities.JUDAH_OATH, RenderJudah::new);
-        consumer.accept(ModEntities.JUDAH_SPEAR, RenderJudahSpear::new);
+        consumer.accept(ModEntities.JUDAH_SPEAR, RenderDummy::new);
         consumer.accept(ModEntities.JUDAH_SWORD, RenderDummy::new);
     }
 

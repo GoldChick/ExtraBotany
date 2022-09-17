@@ -84,10 +84,7 @@ public class EntityJudahOath extends ThrowableItemProjectile
         Status preStatus = this.status;
         if (this.status != EntityJudahOath.Status.STANDBY)
         {
-            if (tickCount <= 20)
-            {
-                setDeltaMovement(getDeltaMovement().multiply(1, 0.5D, 1));
-            }
+            setDeltaMovement(getDeltaMovement().multiply(1, 0.85D, 1));
             this.status = getStatus();
         } else
         {
@@ -104,7 +101,7 @@ public class EntityJudahOath extends ThrowableItemProjectile
         if (preStatus == EntityJudahOath.Status.INAIR && this.status == EntityJudahOath.Status.STANDBY)
         {
             //TODO: change this
-            level.addParticle(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 1D, 0D, 0D);
+            level.addParticle(ParticleTypes.EXPLOSION_EMITTER, getX(), getY(), getZ(), 1D, 0D, 0D);
         }
         if (status == EntityJudahOath.Status.STANDBY)
         {

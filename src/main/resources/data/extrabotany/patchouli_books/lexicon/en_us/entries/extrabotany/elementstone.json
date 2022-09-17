@@ -11,22 +11,22 @@
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.elementstone1",
-      "recipe": "extrabotany:runic_altar/aerostone"
+      "recipe": "extrabotany:runic_altar/aero_stone"
     },
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.elementstone2",
-      "recipe": "extrabotany:runic_altar/earthstone"
+      "recipe": "extrabotany:runic_altar/earth_stone"
     },
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.elementstone3",
-      "recipe": "extrabotany:runic_altar/aquastone"
+      "recipe": "extrabotany:runic_altar/aqua_stone"
     },
     {
       "type": "botania:runic_altar",
       "text": "extrabotany.page.elementstone4",
-      "recipe": "extrabotany:runic_altar/ignisstone"
+      "recipe": "extrabotany:runic_altar/ignite_stone"
     }
   ]
 }

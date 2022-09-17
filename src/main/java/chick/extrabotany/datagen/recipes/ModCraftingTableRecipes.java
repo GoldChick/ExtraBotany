@@ -20,7 +20,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
+import vazkii.botania.common.crafting.recipe.ArmorUpgradeRecipe;
 import vazkii.botania.common.lib.ModTags;
+import vazkii.botania.data.recipes.WrapperResult;
 import vazkii.botania.mixin.AccessorRecipeProvider;
 
 import java.util.function.Consumer;
@@ -411,7 +413,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', Items.TRIPWIRE_HOOK)
                 .group(MODID)
                 .unlockedBy("manasteel", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaSteel))
-                .save(consumer, "livingwood_crossbow");
+                .save(consumer, LibItemNames.LIVINGWOOD_CROSSBOW);
         ShapedRecipeBuilder.shaped(ModItems.SHADOW_KATANA.get())
                 .pattern("x  ")
                 .pattern("x  ")
@@ -420,7 +422,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('#', bergamute)
                 .group(MODID)
                 .unlockedBy("shadowium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
-                .save(consumer, "shadow_katana");
+                .save(consumer, LibItemNames.SHADOW_KATANA);
         ShapedRecipeBuilder.shaped(ModItems.TRUE_SHADOW_KATANA.get())
                 .pattern(" b#")
                 .pattern("xab")
@@ -431,7 +433,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', Blocks.BLACKSTONE)
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
-                .save(consumer, "true_shadow_katana");
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.TRUE_SHADOW_KATANA);
         ShapedRecipeBuilder.shaped(ModItems.TRUE_TERRA_BLADE.get())
                 .pattern(" db")
                 .pattern("xad")
@@ -443,7 +445,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('d', Blocks.MOSS_BLOCK)
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
-                .save(consumer, "true_terra_blade");
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.TRUE_TERRA_BLADE);
         ShapedRecipeBuilder.shaped(ModItems.TRUE_THUNSTAR_CALLER.get())
                 .pattern("bdk")
                 .pattern("xad")
@@ -456,7 +458,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('d', ModItems.AERIALITE_INGOT.get())
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
-                .save(consumer, "true_thunstar_caller");
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.TRUE_THUNSTAR_CALLER);
         ShapedRecipeBuilder.shaped(ModItems.INFLUX_WAVER.get())
                 .pattern(" bd")
                 .pattern("xab")
@@ -468,7 +470,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('d', Items.HEART_OF_THE_SEA)
                 .group(MODID)
                 .unlockedBy("gaia", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.lifeEssence))
-                .save(consumer, LibItemNames.INFLUX_WAVER);
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.INFLUX_WAVER);
         ShapedRecipeBuilder.shaped(ModItems.EXCALIBER.get())
                 .pattern(" b ")
                 .pattern(" a ")
@@ -478,8 +480,8 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('a', vazkii.botania.common.item.ModItems.terraSword)
                 .group(MODID)
                 .unlockedBy("hero_medal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
-                .save(consumer, LibItemNames.EXCALIBER);
-        ShapedRecipeBuilder.shaped(ModItems.INFLUX_WAVER.get())
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.EXCALIBER);
+        ShapedRecipeBuilder.shaped(ModItems.FAILNAUGHT.get())
                 .pattern(" xd")
                 .pattern("#ad")
                 .pattern(" xd")
@@ -508,7 +510,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('a', Items.SHIELD)
                 .group(MODID)
                 .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.manaSteel))
-                .save(consumer, LibItemNames.MANASTEEL_SHIELD);
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MANASTEEL_SHIELD);
         ShapedRecipeBuilder.shaped(ModItems.ELEMENT_SHIELD.get())
                 .pattern(" # ")
                 .pattern("#a#")
@@ -517,7 +519,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('a', Items.SHIELD)
                 .group(MODID)
                 .unlockedBy("shield", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.elementium))
-                .save(consumer, LibItemNames.ELEMENT_SHIELD);
+                .save(WrapperResult.ofType(MultiUpgradeRecipe.SERIALIZER, consumer), LibItemNames.ELEMENT_SHIELD);
         ShapedRecipeBuilder.shaped(ModItems.FOREST_BOOK.get())
                 .pattern("bab")
                 .pattern("b#b")
@@ -642,7 +644,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', ModItems.GOLD_CLOTH.get())
                 .group(MODID)
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
-                .save(consumer, "maid_helm");
+                .save(WrapperResult.ofType(ArmorUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MAID_HELM);
         ShapedRecipeBuilder.shaped(ModItems.MAID_CHEST.get())
                 .pattern("b b")
                 .pattern("bab")
@@ -652,7 +654,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', ModItems.GOLD_CLOTH.get())
                 .group(MODID)
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
-                .save(consumer, "maid_chest");
+                .save(WrapperResult.ofType(ArmorUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MAID_CHEST);
         ShapedRecipeBuilder.shaped(ModItems.MAID_LEGS.get())
                 .pattern("xxx")
                 .pattern("bab")
@@ -662,7 +664,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', ModItems.GOLD_CLOTH.get())
                 .group(MODID)
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
-                .save(consumer, "maid_legs");
+                .save(WrapperResult.ofType(ArmorUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MAID_LEGS);
         ShapedRecipeBuilder.shaped(ModItems.MAID_BOOTS.get())
                 .pattern("   ")
                 .pattern("bab")
@@ -672,7 +674,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('b', ModItems.GOLD_CLOTH.get())
                 .group(MODID)
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
-                .save(consumer, "maid_boots");
+                .save(WrapperResult.ofType(ArmorUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MAID_BOOTS);
     }
 
 

@@ -1,17 +1,18 @@
 package chick.extrabotany.forge.client.model.entity;
 
 
+import chick.extrabotany.common.entities.judah.EntityJudahSpear;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 
-public class ModelJudahSpear<T extends Entity> extends EntityModel<T>
+public class ModelJudahSpear extends EntityModel<EntityJudahSpear>
 {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
      private final ModelPart main;
@@ -64,7 +65,7 @@ public class ModelJudahSpear<T extends Entity> extends EntityModel<T>
     }
 
     @Override
-    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+    public void setupAnim(EntityJudahSpear entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
     {
 
     }

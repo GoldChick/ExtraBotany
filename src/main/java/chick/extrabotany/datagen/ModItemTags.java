@@ -104,6 +104,7 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.SUPREME_AQUA_STONE.get())
                 .add(ModItems.SUPREME_EARTH_STONE.get())
                 .add(ModItems.SUPREME_IGNITE_STONE.get())
+                .add(ModItems.PEACE_AMULET.get())
         ;
         tag(accessory("ring"))
                 .add(ModItems.DEATH_RING.get())

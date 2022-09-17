@@ -2,6 +2,7 @@ package chick.extrabotany.datagen.recipes;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.libs.LibItemNames;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.data.DataGenerator;
@@ -58,10 +59,10 @@ public class ModRunicAltarRecipes extends RecipeProvider
         consumer.accept(new RunicAltar(idFor("shadowium2"), new ItemStack(ModItems.SHADOW_INGOT.get(), 3), 10000, mashed_potato, element_steel, element_steel, element_steel, nightmare, nightmare, nightmare, nightmare, nightmare));
         consumer.accept(new RunicAltar(idFor("photonium1"), new ItemStack(ModItems.PHOTON_INGOT.get()), 4200, mashed_potato, element_steel, spirit, spirit, spirit));
         consumer.accept(new RunicAltar(idFor("photonium2"), new ItemStack(ModItems.PHOTON_INGOT.get(), 3), 10000, mashed_potato, element_steel, element_steel, element_steel, spirit, spirit, spirit, spirit, spirit));
-        consumer.accept(new RunicAltar(idFor("aerostone"), new ItemStack(ModItems.AERO_STONE.get()), 2000, air, air, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
-        consumer.accept(new RunicAltar(idFor("aquastone"), new ItemStack(ModItems.AQUA_STONE.get()), 2000, water, water, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
-        consumer.accept(new RunicAltar(idFor("earthstone"), new ItemStack(ModItems.EARTH_STONE.get()), 2000, earth, earth, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
-        consumer.accept(new RunicAltar(idFor("ignisstone"), new ItemStack(ModItems.IGNITE_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
+        consumer.accept(new RunicAltar(idFor(LibItemNames.AERO_STONE), new ItemStack(ModItems.AERO_STONE.get()), 2000, air, air, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
+        consumer.accept(new RunicAltar(idFor(LibItemNames.AQUA_STONE), new ItemStack(ModItems.AQUA_STONE.get()), 2000, water, water, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
+        consumer.accept(new RunicAltar(idFor(LibItemNames.EARTH_STONE), new ItemStack(ModItems.EARTH_STONE.get()), 2000, earth, earth, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
+        consumer.accept(new RunicAltar(idFor(LibItemNames.IGNITE_STONE), new ItemStack(ModItems.IGNITE_STONE.get()), 2000, fire, fire, mana_diamond, Ingredient.of(Items.QUARTZ), Ingredient.of(Items.LAPIS_LAZULI)));
         consumer.accept(new RunicAltar(idFor("deathring"), new ItemStack(ModItems.DEATH_RING.get()), 10000, envy, mana_diamond, mana_steel, mana_steel, Ingredient.of(Items.WITHER_SKELETON_SKULL)));
         consumer.accept(new RunicAltar(idFor("frostring"), new ItemStack(ModItems.FROST_RING.get()), 10000, Ingredient.of(Items.ICE), Ingredient.of(Items.ICE), mana, mana_steel, mana_steel));
 

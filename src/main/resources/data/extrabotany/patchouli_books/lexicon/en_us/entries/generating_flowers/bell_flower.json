@@ -1,0 +1,21 @@
+{
+  "name": "extrabotany.entry.bell_flower",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:bell_flower",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.bell_flower0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.bell_flower1",
+      "recipe": "extrabotany:petal_apothecary/bell_flower"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botania:floating_bell_flower": 1
+  }
+}

@@ -175,5 +175,6 @@ public class ModEntities
                 .add(Attributes.MOVEMENT_SPEED, 0.4)
                 .add(Attributes.MAX_HEALTH, EntityEGO.MAX_HP)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0));
+
     }
 }

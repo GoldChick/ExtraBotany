@@ -2,16 +2,14 @@ package chick.extrabotany.common.entities.judah;
 
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.base.DamageHandler;
-import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -95,27 +93,15 @@ public class EntityJudahSpear extends Entity
             {
                 //if (living.getId() == getidid())
                 //    continue;
-                DamageHandler.INSTANCE.doDamage(living, null, null, 2.0F, 0b11001011);
-                //living.hurt(DamageSource.ANVIL, 1);
-                    /*
-                    for (int i = 0; i < 4; i++)
-                    {
-                        Botania.proxy.wispFX(living.posX, living.posY + 0.5F, living.posZ, r, g, b, 0.45F, (float) (Math.random() - 0.5F) * 0.5F, (float) (Math.random() - 0.5F) * 0.5F, (float) (Math.random() - 0.5F) * 0.5F);
-                    }
-                    //TODO:这是什么
-                    if (ExtraBotany.isTableclothServer && thrower != null)
-                    {
-                        living.hurt(DamageSource.causePlayerDamage(thrower), getDamage() * 1.6F);
-                    } else
-                    {
-                        living.hurt(DamageSource.LIGHTNING_BOLT, getDamage() * 1.6F);
-                    }
-                    if (living.isNonBoss())
-                    {
-                        ExtraBotanyAPI.addPotionEffect(living, ModPotions.divinejustice, 4);
-                    }
-                    ExtraBotanyAPI.dealTrueDamage(thrower, living, getDamage() * 0.15F);
-                     */
+                DamageHandler.INSTANCE.doDamage(living, new DamageSource("lightningBolt"), getDamage() * 1.6F, 0b11000001);
+                DamageHandler.INSTANCE.doDamage(living, new DamageSource("magic"), getDamage() * 0.15F, 0b11001111);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    WispParticleData data = WispParticleData.wisp(1, r, g, b, 1F);
+                    //ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY() + 0.5D, getZ(), 0, 0, 0);
+                }
+                //ExtraBotanyAPI.addPotionEffect(living, ModPotions.divinejustice, 4);
             }
         }
 
@@ -125,9 +111,8 @@ public class EntityJudahSpear extends Entity
         }
     }
 
-
     @Override
-    protected void addAdditionalSaveData(CompoundTag cmp)
+    public void addAdditionalSaveData(CompoundTag cmp)
     {
         cmp.putString("Type", this.getJudahType().getName());
         cmp.putFloat(TAG_DAMAGE, getDamage());
@@ -137,7 +122,7 @@ public class EntityJudahSpear extends Entity
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag cmp)
+    public void readAdditionalSaveData(CompoundTag cmp)
     {
         setType(JudahType.getTypeFromString(cmp.getString("Type")));
         setDamage(cmp.getFloat(TAG_DAMAGE));
@@ -145,6 +130,7 @@ public class EntityJudahSpear extends Entity
         setRotation(cmp.getFloat(TAG_ROTATION));
         setOwner_Id(cmp.getInt(TAG_PLAYERLIST));
     }
+
 
     //TODO:TO CHECK
     public int getidid()

@@ -2,38 +2,31 @@ package chick.extrabotany.common.baubles;
 
 import chick.extrabotany.api.item.IItemWithRightClick;
 import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.api.recipe.IPureDaisyRecipe;
+import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.crafting.ModRecipeTypes;
 import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.helper.ItemNBTHelper;
-import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
 {
@@ -44,7 +37,6 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
     }
 
     public static final String TAG_USE = "use_count";
-    public static final String TAG_CD = "cool_down";
 
     @Override
     public void rightClickBlock(PlayerInteractEvent.RightClickBlock evt)
@@ -74,7 +66,7 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
             IPureDaisyRecipe recipe = findRecipe(level, pos);
             level.getProfiler().pop();
 
-            if (recipe != null && getCD(stack) == 0)
+            if (recipe != null)
             {
                 if (recipe.set(level, pos, null) && ManaItemHandler.instance().requestManaExactForTool(stack, player, 50, true))
                 {
@@ -83,7 +75,7 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
                 level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(recipe.getOutputState()));
                 setCount(stack, getCount(stack) + 1);
                 stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(ctx.getHand()));
-                setCD(stack, getCount(stack));
+                player.getCooldowns().addCooldown(this, getCount(stack));
             }
             return InteractionResult.SUCCESS;
         }
@@ -106,21 +98,9 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags)
-    {
-        super.appendHoverText(stack, world, tooltip, flags);
-        tooltip.add(new TextComponent("Cooldown:").withStyle(ChatFormatting.GOLD)
-                .append(new TextComponent(String.valueOf(getCD(stack))))
-                .append(new TextComponent(" ticks").withStyle(ChatFormatting.GOLD))
-        );
-    }
-
-    @Override
     public void inventoryTick(ItemStack stack, Level p_41405_, Entity p_41406_, int p_41407_, boolean p_41408_)
     {
         super.inventoryTick(stack, p_41405_, p_41406_, p_41407_, p_41408_);
-        if (getCD(stack) > 0)
-            setCD(stack, getCD(stack) - 1);
     }
 
     @Override
@@ -128,7 +108,11 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
     {
         super.onWornTick(stack, entity);
         if (entity.getLevel().isDay() && entity.getLevel().dayTime() % 120 == 0)
+        {
             entity.heal(1F);
+            Vec3 vec = entity.position();
+            ClientProxy.INSTANCE.addParticleForceNear(entity.level, ParticleTypes.HAPPY_VILLAGER, vec.x, vec.y, vec.z, 0, 1, 0);
+        }
     }
 
     //矿物词典，不过现在似乎并没有什么用了？
@@ -151,17 +135,6 @@ public class PureDaisyPendant extends Cosmetic implements IItemWithRightClick
 
 
  */
-
-    public void setCD(ItemStack stack, int i)
-    {
-        ItemNBTHelper.setInt(stack, TAG_CD, i);
-    }
-
-    public int getCD(ItemStack stack)
-    {
-        return ItemNBTHelper.getInt(stack, TAG_CD, 0);
-    }
-
     public void setCount(ItemStack stack, int i)
     {
         ItemNBTHelper.setInt(stack, TAG_USE, i);

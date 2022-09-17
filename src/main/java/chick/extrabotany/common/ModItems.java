@@ -180,6 +180,7 @@ public class ModItems
         r.accept(DupeRuneRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "rune_dupe"));
         r.accept(GoldClothRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "gold_cloth_unbind"));
         r.accept(PrimoGemRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "primo_gem_buy_fate"));
+        r.accept(MultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "multi_upgrade"));
         //just place it here lol
         registerRewardBag();
     }

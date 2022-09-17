@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "extrabotany:multi_upgrade",
   "group": "extrabotany",
   "pattern": [
     " db",

@@ -6,12 +6,15 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
+import vazkii.botania.client.core.proxy.ClientProxy;
 
 public class SubTileEdelweiss extends TileEntityGeneratingFlower
 {
@@ -32,17 +35,24 @@ public class SubTileEdelweiss extends TileEntityGeneratingFlower
         if (burnTime > 0)
         {
             burnTime--;
+            emitParticle(ParticleTypes.ITEM_SNOWBALL, 0, 0, 0, 0, 0, 0);
         }
 
-        if (isValidBinding() && burnTime == 0)
+        if (!level.isClientSide && isValidBinding() && burnTime == 0)
         {
             for (SnowGolem golem : level.getEntitiesOfClass(SnowGolem.class, new AABB(getEffectivePos().offset(-RANGE, -RANGE, -RANGE), getEffectivePos().offset(RANGE + 1, RANGE + 1, RANGE + 1))))
             {
                 if (!golem.isRemoved())
                 {
-                    golem.discard();
+                    Vec3 vec = golem.position();
+                    ClientProxy.INSTANCE.addParticleForceNear(level, ParticleTypes.SNOWFLAKE, vec.x, vec.y, vec.z, 0, 0, 0);
+                    golem.kill();
+                    //make it no drop lol
+                    golem.setBaby(true);
                     addMana(1600);
-                    burnTime += 20;
+                    burnTime += 40;
+                    var item = new ItemEntity(level, vec.x, vec.y, vec.z, new ItemStack(Items.PUMPKIN_SEEDS));
+                    level.addFreshEntity(item);
                     break;
                 }
             }
@@ -62,14 +72,10 @@ public class SubTileEdelweiss extends TileEntityGeneratingFlower
                     {
                         itemEntity.discard();
                         addMana(320);
-                        burnTime += 10;
+                        burnTime += 12;
                         break;
                     }
                 }
-            }
-            if (burnTime > 0)
-            {
-                emitParticle(ParticleTypes.ITEM_SNOWBALL, 0, 0, 0, 0, 0, 0);
             }
         }
     }
@@ -90,7 +96,6 @@ public class SubTileEdelweiss extends TileEntityGeneratingFlower
     public void writeToPacketNBT(CompoundTag cmp)
     {
         super.writeToPacketNBT(cmp);
-
         cmp.putInt(TAG_BURN_TIME, burnTime);
     }
 
@@ -98,7 +103,6 @@ public class SubTileEdelweiss extends TileEntityGeneratingFlower
     public void readFromPacketNBT(CompoundTag cmp)
     {
         super.readFromPacketNBT(cmp);
-
         burnTime = cmp.getInt(TAG_BURN_TIME);
     }
 
@@ -108,5 +112,4 @@ public class SubTileEdelweiss extends TileEntityGeneratingFlower
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
     }
-    //TODO:check 雪绒花
 }

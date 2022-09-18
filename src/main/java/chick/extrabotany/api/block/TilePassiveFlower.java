@@ -13,11 +13,11 @@ import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
  * let your flower class extends this<p>
  * just to store ticks in nbt
  */
-public abstract class SubTilePassiveFlower extends TileEntityGeneratingFlower
+public abstract class TilePassiveFlower extends TileEntityGeneratingFlower
 {
     private IPassiveFlowerCap flower;
 
-    public SubTilePassiveFlower(BlockEntityType<?> type, BlockPos pos, BlockState state)
+    public TilePassiveFlower(BlockEntityType<?> type, BlockPos pos, BlockState state)
     {
         super(type, pos, state);
     }

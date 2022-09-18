@@ -1,6 +1,6 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
-import chick.extrabotany.api.block.SubTilePassiveFlower;
+import chick.extrabotany.api.block.TilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
@@ -8,7 +8,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileBellflower extends SubTilePassiveFlower
+public class SubTileBellflower extends TilePassiveFlower
 {
     private static final int RANGE = 3;
 

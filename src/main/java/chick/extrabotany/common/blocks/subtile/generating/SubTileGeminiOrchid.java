@@ -1,9 +1,7 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
-import chick.extrabotany.api.block.SubTilePassiveFlower;
-import chick.extrabotany.api.cap.IPassiveFlowerCap;
+import chick.extrabotany.api.block.TilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.EmptyFluid;
@@ -11,7 +9,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-public class SubTileGeminiOrchid extends SubTilePassiveFlower
+public class SubTileGeminiOrchid extends TilePassiveFlower
 {
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
 

@@ -1,18 +1,15 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
 
-import chick.extrabotany.api.block.SubTilePassiveFlower;
-import chick.extrabotany.api.cap.IPassiveFlowerCap;
+import chick.extrabotany.api.block.TilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileSunshineLily extends SubTilePassiveFlower
+public class SubTileSunshineLily extends TilePassiveFlower
 {
     private static final int RANGE = 2;
     private boolean particle = false;

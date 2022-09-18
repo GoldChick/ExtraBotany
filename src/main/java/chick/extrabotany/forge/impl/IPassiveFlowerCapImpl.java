@@ -2,12 +2,14 @@ package chick.extrabotany.forge.impl;
 
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.base.ConfigHandler;
+import chick.extrabotany.common.base.ExtrabotanyReflectHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import vazkii.botania.api.subtile.TileEntitySpecialFlower;
+import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
 /**
  * default passive flower capability
@@ -32,20 +34,24 @@ public class IPassiveFlowerCapImpl implements IPassiveFlowerCap
     @Override
     public int getPassiveTicks()
     {
-        return passiveTicks;
+        return flower instanceof SubTileHydroangeas f ? ExtrabotanyReflectHelper.getPrivateValue(SubTileHydroangeas.class, f, "passiveDecayTicks") : passiveTicks;
     }
 
     @Override
     public void setPassiveTicks(int x)
     {
+        if (flower instanceof SubTileHydroangeas f)
+        {
+            ExtrabotanyReflectHelper.setPrivateValue(SubTileHydroangeas.class, f, x, "passiveDecayTicks");
+        }
         passiveTicks = x;
     }
 
     @Override
     public void addPassiveTicks()
     {
-        ++passiveTicks;
-        if (passiveTicks > getDecayTicks())
+        setPassiveTicks(getPassiveTicks() + 1);
+        if (getPassiveTicks() > getDecayTicks())
         {
             decay();
         }

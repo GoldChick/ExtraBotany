@@ -80,7 +80,7 @@ public class CapabilityInit
         });
         return Collections.unmodifiableMap(ret);
     });
-    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
+    public static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
             vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
             ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
             ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new,

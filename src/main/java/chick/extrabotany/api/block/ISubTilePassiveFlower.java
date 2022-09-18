@@ -2,6 +2,8 @@ package chick.extrabotany.api.block;
 
 import net.minecraftforge.event.TickEvent;
 
+import static vazkii.botania.common.block.subtile.generating.SubTileHydroangeas.TAG_PASSIVE_DECAY_TICKS;
+
 /**
  * <b>CAPABILITY</b> for passive flower<p>
  * have a default Implement<p>
@@ -11,11 +13,11 @@ public interface ISubTilePassiveFlower
 {
     /**
      * get string to store it in the block nbt
-     * default is "passive_ticks"
+     * default is "passiveDecayTicks"
      */
     default String getTagPassiveTicks()
     {
-        return "passive_ticks";
+        return TAG_PASSIVE_DECAY_TICKS;
     }
 
     /**

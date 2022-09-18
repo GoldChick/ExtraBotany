@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "extrabotany:floating_omni_violet"
+          "name": "extrabotany:block_photonium"
         }
       ],
       "conditions": [

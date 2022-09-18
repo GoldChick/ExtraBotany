@@ -37,6 +37,15 @@ public abstract class ArmorBase extends ArmorItem implements IPhantomInkable, IM
         this.armorTexture = armorTexture;
     }
 
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected)
+    {
+        if (entity instanceof Player player)
+        {
+            onArmorTick(stack, level, player);
+        }
+    }
+
     @SoftImplement("IForgeItem")
     public void onArmorTick(ItemStack stack, Level level, Player player)
     {

@@ -3,6 +3,9 @@ package chick.extrabotany.common.libs;
 public class LibBlockNames
 {
     public static String DIMENSION_CATALYST = "dimension_catalyst";
+    public static String BLOCK_ORICHALCOS = "block_orichalcos";
+    public static String BLOCK_PHOTONIUM = "block_photonium";
+    public static String BLOCK_SHADOWIUM = "block_shadowium";
 
     //no other Block Entity Types should start with this!
     //or forge.client.EntityRenderer will crash!

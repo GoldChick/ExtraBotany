@@ -20,6 +20,10 @@
     "extrabotany:miku_helm",
     "extrabotany:miku_chest",
     "extrabotany:miku_legs",
-    "extrabotany:miku_boots"
+    "extrabotany:miku_boots",
+    "extrabotany:maid_helm",
+    "extrabotany:maid_chest",
+    "extrabotany:maid_legs",
+    "extrabotany:maid_boots"
   ]
 }

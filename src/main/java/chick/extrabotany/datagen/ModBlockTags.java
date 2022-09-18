@@ -1,6 +1,7 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
@@ -9,6 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.common.block.BlockFloatingSpecialFlower;
 import vazkii.botania.common.lib.ModTags;
 
@@ -28,11 +30,23 @@ public class ModBlockTags extends BlockTagsProvider
     @Override
     protected void addTags()
     {
-        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.BLOCK_PHOTONIUM.get())
+                .add(ModBlocks.BLOCK_SHADOWIUM.get())
+        ;
 
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.BLOCK_ORICHALCOS.get())
         ;
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-
+                .add(ModBlocks.BLOCK_PHOTONIUM.get())
+                .add(ModBlocks.BLOCK_SHADOWIUM.get())
+                .add(ModBlocks.BLOCK_ORICHALCOS.get())
+        ;
+        tag(BlockTags.BEACON_BASE_BLOCKS)
+                .add(ModBlocks.BLOCK_PHOTONIUM.get())
+                .add(ModBlocks.BLOCK_SHADOWIUM.get())
+                .add(ModBlocks.BLOCK_ORICHALCOS.get())
         ;
         tag(Tags.Blocks.ORES)
 
@@ -59,8 +73,9 @@ public class ModBlockTags extends BlockTagsProvider
         ;
 
     }
+
     @Override
-    public String getName()
+    public @NotNull String getName()
     {
         return "extrabotany Block Tags";
     }

@@ -5,14 +5,13 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.common.lib.ModTags;
 
 import static chick.extrabotany.ExtraBotany.MODID;
@@ -64,7 +63,9 @@ public class ModItemTags extends ItemTagsProvider
         tag(ModTags.Items.RODS)
                 .add(ModItems.ROD_OF_DISCORD.get())
         ;
-
+        tag(ModTags.Items.TERRA_PICK_BLACKLIST)
+                .add(ModItems.MAID_HELM.get())
+        ;
         tag(ModTags.Items.MANA_USING_ITEMS)
                 .add(ModItems.ROD_OF_DISCORD.get())
                 .add(ModItems.SHADOW_KATANA.get())
@@ -75,18 +76,10 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.FIRST_FRACTAL.get())
                 .add(ModItems.FAILNAUGHT.get())
 
-                .add(ModItems.SHADOW_WARRIOR_HELM.get())
-                .add(ModItems.SHADOW_WARRIOR_CHEST.get())
-                .add(ModItems.SHADOW_WARRIOR_LEGS.get())
-                .add(ModItems.SHADOW_WARRIOR_BOOTS.get())
-                .add(ModItems.GOBLINSLAYER_HELM.get())
-                .add(ModItems.GOBLINSLAYER_CHEST.get())
-                .add(ModItems.GOBLINSLAYER_LEGS.get())
-                .add(ModItems.GOBLINSLAYER_BOOTS.get())
-                .add(ModItems.MIKU_HELM.get())
-                .add(ModItems.MIKU_CHEST.get())
-                .add(ModItems.MIKU_LEGS.get())
-                .add(ModItems.MIKU_BOOTS.get())
+                .add(ModItems.SHADOW_WARRIOR_HELM.get(), ModItems.SHADOW_WARRIOR_CHEST.get(), ModItems.SHADOW_WARRIOR_LEGS.get(), ModItems.SHADOW_WARRIOR_BOOTS.get())
+                .add(ModItems.GOBLINSLAYER_HELM.get(), ModItems.GOBLINSLAYER_CHEST.get(), ModItems.GOBLINSLAYER_LEGS.get(), ModItems.GOBLINSLAYER_BOOTS.get())
+                .add(ModItems.MIKU_HELM.get(), ModItems.MIKU_CHEST.get(), ModItems.MIKU_LEGS.get(), ModItems.MIKU_BOOTS.get())
+                .add(ModItems.MAID_HELM.get(), ModItems.MAID_CHEST.get(), ModItems.MAID_LEGS.get(), ModItems.MAID_BOOTS.get())
         ;
         baublesTags();
     }
@@ -137,7 +130,7 @@ public class ModItemTags extends ItemTagsProvider
     }
 
     @Override
-    public String getName()
+    public @NotNull String getName()
     {
         return "extrabotany Item Tags";
     }

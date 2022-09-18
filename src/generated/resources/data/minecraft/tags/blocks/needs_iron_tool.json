@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "extrabotany:block_photonium",
-    "extrabotany:block_shadowium",
-    "extrabotany:block_orichalcos"
+    "extrabotany:block_shadowium"
   ]
 }

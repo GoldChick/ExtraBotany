@@ -12,6 +12,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.List;
+
 import static chick.extrabotany.ExtraBotany.MODID;
 import static net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer;
 
@@ -27,6 +29,13 @@ public class ModBlocks
 
     public static final RegistryObject<Block> DIMENSION_CATALYST = BLOCKS.register(LibBlockNames.DIMENSION_CATALYST, () -> new DimensionCatalyst(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1f, 4f)));
     public static final RegistryObject<Item> DIMENSION_CATALYST_ITEM = fromBlock(DIMENSION_CATALYST);
+    public static final RegistryObject<Block> BLOCK_PHOTONIUM = BLOCKS.register(LibBlockNames.BLOCK_PHOTONIUM, () -> new DimensionCatalyst(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(2f, 8f)));
+    public static final RegistryObject<Item> BLOCK_PHOTONIUM_ITEM = fromBlock(BLOCK_PHOTONIUM);
+    public static final RegistryObject<Block> BLOCK_SHADOWIUM = BLOCKS.register(LibBlockNames.BLOCK_SHADOWIUM, () -> new DimensionCatalyst(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(2f, 8f)));
+    public static final RegistryObject<Item> BLOCK_SHADOWIUM_ITEM = fromBlock(BLOCK_SHADOWIUM);
+    public static final RegistryObject<Block> BLOCK_ORICHALCOS = BLOCKS.register(LibBlockNames.BLOCK_ORICHALCOS, () -> new DimensionCatalyst(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(4f, 12f)));
+    public static final RegistryObject<Item> BLOCK_ORICHALCOS_ITEM = fromBlock(BLOCK_ORICHALCOS);
+
 
     //public static final TagKey<Block> _YLG_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));
     //public static final TagKey<Item> _YLG_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "yeluogui_ore"));

@@ -145,14 +145,22 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven { url = "https://maven.theillusivec4.top/" }//curios
-    maven { url = "https://maven.blamejared.com/" }//patchouli
-}
 
+    maven { url = "https://maven.theillusivec4.top/" }//curios
+    maven { url = "https://maven.blamejared.com/" }//patchouli + botania
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven { // SlimeKnights and JEI
+        name 'DVS1 Maven FS'
+        url 'https://dvs1.progwml6.com/files/maven'
+    }
+
+}
 dependencies {
-    // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.51'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
@@ -161,10 +169,13 @@ dependencies {
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
-//Only fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")   runtimeOnly 
-    compileOnly fg.deobf("vazkii.botania:Botania:1.18.2-432")
-    runtimeOnly fg.deobf("vazkii.botania:Botania:1.18.2-432")
-//Only fg.deobf("vazkii.botania:Botania:1.18.2-432:api") runtimeOnly 
+    //Only fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")   runtimeOnly
+    compileOnly fg.deobf("vazkii.botania:Botania:1.18.2-${botania_version}")
+    runtimeOnly fg.deobf("vazkii.botania:Botania:1.18.2-${botania_version}")
+
+    //implementation fg.deobf("slimeknights.mantle:Mantle:1.18.2-${mantle_version}")
+    //implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.18.2-${tcon_version}")
+
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency

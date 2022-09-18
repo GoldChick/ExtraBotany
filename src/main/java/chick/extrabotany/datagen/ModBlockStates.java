@@ -27,17 +27,21 @@ public class ModBlockStates extends BlockStateProvider
     protected void registerStatesAndModels()
     {
         //transparent rendertype in class ForgeClientInitializer
-        simpleBlock(ModBlocks.DIMENSION_CATALYST.get());
+
         //just create json for floating flower!
         var stream = Registry.BLOCK.stream().filter(b -> b.getRegistryName().getNamespace().equals(ExtraBotany.MODID));
-        stream.forEach(flower ->
+
+        stream.forEach(block ->
         {
-            if (flower instanceof BlockSpecialFlower)
+            if (block instanceof BlockSpecialFlower)
             {
-                simpleFlowerTexture(flower);
-            } else if (flower instanceof BlockFloatingSpecialFlower)
+                simpleFlowerTexture(block);
+            } else if (block instanceof BlockFloatingSpecialFlower)
             {
-                simpleFloatingFlowerTexture(flower);
+                simpleFloatingFlowerTexture(block);
+            } else //simple block
+            {
+                simpleBlock(block);
             }
         });
     }

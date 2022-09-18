@@ -1,13 +1,13 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.ExtraBotanyCapabilities;
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
-import chick.extrabotany.forge.impl.ISubTilePassiveFlowerImpl;
+import chick.extrabotany.forge.impl.IPassiveFlowerCapImpl;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
@@ -130,12 +130,12 @@ public class ForgeClientInitializer
         });
         return Collections.unmodifiableMap(ret);
     });
-    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
-            vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.BELLFLOWER, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.GEMINIORCHID, ISubTilePassiveFlowerImpl::new
+    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IPassiveFlowerCap>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
+            vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, IPassiveFlowerCapImpl::new,
+            ModSubtiles.SUNSHINELILY, IPassiveFlowerCapImpl::new,
+            ModSubtiles.MOONLIGHTLILY, IPassiveFlowerCapImpl::new,
+            ModSubtiles.BELLFLOWER, IPassiveFlowerCapImpl::new,
+            ModSubtiles.GEMINIORCHID, IPassiveFlowerCapImpl::new
     ));
 
     private static void attachBlockEntityCapabilities(AttachCapabilitiesEvent<BlockEntity> e)

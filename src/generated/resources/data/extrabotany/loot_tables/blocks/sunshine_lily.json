@@ -21,8 +21,8 @@
           "source": "block_entity",
           "ops": [
             {
-              "source": "passiveDecayTicks",
-              "target": "BlockEntityTag.passiveDecayTicks",
+              "source": "ForgeData.passiveDecayTicks",
+              "target": "BlockEntityTag.ForgeData.passiveDecayTicks",
               "op": "replace"
             }
           ]

@@ -1,25 +1,20 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.block.SubTilePassiveFlower;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileBellflower extends TileEntityGeneratingFlower
+public class SubTileBellflower extends SubTilePassiveFlower
 {
     private static final int RANGE = 3;
-    private final ISubTilePassiveFlower flower;
 
     public SubTileBellflower(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.BELLFLOWER, pos, state);
-        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -51,15 +46,18 @@ public class SubTileBellflower extends TileEntityGeneratingFlower
         {
             times = 0;
         }
-        if (this.level.canSeeSky(this.getEffectivePos()) && y > baseY)
+        if (getFlower() != null)
         {
-            flower.addPassiveTicks();
-            int rain = this.level.isRaining() ? 10 : 0;
-            if (flower.getPassiveTicks() % 10 == 0)
+            if (this.level.canSeeSky(this.getEffectivePos()) && y > baseY)
             {
-                addMana((baseGen + rain) * (int) (0.3F * (float) y / (float) baseY * times));
+                getFlower().addPassiveTicks();
+                int rain = this.level.isRaining() ? 10 : 0;
+                if (getFlower().getPassiveTicks() % 10 == 0)
+                {
+                    addMana((baseGen + rain) * (int) (0.3F * (float) y / (float) baseY * times));
+                }
+                sync();
             }
-            sync();
         }
     }
 
@@ -73,20 +71,6 @@ public class SubTileBellflower extends TileEntityGeneratingFlower
     public int getColor()
     {
         return 0xFFFF99;
-    }
-
-    @Override
-    public void writeToPacketNBT(CompoundTag cmp)
-    {
-        super.writeToPacketNBT(cmp);
-        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
-    }
-
-    @Override
-    public void readFromPacketNBT(CompoundTag cmp)
-    {
-        super.readFromPacketNBT(cmp);
-        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Nullable

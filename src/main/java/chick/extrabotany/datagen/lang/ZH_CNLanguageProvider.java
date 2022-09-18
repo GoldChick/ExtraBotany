@@ -186,6 +186,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModSubtiles.bloodyenchantress, "鲜血妖姬");
         add(ModSubtiles.bloodyenchantressFloating, "浮空鲜血妖姬");
         add(ModSubtiles.bloodyenchantress.getDescriptionId() + ".reference", "用鲜血和暗影缔结契约吧");
+        add(ModSubtiles.edelweiss, "雪绒花");
+        add(ModSubtiles.edelweissFloating, "浮空雪绒花");
+        add(ModSubtiles.edelweiss.getDescriptionId() + ".reference", "你想堆个雪人吗");
+        add(ModSubtiles.tinkleflower, "叮当舞花");
+        add(ModSubtiles.tinkleflowerFloating, "浮空叮当舞花");
+        add(ModSubtiles.tinkleflower.getDescriptionId() + ".reference", "接下来是我的回合");
 
         add(ModSubtiles.serenitian, "永寂龙胆");
         add(ModSubtiles.serenitianFloating, "浮空永寂龙胆");
@@ -445,8 +451,6 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.mini_item5", "");
 
         add("extrabotany.page.mini_item114", "$(item)水晶短弓$(0)比$(item)活木短弓$(0)更加强大，同时也可以用$(thing)魔力$(0)产生箭矢，不过需要消耗的$(thing)魔力$(0）相比$(item)水晶弓$(0)更多一点。");
-
-
 
         add("extrabotany.entry.elementium_shield", "高级魔力盾牌");
         add("extrabotany.page.elementium_shield0", "使用更好的材料制作的盾牌具有更加特殊的能力。这些盾牌均能够格挡一些$(thing)遗物$(0)产生的弹射物。然而，这些盾牌普遍具有较低的耐久，难以持续使用。");

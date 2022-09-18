@@ -1,14 +1,14 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.ExtraBotanyCapabilities;
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
-import chick.extrabotany.forge.impl.ISubTilePassiveFlowerImpl;
+import chick.extrabotany.forge.impl.IPassiveFlowerCapImpl;
 import com.google.common.base.Suppliers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -80,12 +80,12 @@ public class CapabilityInit
         });
         return Collections.unmodifiableMap(ret);
     });
-    public static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, ISubTilePassiveFlower>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
-            vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.SUNSHINELILY, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.MOONLIGHTLILY, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.BELLFLOWER, ISubTilePassiveFlowerImpl::new,
-            ModSubtiles.GEMINIORCHID, ISubTilePassiveFlowerImpl::new
+    public static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IPassiveFlowerCap>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
+            vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, IPassiveFlowerCapImpl::new,
+            ModSubtiles.SUNSHINELILY, IPassiveFlowerCapImpl::new,
+            ModSubtiles.MOONLIGHTLILY, IPassiveFlowerCapImpl::new,
+            ModSubtiles.BELLFLOWER, IPassiveFlowerCapImpl::new,
+            ModSubtiles.GEMINIORCHID, IPassiveFlowerCapImpl::new
     ));
 
     /**

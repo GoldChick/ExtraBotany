@@ -1,27 +1,25 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.block.SubTilePassiveFlower;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileGeminiOrchid extends TileEntityGeneratingFlower
+public class SubTileGeminiOrchid extends SubTilePassiveFlower
 {
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
 
     private static final int RANGE = 2;
-    private final ISubTilePassiveFlower flower;
+
     public SubTileGeminiOrchid(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.GEMINIORCHID, pos, state);
-        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -46,9 +44,10 @@ public class SubTileGeminiOrchid extends TileEntityGeneratingFlower
             int tempMin = 114514;
             for (int i = 0; i < OFFSETS.length; i++)
             {
+                //TODO:fluids的判定？
                 BlockPos pos = this.getEffectivePos().offset(OFFSETS[i]);
                 var block = this.getLevel().getFluidState(pos).getType();
-                if (block != null && !(block instanceof EmptyFluid))
+                if (!(block instanceof EmptyFluid))
                 {
                     if (block instanceof Fluid)
                     {
@@ -63,30 +62,19 @@ public class SubTileGeminiOrchid extends TileEntityGeneratingFlower
                     }
                 }
             }
-            if (getMana() < getMaxMana() && tempMax > tempMin)
+            if (getFlower() != null)
             {
-               flower.addPassiveTicks();
-                 if (flower.getPassiveTicks() % 8 == 0)
+                if (getMana() < getMaxMana() && tempMax > tempMin)
                 {
-                    addMana((tempMax - tempMin) / 100 > 0 ? (tempMax - tempMin) / 100 : 1);
+                    getFlower().addPassiveTicks();
+                    if (getFlower().getPassiveTicks() % 8 == 0)
+                    {
+                        addMana((tempMax - tempMin) / 100 > 0 ? (tempMax - tempMin) / 100 : 1);
+                    }
+                    sync();
                 }
-                sync();
             }
         }
-    }
-
-    @Override
-    public void writeToPacketNBT(CompoundTag cmp)
-    {
-        super.writeToPacketNBT(cmp);
-        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
-    }
-
-    @Override
-    public void readFromPacketNBT(CompoundTag cmp)
-    {
-        super.readFromPacketNBT(cmp);
-        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Override

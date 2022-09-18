@@ -1,7 +1,7 @@
 package chick.extrabotany.xplat;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import javax.annotation.Nullable;
@@ -30,7 +30,7 @@ public interface IXplatAbstractions
     String getExtrabotanyVersion();
 
     @Nullable
-    ISubTilePassiveFlower findPassiveFlower(BlockEntity blockEntity);
+    IPassiveFlowerCap findPassiveFlower(BlockEntity blockEntity);
 
     IXplatAbstractions INSTANCE = find();
 

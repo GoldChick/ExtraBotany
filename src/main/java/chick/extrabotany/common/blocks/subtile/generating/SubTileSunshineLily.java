@@ -1,7 +1,8 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
 
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.block.SubTilePassiveFlower;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.core.BlockPos;
@@ -11,16 +12,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 
-public class SubTileSunshineLily extends TileEntityGeneratingFlower
+public class SubTileSunshineLily extends SubTilePassiveFlower
 {
     private static final int RANGE = 2;
     private boolean particle = false;
-    private final ISubTilePassiveFlower flower;
 
     public SubTileSunshineLily(BlockPos pos, BlockState state)
     {
         super(ModSubtiles.SUNSHINELILY, pos, state);
-        flower = IXplatAbstractions.INSTANCE.findPassiveFlower(this);
     }
 
     @Override
@@ -41,22 +40,25 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
         super.tickFlower();
         if (!getLevel().isClientSide)
         {
-            if (getLevel().isDay())
+            if (getFlower() != null)
             {
-                if (getMana() == getMaxMana())
+                if (getLevel().isDay())
                 {
-                    particle = false;
+                    if (getMana() == getMaxMana())
+                    {
+                        particle = false;
+                    } else
+                    {
+                        getFlower().addPassiveTicks();
+                        particle = true;
+                        addMana(1);
+                    }
+                    sync();
                 } else
                 {
-                    flower.addPassiveTicks();
-                    particle = true;
-                    addMana(1);
+                    particle = false;
+                    sync();
                 }
-                sync();
-            } else
-            {
-                particle = false;
-                sync();
             }
         } else if (getLevel().isClientSide)
         {
@@ -72,7 +74,6 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
     {
         super.writeToPacketNBT(cmp);
         cmp.putBoolean("sunB", particle);
-        cmp.putInt(flower.getTagPassiveTicks(), flower.getPassiveTicks());
     }
 
     @Override
@@ -80,7 +81,6 @@ public class SubTileSunshineLily extends TileEntityGeneratingFlower
     {
         super.readFromPacketNBT(cmp);
         particle = cmp.getBoolean("sunB");
-        flower.setPassiveTicks(cmp.getInt(flower.getTagPassiveTicks()));
     }
 
     @Override

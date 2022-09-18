@@ -1,6 +1,5 @@
-package chick.extrabotany.api;
+package chick.extrabotany.api.cap;
 
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -10,6 +9,6 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
  */
 public class ExtraBotanyCapabilities
 {
-    public static final Capability<ISubTilePassiveFlower> PASSIVE_FLOWER = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IPassiveFlowerCap> PASSIVE_FLOWER = CapabilityManager.get(new CapabilityToken<>() {});
 
 }

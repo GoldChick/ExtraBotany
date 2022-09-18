@@ -183,6 +183,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModSubtiles.bloodyenchantress, "Bloody Enchantress");
         add(ModSubtiles.bloodyenchantressFloating, "Floating Bloody Enchantress");
         add(ModSubtiles.bloodyenchantress.getDescriptionId() + ".reference", "A bargain forged in blood and shadow");
+        add(ModSubtiles.edelweiss, "Edelweiss");
+        add(ModSubtiles.edelweissFloating, "Floating Edelweiss");
+        add(ModSubtiles.edelweiss.getDescriptionId() + ".reference", "Do you want to build a snowman?");
+        add(ModSubtiles.tinkleflower, "Tinkle Flower");
+        add(ModSubtiles.tinkleflowerFloating, "Floating Tinkle Flower");
+        add(ModSubtiles.tinkleflower.getDescriptionId() + ".reference", "My turn");
 
         add(ModSubtiles.serenitian, "Serenitian");
         add(ModSubtiles.serenitianFloating, "Floating Serenitian");
@@ -430,6 +436,23 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.puredaisy_pendant", "Pure Daisy Pendant");
         add("extrabotany.page.puredaisy_pendant0", "By holding a $(item)Pure Daisy Pendant$(0) and right-clicking a block, you can instantly transform blocks like a $(item)Pure Daisy$(0), at the cost of a little mana. The more you use it, the more it cools down, even if you find some methods to repair it.");
         add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
+
+        add("extrabotany.entry.mini_item", "缩小工具");
+        add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。");
+        add("extrabotany.page.mini_item1", "");
+        add("extrabotany.page.mini_item2", "通过甩动$(thing)短弓$(0)扔出箭矢是可行的，那么为什么不用手代替这个过程呢？将普通的$(item)箭$(0)转化成$(item)短箭$(0)可以让玩家方便地右击扔出。不过，它不能再被弓使用，扔出的箭矢也将失去魔力。");
+        add("extrabotany.page.mini_item3", "");
+        add("extrabotany.page.mini_item4", "$(item)天空法杖$(0)飞跃的高度有时候大大超过了我们所需，$(item)天空短杖$(0)就解决了这个问题。在这个过程中灌注的魔力也让$(item)天空短杖$(0)能够安装一些配件。");
+        add("extrabotany.page.mini_item5", "");
+
+        add("extrabotany.page.mini_item114", "$(item)水晶短弓$(0)比$(item)活木短弓$(0)更加强大，同时也可以用$(thing)魔力$(0)产生箭矢，不过需要消耗的$(thing)魔力$(0）相比$(item)水晶弓$(0)更多一点。");
+
+        add("extrabotany.entry.elementium_shield", "高级魔力盾牌");
+        add("extrabotany.page.elementium_shield0", "使用更好的材料制作的盾牌具有更加特殊的能力。这些盾牌均能够格挡一些$(thing)遗物$(0)产生的弹射物。然而，这些盾牌普遍具有较低的耐久，难以持续使用。");
+        add("extrabotany.page.elementium_shield1", "$(item)源质钢盾牌$(0)成功格挡伤害后会暂时提升盾牌本身的属性。");
+        add("extrabotany.page.elementium_shield2", "$(item)混沌盾牌$(0)成功格挡伤害后会对周围的生物（包括使用者）造成一定爆炸伤害。");
+        add("extrabotany.page.elementium_shield3", "$(item)泰拉钢盾牌$(0)会反弹部分成功格挡的近战伤害。");
+        add("extrabotany.page.elementium_shield4", "$(item)天空盾牌$(0)成功格挡伤害后会暂时让使用者变得更加轻盈。");
         pantchouliFlower();
     }
 

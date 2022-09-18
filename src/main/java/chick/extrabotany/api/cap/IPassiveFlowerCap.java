@@ -1,15 +1,14 @@
-package chick.extrabotany.api.block;
-
-import net.minecraftforge.event.TickEvent;
+package chick.extrabotany.api.cap;
 
 import static vazkii.botania.common.block.subtile.generating.SubTileHydroangeas.TAG_PASSIVE_DECAY_TICKS;
 
 /**
  * <b>CAPABILITY</b> for passive flower<p>
  * have a default Implement<p>
- * you need to store passive ticks in block nbt
+ * init when forge client inits<p>
+ * (<b>chick.extrabotany.forge.CapabilityInit</b>)
  */
-public interface ISubTilePassiveFlower
+public interface IPassiveFlowerCap
 {
     /**
      * get string to store it in the block nbt
@@ -39,24 +38,13 @@ public interface ISubTilePassiveFlower
     /**
      * just as its name (usually 72000 ticks, that is, 1 hour)
      */
-    int getDecayTicks();
-
-    /**
-     * does the flower block have drops
-     */
-    boolean isNoDrop();
+    default int getDecayTicks()
+    {
+        return 72000;
+    }
 
     void serenitianWorks();
 
     void decay();
 
-    default boolean isHydroangeas()
-    {
-        return false;
-    }
-
-    default void tickFlower(TickEvent event)
-    {
-
-    }
 }

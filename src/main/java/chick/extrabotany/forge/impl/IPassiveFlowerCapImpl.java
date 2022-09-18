@@ -1,26 +1,24 @@
 package chick.extrabotany.forge.impl;
 
-import chick.extrabotany.api.block.ISubTilePassiveFlower;
+import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.base.ConfigHandler;
-import chick.extrabotany.common.base.ExtrabotanyReflectHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import vazkii.botania.api.subtile.TileEntitySpecialFlower;
-import vazkii.botania.common.block.subtile.generating.SubTileHydroangeas;
 
 /**
  * default passive flower capability
  * just use it if you don't want any change
  */
-public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
+public class IPassiveFlowerCapImpl implements IPassiveFlowerCap
 {
     private final TileEntitySpecialFlower flower;
     private int passiveTicks;
 
-    public ISubTilePassiveFlowerImpl(BlockEntity blockEntity)
+    public IPassiveFlowerCapImpl(BlockEntity blockEntity)
     {
         if (blockEntity instanceof TileEntitySpecialFlower flower)
         {
@@ -34,28 +32,20 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
     @Override
     public int getPassiveTicks()
     {
-        if (flower instanceof SubTileHydroangeas hydroangeas)
-        {
-            return ExtrabotanyReflectHelper.getPrivateValue(SubTileHydroangeas.class, hydroangeas, "passiveDecayTicks");
-        }
         return passiveTicks;
     }
 
     @Override
     public void setPassiveTicks(int x)
     {
-        if (flower instanceof SubTileHydroangeas hydroangeas)
-        {
-            ExtrabotanyReflectHelper.setPrivateValue(SubTileHydroangeas.class, hydroangeas, 0, "passiveDecayTicks");
-        }
         passiveTicks = x;
     }
 
     @Override
     public void addPassiveTicks()
     {
-        setPassiveTicks(getPassiveTicks() + 1);
-        if (getPassiveTicks() > getDecayTicks())
+        ++passiveTicks;
+        if (passiveTicks > getDecayTicks())
         {
             decay();
         }
@@ -65,12 +55,6 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
     public int getDecayTicks()
     {
         return 72000;
-    }
-
-    @Override
-    public boolean isNoDrop()
-    {
-        return !(flower instanceof SubTileHydroangeas);
     }
 
     @Override
@@ -102,4 +86,5 @@ public class ISubTilePassiveFlowerImpl implements ISubTilePassiveFlower
             }
         }
     }
+
 }

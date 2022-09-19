@@ -45,6 +45,7 @@ public class ModItemModels extends ItemModelProvider
         list.remove(ModItems.SUPREME_AERO_STONE.get());
         list.remove(ModItems.SUPREME_IGNITE_STONE.get());
         list.remove(ModItems.SUPREME_AQUA_STONE.get());
+        list.remove(ModItems.MANA_SHORTARROW.get());
         for (var item : list)
         {
             simpleTexture(item.getRegistryName().getPath());

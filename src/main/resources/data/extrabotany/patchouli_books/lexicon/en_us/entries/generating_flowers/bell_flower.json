@@ -16,6 +16,6 @@
     }
   ],
   "extra_recipe_mappings": {
-    "botania:floating_bell_flower": 1
+    "extrabotany:floating_bell_flower": 1
   }
 }

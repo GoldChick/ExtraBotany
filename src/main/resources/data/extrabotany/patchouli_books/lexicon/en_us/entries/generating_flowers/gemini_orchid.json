@@ -16,6 +16,6 @@
     }
   ],
   "extra_recipe_mappings": {
-    "botania:floating_gemini_orchid": 1
+    "extrabotany:floating_gemini_orchid": 1
   }
 }

@@ -134,6 +134,7 @@ public class ModItems
     public static final RegistryObject<Item> BUDDHISTRELICS = register(LibItemNames.BUDDHISTRELICS);
     public static final RegistryObject<Item> CAMERA = register(LibItemNames.CAMERA);
     //item with durability
+    public static final RegistryObject<Item> MANA_SHORTARROW = register(LibItemNames.MANA_SHORTARROW, () -> new ManaShortArrow(ITEM_PROPERTIES));
     public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = register(LibItemNames.LIVINGWOOD_CROSSBOW, () -> new LivingWoodCrossBow(stackTo1()));
     public static final RegistryObject<Item> CRYSTAL_CROSSBOW = register(LibItemNames.CRYSTAL_CROSSBOW, () -> new CrystalCrossBow(stackTo1()));
     public static final RegistryObject<Item> LIVINGWOOD_SHORTBOW = register(LibItemNames.LIVINGWOOD_SHORTBOW, () -> new LivingWoodShortBow(stackTo1()));

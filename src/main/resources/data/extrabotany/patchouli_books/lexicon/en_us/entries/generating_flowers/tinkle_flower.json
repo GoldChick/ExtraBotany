@@ -1,0 +1,21 @@
+{
+  "name": "extrabotany.entry.tinkle_flower",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:tinkle_flower",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.tinkle_flower0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.tinkle_flower1",
+      "recipe": "extrabotany:petal_apothecary/tinkle_flower"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "extrabotany:floating_tinkle_flower": 1
+  }
+}

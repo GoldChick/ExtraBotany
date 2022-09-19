@@ -1,13 +1,20 @@
 package chick.extrabotany.common.tools.weapons.ranged;
 
+import chick.extrabotany.common.entities.WaterArrow;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -56,14 +63,18 @@ public class ManaShortArrow extends Item
         {
             arrow = ItemStack.EMPTY;
         }
-        if (!level.isClientSide)
+    //    if (!level.isClientSide)
         {
             ArrowItem arrowitem = (ArrowItem) Items.ARROW;
 
-            AbstractArrow abstractarrow = arrowitem.createArrow(level, arrow, living);
+            Arrow abstractarrow = new WaterArrow(level, living);
+            abstractarrow.setEffectsFromItem(arrow);
+
             abstractarrow.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, power * 3.0F, 1.0F);
 
             abstractarrow.setCritArrow(useTicks == 20);
+
+            abstractarrow.setPierceLevel((byte) 1);
 
             int power_level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
             if (power_level > 0)
@@ -88,4 +99,5 @@ public class ManaShortArrow extends Item
 
         }
     }
+
 }

@@ -1,0 +1,21 @@
+{
+  "name": "extrabotany.entry.edelweiss",
+  "category": "botania:generating_flowers",
+  "icon": "extrabotany:edelweiss",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.edelweiss0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "extrabotany.page.edelweiss1",
+      "recipe": "extrabotany:petal_apothecary/edelweiss"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "extrabotany:floating_edelweiss": 1
+  }
+}

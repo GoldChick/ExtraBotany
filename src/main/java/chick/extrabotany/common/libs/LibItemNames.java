@@ -79,6 +79,7 @@ public class LibItemNames
     public static String TERRA_SHIELD = "terrasteel_shield";
     public static String FOREST_BOOK = "forest_book";
     public static String DIRT_SHIELD = "dirt_shield";
+    public static String MANA_SHORTARROW = "mana_shortarrow";
     public static String LIVINGWOOD_CROSSBOW = "livingwood_crossbow";
     public static String CRYSTAL_CROSSBOW = "crystal_crossbow";
     public static String LIVINGWOOD_SHORTBOW = "livingwood_shortbow";

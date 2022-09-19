@@ -45,6 +45,9 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
         add(ModItems.FRIED_CHICKEN.get(), "Fried Chicken");
         add(ModBlocks.DIMENSION_CATALYST.get(), "Dimension Catalyst");
+        add(ModBlocks.BLOCK_SHADOWIUM.get(), "Shadowium Block");
+        add(ModBlocks.BLOCK_PHOTONIUM.get(), "Photonium Block");
+        add(ModBlocks.BLOCK_ORICHALCOS.get(), "Orichalcos Block");
         add(ModItems.ORICHALCOS.get(), "Orichalcos Ingot");
         add(ModItems.TICKET.get(), "Invitation Letter to Yourself");
         add(ModItems.AERIALITE_INGOT.get(), "Aerialite");

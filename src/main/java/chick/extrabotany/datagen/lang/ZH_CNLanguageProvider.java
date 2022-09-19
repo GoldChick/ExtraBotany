@@ -45,6 +45,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
         add(ModItems.FRIED_CHICKEN.get(), "香香鸡");
         add(ModBlocks.DIMENSION_CATALYST.get(), "次元催化剂");
+        add(ModBlocks.BLOCK_SHADOWIUM.get(), "暗影块");
+        add(ModBlocks.BLOCK_PHOTONIUM.get(), "光子块");
+        add(ModBlocks.BLOCK_ORICHALCOS.get(), "奥里哈钢块");
         add(ModItems.ORICHALCOS.get(), "奥利哈刚锭");
         add(ModItems.AERIALITE_INGOT.get(), "天空锭");
         add(ModItems.TICKET.get(), "寄给自己的邀请函");
@@ -443,9 +446,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
 
         add("extrabotany.entry.mini_item", "缩小工具");
-        add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。");
+        add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。$(br)这种方式射出的箭矢与水具有较强的亲和性，并且具有一定的穿透能力。");
         add("extrabotany.page.mini_item1", "");
-        add("extrabotany.page.mini_item2", "通过甩动$(thing)短弓$(0)扔出箭矢是可行的，那么为什么不用手代替这个过程呢？将普通的$(item)箭$(0)转化成$(item)短箭$(0)可以让玩家方便地右击扔出。不过，它不能再被弓使用，扔出的箭矢也将失去魔力。");
+        add("extrabotany.page.mini_item2", "通过甩动各种$(thing)短弓$(0)扔出箭矢是可行的，那么为什么不用手代替这个过程呢？将普通的$(item)箭$(0)转化成$(item)魔力短箭$(0)可以让玩家方便地右击扔出。不过，它不能再被弓使用，无法再携带药水效果，扔出的箭矢也将失去魔力。$(br)这种方式扔出的箭矢与水具有较强的亲和性，并且具有一定的穿透能力。");
         add("extrabotany.page.mini_item3", "");
         add("extrabotany.page.mini_item4", "$(item)天空法杖$(0)飞跃的高度有时候大大超过了我们所需，$(item)天空短杖$(0)就解决了这个问题。在这个过程中灌注的魔力也让$(item)天空短杖$(0)能够安装一些配件。");
         add("extrabotany.page.mini_item5", "");

@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "edc",
+    "fmb",
+    "gza"
+  ],
+  "key": {
+    "m": {
+      "item": "extrabotany:hero_medal"
+    },
+    "z": {
+      "item": "extrabotany:moon_pendant"
+    },
+    "a": {
+      "item": "botania:rune_envy"
+    },
+    "b": {
+      "item": "botania:rune_sloth"
+    },
+    "c": {
+      "item": "botania:rune_pride"
+    },
+    "d": {
+      "item": "botania:rune_lust"
+    },
+    "e": {
+      "item": "botania:rune_greed"
+    },
+    "f": {
+      "item": "botania:rune_wrath"
+    },
+    "g": {
+      "item": "botania:rune_gluttony"
+    }
+  },
+  "result": {
+    "item": "extrabotany:moon_pendant"
+  }
+}

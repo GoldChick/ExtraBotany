@@ -4,7 +4,9 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.baubles.relic.MoonPendant;
 import chick.extrabotany.common.baubles.relic.SagesManaRing;
+import chick.extrabotany.common.baubles.relic.SunRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
@@ -43,7 +45,12 @@ public class CapabilityInit
             ModItems.TRUE_THUNSTAR_CALLER.get(), TrueThunStarCaller::makeRelic,
             ModItems.INFLUX_WAVER.get(), InfluxWaver::makeRelic,
             ModItems.FAILNAUGHT.get(), Failnaught::makeRelic,
-            ModItems.EXCALIBER.get(), Excaliber::makeRelic
+            ModItems.EXCALIBER.get(), Excaliber::makeRelic,
+            ModItems.FIRST_FRACTAL.get(), FirstFractal::makeRelic,
+
+            ModItems.SAGES_MANA_RING.get(), SagesManaRing::makeRelic,
+            ModItems.SUN_RING.get(), SunRing::makeRelic,
+            ModItems.MOON_PENDANT.get(), MoonPendant::makeRelic
     ));
 
     /**

@@ -321,6 +321,38 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("pure_daisy", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModSubtiles.pureDaisy))
                 .save(consumer, LibItemNames.PURE_DAISY_PENDANT);
+        ShapedRecipeBuilder.shaped(ModItems.SUN_RING.get())
+                .pattern("edc")
+                .pattern("fmb")
+                .pattern("gza")
+                .define('m', ModItems.HERO_MEDAL.get())
+                .define('z', ModItems.ELF_KING_RING.get())
+                .define('a', vazkii.botania.common.item.ModItems.runeEnvy)
+                .define('b', vazkii.botania.common.item.ModItems.runeSloth)
+                .define('c', vazkii.botania.common.item.ModItems.runePride)
+                .define('d', vazkii.botania.common.item.ModItems.runeLust)
+                .define('e', vazkii.botania.common.item.ModItems.runeGreed)
+                .define('f', vazkii.botania.common.item.ModItems.runeWrath)
+                .define('g', vazkii.botania.common.item.ModItems.runeGluttony)
+                .group(MODID)
+                .unlockedBy(LibItemNames.HERO_MEDAL, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, LibItemNames.SUN_RING);
+        ShapedRecipeBuilder.shaped(ModItems.MOON_PENDANT.get())
+                .pattern("edc")
+                .pattern("fmb")
+                .pattern("gza")
+                .define('m', ModItems.HERO_MEDAL.get())
+                .define('z', ModItems.MOON_PENDANT.get())
+                .define('a', vazkii.botania.common.item.ModItems.runeEnvy)
+                .define('b', vazkii.botania.common.item.ModItems.runeSloth)
+                .define('c', vazkii.botania.common.item.ModItems.runePride)
+                .define('d', vazkii.botania.common.item.ModItems.runeLust)
+                .define('e', vazkii.botania.common.item.ModItems.runeGreed)
+                .define('f', vazkii.botania.common.item.ModItems.runeWrath)
+                .define('g', vazkii.botania.common.item.ModItems.runeGluttony)
+                .group(MODID)
+                .unlockedBy(LibItemNames.HERO_MEDAL, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, LibItemNames.MOON_PENDANT);
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);

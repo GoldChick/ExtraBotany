@@ -1,0 +1,33 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:elf_king_ring"
+  },
+  "mana": 100000,
+  "ingredients": [
+    {
+      "item": "botania:pixie_ring"
+    },
+    {
+      "item": "botania:rune_spring"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "botania:elementium_ingot"
+    },
+    {
+      "item": "botania:quartz_elven"
+    },
+    {
+      "item": "botania:quartz_elven"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:bamboo"
+    }
+  ]
+}

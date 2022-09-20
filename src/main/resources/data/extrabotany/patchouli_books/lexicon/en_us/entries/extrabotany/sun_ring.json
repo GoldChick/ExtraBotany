@@ -1,0 +1,18 @@
+{
+  "name": "extrabotany.entry.sun_ring",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:sun_ring",
+  "entry_color": "ffaa00",
+  "advancement": "extrabotany:main/ego_defeat",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.sun_ring0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.sun_ring1",
+      "recipe": "minecraft:sun_ring"
+    }
+  ]
+}

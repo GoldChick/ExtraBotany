@@ -1,9 +1,14 @@
 package chick.extrabotany.common.baubles.relic;
 
+import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.libs.LibAdvancementNames;
 import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.equipment.bauble.ItemManaRing;
+import vazkii.botania.common.item.relic.RelicImpl;
 
 import javax.annotation.Nonnull;
 
@@ -55,5 +60,10 @@ public class SagesManaRing extends ItemManaRing
         {
             return MAX_MANA * stack.getCount();
         }
+    }
+
+    public static IRelic makeRelic(ItemStack stack)
+    {
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "main/" + LibAdvancementNames.SAGES_MANA_RING_CRAFT));
     }
 }

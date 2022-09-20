@@ -1,11 +1,13 @@
 package chick.extrabotany.common.tools.weapons;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.advancement.IAdvancementRequirement;
 import chick.extrabotany.common.entities.projectile.relic_projectile.EntityPhantomSword;
 import chick.extrabotany.common.libs.LibAdvancementNames;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +19,8 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
+import vazkii.botania.api.item.IRelic;
+import vazkii.botania.common.item.relic.RelicImpl;
 
 import static vazkii.botania.common.item.equipment.bauble.ItemBauble.getBaubleUUID;
 
@@ -114,5 +118,10 @@ public class FirstFractal extends SwordRelicBase implements IAdvancementRequirem
     public String getAdvancementName()
     {
         return LibAdvancementNames.EGO_DEFEAT;
+    }
+
+    public static IRelic makeRelic(ItemStack stack)
+    {
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "main/" + LibAdvancementNames.FIRST_FRACTAL_CRAFT));
     }
 }

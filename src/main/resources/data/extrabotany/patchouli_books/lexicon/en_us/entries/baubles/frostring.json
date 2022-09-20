@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.frostring",
   "category": "botania:baubles",
-  "icon": "extrabotany:frostring",
+  "icon": "extrabotany:frost_ring",
   "entry_color": "4169E1",
   "advancement": "botania:main/runic_altar_pickup",
   "pages": [

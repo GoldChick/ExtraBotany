@@ -130,6 +130,7 @@ public class ModItems
     public static final RegistryObject<Item> SUPREME_AQUA_STONE = register(LibItemNames.SUPREME_AQUA_STONE, () -> new SupremeAquaStone(stackTo1()));
     public static final RegistryObject<Item> SUPREME_EARTH_STONE = register(LibItemNames.SUPREME_EARTH_STONE, () -> new SupremeEarthStone(stackTo1()));
     public static final RegistryObject<Item> SUPREME_IGNITE_STONE = register(LibItemNames.SUPREME_IGNITE_STONE, () -> new SupremeIgniteStone(stackTo1()));
+    public static final RegistryObject<Item> ELF_KING_RING = register(LibItemNames.ELF_KING_RING, () -> new ElfKingRing(stackTo1()));
     public static final RegistryObject<Item> SAGES_MANA_RING = register(LibItemNames.SAGES_MANA_RING, () -> new SagesManaRing(stackTo1()));
     public static final RegistryObject<Item> POTATO_CHIP = register(LibItemNames.POTATO_CHIP, () -> new PotatoChips(stackTo1()));
     public static final RegistryObject<Item> SUN_RING = register(LibItemNames.SUN_RING, () -> new SunRing(stackTo1()));

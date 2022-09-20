@@ -11,6 +11,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -25,27 +27,28 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public abstract class AbstractMultiUpgradedRelic extends ItemBauble implements IAdvancementRequirement
+/**
+ * abstract class for baubles that can be crafted with others to obtain their abilities<p>
+ * note that the base bauble will only be able to get the <b style=color:rgb(0,255,255)>onWornTick()</b> of others
+ */
+public abstract class AbstractMultiUpgradedBauble extends ItemBauble implements IAdvancementRequirement
 {
     private static final String TAG_BAUBLE_NBT = "tag_bauble_nbt_";
 
-    private static final int MAX_AMOUNT = 6;
-
-    public AbstractMultiUpgradedRelic(Properties props)
+    public AbstractMultiUpgradedBauble(Properties props)
     {
         super(props);
+    }
+
+    public int getMaxAmount()
+    {
+        return 8;
     }
 
     @Override
     public @NotNull Rarity getRarity(@NotNull ItemStack stack)
     {
         return Rarity.EPIC;
-    }
-
-    public boolean addBauble(ItemStack base, Item bauble)
-    {
-        return addBauble(base, new ItemStack(bauble));
     }
 
     public boolean addBauble(ItemStack base, ItemStack bauble)
@@ -65,7 +68,7 @@ public abstract class AbstractMultiUpgradedRelic extends ItemBauble implements I
     }
 
     /**
-     * @return 0 - <b style="color:rgb(0,255,255)">(MAX_AMOUNT-1)</b>(default 6-1=5) represents SUCCESS<p>
+     * @return 0 - <b style="color:rgb(0,255,255)">(MAX_AMOUNT-1)</b> represents SUCCESS<p>
      * -1 represents FAILED
      */
     public int canAddBauble(ItemStack base, ItemStack bauble)
@@ -74,9 +77,9 @@ public abstract class AbstractMultiUpgradedRelic extends ItemBauble implements I
         {
             var base_cmp = ItemNBTHelper.getCompound(base, TAG_BAUBLE_NBT, false);
 
-            if (base_cmp.size() < MAX_AMOUNT)
+            if (base_cmp.size() < getMaxAmount())
             {
-                for (int i = 0; i < MAX_AMOUNT; i++)
+                for (int i = 0; i < getMaxAmount(); i++)
                 {
                     if (base_cmp.getCompound(TAG_BAUBLE_NBT + i).isEmpty())
                     {
@@ -113,28 +116,48 @@ public abstract class AbstractMultiUpgradedRelic extends ItemBauble implements I
         return rings;
     }
 
-    public void removeLastBauble(ItemStack stack)
+    /**
+     * remove the last bauble
+     */
+    public void removeLastBauble(ItemStack base)
     {
-        removeBauble(stack, getBaublesAmount(stack) - 1);
+        removeBauble(base, getBaublesAmount(base) - 1);
     }
 
-    public void removeBauble(ItemStack stack, int index)
+    /**
+     * remove bauble from index
+     * @param index start from ZERO to MAX_AMOUNT-1
+     */
+    public void removeBauble(ItemStack base, int index)
     {
-        var base_cmp = ItemNBTHelper.getCompound(stack, TAG_BAUBLE_NBT, false);
-        base_cmp.remove(TAG_BAUBLE_NBT + index);
+        var base_cmp = ItemNBTHelper.getCompound(base, TAG_BAUBLE_NBT, false);
+        int j = 0;
+        for (int i = 0; i < getMaxAmount(); i++)
+        {
+            var cmp = base_cmp.getCompound(TAG_BAUBLE_NBT + i);
+            if (!cmp.isEmpty())
+            {
+                if (j == index)
+                {
+                    base_cmp.remove(TAG_BAUBLE_NBT + i);
+                    break;
+                }
+                j++;
+            }
+        }
     }
 
     /**
      * just return amount<p>
      * do not generate ItemStack
      *
-     * @param stack base_bauble
+     * @param base base_bauble
      */
-    public int getBaublesAmount(ItemStack stack)
+    public int getBaublesAmount(ItemStack base)
     {
         int amount = 0;
-        var base_cmp = ItemNBTHelper.getCompound(stack, TAG_BAUBLE_NBT, false);
-        for (int i = 0; i < MAX_AMOUNT; i++)
+        var base_cmp = ItemNBTHelper.getCompound(base, TAG_BAUBLE_NBT, false);
+        for (int i = 0; i < getMaxAmount(); i++)
         {
             if (!base_cmp.getCompound(TAG_BAUBLE_NBT + i).isEmpty())
             {
@@ -187,9 +210,13 @@ public abstract class AbstractMultiUpgradedRelic extends ItemBauble implements I
         return super.getEquippedAttributeModifiers(stack);
     }
 
+    /**
+     * default is <b style=color:rgb(0,255,255)>curios:ring</b><p>
+     * you can override it if you want to add or change
+     */
     public List<TagKey<Item>> getTagKeys()
     {
-        return new ArrayList<>();
+        return List.of(ItemTags.create(new ResourceLocation("curios", "ring")));
     }
 
     @Override

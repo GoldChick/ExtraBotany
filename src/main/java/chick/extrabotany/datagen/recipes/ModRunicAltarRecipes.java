@@ -39,6 +39,7 @@ public class ModRunicAltarRecipes extends RecipeProvider
         Ingredient element_steel = Ingredient.of(vazkii.botania.common.item.ModItems.elementium);
         Ingredient mana_diamond = Ingredient.of(vazkii.botania.common.item.ModItems.manaDiamond);
         Ingredient mana_steel = Ingredient.of(vazkii.botania.common.item.ModItems.manaSteel);
+        Ingredient elf_quartz = Ingredient.of(vazkii.botania.common.item.ModItems.elfQuartz);
         Ingredient nightmare = Ingredient.of(ModItems.NIGHTMARE_FUEL.get());
         Ingredient spirit = Ingredient.of(ModItems.SPIRIT_FUEL.get());
         Ingredient spirit_frag = Ingredient.of(ModItems.SPIRIT_FRAG.get());
@@ -49,6 +50,8 @@ public class ModRunicAltarRecipes extends RecipeProvider
         Ingredient water = Ingredient.of(vazkii.botania.common.item.ModItems.runeWater);
         Ingredient fire = Ingredient.of(vazkii.botania.common.item.ModItems.runeFire);
         Ingredient mana = Ingredient.of(vazkii.botania.common.item.ModItems.runeMana);
+
+        Ingredient spring = Ingredient.of(vazkii.botania.common.item.ModItems.runeSpring);
         Ingredient envy = Ingredient.of(vazkii.botania.common.item.ModItems.runeEnvy);
         Ingredient wrath = Ingredient.of(vazkii.botania.common.item.ModItems.runeWrath);
         Ingredient gaiaIngot = Ingredient.of(vazkii.botania.common.item.ModItems.gaiaIngot);
@@ -68,8 +71,8 @@ public class ModRunicAltarRecipes extends RecipeProvider
 
         //mana clear ↓
         consumer.accept(new RunicAltar(idFor("powerglove"), new ItemStack(ModItems.POWER_GLOVE.get()), 3200, cloth, cloth, cloth, mana_diamond, wrath));
-        consumer.accept(new RunicAltar(idFor("orichalcos"), new ItemStack(ModItems.ORICHALCOS.get()), 1000000, gaiaIngot, gaiaIngot, gaiaSoul, gaiaSoul, gaiaSoul, gaiaSoul, medal, mashed_potato,Ingredient.of(Items.AMETHYST_BLOCK),Ingredient.of(Items.AMETHYST_BLOCK)));
-
+        consumer.accept(new RunicAltar(idFor(LibItemNames.ORICHALCOS), new ItemStack(ModItems.ORICHALCOS.get()), 1000000, gaiaIngot, gaiaIngot, gaiaSoul, gaiaSoul, gaiaSoul, gaiaSoul, medal, mashed_potato, Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.AMETHYST_BLOCK)));
+        consumer.accept(new RunicAltar(idFor(LibItemNames.ELF_KING_RING), new ItemStack(ModItems.ELF_KING_RING.get()), 100000, Ingredient.of(vazkii.botania.common.item.ModItems.pixieRing), spring, element_steel, element_steel, elf_quartz, elf_quartz, Ingredient.of(Items.BAMBOO), Ingredient.of(Items.BAMBOO)));
     }
 
     private static ResourceLocation idFor(String s)

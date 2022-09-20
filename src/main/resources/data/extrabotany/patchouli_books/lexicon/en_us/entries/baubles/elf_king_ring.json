@@ -1,0 +1,18 @@
+{
+  "name": "extrabotany.entry.elf_king_ring",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:elf_king_ring",
+  "entry_color": "4169E1",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.elf_king_ring0"
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "extrabotany.page.elf_king_ring1",
+      "recipe": "extrabotany:runic_altar/elf_king_ring"
+    }
+  ]
+}

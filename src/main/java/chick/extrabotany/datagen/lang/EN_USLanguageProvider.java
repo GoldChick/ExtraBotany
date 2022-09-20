@@ -98,6 +98,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_AQUA_STONE.get(), "Supreme Aqua Stone");
         add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
         add(ModItems.SUPREME_IGNITE_STONE.get(), "Supreme Ignis Stone");
+        add(ModItems.ELF_KING_RING.get(), "Ring of Elven King");
         add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
         add(ModItems.POTATO_CHIP.get(), "Potato Chip");
         add(ModItems.SUN_RING.get(), "Ring of Sacred Sun");
@@ -456,7 +457,16 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.potato_chip", "Potato Chip");
         add("extrabotany.page.potato_chip0", "$(item)Potato Chip$(0) functions almost the same as Totem of Undying. When you are taking deadly damage, it will trigger, consume mana to recover you. It has 60s cool down and will cost a great amount of $(thing)mana$(0).");
         add("extrabotany.page.potato_chip1", "");
+        add("extrabotany.entry.elf_king_ring", "Ring of Elven King");
+        add("extrabotany.page.elf_king_ring0", "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) with $(item)Das Rheingold$(0) could remove one of the abilities.");
+        add("extrabotany.page.elf_king_ring1", "");
 
+        add("extrabotany.entry.sun_ring", "Ring of Sacred Sun");
+        add("extrabotany.page.sun_ring0", "$(item)Ring of Sacred Sun$(0) is the upgraded version of $(item)Ring of Elven King$(0), with the power of obtain 8 additional abilities from other rings, even including $(thing)Relic$(0). However,$(item)Ring of Sacred Sun$(0) can not get some abilities like $(thing)storing mana$(0), either.");
+        add("extrabotany.page.sun_ring1", "Lavawalker's Epiphany");
+        add("extrabotany.entry.moon_pendant", "Heart of Corrupted Moon");
+        add("extrabotany.page.moon_pendant0", "$(item)Heart of Corrupted Moon$(0) is similar to $(item)Ring of Sacred Sun$(0). The only difference is that $(item)Heart of Corrupted Moon$(0) is a kind of necklace and could only receive 6 abilities from other necklaces.");
+        add("extrabotany.page.moon_pendant1", "Broken Rime's Echo");
 
         add("extrabotany.entry.mini_item", "缩小工具");
         add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。");
@@ -501,12 +511,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.bloodyenchantress0", "The $(item)Bloody Enchantress$(0) creates $(thing)Mana$(0) by consuming nearby creatures' life. Creatures sacrificed to the Bloody Enchantress will not produce any drops or experience.");
         add("extrabotany.page.bloodyenchantress1", "Every bite will add a effect called Blood Temptation and overlay with higher amplifier one, the mana production will decrease according to the level of Blood Temptation, and the flower will stop working if the total level of Blood Temptation of all the creatures nearby is over a threshold.");
         add("extrabotany.page.bloodyenchantress2", "The only cure is death.");
-        add("extrabotany.entry.tinkle_flower","Tinkle Flower");
-        add("extrabotany.page.tinkle_flower0","The $(item)Tinkle flower converts kinetic energy of nearby moving players into $(thing)Mana$(0). It will also increase players' energy consumption.");
-        add("extrabotany.page.tinkle_flower1","Ding dong, here I come to find you.");
-        add("extrabotany.entry.edelweiss","Edelweiss");
-        add("extrabotany.page.edelweiss0","$(item)Edelweiss$(0) will swallow the snow golem to produce mana. The mana production is done instantly, but there are still intervals.");
-        add("extrabotany.page.edelweiss1","If you are reading this, you can read.");
+        add("extrabotany.entry.tinkle_flower", "Tinkle Flower");
+        add("extrabotany.page.tinkle_flower0", "The $(item)Tinkle flower converts kinetic energy of nearby moving players into $(thing)Mana$(0). It will also increase players' energy consumption.");
+        add("extrabotany.page.tinkle_flower1", "Ding dong, here I come to find you.");
+        add("extrabotany.entry.edelweiss", "Edelweiss");
+        add("extrabotany.page.edelweiss0", "$(item)Edelweiss$(0) will swallow the snow golem to produce mana. The mana production is done instantly, but there are still intervals.");
+        add("extrabotany.page.edelweiss1", "If you are reading this, you can read.");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");

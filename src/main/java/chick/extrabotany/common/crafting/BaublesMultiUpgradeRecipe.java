@@ -1,7 +1,6 @@
 package chick.extrabotany.common.crafting;
 
-import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.baubles.relic.AbstractMultiUpgradedRelic;
+import chick.extrabotany.common.baubles.relic.AbstractMultiUpgradedBauble;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -33,7 +32,7 @@ public class BaublesMultiUpgradeRecipe extends CustomRecipe
             ItemStack stack = inv.getItem(i);
             if (!stack.isEmpty())
             {
-                if (stack.getItem() instanceof AbstractMultiUpgradedRelic)
+                if (stack.getItem() instanceof AbstractMultiUpgradedBauble)
                 {
 
                     if (base != null)
@@ -52,13 +51,13 @@ public class BaublesMultiUpgradeRecipe extends CustomRecipe
                 if (!stack.isEmpty())
                 {
                     var item = stack.getItem();
-                    if (!(item instanceof AbstractMultiUpgradedRelic) && item instanceof ItemBauble)
+                    if (!(item instanceof AbstractMultiUpgradedBauble) && item instanceof ItemBauble)
                     {
                         if (findBauble)
                         {
                             return false;
                         }
-                        findBauble = ((AbstractMultiUpgradedRelic) base.getItem()).canAddBauble(base, stack) >= 0;
+                        findBauble = ((AbstractMultiUpgradedBauble) base.getItem()).canAddBauble(base, stack) >= 0;
                     }
                 }
             }
@@ -74,7 +73,7 @@ public class BaublesMultiUpgradeRecipe extends CustomRecipe
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
-            if (!stack.isEmpty() && stack.getItem() instanceof AbstractMultiUpgradedRelic)
+            if (!stack.isEmpty() && stack.getItem() instanceof AbstractMultiUpgradedBauble)
             {
                 out = ItemStack.of(stack.save(new CompoundTag()));
                 break;
@@ -83,9 +82,9 @@ public class BaublesMultiUpgradeRecipe extends CustomRecipe
         for (int i = 0; i < inv.getContainerSize(); i++)
         {
             ItemStack stack = inv.getItem(i);
-            if (!stack.isEmpty() && !(stack.getItem() instanceof AbstractMultiUpgradedRelic))
+            if (!stack.isEmpty() && !(stack.getItem() instanceof AbstractMultiUpgradedBauble))
             {
-                ((AbstractMultiUpgradedRelic) out.getItem()).addBauble(out, stack);
+                ((AbstractMultiUpgradedBauble) out.getItem()).addBauble(out, stack);
                 break;
             }
         }

@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.jingweifeather",
   "category": "botania:baubles",
-  "icon": "extrabotany:jingweifeather",
+  "icon": "extrabotany:jingwei_feather",
   "entry_color": "4169E1",
   "advancement": "botania:main/elf_lexicon_pickup",
   "pages": [

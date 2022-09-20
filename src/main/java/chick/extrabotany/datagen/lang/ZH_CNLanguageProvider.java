@@ -99,6 +99,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_AQUA_STONE.get(), "至高水之符石");
         add(ModItems.SUPREME_EARTH_STONE.get(), "至高地之符石");
         add(ModItems.SUPREME_IGNITE_STONE.get(), "至高火之符石");
+        add(ModItems.ELF_KING_RING.get(), "精灵王指环");
         add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
         add(ModItems.POTATO_CHIP.get(), "薯片");
         add(ModItems.SUN_RING.get(), "圣阳尊戒");
@@ -457,14 +458,16 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.potato_chip", "薯片");
         add("extrabotany.page.potato_chip0", "$(item)薯片$(0)拥有着和不死图腾类似的效果。装备后，在受到致死伤害时会激活，消耗魔力获得多种增益并回复生命至5点。这一效果有一定的冷却时间，并且会消耗大量的魔力。");
         add("extrabotany.page.potato_chip1", "");
-
+        add("extrabotany.entry.elf_king_ring", "精灵王指环");
+        add("extrabotany.page.elf_king_ring0", "$(item)精灵王指环$(0)是一种奇特的戒指，只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。$(thing)储存魔力$(0)等能力不能正常作用于$(item)精灵王指环$(0)。$(item)精灵王指环$(0)可以额外获取总共两个戒指的能力，有些能力可以叠加作用。$(br)对$(thing)遗物$(0)不生效。$(br)另外，在工作台中将$(item)精灵王指环$(0)与$(item)莱茵河的黄金$(0)合成可以消去一种能力。");
+        add("extrabotany.page.elf_king_ring1", "");
 
         add("extrabotany.entry.sun_ring", "圣阳尊戒");
-        add("extrabotany.page.sun_ring0", "$(item)圣阳尊戒$(0)是一种奇特的戒指。只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。有些能力是可以叠加的。当然，$(item)圣阳尊戒$(0)的力量也是有限度的，比如不能获得$(thing)储存魔力$(0)这种能力。$(br)另外，在工作台中将$(item)圣阳尊戒$(0)与$(item)莱茵河的黄金$(0)合成可以消去一种能力。");
-        add("extrabotany.page.sun_ring1", "");
+        add("extrabotany.page.sun_ring0", "$(item)圣阳尊戒$(0)是$(item)精灵王指环$(0)的升级版，能够获取八个戒指的能力，包括遗物。然而，$(item)圣阳尊戒$(0)仍然不能获得$(thing)储存魔力$(0)等能力。");
+        add("extrabotany.page.sun_ring1", "渡火者的醒悟");
         add("extrabotany.entry.moon_pendant", "蚀月之心");
-        add("extrabotany.page.moon_pendant0", "$(item)蚀月之心$(0)和$(item)圣阳尊戒$(0)具有类似的力量，不同之处只是在于$(item)蚀月之心$(0)是一种项链。");
-        add("extrabotany.page.moon_pendant1", "");
+        add("extrabotany.page.moon_pendant0", "$(item)蚀月之心$(0)和$(item)圣阳尊戒$(0)具有类似的力量，不同之处只是在于$(item)蚀月之心$(0)是一种项链，并且只能获取六个项链的能力。");
+        add("extrabotany.page.moon_pendant1", "破冰踏雪的回音");
 
 
         add("extrabotany.entry.mini_item", "缩小工具");
@@ -510,12 +513,12 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.bloodyenchantress0", "$(item)鲜血妖姬$(0)能够将生物的生命值转化为$(thing)魔力$(0)，一旦有生物在其附近就会开始$(thing)魔力$(0)的转化，效率较为可观。需要注意的是通过这种方式献祭的生物不会有任何掉落。");
         add("extrabotany.page.bloodyenchantress1", "每次噬咬都会给对方添加血之诱惑效果并不断叠加，每层效果都会降低花的产魔，并且周围生物血之诱惑效果等级总和超过一定值时会停止工作。");
         add("extrabotany.page.bloodyenchantress2", "死亡是唯一的解药。");
-        add("extrabotany.entry.tinkle_flower","叮当舞花");
-        add("extrabotany.page.tinkle_flower0","$(item)叮当舞花$(0)可以将玩家的动能变为魔力。玩家在其附近移动时会产出$(thing)魔力$(0)，但也会加速玩家的饱食度消耗。");
-        add("extrabotany.page.tinkle_flower1","叮咚，我来找你了哦");
-        add("extrabotany.entry.edelweiss","雪绒花");
-        add("extrabotany.page.edelweiss0","$(item)雪绒花$(0)可以通过吞噬雪傀儡来产出$(thing)魔力$(0)。虽然$(thing)魔力$(0)产出是瞬时的，但也需要一小会的冷却。");
-        add("extrabotany.page.edelweiss1","If you are reading this, you can read.");
+        add("extrabotany.entry.tinkle_flower", "叮当舞花");
+        add("extrabotany.page.tinkle_flower0", "$(item)叮当舞花$(0)可以将玩家的动能变为魔力。玩家在其附近移动时会产出$(thing)魔力$(0)，但也会加速玩家的饱食度消耗。");
+        add("extrabotany.page.tinkle_flower1", "叮咚，我来找你了哦");
+        add("extrabotany.entry.edelweiss", "雪绒花");
+        add("extrabotany.page.edelweiss0", "$(item)雪绒花$(0)可以通过吞噬雪傀儡来产出$(thing)魔力$(0)。虽然$(thing)魔力$(0)产出是瞬时的，但也需要一小会的冷却。");
+        add("extrabotany.page.edelweiss1", "If you are reading this, you can read.");
 
 
         add("extrabotany.entry.serenitian", "永寂龙胆");

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:sun_ring"
+    ]
+  },
+  "criteria": {
+    "hero_medal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:hero_medal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:sun_ring"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hero_medal",
+      "has_the_recipe"
+    ]
+  ]
+}

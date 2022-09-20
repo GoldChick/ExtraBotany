@@ -80,6 +80,8 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.GOBLINSLAYER_HELM.get(), ModItems.GOBLINSLAYER_CHEST.get(), ModItems.GOBLINSLAYER_LEGS.get(), ModItems.GOBLINSLAYER_BOOTS.get())
                 .add(ModItems.MIKU_HELM.get(), ModItems.MIKU_CHEST.get(), ModItems.MIKU_LEGS.get(), ModItems.MIKU_BOOTS.get())
                 .add(ModItems.MAID_HELM.get(), ModItems.MAID_CHEST.get(), ModItems.MAID_LEGS.get(), ModItems.MAID_BOOTS.get())
+
+                .add(ModItems.PURE_DAISY_PENDANT.get(), ModItems.SUN_RING.get(), ModItems.MOON_PENDANT.get(), ModItems.ELF_KING_RING.get())
         ;
         baublesTags();
     }
@@ -106,6 +108,7 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.FROST_RING.get())
                 .add(ModItems.SAGES_MANA_RING.get())
                 .add(ModItems.SUN_RING.get())
+                .add(ModItems.ELF_KING_RING.get())
         ;
 
         tag(accessory("belt"));

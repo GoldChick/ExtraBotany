@@ -98,16 +98,20 @@ public class ModItemTags extends ItemTagsProvider
                 .add(ModItems.SUPREME_EARTH_STONE.get())
                 .add(ModItems.SUPREME_IGNITE_STONE.get())
                 .add(ModItems.PEACE_AMULET.get())
+                .add(ModItems.POTATO_CHIP.get())
+                .add(ModItems.NATURE_ORB.get())
         ;
         tag(accessory("ring"))
                 .add(ModItems.DEATH_RING.get())
                 .add(ModItems.FROST_RING.get())
                 .add(ModItems.SAGES_MANA_RING.get())
+                .add(ModItems.SUN_RING.get())
         ;
 
         tag(accessory("belt"));
         tag(accessory("body"))
                 .add(ModItems.RED_SCARF.get())
+                .add(ModItems.CORE_GOD.get())
         ;
         tag(accessory("charm"));
         tag(accessory("head"))
@@ -121,10 +125,11 @@ public class ModItemTags extends ItemTagsProvider
         ;
         tag(accessory("necklace"))
                 .add(ModItems.PURE_DAISY_PENDANT.get())
+                .add(ModItems.MOON_PENDANT.get())
         ;
     }
 
-    private static TagKey<Item> accessory(String name)
+    public static TagKey<Item> accessory(String name)
     {
         return ItemTags.create(new ResourceLocation("curios", name));
     }

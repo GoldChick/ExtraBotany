@@ -1,6 +1,10 @@
 package chick.extrabotany.common;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.baubles.relic.CoreGod;
+import chick.extrabotany.common.baubles.relic.MoonPendant;
+import chick.extrabotany.common.baubles.relic.SagesManaRing;
+import chick.extrabotany.common.baubles.relic.SunRing;
 import chick.extrabotany.common.libs.LibItemNames;
 import chick.extrabotany.api.WeightCategory;
 import chick.extrabotany.common.baubles.*;
@@ -81,6 +85,7 @@ public class ModItems
     public static final RegistryObject<Item> INTERTWINED_FATE = register(LibItemNames.INTERTWINED_FATE, () -> new Fates(ITEM_PROPERTIES, Fates.FateType.Intertwined));
     public static final RegistryObject<Item> ACQUAINT_FATE = register(LibItemNames.ACQUAINT_FATE, () -> new Fates(ITEM_PROPERTIES, Fates.FateType.Acquaint));
 
+    public static final RegistryObject<Item> MANA_SHORTARROW = register(LibItemNames.MANA_SHORTARROW, () -> new ManaShortArrow(ITEM_PROPERTIES));
     /**
      * stacksTo 32
      */
@@ -99,7 +104,7 @@ public class ModItems
     public static final RegistryObject<Item> FOREST_BOOK = register(LibItemNames.FOREST_BOOK, () -> new ForestBook(stackTo1()));
     public static final RegistryObject<Item> DIRT_SHIELD = register(LibItemNames.DIRT_SHIELD, () -> new DirtShield(stackTo1()));
     /**
-     * these are baubles for curios mod
+     * these are baubles for curios mod(usually stack to 1)
      **/
     public static final RegistryObject<Item> PYLON = register(LibItemNames.PYLON, () -> new Cosmetic(Cosmetic.Variant.Pylon, stackTo1()));
     public static final RegistryObject<Item> FOX_EAR = register(LibItemNames.FOX_EAR, () -> new Cosmetic(Cosmetic.Variant.FoxEar, stackTo1()));
@@ -120,21 +125,26 @@ public class ModItems
     public static final RegistryObject<Item> AQUA_STONE = register(LibItemNames.AQUA_STONE, () -> new AquaStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> EARTH_STONE = register(LibItemNames.EARTH_STONE, () -> new EarthStone(ITEM_PROPERTIES));
     public static final RegistryObject<Item> IGNITE_STONE = register(LibItemNames.IGNITE_STONE, () -> new IgniteStone(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> FOUR_IN_ONE_STONE = register(LibItemNames.FOUR_IN_ONE_STONE, () -> new FourInOneStone(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SUPREME_AERO_STONE = register(LibItemNames.SUPREME_AERO_STONE, () -> new SupremeAeroStone(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SUPREME_AQUA_STONE = register(LibItemNames.SUPREME_AQUA_STONE, () -> new SupremeAquaStone(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SUPREME_EARTH_STONE = register(LibItemNames.SUPREME_EARTH_STONE, () -> new SupremeEarthStone(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SUPREME_IGNITE_STONE = register(LibItemNames.SUPREME_IGNITE_STONE, () -> new SupremeIgniteStone(ITEM_PROPERTIES.stacksTo(1)));
-    public static final RegistryObject<Item> SAGES_MANA_RING = register(LibItemNames.SAGES_MANA_RING, () -> new SagesManaRing(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> FOUR_IN_ONE_STONE = register(LibItemNames.FOUR_IN_ONE_STONE, () -> new FourInOneStone(stackTo1()));
+    public static final RegistryObject<Item> SUPREME_AERO_STONE = register(LibItemNames.SUPREME_AERO_STONE, () -> new SupremeAeroStone(stackTo1()));
+    public static final RegistryObject<Item> SUPREME_AQUA_STONE = register(LibItemNames.SUPREME_AQUA_STONE, () -> new SupremeAquaStone(stackTo1()));
+    public static final RegistryObject<Item> SUPREME_EARTH_STONE = register(LibItemNames.SUPREME_EARTH_STONE, () -> new SupremeEarthStone(stackTo1()));
+    public static final RegistryObject<Item> SUPREME_IGNITE_STONE = register(LibItemNames.SUPREME_IGNITE_STONE, () -> new SupremeIgniteStone(stackTo1()));
+    public static final RegistryObject<Item> SAGES_MANA_RING = register(LibItemNames.SAGES_MANA_RING, () -> new SagesManaRing(stackTo1()));
+    public static final RegistryObject<Item> POTATO_CHIP = register(LibItemNames.POTATO_CHIP, () -> new PotatoChips(stackTo1()));
+    public static final RegistryObject<Item> SUN_RING = register(LibItemNames.SUN_RING, () -> new SunRing(stackTo1()));
+    public static final RegistryObject<Item> MOON_PENDANT = register(LibItemNames.MOON_PENDANT, () -> new MoonPendant(stackTo1()));
+    public static final RegistryObject<Item> NATURE_ORB = register(LibItemNames.NATURE_ORB, () -> new NatureOrb(stackTo1()));
+    public static final RegistryObject<Item> CORE_GOD = register(LibItemNames.CORE_GOD, () -> new CoreGod(stackTo1()));
+
     /**
-     * these are armors and weapons.(items with damage)
+     * these are armors and weapons.(items with damage)<p>
      * for some reason, if they are assigned before,
-     * items behind will be with nbt "damage" ,and can not stack.
+     * other behind items will be with nbt "damage"(with durability) ,and can not stack.
      */
     public static final RegistryObject<Item> BUDDHISTRELICS = register(LibItemNames.BUDDHISTRELICS);
     public static final RegistryObject<Item> CAMERA = register(LibItemNames.CAMERA);
-    //item with durability
-    public static final RegistryObject<Item> MANA_SHORTARROW = register(LibItemNames.MANA_SHORTARROW, () -> new ManaShortArrow(ITEM_PROPERTIES));
+
     public static final RegistryObject<Item> LIVINGWOOD_CROSSBOW = register(LibItemNames.LIVINGWOOD_CROSSBOW, () -> new LivingWoodCrossBow(stackTo1()));
     public static final RegistryObject<Item> CRYSTAL_CROSSBOW = register(LibItemNames.CRYSTAL_CROSSBOW, () -> new CrystalCrossBow(stackTo1()));
     public static final RegistryObject<Item> LIVINGWOOD_SHORTBOW = register(LibItemNames.LIVINGWOOD_SHORTBOW, () -> new LivingWoodShortBow(stackTo1()));
@@ -181,7 +191,8 @@ public class ModItems
         r.accept(DupeRuneRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "rune_dupe"));
         r.accept(GoldClothRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "gold_cloth_unbind"));
         r.accept(PrimoGemRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "primo_gem_buy_fate"));
-        r.accept(MultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "multi_upgrade"));
+        r.accept(ToolsMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "tools_multi_upgrade"));
+        r.accept(BaublesMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "baubles_multi_upgrade"));
         //just place it here lol
         registerRewardBag();
     }

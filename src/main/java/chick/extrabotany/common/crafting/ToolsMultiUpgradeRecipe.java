@@ -16,9 +16,9 @@ import javax.annotation.Nonnull;
  *  used for tools upgrading recipes like True Shadow Katana
  *  <p>output will inherit Enchantments from all materials</p>
  */
-public class MultiUpgradeRecipe extends ShapedRecipe
+public class ToolsMultiUpgradeRecipe extends ShapedRecipe
 {
-    public MultiUpgradeRecipe(ShapedRecipe compose)
+    public ToolsMultiUpgradeRecipe(ShapedRecipe compose)
     {
         super(compose.getId(), compose.getGroup(), compose.getWidth(), compose.getHeight(), compose.getIngredients(), compose.getResultItem());
     }
@@ -44,7 +44,7 @@ public class MultiUpgradeRecipe extends ShapedRecipe
         return width > 2 || length > 2;
     }
 
-    public static final RecipeSerializer<MultiUpgradeRecipe> SERIALIZER = new Serializer();
+    public static final RecipeSerializer<ToolsMultiUpgradeRecipe> SERIALIZER = new Serializer();
 
     @Override
     public @NotNull RecipeSerializer<?> getSerializer()
@@ -52,22 +52,22 @@ public class MultiUpgradeRecipe extends ShapedRecipe
         return SERIALIZER;
     }
 
-    private static class Serializer extends RecipeSerializerBase<MultiUpgradeRecipe>
+    private static class Serializer extends RecipeSerializerBase<ToolsMultiUpgradeRecipe>
     {
         @Override
-        public @NotNull MultiUpgradeRecipe fromJson(@Nonnull ResourceLocation recipeId, @Nonnull JsonObject json)
+        public @NotNull ToolsMultiUpgradeRecipe fromJson(@Nonnull ResourceLocation recipeId, @Nonnull JsonObject json)
         {
-            return new MultiUpgradeRecipe(SHAPED_RECIPE.fromJson(recipeId, json));
+            return new ToolsMultiUpgradeRecipe(SHAPED_RECIPE.fromJson(recipeId, json));
         }
 
         @Override
-        public MultiUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, @Nonnull FriendlyByteBuf buffer)
+        public ToolsMultiUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, @Nonnull FriendlyByteBuf buffer)
         {
-            return new MultiUpgradeRecipe(SHAPED_RECIPE.fromNetwork(recipeId, buffer));
+            return new ToolsMultiUpgradeRecipe(SHAPED_RECIPE.fromNetwork(recipeId, buffer));
         }
 
         @Override
-        public void toNetwork(@Nonnull FriendlyByteBuf buffer, @Nonnull MultiUpgradeRecipe recipe)
+        public void toNetwork(@Nonnull FriendlyByteBuf buffer, @Nonnull ToolsMultiUpgradeRecipe recipe)
         {
             SHAPED_RECIPE.toNetwork(buffer, recipe);
         }

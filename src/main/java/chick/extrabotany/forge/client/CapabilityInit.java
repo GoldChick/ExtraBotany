@@ -4,7 +4,7 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.baubles.SagesManaRing;
+import chick.extrabotany.common.baubles.relic.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;

@@ -1,15 +1,15 @@
 {
-  "parent": "extrabotany:main/nightmarefuel_eat",
+  "parent": "extrabotany:main/nightmare_fuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:goblinslayer_chest",
+      "item": "extrabotany:miku_chest",
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.extrabotany:armorsetgoblinslayer.title"
+      "translate": "advancement.extrabotany:armorset_miku.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:armorsetgoblinslayer.desc"
+      "translate": "advancement.extrabotany:armorset_miku.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -17,49 +17,49 @@
     "hidden": false
   },
   "criteria": {
-    "goblin_slayer1": {
+    "miku1": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:goblinslayer_helm"
+              "extrabotany:miku_helm"
             ]
           }
         ]
       }
     },
-    "goblin_slayer2": {
+    "miku2": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:goblinslayer_chest"
+              "extrabotany:miku_chest"
             ]
           }
         ]
       }
     },
-    "goblin_slayer3": {
+    "miku3": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:goblinslayer_legs"
+              "extrabotany:miku_legs"
             ]
           }
         ]
       }
     },
-    "goblin_slayer4": {
+    "miku4": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:goblinslayer_boots"
+              "extrabotany:miku_boots"
             ]
           }
         ]
@@ -68,16 +68,16 @@
   },
   "requirements": [
     [
-      "goblin_slayer1"
+      "miku1"
     ],
     [
-      "goblin_slayer2"
+      "miku2"
     ],
     [
-      "goblin_slayer3"
+      "miku3"
     ],
     [
-      "goblin_slayer4"
+      "miku4"
     ]
   ]
 }

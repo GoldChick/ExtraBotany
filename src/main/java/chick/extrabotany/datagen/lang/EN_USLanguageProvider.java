@@ -99,6 +99,19 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_EARTH_STONE.get(), "Supreme Earth Stone");
         add(ModItems.SUPREME_IGNITE_STONE.get(), "Supreme Ignis Stone");
         add(ModItems.SAGES_MANA_RING.get(), "Sages Mana Ring");
+        add(ModItems.POTATO_CHIP.get(), "Potato Chip");
+        add(ModItems.SUN_RING.get(), "Ring of Sacred Sun");
+        add(ModItems.MOON_PENDANT.get(), "Heart of Corrupted Moon");
+        add(ModItems.NATURE_ORB.get(), "Nature Orb");
+        add("extrabotany.nature_orb", "Natural Breath: %s / %s");
+        add("extrabotany.nature_orb_effect1", "Blessing of Mana");
+        add("extrabotany.nature_orb_effect2", "Blessing of Regeneration");
+        add("extrabotany.nature_orb_effect3", "Blessing of Senro");
+        add(ModItems.CORE_GOD.get(), "Core of Herrscher");
+        add("extrabotany.wings0", "Wings: Herrscher");
+        add("extrabotany.wings1", "Wings: Flandre");
+        add("extrabotany.wings2", "Wings: Jim");
+        add("extrabotany.wings3", "Wings: Steampunk");
 
         add(ModItems.MANASTEEL_SHIELD.get(), "Mana Steel Shield");
         add(ModItems.ELEMENT_SHIELD.get(), "Elementium Shield");
@@ -214,10 +227,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "Equip Goblin Slayer Armor Set");
         prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "Equip Starry Idol Armor Set");
         prefixAdvancement(LibAdvancementNames.BLOODY_ENCHANTRESS_USE, "Sweet Devil", "Use a Bloody Enchantress to generate mana");
+        prefixAdvancement(LibAdvancementNames.TINKLE_FLOWER_USE, "Project Diva desu", "Dance around a Tinkle Flower");
 
 
         prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "Equip Pleiades Combat Maid Armor Set");
         prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "Equip Shooting Guardian Armor Set");
+
         prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "NOT Discord!", "Craft Rod of Discord");
 
 
@@ -226,11 +241,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.FIRST_FRACTAL_CRAFT, "Infinity +1 Sword", "Craft Excaliber");
         prefixAdvancement(LibAdvancementNames.THE_UNIVERSE_CRAFT, "Gears of Love", "Craft The Universe");
         prefixAdvancement(LibAdvancementNames.SAGES_MANA_RING_CRAFT, "COLOR", "Craft Sages Mana Ring");
+        prefixAdvancement(LibAdvancementNames.CORE_GOD_CRAFT, "All Hail The Queen", "Obtain Core of Herrscher");
+        prefixAdvancement(LibAdvancementNames.SUN_RING_CRAFT, "Promise", "Obtain Ring of Sacred Sun");
+        prefixAdvancement(LibAdvancementNames.MOON_PENDANT_CRAFT, "Crystalline", "Obtain Heart of Corrupted Moon");
 
-        add("advancement.extrabotany:sunringcraft.title", "Promise");
-        add("advancement.extrabotany:sunringcraft.desc", "Obtain Ring of Sacred Sun");
-        add("advancement.extrabotany:moonpendantcraft.title", "Crystalline");
-        add("advancement.extrabotany:moonpendantcraft.desc", "Obtain Heart of Corrupted Moon");
     }
 
     private void prefixAdvancement(String name, String title, String text)
@@ -439,6 +453,10 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.puredaisy_pendant", "Pure Daisy Pendant");
         add("extrabotany.page.puredaisy_pendant0", "By holding a $(item)Pure Daisy Pendant$(0) and right-clicking a block, you can instantly transform blocks like a $(item)Pure Daisy$(0), at the cost of a little mana. The more you use it, the more it cools down, even if you find some methods to repair it.");
         add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
+        add("extrabotany.entry.potato_chip", "Potato Chip");
+        add("extrabotany.page.potato_chip0", "$(item)Potato Chip$(0) functions almost the same as Totem of Undying. When you are taking deadly damage, it will trigger, consume mana to recover you. It has 60s cool down and will cost a great amount of $(thing)mana$(0).");
+        add("extrabotany.page.potato_chip1", "");
+
 
         add("extrabotany.entry.mini_item", "缩小工具");
         add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。");
@@ -483,6 +501,12 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.bloodyenchantress0", "The $(item)Bloody Enchantress$(0) creates $(thing)Mana$(0) by consuming nearby creatures' life. Creatures sacrificed to the Bloody Enchantress will not produce any drops or experience.");
         add("extrabotany.page.bloodyenchantress1", "Every bite will add a effect called Blood Temptation and overlay with higher amplifier one, the mana production will decrease according to the level of Blood Temptation, and the flower will stop working if the total level of Blood Temptation of all the creatures nearby is over a threshold.");
         add("extrabotany.page.bloodyenchantress2", "The only cure is death.");
+        add("extrabotany.entry.tinkle_flower","Tinkle Flower");
+        add("extrabotany.page.tinkle_flower0","The $(item)Tinkle flower converts kinetic energy of nearby moving players into $(thing)Mana$(0). It will also increase players' energy consumption.");
+        add("extrabotany.page.tinkle_flower1","Ding dong, here I come to find you.");
+        add("extrabotany.entry.edelweiss","Edelweiss");
+        add("extrabotany.page.edelweiss0","$(item)Edelweiss$(0) will swallow the snow golem to produce mana. The mana production is done instantly, but there are still intervals.");
+        add("extrabotany.page.edelweiss1","If you are reading this, you can read.");
 
         add("extrabotany.entry.serenitian", "Serenitian");
         add("extrabotany.page.serenitian0", "$(item)Serenitian$(0) could prevent passive flowers nearby at the same floor from fading away, and set the fading progress to zero.");

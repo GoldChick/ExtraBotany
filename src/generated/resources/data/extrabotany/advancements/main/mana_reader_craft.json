@@ -1,14 +1,14 @@
 {
-  "parent": "extrabotany:main/nightmarefuel_eat",
+  "parent": "extrabotany:main/nightmare_fuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:spirit_frag"
+      "item": "extrabotany:mana_reader"
     },
     "title": {
-      "translate": "advancement.extrabotany:spiritfragment_craft.title"
+      "translate": "advancement.extrabotany:mana_reader_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:spiritfragment_craft.desc"
+      "translate": "advancement.extrabotany:mana_reader_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "spirit": {
+    "manareader": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:spirit_frag"
+              "extrabotany:mana_reader"
             ]
           }
         ]
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "spirit"
+      "manareader"
     ]
   ]
 }

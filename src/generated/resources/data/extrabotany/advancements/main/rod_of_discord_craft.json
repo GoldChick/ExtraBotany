@@ -1,15 +1,15 @@
 {
-  "parent": "extrabotany:main/thechaos_craft",
+  "parent": "extrabotany:main/the_chaos_craft",
   "display": {
     "icon": {
       "item": "extrabotany:rod_of_discord",
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.extrabotany:rodofdiscord_craft.title"
+      "translate": "advancement.extrabotany:rod_of_discord_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:rodofdiscord_craft.desc"
+      "translate": "advancement.extrabotany:rod_of_discord_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -17,7 +17,7 @@
     "hidden": false
   },
   "criteria": {
-    "rodofdiscord_craft": {
+    "rod_of_discord_craft": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -32,7 +32,7 @@
   },
   "requirements": [
     [
-      "rodofdiscord_craft"
+      "rod_of_discord_craft"
     ]
   ]
 }

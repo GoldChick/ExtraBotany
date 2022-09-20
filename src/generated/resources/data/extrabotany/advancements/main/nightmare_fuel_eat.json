@@ -5,10 +5,10 @@
       "item": "extrabotany:nightmare_fuel"
     },
     "title": {
-      "translate": "advancement.extrabotany:nightmarefuel_eat.title"
+      "translate": "advancement.extrabotany:nightmare_fuel_eat.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:nightmarefuel_eat.desc"
+      "translate": "advancement.extrabotany:nightmare_fuel_eat.desc"
     },
     "frame": "task",
     "show_toast": true,

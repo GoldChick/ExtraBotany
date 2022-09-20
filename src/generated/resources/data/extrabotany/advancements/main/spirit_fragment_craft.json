@@ -1,14 +1,14 @@
 {
-  "parent": "extrabotany:main/nightmarefuel_eat",
+  "parent": "extrabotany:main/nightmare_fuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:the_chaos"
+      "item": "extrabotany:spirit_frag"
     },
     "title": {
-      "translate": "advancement.extrabotany:thechaos_craft.title"
+      "translate": "advancement.extrabotany:spirit_fragment_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:thechaos_craft.desc"
+      "translate": "advancement.extrabotany:spirit_fragment_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "pickup": {
+    "spirit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:the_chaos"
+              "extrabotany:spirit_frag"
             ]
           }
         ]
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "pickup"
+      "spirit"
     ]
   ]
 }

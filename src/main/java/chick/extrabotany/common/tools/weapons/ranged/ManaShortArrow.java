@@ -1,16 +1,10 @@
 package chick.extrabotany.common.tools.weapons.ranged;
 
-import chick.extrabotany.common.entities.WaterArrow;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -63,12 +57,11 @@ public class ManaShortArrow extends Item
         {
             arrow = ItemStack.EMPTY;
         }
-    //    if (!level.isClientSide)
+        if (!level.isClientSide)
         {
             ArrowItem arrowitem = (ArrowItem) Items.ARROW;
 
-            Arrow abstractarrow = new WaterArrow(level, living);
-            abstractarrow.setEffectsFromItem(arrow);
+            var abstractarrow = arrowitem.createArrow(level, arrow, living);
 
             abstractarrow.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, power * 3.0F, 1.0F);
 
@@ -96,8 +89,6 @@ public class ManaShortArrow extends Item
             level.addFreshEntity(abstractarrow);
 
             level.playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + power * 0.5F);
-
         }
     }
-
 }

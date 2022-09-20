@@ -1,4 +1,4 @@
-package chick.extrabotany.common.baubles;
+package chick.extrabotany.common.baubles.relic;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,11 +9,13 @@ import javax.annotation.Nonnull;
 
 public class SagesManaRing extends ItemManaRing
 {
-    private static final int MAX_MANA = Integer.MAX_VALUE - 1;
+    //cause INT_MAX problem
+    //luckily I can solve it
+    private static final int MAX_MANA = Integer.MAX_VALUE;
 
     public SagesManaRing(Properties props)
     {
-        super(props.stacksTo(1));
+        super(props);
     }
 
     @Override
@@ -34,6 +36,18 @@ public class SagesManaRing extends ItemManaRing
         public GreaterManaItem(ItemStack stack)
         {
             super(stack);
+        }
+
+        @Override
+        public void addMana(int mana)
+        {
+            setMana(stack, ((getMana() + mana) > 0 ? Math.min(getMana() + mana, getMaxMana()) : getMaxMana()) / stack.getCount());
+        }
+
+        @Override
+        public boolean canReceiveManaFromItem(ItemStack otherStack)
+        {
+            return getMana() != getMaxMana();
         }
 
         @Override

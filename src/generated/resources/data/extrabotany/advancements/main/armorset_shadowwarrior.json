@@ -1,15 +1,15 @@
 {
-  "parent": "extrabotany:main/nightmarefuel_eat",
+  "parent": "extrabotany:main/nightmare_fuel_eat",
   "display": {
     "icon": {
       "item": "extrabotany:shadowwarrior_chest",
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancement.extrabotany:armorsetshadowwarrior.title"
+      "translate": "advancement.extrabotany:armorset_shadowwarrior.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:armorsetshadowwarrior.desc"
+      "translate": "advancement.extrabotany:armorset_shadowwarrior.desc"
     },
     "frame": "task",
     "show_toast": true,

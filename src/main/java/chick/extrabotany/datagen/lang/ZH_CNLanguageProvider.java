@@ -100,7 +100,19 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SUPREME_EARTH_STONE.get(), "至高地之符石");
         add(ModItems.SUPREME_IGNITE_STONE.get(), "至高火之符石");
         add(ModItems.SAGES_MANA_RING.get(), "贤者魔力指环");
-
+        add(ModItems.POTATO_CHIP.get(), "薯片");
+        add(ModItems.SUN_RING.get(), "圣阳尊戒");
+        add(ModItems.MOON_PENDANT.get(), "蚀月之心");
+        add(ModItems.NATURE_ORB.get(), "自然蕴息宝珠");
+        add("extrabotany.nature_orb", "自然之息： %s / %s");
+        add("extrabotany.nature_orb_effect1", "魔力的加护");
+        add("extrabotany.nature_orb_effect2", "再生的加护");
+        add("extrabotany.nature_orb_effect3", "森罗的加护");
+        add(ModItems.CORE_GOD.get(), "律者核心");
+        add("extrabotany.wings0", "翅膀：律者");
+        add("extrabotany.wings1", "翅膀：芙兰朵露");
+        add("extrabotany.wings2", "翅膀：吉米");
+        add("extrabotany.wings3", "翅膀：蒸汽朋克");
 
         add(ModItems.MANASTEEL_SHIELD.get(), "魔力钢盾牌");
         add(ModItems.ELEMENT_SHIELD.get(), "源质钢盾牌");
@@ -218,6 +230,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.GOBLIN_SLAYER, "Befall", "装备一套哥布林杀手");
         prefixAdvancement(LibAdvancementNames.MIKU, "Cat's Dance", "装备一套星空歌姬");
         prefixAdvancement(LibAdvancementNames.BLOODY_ENCHANTRESS_USE, "Sweet Devil", "将自己沐浴在血海中");
+        prefixAdvancement(LibAdvancementNames.TINKLE_FLOWER_USE, "Project Diva desu", "在叮当舞花旁跳舞");
 
 
         prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "装备一套昴星团战斗女仆");
@@ -230,12 +243,9 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.FIRST_FRACTAL_CRAFT, "Infinity +1 Sword", "合成最初分型");
         prefixAdvancement(LibAdvancementNames.THE_UNIVERSE_CRAFT, "Gears of Love", "合成宇宙之心");
         prefixAdvancement(LibAdvancementNames.SAGES_MANA_RING_CRAFT, "COLOR", "合成贤者魔力指环");
-
-
-        add("advancement.extrabotany:sunringcraft.title", "Promise");
-        add("advancement.extrabotany:sunringcraft.desc", "获得圣阳尊戒");
-        add("advancement.extrabotany:moonpendantcraft.title", "Crystalline");
-        add("advancement.extrabotany:moonpendantcraft.desc", "获得蚀月之心");
+        prefixAdvancement(LibAdvancementNames.CORE_GOD_CRAFT, "All Hail The Queen", "获得律者核心");
+        prefixAdvancement(LibAdvancementNames.SUN_RING_CRAFT, "Promise", "获得圣阳尊戒");
+        prefixAdvancement(LibAdvancementNames.MOON_PENDANT_CRAFT, "Crystalline", "获得蚀月之心");
     }
 
     private void prefixAdvancement(String name, String title, String text)
@@ -444,6 +454,18 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.puredaisy_pendant", "白雏菊项链");
         add("extrabotany.page.puredaisy_pendant0", "手持$(item)白雏菊项链$(0)右击方块与$(item)白雏菊$(0)效果相同，但这一过程需要消耗少量魔力，并且随着使用次数的增加，冷却时间也会变长。即使采用某些方法修复它的耐久也是如此。");
         add("extrabotany.page.puredaisy_pendant1", "My beauty is in position.");
+        add("extrabotany.entry.potato_chip", "薯片");
+        add("extrabotany.page.potato_chip0", "$(item)薯片$(0)拥有着和不死图腾类似的效果。装备后，在受到致死伤害时会激活，消耗魔力获得多种增益并回复生命至5点。这一效果有一定的冷却时间，并且会消耗大量的魔力。");
+        add("extrabotany.page.potato_chip1", "");
+
+
+        add("extrabotany.entry.sun_ring", "圣阳尊戒");
+        add("extrabotany.page.sun_ring0", "$(item)圣阳尊戒$(0)是一种奇特的戒指。只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。有些能力是可以叠加的。当然，$(item)圣阳尊戒$(0)的力量也是有限度的，比如不能获得$(thing)储存魔力$(0)这种能力。$(br)另外，在工作台中将$(item)圣阳尊戒$(0)与$(item)莱茵河的黄金$(0)合成可以消去一种能力。");
+        add("extrabotany.page.sun_ring1", "");
+        add("extrabotany.entry.moon_pendant", "蚀月之心");
+        add("extrabotany.page.moon_pendant0", "$(item)蚀月之心$(0)和$(item)圣阳尊戒$(0)具有类似的力量，不同之处只是在于$(item)蚀月之心$(0)是一种项链。");
+        add("extrabotany.page.moon_pendant1", "");
+
 
         add("extrabotany.entry.mini_item", "缩小工具");
         add("extrabotany.page.mini_item0", "像$(thing)缩小花$(0)那样，可以使用$(thing)魔力$(0)缩小一些工具，从而达到不可思议的效果。$(br)$(br)比如$(item)活木短弓$(0)无需拉弓，左键即可射出箭矢。然而，这仍然会消耗箭矢，并且会造成低一些的伤害和高一点的击退。或许应该考虑更好一点的弓材料才对。$(br)这种方式射出的箭矢与水具有较强的亲和性，并且具有一定的穿透能力。");
@@ -488,6 +510,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.bloodyenchantress0", "$(item)鲜血妖姬$(0)能够将生物的生命值转化为$(thing)魔力$(0)，一旦有生物在其附近就会开始$(thing)魔力$(0)的转化，效率较为可观。需要注意的是通过这种方式献祭的生物不会有任何掉落。");
         add("extrabotany.page.bloodyenchantress1", "每次噬咬都会给对方添加血之诱惑效果并不断叠加，每层效果都会降低花的产魔，并且周围生物血之诱惑效果等级总和超过一定值时会停止工作。");
         add("extrabotany.page.bloodyenchantress2", "死亡是唯一的解药。");
+        add("extrabotany.entry.tinkle_flower","叮当舞花");
+        add("extrabotany.page.tinkle_flower0","$(item)叮当舞花$(0)可以将玩家的动能变为魔力。玩家在其附近移动时会产出$(thing)魔力$(0)，但也会加速玩家的饱食度消耗。");
+        add("extrabotany.page.tinkle_flower1","叮咚，我来找你了哦");
+        add("extrabotany.entry.edelweiss","雪绒花");
+        add("extrabotany.page.edelweiss0","$(item)雪绒花$(0)可以通过吞噬雪傀儡来产出$(thing)魔力$(0)。虽然$(thing)魔力$(0)产出是瞬时的，但也需要一小会的冷却。");
+        add("extrabotany.page.edelweiss1","If you are reading this, you can read.");
+
 
         add("extrabotany.entry.serenitian", "永寂龙胆");
         add("extrabotany.page.serenitian0", "$(item)永寂龙胆$(0)可以使周围同一平面上的被动产能花停止枯萎的进程，并使进程归零。");

@@ -75,6 +75,7 @@ public class Cosmetic extends ItemBauble
         public void doRender(HumanoidModel<?> bipedModel, ItemStack stack, LivingEntity living, PoseStack ms, MultiBufferSource buffers, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
         {
             var variant = ((Cosmetic) stack.getItem()).variant;
+            ms.pushPose();
             switch (variant.slot)
             {
                 default ->
@@ -91,7 +92,6 @@ public class Cosmetic extends ItemBauble
                     //it will come soon
                 }
             }
-            //dont know whats it for (?
             ms.pushPose();
             switch (variant)
             {
@@ -144,6 +144,7 @@ public class Cosmetic extends ItemBauble
                 }
             }
             renderItem(stack, living, ms, buffers, light);
+            ms.popPose();
         }
     }
 

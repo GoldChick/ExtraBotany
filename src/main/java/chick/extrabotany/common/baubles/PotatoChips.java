@@ -1,5 +1,6 @@
 package chick.extrabotany.common.baubles;
 
+import chick.extrabotany.common.baubles.cosmetic.Cosmetic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,13 +19,14 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.handler.EquipmentHandler;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
-public class PotatoChips extends ItemBauble
+public class PotatoChips extends Cosmetic
 {
     public static final int MANA_PER_DAMAGE = 1919810;
 
+    //TODO: CHECK IT
     public PotatoChips(Properties props)
     {
-        super(props);
+        super(Variant.PotatoChip, props);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerDeath);
     }
 
@@ -50,7 +52,7 @@ public class PotatoChips extends ItemBauble
                 int ticks = 60 * 20;
                 Minecraft.getInstance().particleEngine.createTrackingEmitter(player, ParticleTypes.TOTEM_OF_UNDYING, 30);
 
-                //TODO: IDK WHY THIS IS NON-BOSS!
+                //canChangeDimensions() is nonBoss() in 1.16.5
                 if (event.getSource().getEntity() != null && !event.getSource().getEntity().canChangeDimensions())
                 {
                     ticks = 120 * 20;

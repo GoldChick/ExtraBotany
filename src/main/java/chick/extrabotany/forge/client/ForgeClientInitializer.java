@@ -8,7 +8,7 @@ import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
 import chick.extrabotany.forge.impl.IPassiveFlowerCapImpl;
-import chick.extrabotany.common.baubles.SagesManaRing;
+import chick.extrabotany.common.baubles.relic.SagesManaRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
 import chick.extrabotany.common.loots.ModLootModifiers;

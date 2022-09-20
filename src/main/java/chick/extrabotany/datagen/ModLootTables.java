@@ -60,7 +60,7 @@ public class ModLootTables extends BlockLootProvider
                     {
                         if (type.isValid(block.defaultBlockState()))
                         {
-                            functionTable.put(block, b -> genCopyNbt(b, "ForgeData."+TAG_PASSIVE_DECAY_TICKS));
+                            functionTable.put(block, b -> genCopyNbt(b, TAG_PASSIVE_DECAY_TICKS));
                         }
                     }
                 });

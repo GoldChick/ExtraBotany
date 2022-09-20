@@ -1,5 +1,5 @@
 {
-  "type": "extrabotany:multi_upgrade",
+  "type": "extrabotany:tools_multi_upgrade",
   "group": "extrabotany",
   "pattern": [
     " # ",

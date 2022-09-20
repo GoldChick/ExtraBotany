@@ -1,14 +1,14 @@
 {
-  "parent": "extrabotany:main/nightmarefuel_eat",
+  "parent": "extrabotany:main/nightmare_fuel_eat",
   "display": {
     "icon": {
-      "item": "extrabotany:mana_reader"
+      "item": "extrabotany:the_chaos"
     },
     "title": {
-      "translate": "advancement.extrabotany:manareader_craft.title"
+      "translate": "advancement.extrabotany:the_chaos_craft.title"
     },
     "description": {
-      "translate": "advancement.extrabotany:manareader_craft.desc"
+      "translate": "advancement.extrabotany:the_chaos_craft.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "manareader": {
+    "pickup": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "extrabotany:mana_reader"
+              "extrabotany:the_chaos"
             ]
           }
         ]
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "manareader"
+      "pickup"
     ]
   ]
 }

@@ -136,5 +136,5 @@ public class SubTileBloodyEnchantress extends TileEntityGeneratingFlower
     {
         return RadiusDescriptor.Rectangle.square(getEffectivePos(), RANGE);
     }
-    //TODO:血腥妖姬
+
 }

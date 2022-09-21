@@ -30,6 +30,7 @@ import vazkii.botania.common.item.equipment.tool.bow.ItemLivingwoodBow;
 import vazkii.botania.common.item.relic.RelicImpl;
 import vazkii.botania.xplat.IXplatAbstractions;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -44,7 +45,7 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem, 
 
     public static IRelic makeRelic(ItemStack stack)
     {
-        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "challenge/failnaught"));
+        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "main/failnaught"));
     }
 
     @Override
@@ -125,7 +126,7 @@ public class Failnaught extends ItemLivingwoodBow implements ICustomDamageItem, 
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> list, TooltipFlag flags)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags)
     {
         RelicImpl.addDefaultTooltip(stack, list);
     }

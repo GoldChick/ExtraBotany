@@ -12,7 +12,7 @@
     {
       "type": "crafting",
       "text": "extrabotany.page.moon_pendant1",
-      "recipe": "minecraft/moon_pendant"
+      "recipe": "minecraft:moon_pendant"
     }
   ]
 }

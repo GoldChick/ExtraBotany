@@ -353,6 +353,16 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy(LibItemNames.HERO_MEDAL, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
                 .save(consumer, LibItemNames.MOON_PENDANT);
+        ShapedRecipeBuilder.shaped(ModItems.CORE_GOD.get())
+                .pattern("zmz")
+                .pattern("ztz")
+                .pattern("zzz")
+                .define('m', ModItems.HERO_MEDAL.get())
+                .define('z', vazkii.botania.common.item.ModItems.sunnyQuartz)
+                .define('t', vazkii.botania.common.item.ModItems.flightTiara)
+                .group(MODID)
+                .unlockedBy(LibItemNames.HERO_MEDAL, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, LibItemNames.CORE_GOD);
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);

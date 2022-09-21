@@ -71,7 +71,7 @@ public class EntityJudahSpear extends Entity
         if (level.isClientSide)
         {
             WispParticleData data = WispParticleData.wisp(1, r, g, b, 1F);
-            //ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
+            // ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY(), getZ(), 0, 0, 0);
         }
         super.tick();
         setDeltaMovement(Vec3.ZERO);
@@ -91,15 +91,13 @@ public class EntityJudahSpear extends Entity
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, axis);
             for (LivingEntity living : entities)
             {
-                //if (living.getId() == getidid())
-                //    continue;
                 DamageHandler.INSTANCE.doDamage(living, new DamageSource("lightningBolt"), getDamage() * 1.6F, 0b11000001);
-                DamageHandler.INSTANCE.doDamage(living, new DamageSource("magic"), getDamage() * 0.15F, 0b11001111);
+                DamageHandler.INSTANCE.doDamage(living, new DamageSource("magic"), getDamage() * 0.15F, 0b11000111);
 
                 for (int i = 0; i < 4; i++)
                 {
                     WispParticleData data = WispParticleData.wisp(1, r, g, b, 1F);
-                    //ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY() + 0.5D, getZ(), 0, 0, 0);
+                    ClientProxy.INSTANCE.addParticleForceNear(level, data, getX(), getY() + 0.5D, getZ(), 0, 0, 0);
                 }
                 //ExtraBotanyAPI.addPotionEffect(living, ModPotions.divinejustice, 4);
             }

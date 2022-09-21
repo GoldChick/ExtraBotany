@@ -104,7 +104,7 @@ public class EntityJudahOath extends ThrowableItemProjectile
             level.addParticle(ParticleTypes.EXPLOSION_EMITTER, getX(), getY(), getZ(), 1D, 0D, 0D);
         }
         if (status == EntityJudahOath.Status.STANDBY)
-        {
+         {
             standby++;
 
             if (this.range <= 13F)
@@ -115,6 +115,8 @@ public class EntityJudahOath extends ThrowableItemProjectile
             {
                 if (this.tickCount % 4 == 0 && this.fakecount < 13)
                 {
+                    //fake spear
+                    //do not do dmg
                     if (getOwner() instanceof Player player)
                     {
                         EntityJudahSpear spear = new EntityJudahSpear(player, level);
@@ -123,9 +125,9 @@ public class EntityJudahOath extends ThrowableItemProjectile
                         spear.setDamage(getDamage());
                         spear.setFake(true);
                         spear.setType(JudahType.byId(getJudahType().ordinal()));
-                        if (!this.level.isClientSide)
+                        if (!level.isClientSide)
                         {
-                            this.level.addFreshEntity(spear);
+                            level.addFreshEntity(spear);
                         }
                     }
                     this.fakecount += 1;
@@ -133,18 +135,17 @@ public class EntityJudahOath extends ThrowableItemProjectile
 
                 AABB axis = new AABB(blockPosition()).inflate(range - 2.5F);
                 var entities = level.getEntitiesOfClass(LivingEntity.class, axis);
+                entities.remove((LivingEntity) getOwner());
                 double tx = getX();
                 double ty = getY() + 10;
                 double tz = getZ();
-
-                for (var living : entities)
+                LivingEntity target = entities.stream().filter(b -> !b.isRemoved()).findFirst().orElse(null);
+                if (target != null)
                 {
-                    if (living.getId() == getId() || living.isRemoved())
-                        continue;
-                    //      living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 9));
-                    tx = living.getX();
-                    ty = living.getY() + 10;
-                    tz = living.getZ();
+                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 9));
+                    tx = target.getX();
+                    ty = target.getY() + 10;
+                    tz = target.getZ();
                 }
 
                 if (this.standby > 20 && this.tickCount % 10 == 0 && this.count < 13)

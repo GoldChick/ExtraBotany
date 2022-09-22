@@ -345,7 +345,7 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .pattern("fmb")
                 .pattern("gza")
                 .define('m', ModItems.HERO_MEDAL.get())
-                .define('z', ModItems.MOON_PENDANT.get())
+                .define('z', ModItems.PURE_DAISY_PENDANT.get())
                 .define('a', vazkii.botania.common.item.ModItems.runeEnvy)
                 .define('b', vazkii.botania.common.item.ModItems.runeSloth)
                 .define('c', vazkii.botania.common.item.ModItems.runePride)

@@ -1,8 +1,8 @@
 package chick.extrabotany;
 
 import chick.extrabotany.common.ModItems;
-import chick.extrabotany.common.Registration;
 import chick.extrabotany.common.base.ConfigHandler;
+import chick.extrabotany.forge.ForgeCommonInitializer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -47,7 +48,10 @@ public class ExtraBotany
     public ExtraBotany()
     {
         //register
-        Registration.initRegistration();
+        ForgeCommonInitializer.registryInit();
+        //setup
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ForgeCommonInitializer::commonSetup);
+
         //create config
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);

@@ -153,6 +153,7 @@ public class ModItems
     public static final RegistryObject<Item> MANASTEEL_SHIELD = register(LibItemNames.MANASTEEL_SHIELD, () -> new ManaSteelShield(stackTo1()));
     public static final RegistryObject<Item> ELEMENT_SHIELD = register(LibItemNames.ELEMENT_SHIELD, () -> new ElementSteelShield(stackTo1()));
 
+    public static final RegistryObject<Item> MINI_TORANADO_ROD = register(LibItemNames.MINI_TORANADO_ROD, () -> new MiniToranadoRod(stackTo1()));
     public static final RegistryObject<Item> ROD_OF_DISCORD = register(LibItemNames.ROD_OF_DISCORD, () -> new RodOfDiscord(stackTo1()));
     public static final RegistryObject<Item> SHADOW_WARRIOR_HELM = register(LibItemNames.SHADOWWARRIOR_HELM, () -> new ShadowWarriorArmor(EquipmentSlot.HEAD, stackTo1()));
     public static final RegistryObject<Item> SHADOW_WARRIOR_CHEST = register(LibItemNames.SHADOWWARRIOR_CHEST, () -> new ShadowWarriorArmor(EquipmentSlot.CHEST, stackTo1()));

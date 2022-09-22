@@ -21,7 +21,7 @@
     {
       "type": "botania:mana_infusion",
       "text": "extrabotany.page.mini_item3",
-      "recipes": "extrabotany:mana_infusion/livingwood_shortbow"
+      "recipes": "extrabotany:mana_infusion/mana_shortarrow"
     },
     {
       "type": "text",

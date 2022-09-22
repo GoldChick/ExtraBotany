@@ -48,7 +48,6 @@ public class CapabilityInit
             ModItems.EXCALIBER.get(), Excaliber::makeRelic,
             ModItems.FIRST_FRACTAL.get(), FirstFractal::makeRelic,
 
-            ModItems.SAGES_MANA_RING.get(), SagesManaRing::makeRelic,
             ModItems.SUN_RING.get(), SunRing::makeRelic,
             ModItems.MOON_PENDANT.get(), MoonPendant::makeRelic
     ));

@@ -89,6 +89,8 @@ public class LibItemNames
     public static String CRYSTAL_CROSSBOW = "crystal_crossbow";
     public static String LIVINGWOOD_SHORTBOW = "livingwood_shortbow";
     public static String CRYSTAL_SHORTBOW = "crystal_shortbow";
+
+    public static String MINI_TORANADO_ROD = "mini_toranado_rod";
     public static String ROD_OF_DISCORD = "rod_of_discord";
     public static String SHADOWWARRIOR_HELM = "shadowwarrior_helm";
     public static String SHADOWWARRIOR_CHEST = "shadowwarrior_chest";

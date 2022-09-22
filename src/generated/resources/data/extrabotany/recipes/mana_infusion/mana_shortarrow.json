@@ -1,0 +1,10 @@
+{
+  "type": "botania:mana_infusion",
+  "input": {
+    "item": "extrabotany:mana_shortarrow"
+  },
+  "output": {
+    "item": "extrabotany:mana_shortarrow"
+  },
+  "mana": 100
+}

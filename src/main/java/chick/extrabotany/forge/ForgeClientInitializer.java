@@ -1,10 +1,12 @@
-package chick.extrabotany.forge.client;
+package chick.extrabotany.forge;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
 import chick.extrabotany.common.loots.ModLootModifiers;
+import chick.extrabotany.forge.client.CapabilityInit;
+import chick.extrabotany.forge.client.EntityRendererInit;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.forge.client.model.LayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
@@ -38,23 +40,9 @@ public class ForgeClientInitializer
         //projectile model
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelRegister);
         bus.addListener(MiscellaneousIcons.INSTANCE::onModelBake);
-        bus.addListener(ForgeClientInitializer::commonInit);
+
         ModItemProperties.init((item, id, prop) -> ItemProperties.register(item.asItem(), id, prop));
-        // Anything that touches vanilla registries needs to happen during *a* registry event
-        // So just use a random one
-        bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
 
-        var forgebus = MinecraftForge.EVENT_BUS;
-
-        forgebus.addGenericListener(BlockEntity.class, CapabilityInit::attachBlockEntityCaps);
-        forgebus.addGenericListener(ItemStack.class, CapabilityInit::attachItemStackCaps);
-        NetworkHandler.registerMessage();
-    }
-
-    //Not Client LOL
-    public static void commonInit(FMLCommonSetupEvent evt)
-    {
-        PatchouliAPI.get().registerMultiblock(Registry.BLOCK.getKey(ModBlocks.DIMENSION_CATALYST.get()), TileDimensionCatalyst.MULTIBLOCK.get());
     }
 
     @SubscribeEvent

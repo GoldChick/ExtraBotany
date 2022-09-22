@@ -12,6 +12,46 @@
       "type": "crafting",
       "text": "extrabotany.page.dimension_catalyst1",
       "recipe": "minecraft:dimension_catalyst"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/enderpearl"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/shulker_shell"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/chorus_fruit"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/end_stone"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/nether_rack"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/soul_sand"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/quartz_ore"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/blaze_rod"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/totem_of_undying"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "recipes": "extrabotany:mana_infusion/elytra"
     }
   ]
 }

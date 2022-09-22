@@ -16,6 +16,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -54,7 +55,6 @@ public class CoreGod extends ItemRelicBauble implements IAdvancementRequirement
     {
         super(props);
         MinecraftForge.EVENT_BUS.addListener(this::updatePlayerFlyStatus);
-        MinecraftForge.EVENT_BUS.addListener(this::playerLoggedOut);
         IProxy.INSTANCE.runOnClient(() -> () -> AccessoryRenderRegistry.register(this, new Renderer()));
     }
 
@@ -168,9 +168,9 @@ public class CoreGod extends ItemRelicBauble implements IAdvancementRequirement
         }
     }
 
-    private void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event)
+    public static void playerLoggedOut(ServerPlayer player)
     {
-        String username = event.getPlayer().getGameProfile().getName();
+        String username = player.getGameProfile().getName();
         playersWithFlight.remove(username + ":false");
         playersWithFlight.remove(username + ":true");
     }

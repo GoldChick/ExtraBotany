@@ -32,19 +32,6 @@ public class SagesManaRing extends ItemManaRing
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected)
-    {
-        if (!world.isClientSide && entity instanceof Player player)
-        {
-            var relic = IXplatAbstractions.INSTANCE.findRelic(stack);
-            if (relic != null)
-            {
-                relic.tickBinding(player);
-            }
-        }
-    }
-
-    @Override
     public int getEntityLifespan(ItemStack itemStack, Level level)
     {
         return Integer.MAX_VALUE;
@@ -61,13 +48,6 @@ public class SagesManaRing extends ItemManaRing
             setMana(full, MAX_MANA);
             stacks.add(full);
         }
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags)
-    {
-        super.appendHoverText(stack, world, tooltip, flags);
-        RelicImpl.addDefaultTooltip(stack, tooltip);
     }
 
     public static class GreaterManaItem extends ItemManaRing.ManaItem
@@ -94,10 +74,5 @@ public class SagesManaRing extends ItemManaRing
         {
             return MAX_MANA * stack.getCount();
         }
-    }
-
-    public static IRelic makeRelic(ItemStack stack)
-    {
-        return new RelicImpl(stack, new ResourceLocation(ExtraBotany.MODID, "main/" + LibAdvancementNames.SAGES_MANA_RING_CRAFT));
     }
 }

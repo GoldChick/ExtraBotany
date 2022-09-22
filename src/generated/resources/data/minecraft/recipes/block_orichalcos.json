@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    },
+    {
+      "item": "extrabotany:orichalcos"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:block_orichalcos"
+  }
+}

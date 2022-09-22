@@ -14,6 +14,7 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -117,19 +118,13 @@ public abstract class AbstractMultiUpgradedBauble extends ItemBauble implements 
     }
 
     /**
-     * remove the last bauble
-     */
-    public void removeLastBauble(ItemStack base)
-    {
-        removeBauble(base, getBaublesAmount(base) - 1);
-    }
-
-    /**
      * remove bauble from index
-     * @param index start from ZERO to MAX_AMOUNT-1
+     *
+     * @param index start from ZERO to MAX_AMOUNT-1<p>
      */
     public void removeBauble(ItemStack base, int index)
     {
+        index = Mth.clamp(index, 0, getBaublesAmount(base) - 1);
         var base_cmp = ItemNBTHelper.getCompound(base, TAG_BAUBLE_NBT, false);
         int j = 0;
         for (int i = 0; i < getMaxAmount(); i++)

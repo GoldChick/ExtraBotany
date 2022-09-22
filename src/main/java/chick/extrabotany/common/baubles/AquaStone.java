@@ -26,6 +26,7 @@ public class AquaStone extends ItemBauble
         }
     }
 
+
     @Override
     public boolean canEquip(ItemStack stack, LivingEntity entity)
     {

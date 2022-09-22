@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    },
+    {
+      "item": "extrabotany:shadowium"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:block_shadowium"
+  }
+}

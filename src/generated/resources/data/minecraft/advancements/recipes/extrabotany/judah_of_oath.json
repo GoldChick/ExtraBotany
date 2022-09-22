@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:judah_of_oath"
+    ]
+  },
+  "criteria": {
+    "the_origin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:hero_medal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:judah_of_oath"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "the_origin",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -3,6 +3,7 @@ package chick.extrabotany.datagen;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.PowerFrame;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -30,20 +31,20 @@ public class ModBlockStates extends BlockStateProvider
 
         //just create json for floating flower!
         var stream = Registry.BLOCK.stream().filter(b -> b.getRegistryName().getNamespace().equals(ExtraBotany.MODID));
-
-        stream.forEach(block ->
-        {
-            if (block instanceof BlockSpecialFlower)
-            {
-                simpleFlowerTexture(block);
-            } else if (block instanceof BlockFloatingSpecialFlower)
-            {
-                simpleFloatingFlowerTexture(block);
-            } else //simple block
-            {
-                simpleBlock(block);
-            }
-        });
+        stream.filter(b -> !(b instanceof PowerFrame))
+                .forEach(block ->
+                {
+                    if (block instanceof BlockSpecialFlower)
+                    {
+                        simpleFlowerTexture(block);
+                    } else if (block instanceof BlockFloatingSpecialFlower)
+                    {
+                        simpleFloatingFlowerTexture(block);
+                    } else //simple block
+                    {
+                        simpleBlock(block);
+                    }
+                });
     }
 
     private void simpleFlowerTexture(Block... flowers)

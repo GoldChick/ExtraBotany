@@ -458,7 +458,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.potato_chip0", "$(item)Potato Chip$(0) functions almost the same as Totem of Undying. When you are taking deadly damage, it will trigger, consume mana to recover you. It has 60s cool down and will cost a great amount of $(thing)mana$(0).");
         add("extrabotany.page.potato_chip1", "");
         add("extrabotany.entry.elf_king_ring", "Ring of Elven King");
-        add("extrabotany.page.elf_king_ring0", "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) with $(item)Das Rheingold$(0) could remove one of the abilities.");
+        add("extrabotany.page.elf_king_ring0", "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) could remove one of the abilities.");
         add("extrabotany.page.elf_king_ring1", "");
 
         add("extrabotany.entry.sun_ring", "Ring of Sacred Sun");

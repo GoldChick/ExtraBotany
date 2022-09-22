@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "zbz",
+    "btb",
+    "zbz"
+  ],
+  "key": {
+    "t": {
+      "item": "botania:mana_pearl"
+    },
+    "z": {
+      "item": "botania:terrasteel_ingot"
+    },
+    "b": {
+      "item": "botania:dragonstone"
+    }
+  },
+  "result": {
+    "item": "extrabotany:nature_orb"
+  }
+}

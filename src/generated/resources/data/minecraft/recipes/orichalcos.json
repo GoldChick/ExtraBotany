@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:block_orichalcos"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:orichalcos",
+    "count": 9
+  }
+}

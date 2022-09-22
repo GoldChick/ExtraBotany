@@ -194,6 +194,7 @@ public class ModItems
         r.accept(PrimoGemRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "primo_gem_buy_fate"));
         r.accept(ToolsMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "tools_multi_upgrade"));
         r.accept(BaublesMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "baubles_multi_upgrade"));
+        r.accept(BaublesMultiRemoveRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "baubles_multi_remove"));
         //just place it here lol
         registerRewardBag();
     }

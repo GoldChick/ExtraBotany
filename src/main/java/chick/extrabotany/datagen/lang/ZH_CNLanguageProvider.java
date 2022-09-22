@@ -459,7 +459,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.potato_chip0", "$(item)薯片$(0)拥有着和不死图腾类似的效果。装备后，在受到致死伤害时会激活，消耗魔力获得多种增益并回复生命至5点。这一效果有一定的冷却时间，并且会消耗大量的魔力。");
         add("extrabotany.page.potato_chip1", "");
         add("extrabotany.entry.elf_king_ring", "精灵王指环");
-        add("extrabotany.page.elf_king_ring0", "$(item)精灵王指环$(0)是一种奇特的戒指，只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。$(thing)储存魔力$(0)等能力不能正常作用于$(item)精灵王指环$(0)。$(item)精灵王指环$(0)可以额外获取总共两个戒指的能力，有些能力可以叠加作用。$(br)对$(thing)遗物$(0)不生效。$(br)另外，在工作台中将$(item)精灵王指环$(0)与$(item)莱茵河的黄金$(0)合成可以消去一种能力。");
+        add("extrabotany.page.elf_king_ring0", "$(item)精灵王指环$(0)是一种奇特的戒指，只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。$(thing)储存魔力$(0)等能力不能正常作用于$(item)精灵王指环$(0)。$(item)精灵王指环$(0)可以额外获取总共两个戒指的能力，有些能力可以叠加作用。$(br)对$(thing)遗物$(0)不生效。$(br)另外，在工作台中可以消去$(item)精灵王指环$(0)的能力。");
         add("extrabotany.page.elf_king_ring1", "");
 
         add("extrabotany.entry.sun_ring", "圣阳尊戒");

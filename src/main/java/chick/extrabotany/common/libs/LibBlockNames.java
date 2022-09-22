@@ -7,6 +7,8 @@ public class LibBlockNames
     public static String BLOCK_PHOTONIUM = "block_photonium";
     public static String BLOCK_SHADOWIUM = "block_shadowium";
 
+    public static String POWER_FRAME = "power_frame";
+
     //no other Block Entity Types should start with this!
     //or forge.client.EntityRenderer will crash!
     public static String FLOWER_BE_TYPE_PREFIX = "flower_";

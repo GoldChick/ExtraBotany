@@ -3,6 +3,7 @@ package chick.extrabotany.common.blocks;
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
+import chick.extrabotany.common.blocks.tile.TilePowerFrame;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -21,6 +22,7 @@ public class ModTiles
     private static final Map<ResourceLocation, BlockEntityType<?>> ALL = new HashMap<>();
 
     public static final BlockEntityType<TileDimensionCatalyst> DIMENSION_CATALYST = type(new ResourceLocation(ExtraBotany.MODID, ModBlocks.DIMENSION_CATALYST.get().getDescriptionId()), TileDimensionCatalyst::new, ModBlocks.DIMENSION_CATALYST.get());
+    public static final BlockEntityType<TilePowerFrame> POWER_FRAME = type(new ResourceLocation(ExtraBotany.MODID, ModBlocks.POWER_FRAME.get().getDescriptionId()), TilePowerFrame::new, ModBlocks.POWER_FRAME.get());
 
     private static <T extends BlockEntity> BlockEntityType<T> type(ResourceLocation id, BiFunction<BlockPos, BlockState, T> func, Block... blocks)
     {

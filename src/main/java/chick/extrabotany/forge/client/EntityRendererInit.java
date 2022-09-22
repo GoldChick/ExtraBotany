@@ -53,6 +53,7 @@ public final class EntityRendererInit
     public static void registerBlockEntityRenderers(vazkii.botania.client.render.entity.EntityRenderers.BERConsumer consumer)
     {
         consumer.register(ModTiles.DIMENSION_CATALYST, RenderTileDimension::new);
+        consumer.register(ModTiles.POWER_FRAME, RenderTileDimension::new);
         //Not Safe, But useful
         Registry.BLOCK_ENTITY_TYPE.stream()
                 .filter(b -> b.getRegistryName().getNamespace().equals(ExtraBotany.MODID))

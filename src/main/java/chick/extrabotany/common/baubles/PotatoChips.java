@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,7 +17,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.handler.EquipmentHandler;
-import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 public class PotatoChips extends Cosmetic
 {
@@ -51,7 +50,7 @@ public class PotatoChips extends Cosmetic
                 player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
                 int ticks = 60 * 20;
                 Minecraft.getInstance().particleEngine.createTrackingEmitter(player, ParticleTypes.TOTEM_OF_UNDYING, 30);
-
+                player.awardStat(Stats.ITEM_USED.get(this));
                 //canChangeDimensions() is nonBoss() in 1.16.5
                 if (event.getSource().getEntity() != null && !event.getSource().getEntity().canChangeDimensions())
                 {
@@ -72,25 +71,4 @@ public class PotatoChips extends Cosmetic
     {
         return EquipmentHandler.findOrEmpty(this, entity).isEmpty();
     }
-
-    /*
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public void doRender(BipedModel<?> bipedModel, ItemStack stack, LivingEntity player, MatrixStack ms, IRenderTypeBuffer buffers, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
-        {
-            ms.push();
-            bipedModel.bipedHead.translateRotate(ms);
-            ms.translate(0, -0.3, -0.3);
-            ms.scale(0.6F, -0.6F, -0.6F);
-            renderItem(stack, ms, buffers, light);
-            ms.pop();
-        }
-
-
-
-    public static void renderItem(ItemStack stack, MatrixStack ms, IRenderTypeBuffer buffers, int light)
-    {
-        Minecraft.getInstance().getItemRenderer().renderItem(stack, ItemCameraTransforms.TransformType.NONE, light, OverlayTexture.NO_OVERLAY, ms, buffers);
-    }
-*/
 }

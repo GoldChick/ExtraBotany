@@ -1,0 +1,36 @@
+{
+  "type": "botania:runic_altar",
+  "output": {
+    "item": "extrabotany:potato_chip"
+  },
+  "mana": 50000,
+  "ingredients": [
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:blast_furnace"
+    },
+    {
+      "item": "minecraft:campfire"
+    },
+    {
+      "item": "botania:cosmetic_tiny_potato_mask"
+    },
+    {
+      "item": "botania:tiny_potato"
+    },
+    {
+      "item": "extrabotany:gilded_mashed_potato"
+    },
+    {
+      "item": "extrabotany:the_chaos"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "zmz",
+    "ztz",
+    "zzz"
+  ],
+  "key": {
+    "m": {
+      "item": "extrabotany:gilded_mashed_potato"
+    },
+    "z": {
+      "item": "botania:gaia_ingot"
+    },
+    "t": {
+      "item": "extrabotany:the_origin"
+    }
+  },
+  "result": {
+    "item": "extrabotany:judah_of_oath"
+  }
+}

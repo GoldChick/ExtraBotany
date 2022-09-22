@@ -13,6 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
+import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.crafting.ModRecipeTypes;
 import vazkii.botania.common.helper.ItemNBTHelper;
 
@@ -73,6 +76,8 @@ public class ModRunicAltarRecipes extends RecipeProvider
         consumer.accept(new RunicAltar(idFor("powerglove"), new ItemStack(ModItems.POWER_GLOVE.get()), 3200, cloth, cloth, cloth, mana_diamond, wrath));
         consumer.accept(new RunicAltar(idFor(LibItemNames.ORICHALCOS), new ItemStack(ModItems.ORICHALCOS.get()), 1000000, gaiaIngot, gaiaIngot, gaiaSoul, gaiaSoul, gaiaSoul, gaiaSoul, medal, mashed_potato, Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.AMETHYST_BLOCK)));
         consumer.accept(new RunicAltar(idFor(LibItemNames.ELF_KING_RING), new ItemStack(ModItems.ELF_KING_RING.get()), 100000, Ingredient.of(vazkii.botania.common.item.ModItems.pixieRing), spring, element_steel, element_steel, elf_quartz, elf_quartz, Ingredient.of(Items.BAMBOO), Ingredient.of(Items.BAMBOO)));
+        Ingredient undead_totem = Ingredient.of(Items.TOTEM_OF_UNDYING);
+        consumer.accept(new RunicAltar(idFor(LibItemNames.POTATO_CHIP), new ItemStack(ModItems.POTATO_CHIP.get()), 50000, undead_totem, undead_totem, undead_totem, Ingredient.of(Blocks.BLAST_FURNACE), Ingredient.of(Blocks.CAMPFIRE), Ingredient.of(vazkii.botania.common.item.ModItems.tinyPotatoMask), Ingredient.of(ModBlocks.tinyPotato), mashed_potato, Ingredient.of(ModItems.THE_CHAOS.get())));
     }
 
     private static ResourceLocation idFor(String s)

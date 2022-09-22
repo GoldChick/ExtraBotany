@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:block_shadowium"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:shadowium",
+    "count": 9
+  }
+}

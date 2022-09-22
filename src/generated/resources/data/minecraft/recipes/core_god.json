@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "extrabotany",
+  "pattern": [
+    "zmz",
+    "ztz",
+    "zzz"
+  ],
+  "key": {
+    "m": {
+      "item": "extrabotany:hero_medal"
+    },
+    "z": {
+      "item": "botania:quartz_sunny"
+    },
+    "t": {
+      "item": "botania:flight_tiara"
+    }
+  },
+  "result": {
+    "item": "extrabotany:core_god"
+  }
+}

@@ -237,7 +237,7 @@
   "extrabotany.page.elementstone2": "Earth Stone",
   "extrabotany.page.elementstone3": "Aqua Stone",
   "extrabotany.page.elementstone4": "Ignis Stone",
-  "extrabotany.page.elf_king_ring0": "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) with $(item)Das Rheingold$(0) could remove one of the abilities.",
+  "extrabotany.page.elf_king_ring0": "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) could remove one of the abilities.",
   "extrabotany.page.elf_king_ring1": "",
   "extrabotany.page.excaliber0": "$(item)Excaliber$(0) could shoot golden mana beam that will automatically trace enemies in a large area.",
   "extrabotany.page.excaliber1": "",

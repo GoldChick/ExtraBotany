@@ -71,6 +71,7 @@ public class ModItemModels extends ItemModelProvider
                                 }
                             } else if (b instanceof BlockItem)
                             {
+                                if (!path.startsWith("power_frame"))
                                 withExistingParent(path, modLoc("block/" + path));
                             }
                         }

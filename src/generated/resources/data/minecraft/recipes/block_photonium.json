@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "extrabotany",
+  "ingredients": [
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    },
+    {
+      "item": "extrabotany:photonium"
+    }
+  ],
+  "result": {
+    "item": "extrabotany:block_photonium"
+  }
+}

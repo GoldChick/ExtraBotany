@@ -4,6 +4,7 @@ import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.crafting.*;
+import chick.extrabotany.common.libs.LibBlockNames;
 import chick.extrabotany.common.libs.LibItemNames;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.Registry;
@@ -58,6 +59,8 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .save(consumer, "dynamic/" + "primo_gem_buy_fate_craft");
         SpecialRecipeBuilder.special(BaublesMultiUpgradeRecipe.SERIALIZER)
                 .save(consumer, "dynamic/" + "baubles_multi_upgrade_craft");
+        SpecialRecipeBuilder.special(BaublesMultiRemoveRecipe.SERIALIZER)
+                .save(consumer, "dynamic/" + "baubles_multi_remove_craft");
 
         ShapelessRecipeBuilder.shapeless(vazkii.botania.common.item.ModItems.runeFire, 2)
                 .requires(ModItems.ELEMENT_RUNE.get())
@@ -363,6 +366,17 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy(LibItemNames.HERO_MEDAL, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
                 .save(consumer, LibItemNames.CORE_GOD);
+        ShapedRecipeBuilder.shaped(ModItems.NATURE_ORB.get())
+                .pattern("zbz")
+                .pattern("btb")
+                .pattern("zbz")
+                .define('t', vazkii.botania.common.item.ModItems.manaPearl)
+                .define('z', vazkii.botania.common.item.ModItems.terrasteel)
+                .define('b', vazkii.botania.common.item.ModItems.dragonstone)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.terrasteel))
+                .save(consumer, LibItemNames.NATURE_ORB);
+
 
         shapelessRecipes(consumer);
         weaponRecipes(consumer);
@@ -378,6 +392,37 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .group(MODID)
                 .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_POTATO.get()))
                 .save(consumer, LibItemNames.GILDED_MASHED_POTATO);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.BLOCK_SHADOWIUM.get())
+                .requires(ModItems.SHADOW_INGOT.get(), 9)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
+                .save(consumer, LibBlockNames.BLOCK_SHADOWIUM);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.BLOCK_PHOTONIUM.get())
+                .requires(ModItems.PHOTON_INGOT.get(), 9)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, LibBlockNames.BLOCK_PHOTONIUM);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.BLOCK_ORICHALCOS.get())
+                .requires(ModItems.ORICHALCOS.get(), 9)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
+                .save(consumer, LibBlockNames.BLOCK_ORICHALCOS);
+        ShapelessRecipeBuilder.shapeless(ModItems.SHADOW_INGOT.get(), 9)
+                .requires(ModBlocks.BLOCK_SHADOWIUM.get())
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SHADOW_INGOT.get()))
+                .save(consumer, LibItemNames.SHADOW_INGOT);
+        ShapelessRecipeBuilder.shapeless(ModItems.PHOTON_INGOT.get(), 9)
+                .requires(ModBlocks.BLOCK_PHOTONIUM.get())
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PHOTON_INGOT.get()))
+                .save(consumer, LibItemNames.PHOTON_INGOT);
+        ShapelessRecipeBuilder.shapeless(ModItems.ORICHALCOS.get(), 9)
+                .requires(ModBlocks.BLOCK_ORICHALCOS.get())
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ORICHALCOS.get()))
+                .save(consumer, LibItemNames.ORICHALCOS);
+
         ShapelessRecipeBuilder.shapeless(ModItems.LEN_SMELT.get())
                 .requires(vazkii.botania.common.item.ModItems.lensNormal)
                 .requires(vazkii.botania.common.item.ModItems.manaPowder)
@@ -445,6 +490,16 @@ public class ModCraftingTableRecipes extends RecipeProvider
 
     private void weaponRecipes(Consumer<FinishedRecipe> consumer)
     {
+        ShapedRecipeBuilder.shaped(ModItems.JUDAH_OATH.get())
+                .pattern("zmz")
+                .pattern("ztz")
+                .pattern("zzz")
+                .define('m', ModItems.GILDED_MASHED_POTATO.get())
+                .define('z', vazkii.botania.common.item.ModItems.gaiaIngot)
+                .define('t', ModItems.THE_ORIGIN.get())
+                .group(MODID)
+                .unlockedBy(LibItemNames.THE_ORIGIN, InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HERO_MEDAL.get()))
+                .save(consumer, LibItemNames.JUDAH_OATH);
         ShapedRecipeBuilder.shaped(ModItems.LIVINGWOOD_CROSSBOW.get())
                 .pattern("xdx")
                 .pattern("aba")
@@ -718,7 +773,6 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .unlockedBy("gaia_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.gaiaIngot))
                 .save(WrapperResult.ofType(ArmorUpgradeRecipe.SERIALIZER, consumer), LibItemNames.MAID_BOOTS);
     }
-
 
     protected void createFloatingFlowerRecipe(Consumer<FinishedRecipe> consumer, ItemLike input)
     {

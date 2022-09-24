@@ -4,7 +4,6 @@ import chick.extrabotany.api.BonusHelper;
 import chick.extrabotany.api.WeightCategory;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -85,7 +84,7 @@ public class Fates extends Item
         var blockentity = ctx.getLevel().getBlockEntity(ctx.getClickedPos());
         if (blockentity instanceof TileDimensionCatalyst dimensionCatalyst)
         {
-            return dimensionCatalyst.chouJiang(ctx.getPlayer(), ctx.getItemInHand(), categoryList, chanceMap)
+            return dimensionCatalyst.wish(ctx.getPlayer(), ctx.getItemInHand(), categoryList, chanceMap)
                     ? InteractionResult.SUCCESS
                     : InteractionResult.FAIL;
         }

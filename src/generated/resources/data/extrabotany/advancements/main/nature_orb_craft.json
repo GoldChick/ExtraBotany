@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/the_chaos_craft",
+  "display": {
+    "icon": {
+      "item": "extrabotany:nature_orb"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:nature_orb_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:nature_orb_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "nature_orb_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:nature_orb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nature_orb_craft"
+    ]
+  ]
+}

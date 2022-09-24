@@ -37,6 +37,7 @@ public class ModItemModels extends ItemModelProvider
                 .filter(p -> !(p instanceof ProjectileWeaponItem))
                 .toList());
         //write in ModItemOverrideModel
+        list.remove(ModItems.MINI_TORNADO_ROD.get());
         list.remove(ModItems.COCK_TAIL.get());
         //write by hand
         list.remove(ModItems.UNIVERSAL_PETAL.get());
@@ -70,7 +71,6 @@ public class ModItemModels extends ItemModelProvider
                                 }
                             } else if (b instanceof BlockItem)
                             {
-                                if (!path.startsWith("power_frame"))
                                 withExistingParent(path, modLoc("block/" + path));
                             }
                         }

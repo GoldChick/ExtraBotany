@@ -9,14 +9,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplate;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.common.lib.LibMisc;
 import vazkii.botania.data.util.ModelWithOverrides;
 import vazkii.botania.data.util.OverrideHolder;
 import vazkii.botania.mixin.AccessorTextureSlot;
@@ -35,6 +33,8 @@ public class ModItemOverrideModels implements DataProvider
     private static final TextureSlot LAYER1 = AccessorTextureSlot.make("layer1");
     private static final ModelTemplate GENERATED_1 = new ModelTemplate(Optional.of(new ResourceLocation("item/generated")), Optional.empty(), TextureSlot.LAYER0, LAYER1);
     private static final ModelWithOverrides GENERATED_OVERRIDES_1 = new ModelWithOverrides(new ResourceLocation("item/generated"), TextureSlot.LAYER0, LAYER1);
+    private static final ModelWithOverrides HANDHELD_OVERRIDES = new ModelWithOverrides(new ResourceLocation("item/handheld"), TextureSlot.LAYER0);
+
     private final DataGenerator generator;
 
     public ModItemOverrideModels(DataGenerator generator)
@@ -89,5 +89,21 @@ public class ModItemOverrideModels implements DataProvider
                 TextureMapping.layer0(chick.extrabotany.common.ModItems.EMPTY_BOTTLE.get()).put(LAYER1, TextureMapping.getItemTexture(chick.extrabotany.common.ModItems.COCK_TAIL.get(), "_0")),
                 flaskOverrides,
                 consumer);
+        items.remove(chick.extrabotany.common.ModItems.COCK_TAIL.get());
+
+        singleHandheldSuffixOverride(chick.extrabotany.common.ModItems.MINI_TORNADO_ROD.get(), "_active", new ResourceLocation(LibMisc.MOD_ID,"active"), 1.0, consumer);
+
     }
+    private static void singleHandheldOverride(Item item, ResourceLocation overrideModel, ResourceLocation predicate, double value, BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer) {
+        ModelTemplates.FLAT_HANDHELD_ITEM.create(overrideModel, TextureMapping.layer0(overrideModel), consumer);
+        HANDHELD_OVERRIDES.create(ModelLocationUtils.getModelLocation(item),
+                TextureMapping.layer0(item),
+                new OverrideHolder()
+                        .add(overrideModel, Pair.of(predicate, value)),
+                consumer);
+    }
+    private static void singleHandheldSuffixOverride(Item item, String suffix, ResourceLocation predicate, double value, BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer) {
+        singleHandheldOverride(item, ModelLocationUtils.getModelLocation(item, suffix), predicate, value, consumer);
+    }
+
 }

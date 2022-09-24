@@ -88,6 +88,8 @@ public class ModPetalRecipes extends RecipeProvider
         Ingredient manaPowder = Ingredient.of(ModItems.manaPowder);
         Ingredient gaiaSpirit = Ingredient.of(ModItems.lifeEssence);
 
+        Ingredient spirit_frag = Ingredient.of(chick.extrabotany.common.ModItems.SPIRIT_FRAG.get());
+
         consumer.accept(make(ModSubtiles.sunshinelily, yellow, yellow, yellow, white));
         consumer.accept(make(ModSubtiles.moonlightlily, red, red, red, white));
         consumer.accept(make(ModSubtiles.omniviolet, blue, blue, purple, purple, runeMana, runeSpring, runeLust));
@@ -97,7 +99,7 @@ public class ModPetalRecipes extends RecipeProvider
         consumer.accept(make(ModSubtiles.bloodyenchantress, red, red, red, red, runeFire, runeSummer, runeWrath));
 
         consumer.accept(make(ModSubtiles.serenitian, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed, redstoneRoot));
-        consumer.accept(make(ModSubtiles.annoying, purple, purple, blue, blue, gaiaSpirit, runeMana, runeSloth, runeGreed, redstoneRoot));
+        consumer.accept(make(ModSubtiles.annoying, green,pink,pink,white,white,runeMana,spirit_frag));
 
     }
 

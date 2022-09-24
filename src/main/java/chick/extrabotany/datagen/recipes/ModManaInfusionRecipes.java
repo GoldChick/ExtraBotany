@@ -8,6 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -33,8 +34,9 @@ public class ModManaInfusionRecipes extends RecipeProvider
     {
         consumer.accept(new ManaInfusion(idFor(LibItemNames.NIGHTMARE_FUEL), new ItemStack(ModItems.NIGHTMARE_FUEL.get()), Ingredient.of(Items.COAL), 1000));
         consumer.accept(new ManaInfusion(idFor(LibItemNames.LIVINGWOOD_SHORTBOW), new ItemStack(ModItems.LIVINGWOOD_SHORTBOW.get()), Ingredient.of(vazkii.botania.common.item.ModItems.livingwoodBow), 2000));
-        consumer.accept(new ManaInfusion(idFor(LibItemNames.MANA_SHORTARROW), new ItemStack(ModItems.MANA_SHORTARROW.get()), Ingredient.of(ModItems.MANA_SHORTARROW.get()), 100));
+        consumer.accept(new ManaInfusion(idFor(LibItemNames.MANA_SHORTARROW), new ItemStack(ModItems.MANA_SHORTARROW.get()), Ingredient.of(ItemTags.ARROWS), 100));
         consumer.accept(new ManaInfusion(idFor(LibItemNames.FRIED_CHICKEN), new ItemStack(ModItems.FRIED_CHICKEN.get()), Ingredient.of(Items.COOKED_CHICKEN), 600));
+        consumer.accept(new ManaInfusion(idFor(LibItemNames.MINI_TORNADO_ROD), new ItemStack(ModItems.MINI_TORNADO_ROD.get()), Ingredient.of(vazkii.botania.common.item.ModItems.tornadoRod), 500));
 
         consumer.accept(ManaInfusion.dimension(idFor("enderpearl"), new ItemStack(Items.ENDER_PEARL), Ingredient.of(Items.DIAMOND), 20000));
         consumer.accept(ManaInfusion.dimension(idFor("shulker_shell"), new ItemStack(Items.SHULKER_SHELL), Ingredient.of(Items.DIAMOND_HORSE_ARMOR), 20000));

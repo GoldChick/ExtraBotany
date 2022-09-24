@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "extrabotany:item/mini_tornado_rod"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "botania:active": 1.0
+      },
+      "model": "extrabotany:item/mini_tornado_rod_active"
+    }
+  ]
+}

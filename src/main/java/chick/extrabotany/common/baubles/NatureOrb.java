@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
+import vazkii.botania.common.item.equipment.bauble.ItemManaRing;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class NatureOrb extends ItemBauble
     }
 
     public static final String TAG_XP = "xp";
+    //Same as ManaRing
     public static final int MAX_XP = 500000;
 
     @Override
@@ -60,7 +62,7 @@ public class NatureOrb extends ItemBauble
             stacks.add(new ItemStack(this));
 
             ItemStack full = new ItemStack(this);
-            setXP(full, getMaxXP());
+            ItemManaRing.setMana(full, MAX_XP);
             stacks.add(full);
         }
     }
@@ -99,39 +101,6 @@ public class NatureOrb extends ItemBauble
         }
     }
 
-    @Override
-    public boolean isBarVisible(@NotNull ItemStack stack)
-    {
-        return true;
-    }
-
-    @Override
-    public int getBarWidth(@NotNull ItemStack stack)
-    {
-        //I am sure it is int lol
-        return (int) Math.round(13.0D - (double) getXP(stack) * 13.0D / (double) getMaxXP());
-    }
-
-    public int getBarColor(@NotNull ItemStack stack)
-    {
-        double stackMaxDamage = (double) getMaxXP();
-        double f = Math.max(0.0D, (stackMaxDamage - (double) getXP(stack)) / stackMaxDamage);
-        return Mth.hsvToRgb((float) f / 3.0F, 1.0F, 1.0F);
-    }
-
-    public boolean addXP(ItemStack stack, int xp)
-    {
-        if (getXP(stack) >= getMaxXP())
-            return false;
-        setXP(stack, Math.min(Math.max(getXP(stack) + xp, 0), getMaxXP()));
-        return true;
-    }
-
-    public void setXP(ItemStack stack, int xp)
-    {
-        ItemNBTHelper.setInt(stack, TAG_XP, xp);
-    }
-
     public int getXP(ItemStack stack)
     {
         return ItemNBTHelper.getInt(stack, TAG_XP, 0);
@@ -151,7 +120,7 @@ public class NatureOrb extends ItemBauble
                 .distinct().forEach(potion ->
                 {
                     player.removeEffect(potion);
-                    addXP(stack, -50);
+                    //addXP(stack, -50);
                     ((ServerLevel) player.level).getChunkSource().broadcastAndSend(player, new ClientboundRemoveMobEffectPacket(player.getId(), potion));
                 });
     }

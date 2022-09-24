@@ -10,7 +10,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
@@ -104,7 +103,7 @@ public class TileDimensionCatalyst extends TileMod
         isActive = cmp.getBoolean(TAG_IS_ACTIVE);
     }
 
-    public boolean chouJiang(Player player, ItemStack stack, List<WeightCategory> categoryList, Map<WeightCategory, Float> chanceList)
+    public boolean wish(Player player, ItemStack stack, List<WeightCategory> categoryList, Map<WeightCategory, Float> chanceList)
     {
         if (!level.isClientSide)
         {

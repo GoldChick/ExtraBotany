@@ -1,6 +1,7 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.ModSubtiles;
@@ -148,6 +149,17 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .addCriterion(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, onPickup(ModItems.ROD_OF_DISCORD.get()))
                 .save(consumer, mainId(LibAdvancementNames.ROD_OF_DISCORD_CRAFT));
         Advancement.Builder.advancement()
+                .display(simple(ModItems.NATURE_ORB.get(), LibAdvancementNames.NATURE_ORB_CRAFT, FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion(LibAdvancementNames.NATURE_ORB_CRAFT, onPickup(ModItems.NATURE_ORB.get()))
+                .save(consumer, mainId(LibAdvancementNames.NATURE_ORB_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModBlocks.POWER_FRAME.get(), LibAdvancementNames.POWER_FRAME_CRAFT, FrameType.TASK))
+                .parent(thechaos_craft)
+                .addCriterion(LibAdvancementNames.POWER_FRAME_CRAFT, onPickup(ModBlocks.POWER_FRAME.get()))
+                .save(consumer, mainId(LibAdvancementNames.POWER_FRAME_CRAFT));
+
+        Advancement.Builder.advancement()
                 .display(simple(ModSubtiles.bloodyenchantress, LibAdvancementNames.BLOODY_ENCHANTRESS_USE, FrameType.TASK))
                 .parent(thechaos_craft)
                 .addCriterion("code_triggered", new ImpossibleTrigger.TriggerInstance())
@@ -189,6 +201,26 @@ public class ModAdvancementProvider extends AdvancementProvider
                 .parent(ego_defeat)
                 .addCriterion("the_universe", onPickup(ModItems.THE_UNIVERSE.get()))
                 .save(consumer, mainId(LibAdvancementNames.THE_UNIVERSE_CRAFT));
+        Advancement.Builder.advancement()
+                .display(simple(ModItems.SAGES_MANA_RING.get(), LibAdvancementNames.SAGES_MANA_RING_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion(LibAdvancementNames.SAGES_MANA_RING_CRAFT, onPickup(ModItems.SAGES_MANA_RING.get()))
+                .save(consumer, mainId(LibAdvancementNames.SAGES_MANA_RING_CRAFT));
+  Advancement.Builder.advancement()
+                .display(simple(ModItems.CORE_GOD.get(), LibAdvancementNames.CORE_GOD_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion(LibAdvancementNames.CORE_GOD_CRAFT, onPickup(ModItems.CORE_GOD.get()))
+                .save(consumer, mainId(LibAdvancementNames.CORE_GOD_CRAFT));
+  Advancement.Builder.advancement()
+                .display(simple(ModItems.SUN_RING.get(), LibAdvancementNames.SUN_RING_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion(LibAdvancementNames.SUN_RING_CRAFT, onPickup(ModItems.SUN_RING.get()))
+                .save(consumer, mainId(LibAdvancementNames.SUN_RING_CRAFT));
+  Advancement.Builder.advancement()
+                .display(simple(ModItems.MOON_PENDANT.get(), LibAdvancementNames.MOON_PENDANT_CRAFT, FrameType.TASK))
+                .parent(ego_defeat)
+                .addCriterion(LibAdvancementNames.MOON_PENDANT_CRAFT, onPickup(ModItems.MOON_PENDANT.get()))
+                .save(consumer, mainId(LibAdvancementNames.MOON_PENDANT_CRAFT));
 
 /*
         // Parent: root

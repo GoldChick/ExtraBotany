@@ -1,11 +1,14 @@
 package chick.extrabotany.forge.client;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModEntities;
 import chick.extrabotany.common.blocks.ModTiles;
+import chick.extrabotany.common.blocks.PowerFrame;
 import chick.extrabotany.common.libs.LibBlockNames;
 import chick.extrabotany.forge.client.render.entity.*;
 import chick.extrabotany.forge.client.render.tile.RenderTileDimension;
+import chick.extrabotany.forge.client.render.tile.RenderTilePowerFrame;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LightningBoltRenderer;
@@ -53,7 +56,7 @@ public final class EntityRendererInit
     public static void registerBlockEntityRenderers(vazkii.botania.client.render.entity.EntityRenderers.BERConsumer consumer)
     {
         consumer.register(ModTiles.DIMENSION_CATALYST, RenderTileDimension::new);
-        consumer.register(ModTiles.POWER_FRAME, RenderTileDimension::new);
+        consumer.register(ModTiles.POWER_FRAME, RenderTilePowerFrame::new);
         //Not Safe, But useful
         Registry.BLOCK_ENTITY_TYPE.stream()
                 .filter(b -> b.getRegistryName().getNamespace().equals(ExtraBotany.MODID))
@@ -69,6 +72,9 @@ public final class EntityRendererInit
                 .forEach(b ->
                 {
                     if (b instanceof BlockSpecialFlower)
+                    {
+                        setRenderLayer(b, RenderType.cutout());
+                    } else if (b instanceof PowerFrame)
                     {
                         setRenderLayer(b, RenderType.cutout());
                     }

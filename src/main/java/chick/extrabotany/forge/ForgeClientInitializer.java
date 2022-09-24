@@ -1,34 +1,23 @@
 package chick.extrabotany.forge;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.common.ModBlocks;
 import chick.extrabotany.common.ModItemProperties;
-import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
-import chick.extrabotany.common.loots.ModLootModifiers;
-import chick.extrabotany.forge.client.CapabilityInit;
 import chick.extrabotany.forge.client.EntityRendererInit;
 import chick.extrabotany.forge.client.model.MiscellaneousIcons;
 import chick.extrabotany.forge.client.model.LayerDefinitions;
 import chick.extrabotany.forge.client.render.ColorHandler;
-import chick.extrabotany.network.NetworkHandler;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.Registry;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import vazkii.patchouli.api.PatchouliAPI;
 
 @Mod.EventBusSubscriber(modid = ExtraBotany.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeClientInitializer
@@ -43,6 +32,7 @@ public class ForgeClientInitializer
 
         ModItemProperties.init((item, id, prop) -> ItemProperties.register(item.asItem(), id, prop));
 
+        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, ClientCapabilityInit::attachBlockEntityCaps);
     }
 
     @SubscribeEvent

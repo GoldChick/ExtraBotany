@@ -39,15 +39,19 @@ public class EN_USLanguageProvider extends LanguageProvider
 
         add(ModItems.MANA_READER.get(), "Mana Reader");
         add(ModItems.ROD_OF_DISCORD.get(), "Rod of Discord");
+        add(ModItems.MINI_TORNADO_ROD.get(), "Shortrod of Skies");
         add(ModItems.THE_CHAOS.get(), "The Chaos");
         add(ModItems.THE_ORIGIN.get(), "The Origin");
         add(ModItems.THE_END.get(), "The End");
         add(ModItems.THE_UNIVERSE.get(), "The Universe");
         add(ModItems.FRIED_CHICKEN.get(), "Fried Chicken");
+
         add(ModBlocks.DIMENSION_CATALYST.get(), "Dimension Catalyst");
+        add(ModBlocks.POWER_FRAME.get(), "Power Frame");
         add(ModBlocks.BLOCK_SHADOWIUM.get(), "Shadowium Block");
         add(ModBlocks.BLOCK_PHOTONIUM.get(), "Photonium Block");
         add(ModBlocks.BLOCK_ORICHALCOS.get(), "Orichalcos Block");
+
         add(ModItems.ORICHALCOS.get(), "Orichalcos Ingot");
         add(ModItems.TICKET.get(), "Invitation Letter to Yourself");
         add(ModItems.AERIALITE_INGOT.get(), "Aerialite");
@@ -121,6 +125,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.SHADOW_KATANA.get(), "Shadow Katana");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "Livingwood Crossbow");
         add(ModItems.LIVINGWOOD_SHORTBOW.get(), "Livingwood Shortbow");
+        add(ModItems.MANA_SHORTARROW.get(), "Mana Shortarrow");
+
         add(ModItems.TRUE_SHADOW_KATANA.get(), "True Shadow Katana");
         add(ModItems.TRUE_TERRA_BLADE.get(), "True Terra Blade");
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "True Thunstar Caller");
@@ -235,7 +241,8 @@ public class EN_USLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "Equip Shooting Guardian Armor Set");
 
         prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "NOT Discord!", "Craft Rod of Discord");
-
+        prefixAdvancement(LibAdvancementNames.POWER_FRAME_CRAFT, "Letter Song", "Obtain Power Frame");
+        prefixAdvancement(LibAdvancementNames.NATURE_ORB_CRAFT, "雨夢楼", "Obtain Nature Orb");
 
         prefixAdvancement(LibAdvancementNames.FAILNAUGHT_CRAFT, "from Y to Y", "Craft Failnaught");
         prefixAdvancement(LibAdvancementNames.EXCALIBER_CRAFT, "ReAct", "Craft First Fractal");
@@ -449,7 +456,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield2", "Adding $(item)Dirt(0) to the crafting materials will make the shield more compatible with the ground. Right-clicking at the ground will quickly create a wall of $(item)Dirt$(0). However, this makes the shield less durable and lose its original defensive ability.");
         add("extrabotany.page.manasteel_shield3", "Is it strong enough?");
         add("extrabotany.entry.forest_book", "Aranyaka");
-        add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 8 $(thing)HP$(0) to let you gain 5 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1.6 $(thing)hp$(0), capped at 5 hearts.");
+        add("extrabotany.page.forest_book0", "With $(item)Golden Apple$(0) and the power of Nature, you can craft $(item)Aranyaka$(0). Right click will cost 6 $(thing)HP$(0) to let you gain 6 $(thing)Golden Hearts$(0) and Effect $(thing)Remember$(0) for 5 seconds. After 5 seconds, every $(thing)Golden Heart$(0) will be converted into 1 $(thing)HP$(0), capped at 6 hearts.");
         add("extrabotany.page.forest_book1", "\"Hello,\" \"Thank You,\" and the Final \"Goodbye\".");
         add("extrabotany.entry.puredaisy_pendant", "Pure Daisy Pendant");
         add("extrabotany.page.puredaisy_pendant0", "By holding a $(item)Pure Daisy Pendant$(0) and right-clicking a block, you can instantly transform blocks like a $(item)Pure Daisy$(0), at the cost of a little mana. The more you use it, the more it cools down, even if you find some methods to repair it.");
@@ -460,7 +467,13 @@ public class EN_USLanguageProvider extends LanguageProvider
         add("extrabotany.entry.elf_king_ring", "Ring of Elven King");
         add("extrabotany.page.elf_king_ring0", "$(item)Ring of Elven King$(0) is a special ring. When crafted with another ring, it will probably obtain their ability. However, several abilities like $(thing)storing mana$(0) will not work on $(item)Ring of Elven King$(0). $(item)Ring of Elven King$(0) could obtain at most 2 abilities from other rings. The same abilities might stack. $(br)Do not work on $(thing)Relic$(0). $(br)Crafting $(item)Ring of Elven King$(0) could remove one of the abilities.");
         add("extrabotany.page.elf_king_ring1", "");
-
+        add("extrabotany.entry.power_frame","Power Frame");
+        add("extrabotany.page.power_frame0","Place a mana item or $(item)Nature Orb$(0) in the Power Frame, and the Power Frame will extract mana from the mana pool above and transfer to the item.");
+        add("extrabotany.page.power_frame1","");
+        add("extrabotany.entry.nature_orb","Nature Orb");
+        add("extrabotany.page.nature_orb0","The $(item)Nature Orb$(0) can store Natural Breath, a magical power which protects the carrier. Blessing of Mana will provide you with mana, Blessing of Regeneration will speed up your regeneration and Blessing of Senro will drive away bad effects on you. To collect Natural Breath it needs to be placed in Power Frame and a ritualistic multiblock structure around Power Frame is needed.");
+        add("extrabotany.page.nature_orb1","Not a Blood Orb.");
+        add("extrabotany.page.nature_orb2","");
         add("extrabotany.entry.sun_ring", "Ring of Sacred Sun");
         add("extrabotany.page.sun_ring0", "$(item)Ring of Sacred Sun$(0) is the upgraded version of $(item)Ring of Elven King$(0), with the power of obtain 8 additional abilities from other rings, even including $(thing)Relic$(0). However,$(item)Ring of Sacred Sun$(0) can not get some abilities like $(thing)storing mana$(0), either.");
         add("extrabotany.page.sun_ring1", "Lavawalker's Epiphany");

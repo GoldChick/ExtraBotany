@@ -9,7 +9,10 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import vazkii.botania.common.item.equipment.tool.bow.ItemLivingwoodBow;
+import vazkii.botania.common.item.rod.ItemTornadoRod;
 import vazkii.botania.network.TriConsumer;
+
+import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 @OnlyIn(Dist.CLIENT)
 public class ModItemProperties
@@ -43,5 +46,7 @@ public class ModItemProperties
         ClampedItemPropertyFunction blocking = (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F;
         consumer.accept(ModItems.MANASTEEL_SHIELD.get(), new ResourceLocation("blocking"), blocking);
         consumer.accept(ModItems.ELEMENT_SHIELD.get(), new ResourceLocation("blocking"), blocking);
+
+        consumer.accept(ModItems.MINI_TORNADO_ROD.get(), prefix("active"), (stack, world, living, seed) -> ItemTornadoRod.isFlying(stack) ? 1 : 0);
     }
 }

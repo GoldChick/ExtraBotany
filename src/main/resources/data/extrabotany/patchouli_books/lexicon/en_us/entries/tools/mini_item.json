@@ -30,7 +30,7 @@
     {
       "type": "botania:mana_infusion",
       "text": "extrabotany.page.mini_item5",
-      "recipes": "extrabotany:mana_infusion/livingwood_shortbow"
+      "recipes": "extrabotany:mana_infusion/mini_tornado_rod"
     }
   ]
 }

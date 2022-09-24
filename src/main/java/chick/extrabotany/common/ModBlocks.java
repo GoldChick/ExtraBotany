@@ -4,10 +4,15 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.blocks.DimensionCatalyst;
 import chick.extrabotany.common.blocks.PowerFrame;
 import chick.extrabotany.common.libs.LibBlockNames;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,7 +42,7 @@ public class ModBlocks
     public static final RegistryObject<Block> BLOCK_ORICHALCOS = BLOCKS.register(LibBlockNames.BLOCK_ORICHALCOS, () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(4f, 12f)));
     public static final RegistryObject<Item> BLOCK_ORICHALCOS_ITEM = fromBlock(BLOCK_ORICHALCOS);
 
-    public static final RegistryObject<Block> POWER_FRAME = BLOCKS.register(LibBlockNames.POWER_FRAME, () -> new PowerFrame(BlockBehaviour.Properties.of(Material.GLASS).requiresCorrectToolForDrops().strength(1f, 4f)));
+    public static final RegistryObject<Block> POWER_FRAME = BLOCKS.register(LibBlockNames.POWER_FRAME, () -> new PowerFrame(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.GLASS).noOcclusion().isValidSpawn((a, b, c, d) -> false).lightLevel((state) -> 15).isRedstoneConductor((a, b, c) -> false).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false).requiresCorrectToolForDrops().strength(0.5f, 4f)));
     public static final RegistryObject<Item> POWER_FRAME_ITEM = fromBlock(POWER_FRAME);
 
 
@@ -58,4 +63,5 @@ public class ModBlocks
     {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
     }
+
 }

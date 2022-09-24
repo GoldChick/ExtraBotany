@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import vazkii.botania.api.block.IWandHUD;
+import vazkii.botania.common.block.tile.TileAnimatedTorch;
 import vazkii.botania.xplat.IXplatAbstractions;
 
 import java.util.HashMap;
@@ -41,5 +43,10 @@ public class ModTiles
         {
             r.accept(e.getValue(), e.getKey());
         }
+    }
+
+    public static void registerWandHudCaps(vazkii.botania.common.block.tile.ModTiles.BECapConsumer<IWandHUD> consumer)
+    {
+        consumer.accept(be -> new TilePowerFrame.WandHud((TilePowerFrame) be), ModTiles.POWER_FRAME);
     }
 }

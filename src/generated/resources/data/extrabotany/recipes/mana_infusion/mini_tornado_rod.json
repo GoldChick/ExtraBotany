@@ -1,0 +1,10 @@
+{
+  "type": "botania:mana_infusion",
+  "input": {
+    "item": "botania:tornado_rod"
+  },
+  "output": {
+    "item": "extrabotany:mini_tornado_rod"
+  },
+  "mana": 500
+}

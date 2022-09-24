@@ -4,11 +4,13 @@ import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.xplat.IXplatAbstractions;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 import org.jetbrains.annotations.Nullable;
+import vazkii.botania.api.mana.IManaItem;
 
 public class ForgeXplatImpl implements IXplatAbstractions
 {
@@ -47,6 +49,13 @@ public class ForgeXplatImpl implements IXplatAbstractions
     public IPassiveFlowerCap findPassiveFlower(BlockEntity blockEntity)
     {
         return blockEntity.getCapability(ExtraBotanyCapabilities.PASSIVE_FLOWER).orElse(null);
+    }
+
+    @Nullable
+    @Override
+    public IManaItem findNatureOrb(ItemStack stack)
+    {
+        return stack.getCapability(ExtraBotanyCapabilities.NATURE_ORB).orElse(null);
     }
 
 }

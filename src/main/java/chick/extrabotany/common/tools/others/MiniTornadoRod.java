@@ -1,12 +1,8 @@
 package chick.extrabotany.common.tools.others;
 
-import chick.extrabotany.ExtraBotany;
-import net.minecraft.Util;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,17 +17,59 @@ import vazkii.botania.common.item.rod.ItemTornadoRod;
 
 import javax.annotation.Nonnull;
 
-public class MiniToranadoRod extends ItemTornadoRod
+public class MiniTornadoRod extends ItemTornadoRod
 {
-    public MiniToranadoRod(Properties props)
+    public MiniTornadoRod(Properties props)
     {
         super(props);
     }
 
-    protected static final int MAX_COUNTER = 20;
+    protected static final int MAX_COUNTER = 10;
 
     protected static final String TAG_FLYING = "flying";
     protected static final String TAG_FLYCOUNTER = "flyCounter";
+
+    protected static final int COST = 60;
+
+    @NotNull
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, @NotNull InteractionHand hand)
+    {
+        ItemStack stack = player.getItemInHand(hand);
+        if (getFlyCounter(stack) == 0 && ManaItemHandler.instance().requestManaExactForTool(stack, player, COST, false))
+        {
+            ManaItemHandler.instance().requestManaExactForTool(stack, player, COST, true);
+            setFlying(stack, true);
+
+            player.fallDistance = 0F;
+            double my = ManaItemHandler.instance().hasProficiency(player, stack) ? 2 : 1;
+
+            Vec3 oldMot = player.getDeltaMovement();
+
+            if (player.isFallFlying())
+            {
+                Vec3 lookDir = player.getLookAngle();
+                player.setDeltaMovement(new Vec3(lookDir.x() * my, lookDir.y() * my, lookDir.z() * my));
+            } else
+            {
+                player.setDeltaMovement(new Vec3(oldMot.x(), my, oldMot.z()));
+            }
+
+            player.playSound(ModSounds.airRod, 1F, 1F);
+            for (int i = 0; i < 5; i++)
+            {
+                WispParticleData data = WispParticleData.wisp(0.35F + (float) Math.random() * 0.1F, 0.25F, 0.25F, 0.25F);
+                world.addParticle(data, player.getX(), player.getY(), player.getZ(),
+                        0.2F * (float) (Math.random() - 0.5),
+                        -0.01F * (float) Math.random(),
+                        0.2F * (float) (Math.random() - 0.5));
+            }
+
+            return InteractionResultHolder.success(stack);
+        }
+
+        return InteractionResultHolder.pass(stack);
+    }
 
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity ent, int slot, boolean active)
@@ -39,43 +77,18 @@ public class MiniToranadoRod extends ItemTornadoRod
         if (ent instanceof Player player)
         {
             boolean damaged = getFlyCounter(stack) > 0;
-            boolean held = player.getMainHandItem() == stack || player.getOffhandItem() == stack;
 
             if (damaged && !isFlying(stack))
             {
                 setFlyCounter(stack, getFlyCounter(stack) - 1);
             }
-
             if (isFlying(stack))
             {
-                if (held)
+                setFlyCounter(stack, getFlyCounter(stack) + 1);
+                if (getFlyCounter(stack) == MAX_COUNTER)
                 {
-                    player.fallDistance = 0F;
-                    double my = ManaItemHandler.instance().hasProficiency(player, stack) ? 1.6 : 0.8;
-
-                    Vec3 oldMot = player.getDeltaMovement();
-
-                    if (player.isFallFlying())
-                    {
-                        Vec3 lookDir = player.getLookAngle();
-                        player.setDeltaMovement(new Vec3(lookDir.x() * my, lookDir.y() * my, lookDir.z() * my));
-                    } else
-                    {
-                        player.setDeltaMovement(new Vec3(oldMot.x(), my, oldMot.z()));
-                    }
-
-                    player.playSound(ModSounds.airRod, 1F, 1F);
-                    for (int i = 0; i < 5; i++)
-                    {
-                        WispParticleData data = WispParticleData.wisp(0.35F + (float) Math.random() * 0.1F, 0.25F, 0.25F, 0.25F);
-                        world.addParticle(data, player.getX(), player.getY(), player.getZ(),
-                                0.2F * (float) (Math.random() - 0.5),
-                                -0.01F * (float) Math.random(),
-                                0.2F * (float) (Math.random() - 0.5));
-                    }
+                    setFlying(stack, false);
                 }
-                setFlyCounter(stack, MAX_COUNTER);
-                setFlying(stack, false);
             }
 
             if (damaged)

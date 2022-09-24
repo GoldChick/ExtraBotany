@@ -213,8 +213,18 @@ public class ModCraftingTableRecipes extends RecipeProvider
                 .define('w', Items.BLAZE_ROD)
                 .define('c', ModItems.SPIRIT_FUEL.get())
                 .group(MODID)
-                .unlockedBy("alchemycatalyst", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.alchemyCatalyst))
-                .save(consumer, "dimension_catalyst");
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.block.ModBlocks.alchemyCatalyst))
+                .save(consumer, LibBlockNames.DIMENSION_CATALYST);
+        ShapedRecipeBuilder.shaped(ModBlocks.POWER_FRAME.get())
+                .pattern("aaa")
+                .pattern("gxg")
+                .pattern("aaa")
+                .define('x', vazkii.botania.common.block.ModBlocks.livingrock)
+                .define('a', ModTags.Items.INGOTS_MANASTEEL)
+                .define('g', vazkii.botania.common.item.ModItems.pixieDust)
+                .group(MODID)
+                .unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(vazkii.botania.common.item.ModItems.pixieDust))
+                .save(consumer, LibBlockNames.POWER_FRAME);
         ShapedRecipeBuilder.shaped(ModItems.PEACE_AMULET.get())
                 .pattern(" a ")
                 .pattern("axa")

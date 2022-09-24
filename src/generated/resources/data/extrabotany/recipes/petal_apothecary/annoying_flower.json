@@ -5,31 +5,25 @@
   },
   "ingredients": [
     {
-      "tag": "botania:petals/purple"
+      "tag": "botania:petals/green"
     },
     {
-      "tag": "botania:petals/purple"
+      "tag": "botania:petals/pink"
     },
     {
-      "tag": "botania:petals/blue"
+      "tag": "botania:petals/pink"
     },
     {
-      "tag": "botania:petals/blue"
+      "tag": "botania:petals/white"
     },
     {
-      "item": "botania:life_essence"
+      "tag": "botania:petals/white"
     },
     {
       "item": "botania:rune_mana"
     },
     {
-      "item": "botania:rune_sloth"
-    },
-    {
-      "item": "botania:rune_greed"
-    },
-    {
-      "item": "botania:redstone_root"
+      "item": "extrabotany:spirit_frag"
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:moon_pendant"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:moon_pendant_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:moon_pendant_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "moon_pendant_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:moon_pendant"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moon_pendant_craft"
+    ]
+  ]
+}

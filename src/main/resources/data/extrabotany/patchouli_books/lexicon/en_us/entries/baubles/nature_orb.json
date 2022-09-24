@@ -1,0 +1,50 @@
+{
+  "name": "extrabotany.entry.nature_orb",
+  "category": "extrabotany:extrabotany",
+  "icon": "extrabotany:nature_orb",
+  "entry_color": "aa00",
+  "advancement": "extrabotany:main/nightmarefuel_eat_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "extrabotany.page.nature_orb0"
+    },
+    {
+      "type": "crafting",
+      "text": "extrabotany.page.nature_orb1",
+      "recipe": "minecraft:nature_orb"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+      "pattern": [
+       [
+          "P_____P",
+          "_______",
+          "_______",
+          "_______",
+          "_______",
+          "_______",
+          "P_____P"
+        ],
+        [
+          "M_____M",
+          "_______",
+          "_______",
+          "___0___",
+          "_______",
+          "_______",
+          "M_____M"
+        ]
+      ],
+      "mapping": {
+        "P": "botania:natura_pylon",
+        "0": "extrabotany:power_frame",
+        "M": "botania:mana_pool"
+      },
+      "symmetrical": true
+    },
+      "text": "extrabotany.page.nature_orb2"
+    }
+  ]
+}

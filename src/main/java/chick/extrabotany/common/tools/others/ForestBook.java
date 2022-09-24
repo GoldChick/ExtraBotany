@@ -2,6 +2,7 @@ package chick.extrabotany.common.tools.others;
 
 import chick.extrabotany.common.ModEffects;
 import chick.extrabotany.common.base.DamageHandler;
+import chick.extrabotany.common.effects.Remember;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -27,18 +28,22 @@ public class ForestBook extends Item
         var stack = player.getItemInHand(hand);
         if (!level.isClientSide && player.getHealth() > 0)
         {
-            if (!player.hasEffect(ModEffects.REMEMBER.get()))
+            player.addEffect(new MobEffectInstance(ModEffects.REMEMBER.get(), getEffectTicks(), 0));
+
+            var num = Remember.getRememberMaxAbsorptionPerLevel(0);
+            if (player.getAbsorptionAmount() < num)
             {
-                player.addEffect(new MobEffectInstance(ModEffects.REMEMBER.get(), 5 * 20, 0));
-                if (player.getAbsorptionAmount() < 10F)
-                {
-                    DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 8.0F, DamageHandler.INSTANCE.CREATIVE + DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
-                    player.setAbsorptionAmount(10.0F);
-                    player.awardStat(Stats.ITEM_USED.get(this));
-                    return InteractionResultHolder.success(stack);
-                }
+                DamageHandler.INSTANCE.doDamage(player, DamageSource.MAGIC, 6.0F, DamageHandler.INSTANCE.BYPASS_INVUL + DamageHandler.INSTANCE.BYPASS_MAGIC + DamageHandler.INSTANCE.BYPASS_ABSORB);
+                player.setAbsorptionAmount(num);
+                player.getCooldowns().addCooldown(this, getEffectTicks() / 20);
+                return InteractionResultHolder.success(stack);
             }
         }
         return InteractionResultHolder.fail(stack);
+    }
+
+    protected int getEffectTicks()
+    {
+        return 5 * 20;
     }
 }

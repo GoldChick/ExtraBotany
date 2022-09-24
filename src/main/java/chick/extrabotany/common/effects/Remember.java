@@ -23,9 +23,14 @@ public class Remember extends MobEffect
     {
         if (living instanceof Player player)
         {
-            float amount = Math.min(player.getAbsorptionAmount(), (amp + 1) * 10F);
-            player.heal(amount * 0.8F);
+            float amount = Math.min(player.getAbsorptionAmount(), getRememberMaxAbsorptionPerLevel(amp));
+            player.heal(amount / 2F);
             player.setAbsorptionAmount(player.getAbsorptionAmount() - amount);
         }
+    }
+
+    public static float getRememberMaxAbsorptionPerLevel(int amp)
+    {
+        return (amp + 1) * 12F;
     }
 }

@@ -39,15 +39,19 @@ public class ZH_CNLanguageProvider extends LanguageProvider
 
         add(ModItems.MANA_READER.get(), "魔力读取器");
         add(ModItems.ROD_OF_DISCORD.get(), "不谐传送杖");
+        add(ModItems.MINI_TORNADO_ROD.get(), "天空短杖");
         add(ModItems.THE_CHAOS.get(), "混沌物质");
         add(ModItems.THE_ORIGIN.get(), "起源物质");
         add(ModItems.THE_END.get(), "终末物质");
         add(ModItems.THE_UNIVERSE.get(), "宇宙之心");
         add(ModItems.FRIED_CHICKEN.get(), "香香鸡");
+
         add(ModBlocks.DIMENSION_CATALYST.get(), "次元催化剂");
+        add(ModBlocks.POWER_FRAME.get(), "力量框架");
         add(ModBlocks.BLOCK_SHADOWIUM.get(), "暗影块");
         add(ModBlocks.BLOCK_PHOTONIUM.get(), "光子块");
         add(ModBlocks.BLOCK_ORICHALCOS.get(), "奥里哈钢块");
+
         add(ModItems.ORICHALCOS.get(), "奥利哈刚锭");
         add(ModItems.AERIALITE_INGOT.get(), "天空锭");
         add(ModItems.TICKET.get(), "寄给自己的邀请函");
@@ -122,6 +126,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.SHADOW_KATANA.get(), "影刃");
         add(ModItems.LIVINGWOOD_CROSSBOW.get(), "活木弩");
         add(ModItems.LIVINGWOOD_SHORTBOW.get(), "活木短弓");
+        add(ModItems.MANA_SHORTARROW.get(), "魔力短箭");
         add(ModItems.TRUE_SHADOW_KATANA.get(), "真·影刃");
         add(ModItems.TRUE_TERRA_BLADE.get(), "真·泰拉之刃");
         add(ModItems.TRUE_THUNSTAR_CALLER.get(), "真·星雷者");
@@ -237,6 +242,8 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         prefixAdvancement(LibAdvancementNames.MAID, "Drug Of Gold", "装备一套昴星团战斗女仆");
         prefixAdvancement(LibAdvancementNames.SHOOTING_GUARDIAN, "CONNECT", "装备一套银翼护卫");
         prefixAdvancement(LibAdvancementNames.ROD_OF_DISCORD_CRAFT, "不是Discord", "合成不谐传送杖");
+        prefixAdvancement(LibAdvancementNames.POWER_FRAME_CRAFT, "Letter Song", "获得力量框架");
+        prefixAdvancement(LibAdvancementNames.NATURE_ORB_CRAFT, "雨夢楼", "获得自然蕴息宝珠");
 
 
         prefixAdvancement(LibAdvancementNames.FAILNAUGHT_CRAFT, "from Y to Y", "合成百中弓");
@@ -450,7 +457,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.page.manasteel_shield2", "在制作材料中加入$(item)泥土(0)会让盾牌和大地的亲和能力更强，右击地面可以迅速创建一堵土墙。不幸的是，这让盾牌的耐久显著降低了，并且失去了普通的防御能力。");
         add("extrabotany.page.manasteel_shield3", "它会掉渣吗。");
         add("extrabotany.entry.forest_book", "森林书");
-        add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到8点$(thing)真实伤害$(0)并获得10点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多5颗金心回复最多8生命值。");
+        add("extrabotany.page.forest_book0", "将$(item)金苹果$(0)和自然的力量灌注进书本可以制作$(item)森林书$(0)。右击会受到6点$(thing)真实伤害$(0)并获得12点$(thing)生命吸收$(0)和5秒钟的$(thing)铭记$(0)效果。5秒后消耗最多6颗金心回复最多6生命值。");
         add("extrabotany.page.forest_book1", "“你好”，“谢谢”，最后是“再见”。");
         add("extrabotany.entry.puredaisy_pendant", "白雏菊项链");
         add("extrabotany.page.puredaisy_pendant0", "手持$(item)白雏菊项链$(0)右击方块与$(item)白雏菊$(0)效果相同，但这一过程需要消耗少量魔力，并且随着使用次数的增加，冷却时间也会变长。即使采用某些方法修复它的耐久也是如此。");
@@ -461,7 +468,13 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add("extrabotany.entry.elf_king_ring", "精灵王指环");
         add("extrabotany.page.elf_king_ring0", "$(item)精灵王指环$(0)是一种奇特的戒指，只要将它与别的戒指合成，就可能获得这种戒指的特殊能力。$(thing)储存魔力$(0)等能力不能正常作用于$(item)精灵王指环$(0)。$(item)精灵王指环$(0)可以额外获取总共两个戒指的能力，有些能力可以叠加作用。$(br)对$(thing)遗物$(0)不生效。$(br)另外，在工作台中可以消去$(item)精灵王指环$(0)的能力。");
         add("extrabotany.page.elf_king_ring1", "");
-
+        add("extrabotany.entry.power_frame","力量框架");
+        add("extrabotany.page.power_frame0","将魔力物品或者$(item)自然蕴息宝珠$(0)放入$(item)力量框架$(0)中，力量框架会抽取上方魔力池的魔力来为其充能。");
+        add("extrabotany.page.power_frame1","");
+        add("extrabotany.entry.nature_orb","自然蕴息宝珠");
+        add("extrabotany.page.nature_orb0","$(item)自然蕴息宝珠$(0)可以储存自然之息，利用自然的力量来守护携带者。魔力的加护会提供魔力，再生的加护会加快生命恢复，森罗的加护会清除负面状态。你需要搭建一个多方块结构来为自然蕴息宝珠充能，结构中魔力池中的魔力可以加快这一进度。");
+        add("extrabotany.page.nature_orb1","不是气血宝珠。");
+        add("extrabotany.page.nature_orb2","");
         add("extrabotany.entry.sun_ring", "圣阳尊戒");
         add("extrabotany.page.sun_ring0", "$(item)圣阳尊戒$(0)是$(item)精灵王指环$(0)的升级版，能够获取八个戒指的能力，包括遗物。然而，$(item)圣阳尊戒$(0)仍然不能获得$(thing)储存魔力$(0)等能力。");
         add("extrabotany.page.sun_ring1", "渡火者的醒悟");

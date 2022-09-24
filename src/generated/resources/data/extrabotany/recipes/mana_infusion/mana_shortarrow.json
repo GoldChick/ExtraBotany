@@ -1,7 +1,7 @@
 {
   "type": "botania:mana_infusion",
   "input": {
-    "item": "extrabotany:mana_shortarrow"
+    "tag": "minecraft:arrows"
   },
   "output": {
     "item": "extrabotany:mana_shortarrow"

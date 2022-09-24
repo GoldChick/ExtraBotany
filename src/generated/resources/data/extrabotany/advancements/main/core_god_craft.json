@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:core_god"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:core_god_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:core_god_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "core_god_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:core_god"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "core_god_craft"
+    ]
+  ]
+}

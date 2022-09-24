@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import static chick.extrabotany.forge.client.CapabilityInit.PASSIVE_FLOWER;
+import static chick.extrabotany.forge.CommonCapabilityInit.PASSIVE_FLOWER;
 import static vazkii.botania.common.block.subtile.generating.SubTileHydroangeas.TAG_PASSIVE_DECAY_TICKS;
 
 public class ModLootTables extends BlockLootProvider

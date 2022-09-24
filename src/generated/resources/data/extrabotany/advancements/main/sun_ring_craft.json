@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:sun_ring"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:sun_ring_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:sun_ring_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sun_ring_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:sun_ring"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sun_ring_craft"
+    ]
+  ]
+}

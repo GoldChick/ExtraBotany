@@ -1,13 +1,15 @@
-package chick.extrabotany.forge.client;
+package chick.extrabotany.forge;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModItems;
+import chick.extrabotany.common.baubles.NatureOrb;
 import chick.extrabotany.common.baubles.relic.MoonPendant;
 import chick.extrabotany.common.baubles.relic.SagesManaRing;
 import chick.extrabotany.common.baubles.relic.SunRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
 import chick.extrabotany.forge.impl.IPassiveFlowerCapImpl;
@@ -23,6 +25,7 @@ import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.api.mana.IManaItem;
+import vazkii.botania.common.item.equipment.bauble.ItemManaRing;
 import vazkii.botania.forge.CapabilityUtil;
 
 import java.util.Collections;
@@ -33,10 +36,13 @@ import java.util.function.Supplier;
 
 import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
-public class CapabilityInit
+public class CommonCapabilityInit
 {
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
+    ));
+    private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> NATURE_ORB = Suppliers.memoize(() -> Map.of(
+            ModItems.NATURE_ORB.get(), ItemManaRing.ManaItem::new
     ));
 
     private static final Supplier<Map<Item, Function<ItemStack, IRelic>>> RELIC = Suppliers.memoize(() -> Map.of(
@@ -65,6 +71,13 @@ public class CapabilityInit
                     CapabilityUtil.makeProvider(BotaniaForgeCapabilities.MANA_ITEM, makeManaItem.apply(stack)));
         }
 
+        var makeNatureOrb = NATURE_ORB.get().get(stack.getItem());
+        if (makeNatureOrb != null)
+        {
+            e.addCapability(new ResourceLocation(ExtraBotany.MODID, "nature_orb"),
+                    CapabilityUtil.makeProvider(ExtraBotanyCapabilities.NATURE_ORB, makeNatureOrb.apply(stack)));
+        }
+
         var makeRelic = RELIC.get().get(stack.getItem());
         if (makeRelic != null)
         {
@@ -73,19 +86,6 @@ public class CapabilityInit
         }
     }
 
-
-    private static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>> WAND_HUD = Suppliers.memoize(() ->
-    {
-        var ret = new IdentityHashMap<BlockEntityType<?>, Function<BlockEntity, IWandHUD>>();
-        ModSubtiles.registerWandHudCaps((factory, types) ->
-        {
-            for (var type : types)
-            {
-                ret.put(type, factory);
-            }
-        });
-        return Collections.unmodifiableMap(ret);
-    });
     public static final Supplier<Map<BlockEntityType<?>, Function<BlockEntity, IPassiveFlowerCap>>> PASSIVE_FLOWER = Suppliers.memoize(() -> Map.of(
             vazkii.botania.common.block.ModSubtiles.HYDROANGEAS, IPassiveFlowerCapImpl::new,
             ModSubtiles.SUNSHINELILY, IPassiveFlowerCapImpl::new,
@@ -100,13 +100,6 @@ public class CapabilityInit
     public static void attachBlockEntityCaps(AttachCapabilitiesEvent<BlockEntity> e)
     {
         var be = e.getObject();
-
-        var makeWandHud = WAND_HUD.get().get(be.getType());
-        if (makeWandHud != null)
-        {
-            e.addCapability(prefix("wand_hud"),
-                    CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, makeWandHud.apply(be)));
-        }
 
         var passiveFlower = PASSIVE_FLOWER.get().get(be.getType());
         if (passiveFlower != null)

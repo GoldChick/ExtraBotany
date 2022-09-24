@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/ego_defeat",
+  "display": {
+    "icon": {
+      "item": "extrabotany:sages_mana_ring"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:sages_mana_ring_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:sages_mana_ring_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sages_mana_ring_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:sages_mana_ring"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sages_mana_ring_craft"
+    ]
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "extrabotany:main/the_chaos_craft",
+  "display": {
+    "icon": {
+      "item": "extrabotany:power_frame"
+    },
+    "title": {
+      "translate": "advancement.extrabotany:power_frame_craft.title"
+    },
+    "description": {
+      "translate": "advancement.extrabotany:power_frame_craft.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "power_frame_craft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrabotany:power_frame"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "power_frame_craft"
+    ]
+  ]
+}

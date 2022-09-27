@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material_melting",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "input": "extrabotany:shadowium",
+  "temperature": 700,
+  "result": {
+    "fluid": "extrabotany:molten_shadowium",
+    "amount": 90
+  }
+}

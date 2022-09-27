@@ -134,6 +134,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.FIRST_FRACTAL.get(), "First Fractal");
         add(ModItems.FAILNAUGHT.get(), "Failnaught");
         add(ModItems.EXCALIBER.get(), "Excaliber");
+        add(ModItems.JUDAH_OATH.get(), "Judah of Oath");
 
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "Shadow Warrior Helmet");
         add(ModItems.SHADOW_WARRIOR_CHEST.get(), "Shadow Warrior Chestplate");

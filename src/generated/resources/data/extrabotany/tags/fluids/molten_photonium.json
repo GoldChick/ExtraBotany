@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "extrabotany:molten_photonium",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flowing_molten_photonium",
+      "required": false
+    }
+  ]
+}

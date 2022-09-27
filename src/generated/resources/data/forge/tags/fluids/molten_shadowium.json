@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#extrabotany:molten_shadowium",
+      "required": false
+    }
+  ]
+}

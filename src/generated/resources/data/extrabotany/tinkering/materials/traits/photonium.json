@@ -1,0 +1,20 @@
+{
+  "default": [
+    {
+      "name": "tconstruct:axe_scrape",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:axe_scrape",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:autosmelt",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:fiery",
+      "level": 1
+    }
+  ]
+}

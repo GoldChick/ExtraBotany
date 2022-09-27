@@ -134,6 +134,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.FIRST_FRACTAL.get(), "最初分型");
         add(ModItems.FAILNAUGHT.get(), "百中弓");
         add(ModItems.EXCALIBER.get(), "王者圣剑");
+        add(ModItems.JUDAH_OATH.get(), "犹大的誓约");
 
 
         add(ModItems.SHADOW_WARRIOR_HELM.get(), "暗影武士头盔");

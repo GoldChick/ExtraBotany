@@ -1,11 +1,14 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.optional.EXBOTCompat;
+import chick.extrabotany.common.optional.tconstruct.TConCompat;
 import chick.extrabotany.datagen.lang.EN_USLanguageProvider;
 import chick.extrabotany.datagen.lang.ZH_CNLanguageProvider;
 import chick.extrabotany.datagen.recipes.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
@@ -35,6 +38,11 @@ public class DataGenerators
             generator.addProvider(new FloatingFlowerModelProvider(generator));
             generator.addProvider(new EN_USLanguageProvider(generator, "en_us"));
             generator.addProvider(new ZH_CNLanguageProvider(generator, "zh_cn"));
+        }
+
+        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID))
+        {
+            TConCompat.tConDatagen(event);
         }
     }
 

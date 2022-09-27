@@ -7,10 +7,13 @@ import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
 import chick.extrabotany.common.brews.ModBrews;
+import chick.extrabotany.common.optional.EXBOTCompat;
+import chick.extrabotany.common.optional.tconstruct.TConCompat;
 import chick.extrabotany.network.NetworkHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,8 +22,11 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -50,7 +56,7 @@ public class ForgeCommonInitializer
         NetworkHandler.registerMessage();
 
         bus.addListener((PlayerEvent.PlayerLoggedOutEvent e) -> CoreGod.playerLoggedOut((ServerPlayer) e.getPlayer()));
-     }
+    }
 
     public static void registryInit()
     {
@@ -64,6 +70,15 @@ public class ForgeCommonInitializer
         //potions and brews
         ModBrews.registerBrews();
 
+        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID))
+        {
+            TConCompat.FLUIDS.register(bus);
+            TConCompat.MODIFIERS.register(bus);
+        }
+
+
+        //compat mod sends IMCs
+        bus.addListener(ForgeCommonInitializer::sendIMCs);
         //tiles
         bind(ForgeRegistries.BLOCK_ENTITIES, ModTiles::registerTiles);
         //flowers(subtiles)
@@ -82,6 +97,17 @@ public class ForgeCommonInitializer
         // So just use a random one
 
         //bus.addGenericListener(Block.class, (RegistryEvent.Register<Block> e) -> ModLootModifiers.init());
+    }
+
+    public static void sendIMCs(InterModEnqueueEvent evt)
+    {
+        EXBOTCompat.sendIMCs();
+    }
+
+    @SubscribeEvent
+    public static void registerCompatItems(RegistryEvent.Register<Item> evt)
+    {
+        EXBOTCompat.initCompatItems(evt);
     }
 
     public static <T extends IForgeRegistryEntry<T>> void bind(IForgeRegistry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source)

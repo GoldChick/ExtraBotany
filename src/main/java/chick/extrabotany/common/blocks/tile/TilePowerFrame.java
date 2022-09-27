@@ -3,6 +3,7 @@ package chick.extrabotany.common.blocks.tile;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.NatureOrb;
 import chick.extrabotany.common.blocks.ModTiles;
+import com.google.common.base.Suppliers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -12,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,6 +33,8 @@ import vazkii.patchouli.api.IMultiblock;
 import vazkii.patchouli.api.PatchouliAPI;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class TilePowerFrame extends TileSimpleInventory
@@ -170,6 +174,9 @@ public class TilePowerFrame extends TileSimpleInventory
 
     public static void serverTick(Level level, BlockPos worldPosition, BlockState state, TilePowerFrame self)
     {
+        boolean multi = MULTIBLOCK_ADV.get().validate(level, worldPosition) != null;
+
+
         int redstoneSignal = 0;
         for (Direction dir : Direction.values())
         {
@@ -178,7 +185,7 @@ public class TilePowerFrame extends TileSimpleInventory
 
         int speed = TRANSFER_SPEED;
 
-        if (MULTIBLOCK_ADV.get().validate(level, worldPosition) != null)
+        if (multi)
         {
             speed *= 2;
         }
@@ -187,40 +194,59 @@ public class TilePowerFrame extends TileSimpleInventory
         {
             var manaItem = IXplatAbstractions.INSTANCE.findManaItem(stack);
 
-            int chargeModifier = 100;
-
-            if (manaItem == null)
-            {
-                manaItem = chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrb(stack);
-                chargeModifier = 1;
-            }
+            int current = 0;
 
             if (manaItem != null)
             {
                 if (level.getBlockEntity(worldPosition.offset(0, 1, 0)) instanceof TilePool p)
                 {
-                    int current;
-
-                    if (redstoneSignal == 0)
+                    if (redstoneSignal == 0 && manaItem.canReceiveManaFromPool(p))
                     {
                         int manaToGet = Math.min(speed, p.getCurrentMana());
-                        int space = Math.max(0, manaItem.getMaxMana() - manaItem.getMana());
+                        int space = manaItem.getMaxMana() - manaItem.getMana();
                         current = Math.min(space, manaToGet);
-                    } else
+                    } else if (redstoneSignal > 0 && manaItem.canExportManaToPool(p))
                     {
                         int manaToGet = Math.min(speed, manaItem.getMana());
                         int space = Math.max(0, p.manaCap - p.getCurrentMana());
                         current = -Math.min(space, manaToGet);
                     }
-
-                    p.receiveMana(-current * chargeModifier / 100);
-                    manaItem.addMana(current * chargeModifier / 100);
-
-                    if (current > 0)
+                    p.receiveMana(-current);
+                    manaItem.addMana(current);
+                }
+            } else
+            {
+                var orb = chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
+                if (orb != null && multi && level.dayTime() % 20 == 0)
+                {
+                    if (level.getBlockEntity(worldPosition.offset(0, 1, 0)) instanceof TilePool p)
                     {
-                        self.setTransferring(true);
+                        int natureToGet;
+                        if (redstoneSignal == 0)
+                        {
+                            natureToGet = Math.min(speed / 100, p.getCurrentMana());
+                            int space = orb.getMaxNature() - orb.getNature();
+                            current = Math.min(space, natureToGet);
+                        } else
+                        {
+                            natureToGet = Math.min(speed / 100, orb.getNature());
+                            int space = Math.max(0, p.manaCap - p.getCurrentMana());
+                            current = -Math.min(space, natureToGet);
+                        }
+                        p.receiveMana(-current * 50);
+                        orb.addNature(current);
+                    }
+                    if (current >= 0 && orb.getNature() < orb.getMaxNature())
+                    {
+                        current = 20;
+                        orb.addNature(current);
                     }
                 }
+            }
+
+            if (current > 0)
+            {
+                self.setTransferring(true);
             }
         }
     }
@@ -255,10 +281,14 @@ public class TilePowerFrame extends TileSimpleInventory
         {
             String name = new ItemStack(frame.getBlockState().getBlock()).getHoverName().getString();
 
-            int color = 0x1e90ff;
 
             var stack = frame.getItemHandler().getItem(0);
 
+            int color = 0x32cd32;
+            if (COLOR.get().containsKey(stack.getItem()))
+            {
+                color = COLOR.get().get(stack.getItem());
+            }
             int curr = 0;
             int max = 500000;
 
@@ -267,13 +297,25 @@ public class TilePowerFrame extends TileSimpleInventory
             {
                 curr = manaItem.getMana();
                 max = manaItem.getMaxMana();
-            } else if (stack.getItem() instanceof NatureOrb orb)
+            } else
             {
-                curr = orb.getXP(stack);
+                var orb = chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
+                if (orb != null)
+                {
+                    curr = orb.getNature();
+                    max = orb.getMaxNature();
+                }
             }
             BotaniaAPIClient.instance().drawSimpleManaHUD(ms, color, curr, max, name);
 
             RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
         }
     }
+
+    protected static Supplier<Map<Item, Integer>> COLOR = Suppliers.memoize(() -> Map.of(
+            vazkii.botania.common.item.ModItems.manaRing, 0x1e90ff,
+            vazkii.botania.common.item.ModItems.manaRingGreater, 0x7cfc00,
+            ModItems.NATURE_ORB.get(), 0x7fff00,
+            ModItems.SAGES_MANA_RING.get(), 0xffff00
+    ));
 }

@@ -1,7 +1,8 @@
 package chick.extrabotany.forge.xplat;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
+import chick.extrabotany.api.cap.EXBOTCapabilities;
+import chick.extrabotany.api.cap.INatureOrbItem;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.xplat.IXplatAbstractions;
 import net.minecraft.world.item.ItemStack;
@@ -48,14 +49,14 @@ public class ForgeXplatImpl implements IXplatAbstractions
     @Override
     public IPassiveFlowerCap findPassiveFlower(BlockEntity blockEntity)
     {
-        return blockEntity.getCapability(ExtraBotanyCapabilities.PASSIVE_FLOWER).orElse(null);
+        return blockEntity.getCapability(EXBOTCapabilities.PASSIVE_FLOWER).orElse(null);
     }
 
     @Nullable
     @Override
-    public IManaItem findNatureOrb(ItemStack stack)
+    public INatureOrbItem findNatureOrbItem(ItemStack stack)
     {
-        return stack.getCapability(ExtraBotanyCapabilities.NATURE_ORB).orElse(null);
+        return stack.getCapability(EXBOTCapabilities.NATURE_ORB).orElse(null);
     }
 
 }

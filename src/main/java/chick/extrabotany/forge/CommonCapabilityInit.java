@@ -1,7 +1,8 @@
 package chick.extrabotany.forge;
 
 import chick.extrabotany.ExtraBotany;
-import chick.extrabotany.api.cap.ExtraBotanyCapabilities;
+import chick.extrabotany.api.cap.EXBOTCapabilities;
+import chick.extrabotany.api.cap.INatureOrbItem;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.NatureOrb;
@@ -9,7 +10,6 @@ import chick.extrabotany.common.baubles.relic.MoonPendant;
 import chick.extrabotany.common.baubles.relic.SagesManaRing;
 import chick.extrabotany.common.baubles.relic.SunRing;
 import chick.extrabotany.common.blocks.ModSubtiles;
-import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.tools.weapons.*;
 import chick.extrabotany.common.tools.weapons.ranged.Failnaught;
 import chick.extrabotany.forge.impl.IPassiveFlowerCapImpl;
@@ -21,28 +21,22 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import vazkii.botania.api.BotaniaForgeCapabilities;
-import vazkii.botania.api.BotaniaForgeClientCapabilities;
-import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.common.item.equipment.bauble.ItemManaRing;
 import vazkii.botania.forge.CapabilityUtil;
 
-import java.util.Collections;
-import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 public class CommonCapabilityInit
 {
     private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> MANA_ITEM = Suppliers.memoize(() -> Map.of(
             ModItems.SAGES_MANA_RING.get(), SagesManaRing.GreaterManaItem::new
     ));
-    private static final Supplier<Map<Item, Function<ItemStack, IManaItem>>> NATURE_ORB = Suppliers.memoize(() -> Map.of(
-            ModItems.NATURE_ORB.get(), ItemManaRing.ManaItem::new
+    private static final Supplier<Map<Item, Function<ItemStack, INatureOrbItem>>> NATURE_ORB = Suppliers.memoize(() -> Map.of(
+            ModItems.NATURE_ORB.get(), NatureOrb.NatureOrbItem::new
     ));
 
     private static final Supplier<Map<Item, Function<ItemStack, IRelic>>> RELIC = Suppliers.memoize(() -> Map.of(
@@ -75,7 +69,7 @@ public class CommonCapabilityInit
         if (makeNatureOrb != null)
         {
             e.addCapability(new ResourceLocation(ExtraBotany.MODID, "nature_orb"),
-                    CapabilityUtil.makeProvider(ExtraBotanyCapabilities.NATURE_ORB, makeNatureOrb.apply(stack)));
+                    CapabilityUtil.makeProvider(EXBOTCapabilities.NATURE_ORB, makeNatureOrb.apply(stack)));
         }
 
         var makeRelic = RELIC.get().get(stack.getItem());
@@ -105,7 +99,7 @@ public class CommonCapabilityInit
         if (passiveFlower != null)
         {
             e.addCapability(new ResourceLocation(ExtraBotany.MODID, "passive_flower"),
-                    CapabilityUtil.makeProvider(ExtraBotanyCapabilities.PASSIVE_FLOWER, passiveFlower.apply(be)));
+                    CapabilityUtil.makeProvider(EXBOTCapabilities.PASSIVE_FLOWER, passiveFlower.apply(be)));
         }
     }
 

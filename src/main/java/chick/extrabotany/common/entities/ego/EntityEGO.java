@@ -189,26 +189,23 @@ public class EntityEGO extends Monster implements IEntityAdditionalSpawnData
 
             return false;
         }
-        //TODO:自然宝珠
-        /*
-        if (stack.getItem() == ModItems.natureorb)
+        var orb = chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
+        if (orb != null)
         {
-            ItemNatureOrb orb = (ItemNatureOrb) stack.getItem();
-            if (orb.getXP(stack) < 200000)
+            if (orb.getNature() < 200000 || !orb.canExportManaToPool(level.getBlockEntity(pos)))
                 return false;
         }
-        */
 
         //all checks ok, spawn the boss
         if (!level.isClientSide)
         {
-            //if (stack.getItem() == ModItems.natureorb)
-            //{
-            //    ItemNatureOrb orb = (ItemNatureOrb) stack.getItem();
-            //    orb.setXP(stack, orb.getXP(stack) - 200000);
-            //} else
-
-            stack.shrink(1);
+            if (orb != null)
+            {
+                orb.addNature(-200000);
+            } else
+            {
+                stack.shrink(1);
+            }
 
             EntityEGO e = ModEntities.EGO.create(level);
             e.tpDelay = SPAWN_TICKS;

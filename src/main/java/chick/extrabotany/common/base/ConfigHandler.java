@@ -33,14 +33,18 @@ public class ConfigHandler
     public static class Common
     {
 
+        public final ForgeConfigSpec.BooleanValue doCompat;
         public final ForgeConfigSpec.BooleanValue disableDisarm;
         public final ForgeConfigSpec.BooleanValue doProjectileBreakBlock;
         public final ForgeConfigSpec.DoubleValue gaiaDamageTimes;
 
         public Common(ForgeConfigSpec.Builder builder)
         {
-            //TODO:为什么要禁用缴械捏noob
+
             builder.push("common");
+            doCompat = builder.comment("Whether to compact other mod, like TConstruct. Default is true")
+                    .define("doCompat",false);
+            //TODO:为什么要禁用缴械捏noob
             disableDisarm = builder
                     .comment("Whether to disable the Ego's disarm. Default is false(Not Recommend).")
                     .define("disableDisarm", false);
@@ -52,6 +56,7 @@ public class ConfigHandler
             gaiaDamageTimes = builder
                     .comment("How many times damage will EGO(Gaia III) do when it use weapons.")
                     .defineInRange("gaiaDamageTimes", 2.0D, 0D, 10D);
+
             builder.pop();
         }
     }

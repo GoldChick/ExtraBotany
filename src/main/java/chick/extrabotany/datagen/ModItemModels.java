@@ -35,6 +35,7 @@ public class ModItemModels extends ItemModelProvider
                 .filter(p -> !(p instanceof ShieldItem))
                 .filter(p -> !(p instanceof SwordItem))
                 .filter(p -> !(p instanceof ProjectileWeaponItem))
+                .filter(p -> !(p.getRegistryName().getPath().startsWith("molten")))
                 .toList());
         //write in ModItemOverrideModel
         list.remove(ModItems.MINI_TORNADO_ROD.get());

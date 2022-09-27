@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/shadowium"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "extrabotany:shadowium",
+  "leftover": {
+    "tag": "forge:ingots/shadowium"
+  }
+}

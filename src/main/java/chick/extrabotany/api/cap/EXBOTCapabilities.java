@@ -8,9 +8,9 @@ import vazkii.botania.api.mana.IManaItem;
 /**
  * it has nothing now lol
  */
-public class ExtraBotanyCapabilities
+public class EXBOTCapabilities
 {
     public static final Capability<IPassiveFlowerCap> PASSIVE_FLOWER = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IManaItem> NATURE_ORB = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<INatureOrbItem> NATURE_ORB = CapabilityManager.get(new CapabilityToken<>() {});
 
 }

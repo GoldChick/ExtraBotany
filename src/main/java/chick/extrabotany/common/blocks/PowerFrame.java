@@ -1,14 +1,11 @@
 package chick.extrabotany.common.blocks;
 
-import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.blocks.tile.TilePowerFrame;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EntityBlock;
@@ -38,16 +35,19 @@ public class PowerFrame extends BlockModWaterloggable implements EntityBlock
         ItemStack stack = player.getItemInHand(hand);
         if (frame != null)
         {
-            if (player.isShiftKeyDown())
+            if (!stack.isEmpty() && (IXplatAbstractions.INSTANCE.findManaItem(stack) != null || chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack) != null))
             {
-                InventoryHelper.withdrawFromInventory(frame, player);
-                VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
-                return InteractionResult.SUCCESS;
-            } else if (!stack.isEmpty() && (IXplatAbstractions.INSTANCE.findManaItem(stack) != null || stack.is(ModItems.NATURE_ORB.get())))
-            {
-                boolean result = frame.addItem(player, stack, hand);
-                VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
-                return result ? InteractionResult.SUCCESS : InteractionResult.PASS;
+                if (frame.getItemHandler().isEmpty())
+                {
+                    boolean result = frame.addItem(player, stack, hand);
+                    VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
+                    return result ? InteractionResult.SUCCESS : InteractionResult.PASS;
+                } else
+                {
+                    InventoryHelper.withdrawFromInventory(frame, player);
+                    VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
+                    return InteractionResult.SUCCESS;
+                }
             }
         }
         return InteractionResult.PASS;

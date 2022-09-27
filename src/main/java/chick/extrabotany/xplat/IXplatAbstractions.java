@@ -1,6 +1,7 @@
 package chick.extrabotany.xplat;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.api.cap.INatureOrbItem;
 import chick.extrabotany.api.cap.IPassiveFlowerCap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -35,7 +36,7 @@ public interface IXplatAbstractions
     IPassiveFlowerCap findPassiveFlower(BlockEntity blockEntity);
 
     @Nullable
-    IManaItem findNatureOrb(ItemStack stack);
+    INatureOrbItem findNatureOrbItem(ItemStack stack);
 
     IXplatAbstractions INSTANCE = find();
 

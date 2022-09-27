@@ -8,9 +8,11 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import vazkii.botania.common.block.BlockFloatingSpecialFlower;
 import vazkii.botania.common.block.BlockSpecialFlower;
 
@@ -40,7 +42,11 @@ public class ModBlockStates extends BlockStateProvider
                     } else if (block instanceof BlockFloatingSpecialFlower)
                     {
                         simpleFloatingFlowerTexture(block);
-                    } else //simple block
+                    } else if (block.getRegistryName().getPath().startsWith("molten"))
+                    {
+
+                    } else
+                    //simple block
                     {
                         simpleBlock(block);
                     }

@@ -81,16 +81,16 @@ public class NatureOrb extends ItemBauble
         super.onWornTick(stack, entity);
         if (entity instanceof Player player && !player.level.isClientSide)
         {
-            var manaItem = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
-            if (manaItem != null)
+            var orbItem = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
+            if (orbItem != null)
             {
                 if (player.tickCount % 5 == 0)
                 {
-                    if (manaItem.getNature() > 100000)
+                    if (orbItem.getNature() > 100000)
                         ManaItemHandler.instance().dispatchManaExact(stack, player, 5, true);
-                    if (manaItem.getNature() > 200000)
+                    if (orbItem.getNature() > 200000)
                         ManaItemHandler.instance().dispatchManaExact(stack, player, 5, true);
-                    if (manaItem.getMaxNature() > 300000)
+                    if (orbItem.getMaxNature() > 300000)
                     {
                         ManaItemHandler.instance().dispatchManaExact(stack, player, 5, true);
                         if (player.tickCount % 60 == 0)
@@ -99,7 +99,7 @@ public class NatureOrb extends ItemBauble
                         }
                     }
                 }
-                if (manaItem.getNature() > 400000)
+                if (orbItem.getNature() > 400000)
                 {
                     if (player.tickCount % 40 == 0)
                     {

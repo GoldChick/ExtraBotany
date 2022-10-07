@@ -175,7 +175,6 @@ public class SubTileOmniViolet extends TileEntityGeneratingFlower
 
     private int getBurnTime(ItemStack stack)
     {
-        // || Block.byItem(stack.getItem()) instanceof BlockSpreader
         if (stack.isEmpty())
         {
             return 0;

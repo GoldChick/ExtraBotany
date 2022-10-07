@@ -9,5 +9,8 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "extrabotany.refmap.json"
+  "refmap": "extrabotany.refmap.json",
+  "mixins": [
+    "client.MixinLivingEntity"
+  ]
 }

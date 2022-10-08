@@ -1,5 +1,6 @@
 package chick.extrabotany.common.blocks.tile;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.ModItems;
 import chick.extrabotany.common.baubles.NatureOrb;
 import chick.extrabotany.common.blocks.ModTiles;
@@ -70,7 +71,7 @@ public class TilePowerFrame extends TileSimpleInventory
             }
     };
 
-    public static final Supplier<IMultiblock> MULTIBLOCK_ADV = (() -> PatchouliAPI.get().makeMultiblock(
+    public static final Supplier<IMultiblock> MULTIBLOCK_ADV = Suppliers.memoize(() -> PatchouliAPI.get().makeMultiblock(
             PATTERN_ADV,
             'P', ModBlocks.naturaPylon,
             '0', chick.extrabotany.common.ModBlocks.POWER_FRAME.get(),
@@ -176,7 +177,7 @@ public class TilePowerFrame extends TileSimpleInventory
     {
         boolean multi = MULTIBLOCK_ADV.get().validate(level, worldPosition) != null;
 
-
+        ExtraBotany.LOGGER.debug("sb250 multi:" + multi);
         int redstoneSignal = 0;
         for (Direction dir : Direction.values())
         {
@@ -219,8 +220,12 @@ public class TilePowerFrame extends TileSimpleInventory
                 var orb = chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
                 if (orb != null && multi && level.dayTime() % 20 == 0)
                 {
+                    ExtraBotany.LOGGER.debug("sb250 1");
+
                     if (level.getBlockEntity(worldPosition.offset(0, 1, 0)) instanceof TilePool p)
                     {
+                        ExtraBotany.LOGGER.debug("sb250 2");
+
                         int natureToGet;
                         if (redstoneSignal == 0)
                         {

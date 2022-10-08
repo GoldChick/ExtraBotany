@@ -65,6 +65,7 @@ public class SubTileStonesia extends TileEntityGeneratingFlower
                     pos = getEffectivePos().offset(offset);
                     var block = level.getBlockState(pos).getBlock();
                     //TODO:OUTPUT
+                    /*
                     int output = RecipeStonesia.getOutput(new ItemStack(block));
                     if (output != 0)
                     {
@@ -79,6 +80,8 @@ public class SubTileStonesia extends TileEntityGeneratingFlower
 
                         break;
                     }
+
+                     */
                 }
             }
         } else

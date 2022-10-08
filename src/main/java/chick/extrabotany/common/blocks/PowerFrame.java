@@ -35,19 +35,16 @@ public class PowerFrame extends BlockModWaterloggable implements EntityBlock
         ItemStack stack = player.getItemInHand(hand);
         if (frame != null)
         {
-            if (!stack.isEmpty() && (IXplatAbstractions.INSTANCE.findManaItem(stack) != null || chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack) != null))
+            if (!frame.getItemHandler().isEmpty())
             {
-                if (frame.getItemHandler().isEmpty())
-                {
-                    boolean result = frame.addItem(player, stack, hand);
-                    VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
-                    return result ? InteractionResult.SUCCESS : InteractionResult.PASS;
-                } else
-                {
-                    InventoryHelper.withdrawFromInventory(frame, player);
-                    VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
-                    return InteractionResult.SUCCESS;
-                }
+                InventoryHelper.withdrawFromInventory(frame, player);
+                VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
+                return InteractionResult.SUCCESS;
+            } else if (!stack.isEmpty() && (IXplatAbstractions.INSTANCE.findManaItem(stack) != null || chick.extrabotany.xplat.IXplatAbstractions.INSTANCE.findNatureOrbItem(stack) != null))
+            {
+                boolean result = frame.addItem(player, stack, hand);
+                VanillaPacketDispatcher.dispatchTEToNearbyPlayers(frame);
+                return result ? InteractionResult.SUCCESS : InteractionResult.PASS;
             }
         }
         return InteractionResult.PASS;

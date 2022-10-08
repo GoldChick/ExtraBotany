@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.client.event.RenderLevelLastEvent;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 import org.jetbrains.annotations.NotNull;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.render.tile.RenderTileSpecialFlower;
@@ -26,7 +27,7 @@ public class RenderEGOLandmine extends EntityRenderer<EntityEGOLandmine>
         super(renderManager);
     }
 
-    public static void onWorldRenderLast(RenderLevelLastEvent evt)
+    public static void onWorldRenderLast(RenderLevelStageEvent.Stage evt)
     {
         offY = INITIAL_OFFSET;
     }

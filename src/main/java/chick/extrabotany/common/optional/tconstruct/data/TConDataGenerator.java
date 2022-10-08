@@ -15,7 +15,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.common.data.BaseRecipeProvider;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialRenderInfoProvider;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
@@ -99,7 +98,7 @@ public class TConDataGenerator
         }
     }
 
-    public static class EXBOTMaterialRecipes extends BaseRecipeProvider implements IMaterialRecipeHelper
+    public static class EXBOTMaterialRecipes extends BaseTCRecipeProvider implements IMaterialRecipeHelper
     {
 
         public EXBOTMaterialRecipes(DataGenerator generator)
@@ -283,7 +282,7 @@ public class TConDataGenerator
         }
     }
 
-    public static class EXBOTSmelteryRecipes extends BaseRecipeProvider implements ISmelteryRecipeHelper, ICommonRecipeHelper
+    public static class EXBOTSmelteryRecipes extends BaseTCRecipeProvider implements ISmelteryRecipeHelper, ICommonRecipeHelper
     {
 
         public EXBOTSmelteryRecipes(DataGenerator generator)

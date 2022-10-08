@@ -37,8 +37,7 @@ public class StonesiaManager implements ResourceManagerReloadListener
         DATA.clear();
     }
 
-    public static ListMultimap<StateIngredient, ? extends IStonesiaRecipe> getFor(RecipeManager manager,
-                                                                       RecipeType<? extends IStonesiaRecipe> type)
+    public static ListMultimap<StateIngredient, ? extends IStonesiaRecipe> getFor(RecipeManager manager, RecipeType<? extends IStonesiaRecipe> type)
     {
         return DATA.computeIfAbsent(type, t ->
         {
@@ -47,7 +46,9 @@ public class StonesiaManager implements ResourceManagerReloadListener
             {
                 map.put(recipe.getInput(), recipe);
             }
-            for (var list : map.asMap().values())
+            //this is sort
+
+            //for (var list : map.asMap().values())
             {
                // ((List<IStonesiaRecipe>) list).sort(Comparator.comparingInt(IStonesiaRecipe::getWeight));
             }

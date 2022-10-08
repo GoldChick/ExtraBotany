@@ -110,8 +110,10 @@ public class StonesiaRecipe implements IStonesiaRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return new Serializer();
+        return STONESIA_SERIALIZER;
     }
+
+    public static final RecipeSerializer<?> STONESIA_SERIALIZER = new Serializer();
 
     public static class Serializer extends RecipeSerializerBase<StonesiaRecipe>
     {

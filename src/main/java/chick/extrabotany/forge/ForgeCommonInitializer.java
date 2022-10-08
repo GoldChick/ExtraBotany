@@ -6,7 +6,9 @@ import chick.extrabotany.common.baubles.relic.CoreGod;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
+import chick.extrabotany.common.blocks.tile.TilePowerFrame;
 import chick.extrabotany.common.brews.ModBrews;
+import chick.extrabotany.common.handler.StonesiaManager;
 import chick.extrabotany.common.optional.EXBOTCompat;
 import chick.extrabotany.common.optional.tconstruct.TConCompat;
 import chick.extrabotany.network.NetworkHandler;
@@ -44,7 +46,11 @@ public class ForgeCommonInitializer
     {
         registerEvents();
 
+
+        StonesiaManager.registerListener();
+
         PatchouliAPI.get().registerMultiblock(Registry.BLOCK.getKey(ModBlocks.DIMENSION_CATALYST.get()), TileDimensionCatalyst.MULTIBLOCK.get());
+        PatchouliAPI.get().registerMultiblock(Registry.BLOCK.getKey(ModBlocks.POWER_FRAME.get()), TilePowerFrame.MULTIBLOCK_ADV.get());
     }
 
     private static void registerEvents()

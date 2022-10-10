@@ -107,6 +107,7 @@ public class EN_USLanguageProvider extends LanguageProvider
         add(ModItems.POTATO_CHIP.get(), "Potato Chip");
         add(ModItems.SUN_RING.get(), "Ring of Sacred Sun");
         add(ModItems.MOON_PENDANT.get(), "Heart of Corrupted Moon");
+        add(ModItems.PURE_DAISY_PENDANT.get(), "Pure Daisy Pendant");
         add(ModItems.NATURE_ORB.get(), "Nature Orb");
         add("extrabotany.nature_orb", "Natural Breath: %s / %s");
         add("extrabotany.nature_orb_effect1", "Blessing of Mana");

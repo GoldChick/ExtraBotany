@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import vazkii.botania.api.recipe.StateIngredient;
-import vazkii.botania.common.crafting.ModRecipeTypes;
 import vazkii.botania.common.crafting.StateIngredientHelper;
 import vazkii.botania.data.recipes.BotaniaRecipeProvider;
 
@@ -17,11 +17,10 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 import static chick.extrabotany.ExtraBotany.prefixRl;
-import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 public class StonesiaRecipes extends BotaniaRecipeProvider
 {
-    protected StonesiaRecipes(DataGenerator generator)
+    public StonesiaRecipes(DataGenerator generator)
     {
         super(generator);
     }
@@ -33,7 +32,7 @@ public class StonesiaRecipes extends BotaniaRecipeProvider
     }
 
     @Override
-    public String getName()
+    public @NotNull String getName()
     {
         return "Extrabotany Stonesia Recipes";
     }
@@ -99,15 +98,15 @@ public class StonesiaRecipes extends BotaniaRecipeProvider
         }
 
         @Override
-        public ResourceLocation getId()
+        public @NotNull ResourceLocation getId()
         {
             return id;
         }
 
         @Override
-        public RecipeSerializer<?> getType()
+        public @NotNull RecipeSerializer<?> getType()
         {
-            return StonesiaRecipe.STONESIA_SERIALIZER;
+            return StonesiaRecipe.SERIALIZER;
         }
 
         @Nullable

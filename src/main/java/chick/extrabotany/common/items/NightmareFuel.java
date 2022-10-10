@@ -12,9 +12,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class NightmareFuel extends Item
 {
-    public NightmareFuel(Properties p_41383_)
+    public NightmareFuel(Properties prop)
     {
-        super(p_41383_);
+        super(prop);
     }
 
     @Override
@@ -30,6 +30,6 @@ public class NightmareFuel extends Item
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType)
     {
-        return 1000;
+        return 200 * 10;
     }
 }

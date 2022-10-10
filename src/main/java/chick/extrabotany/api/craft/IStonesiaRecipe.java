@@ -36,6 +36,8 @@ public interface IStonesiaRecipe extends Recipe<Container>
 
     int getTime();
 
+    int getMana();
+
     @Override
     default RecipeType<?> getType() {
         return Registry.RECIPE_TYPE.getOptional(TYPE_ID).get();

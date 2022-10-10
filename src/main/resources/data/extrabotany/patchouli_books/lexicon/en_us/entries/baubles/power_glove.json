@@ -1,7 +1,7 @@
 {
   "name": "extrabotany.entry.powerglove",
   "category": "botania:baubles",
-  "icon": "extrabotany:powerglove",
+  "icon": "extrabotany:power_glove",
   "entry_color": "4169E1",
   "advancement": "botania:main/runic_altar_pickup",
   "pages": [

@@ -49,6 +49,8 @@ public class ModSubtiles
     public static final Block edelweissFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.EDELWEISS);
     public static final Block tinkleflower = new BlockSpecialFlower(MobEffects.DIG_SPEED, 10, FLOWER_PROPS, () -> ModSubtiles.TINKLEFLOWER);
     public static final Block tinkleflowerFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.TINKLEFLOWER);
+    public static final Block stonesia = new BlockSpecialFlower(MobEffects.DAMAGE_RESISTANCE, 10, FLOWER_PROPS, () -> ModSubtiles.STONESIA);
+    public static final Block stonesiaFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.STONESIA);
     //functional
     public static final Block serenitian = new BlockSpecialFlower(MobEffects.ABSORPTION, 48, FLOWER_PROPS, () -> ModSubtiles.SERENITIAN);
     public static final Block serenitianFloating = new BlockFloatingSpecialFlower(FLOATING_PROPS, () -> ModSubtiles.SERENITIAN);
@@ -65,6 +67,7 @@ public class ModSubtiles
     public static final BlockEntityType<SubTileBloodyEnchantress> BLOODYENCHANTRESS = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileBloodyEnchantress::new, bloodyenchantress, bloodyenchantressFloating);
     public static final BlockEntityType<SubTileEdelweiss> EDELWEISS = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileEdelweiss::new, edelweiss, edelweissFloating);
     public static final BlockEntityType<SubTileTinkle> TINKLEFLOWER = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileTinkle::new, tinkleflower, tinkleflowerFloating);
+    public static final BlockEntityType<SubTileStonesia> STONESIA = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileStonesia::new, stonesia, stonesiaFloating);
 
 
     public static final BlockEntityType<SubTileSerenitian> SERENITIAN = IXplatAbstractions.INSTANCE.createBlockEntityType(SubTileSerenitian::new, serenitian, serenitianFloating);
@@ -89,6 +92,8 @@ public class ModSubtiles
     public static final Item edelweissFloating_item = new ItemBlockSpecialFlower(edelweissFloating, props);
     public static final Item tinkleflower_item = new ItemBlockSpecialFlower(tinkleflower, props);
     public static final Item tinkleflowerFloating_item = new ItemBlockSpecialFlower(tinkleflowerFloating, props);
+    public static final Item stonesia_item = new ItemBlockSpecialFlower(stonesia, props);
+    public static final Item stonesiaFloating_item = new ItemBlockSpecialFlower(stonesiaFloating, props);
     //functional items
     public static final Item serenitian_item = new ItemBlockSpecialFlower(serenitian, props);
     public static final Item serenitianFloating_item = new ItemBlockSpecialFlower(serenitianFloating, props);
@@ -106,6 +111,7 @@ public class ModSubtiles
         registerFlowerAndFloating(bloodyenchantress, bloodyenchantressFloating, LibBlockNames.BLOODY_ENCHANTRESS, r);
         registerFlowerAndFloating(edelweiss, edelweissFloating, LibBlockNames.EDELWEISS, r);
         registerFlowerAndFloating(tinkleflower, tinkleflowerFloating, LibBlockNames.TINKLE_FLOWER, r);
+        registerFlowerAndFloating(stonesia, stonesiaFloating, LibBlockNames.STONESIA, r);
 
 
         registerFlowerAndFloating(serenitian, serenitianFloating, LibBlockNames.SERENITIAN, r);
@@ -139,6 +145,8 @@ public class ModSubtiles
         r.accept(edelweissFloating_item, getId(edelweissFloating));
         r.accept(tinkleflower_item, getId(tinkleflower));
         r.accept(tinkleflowerFloating_item, getId(tinkleflowerFloating));
+        r.accept(stonesia_item, getId(stonesia));
+        r.accept(stonesiaFloating_item, getId(stonesiaFloating));
         //functional
         r.accept(serenitian_item, getId(serenitian));
         r.accept(serenitianFloating_item, getId(serenitianFloating));
@@ -149,7 +157,8 @@ public class ModSubtiles
     public static void registerWandHudCaps(ModTiles.BECapConsumer<IWandHUD> consumer)
     {
         consumer.accept(be -> new TileEntityGeneratingFlower.GeneratingWandHud<>((TileEntityGeneratingFlower) be),
-                SUNSHINELILY, MOONLIGHTLILY, OMNIVIOLET, GEMINIORCHID, BELLFLOWER, REIKARORCHID, BLOODYENCHANTRESS, EDELWEISS, TINKLEFLOWER);
+                SUNSHINELILY, MOONLIGHTLILY, OMNIVIOLET, GEMINIORCHID, BELLFLOWER, REIKARORCHID, BLOODYENCHANTRESS, EDELWEISS, TINKLEFLOWER,
+                STONESIA);
         consumer.accept(be -> new TileEntityFunctionalFlower.FunctionalWandHud<>((TileEntityFunctionalFlower) be),
                 SERENITIAN, ANNOYINGFLOWER);
     }
@@ -165,6 +174,7 @@ public class ModSubtiles
         r.accept(BLOODYENCHANTRESS, getBEId(bloodyenchantress));
         r.accept(EDELWEISS, getBEId(edelweiss));
         r.accept(TINKLEFLOWER, getBEId(tinkleflower));
+        r.accept(STONESIA, getBEId(stonesia));
         //functional
         r.accept(SERENITIAN, getBEId(serenitian));
         r.accept(ANNOYINGFLOWER, getBEId(annoying));

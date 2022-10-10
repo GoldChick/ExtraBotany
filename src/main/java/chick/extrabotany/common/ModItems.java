@@ -25,9 +25,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 import vazkii.botania.common.item.lens.ItemLens;
 
 import java.util.ArrayList;
@@ -43,7 +45,14 @@ public class ModItems
 
     private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ExtraBotany.ITEM_GROUP);
 
-    public static final RegistryObject<Item> SPIRIT_FUEL = register(LibItemNames.SPIRIT_FUEL, new Item.Properties().food(NormalFoods.SPIRITFUEL_PROP).tab(ExtraBotany.ITEM_GROUP));
+    public static final RegistryObject<Item> SPIRIT_FUEL = register(LibItemNames.SPIRIT_FUEL, () -> new Item(new Item.Properties().food(NormalFoods.SPIRITFUEL_PROP).tab(ExtraBotany.ITEM_GROUP))
+    {
+        @Override
+        public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType)
+        {
+            return 16 * 200;
+        }
+    });
     public static final RegistryObject<Item> NIGHTMARE_FUEL = register(LibItemNames.NIGHTMARE_FUEL, () -> new NightmareFuel(new Item.Properties().food(NormalFoods.NIGHTMAREFUEL_PROP).tab(ExtraBotany.ITEM_GROUP)));
     public static final RegistryObject<Item> SPIRIT_FRAG = register(LibItemNames.SPIRIT_FRAG);
     public static final RegistryObject<Item> SHADOW_INGOT = register(LibItemNames.SHADOW_INGOT);
@@ -185,17 +194,9 @@ public class ModItems
     public static final RegistryObject<Item> FAILNAUGHT = register(LibItemNames.FAILNAUGHT, () -> new Failnaught(stackTo1()));
     public static final RegistryObject<Item> JUDAH_OATH = register(LibItemNames.JUDAH_OATH, () -> new JudahOath(stackTo1()));
 
+    //TODO: delete it!
     public static void registerRecipeSerializers(BiConsumer<RecipeSerializer<?>, ResourceLocation> r)
     {
-        r.accept(CocktailRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "cocktail_upgrade"));
-        r.accept(LenPotionRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "len_potion_bind"));
-        r.accept(GrenadeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "grenade_bind"));
-        r.accept(DupeRuneRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "rune_dupe"));
-        r.accept(GoldClothRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "gold_cloth_unbind"));
-        r.accept(PrimoGemRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "primo_gem_buy_fate"));
-        r.accept(ToolsMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "tools_multi_upgrade"));
-        r.accept(BaublesMultiUpgradeRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "baubles_multi_upgrade"));
-        r.accept(BaublesMultiRemoveRecipe.SERIALIZER, new ResourceLocation(ExtraBotany.MODID, "baubles_multi_remove"));
         //just place it here lol
         registerRewardBag();
     }

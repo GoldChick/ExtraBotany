@@ -1,8 +1,8 @@
 {
   "name": "extrabotany.entry.potato_chip",
-  "category": "extrabotany:extrabotany",
+  "category": "botania:baubles",
   "icon": "extrabotany:potato_chip",
-  "advancement": "botania:main/runic_altar_pickup",
+  "advancement": "botania:main/gaia_guardian_kill",
   "pages": [
     {
       "type": "text",

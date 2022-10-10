@@ -2,12 +2,14 @@ package chick.extrabotany.forge;
 
 import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.common.*;
+import chick.extrabotany.common.base.ConfigHandler;
 import chick.extrabotany.common.baubles.relic.CoreGod;
 import chick.extrabotany.common.blocks.ModSubtiles;
 import chick.extrabotany.common.blocks.ModTiles;
 import chick.extrabotany.common.blocks.tile.TileDimensionCatalyst;
 import chick.extrabotany.common.blocks.tile.TilePowerFrame;
 import chick.extrabotany.common.brews.ModBrews;
+import chick.extrabotany.common.crafting.ModRecipeTypes;
 import chick.extrabotany.common.handler.StonesiaManager;
 import chick.extrabotany.common.optional.EXBOTCompat;
 import chick.extrabotany.common.optional.tconstruct.TConCompat;
@@ -76,7 +78,8 @@ public class ForgeCommonInitializer
         //potions and brews
         ModBrews.registerBrews();
 
-        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID))
+        //DO COMPAT?
+        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID) && ConfigHandler.COMMON.doCompat.get())
         {
             TConCompat.FLUIDS.register(bus);
             TConCompat.MODIFIERS.register(bus);
@@ -96,6 +99,7 @@ public class ForgeCommonInitializer
         bus.addListener((EntityAttributeCreationEvent e) -> ModEntities.registerAttributes((type, builder) -> e.put(type, builder.build())));
         //recipe
         bind(ForgeRegistries.RECIPE_SERIALIZERS, ModItems::registerRecipeSerializers);
+        bind(ForgeRegistries.RECIPE_SERIALIZERS, ModRecipeTypes::registerRecipeTypes);
         //sounds
         bind(ForgeRegistries.SOUND_EVENTS, ModSounds::init);
 

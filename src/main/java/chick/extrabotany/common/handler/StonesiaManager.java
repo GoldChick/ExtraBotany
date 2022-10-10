@@ -24,7 +24,7 @@ import static chick.extrabotany.ExtraBotany.prefixRl;
 
 public class StonesiaManager implements ResourceManagerReloadListener
 {
-    private static final Map<RecipeType<? extends IStonesiaRecipe>, ListMultimap<StateIngredient, ? extends IStonesiaRecipe>> DATA = new HashMap<>();
+    private static final Map<RecipeType<? extends IStonesiaRecipe>, Map<StateIngredient, ? extends IStonesiaRecipe>> DATA = new HashMap<>();
 
     public static void registerListener()
     {
@@ -37,11 +37,11 @@ public class StonesiaManager implements ResourceManagerReloadListener
         DATA.clear();
     }
 
-    public static ListMultimap<StateIngredient, ? extends IStonesiaRecipe> getFor(RecipeManager manager, RecipeType<? extends IStonesiaRecipe> type)
+    public static Map<StateIngredient, ? extends IStonesiaRecipe> getFor(RecipeManager manager, RecipeType<? extends IStonesiaRecipe> type)
     {
         return DATA.computeIfAbsent(type, t ->
         {
-            ListMultimap<StateIngredient, IStonesiaRecipe> map = ArrayListMultimap.create();
+            Map<StateIngredient, IStonesiaRecipe> map = new HashMap<>();
             for (var recipe : manager.getAllRecipesFor(t))
             {
                 map.put(recipe.getInput(), recipe);

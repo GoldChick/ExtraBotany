@@ -10,15 +10,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import vazkii.botania.api.recipe.StateIngredient;
 import vazkii.botania.api.subtile.TileEntitySpecialFlower;
-import vazkii.botania.common.crafting.ModRecipeTypes;
-import chick.extrabotany.common.crafting.StonesiaRecipe;
 import vazkii.botania.common.crafting.RecipeSerializerBase;
 import vazkii.botania.common.crafting.StateIngredientHelper;
 
@@ -27,12 +24,14 @@ import javax.annotation.Nullable;
 
 public class StonesiaRecipe implements IStonesiaRecipe
 {
+    public static final String TYPE_ID = "stonesia";
     public static final int DEFAULT_TIME = 150;
 
     private final ResourceLocation id;
     private final StateIngredient input;
     private final BlockState outputState;
     private final int time;
+    private final int mana;
     private final CommandFunction.CacheableFunction function;
 
     /**
@@ -45,13 +44,14 @@ public class StonesiaRecipe implements IStonesiaRecipe
      * @param function An mcfunction to run at the converted block after finish. If you don't want one, pass
      *                 CommandFunction.CacheableFunction.NONE
      */
-    public StonesiaRecipe(ResourceLocation id, StateIngredient input, BlockState state, int time, CommandFunction.CacheableFunction function)
+    public StonesiaRecipe(ResourceLocation id, StateIngredient input, BlockState state, int time, int mana, CommandFunction.CacheableFunction function)
     {
         Preconditions.checkArgument(time >= 0, "Time must be nonnegative");
         this.id = id;
         this.input = input;
         this.outputState = state;
         this.time = time;
+        this.mana = mana;
         this.function = function;
     }
 
@@ -102,6 +102,12 @@ public class StonesiaRecipe implements IStonesiaRecipe
     }
 
     @Override
+    public int getMana()
+    {
+        return mana;
+    }
+
+    @Override
     public ResourceLocation getId()
     {
         return id;
@@ -110,10 +116,10 @@ public class StonesiaRecipe implements IStonesiaRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return STONESIA_SERIALIZER;
+        return SERIALIZER;
     }
 
-    public static final RecipeSerializer<?> STONESIA_SERIALIZER = new Serializer();
+    public static final RecipeSerializer<?> SERIALIZER = new Serializer();
 
     public static class Serializer extends RecipeSerializerBase<StonesiaRecipe>
     {
@@ -124,10 +130,11 @@ public class StonesiaRecipe implements IStonesiaRecipe
             StateIngredient input = StateIngredientHelper.deserialize(GsonHelper.getAsJsonObject(object, "input"));
             BlockState output = StateIngredientHelper.readBlockState(GsonHelper.getAsJsonObject(object, "output"));
             int time = GsonHelper.getAsInt(object, "time", DEFAULT_TIME);
+            int mana = GsonHelper.getAsInt(object, "mana", 114514);
             var functionIdString = GsonHelper.getAsString(object, "success_function", null);
             var functionId = functionIdString == null ? null : new ResourceLocation(functionIdString);
             var function = functionId == null ? CommandFunction.CacheableFunction.NONE : new CommandFunction.CacheableFunction(functionId);
-            return new StonesiaRecipe(id, input, output, time, function);
+            return new StonesiaRecipe(id, input, output, time, mana, function);
         }
 
         @Override
@@ -136,6 +143,7 @@ public class StonesiaRecipe implements IStonesiaRecipe
             recipe.input.write(buf);
             buf.writeVarInt(Block.getId(recipe.outputState));
             buf.writeVarInt(recipe.time);
+            buf.writeVarInt(recipe.mana);
         }
 
         @Nullable
@@ -145,7 +153,8 @@ public class StonesiaRecipe implements IStonesiaRecipe
             StateIngredient input = StateIngredientHelper.read(buf);
             BlockState output = Block.stateById(buf.readVarInt());
             int time = buf.readVarInt();
-            return new StonesiaRecipe(id, input, output, time, CommandFunction.CacheableFunction.NONE);
+            int mana = buf.readVarInt();
+            return new StonesiaRecipe(id, input, output, time, mana, CommandFunction.CacheableFunction.NONE);
         }
     }
 }

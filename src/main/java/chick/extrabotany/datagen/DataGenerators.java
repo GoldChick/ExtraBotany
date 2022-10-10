@@ -57,6 +57,8 @@ public class DataGenerators
             generator.addProvider(new ModRunicAltarRecipes(generator));
             generator.addProvider(new ModPetalRecipes(generator));
             generator.addProvider(new ModTerraRecipes(generator));
+
+            generator.addProvider(new StonesiaRecipes(generator));
         }
     }
 }

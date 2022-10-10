@@ -108,6 +108,7 @@ public class ZH_CNLanguageProvider extends LanguageProvider
         add(ModItems.POTATO_CHIP.get(), "薯片");
         add(ModItems.SUN_RING.get(), "圣阳尊戒");
         add(ModItems.MOON_PENDANT.get(), "蚀月之心");
+        add(ModItems.PURE_DAISY_PENDANT.get(), "白雏菊项链");
         add(ModItems.NATURE_ORB.get(), "自然蕴息宝珠");
         add("extrabotany.nature_orb", "自然之息： %s / %s");
         add("extrabotany.nature_orb_effect1", "魔力的加护");

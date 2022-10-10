@@ -1,23 +1,22 @@
 package chick.extrabotany.common.blocks.subtile.generating;
 
+import chick.extrabotany.common.blocks.ModSubtiles;
+import chick.extrabotany.common.crafting.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
+import chick.extrabotany.api.craft.IStonesiaRecipe;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 import vazkii.botania.client.fx.WispParticleData;
-import vazkii.botania.common.handler.ModSounds;
-import vazkii.botania.common.helper.DelayHelper;
-import vazkii.botania.common.proxy.IProxy;
+import vazkii.botania.common.crafting.StateIngredientHelper;
+import chick.extrabotany.common.handler.StonesiaManager;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,24 +25,22 @@ import java.util.List;
 //TODO: to be test
 public class SubTileStonesia extends TileEntityGeneratingFlower
 {
-    private static final String TAG_BURN_TIME = "burnTime";
-    private static final String TAG_COOLDOWN = "cooldown";
     private static final int START_BURN_EVENT = 0;
 
     private static final BlockPos[] OFFSETS = {new BlockPos(0, 0, 1), new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(-1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, 1), new BlockPos(1, 0, -1)};
     private static final int Range = 1;
     private int burnTime, cooldown;
 
-    public SubTileStonesia(BlockEntityType<?> type, BlockPos pos, BlockState state)
+    public SubTileStonesia( BlockPos pos, BlockState state)
     {
-        super(type, pos, state);
+        super(ModSubtiles.STONESIA, pos, state);
     }
 
     @Override
     public void tickFlower()
     {
         super.tickFlower();
-
+/*
         var pos = getEffectivePos();
         var x = pos.getX();
         var y = pos.getY();
@@ -63,25 +60,24 @@ public class SubTileStonesia extends TileEntityGeneratingFlower
                 for (BlockPos offset : offsets)
                 {
                     pos = getEffectivePos().offset(offset);
-                    var block = level.getBlockState(pos).getBlock();
-                    //TODO:OUTPUT
-                    /*
-                    int output = RecipeStonesia.getOutput(new ItemStack(block));
-                    if (output != 0)
+
+                    BlockState state = level.getBlockState(pos);
+
+                    var recipe = getRecipe(state);
+                    if (recipe != null)
                     {
                         if (cooldown == 0)
                         {
-                            burnTime += (output);
-                            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                            burnTime += recipe.getTime();
+                            level.setBlockAndUpdate(pos, recipe.getOutputState());
                             cooldown = 40;
                         }
+                        addMana(recipe.getMana());
                         sync();
                         level.playSound(null, getEffectivePos(), SoundEvents.GENERIC_DRINK, SoundSource.BLOCKS, 0.01F, 0.5F + (float) Math.random() * 0.5F);
 
                         break;
                     }
-
-                     */
                 }
             }
         } else
@@ -93,8 +89,21 @@ public class SubTileStonesia extends TileEntityGeneratingFlower
             burnTime--;
         }
         //  emitParticle(ParticleTypes.FLAME, 0.4 + Math.random() * 0.2, 0.7, 0.4 + Math.random() * 0.2, 0.0D, 0.0D, 0.0D);
-
+ */
     }
+
+    private RecipeType<? extends IStonesiaRecipe> getRecipeType()
+    {
+        return ModRecipeTypes.STONESIA_TYPE;
+    }
+
+    @Nullable
+    private IStonesiaRecipe getRecipe(BlockState state)
+    {
+        return StonesiaManager.getFor(getLevel().getRecipeManager(), getRecipeType())
+                .get(StateIngredientHelper.of(state.getBlock()));
+    }
+
 
     @Override
     public boolean triggerEvent(int event, int param)
@@ -117,7 +126,7 @@ public class SubTileStonesia extends TileEntityGeneratingFlower
     @Override
     public int getMaxMana()
     {
-        return 800;
+        return 10000;
     }
 
     @Override

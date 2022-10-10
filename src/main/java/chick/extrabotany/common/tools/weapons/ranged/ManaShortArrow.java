@@ -34,6 +34,8 @@ public class ManaShortArrow extends Item
         int ticks = Math.round(player.getAttackStrengthScale(0) * 20);
         shootArrow(player, null, ticks, 0.52D, 1);
         player.awardStat(Stats.ITEM_USED.get(this));
+        stack.shrink(1);
+        //TODO: check it
         return InteractionResultHolder.consume(stack);
     }
 

@@ -22,6 +22,7 @@ public class LibBlockNames
     public static String BLOODY_ENCHANTRESS = "bloody_enchantress";
     public static String EDELWEISS = "edelweiss";
     public static String TINKLE_FLOWER = "tinkle_flower";
+    public static String STONESIA = "stonesia";
 
 
     public static String SERENITIAN = "serenitian";

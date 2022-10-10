@@ -42,7 +42,7 @@ public class ConfigHandler
         {
 
             builder.push("common");
-            doCompat = builder.comment("Whether to compact other mod, like TConstruct. Default is true")
+            doCompat = builder.comment("Whether to compact other mod, like TConstruct. Default is false(WIP)")
                     .define("doCompat",false);
             //TODO:为什么要禁用缴械捏noob
             disableDisarm = builder

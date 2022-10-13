@@ -177,7 +177,6 @@ public class TilePowerFrame extends TileSimpleInventory
     {
         boolean multi = MULTIBLOCK_ADV.get().validate(level, worldPosition) != null;
 
-        ExtraBotany.LOGGER.debug("sb250 multi:" + multi);
         int redstoneSignal = 0;
         for (Direction dir : Direction.values())
         {

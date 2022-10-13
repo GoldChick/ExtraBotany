@@ -1,5 +1,6 @@
 package chick.extrabotany.common.baubles;
 
+import chick.extrabotany.ExtraBotany;
 import chick.extrabotany.api.cap.INatureOrbItem;
 import chick.extrabotany.common.entities.ego.EntityEGO;
 import chick.extrabotany.xplat.IXplatAbstractions;
@@ -7,11 +8,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,8 +20,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.client.fx.SparkleParticleData;
+import vazkii.botania.common.handler.EquipmentHandler;
+import vazkii.botania.common.handler.ModSounds;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
@@ -37,13 +43,11 @@ public class NatureOrb extends ItemBauble
     public NatureOrb(Properties props)
     {
         super(props);
+        MinecraftForge.EVENT_BUS.addListener(this::clearBadPotions);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags)
+    private void addText(@Nullable INatureOrbItem manaItem, List<Component> tooltip)
     {
-        super.appendHoverText(stack, world, tooltip, flags);
-        var manaItem = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
         if (manaItem != null)
         {
             tooltip.add(new TranslatableComponent("extrabotany.nature_orb", manaItem.getNature(), manaItem.getMaxNature()).withStyle(ChatFormatting.GRAY));
@@ -99,33 +103,53 @@ public class NatureOrb extends ItemBauble
                         }
                     }
                 }
-                if (orbItem.getNature() > 400000)
-                {
-                    if (player.tickCount % 40 == 0)
-                    {
-                        clearPotions(stack, player);
-                    }
-                }
             }
         }
     }
 
-    public void clearPotions(ItemStack stack, Player player)
+    public void clearBadPotions(PotionEvent.PotionApplicableEvent event)
     {
-        var orb = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
-        if (orb != null)
+        LivingEntity living = event.getEntityLiving();
+        var stack = EquipmentHandler.findOrEmpty(this, event.getEntityLiving());
+        if (stack != null)
         {
-            player.getActiveEffects().stream()
-                    .filter(effect -> !effect.getEffect().isBeneficial())
-                    .filter(effect -> effect.getCurativeItems().stream().anyMatch(e -> e.is(Items.MILK_BUCKET)))
-                    .map(MobEffectInstance::getEffect)
-                    .distinct().forEach(potion ->
+            var orb = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
+            int am = event.getPotionEffect().getAmplifier() + 1;
+            float t = ((float) event.getPotionEffect().getDuration() / 600.0F);
+
+            int consume = (int) (1000 * am * am * t);
+            if (orb != null && orb.getNature() >= consume)
+            {
+                var ef = event.getPotionEffect().getEffect();
+                if (!ef.isBeneficial() && ef.getCurativeItems().stream().anyMatch(p -> p.is(Items.MILK_BUCKET)))
+                {
+                    if (living instanceof Player p)
                     {
-                        player.removeEffect(potion);
-                        orb.addNature(-1000);
-                        player.getCooldowns().addCooldown(this, 3);
-                        ((ServerLevel) player.level).getChunkSource().broadcastAndSend(player, new ClientboundRemoveMobEffectPacket(player.getId(), potion));
-                    });
+                        if (p.getCooldowns().getCooldownPercent(this, 0) > 0)
+                        {
+                            return;
+                        }
+                        p.getCooldowns().addCooldown(this, 5 * 20);
+                        ManaItemHandler.instance().dispatchManaExact(stack, p, consume / am, true);
+                    }
+                    event.setResult(Event.Result.DENY);
+                    orb.addNature(-consume);
+
+                    living.level.playSound(null, living.getX(), living.getY(), living.getZ(), ModSounds.holyCloak, SoundSource.PLAYERS, 1F, 1F);
+                    for (int i = 0; i < 30; i++)
+                    {
+                        double x = living.getX() + Math.random() * living.getBbWidth() * 2 - living.getBbWidth();
+                        double y = living.getY() + Math.random() * living.getBbHeight();
+                        double z = living.getZ() + Math.random() * living.getBbWidth() * 2 - living.getBbWidth();
+                        boolean yellow = Math.random() > 0.5;
+                        float r = yellow ? 1F : 0.3F;
+                        float g = yellow ? 1F : 0.3F;
+                        float b = yellow ? 0.3F : 1F;
+                        SparkleParticleData data = SparkleParticleData.sparkle(0.8F + (float) Math.random() * 0.4F, r, g, b, 3);
+                        living.level.addParticle(data, x, y, z, 0, 0, 0);
+                    }
+                }
+            }
         }
     }
 
@@ -173,7 +197,7 @@ public class NatureOrb extends ItemBauble
         @Override
         public void addNature(int x)
         {
-            ItemNBTHelper.setInt(stack, TAG_NATURE, Math.min(getMaxNature(), getNature() + x) / stack.getCount());
+            ItemNBTHelper.setInt(stack, TAG_NATURE, Mth.clamp(getNature() + x, 0, getMaxNature()) / stack.getCount());
         }
 
         @Override

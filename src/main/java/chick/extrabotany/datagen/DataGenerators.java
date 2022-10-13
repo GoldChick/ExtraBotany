@@ -1,6 +1,7 @@
 package chick.extrabotany.datagen;
 
 import chick.extrabotany.ExtraBotany;
+import chick.extrabotany.common.base.ConfigHandler;
 import chick.extrabotany.common.optional.EXBOTCompat;
 import chick.extrabotany.common.optional.tconstruct.TConCompat;
 import chick.extrabotany.datagen.lang.EN_USLanguageProvider;
@@ -40,7 +41,7 @@ public class DataGenerators
             generator.addProvider(new ZH_CNLanguageProvider(generator, "zh_cn"));
         }
 
-        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID))
+        if (ModList.get().isLoaded(EXBOTCompat.TCON_ID) && ConfigHandler.COMMON.doCompat.get())
         {
             TConCompat.tConDatagen(event);
         }

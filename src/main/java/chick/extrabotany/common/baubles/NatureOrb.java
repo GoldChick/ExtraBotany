@@ -34,7 +34,7 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 import java.util.List;
 
-//TODO:to be checked
+
 public class NatureOrb extends ItemBauble
 {
     protected static final String TAG_NATURE = "tag_nature";
@@ -171,6 +171,12 @@ public class NatureOrb extends ItemBauble
     {
         var manaItem = IXplatAbstractions.INSTANCE.findNatureOrbItem(stack);
         return Mth.hsvToRgb(manaItem.getNature() / (float) manaItem.getMaxNature() / 3.0F, 1.0F, 1.0F);
+    }
+
+    @Override
+    public boolean canEquip(ItemStack stack, LivingEntity entity)
+    {
+        return EquipmentHandler.findOrEmpty(this, entity) == null;
     }
 
     public static class NatureOrbItem implements INatureOrbItem
